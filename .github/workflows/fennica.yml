@@ -32,14 +32,28 @@ jobs:
           needs: website
           extra-packages:
             local::.
-            any::pkgdown
-            ake123/fennica
-            any::magick
-            any::tmap
+            any::R
+            any::rmarkdown
+            any::testthat
+            any::gridExtra
+            any::bookdown
             any::Cairo
-            any::rcmdcheck
+            any::stringr
+            any::ggthemes
             any::XML
-      
+            any::ggplot2
+            any::knitr
+            any::remotes
+            any::tm
+            any::stringdist
+            any::tm
+            any::dplyr
+            any::data.table
+            
+      - name: render books
+        run: 
+            bookdown::render_book("inst/examples/_book") 
+            
       - name: Deploy package
         run: |
           git config --local user.name "$GITHUB_ACTOR"
