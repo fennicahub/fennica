@@ -32,8 +32,6 @@ jobs:
           needs: website
           extra-packages:
             local::.
-            any::R
-            any::rmarkdown
             any::testthat
             any::gridExtra
             any::bookdown
