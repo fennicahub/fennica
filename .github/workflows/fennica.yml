@@ -41,6 +41,7 @@ jobs:
             any::dplyr
             any::data.table
             any::R.utils
+            any::remotes
         
       - name: install rmarkdown packages
         run: Rscript -e 'install.packages(c("rmarkdown","bookdown","Cairo","ggplot2",dependencies = TRUE))'
