@@ -30,42 +30,20 @@ jobs:
           needs: website
           extra-packages:
             local::.
-            
-      - name: install rmarkdown packages
-        run: Rscript -e 'install.packages(c("rmarkdown","bookdown","Cairo","ggplot2",dependencies = TRUE))'
-        
-      - name: install devtools
-        run: R -e 'install.packages("devtools",dependencies = TRUE)'
-        
-      - name: install stringr
-        run: Rscript -e 'install.packages("stringr",dependencies = TRUE)'
-        
-      - name: install knitr
-        run: Rscript -e 'install.packages("knitr",dependencies = TRUE)'
-        
-      - name: install gridExtra
-        run: Rscript -e 'install.packages("gridExtra",dependencies = TRUE)'
-        
-      - name: install testthat
-        run: Rscript -e 'install.packages("testthat",dependencies = TRUE)'
-        
-      - name: install tm
-        run: Rscript -e 'install.packages("tm",dependencies = TRUE)'
-      
-      - name: install XML
-        run: Rscript -e 'install.packages("XML",dependencies = TRUE)'
-      
-      - name: install stringdist
-        run: Rscript -e 'install.packages("stringdist",dependencies = TRUE)'
-      
-      - name: install dplyr
-        run: Rscript -e 'install.packages("dplyr",dependencies = TRUE)'
-        
-      - name: install Rutils
-        run: Rscript -e 'install.packages("R.utils",dependencies = TRUE)'
-      
-      - name: install datatable
-        run: Rscript -e 'install.packages("data.table",dependencies = TRUE)'
+      - name: Cache packages
+        uses: actions/cache@v1
+        with:
+          path: ${{ env.RENV_PATHS_ROOT }}
+          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-renv-
+
+      - name: Restore packages
+        shell: Rscript {0}
+        run: |
+          if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+          renv::restore()   
+
       
       - name: install comhis
         run: Rscript -e 'devtools::install_github("comhis/comhis",dependencies = TRUE)'
