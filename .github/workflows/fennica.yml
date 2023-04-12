@@ -24,7 +24,7 @@ jobs:
           use-public-rspm: true
           
       - name: Install rmarkdown
-        run: Rscript -e 'install.packages(c("rmarkdown","bookdown","ggplot2","ggthemes"))'
+        run: Rscript -e 'install.packages(c("rmarkdown","Cairo","bookdown","ggplot2","ggthemes"))'
     
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
