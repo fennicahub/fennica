@@ -25,6 +25,11 @@ jobs:
           
       - name: Install rmarkdown
         run: Rscript -e 'install.packages(c("rmarkdown","Cairo","bookdown","ggplot2","ggthemes"))'
+        
+      - name: Install X11 dependencies on MacOS
+        if: runner.os == 'macOS'
+        run: |
+          brew install --cask xquartz
     
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
@@ -44,13 +49,9 @@ jobs:
             any::dplyr
             any::data.table
       
-      - name: Install X11 dependencies on MacOS
-        if: runner.os == 'macOS'
-        run: |
-          brew install --cask xquartz
             
       - name: Render Book
-        run: Rscript -e 'bookdown::render_book("inst/examples")'
+        run: Rscript -e 'bookdown::render_book("inst/examples/")'
         
       - name: Deploy package
         run: |
