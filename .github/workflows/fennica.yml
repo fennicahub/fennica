@@ -49,7 +49,7 @@ jobs:
         run: R -e 'install.packages("devtools",dependencies = TRUE)'
         
       - name: install stringr
-        run: Rscript -e 'install_version("stringr",dependencies = TRUE)'
+        run: Rscript -e 'install.packages("stringr",dependencies = TRUE)'
       
       - name: install comhis
         run: Rscript -e 'devtools::install_github("comhis/comhis",dependencies = TRUE)'
