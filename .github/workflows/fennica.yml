@@ -48,9 +48,9 @@ jobs:
             any::dplyr
             any::data.table
             
-      - name: render
-        working-directory: /inst/examples
-          bookdown::render_book("inst/examples/_book")
+      
+          working-directory: /inst/examples
+            bookdown::render_book("inst/examples/_book")
           
       - name: Deploy package
         run: |
