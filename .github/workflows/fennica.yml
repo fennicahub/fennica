@@ -48,9 +48,9 @@ jobs:
             any::dplyr
             any::data.table
             
-      
-          working-directory: ./fennica
-            bookdown::render_book("/inst/examples/_book")
+      - name: rendering 
+        run: cd /inst/examples/
+          bookdown::render_book("_book")
           
       - name: Deploy package
         run: |
