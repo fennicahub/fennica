@@ -48,10 +48,13 @@ jobs:
             any::dplyr
             any::data.table
             
+      - name: render
+        working-directory: /inst/examples
+          bookdown::render_book("inst/examples/_book")
           
       - name: Deploy package
         run: |
-          bookdown::render_book("inst/examples/_book")
+        
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
           Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
