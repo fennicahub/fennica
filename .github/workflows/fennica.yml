@@ -45,6 +45,9 @@ jobs:
       - name: install rmarkdown packages
         run: Rscript -e 'install.packages(c("rmarkdown","bookdown","Cairo","ggplot2"))'
         
+      - name: install comhis
+        run: Rscript -e 'install_github("comhis/comhis")'
+        
      
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("inst/examples/")'
