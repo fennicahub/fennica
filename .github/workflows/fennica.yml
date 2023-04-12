@@ -43,7 +43,7 @@ jobs:
       
       
       - name: install rmarkdown
-        run: Rscript -e 'install.packages(c("rmarkdown",upgrade="never",version = "2.16")
+        run: Rscript -e 'install.packages(c("rmarkdown")
         
       - name: install bookdown
         run: Rscript -e 'install.packages(c("bookdown")
