@@ -43,7 +43,7 @@ jobs:
       
       
       - name: install rmarkdown packages
-        run: Rscript -e 'install.packages(c(rmarkdown","bookdown","Cairo","ggplot2"))'
+        run: Rscript -e 'install.packages(c("rmarkdown","bookdown","Cairo","ggplot2"))'
         
      
       - name: Render Book
