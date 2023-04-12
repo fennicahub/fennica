@@ -32,7 +32,6 @@ jobs:
             local::.
             any::testthat
             any::gridExtra
-            any::stringr
             any::XML
             any::knitr
             any::tm
@@ -49,6 +48,9 @@ jobs:
       - name: install devtools
         run: R -e 'install.packages("devtools",dependencies = TRUE)'
         
+      - name: install stringr
+        run: Rscript -e 'install_version("stringr",dependencies = TRUE)'
+      
       - name: install comhis
         run: Rscript -e 'devtools::install_github("comhis/comhis",dependencies = TRUE)'
       
