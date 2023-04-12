@@ -42,18 +42,10 @@ jobs:
             any::R.utils
       
       
-      - name: install rmarkdown
-        run: Rscript -e 'install.packages(c(rmarkdown"))'
+      - name: install rmarkdown packages
+        run: Rscript -e 'install.packages(c(rmarkdown","bookdown","Cairo","ggplot2"))'
         
-      - name: install bookdown
-        run: Rscript -e 'install.packages(c("bookdown"))'
-        
-      - name: install cairo
-        run: Rscript -e 'install.packages(c("Cairo"))'
-      
-      - name: install ggplot
-        run: Rscript -e 'install.packages(c("ggplot2"))'
-        
+     
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("inst/examples/")'
         
