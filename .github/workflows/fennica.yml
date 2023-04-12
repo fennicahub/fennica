@@ -49,7 +49,7 @@ jobs:
         run: R -e 'install.packages("devtools")'
         
       - name: install comhis
-        run: Rscript -e 'install_github("comhis/comhis")'
+        run: Rscript -e 'devtools::install_github("comhis/comhis")'
       
      
       - name: Render Book
