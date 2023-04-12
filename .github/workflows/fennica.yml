@@ -46,13 +46,13 @@ jobs:
         run: Rscript -e 'install.packages(c("rmarkdown",upgrade="never",version = "2.16")
         
       - name: install bookdown
-        run: Rscript -e 'install.packages(c("bookdown",upgrade="never", version = "0.29")
+        run: Rscript -e 'install.packages(c("bookdown")
         
       - name: install cairo
-        run: Rscript -e 'install.packages(c("Cairo", upgrade="never",version = "1.6-0")
+        run: Rscript -e 'install.packages(c("Cairo")
       
       - name: install ggplot
-        run: Rscript -e 'install.packages(c("ggplot2",upgrade="never", version = "3.3.6")
+        run: Rscript -e 'install.packages(c("ggplot2")
         
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("inst/examples/")'
