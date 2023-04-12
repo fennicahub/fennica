@@ -49,8 +49,8 @@ jobs:
             any::data.table
             
       - name: rendering 
-        run: cd /inst/examples/
-          bookdown::render_book("_book")
+        run: cd ..
+          bookdown::render_book("/inst/examples/_book")
           
       - name: Deploy package
         run: |
