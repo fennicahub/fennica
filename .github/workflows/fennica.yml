@@ -12,7 +12,8 @@ name: renderbook
 jobs:
   render-book:
     runs-on: ubuntu-latest
-    
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
@@ -48,7 +49,7 @@ jobs:
         
       - name: install comhis
         run: Rscript -e 'remotes::install_github("comhis/comhis")'
-        
+      
      
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("inst/examples/")'
