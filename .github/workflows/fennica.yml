@@ -45,11 +45,11 @@ jobs:
       - name: install rmarkdown packages
         run: Rscript -e 'install.packages(c("rmarkdown","bookdown","Cairo","ggplot2"))'
         
-      - name: install remotes
-        run: R -e 'install.packages("remotes")'
+      - name: install devtools
+        run: R -e 'install.packages("devtools")'
         
       - name: install comhis
-        run: Rscript -e 'remotes::install_github("comhis/comhis")'
+        run: Rscript -e 'install_github("comhis/comhis")'
       
      
       - name: Render Book
