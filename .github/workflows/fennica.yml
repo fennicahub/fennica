@@ -43,13 +43,13 @@ jobs:
             any::R.utils
         
       - name: install rmarkdown packages
-        run: Rscript -e 'install.packages(c("rmarkdown","bookdown","Cairo","ggplot2"))'
+        run: Rscript -e 'install.packages(c("rmarkdown","bookdown","Cairo","ggplot2",dependencies = TRUE))'
         
       - name: install devtools
-        run: R -e 'install.packages("devtools")'
+        run: R -e 'install.packages("devtools",dependencies = TRUE)'
         
       - name: install comhis
-        run: Rscript -e 'devtools::install_github("comhis/comhis")'
+        run: Rscript -e 'devtools::install_github("comhis/comhis",dependencies = TRUE)'
       
      
       - name: Render Book
