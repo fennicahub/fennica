@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      
+
     steps:
       - uses: actions/checkout@v2
 
@@ -30,23 +30,18 @@ jobs:
           needs: website
           extra-packages:
             local::.
-      
-
-      
+            
       - name: install comhis
         run: Rscript -e 'devtools::install_github("comhis/comhis",dependencies = TRUE)'
-      
      
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("inst/examples/")'
         
       - name: Deploy package
         run: |
+        
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git add .
           git commit -m "new update" || echo "No changes to commit"
           git push origin || echo "No changes to commit"
-          
-          
-          
