@@ -38,7 +38,7 @@ jobs:
       
      
       - name: Render Book
-        run: Rscript -e 'bookdown::render_book("inst/examples/_book/")'
+        run: Rscript -e 'bookdown::render_book("inst/examples/")'
         
       - name: Deploy package
         run: |
