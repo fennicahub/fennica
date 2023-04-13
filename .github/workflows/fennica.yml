@@ -31,45 +31,8 @@ jobs:
           extra-packages:
             local::.
             
-      - name: install rmarkdown packages
-        run: Rscript -e 'install.packages(c("rmarkdown","bookdown","Cairo","ggplot2",dependencies = TRUE))'
-        
-      - name: install devtools
-        run: R -e 'install.packages("devtools",dependencies = TRUE)'
-        
-      - name: install stringr
-        run: Rscript -e 'install.packages("stringr",dependencies = TRUE)'
-        
-      - name: install knitr
-        run: Rscript -e 'install.packages("knitr",dependencies = TRUE)'
-        
-      - name: install gridExtra
-        run: Rscript -e 'install.packages("gridExtra",dependencies = TRUE)'
-        
-      - name: install testthat
-        run: Rscript -e 'install.packages("testthat",dependencies = TRUE)'
-        
-      - name: install tm
-        run: Rscript -e 'install.packages("tm",dependencies = TRUE)'
-      
-      - name: install XML
-        run: Rscript -e 'install.packages("XML",dependencies = TRUE)'
-      
-      - name: install stringdist
-        run: Rscript -e 'install.packages("stringdist",dependencies = TRUE)'
-      
-      - name: install dplyr
-        run: Rscript -e 'install.packages("dplyr",dependencies = TRUE)'
-        
-      - name: install Rutils
-        run: Rscript -e 'install.packages("R.utils",dependencies = TRUE)'
-      
-      - name: install datatable
-        run: Rscript -e 'install.packages("data.table",dependencies = TRUE)'
-      
       - name: install comhis
         run: Rscript -e 'devtools::install_github("comhis/comhis",dependencies = TRUE)'
-      
      
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("inst/examples/")'
@@ -79,5 +42,6 @@ jobs:
         
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
-  
+          git add .
+          git commit -m "new update" || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
