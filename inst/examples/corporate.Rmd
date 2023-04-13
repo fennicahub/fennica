@@ -10,6 +10,8 @@ knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
 source("corporate.R")
 ```
 
+Corporate-field contains names of the printing houses ("kirjapaino" in Finnish), manufactures, companies or institutions involved in printing of the books.
+
 [Accepted corporate info](https://github.com/COMHIS/fennica/blob/master/inst/examples/output.tables/corporate_accepted.csv)
 
 [Discarded corporate info](https://github.com/COMHIS/fennica/blob/master/inst/examples/output.tables/corporate_discarded.csv)
