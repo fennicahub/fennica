@@ -1,7 +1,7 @@
 --- 
 title: "Harmonized Finnish National Bibliography"
 author: "Turku Data Science Group"
-date: "`r Sys.Date() system("git rev-parse HEAD", intern=TRUE)`"
+date: "`r system("git rev-parse HEAD", intern=TRUE)`"
 site: "bookdown::bookdown_site"
 output:
   bookdown::gitbook: default
