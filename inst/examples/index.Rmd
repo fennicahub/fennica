@@ -10,7 +10,7 @@ documentclass: book
 
 # Preface chapter
 
-As part of the Metadata Harmonization And Analysis work package, we use the Finnish national bibliography (FNB) fennica dataset to create a harmonized dataset that can be used for research purposes as well as provide the groundwork for infrastructure that can be iterated further. 
+As part of the Metadata Harmonization And Analysis work package, we use the Finnish national bibliography (FNB) Fennica dataset to create a harmonized dataset that can be used for research purposes as well as provide the groundwork for infrastructure that can be iterated further. 
 
 The FNB contains metadata for 71,919 documents and spans over 450 years, more specifically consisting of records printed between 1488 and 1955. There are 28 data fields in raw data in machine-readable cataloguing (MARC) format, which provide information on the document, for example, language, author name, author lifetime, publication title, publication place, publisher, and page count. Through harmonization and enriching the dataset with data from other sources, the abovementioned 28 fields can result in 96 data fields per document. (Tolonen, et al 2019.)
 
