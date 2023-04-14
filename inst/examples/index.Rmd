@@ -8,7 +8,7 @@ output:
 documentclass: book
 ---
 
-# Preface
+# Preface chapter
 
 As part of the Metadata Harmonization And Analysis work package, we use the Finnish national bibliography (FNB) dataset to create a harmonized dataset that can be used for research purposes as well as provide the groundwork for infrastructure that can be iterated further. 
 
