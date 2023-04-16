@@ -24,7 +24,7 @@ output: md_document
 
 Top-`r ntop` uniquely identified authors and their productivity (title count).
 
-```{r summaryauthors, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=8, out.width='430px', fig.show='hold'}
+```{r summaryauthors, echo=FALSE, message=FALSE, warning=FALSE, fig.width=12, fig.height=8, out.width='430px', fig.show='hold'}
 knitr::opts_chunk$set(fig.path = "figure_slides/", dev="CairoPNG")
 p <- NULL
 p <- top_plot(df, "author", ntop) +
@@ -121,7 +121,7 @@ grid.arrange(p1, p2, p3, nrow = 1)
 
 ### Author productivity
 
-Title count versus paper consumption (all authors):
+Title count in relation to the paper consumed in their books (all authors):
 
 ```{r authortitlespapers, fig.height=8, fig.width=18, echo=FALSE, warning=FALSE}
 res1 <- compare_title_paper(df, "author", plot.mode = "text")
