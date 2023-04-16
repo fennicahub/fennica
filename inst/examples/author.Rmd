@@ -24,7 +24,7 @@ output: md_document
 
 Top-`r ntop` uniquely identified authors and their productivity (title count).
 
-```{r summaryauthors, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=5, out.width='430px', fig.show='hold'}
+```{r summaryauthors, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=8, out.width='430px', fig.show='hold'}
 knitr::opts_chunk$set(fig.path = "figure_slides/", dev="CairoPNG")
 p <- NULL
 p <- top_plot(df, "author", ntop) +
