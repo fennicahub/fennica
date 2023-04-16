@@ -59,8 +59,9 @@ print(p)
  
 Top-`r ntop` uniquely identified authors and their productivity (title count).
 
-```{r summaryauthorsnames, echo=FALSE, message=FALSE, warning=FALSE, fig.width=12, fig.height=8, fig.show='hold'}
+```{r summaryauthorsnames, echo=FALSE, message=FALSE, warning=FALSE, fig.width=12, fig.height=8}
 knitr::opts_chunk$set(fig.path = "figure/", dev="CairoPNG")
+library(ggplot2)
 theme_set(theme_bw(base_size = 12))
 p <- NULL
 p <- top_plot(df, "author_name", ntop) +

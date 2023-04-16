@@ -1,6 +1,6 @@
 --- 
 title: "Harmonized Finnish National Bibliography"
-author: "Helsinki Computational History Group (COMHIS)"
+author: "Turku Data Science Group"
 date: "`r Sys.Date()`"
 site: "bookdown::bookdown_site"
 output:
@@ -27,7 +27,7 @@ source("author_date.R")
 
 [Author date discarded](output.tables/auhtor_date_discarded.csv)
 
-Author's lifetime is available for `r sum(!is.na(df$author_age))` authors (`r round(100*mean(!is.na(df$author_age)))`%).The lifetime years span `r range(na.omit((df$author_age)))`.
+Author's lifetime is available for `r sum(!is.na(df$author_age))` authors (`r round(100*mean(!is.na(df$author_age)))`%).The lifetime years span `r range(na.omit((df$author_age)))`. The youngest being 17 years old and the oldest 99 years old as at this stage of research.
 
 
 
@@ -47,56 +47,10 @@ Placeholder
 
 <!--chapter:end:author_name.Rmd-->
 
+
 # Corporate
 
-```{r setup-corporate, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
-```
-
-```{r source-corporate, include=FALSE}
-# corporate field
-source("corporate.R")
-```
-Corporate-field contains names of the printing houses ("kirjapaino" in Finnish), manufactures, companies or institutions involved in printing of the books.
-
-[Accepted corporate info](https://github.com/COMHIS/fennica/blob/master/inst/examples/output.tables/corporate_accepted.csv)
-
-[Discarded corporate info](https://github.com/COMHIS/fennica/blob/master/inst/examples/output.tables/corporate_discarded.csv)
-
-* [Unique accepted entries](`r file_accepted`): `r length(unique(df[[field]]))`
-* [Unique discarded entries in original data](`r file_discarded`) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
-* Original documents with non-NA titles: `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
-* Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
-
-
- Top-`r ntop` titles and their title counts.
- 
-```{r summarytitle-corporate, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8, fig.height=6}
-library(ggplot2)
-theme_set(theme_bw(base_size = 12))
-p <- top_plot(df, "corporate", ntop = ntop, log10 = TRUE)+
-  labs(y = "Entries (n)", title = "Top titles")
-print(p)
-``` 
-
-Frequency of unique titles:
-  
-```{r uniquetitles-corporate, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8, fig.height=6}
-tab <- table(df$corporate)
-d <- data.frame(title = names(tab), n = as.numeric(tab))
-
-library(ggplot2)
-theme_set(theme_bw(base_size = 12))
-p <- ggplot(d, aes(x = n)) +
-  geom_histogram(color="black", fill="white") +
-  scale_x_log10() +
-  scale_y_log10() +
-  labs(x = "Title duplicates (n)", y = "Documents (n)")
-print(p)
-```
-
-
+Placeholder
 
 
 
