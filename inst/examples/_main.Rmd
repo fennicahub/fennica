@@ -35,98 +35,15 @@ Author's lifetime is available for `r sum(!is.na(df$author_age))` authors (`r ro
 
 <!--chapter:end:author_date.Rmd-->
 
+
 # Author's name
 
-```{r setup-author-name, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
-```
-
-```{r source-author-name, include=FALSE}
-# author_name field
-source("author_name.R")
-```
-
-* [Unique accepted entries](`r file_accepted`): `r length(unique(df[[field]]))`
-* [Unique discarded entries in original data](`r file_discarded`) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
-* Original documents with non-NA titles: `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
-* Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
- 
- Top-`r ntop` titles and their title counts.
- 
-```{r summarytitle-author-name, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8, fig.height=6}
-library(ggplot2)
-theme_set(theme_bw(base_size = 12))
-p <- top_plot(df, "author_name", ntop = ntop, log10 = TRUE)+
-  labs(y = "Entries (n)", title = "Top titles")
-print(p)
-``` 
-
-Frequency of unique titles:
-  
-```{r uniquetitles-author-name, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8, fig.height=6}
-tab <- table(df$author_name)
-d <- data.frame(title = names(tab), n = as.numeric(tab))
-
-library(ggplot2)
-theme_set(theme_bw(base_size = 12))
-p <- ggplot(d, aes(x = n)) +
-  geom_histogram(color="black", fill="white") +
-  scale_x_log10() +
-  scale_y_log10() +
-  labs(x = "Title duplicates (n)", y = "Documents (n)")
-print(p)
-```
+Placeholder
 
 
 ## Authors
-
-* `r length(unique(df$author_name))` [unique authors](output.tables/author_accepted.csv) These final names capture all name variants from the custom [author synonyme table](https://github.com/COMHIS/fennica/blob/master/inst/extdata/ambiguous-authors.csv), and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the [author synonyme table](https://github.com/COMHIS/fennica/blob/master/inst/extdata/ambiguous-authors.csv).
- * `r sum(!is.na(df$author_name))` documents have unambiguous author information (`r round(100*mean(!is.na(df$author_name)))`%). 
- * `r length(readLines(paste0(getwd(),"/output.tables/pseudonyme_accepted.csv")))-2` [unique pseudonymes](output.tables/pseudonyme_accepted.csv) are recognized based on [custom pseudonyme lists](https://github.com/COMHIS/fennica/blob/master/inst/extdata/names/pseudonymes/custom_pseudonymes.csv).
- * `r length(readLines(paste0(getwd(),"/output.tables/author_discarded.csv")))-2` [discarded author names](output.tables/author_discarded.csv) This list should not include any real authors (if it does, please send a note to the admin). The stopword lists are considered when discarding names.
- * [Author name conversions](output.tables/author_conversion_nontrivial.csv) Non-trivial conversions from the original raw data to final names.
- 
 ### Auxiliary files
-
- * [Author synonyme table](https://github.com/COMHIS/fennica/blob/master/inst/extdata/ambiguous-authors.csv)
- * [Stopwords for names](https://github.com/COMHIS/fennica/blob/master/inst/extdata/stopwords_for_names.csv)
- * [Stopwords for titles](https://github.com/COMHIS/fennica/blob/master/inst/extdata/stopwords_titles.csv)
- * [Custom pseudonyme lists](https://github.com/COMHIS/fennica/blob/master/inst/extdata/names/pseudonymes/custom_pseudonymes.csv)
- 
-Top-`r ntop` uniquely identified authors and their productivity (title count).
-
-```{r summaryauthorsnames, echo=FALSE, message=FALSE, warning=FALSE, fig.width=12, fig.height=8}
-knitr::opts_chunk$set(fig.path = "figure/", dev="CairoPNG")
-library(ggplot2)
-theme_set(theme_bw(base_size = 12))
-p <- NULL
-p <- top_plot(df, "author_name", ntop) +
-     		  ggtitle(paste("Top authors' names")) +
-		  ylab("Documents")
-print(p)
-```
-
-
 ### Author productivity
-
-Title count in relation to the paper consumed in their books(all authors):
-
-```{r authortitlespapers, fig.height=8, fig.width=18, echo=FALSE, warning=FALSE}
-library(dplyr)
-library(gridExtra)
-library(grid)
-library(ggplot2)
-library(lattice)
-
-theme_set(theme_bw(base_size = 12))
-res1 <- compare_title_paper(df, "author_name", plot.mode = "text")
-res2 <- compare_title_paper(df, "author_name", plot.mode = "point")
-grid.arrange(res2$plot, res1$plot, nrow = 1)
-#kable(res1$table)
-```
-
-
 
 <!--chapter:end:author_name.Rmd-->
 

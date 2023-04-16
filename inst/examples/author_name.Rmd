@@ -71,7 +71,7 @@ print(p)
 ```
 
 
-<!--### Author productivity
+### Author productivity
 
 Title count in relation to the paper consumed in their books(all authors):
 
