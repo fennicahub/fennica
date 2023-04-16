@@ -1,0 +1,344 @@
+--- 
+title: "Harmonized Finnish National Bibliography"
+author: "Turku Data Science Group"
+date: "`r Sys.Date()`"
+site: "bookdown::bookdown_site"
+output:
+  bookdown::gitbook: default
+documentclass: book
+---
+
+# Preface chapter
+
+Placeholder
+
+
+
+<!--chapter:end:index.Rmd-->
+
+# Author's lifetime
+
+```{r source-author-date, include=FALSE}
+# author_date field
+source("author_date.R")
+```
+
+[Author date accepted](output.tables/auhtor_date_accepted.csv)
+
+[Author date discarded](output.tables/auhtor_date_discarded.csv)
+
+Author's lifetime is available for `r sum(!is.na(df$author_age))` authors (`r round(100*mean(!is.na(df$author_age)))`%).The lifetime years span `r range(na.omit((df$author_age)))`. The youngest being 17 years old and the oldest 99 years old as at this stage of research.
+
+
+
+
+
+<!--chapter:end:author_date.Rmd-->
+
+# Author's name
+
+```{r setup-author-name, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
+```
+
+```{r source-author-name, include=FALSE}
+# author_name field
+source("author_name.R")
+```
+
+* [Unique accepted entries](`r file_accepted`): `r length(unique(df[[field]]))`
+* [Unique discarded entries in original data](`r file_discarded`) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
+* Original documents with non-NA titles: `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
+* Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
+ 
+ Top-`r ntop` titles and their title counts.
+ 
+```{r summarytitle-author-name, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8, fig.height=6}
+library(ggplot2)
+theme_set(theme_bw(base_size = 12))
+p <- top_plot(df, "author_name", ntop = ntop, log10 = TRUE)+
+  labs(y = "Entries (n)", title = "Top titles")
+print(p)
+``` 
+
+Frequency of unique titles:
+  
+```{r uniquetitles-author-name, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8, fig.height=6}
+tab <- table(df$author_name)
+d <- data.frame(title = names(tab), n = as.numeric(tab))
+
+library(ggplot2)
+theme_set(theme_bw(base_size = 12))
+p <- ggplot(d, aes(x = n)) +
+  geom_histogram(color="black", fill="white") +
+  scale_x_log10() +
+  scale_y_log10() +
+  labs(x = "Title duplicates (n)", y = "Documents (n)")
+print(p)
+```
+
+
+## Authors
+
+* `r length(unique(df$author_name))` [unique authors](output.tables/author_accepted.csv) These final names capture all name variants from the custom [author synonyme table](https://github.com/COMHIS/fennica/blob/master/inst/extdata/ambiguous-authors.csv), and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the [author synonyme table](https://github.com/COMHIS/fennica/blob/master/inst/extdata/ambiguous-authors.csv).
+ * `r sum(!is.na(df$author_name))` documents have unambiguous author information (`r round(100*mean(!is.na(df$author_name)))`%). 
+ * `r length(readLines(paste0(getwd(),"/output.tables/pseudonyme_accepted.csv")))-2` [unique pseudonymes](output.tables/pseudonyme_accepted.csv) are recognized based on [custom pseudonyme lists](https://github.com/COMHIS/fennica/blob/master/inst/extdata/names/pseudonymes/custom_pseudonymes.csv).
+ * `r length(readLines(paste0(getwd(),"/output.tables/author_discarded.csv")))-2` [discarded author names](output.tables/author_discarded.csv) This list should not include any real authors (if it does, please send a note to the admin). The stopword lists are considered when discarding names.
+ * [Author name conversions](output.tables/author_conversion_nontrivial.csv) Non-trivial conversions from the original raw data to final names.
+ 
+### Auxiliary files
+
+ * [Author synonyme table](https://github.com/COMHIS/fennica/blob/master/inst/extdata/ambiguous-authors.csv)
+ * [Stopwords for names](https://github.com/COMHIS/fennica/blob/master/inst/extdata/stopwords_for_names.csv)
+ * [Stopwords for titles](https://github.com/COMHIS/fennica/blob/master/inst/extdata/stopwords_titles.csv)
+ * [Custom pseudonyme lists](https://github.com/COMHIS/fennica/blob/master/inst/extdata/names/pseudonymes/custom_pseudonymes.csv)
+ 
+Top-`r ntop` uniquely identified authors and their productivity (title count).
+
+```{r summaryauthorsnames, echo=FALSE, message=FALSE, warning=FALSE, fig.width=12, fig.height=8}
+knitr::opts_chunk$set(fig.path = "figure/", dev="CairoPNG")
+library(ggplot2)
+theme_set(theme_bw(base_size = 12))
+p <- NULL
+p <- top_plot(df, "author_name", ntop) +
+     		  ggtitle(paste("Top authors' names")) +
+		  ylab("Documents")
+print(p)
+```
+
+
+### Author productivity
+
+Title count in relation to the paper consumed in their books(all authors):
+
+```{r authortitlespapers, fig.height=8, fig.width=18, echo=FALSE, warning=FALSE}
+library(dplyr)
+library(gridExtra)
+library(grid)
+library(ggplot2)
+library(lattice)
+
+theme_set(theme_bw(base_size = 12))
+res1 <- compare_title_paper(df, "author_name", plot.mode = "text")
+res2 <- compare_title_paper(df, "author_name", plot.mode = "point")
+grid.arrange(res2$plot, res1$plot, nrow = 1)
+#kable(res1$table)
+```
+
+
+
+<!--chapter:end:author_name.Rmd-->
+
+
+# Corporate
+
+Placeholder
+
+
+
+<!--chapter:end:corporate.Rmd-->
+
+
+# Language summaries
+
+Placeholder
+
+
+## Top languages
+
+<!--chapter:end:language.Rmd-->
+
+
+# Holder
+
+Placeholder
+
+
+
+<!--chapter:end:holder.Rmd-->
+
+
+# Note 510C
+
+Placeholder
+
+
+
+<!--chapter:end:note_510c.Rmd-->
+
+
+# Note dissertation
+
+Placeholder
+
+
+
+<!--chapter:end:note_dissertation.Rmd-->
+
+
+# Note granter
+
+Placeholder
+
+
+
+<!--chapter:end:note_granter.Rmd-->
+
+
+# Note source
+
+Placeholder
+
+
+
+<!--chapter:end:note_source.Rmd-->
+
+
+# Publisher preprocessing summary
+
+Placeholder
+
+
+
+<!--chapter:end:publisher.Rmd-->
+
+```{r source-publication-interval, include=FALSE, eval=knit_bookdown}
+#publication_interval field
+source("publication_interval.R")
+```
+
+# Publication interval summaries
+
+Publication interval is available for `r sum(!is.na(df$publication_interval_from) | !is.na(df$publication_interval_till))` documents (`r round(100*mean(!is.na(df$publication_interval_from) | !is.na(df$publication_interval_till)))`%). 
+
+[Publication interval accepted](output.tables/publication_interval_accepted.csv)
+
+[Publication interval conversions](output.tables/publication_interval_conversion_nontrivial.csv)
+
+[Publication interval discarded](output.tables/publication_interval_discarded.csv)
+
+
+
+<!--chapter:end:publication_interval.Rmd-->
+
+
+# Publication place preprocessing summary
+
+Placeholder
+
+
+## Publication countries	
+## Geocoordinates
+
+<!--chapter:end:publication_place.Rmd-->
+
+```{r source-publication-time, include=FALSE, eval=knit_bookdown}
+# Publication place field and derived country- and geoinformation
+source("publication_time.R")
+```
+
+# Publication year summaries (publication time)
+
+[Publication year conversions](output.tables/publication_year_conversion.csv)
+
+[Publication year discarded](output.tables/publication_year_discarded.csv)
+
+Publication year is available for `r sum(!is.na(df$publication_year))` documents (`r round(100*mean(!is.na(df$publication_year)))`%). The publication years span `r paste(range(na.omit(df$publication_year)), collapse = "-")`.
+
+```{r summarypublicationyear, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8, fig.height=6}
+# Title count per decade
+df2 <- df %>% group_by(publication_decade) %>% filter(publication_decade < 2010) 
+p <- ggplot(df2, aes(publication_decade)) +
+     geom_bar() + scale_y_log10() +
+     ggtitle("Title count timeline")
+print(p)
+```
+
+
+
+<!--chapter:end:publication_time.Rmd-->
+
+
+# Subject topic
+
+Placeholder
+
+
+
+<!--chapter:end:subject_topic.Rmd-->
+
+```{r source-subject-geography, include=FALSE, eval=knit_bookdown}
+# note_subject_topic field
+source("subject_geography.R")
+```
+
+# Subject geography preprocessing summary (Subject geographical places)
+
+```{r geo, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=10}
+tab <- rev(sort(table(unlist(strsplit(as.character(df$subject_geography), ";")))))
+```
+
+Top-`r ntop` geographical places are shown together with the number of documents assigned to that region. Geography information is available for `r sum(!is.na(df$subject_geography))` documents (`r round(100*mean(!is.na(df$subject_geography)))`%). There are `r length(tab)` unique geographical places.
+
+```{r geo2, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=10, eval=FALSE}
+ntop <- 50
+par(mar = c(5, 10, 3, 1)); barplot(log10(rev(tab[1:ntop])), horiz = T, las = 1, cex.names = 0.8, xlab = "Documents (log10)", main = "Most common geographic places")
+```
+
+```{r geo3, echo=FALSE, message=FALSE, warning=FALSE}
+f <- "output.tables/geoplaces.csv"
+write.table(cbind(Geography = names(tab), Documents = tab), file = f, sep = "|", quote = F, row.names = F)
+```
+
+[Complete geoplace listing](https://github.com/COMHIS/fennica/blob/master/inst/examples/output.tables/geoplaces.csv)
+
+
+
+<!--chapter:end:subject_geography.Rmd-->
+
+
+# Successor
+
+Placeholder
+
+
+
+<!--chapter:end:successor.Rmd-->
+
+
+# Title field: summary
+
+Placeholder
+
+
+
+<!--chapter:end:title.Rmd-->
+
+
+# Title uniform
+
+Placeholder
+
+
+
+<!--chapter:end:title_uniform.Rmd-->
+
+
+# Uncontrolled
+
+Placeholder
+
+
+
+<!--chapter:end:uncontrolled.Rmd-->
+
+
+# Fennica preprocessing summary
+
+Placeholder
+
+
+
+<!--chapter:end:overview.Rmd-->
+

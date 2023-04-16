@@ -71,9 +71,9 @@ print(p)
 ```
 
 
-### Author productivity
+<!--### Author productivity
 
-Title count versus paper consumption (all authors):
+Title count in relation to the paper consumed in their books(all authors):
 
 ```{r authortitlespapers, fig.height=8, fig.width=18, echo=FALSE, warning=FALSE}
 library(dplyr)
