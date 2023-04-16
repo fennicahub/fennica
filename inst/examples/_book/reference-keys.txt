@@ -3,7 +3,6 @@ authors-lifetime
 authors-name
 authors
 auxiliary-files
-author-productivity
 corporate
 language-summaries
 top-languages
