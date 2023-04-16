@@ -1,6 +1,5 @@
 # Holder
 
-Holder field consists of 
 
 ```{r setup-holder, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
