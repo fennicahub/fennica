@@ -3,9 +3,9 @@
 
 name: Deploy to GitHub Pages
 on:
-  push:
-    branches:
-      - master
+  repository_dispatch:
+    types:
+      - trigger-renderbook-workflow
   workflow_dispatch:
 
 jobs:
