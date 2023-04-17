@@ -1,3 +1,6 @@
+# GitHub Action: Push git subdirectory as branch
+# Source: https://github.com/marketplace/actions/push-git-subdirectory-as-branch
+
 name: Deploy to GitHub Pages
 on:
   push:
@@ -17,5 +20,5 @@ jobs:
       env:
         REPO: self
         BRANCH: gh-pages
-        FOLDER: public/site
+        FOLDER: inst/examples/_book
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
