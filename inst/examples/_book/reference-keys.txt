@@ -23,4 +23,3 @@ successor
 title-field-summary
 title-uniform
 uncontrolled
-fennica-preprocessing-summary
