@@ -3,8 +3,11 @@
 # Workflow triggering derived from: https://stevenmortimer.com/running-github-actions-sequentially/
 on:
   push:
-    branches: [master]
-    
+    branches: 
+    - master
+    paths:
+    - inst/examples
+    - '**.Rmd'
   workflow_dispatch:
 
 name: renderbook
