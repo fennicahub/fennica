@@ -49,12 +49,13 @@ Render the bookdown document:
 bookdown::render_book("inst/examples")
 ```
 
-Open the rendered book in your browser. Alternatively, you can view the same live document deployed in a CSC Rahti container: http://fennica-fennica.rahtiapp.fi
+Open the rendered book in your browser. 
 
-![Description of the Webhook workflow, image from CSC Documentation](man/figures/trigger.drawio.png)
+Alternatively, you can view the same live document deployed in a CSC Rahti container: http://fennica-fennica.rahtiapp.fi
 
-The bookdown document is rendered with [GitHub Actions](https://github.com/fennicahub/fennica/blob/master/.github/workflows/fennica.yml). The generated files are placed in [gh-pages branch](https://github.com/fennicahub/fennica/blob/master/.github/workflows/static.yml) in the GitHub Repository. The generated files are copied to Rahti [by utilizing a webhook]
-(https://docs.csc.fi/cloud/rahti/tutorials/webhooks/) and hosted on an nginx server.
+![Description of the Webhook workflow, image from CSC Documentation](man/figures/trigger.drawio.jpeg)
+
+The bookdown document is rendered with [GitHub Actions](https://github.com/fennicahub/fennica/blob/master/.github/workflows/fennica.yml). The generated files are placed in [gh-pages branch](https://github.com/fennicahub/fennica/blob/master/.github/workflows/static.yml) in the GitHub Repository. The generated files are copied to Rahti [by utilizing a webhook](https://docs.csc.fi/cloud/rahti/tutorials/webhooks/) and are hosted on an nginx server.
 
 ### Examples of generated reports
 
