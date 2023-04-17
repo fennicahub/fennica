@@ -66,3 +66,6 @@ source("uncontrolled.R")
 knit("overview.Rmd")
 # TODO: has to be done after harmonizations are complete, and an aggregated data set can be created
 # knit("details.Rmd")
+
+output_files <- list.files("output.tables")
+file.copy(paste0("output.tables/", output_files), to = "_book/output.tables/", overwrite = TRUE, recursive = FALSE)
