@@ -1,10 +1,67 @@
-Fennica: analysis of the Finnish national bibliography
+Fennica: Harmonized Finnish national bibliography
 ============================================
 
-This repository contains automated analysis of the Finnish national bibliography, [Fennica](https://www.kansalliskirjasto.fi/fi/palvelut/fennica-suomen-kansallisbibliografia). Fennica includes bibliographic metadata for over 70,000 documents between 1488-1955, representing the publishing activity in Finland during that period. This is analyzed in parallel with [Kungliga](https://github.com/comhis/kungliga), a related collection of bibliographic metadata from the Swedish National library.
+This repository contains code for cleaning, enriching and automatically generating reports on the Finnish national bibliography, [Fennica](https://www.kansalliskirjasto.fi/fi/palvelut/fennica-suomen-kansallisbibliografia). 
 
+This snapshot of the Fennica dataset includes bibliographic metadata for over 70,000 documents between 1488-1955, representing the publishing activity in Finland during that period. This is analyzed in parallel with [Kungliga](https://github.com/comhis/kungliga), a related collection of bibliographic metadata from the Swedish National library. In the future it will include the whole dataset, from earliest documents to the current day.
 
-### Reproducible analysis
+### Reproducing the workflow
+
+Copy the repository to your computer:
+
+```
+# In terminal / GIT
+git clone https://github.com/fennicahub/fennica.git
+```
+
+Another alternative is to download the master branch from the repository front page in GitHub: <> Code -> Download ZIP.
+
+Go to the cloned git repository or extracted zip folder and run R. The following example assumes that the folder was downloaded to user's home folder:
+
+```
+cd fennica
+R
+```
+
+Another option is to open an IDE and set the working directory to fennica folder. In RStudio this can be done in the Files tab by changing the folder to fennica folder, clicking the gear icon and selecting "Set as working directory". Alternatively, from the R Console:
+
+```{r}
+# See current working directory
+getwd()
+# Set working directory to fennica, assuming that fennica folder is in your current folder
+setwd("fennica")
+```
+
+Install the necessary dependencies:
+
+```{r}
+install.packages("devtools")
+library(devtools)
+# Install deps for the current project
+devtools::install_local(".")
+devtools::install_deps(".", dependencies = TRUE)
+devtools::install_github("comhis/comhis")
+```
+
+Render the bookdown document:
+
+```
+bookdown::render_book("inst/examples")
+```
+
+Open the rendered book in your browser. 
+
+Alternatively, you can view the same live document deployed in a CSC Rahti container: http://fennica-fennica.rahtiapp.fi
+
+![Description of the Webhook workflow, image from CSC Documentation](man/figures/trigger.drawio.jpeg)
+
+The bookdown document is rendered with [GitHub Actions](https://github.com/fennicahub/fennica/blob/master/.github/workflows/fennica.yml). The generated files are placed in [gh-pages branch](https://github.com/fennicahub/fennica/blob/master/.github/workflows/static.yml) in the GitHub Repository. The generated files are copied to Rahti [by utilizing a webhook](https://docs.csc.fi/cloud/rahti/tutorials/webhooks/) and are hosted on an nginx server.
+
+### Using the interactive report
+
+The generated bookdown document consists of 20 different sections, or "chapters". Different sections focus on different fields from the MARC formatted raw data [MARC](https://marc21.kansalliskirjasto.fi). Most chapters also have visualizations that give a quick glance on what the data looks like. For most fields processed CSV datasets can also be downloaded for further analyses.
+
+### Examples of generated reports
 
 The data is summarized in the following automatically generated files:
 
