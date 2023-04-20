@@ -4,7 +4,10 @@ author: "Turku Data Science Group"
 date: "`r Sys.Date()`"
 site: "bookdown::bookdown_site"
 output:
-  bookdown::gitbook: default
+  output: bookdown::gitbook
+github-repo: fennicahub/fennica
+url: https://github.com/fennicahub/fennica
+  
 documentclass: book
 ---
 
