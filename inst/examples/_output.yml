@@ -1,0 +1,11 @@
+bookdown::gitbook:
+  config:
+    toc:
+      collapse: none
+    edit: https://github.com/fennicahub/fennica.git/%s
+    view: https://github.com/fennicahub/fennica.git/%s    
+    sharing:
+      github: yes
+      all: no
+    search:
+      engine: fuse
