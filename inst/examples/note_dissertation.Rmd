@@ -27,7 +27,7 @@ p <- top_plot(df, "note_dissertation", ntop = ntop, log10 = TRUE)+
 print(p)
 ``` 
 
-<!--Frequency of unique titles:
+Frequency of unique titles:
   
 ```{r uniquetitles-note-dissertation, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8, fig.height=6}
 tab <- table(df$note_dissertation)
