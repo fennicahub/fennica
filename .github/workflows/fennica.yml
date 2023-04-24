@@ -32,6 +32,7 @@ jobs:
         with:
           needs: website
           extra-packages:
+            any::devtools
             local::.
             
       - name: install comhis
