@@ -1,4 +1,4 @@
-#library(devtools)
+library(devtools)
 library(dplyr)
 library(tm)
 library(stringr)
