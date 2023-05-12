@@ -1,5 +1,5 @@
 rmd_files: ["index.Rmd", "author_date.Rmd", "author_name.Rmd", 
-"corporate.Rmd", "language.Rmd", "holder.Rmd", "note_510c.Rmd",
+"corporate.Rmd", "language.Rmd", "holder.Rmd",
 "note_dissertation.Rmd", "note_granter.Rmd", "note_source.Rmd",
 "publisher.Rmd", "publication_interval.Rmd", "publication_place.Rmd",
 "publication_time.Rmd", "subject_topic.Rmd", "subject_geography.Rmd",
