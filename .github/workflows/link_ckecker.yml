@@ -1,0 +1,27 @@
+name: Check for dead links
+
+on:
+  repository_dispatch:
+    types:
+      - trigger-link-check-workflow
+  workflow_dispatch:
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
+    - name: Install dependencies
+      run: |
+        npm install markdown-link-check
+        npm install js-yaml
+    
+    - name: Extract files to check
+      id: extract
+      run: echo "::set-output name=files::$(node .github/workflows/extract-files.js)"
+    
+    - name: Check links
+      run: npx markdown-link-check ${{ steps.extract.outputs.files }}
