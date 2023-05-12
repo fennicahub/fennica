@@ -8,7 +8,6 @@ corporate
 language-summaries
 top-languages
 holder
-note-510c
 note-dissertation
 note-granter
 note-source
