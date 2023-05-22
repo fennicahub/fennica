@@ -11,9 +11,9 @@ source("corporate.R")
 ```
 Corporate-field contains names of the printing houses ("kirjapaino" in Finnish), manufactures, companies or institutions involved in printing of the books.
 
-[Accepted corporate info](output.tables/corporate_accepted.csv)
+[Accepted corporate info](dataTable/data_table.html?path=../output.tables/corporate_accepted.csv)
 
-[Discarded corporate info](output.tables/corporate_discarded.csv)
+[Discarded corporate info](dataTable/data_table.html?path=../output.tables/corporate_discarded.csv)
 
 * [Unique accepted entries](`r file_accepted`): `r length(unique(df[[field]]))`
 * [Unique discarded entries in original data](`r file_discarded`) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
