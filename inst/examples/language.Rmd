@@ -5,21 +5,21 @@ source("language.R")
 
 # Language summaries
 
- * `r length(unique(unlist(strsplit(as.character(df$languages), ";"))))-1` [unique languages](output.tables/languages_accepted.csv)
- * `r length(unique(df$language_primary))-1` [unique primary languages](output.tables/language_primary_accepted.csv)  
+ * `r length(unique(unlist(strsplit(as.character(df$languages), ";"))))-1` [unique languages](dataTable/data_table.html?path=../output.tables/languages_accepted.csv)
+ * `r length(unique(df$language_primary))-1` [unique primary languages](dataTable/data_table.html?path=../output.tables/language_primary_accepted.csv)  
  * `r sum(!df$multilingual, na.rm = TRUE)` single-language documents (`r round(100 * mean(!df$multilingual, na.omit = TRUE), 2)`%)
  * `r sum(df$multilingual, na.rm = TRUE)` multilingual documents (`r round(100 * mean(df$multilingual, na.omit = TRUE), 2)`%) 
- * [Conversions from raw to preprocessed language entries](output.tables/language_conversions.csv) 
- * `r sum(is.na(df$languages) | df$language_primary == "Undetermined")` documents (`r round(100*mean(is.na(df$languages) | df$language_primary == "Undetermined"), 2)`%) with [unrecognized language](output.tables/language_discarded.csv)
+ * [Conversions from raw to preprocessed language entries](dataTable/data_table.html?path=../output.tables/language_conversions.csv) 
+ * `r sum(is.na(df$languages) | df$language_primary == "Undetermined")` documents (`r round(100*mean(is.na(df$languages) | df$language_primary == "Undetermined"), 2)`%) with [unrecognized language](dataTable/data_table.html?path=../output.tables/language_discarded.csv)
 
-Language codes are from [MARC](http://www.loc.gov/marc/languages/language_code.html); new custom abbreviations can be added in [this table](output.tables/language_abbreviations.csv).
+Language codes are from [MARC](http://www.loc.gov/marc/languages/language_code.html); new custom abbreviations can be added in [this table](dataTable/data_table.html?path=../output.tables/language_abbreviations.csv).
 
 
 
 ## Top languages
 
 Number of titles assigned with each language (top-10). For a complete list,
-see [accepted languages](output.tables/language_accepted.csv).
+see [accepted languages](dataTable/data_table.html?path=../output.tables/language_accepted.csv).
 
 ```{r summarylang2, echo=FALSE, results='asis'}
 x <- top(df, "languages")
