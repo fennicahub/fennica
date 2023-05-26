@@ -5,9 +5,9 @@ source("publication_time.R")
 
 # Publication year summaries (publication time)
 
-[Publication year conversions](output.tables/publication_time_conversion.csv)
+[Publication year conversions](dataTable/data_table.html?path=../output.tables/publication_time_conversion.csv)
 
-[Publication year discarded](output.tables/publication_time_discarded.csv)
+[Publication year discarded](dataTable/data_table.html?path=../output.tables/publication_time_discarded.csv)
 
 Publication year is available for `r sum(!is.na(df$publication_year))` documents (`r round(100*mean(!is.na(df$publication_year)))`%). The publication years span `r paste(range(na.omit(df$publication_year)), collapse = "-")`.
 

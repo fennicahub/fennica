@@ -5,14 +5,14 @@ source("publisher.R")
 
 # Publisher preprocessing summary
 
- * `r length(unique(df$publisher))` [unique publishers](output.tables/publisher_accepted.csv)
+ * `r length(unique(df$publisher))` [unique publishers](dataTable/data_table.html?path=../output.tables/publisher_accepted.csv)
 
  * `r sum(!is.na(df$publisher))` documents have unambiguous publisher information (`r round(100*mean(!is.na(df$publisher)), 1)`%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).
 
 
- * [Discarded publisher entries](output.tables/publisher_discarded.csv)
+ * [Discarded publisher entries](dataTable/data_table.html?path=../output.tables/publisher_discarded.csv)
 
- * [Conversions from original to final names](output.tables/publisher_conversion_nontrivial.csv) (only non-trivial conversions shown)
+ * [Conversions from original to final names](dataTable/data_table.html?path=../output.tables/publisher_conversion_nontrivial.csv) (only non-trivial conversions shown)
 
 
 The `r ntop` most common publishers are shown with the number of documents. 

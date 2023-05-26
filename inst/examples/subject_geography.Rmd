@@ -21,6 +21,6 @@ f <- "output.tables/geoplaces.csv"
 write.table(cbind(Geography = names(tab), Documents = tab), file = f, sep = "|", quote = F, row.names = F)
 ```
 
-[Complete geoplace listing](output.tables/geoplaces.csv)
+[Complete geoplace listing](dataTable/data_table.html?path=../output.tables/geoplaces.csv)
 
 
