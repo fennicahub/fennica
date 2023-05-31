@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="toastNotification/toast.css" />
+
+		<link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
+		
+	</head>
+
+	<body>
+		
+		<header>
+			<h2 id="fileName"></h2>
+			<div id="fileInfo">
+				<a id="download">download</a>
+				<span id="fileSize"></span>
+			</div>
+		</header>
+		
+		<div id="body">
+			<table id='dataTable' class="display compact">
+				<thead id='dataTableHead'>
+				</thead>
+				<tbody id='dataTableBody'>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="lds-dual-ring" id="loading"></div>
+
+	</body>
+	
+	<script src="jquery-1.7.js"></script>
+	<script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+	<script type="module" src="table_script.js"></script>
+
+</html>
