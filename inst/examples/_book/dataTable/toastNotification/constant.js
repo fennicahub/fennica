@@ -40,8 +40,8 @@ const DEFAULT_CONFIG = {
   },
 };
 
-const AUDIO_ASSETS_PATH = "assets/notification_sounds";
-const IMAGE_ASSETS_PATH = "assets/images";
+const AUDIO_ASSETS_PATH = "toastNotification/assets/notification_sounds";
+const IMAGE_ASSETS_PATH = "toastNotification/assets/images";
 const ASSET_TYPE_TO_USE = "gif";
 
 export {
