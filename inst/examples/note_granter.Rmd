@@ -1,14 +1,14 @@
-```{r setup-note-granter, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
-```
+# Note granter
 
 ```{r source-note-granter, include=FALSE, eval=knit_bookdown}
 # note_granter field
 source("note_granter.R")
 ```
 
-# Note granter
+```{r setup-note-granter, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
+```
 
 The field summons names of the dissertations granting educational institutions and the amount of thesis granted by each university. Some universities are mentioned more than once due to the differences in the language the book was written in, for example, "Helsinki yliopisto" in Finnish and "Helsingfors universitet" in Swedish or "Upsala" in old Finnish and "Uppsala" in Swedish. 
 

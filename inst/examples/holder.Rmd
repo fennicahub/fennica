@@ -1,14 +1,13 @@
 # Holder
 
+```{r source-holder, include=FALSE, eval=knit_bookdown}
+# holder field
+source("holder.R")
+```
 
 ```{r setup-holder, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
-```
-
-```{r source-holder, include=FALSE, eval=knit_bookdown}
-# holder field
-source("holder.R")
 ```
 
 * [Unique accepted entries](dataTable/data_table.html?path=../output.tables/holder_accepted.csv): `r length(unique(df[[field]]))`

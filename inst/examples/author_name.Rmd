@@ -1,22 +1,21 @@
 # Author's name
 
-```{r setup-author-name, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
-```
-
 ```{r source-author-name, include=FALSE}
 # author_name field
 source("author_name.R")
+```
+```{r setup-author-name, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
 ```
 
 * [Unique accepted entries](dataTable/data_table.html?path=../output.tables/author_name_accepted.csv): `r length(unique(df[[field]]))`
 * [Unique discarded entries in original data](dataTable/data_table.html?path=../output.tables/author_name_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
 * Original documents with non-NA titles: `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
 * Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
- 
- Top-`r ntop` titles and their title counts.
- 
+
+Top-`r ntop` titles and their title counts.
+
 ```{r summarytitle-author-name, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8, fig.height=6}
 library(ggplot2)
 theme_set(theme_bw(base_size = 12))
