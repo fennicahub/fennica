@@ -20,8 +20,8 @@ data.file <- paste0(field, ".Rds")
 saveRDS(df.tmp, file = data.file)
 
 # Define output files
-file_accepted  <- paste0(output.folder, field, "_accepted.csv")
-file_discarded <- paste0(output.folder, field, "_discarded.csv")
+file_accepted  <- paste0("dataTable/data_table.html?path=", output.folder, field, "_accepted.csv")
+file_discarded <- paste0("dataTable/data_table.html?path=", output.folder, field, "_discarded.csv")
 
 # ------------------------------------------------------------
 
