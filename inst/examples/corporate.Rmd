@@ -1,15 +1,14 @@
 # Corporate
 
-```{r source-corporate, include=FALSE}
-# corporate field
-source("corporate.R")
-```
-
 ```{r setup-corporate, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
 ```
 
+```{r source-corporate, include=FALSE}
+# corporate field
+source("corporate.R")
+```
 Corporate-field contains names of the printing houses ("kirjapaino" in Finnish), manufactures, companies or institutions involved in printing of the books.
 
 [Accepted corporate info](dataTable/data_table.html?path=../output.tables/corporate_accepted.csv)

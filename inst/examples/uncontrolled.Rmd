@@ -1,14 +1,14 @@
-# Uncontrolled
+```{r setup-uncontrolled, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
+```
 
 ```{r source-uncontrolled, include=FALSE, eval=knit_bookdown}
 # uncontrolled field
 source("uncontrolled.R")
 ```
 
-```{r setup-uncontrolled, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
-```
+# Uncontrolled
 
 * [Unique accepted entries](dataTable/data_table.html?path=../output.tables/uncontrolled_accepted.csv): `r length(unique(df[[field]]))`
 * [Unique discarded entries in original data](dataTable/data_table.html?path=../output.tables/uncontrolled_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`

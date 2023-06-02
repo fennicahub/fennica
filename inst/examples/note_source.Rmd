@@ -1,14 +1,14 @@
-# Note source
+```{r setup-note-source, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
+```
 
 ```{r source-note-source, include=FALSE, eval=knit_bookdown}
 # note_source field
 source("note_source.R")
 ```
 
-```{r setup-note-source, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
-```
+# Note source
 
 * [Unique accepted entries](dataTable/data_table.html?path=../output.tables/note_source_accepted.csv): `r length(unique(df[[field]]))`
 * [Unique discarded entries in original data](dataTable/data_table.html?path=../output.tables/note_source_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
