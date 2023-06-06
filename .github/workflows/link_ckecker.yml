@@ -10,7 +10,6 @@ jobs:
   check-links:
     runs-on: ubuntu-latest
     steps:
-
     - name: Checkout code
       uses: actions/checkout@v2
     
@@ -24,4 +23,15 @@ jobs:
       run: echo "::set-output name=files::$(node .github/workflows/extract-files.js)"
     
     - name: Check links
-      run: npx markdown-link-check ${{ steps.extract.outputs.files }}
+      id: link-check
+      run: |
+        npx markdown-link-check ${{ steps.extract.outputs.files }}
+    
+    - name: Modify links and create temporary file
+      id: modify-links
+      run: |
+        node .github/workflows/modify-links.js "${{ steps.link-check.outputs.stdout }}"
+    
+    - name: Check modified links
+      run: |
+        npx markdown-link-check .github/workflows/modified-links.md
