@@ -5,8 +5,8 @@ const modifiedLinks = modifyLinks(linksOutput);
 
 // Replace your desired pattern using regular expressions
 function modifyLinks(output) {
-  const pattern = /example.com/g;
-  const replacement = 'modified.com';
+  const pattern = "dataTable/data_table.html?path=../";
+  const replacement = "";
   const lines = output.split('\n');
   
   for (let i = 0; i < lines.length; i++) {
