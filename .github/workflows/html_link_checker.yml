@@ -13,9 +13,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+      
+      - name: Install Bundler
+        run: gem install bundler
+      
       - name: Install dependencies
-        run: |
-          npm install -g html-validate
+        run: bundle install
       
       - name: Find HTML files
         id: files
@@ -26,5 +33,5 @@ jobs:
       - name: Check links
         run: |
           while IFS= read -r file; do
-            html-validate "$file"
+            bundle exec htmlproofer --check-html --allow-hash-href "$file"
           done < ${{ steps.files.outputs.files }}
