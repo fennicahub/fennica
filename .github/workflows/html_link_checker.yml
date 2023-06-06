@@ -4,7 +4,7 @@ on:
     types:
       - trigger-link-check-workflow
   workflow_dispatch:
-
+  
 jobs:
   check-links:
     runs-on: ubuntu-latest
@@ -14,16 +14,17 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Install dependencies
-        run: npm install -g html-validate
+        run: |
+          gem install html-proofer
       
       - name: Find HTML files
         id: files
         run: |
-          find inst/examples/_book/ -name "*.html" > files.txt
+          find . -name "*.html" > files.txt
           echo "::set-output name=files::$(cat files.txt)"
       
       - name: Check links
         run: |
           while IFS= read -r file; do
-            html-validate --format=unix "$file"
+            htmlproofer --check-html --allow-hash-href "$file"
           done < ${{ steps.files.outputs.files }}
