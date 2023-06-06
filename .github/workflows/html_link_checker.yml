@@ -1,0 +1,28 @@
+name: Check HTML Links
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Install dependencies
+        run: npm install -g html-validate
+      
+      - name: Find HTML files
+        id: files
+        run: |
+          find . -name "*.html" > files.txt
+          echo "::set-output name=files::$(cat files.txt)"
+      
+      - name: Check links
+        run: |
+          while IFS= read -r file; do
+            html-validate --format=unix "$file"
+          done < ${{ steps.files.outputs.files }}
