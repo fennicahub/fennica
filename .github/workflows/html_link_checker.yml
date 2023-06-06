@@ -19,7 +19,7 @@ jobs:
       - name: Find HTML files
         id: files
         run: |
-          find . -name "*.html" > files.txt
+          find inst/examples/_book/ -name "*.html" > files.txt
           echo "::set-output name=files::$(cat files.txt)"
       
       - name: Check links
