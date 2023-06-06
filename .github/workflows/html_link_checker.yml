@@ -1,8 +1,9 @@
 name: Check HTML Links
 on:
-  push:
-    branches:
-      - main
+  repository_dispatch:
+    types:
+      - trigger-link-check-workflow
+  workflow_dispatch:
 
 jobs:
   check-links:
