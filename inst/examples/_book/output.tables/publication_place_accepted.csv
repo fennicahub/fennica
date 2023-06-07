@@ -1,0 +1,433 @@
+Name	Count
+Helsinki	26953
+Turku	13669
+Stockholm	 4004
+Porvoo	 3770
+Vaasa	 3500
+Tampere	 2471
+Kuopio	 1569
+Hämeenlinna	 1410
+Vyborg	 1324
+Jyväskylä	 1031
+Uppsala	  753
+Pori	  713
+Oulu	  652
+St Petersburg	  628
+Sortavala	  549
+Rauma	  251
+Mikkeli	  240
+Hancock Mi	  217
+Tartu	  217
+Leipzig	  194
+Kotka	  176
+New York NY	  174
+London	  169
+Paris	  165
+Tammisaari	  162
+Hamina	  161
+Lahti	  160
+Berlin	  158
+Fitchburg Ma	  140
+Copenhagen	  128
+Joensuu	  127
+Kokkola	  107
+Örebro	   95
+Savonlinna	   95
+Hanko	   85
+Pietarsaari	   76
+Mariehamn	   66
+Käkisalmi	   62
+Uusikaupunki	   58
+Lappeenranta	   56
+Rostock	   56
+Kristiinankaupunki	   55
+Ashtabula Oh	   51
+Lund	   51
+Tallinn	   51
+Kaleva Mi	   50
+Amsterdam	   48
+Duluth MN	   42
+Kajaani	   42
+Riga	   42
+Moscow	   39
+Wittenberg	   39
+Kemi	   38
+Calumet Mi	   37
+Oslo	   37
+Heinola	   33
+Gothenburg	   31
+Lapua	   31
+Raahe	   31
+Loviisa	   29
+Budapest	   28
+Port Arthur On	   28
+Skara	   28
+Strängnäs	   26
+Astoria Or	   25
+Västerås	   25
+Uusikaarlepyy	   23
+Chicago IL	   22
+München	   22
+Jena	   21
+Kruunupyy	   21
+Vienna	   21
+Dresden	   20
+Greifswald	   20
+Parkano	   20
+Stuttgart	   20
+Linköping	   19
+Kaskinen	   18
+Nürnberg	   18
+Hamburg	   17
+Braunschweig	   16
+Hyvinkää	   16
+Turenki	   16
+Frankfurt	   14
+Karjaa	   14
+Superior Wi	   14
+Iisalmi	   13
+Ironwood Mi	   13
+Leiden	   12
+Sairala	   12
+Halle	   11
+Lübeck	   11
+Pärnu	   11
+Tornio	   11
+Augsburg	   10
+Forssa	   10
+Isokyrö	   10
+Laihia	   10
+New York Mills Mn	   10
+Norrköping	   10
+Göttingen	    9
+Heidelberg	    9
+Warsaw	    9
+Weimar	    9
+Gießen	    8
+Haaparanta	    8
+Härnösand	    8
+Karlskrona	    8
+Rome	    8
+Salo	    8
+Terijoki	    8
+Utrecht	    8
+Worcester Ma	    8
+Eura	    7
+Firenze	    7
+Ishpeming Mi	    7
+Pernaja	    7
+Quincy Ma	    7
+Strasbourg	    7
+Tübingen	    7
+Wiesbaden	    7
+Zürich	    7
+Bergen	    6
+Bonn	    6
+Haarlem	    6
+Isafjördur	    6
+Jelgava	    6
+Koningsberg	    6
+Narva	    6
+Parainen	    6
+Piikkiö	    6
+Reykjavik	    6
+Vilnius	    6
+Almena Wi	    5
+Archangelsk	    5
+Bern	    5
+Cambridge	    5
+Falun	    5
+Haapajärvi	    5
+Jämsä	    5
+Jönköping	    5
+Milan	    5
+Nytorp	    5
+Odense	    5
+Tromsö	    5
+Visingsborg	    5
+Antwerp	    4
+Basel	    4
+Espoo	    4
+Gotha	    4
+Karjalohja	    4
+Kiel	    4
+Kouvola	    4
+Kuortane	    4
+Laitila	    4
+Madrid	    4
+Malmö	    4
+Marburg	    4
+Odessa	    4
+Orivesi	    4
+Oxford	    4
+Rovaniemi	    4
+Seattle WA	    4
+Seinäjoki	    4
+Szczecin	    4
+Tyrvää	    4
+Altdorf	    3
+Altenstein	    3
+Barcelona	    3
+Braniewo	    3
+Brussels	    3
+Cincinnati Oh	    3
+Haunia	    3
+Helmstedt	    3
+Juva	    3
+Kainuu	    3
+Karlstad	    3
+Kauvatsa	    3
+Kharkiv	    3
+Krakow	    3
+Leeuwarden	    3
+Lohja	    3
+Naples	    3
+Parikkala	    3
+Rock Island IL	    3
+Sääksmäki	    3
+Aabenraa	    2
+Aalborg	    2
+Aarhus	    2
+Boston Ma	    2
+Breslau	    2
+Bridgeport Ct	    2
+Chisholm MN	    2
+Cleveland Oh	    2
+Cologne	    2
+Dessau	    2
+Erfurt	    2
+Freiburg im Breisgau	    2
+Fürth	    2
+Geneva	    2
+Hämeenkyrö	    2
+Hannover	    2
+Harbor Oh	    2
+Heinävesi	    2
+Helsingborg	    2
+Houghton Mi	    2
+Huopalahti	    2
+Ikaalinen	    2
+Ilmajoki	    2
+Jaakkima	    2
+Janakkala	    2
+Karhula	    2
+Karstula	    2
+Kazan	    2
+Kiiminki	    2
+Kirkkonummi	    2
+Koivisto	    2
+Köping	    2
+Luleå	    2
+Maastricht	    2
+Minneapolis Mn	    2
+Montreal	    2
+Mustasaari	    2
+Mustiala	    2
+Naantali	    2
+Närpiö	    2
+New Haven Ct	    2
+Nyköping	    2
+Offenbach am Main	    2
+Ottawa	    2
+Petäjävesi	    2
+Philadelphia Pa	    2
+Pihlava	    2
+Red Jacket Mi	    2
+Regensburg	    2
+Saarijärvi	    2
+Sipoo	    2
+Smithville Mn	    2
+Stockton	    2
+Stralsund	    2
+Suomussalmi	    2
+The Hague	    2
+Trieste	    2
+Urjala	    2
+Venice	    2
+Vicenza	    2
+Viitasaari	    2
+Viljandi	    2
+Virolahti	    2
+Ylistaro	    2
+Ypäjä	    2
+Żary	    2
+Akureyri	    1
+Alfend	    1
+Amersfoort	    1
+Ancona	    1
+Anttola	    1
+Arezzo	    1
+Arnstadt	    1
+Askersund	    1
+Bielefeld	    1
+Birmingham	    1
+Björkboda	    1
+Brändö	    1
+Bremen	    1
+Brisbane	    1
+Brunn	    1
+Buenos Aires	    1
+Calcutta	    1
+Clear Creek UT	    1
+Cluj-Napoca	    1
+Dieren	    1
+Dordrecht	    1
+Edinburgh	    1
+Elbingen	    1
+Ely Mi	    1
+Erlangen	    1
+Eveleth Mi	    1
+Exeter	    1
+Gdańsk	    1
+Gera	    1
+Godby	    1
+Grand Rapids Mi	    1
+Gutersloh	    1
+Haderslev	    1
+Halberstadt	    1
+Hanna WY	    1
+Harjavalta	    1
+Heilbronn	    1
+Heinäjoki	    1
+Helsingør	    1
+Hinnerjoki	    1
+Hirvensalmi	    1
+Hull	    1
+Hvitträsk	    1
+Imatra	    1
+Impilahti	    1
+Inari	    1
+Inkeri	    1
+Inkoo	    1
+Jääski	    1
+Jacobson Mi	    1
+Jalasjärvi	    1
+Kallislahti	    1
+Kangasala	    1
+Kaprio	    1
+Kauhajoki	    1
+Kausala	    1
+Keltto	    1
+Kettuvaara	    1
+Kirchhain	    1
+Kirov	    1
+Kirvu	    1
+Kivennapa	    1
+Kodisjoki	    1
+Koivulahti	    1
+Kokemäki	    1
+Korsnäs	    1
+Kurkijoki	    1
+Kuusankoski	    1
+Kylmäkoski	    1
+Kymenlaakso	    1
+Kyrö	    1
+La Chapelle-Montligeon	    1
+Laihiala	    1
+Lammi	    1
+Landskrona	    1
+Lausanne	    1
+Le Mans	    1
+Letchworth	    1
+Liège	    1
+Liepaja	    1
+Lisbon	    1
+Litoměrice	    1
+Liverpool	    1
+Ljungsbro	    1
+Lohtaja	    1
+Loimaa	    1
+Loimijoki	    1
+Maaninka	    1
+Macon	    1
+Magdeburg	    1
+Mänttä-Vilppula	    1
+Mäntyharju	    1
+Marttila	    1
+Messina	    1
+Milwaukee Wi	    1
+Minsk	    1
+Montpellier	    1
+Mustio	    1
+Nanaimo BC	    1
+Neuchatel	    1
+Neuruppin	    1
+Nizza	    1
+Nokia	    1
+Noormarkku	    1
+Nora	    1
+Nummela	    1
+Nurmijärvi	    1
+Oniipa	    1
+Oradea	    1
+Orimattila	    1
+Orismala	    1
+Otava	    1
+Oulainen	    1
+Padua	    1
+Paimio	    1
+Pännäinen	    1
+Perho	    1
+Perkjärvi	    1
+Pieksämäki	    1
+Pinjainen	    1
+Pistoia	    1
+Portland Or	    1
+Poznań	    1
+Prague	    1
+Purleigh	    1
+Quedlinburg	    1
+R ev	    1
+Rääkkylä	    1
+Räisälä	    1
+Raisio	    1
+Rantasalmi	    1
+Rautalampi	    1
+Rautio	    1
+Ravenna	    1
+Red Lodge MT	    1
+Rock Springs WY	    1
+Rotterdam	    1
+Säkkijärvi	    1
+Sakkola	    1
+Sandstone Mi	    1
+Sarvilahti	    1
+Sauvo	    1
+Schwerin	    1
+Siena	    1
+Simola	    1
+Smolensk	    1
+St Louis Kaunti Mi	    1
+Stade	    1
+Sudbury On	    1
+Sundsvall	    1
+Suonenjoki	    1
+Taipalsaari	    1
+Tammela	    1
+Telč	    1
+Terni	    1
+Tervonsalmi	    1
+Toholampi	    1
+Tomsk	    1
+Torgelow	    1
+Trondheim	    1
+Tsing-shin	    1
+Turtle Lake Wi	    1
+Tuusula	    1
+Tyrnävä	    1
+Ulm	    1
+Uusikirkko	    1
+Vainikkala	    1
+Valamo	    1
+Valkjärvi	    1
+Vammala	    1
+Vantaa	    1
+Verona	    1
+Virginia Mn	    1
+Watton Mi	    1
+Weida	    1
+Wismar	    1
+Wurzburg	    1
+Ylimarkku	    1
+Ylivieska	    1
+York	    1
