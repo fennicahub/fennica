@@ -1,0 +1,42 @@
+name: Check HTML Links
+on:
+  repository_dispatch:
+    types:
+      - trigger-link-check-workflow
+  workflow_dispatch:
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+      
+      - name: Set up environment
+        run: |
+          export GEM_HOME=$HOME/gems
+          export PATH=$HOME/gems/bin:$PATH
+      
+      - name: Install dependencies
+        run: |
+          gem install --user-install html-proofer
+          gem install --user-install nokogiri
+      
+      - name: Find HTML files
+        id: files
+        run: |
+          find . -name "*.html" > files.txt
+          echo "::set-output name=files::$(cat files.txt)"
+      
+      - name: Check links
+        run: |
+          while IFS= read -r file; do
+            htmlproofer --check-html --allow-hash-href "$file"
+          done < ${{ steps.files.outputs.files }}
+

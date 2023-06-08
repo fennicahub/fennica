@@ -41,6 +41,9 @@ jobs:
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("inst/examples/")'
         
+      - name: Import CSV visualiser
+        run: cp -r inst/examples/dataTable inst/examples/_book/
+        
       - name: Deploy package
         run: |
           git config --local user.name "$GITHUB_ACTOR"
