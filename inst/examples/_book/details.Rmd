@@ -1,0 +1,119 @@
+---
+title: "Preprocessing details"
+author: "`r author`"
+date: "`r Sys.Date()`"
+output: md_document
+---
+
+
+
+## Annotated documents
+
+Fraction of documents with data:
+
+```{r summaryannotations, echo=FALSE, message=FALSE, warning=FALSE, echo=FALSE, fig.width=8, fig.height=11}
+availability <- field_availability(df)
+print(availability$plot)
+```
+
+Same in exact numbers: documents with available/missing entries, and number of unique entries for each field. Sorted by missing data:
+
+```{r sumtab, echo=FALSE, message=FALSE, warning=FALSE, echo=FALSE}
+tab <- availability$table %>% arrange(n)
+names(tab) <- gsub("missing", "missing (%)", names(tab))
+names(tab) <- gsub("available", "available (%)", names(tab))
+names(tab) <- gsub("^n$", "available (n)", names(tab))
+names(tab) <- gsub("unique_entries", "unique (n)", names(tab))
+names(tab) <- gsub("field_name", "field name", names(tab))
+kable(tab[, c(1, 3, 2, 4, 5)], digits = 1, caption = "Data availability")
+rm(tab);gc()
+```
+
+
+## Field conversions
+
+This documents the conversions from raw data to the final preprocessed version (accepted, discarded, conversions). Only some of the key tables are explicitly linked below. The complete list of all summary tables is [here](output.tables/).
+
+Brief description of the fields:
+
+ * [Description of the original MARC fields](https://github.com/COMHIS/fennica/blob/master/inst/extdata/fieldnames.csv)
+
+ * [Description of the preprocessed fields](https://github.com/COMHIS/fennica/blob/master/inst/extdata/fieldname_table.csv)
+
+
+## Histograms of all entries for numeric variables
+
+```{r summary-histograms, echo=FALSE, message=FALSE, warning=FALSE, fig.width=5, fig.height=4, fig.show='hold', out.width="200px"}
+num <- c();
+for (field in names(df)) {num[[field]] <- is.numeric(df[[field]])}
+numeric.fields <- setdiff(names(which(num)), c("row.index", "original_row", "unity"))
+for (field in numeric.fields) {
+  x <- log10(min(df[[field]], na.rm = TRUE)/2 + df[[field]])
+  x <- x[!is.na(x) & !is.nan(x)]
+  if (length(x) > 0) {
+    hist(x, 30,
+       main = paste(field, "histogram"),
+       ylab = "Documents",
+       xlab = paste(field, "(log10)")
+       )
+  }
+}
+```
+
+
+## Histograms of the top entries for factor variables
+
+Non-trivial factors with at least 2 levels are shown.
+
+```{r summary-bars, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8, fig.height=5, fig.show='hold', out.width="430px"}
+fac <- c(); for (field in names(df)) {fac[[field]] <- is.factor(df[[field]])}
+factor.fields <- names(which(fac))
+for (field in factor.fields) {
+  n <- min(length(unique(df[[field]])), ntop)
+  if (length(n) > 1) {
+    p <- top_plot(df, field, n)  
+    p <- p + ggtitle(paste("Top ", field))
+    p <- p + scale_y_log10()
+    p <- p + ylab("Documents (Log10)")
+    print(p)
+  }
+}
+```
+
+
+Fields of special interest. Real success percentage (proportion of successful conversions compared to non-NA entries in the original data):
+
+```{r missing2, echo=FALSE, message=FALSE, warning=FALSE, echo=FALSE, fig.width=10, fig.height=15}
+select.fields <- c("author","publication_place","publication_country","publication_year",
+                     "publication_year_from","publication_year_till","corporate","area","pagecount",
+		     "gatherings","width","height","publisher","self_published")
+		     
+dfs <- df
+
+success <- as.data.frame(t(apply(dfs, 2, function (x) {sum(!is.na(gsub("^NA$", NA, as.character(x))))})))
+
+original.nonNA <- as.data.frame(t(apply(select(df.orig, publication_place,
+                    publication_time, corporate, physical_extent, physical_dimension, publisher, author_name),
+		      2, function (x) {sum(!is.na(gsub("^NA$", NA, as.character(x))))})))
+
+# Compare the number of non-NA entries in preprocessed data to number
+# of non-NA entries in the original data:
+real.success <- c()
+real.success[["publication_place"]] <- success$publication_place/original.nonNA$publication_place
+real.success[["publication_country"]] <- success$publication_country/original.nonNA$publication_place
+real.success[["publication_year"]] <- success$publication_year/original.nonNA$publication_time
+real.success[["publication_year_from"]] <- success$publication_year_from/original.nonNA$publication_time
+real.success[["publication_year_till"]] <- success$publication_year_till/original.nonNA$publication_time
+real.success[["corporate"]] <- success$corporate/original.nonNA$corporate
+real.success[["publisher"]] <- success$publisher/original.nonNA$publisher
+real.success[["self_published"]] <- success$self_published/original.nonNA$publisher
+real.success[["pagecount"]] <- success$pagecount/original.nonNA$physical_extent
+real.success[["area"]] <- success$area/original.nonNA$physical_dimension
+real.success[["gatherings"]] <- success$gatherings/original.nonNA$physical_dimension
+real.success[["author"]] <- success$author/original.nonNA$author
+# real.success[["paper"]] <- success$paper/sum(rowMeans(!is.na(df.orig[, c("physical_extent", "physical_dimension")])) == 1)
+real.success <- unlist(real.success)
+par(mar = c(3, 8, 2, 1)); barplot(100*sort(real.success), horiz = T, main = "Real success rate (selected fields)", las = 1, xlim = c(0, 100), xlab = "Success rate (%)")
+```
+
+
