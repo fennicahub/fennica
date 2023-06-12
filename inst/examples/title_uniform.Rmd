@@ -1,14 +1,14 @@
-```{r setup-title-uniform, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
-```
+# Title uniform
 
 ```{r source-title-uniform, include=FALSE, eval=knit_bookdown}
 # Title fields
 source("title_uniform.R")
 ```
 
-# Title uniform
+```{r setup-title-uniform, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
+```
 
 * [Unique accepted entries](dataTable/data_table.html?path=../`r file_accepted`): `r length(unique(df[[field]]))`
 * [Unique discarded entries in original data](dataTable/data_table.html?path=../`r file_discarded`) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
