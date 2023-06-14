@@ -27,12 +27,7 @@ df_small_035
 df_small_merged = df_small.merge(df_small_035, on="record_number")
 df_small_merged
 #%%
-df_035.drop(columns=['field_number', 'subfield_number', 'field_code', 'subfield_code', ], inplace=True)
-df_035.rename(columns={'value': 'melinda_id'}, inplace=True)
-df_035
-#%%
-df_merged = df.merge(df_035, on="record_number")
-df_merged
+
 #%%
 df_small.head()
 #%
