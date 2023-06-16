@@ -8,13 +8,9 @@ library(ggplot2)
 library(Cairo)
 
 # Install latest version from Github
-#install_github("comhis/fennica") # or
+# install_github("fennicahub/fennica") # or
 # devtools::load_all() # if you are working from the clone and modifying it
 library(fennica) 
-
-# Install latest version from Github
-# devtools::install_github("comhis/comhis")        
-library(comhis)  
 
 # Load misc functions needed for harmonization
 source("funcs.R")
