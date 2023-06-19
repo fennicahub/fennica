@@ -11,7 +11,7 @@
 harmonize_field_names <- function (x = NULL) {
 
   # Get printing terms from a table
-  f <- system.file("extdata/fieldnames.csv", package = "comhis")
+  f <- system.file("extdata/fieldnames.csv", package = "fennica")
   map <- read.csv(f, sep = "|")
 
   if (!is.null(x)) {

@@ -1,0 +1,61 @@
+concept|name|field
+Control number|control_number|001
+Language|language|008lang
+Language|language|041a
+Original language|language2|041h
+Intermediate translations|intermediate_translations|041k
+System control number|system_control_number|035a
+Author date|author_date|100d
+Author|author_name|100a
+Corporate (as author)|110a|110a
+Uniform title|title_uniform|240a
+Uniform title (section)|title_uniform2|240n
+Main title|title|245a
+Subtitle|title_remainder|245b
+Title (statement of responsibility)|245c|245c
+Edition|edition_statement|250a
+Publication place|publication_place|260a
+Publisher|publisher|260b
+Publication year|publication_time|260c
+Place of manufacture|260e|260e
+Manufacturer|260f|260f
+Page count|physical_extent|300a
+Physical details|physical_details|300b
+Gatherings|physical_dimension|300c
+Accompanying material|physical_accomppanied|300e
+Publication frequency|publication_frequency|310a
+Publication interval|publication_interval|362a
+Series|440a|440a
+Series (volume)|440v|440v
+General note|note_general|500a
+Dissertation|note_dissertation|502a
+Dissertation granter|note_granter|502c
+Dissertation year|note_year|502d
+Source note|note_source|510a
+Source location|note_510c|510c
+Language note|languate_note_546a|546a
+Topical term|subject_topic|650a
+Topical term (subdivision)|650x|650x
+Topical term (chronological subdivision)|650y|650y
+Topical term (geographical subdivision)|650z|650z
+Publication topic|publication_topic|650y.651y
+Publication geography|publication_geography|650z.651a.651z
+Subject geography|subject_geography|651a
+Related person|700a|700a
+Related person (years)|700d|700d
+Related corporate|corporate|710a
+Related name (uncontrolled)|uncontrolled|720a
+Related title (uncontrolled)|uncontrolled_title|740a
+Parent entry (author)|772c|772c
+Parent entry (publication information)|772d|772d
+Parent entry (title)|772t|772t
+Succeeding entry|successor|785t
+Holding location|holder|852a
+Shelving control number|852j|852j
+Public note (holding organization)|852z|852z
+Basic bibliographic unit|866x|866x
+Cross-reference (author)|900a|900a
+Cross-reference (author date)|900d|900d
+Cross-reference (author affiliation)|900u|900u
+Local use|976a|976a
+Local use|976b|976b
