@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 # select which columns to pick from  pivoted csvs
 # priority fileds are 240_a_title, 100_a_author_name, 260_c_date_publication
-columns_to_pick = [("100","a"),("035","a")]
+columns_to_pick = [("240","a"),("035","a")]
 
 # load specific columns and create a big dataframe
 filename = "full_fennica.csv"
@@ -29,7 +29,7 @@ df = pd.concat(dfs, ignore_index=True)
 #pd.concat(df_chunks)
 
 #%%
-df.to_csv("fields_picked/100_a_author_name.csv", sep = "\t", index=False)
+df.to_csv("fields_picked/240_a_title.csv", sep = "\t", index=False)
 
 
 #%%
