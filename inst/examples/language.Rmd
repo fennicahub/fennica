@@ -12,7 +12,7 @@ source("language.R")
  * [Conversions from raw to preprocessed language entries](dataTable/data_table.html?path=../output.tables/language_conversions.csv) 
  * `r sum(is.na(df$languages) | df$language_primary == "Undetermined")` documents (`r round(100*mean(is.na(df$languages) | df$language_primary == "Undetermined"), 2)`%) with [unrecognized language](dataTable/data_table.html?path=../output.tables/language_discarded.csv)
 
-Language codes are from [MARC](http://www.loc.gov/marc/languages/language_code.html); new custom abbreviations can be added in [this table](dataTable/data_table.html?path=../output.tables/language_abbreviations.csv).
+Language codes are from [MARC](https://www.loc.gov/marc/languages/language_code.html); new custom abbreviations can be added in [this table](dataTable/data_table.html?path=../output.tables/language_abbreviations.csv).
 
 
 
