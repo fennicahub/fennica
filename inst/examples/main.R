@@ -25,7 +25,7 @@ source("language.R")
 source("holder.R")
 
 # note_510c field
-source("note_510c.R")
+#source("note_510c.R")
 
 # note_dissertation field
 source("note_dissertation.R")
