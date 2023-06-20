@@ -15,5 +15,4 @@ language.Rds
 # Docker related
 # Dockerfile
 .dockerignore
-field_picking/combine_csv.py
 *.csv
