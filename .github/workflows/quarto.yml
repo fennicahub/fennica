@@ -47,6 +47,12 @@ jobs:
           path: inst/examples
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name : Import CSV visualiser
+        run : cp -r inst/examples/dataTable inst/examples/_book/
+
+      - name : Import output.tables
+        run : cp -r inst/examples/output.tables inst/examples/_book/
         
       - name: Deploy package
         run: |

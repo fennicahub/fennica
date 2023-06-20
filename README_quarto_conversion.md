@@ -1,7 +1,7 @@
 ## Rendering the fennica project in quarto 
 
 Execute the script `R/scriptConversionQuarto.R` in the fennica/inst/examples directory.
-The script will automatically convert the .Rmd files in quarto, add a chunk code with `source("init.R)` at beginning of the .qmd files and then render the directory in the `_book_quarto` folder (can be changed in the `_quarto.yml` file).
+The script will automatically convert the .Rmd files in quarto, add a chunk code with `source("init.R)` at beginning of the .qmd files and then render the directory in the `_book` folder (can be changed in the `_quarto.yml` file).
 
 To see what the book looks like, use the commande (in the inst/examples) :
 
