@@ -15,3 +15,7 @@ language.Rds
 # Docker related
 # Dockerfile
 .dockerignore
+field_picking/fields_picked/100_a_author_name.csv
+field_picking/fields_picked/240_a_title.csv
+field_picking/fields_picked/240_a_title.csv
+field_picking/fields_picked/260_c_publication_date.csv
