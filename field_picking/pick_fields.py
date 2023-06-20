@@ -7,13 +7,13 @@ from tqdm import tqdm
 
 # select which columns to pick from  pivoted csvs
 # priority fileds are 240_a_title, 100_a_author_name, 260_c_date_publication
-columns_to_pick = [("240","a"),("035","a")]
+columns_to_pick = [("260","c")]
 
 # load specific columns and create a big dataframe
 filename = "full_fennica.csv"
 folder = "../../pivoted_callnumbered_csvs"
 csv_filenames = list(os.walk(folder))[0][2]
-csv_filenames
+
 #%%
 
 # load specific columns and create a big dataframe
@@ -29,7 +29,8 @@ df = pd.concat(dfs, ignore_index=True)
 #pd.concat(df_chunks)
 
 #%%
-df.to_csv("fields_picked/240_a_title.csv", sep = "\t", index=False)
+#change the name of the file
+df.to_csv("fields_picked/260_c_publication_date.csv", sep = "\t", index=False)
 
 
 #%%
