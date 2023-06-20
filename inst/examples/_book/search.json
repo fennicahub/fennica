@@ -1,0 +1,135 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Harmonized Finnish National Bibliography",
+    "section": "",
+    "text": "1 Preface chapter\nAs part of the Metadata Harmonization And Analysis work package, we use the Finnish national bibliography (FNB) Fennica dataset to create a harmonized dataset that can be used for research purposes as well as provide the groundwork for infrastructure that can be iterated further.\nThe FNB contains metadata for 71,919 documents and spans over 450 years, more specifically consisting of records printed between 1488 and 1955. There are 28 data fields in raw data in machine-readable cataloguing (MARC) format, which provide information on the document, for example, language, author name, author lifetime, publication title, publication place, publisher, and page count. Through harmonization and enriching the dataset with data from other sources, the abovementioned 28 fields can result in 96 data fields per document. (Tolonen, et al 2019.)\nAn important output of our work is a harmonized version of the FNB. The FNB metadata is an example of a dataset consisting of structured data. The FNB dataset is not created for research purposes and needs refining before it can be used. Tools are needed for accessing, cleaning, refining, enriching and analysing this type of data, and printing documentation of this process.\nIn this bookdown project we will disseminate the FNB dataset cleaning process.\nThis document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.3.1 (2023-06-16)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Ubuntu 22.04.2 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\ntime zone: UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] comhis_0.1.8      fennica_0.2.9     Cairo_1.6-0       ggplot2_3.4.2    \n [5] R.utils_2.12.2    R.oo_1.25.0       R.methodsS3_1.8.2 knitr_1.43       \n [9] stringr_1.5.0     tm_0.7-11         NLP_0.2-1         dplyr_1.1.2      \n[13] devtools_2.4.5    usethis_2.2.0    \n\nloaded via a namespace (and not attached):\n [1] stringdist_0.9.10 gtable_0.3.3      xfun_0.39         htmlwidgets_1.6.2\n [5] remotes_2.4.2     processx_3.8.1    callr_3.7.3       vctrs_0.6.3      \n [9] tools_4.3.1       ps_1.7.5          generics_0.1.3    parallel_4.3.1   \n[13] tibble_3.2.1      fansi_1.0.4       pkgconfig_2.0.3   data.table_1.14.8\n[17] lifecycle_1.0.3   compiler_4.3.1    munsell_0.5.0     httpuv_1.6.11    \n[21] htmltools_0.5.5   yaml_2.3.7        later_1.3.1       pillar_1.9.0     \n[25] crayon_1.5.2      urlchecker_1.0.1  ellipsis_0.3.2    cachem_1.0.8     \n[29] sessioninfo_1.2.2 mime_0.12         tidyselect_1.2.0  digest_0.6.31    \n[33] stringi_1.7.12    slam_0.1-50       purrr_1.0.1       ggthemes_4.2.4   \n[37] fastmap_1.1.1     grid_4.3.1        colorspace_2.1-0  cli_3.6.1        \n[41] magrittr_2.0.3    XML_3.99-0.14     pkgbuild_1.4.1    utf8_1.2.3       \n[45] withr_2.5.0       prettyunits_1.1.1 scales_1.2.1      promises_1.2.0.1 \n[49] rmarkdown_2.22    memoise_2.0.1     shiny_1.7.4       evaluate_0.21    \n[53] miniUI_0.1.1.1    profvis_0.3.8     rlang_1.1.1       Rcpp_1.0.10      \n[57] xtable_1.8-4      glue_1.6.2        xml2_1.3.4        pkgload_1.3.2    \n[61] rstudioapi_0.14   jsonlite_1.8.5    R6_2.5.1          fs_1.6.2"
+  },
+  {
+    "objectID": "author_date.html",
+    "href": "author_date.html",
+    "title": "2  Author’s lifetime",
+    "section": "",
+    "text": "Author date accepted\nAuthor date discarded\nAuthor’s lifetime is available for 17472 authors (24%).The lifetime years span 17, 99. The youngest being 17 years old and the oldest 99 years old."
+  },
+  {
+    "objectID": "author_name.html#authors",
+    "href": "author_name.html#authors",
+    "title": "3  Author’s name",
+    "section": "3.1 Authors",
+    "text": "3.1 Authors\n\n12017 unique authors These final names capture all name variants from the custom author synonyme table, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the author synonyme table.\n45812 documents have unambiguous author information (64%).\n10 unique pseudonymes are recognized based on custom pseudonyme lists.\n20 discarded author names This list should not include any real authors (if it does, please send a note to the admin). The stopword lists are considered when discarding names.\nAuthor name conversions Non-trivial conversions from the original raw data to final names.\n\n\n3.1.1 Auxiliary files\n\nAuthor synonyme table\nStopwords for names\nStopwords for titles\nCustom pseudonyme lists\n\nTop-20 uniquely identified authors and their productivity (title count).\n\n\n\n\n\n\n\n3.1.2 Author productivity\nTitle count in relation to the paper consumed in their books(all authors):"
+  },
+  {
+    "objectID": "corporate.html",
+    "href": "corporate.html",
+    "title": "4  Corporate",
+    "section": "",
+    "text": "Corporate-field contains names of the printing houses (“kirjapaino” in Finnish), manufactures, companies or institutions involved in printing of the books.\nAccepted corporate info\nDiscarded corporate info\n\nUnique accepted entries: 1415\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 21417 / 71919 (29.8%)\nOriginal documents with missing (NA) titles 50502 / 71919 documents (70.2%)\n\nTop-20 titles and their title counts.\n\n\n\n\n\nFrequency of unique titles:"
+  },
+  {
+    "objectID": "language.html#top-languages",
+    "href": "language.html#top-languages",
+    "title": "5  Language summaries",
+    "section": "5.1 Top languages",
+    "text": "5.1 Top languages\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n32708\n45.5\n\n\nSwedish\n23476\n32.6\n\n\nLatin\n6587\n9.2\n\n\nGerman\n1899\n2.6\n\n\nFinnish;Swedish\n1397\n1.9\n\n\nRussian\n749\n1\n\n\nUndetermined\n733\n1\n\n\nFrench\n646\n0.9\n\n\nLatin;Swedish\n610\n0.8\n\n\nEnglish\n345\n0.5\n\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):"
+  },
+  {
+    "objectID": "holder.html",
+    "href": "holder.html",
+    "title": "6  Holder",
+    "section": "",
+    "text": "Unique accepted entries: 2126\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 36295 / 71919 (50.5%)\nOriginal documents with missing (NA) titles 35624 / 71919 documents (49.5%)\n\nTop-20 titles and their title counts.\n\n\n\n\n\nFrequency of unique titles:"
+  },
+  {
+    "objectID": "note_dissertation.html",
+    "href": "note_dissertation.html",
+    "title": "7  Note dissertation",
+    "section": "",
+    "text": "The amount and types of academic dissertations or thesis are presented. Two types of thesis exists in Fennica: “Diss”/“Diss:Diss” and “Diss synod”; with the former being a majority among the two types.\n\nUnique accepted entries: 4\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 6418 / 71919 (8.9%)\nOriginal documents with missing (NA) titles 65501 / 71919 documents (91.1%)\n\nTop-20 titles and their title counts.\n\n\n\n\n\nFrequency of unique titles:"
+  },
+  {
+    "objectID": "note_granter.html",
+    "href": "note_granter.html",
+    "title": "8  Note granter",
+    "section": "",
+    "text": "The field summons names of the dissertations granting educational institutions and the amount of thesis granted by each university. Some universities are mentioned more than once due to the differences in the language the book was written in, for example, “Helsinki yliopisto” in Finnish and “Helsingfors universitet” in Swedish or “Upsala” in old Finnish and “Uppsala” in Swedish.\n\nUnique accepted entries: 91\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 5845 / 71919 (8.1%)\nOriginal documents with missing (NA) titles 66074 / 71919 documents (91.9%)\n\nTop-20 titles and their title counts.\n\n\n\n\n\nFrequency of unique titles:"
+  },
+  {
+    "objectID": "note_source.html",
+    "href": "note_source.html",
+    "title": "9  Note source",
+    "section": "",
+    "text": "Unique accepted entries: 5000\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 11754 / 71919 (16.3%)\nOriginal documents with missing (NA) titles 60165 / 71919 documents (83.7%)\n\nTop-20 titles and their title counts.\n\n\n\n\n\nFrequency of unique titles:"
+  },
+  {
+    "objectID": "publisher.html",
+    "href": "publisher.html",
+    "title": "10  Publisher preprocessing summary",
+    "section": "",
+    "text": "12995 unique publishers\n61144 documents have unambiguous publisher information (85%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\nConversions from original to final names (only non-trivial conversions shown)\n\nThe 20 most common publishers are shown with the number of documents.\n\n\n\n\n\nTitle count versus paper consumption (top publishers):\n\n\n\n\n\n\n\n\npublisher\ntitles\npaper\n\n\n\n\nEdlund\n979\n0\n\n\nG. W. Edlund\n896\n0\n\n\nKaristo\n663\n0\n\n\nOtava\n2168\n0\n\n\nSöderström\n1188\n0\n\n\nTekijä\n1555\n0\n\n\nWSOY\n2922\n0\n\n\n[G. W. Londicer]\n1823\n0\n\n\n[J. C. Frenckell]\n1207\n0\n\n\ntypis Frenckellianis\n1181\n0"
+  },
+  {
+    "objectID": "publication_interval.html",
+    "href": "publication_interval.html",
+    "title": "11  Publication interval summaries",
+    "section": "",
+    "text": "Publication interval is available for 2434 documents (3%).\nPublication interval accepted\nPublication interval conversions\nPublication interval discarded"
+  },
+  {
+    "objectID": "publication_place.html#publication-countries",
+    "href": "publication_place.html#publication-countries",
+    "title": "12  Publication place preprocessing summary",
+    "section": "12.1 Publication countries",
+    "text": "12.1 Publication countries\n\n35 unique publication countries; available for 68806 documents (96%).\n2 places with unknown publication country (0.5% of the unique places; can be added to country mappings)\n6 potentially ambiguous region-country mappings (these may occur in the data in various synonymes and the country is not always clear when multiple countries have a similar place name; the default country is listed first). NOTE: possible improvements should not be done in this output summary but instead in the country mapping file.\n\nWarning: `data_frame()` was deprecated in tibble 1.1.0.\nℹ Please use `tibble()` instead.\nℹ The deprecated feature was likely used in the comhis package.\n  Please report the issue at &lt;https://github.com/comhis/comhis/issues&gt;.\n\n\n\n\nCountry\nDocuments (n)\nFraction (%)\n\n\n\n\nFinland\n59639\n82.9\n\n\nSweden\n5106\n7.1\n\n\nRussia\n1227\n1.7\n\n\nUSA\n869\n1.2\n\n\nGermany\n775\n1.1\n\n\nEstonia\n287\n0.4"
+  },
+  {
+    "objectID": "publication_place.html#geocoordinates",
+    "href": "publication_place.html#geocoordinates",
+    "title": "12  Publication place preprocessing summary",
+    "section": "12.2 Geocoordinates",
+    "text": "12.2 Geocoordinates\n\n93.7% of the documents were matched to geographic coordinates (based on COMHIS geomapping process).\n54 unique places (12.5% of all unique places and 6.34% of all documents) are missing geocoordinates. See list of places missing geocoordinate information."
+  },
+  {
+    "objectID": "publication_time.html",
+    "href": "publication_time.html",
+    "title": "13  Publication year summaries (publication time)",
+    "section": "",
+    "text": "Publication year conversions\nPublication year discarded\nPublication year is available for 71270 documents (99%). The publication years span 11-1955."
+  },
+  {
+    "objectID": "subject_topic.html",
+    "href": "subject_topic.html",
+    "title": "14  Subject topic",
+    "section": "",
+    "text": "Unique accepted entries: 3533\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 20889 / 71919 (29%)\nOriginal documents with missing (NA) titles 51030 / 71919 documents (71%)\n\nTop-20 titles and their title counts.\n\n\n\n\n\nFrequency of unique titles:"
+  },
+  {
+    "objectID": "successor.html",
+    "href": "successor.html",
+    "title": "15  Successor",
+    "section": "",
+    "text": "Unique accepted entries: 396\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 404 / 71919 (0.6%)\nOriginal documents with missing (NA) titles 71515 / 71919 documents (99.4%)\n\nTop-20 titles and their title counts.\n\n\n\n\n\nFrequency of unique entries:"
+  },
+  {
+    "objectID": "title.html",
+    "href": "title.html",
+    "title": "16  Title field: summary",
+    "section": "",
+    "text": "Unique accepted entries: 57062\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 71916 / 71919 (100%)\nOriginal documents with missing (NA) titles 3 / 71919 documents (0%)\n\nTop-20 titles and their title counts.\n\n\n\n\n\nFrequency of unique titles:"
+  },
+  {
+    "objectID": "title_uniform.html",
+    "href": "title_uniform.html",
+    "title": "17  Title uniform",
+    "section": "",
+    "text": "Unique accepted entries: 8887\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 12209 / 71919 (17%)\nOriginal documents with missing (NA) titles 59710 / 71919 documents (83%)\n\nTop-20 titles and their title counts.\n\n\n\n\n\nFrequency of unique titles:"
+  },
+  {
+    "objectID": "uncontrolled.html",
+    "href": "uncontrolled.html",
+    "title": "18  Uncontrolled",
+    "section": "",
+    "text": "Unique accepted entries: 99\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 111 / 71919 (0.2%)\nOriginal documents with missing (NA) titles 71808 / 71919 documents (99.8%)\n\nTop-20 titles and their title counts.\n\n\n\n\n\nFrequency of unique titles:"
+  }
+]
