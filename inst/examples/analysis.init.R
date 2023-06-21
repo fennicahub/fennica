@@ -7,7 +7,7 @@ library(reshape2)
 library(gridExtra)
 library(knitr)
 library(stringr)
-library(comhis)
+# library(comhis)
 
 # Set global parameters
 # timespan <- c(1400, 1920)
