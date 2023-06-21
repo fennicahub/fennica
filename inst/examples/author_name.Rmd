@@ -1,13 +1,12 @@
 # Author's name
 
-```{r setup-author-name, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
-```
-
 ```{r source-author-name, include=FALSE}
 # author_name field
 source("author_name.R")
+```
+```{r setup-author-name, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
 ```
 
 * [Unique accepted entries](dataTable/data_table.html?path=../`r file_accepted`): `r length(unique(df[[field]]))`
