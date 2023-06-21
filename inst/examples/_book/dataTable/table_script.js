@@ -1,6 +1,7 @@
 let dTable;
 let size;
 let columnCount;
+let dataTableBody;
 
 import Toast from "./toastNotification/Toast.js";
 
