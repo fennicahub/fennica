@@ -152,11 +152,11 @@ CMD ["nginx", "-g", "daemon off;"]
 3.Build the container image using the following commands:
 
 ```	
-	$cd fennica
+$cd fennica
 ```
 Build the container image:
 ```
-	$ docker build -t <docker-image-name>
+$ docker build -t <docker-image-name>
 ```
 After building the docker image we can check if the image exists using the commands such as $docker ps     or  $ docker ps -a. 
 Then we can share to a docker registry such as Dockerhub using the following commands.
