@@ -24,3 +24,5 @@ data
 *.RData
 kungliga.Rds
 fennica.Rds
+
+/.quarto/

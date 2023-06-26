@@ -58,7 +58,7 @@ jobs:
                 # Check the return code of the HTTP link
                 status_code=$(curl -s -o /dev/null -w "%{http_code}" "$link")
 
-                if [ "$status_code" -eq 200 ]; then
+                if [ "$status_code" -eq 200 ] || [ "$status_code" -ge 300 ] && [ "$status_code" -lt 400 ]; then
                   echo "    [✓] Link is valid: $link"
                 else
                   echo "    [✖] Link is invalid: $link (HTTP $status_code)"

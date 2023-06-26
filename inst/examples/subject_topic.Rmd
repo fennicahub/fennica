@@ -1,14 +1,14 @@
-```{r setup-subject-topic, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
-```
+# Subject topic
 
 ```{r source-subject-topic, include=FALSE, eval=knit_bookdown}
 # note_subject_topic field
 source("subject_topic.R")
 ```
 
-# Subject topic
+```{r setup-subject-topic, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
+```
 
 * [Unique accepted entries](dataTable/data_table.html?path=../`r file_accepted`): `r length(unique(df[[field]]))`
 * [Unique discarded entries in original data](dataTable/data_table.html?path=../`r file_discarded`) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
