@@ -151,9 +151,6 @@ CMD ["nginx", "-g", "daemon off;"]
 
 3.Build the container image using the following commands:
 
-```	
-$cd fennica
-```
 Build the container image:
 ```
 $ docker build -t <docker-image-name>
