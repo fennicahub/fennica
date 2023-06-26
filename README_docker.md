@@ -30,14 +30,14 @@ In order to build the container image for the Fennica project we need to use Doc
 Steps taken
 
 1.In the Fennica directory we need to create a file named Dockerfile.We need to use the following commands.
-	To change directory to fennica project we use 
-	
-			$cd /fennica
-	
+To change directory to fennica project we use 
+```	
+$cd /fennica
+```	
 Then we create an empty file named Dockerfile
-
-		$touch Dockerfile
-
+```
+$touch Dockerfile
+```
 2.Using a text editor or code editor we write the following contents.
 
 ```
