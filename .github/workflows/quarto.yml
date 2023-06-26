@@ -36,17 +36,6 @@ jobs:
           extra-packages:
             any::devtools
             local::.
-<<<<<<< HEAD:.github/workflows/fennica.yml
-     
-      - name: Render Book
-        run: Rscript -e 'bookdown::render_book("inst/examples/")'
-        
-      - name: Import CSV visualiser
-        run: cp -r inst/examples/dataTable inst/examples/_book/
-=======
-
-      - name: install comhis
-        run: Rscript -e 'devtools::install_github("comhis/comhis",dependencies = TRUE)'
 
       - name: Render and Publish quarto
         uses: quarto-dev/quarto-actions/publish@v2
@@ -61,7 +50,6 @@ jobs:
 
       - name : Import output.tables
         run : cp -r inst/examples/output.tables inst/examples/_book/
->>>>>>> 93f9e4c7c03aea7973ee56db1a5a9c6496c930a1:.github/workflows/quarto.yml
         
       - name: Deploy package
         run: |
