@@ -29,7 +29,8 @@ First and foremost the first thing to do is to download Docker on our computer. 
 In order to build the container image for the Fennica project we need to use Dockerfile. A Dockerfile is simply a text-based file with no file extension that contains a script of instructions. Docker uses this script to build a container image. 
 Steps taken
 
-1.In the Fennica directory we need to create a file named Dockerfile.We need to use the following commands.
+1.In the Fennica directory we need to create a file named Dockerfile. We need to use the following commands.
+
 To change directory to fennica project we use 
 ```	
 $cd /fennica
