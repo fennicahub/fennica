@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-#*
-.#*
-*.R
-*.Rout
-*.Rcheck
-*~
-*.tar.gz
-
-||||||| merged common ancestors
-=======
 *.Rcheck
 document.Rout
 *.tar.gz
->>>>>>> 6bdc5e0d43fb4f5f45076b901d336edf14b6aac9
