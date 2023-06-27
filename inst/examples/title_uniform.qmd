@@ -1,9 +1,12 @@
+---
+title: "Title uniform"
+hide-description: false
+description: "Statistics about the titles of the articles"
+---
 ```{r}
 #| include = FALSE
 source("init.R")
 ```
-# Title uniform
-
 ```{r}
 #| label = "source-title-uniform",
 #| include = FALSE,

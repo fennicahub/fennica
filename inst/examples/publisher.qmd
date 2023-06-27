@@ -1,3 +1,9 @@
+---
+title: "Publisher preprocessing summary"
+hide-description: false
+description: "Summary of the statistics about the place of publication of the articles"
+---
+
 ```{r}
 #| include = FALSE
 source("init.R")
@@ -6,11 +12,8 @@ source("init.R")
 #| label = "source-publisher",
 #| include = FALSE,
 #| eval = knit_bookdown
-# publisher field
 source("publisher.R")
 ```
-
-# Publisher preprocessing summary
 
  * `r length(unique(df$publisher))` [unique publishers](dataTable/data_table.html?path=../output.tables/publisher_accepted.csv)
 

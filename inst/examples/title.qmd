@@ -1,9 +1,12 @@
+---
+title: "Title field: summary"
+hide-description: false
+description: "Summary of the statistics about the titles of the articles"
+---
 ```{r}
 #| include = FALSE
 source("init.R")
 ```
-# Title field: summary
-
 ```{r}
 #| label = "source-title",
 #| include = FALSE,

@@ -1,9 +1,13 @@
+---
+title : "Note dissertation"
+hide-description: false
+description: "Statistics about the thesis which are present the articles"
+---
+
 ```{r}
 #| include = FALSE
 source("init.R")
 ```
-# Note dissertation
-
 ```{r}
 #| label = "source-note-dissertation",
 #| include = FALSE,

@@ -1,3 +1,9 @@
+---
+title : "Publication interval summaries"
+hide-description: false
+description: "Statistics about the publication interval of the articles"
+---
+
 ```{r}
 #| include = FALSE
 source("init.R")
@@ -9,8 +15,6 @@ source("init.R")
 #publication_interval field
 source("publication_interval.R")
 ```
-
-# Publication interval summaries
 
 Publication interval is available for `r sum(!is.na(df$publication_interval_from) | !is.na(df$publication_interval_till))` documents (`r round(100*mean(!is.na(df$publication_interval_from) | !is.na(df$publication_interval_till)))`%). 
 

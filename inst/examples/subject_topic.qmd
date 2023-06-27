@@ -1,9 +1,13 @@
+---
+title : "Subject topic"
+hide-description: false
+description: "Statistics about the subject of the articles"
+---
+
 ```{r}
 #| include = FALSE
 source("init.R")
 ```
-# Subject topic
-
 ```{r}
 #| label = "source-subject-topic",
 #| include = FALSE,
