@@ -1,8 +1,13 @@
+--- 
+title: "Author's name"
+hide-description: false
+description: "statistics about the authors and their productivity"
+---
+
 ```{r}
 #| include = FALSE
 source("init.R")
 ```
-# Author's name
 
 ```{r}
 #| label = "source-author-name",

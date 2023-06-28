@@ -1,8 +1,13 @@
+---
+title : "Note source"
+hide-description: false
+description: "[add a description]"
+---
+
 ```{r}
 #| include = FALSE
 source("init.R")
 ```
-# Note source
 
 ```{r}
 #| label = "source-note-source",

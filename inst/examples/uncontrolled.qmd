@@ -1,9 +1,13 @@
+---
+title: "Uncontrolled"
+hide-description: false
+description: "Statistics about the uncontrolled articles in the archives"
+---
+
 ```{r}
 #| include = FALSE
 source("init.R")
 ```
-# Uncontrolled
-
 ```{r}
 #| label = "source-uncontrolled",
 #| include = FALSE,

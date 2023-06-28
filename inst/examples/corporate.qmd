@@ -1,9 +1,13 @@
+---
+title : "Corporate"
+hide-description: false
+description: "Statistics about the the establishments that are invoveld in printing the articles"
+---
+
 ```{r}
 #| include = FALSE
 source("init.R")
 ```
-# Corporate
-
 ```{r}
 #| label = "source-corporate",
 #| include = FALSE

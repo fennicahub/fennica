@@ -1,3 +1,9 @@
+---
+title : "Publication place preprocessing summary"
+hide-description: false
+description: "Statistics about the place of publication of the articles"
+---
+
 ```{r}
 #| include = FALSE
 source("init.R")
@@ -6,11 +12,8 @@ source("init.R")
 #| label = "source-publication-place",
 #| include = FALSE,
 #| eval = knit_bookdown
-# Publication place field and derived country- and geoinformation
 source("publication_place.R")
 ```
-
-# Publication place preprocessing summary
 
  * `r length(unique(str_trim(unlist(strsplit(as.character(df$publication_place), ";")))))` [unique publication places](dataTable/data_table.html?path=../output.tables/publication_place_accepted.csv); available for `r sum(!is.na(df$publication_place))` documents (`r round(100*mean(!is.na(df$publication_place)))`%).
  * `r length(readLines(paste0("output.tables/publication_place_ambiguous.csv"))) - 1` [ambiguous publication places](dataTable/data_table.html?path=../output.tables/publication_place_ambiguous.csv); some of these can be possibly resolved by checking that the the [synonyme list](dataTable/data_table.html?path=../output.tables/PublicationPlaceSynonymes.csv) does not contain multiple versions of the final name (case sensitive). 

@@ -1,8 +1,13 @@
+---
+title : "Note granter"
+hide-description: false
+description: "Statistics about the institution where the articles come from"
+---
+
 ```{r}
 #| include = FALSE
 source("init.R")
 ```
-# Note granter
 
 ```{r}
 #| label = "source-note-granter",

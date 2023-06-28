@@ -1,3 +1,9 @@
+---
+title: "Languages"
+hide-description: false
+description: "Statistics about the languages of the articles"
+---
+
 ```{r}
 #| include = FALSE
 source("init.R")
@@ -10,7 +16,7 @@ source("init.R")
 source("language.R")
 ```
 
-# Language summaries
+## Language summaries
 
  * `r length(unique(unlist(strsplit(as.character(df$languages), ";"))))-1` [unique languages](dataTable/data_table.html?path=../output.tables/languages_accepted.csv)
  * `r length(unique(df$language_primary))-1` [unique primary languages](dataTable/data_table.html?path=../output.tables/language_primary_accepted.csv)  

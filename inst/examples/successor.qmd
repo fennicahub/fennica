@@ -1,9 +1,13 @@
+---
+title: "Successor"
+hide-description: false
+description: "[add a description]"
+---
+
 ```{r}
 #| include = FALSE
 source("init.R")
 ```
-# Successor
-
 ```{r}
 #| label = "source-successor",
 #| include = FALSE,
