@@ -37,9 +37,6 @@ jobs:
             any::devtools
             local::.
 
-      - name: install comhis
-        run: Rscript -e 'devtools::install_github("comhis/comhis",dependencies = TRUE)'
-
       - name: Render and Publish quarto
         uses: quarto-dev/quarto-actions/publish@v2
         with:
