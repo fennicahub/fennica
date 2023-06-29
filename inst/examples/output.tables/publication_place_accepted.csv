@@ -1,433 +1,4947 @@
 Name	Count
-Helsinki	26953
-Turku	13669
-Stockholm	 4004
-Porvoo	 3770
-Vaasa	 3500
-Tampere	 2471
-Kuopio	 1569
-Hämeenlinna	 1410
-Vyborg	 1324
-Jyväskylä	 1031
-Uppsala	  753
-Pori	  713
-Oulu	  652
-St Petersburg	  628
-Sortavala	  549
-Rauma	  251
-Mikkeli	  240
-Hancock Mi	  217
-Tartu	  217
-Leipzig	  194
-Kotka	  176
-New York NY	  174
-London	  169
-Paris	  165
-Tammisaari	  162
-Hamina	  161
-Lahti	  160
-Berlin	  158
-Fitchburg Ma	  140
-Copenhagen	  128
-Joensuu	  127
-Kokkola	  107
-Örebro	   95
-Savonlinna	   95
-Hanko	   85
-Pietarsaari	   76
-Mariehamn	   66
-Käkisalmi	   62
-Uusikaupunki	   58
-Lappeenranta	   56
-Rostock	   56
-Kristiinankaupunki	   55
-Ashtabula Oh	   51
-Lund	   51
-Tallinn	   51
-Kaleva Mi	   50
-Amsterdam	   48
-Duluth MN	   42
-Kajaani	   42
-Riga	   42
-Moscow	   39
-Wittenberg	   39
-Kemi	   38
-Calumet Mi	   37
-Oslo	   37
-Heinola	   33
-Gothenburg	   31
-Lapua	   31
-Raahe	   31
-Loviisa	   29
-Budapest	   28
-Port Arthur On	   28
-Skara	   28
-Strängnäs	   26
-Astoria Or	   25
-Västerås	   25
-Uusikaarlepyy	   23
-Chicago IL	   22
-München	   22
-Jena	   21
-Kruunupyy	   21
-Vienna	   21
-Dresden	   20
-Greifswald	   20
-Parkano	   20
-Stuttgart	   20
-Linköping	   19
-Kaskinen	   18
-Nürnberg	   18
-Hamburg	   17
-Braunschweig	   16
-Hyvinkää	   16
-Turenki	   16
-Frankfurt	   14
-Karjaa	   14
-Superior Wi	   14
-Iisalmi	   13
-Ironwood Mi	   13
-Leiden	   12
-Sairala	   12
-Halle	   11
-Lübeck	   11
-Pärnu	   11
-Tornio	   11
-Augsburg	   10
-Forssa	   10
-Isokyrö	   10
-Laihia	   10
-New York Mills Mn	   10
-Norrköping	   10
-Göttingen	    9
-Heidelberg	    9
-Warsaw	    9
-Weimar	    9
-Gießen	    8
-Haaparanta	    8
-Härnösand	    8
-Karlskrona	    8
-Rome	    8
-Salo	    8
-Terijoki	    8
-Utrecht	    8
-Worcester Ma	    8
-Eura	    7
-Firenze	    7
-Ishpeming Mi	    7
-Pernaja	    7
-Quincy Ma	    7
-Strasbourg	    7
-Tübingen	    7
-Wiesbaden	    7
-Zürich	    7
-Bergen	    6
-Bonn	    6
-Haarlem	    6
-Isafjördur	    6
-Jelgava	    6
-Koningsberg	    6
-Narva	    6
-Parainen	    6
-Piikkiö	    6
-Reykjavik	    6
-Vilnius	    6
-Almena Wi	    5
-Archangelsk	    5
-Bern	    5
-Cambridge	    5
-Falun	    5
-Haapajärvi	    5
-Jämsä	    5
-Jönköping	    5
-Milan	    5
-Nytorp	    5
-Odense	    5
-Tromsö	    5
-Visingsborg	    5
-Antwerp	    4
-Basel	    4
-Espoo	    4
-Gotha	    4
-Karjalohja	    4
-Kiel	    4
-Kouvola	    4
-Kuortane	    4
-Laitila	    4
-Madrid	    4
-Malmö	    4
-Marburg	    4
-Odessa	    4
-Orivesi	    4
-Oxford	    4
-Rovaniemi	    4
-Seattle WA	    4
-Seinäjoki	    4
-Szczecin	    4
-Tyrvää	    4
-Altdorf	    3
-Altenstein	    3
-Barcelona	    3
-Braniewo	    3
-Brussels	    3
-Cincinnati Oh	    3
-Haunia	    3
-Helmstedt	    3
-Juva	    3
-Kainuu	    3
-Karlstad	    3
-Kauvatsa	    3
-Kharkiv	    3
-Krakow	    3
-Leeuwarden	    3
-Lohja	    3
-Naples	    3
-Parikkala	    3
-Rock Island IL	    3
-Sääksmäki	    3
-Aabenraa	    2
-Aalborg	    2
-Aarhus	    2
-Boston Ma	    2
-Breslau	    2
-Bridgeport Ct	    2
-Chisholm MN	    2
-Cleveland Oh	    2
-Cologne	    2
-Dessau	    2
-Erfurt	    2
-Freiburg im Breisgau	    2
-Fürth	    2
-Geneva	    2
-Hämeenkyrö	    2
-Hannover	    2
-Harbor Oh	    2
-Heinävesi	    2
-Helsingborg	    2
-Houghton Mi	    2
-Huopalahti	    2
-Ikaalinen	    2
-Ilmajoki	    2
-Jaakkima	    2
-Janakkala	    2
-Karhula	    2
-Karstula	    2
-Kazan	    2
-Kiiminki	    2
-Kirkkonummi	    2
-Koivisto	    2
-Köping	    2
-Luleå	    2
-Maastricht	    2
-Minneapolis Mn	    2
-Montreal	    2
-Mustasaari	    2
-Mustiala	    2
-Naantali	    2
-Närpiö	    2
-New Haven Ct	    2
-Nyköping	    2
-Offenbach am Main	    2
-Ottawa	    2
-Petäjävesi	    2
-Philadelphia Pa	    2
-Pihlava	    2
-Red Jacket Mi	    2
-Regensburg	    2
-Saarijärvi	    2
-Sipoo	    2
-Smithville Mn	    2
-Stockton	    2
-Stralsund	    2
-Suomussalmi	    2
-The Hague	    2
-Trieste	    2
-Urjala	    2
-Venice	    2
-Vicenza	    2
-Viitasaari	    2
-Viljandi	    2
-Virolahti	    2
-Ylistaro	    2
-Ypäjä	    2
-Żary	    2
-Akureyri	    1
-Alfend	    1
-Amersfoort	    1
-Ancona	    1
-Anttola	    1
-Arezzo	    1
-Arnstadt	    1
-Askersund	    1
-Bielefeld	    1
-Birmingham	    1
-Björkboda	    1
-Brändö	    1
-Bremen	    1
-Brisbane	    1
-Brunn	    1
-Buenos Aires	    1
-Calcutta	    1
-Clear Creek UT	    1
-Cluj-Napoca	    1
-Dieren	    1
-Dordrecht	    1
-Edinburgh	    1
-Elbingen	    1
-Ely Mi	    1
-Erlangen	    1
-Eveleth Mi	    1
-Exeter	    1
-Gdańsk	    1
-Gera	    1
-Godby	    1
-Grand Rapids Mi	    1
-Gutersloh	    1
-Haderslev	    1
-Halberstadt	    1
-Hanna WY	    1
-Harjavalta	    1
-Heilbronn	    1
-Heinäjoki	    1
-Helsingør	    1
-Hinnerjoki	    1
-Hirvensalmi	    1
-Hull	    1
-Hvitträsk	    1
-Imatra	    1
-Impilahti	    1
-Inari	    1
-Inkeri	    1
-Inkoo	    1
-Jääski	    1
-Jacobson Mi	    1
-Jalasjärvi	    1
-Kallislahti	    1
-Kangasala	    1
-Kaprio	    1
-Kauhajoki	    1
-Kausala	    1
-Keltto	    1
-Kettuvaara	    1
-Kirchhain	    1
-Kirov	    1
-Kirvu	    1
-Kivennapa	    1
-Kodisjoki	    1
-Koivulahti	    1
-Kokemäki	    1
-Korsnäs	    1
-Kurkijoki	    1
-Kuusankoski	    1
-Kylmäkoski	    1
-Kymenlaakso	    1
-Kyrö	    1
-La Chapelle-Montligeon	    1
-Laihiala	    1
-Lammi	    1
-Landskrona	    1
-Lausanne	    1
-Le Mans	    1
-Letchworth	    1
-Liège	    1
-Liepaja	    1
-Lisbon	    1
-Litoměrice	    1
-Liverpool	    1
-Ljungsbro	    1
-Lohtaja	    1
-Loimaa	    1
-Loimijoki	    1
-Maaninka	    1
-Macon	    1
-Magdeburg	    1
-Mänttä-Vilppula	    1
-Mäntyharju	    1
-Marttila	    1
-Messina	    1
-Milwaukee Wi	    1
-Minsk	    1
-Montpellier	    1
-Mustio	    1
-Nanaimo BC	    1
-Neuchatel	    1
-Neuruppin	    1
-Nizza	    1
-Nokia	    1
-Noormarkku	    1
-Nora	    1
-Nummela	    1
-Nurmijärvi	    1
-Oniipa	    1
-Oradea	    1
-Orimattila	    1
-Orismala	    1
-Otava	    1
-Oulainen	    1
-Padua	    1
-Paimio	    1
-Pännäinen	    1
-Perho	    1
-Perkjärvi	    1
-Pieksämäki	    1
-Pinjainen	    1
-Pistoia	    1
-Portland Or	    1
-Poznań	    1
-Prague	    1
-Purleigh	    1
-Quedlinburg	    1
-R ev	    1
-Rääkkylä	    1
-Räisälä	    1
-Raisio	    1
-Rantasalmi	    1
-Rautalampi	    1
-Rautio	    1
-Ravenna	    1
-Red Lodge MT	    1
-Rock Springs WY	    1
-Rotterdam	    1
-Säkkijärvi	    1
-Sakkola	    1
-Sandstone Mi	    1
-Sarvilahti	    1
-Sauvo	    1
-Schwerin	    1
-Siena	    1
-Simola	    1
-Smolensk	    1
-St Louis Kaunti Mi	    1
-Stade	    1
-Sudbury On	    1
-Sundsvall	    1
-Suonenjoki	    1
-Taipalsaari	    1
-Tammela	    1
-Telč	    1
-Terni	    1
-Tervonsalmi	    1
-Toholampi	    1
-Tomsk	    1
-Torgelow	    1
-Trondheim	    1
-Tsing-shin	    1
-Turtle Lake Wi	    1
-Tuusula	    1
-Tyrnävä	    1
-Ulm	    1
-Uusikirkko	    1
-Vainikkala	    1
-Valamo	    1
-Valkjärvi	    1
-Vammala	    1
-Vantaa	    1
-Verona	    1
-Virginia Mn	    1
-Watton Mi	    1
-Weida	    1
-Wismar	    1
-Wurzburg	    1
-Ylimarkku	    1
-Ylivieska	    1
-York	    1
+Helsinki	502600
+Turku	 49012
+Porvoo	 41322
+Tampere	 38658
+Espoo	 32656
+Jyväskylä	 28365
+Oulu	 18193
+Hämeenlinna	 15909
+Stockholm	 14920
+Vaasa	 12133
+Kuopio	 11386
+Vantaa	  9423
+Joensuu	  7597
+Kustannuspaikka tuntematon	  6905
+Lahti	  5649
+Otaniemi	  5576
+Lappeenranta	  5375
+Pori	  4850
+Rovaniemi	  4664
+Mikkeli	  3906
+St Petersburg	  3125
+Karkkila	  3112
+Copenhagen	  2662
+Kotka	  2388
+Vyborg	  2325
+Seinäjoki	  2098
+Hyvinkää	  2078
+Kouvola	  2038
+Lohja	  1993
+östersundom	  1932
+Mariehamn	  1891
+Kajaani	  1795
+Petroskoi	  1781
+Kokkola	  1754
+Jokioinen	  1556
+Kauniainen	  1521
+Uusikaarlepyy	  1488
+Rauma	  1457
+Kemi	  1447
+Moscow	  1435
+Pietarsaari	  1351
+London	  1310
+Uppsala	  1282
+Savonlinna	  1185
+Oslo	  1149
+Malmö	  1148
+Sortavala	  1120
+Forssa	  1109
+Tallinn	  1102
+Vammala	  1057
+Riihimäki	  1042
+Tammisaari	  1030
+Imatra	   987
+New York NY	   986
+Kerava	   979
+Paris	   970
+Berlin	   926
+Lapua	   914
+Keuruu	   883
+Tapiola	   843
+Järvenpää	   801
+Salo	   780
+Loimaa	   719
+Uusikaupunki	   711
+Hamina	   705
+Valkeakoski	   697
+Iisalmi	   668
+Kirkkonummi	   640
+Hanko	   588
+Pieksämäki	   585
+Suomussalmi	   571
+Tuusula	   570
+Heinola	   552
+Kuusankoski	   541
+Loviisa	   539
+Kangasala	   498
+Budapest	   494
+Varkaus	   492
+Tartu	   487
+Saarijärvi	   481
+Kuusamo	   473
+Alavus	   456
+Hancock Mi	   454
+Raahe	   446
+Tornio	   445
+Leipzig	   429
+Lund	   410
+Karjaa	   409
+Sipoo	   387
+Ylivieska	   371
+Nokia	   369
+Parainen	   368
+Naantali	   363
+München	   361
+Salt lake city	   354
+Amsterdam	   344
+Virrat	   342
+Mänttä-Vilppula	   340
+Kankaanpää	   327
+Vihti	   326
+Kokemäki	   320
+Jämsä	   309
+Raisio	   301
+Kuhmo	   293
+Cologne	   287
+Lempäälä	   287
+Kaarina	   283
+Karhula	   280
+Hamburg	   276
+Inari	   274
+Suolahti	   274
+Nurmijärvi	   272
+Gothenburg	   271
+Nummela	   264
+Lieksa	   258
+Mäntsälä	   248
+Orimattila	   245
+Paimio	   245
+Frankfurt	   244
+Huittinen	   243
+Klaukkala	   243
+Kauhajoki	   242
+Kristiinankaupunki	   239
+Ylöjärvi	   237
+Tokyo	   235
+Heinävesi	   230
+Ikaalinen	   229
+Kurikka	   229
+Kalajoki	   228
+Otalampi	   227
+Oniipa	   226
+Somero	   221
+Kaustinen	   220
+Orivesi	   219
+Kannus	   216
+Joutseno	   215
+Sodankylä	   213
+Barcelona	   212
+Stuttgart	   212
+Närpiö	   210
+Kruunupyy	   209
+Parkano	   209
+Hämeenkyrö	   206
+Karleby	   206
+Fitchburg Ma	   204
+Laitila	   203
+Kauhava	   202
+Anjalankoski	   200
+Duluth MN	   199
+Milan	   198
+Harjavalta	   197
+Oulainen	   197
+Hollola	   196
+Kangasniemi	   195
+Suonenjoki	   195
+Prague	   194
+Sonkajärvi	   193
+Anar	   192
+Toijala	   192
+Äänekoski	   191
+Alajärvi	   191
+Nivala	   191
+Zürich	   188
+Sotkamo	   183
+Warsaw	   183
+Viitasaari	   182
+Vilppula	   180
+Ann Arbor MI	   179
+Kemijärvi	   177
+Ryttylä	   176
+Riga	   173
+Muhos	   172
+Pudasjärvi	   172
+Haapajärvi	   167
+Mustasaari	   167
+Örebro	   165
+Nurmes	   164
+Eura	   163
+Ilmajoki	   163
+Eurajoki	   162
+Nastola	   160
+Laukaa	   159
+Lausanne	   159
+Ruovesi	   155
+Jalasjärvi	   151
+Lammi	   149
+Dresden	   148
+Haukipudas	   147
+Oxford	   147
+Siilinjärvi	   147
+Turenki	   147
+Rajamäki	   146
+Pello	   145
+Mynämäki	   144
+Kitee	   143
+Kärkölä	   142
+Ilomantsi	   141
+Juva	   141
+Kempele	   140
+Malax	   139
+Ähtäri	   138
+Huhmari	   137
+Haapavesi	   136
+Punkaharju	   135
+Superior Wi	   135
+Ranua	   132
+Vienna	   131
+Halikko	   130
+Kolari	   130
+Outokumpu	   130
+Lieto	   129
+Käkisalmi	   128
+Masku	   128
+Piikkiö	   127
+Sysmä	   127
+Jyskä	   124
+Kiuruvesi	   124
+Taivalkoski	   123
+Janakkala	   122
+Geneva	   121
+Bern	   120
+Paltamo	   119
+Brussels	   116
+Ulvila	   116
+Hartola	   115
+Stavanger	   113
+Kittilä	   112
+Liminka	   111
+Kontiolahti	   110
+Vilnius	   110
+Perniö	   109
+Rome	   109
+Lappajärvi	   108
+Liperi	   108
+Vanda	   107
+Säkylä	   105
+Madrid	   104
+Asikkala	   103
+Lapinlahti	   103
+Sastamala	   103
+Karasjohka	   102
+Mäntyharju	   102
+Laihia	   101
+Rostock	   101
+Valkeala	   101
+Isokyrö	    99
+Salla	    99
+Teuva	    99
+Veteli	    99
+Jeppo	    98
+Panttila	    97
+Reykjavik	    97
+Hankasalmi	    96
+Hattula	    96
+Jämsänkoski	    96
+Kuortane	    96
+Luleå	    96
+Pälkäne	    94
+Loppi	    92
+Nousiainen	    92
+Punkalaidun	    92
+Cambridge	    91
+Wiesbaden	    91
+Nilsiä	    90
+Vaajakoski	    90
+Kaskinen	    89
+Keminmaa	    89
+Viiala	    89
+Joutsa	    88
+Norrköping	    88
+Padasjoki	    87
+Ristiina	    87
+Ivalo	    86
+Vesanto	    86
+Leväsjoki	    85
+Oitmäki	    85
+Ashtabula Oh	    84
+Juuka	    84
+Suomusjärvi	    84
+Urjala	    84
+Ylitornio	    84
+Bath	    83
+Borås	    83
+Hauho	    83
+Myllykoski	    83
+Otnäs	    83
+Umeå	    83
+Iitti	    82
+Korpilahti	    82
+Chicago IL	    81
+Inkoo	    81
+Karstula	    81
+Muurame	    81
+Petäjävesi	    81
+Tohmajärvi	    81
+Toronto	    81
+Kiiminki	    80
+Königswinter	    80
+Ruokolahti	    80
+Tiuruniemi	    80
+Leppävirta	    79
+Washington DC	    78
+Dordrecht	    77
+Olkiluoto	    76
+Pedersöre	    75
+The Hague	    75
+Vehmersalmi	    75
+Boston Ma	    74
+Korsnäs	    74
+Kerimäki	    73
+Rautalampi	    73
+Tyrvää	    73
+Vöra	    73
+Pielavesi	    72
+Rantasalmi	    72
+Oravais	    71
+Parikkala	    71
+Astoria Or	    70
+Virolahti	    70
+Nakkila	    69
+Pihtipudas	    69
+Tammela	    69
+Calumet Mi	    68
+Elimäki	    68
+Reisjärvi	    68
+Saarivaara	    68
+Enontekiö	    67
+Ylistaro	    67
+Aarhus	    66
+Leiden	    66
+Alavieska	    65
+Basel	    65
+Hyrylä	    65
+Kuhmoinen	    65
+Lehtimäki	    65
+Joroinen	    64
+Kimito	    64
+Posio	    64
+Rekijoki	    64
+Västerås	    64
+Vehkalahti	    64
+Kärsämäki	    63
+Muonio	    63
+Oulunsalo	    63
+Vääksy	    63
+Vimpeli	    63
+Petrozavodska	    62
+Purujärvi	    62
+Utsjoki	    62
+Aldershot	    61
+Ljubljana	    61
+Greifswald	    60
+Hausjärvi	    60
+Ironwood Mi	    60
+Luvia	    60
+Puumala	    60
+Pyhäjärvi	    60
+Sulkava	    60
+Tikkakoski	    60
+Vieremä	    60
+Eno	    59
+Hailuoto	    59
+Jurva	    59
+Savitaipale	    59
+Sundbyberg	    59
+Kälviä	    58
+Hyrynsalmi	    57
+Karjalohja	    57
+Minneapolis Mn	    57
+Nurmo	    57
+Parola	    57
+Haaparanta	    56
+Hirvensalmi	    56
+Vesilahti	    56
+Bratislava	    55
+Karvia	    55
+Sauvo	    55
+Siuntio	    55
+Göttingen	    54
+Kaleva Mi	    54
+Kauttua	    54
+Alahärmä	    53
+Masala	    53
+Pornainen	    53
+Tyrnävä	    53
+Vaala	    53
+Vähäkyrö	    53
+Kesälahti	    52
+Larsmo	    52
+Marttila	    52
+Puolanka	    52
+Aura	    51
+Evijärvi	    51
+Köyliö	    51
+Sofia	    51
+Noormarkku	    50
+Ruukki	    50
+Tervakoski	    50
+Toivakka	    49
+Inkeroinen	    48
+Kustavi	    48
+Polvijärvi	    48
+Solna	    48
+Sudbury	    48
+Sywell	    48
+Tervola	    48
+Toholampi	    48
+Fiskars	    47
+Miehikkälä	    47
+Utajärvi	    47
+Vihanti	    47
+Jaala	    46
+Juankoski	    46
+Littoinen	    46
+Siuro	    46
+Tuusniemi	    46
+Ypäjä	    46
+Askola	    45
+Chichester	    45
+Gladbach	    45
+Himanka	    45
+Pertteli	    45
+Athens	    44
+Jena	    44
+Kuorevesi	    44
+Maxmo	    44
+Pännäinen	    44
+Portland Or	    44
+Pyhtää	    44
+Gävle	    43
+Heidelberg	    43
+Kortesjärvi	    43
+Soini	    43
+Tankavaara	    43
+Bergen	    42
+Linköping	    42
+Överkalix	    42
+Sievi	    42
+Braunschweig	    41
+Konnevesi	    41
+Lapinjärvi	    41
+Luumäki	    41
+Merikarvia	    41
+Valamo	    41
+Alastaro	    40
+Halsua	    40
+Lavia	    40
+Maaninka	    40
+Nürnberg	    40
+Poznań	    40
+äetsä	    39
+Humppila	    39
+Kalanti	    39
+Peräseinäjoki	    39
+Sepänkylä	    39
+Sippola	    39
+Taipalsaari	    39
+Utrecht	    39
+Aanaar	    38
+Haapamäki	    38
+Los Angeles CA	    38
+New York Mills Mn	    38
+Tuuri	    38
+Vehmaa	    38
+Falun	    37
+Firenze	    37
+Kautokeino	    37
+Kiukainen	    37
+Rovaniemen maalaiskunta	    37
+Säynätsalo	    37
+Strängnäs	    37
+Terijoki	    37
+Ylämylly	    37
+Enonkoski	    36
+Hannover	    36
+Jyväskylän maalaiskunta	    36
+Kaavi	    36
+Lübeck	    36
+Oitti	    36
+Philadelphia Pa	    36
+Pohja	    36
+Sahalahti	    36
+Södertälje	    36
+Anttola	    35
+Artjärvi	    35
+Düsseldorf	    35
+Kausala	    35
+Lemi	    35
+Mietoinen	    35
+Ristijärvi	    35
+Ylinen	    35
+Bloomington	    34
+Bonn	    34
+Darmstadt	    34
+Dortmund	    34
+Höganäs	    34
+Kuru	    34
+Niinisalo	    34
+Ohcejohka	    34
+Pernaja	    34
+Port Arthur On	    34
+Pyhäsalmi	    34
+Töysä	    34
+Tübingen	    34
+Buenos Aires	    33
+Honkajoki	    33
+Jomala	    33
+Kvevlax	    33
+Nagu	    33
+Perho	    33
+Renko	    33
+Rotterdam	    33
+Somerniemi	    33
+Tarvasjoki	    33
+Uurainen	    33
+Wittenberg	    33
+Jämijärvi	    32
+Lappi	    32
+Lidingö	    32
+Palokka	    32
+Simo	    32
+Smedsby	    32
+Wurzburg	    32
+Houtskär	    31
+Luxemburg	    31
+Pomarkku	    31
+Ruotsinpyhtää	    31
+Skara	    31
+Taivassalo	    31
+Koski Tl	    30
+Lohtaja	    30
+Luopioinen	    30
+Matku	    30
+Pyhäranta	    30
+Rääkkylä	    30
+Skellefteå	    30
+Sundom	    30
+Villähde	    30
+Vuokatti	    30
+Zagreb	    30
+Glostrup	    29
+Hildesheim	    29
+Konginkangas	    29
+Multia	    29
+Myrskylä	    29
+Finström	    28
+Guovdageaidnu	    28
+Kiikoinen	    28
+Kinnula	    28
+Kouvolassa	    28
+Odense	    28
+Suorama	    28
+Terjärv	    28
+Vancouver	    28
+Vierumäki	    28
+Bucharest	    27
+Debrecen	    27
+Kalvola	    27
+Kellokoski	    27
+Kiihtelysvaara	    27
+Kisko	    27
+Lappi tl	    27
+Mouhijärvi	    27
+Sääksmäki	    27
+Siikainen	    27
+Tuupovaara	    27
+Vestby	    27
+Vihtijärvi	    27
+Ylikiiminki	    27
+Hirvas	    26
+Jönköping	    26
+Karijoki	    26
+Korpo	    26
+Lappenranta	    26
+Läyliäinen	    26
+Potsdam	    26
+Sammatti	    26
+Strasbourg	    26
+Tuulos	    26
+Akaa	    25
+Halli	    25
+Isojoki	    25
+Jäppilä	    25
+Lappfjärd	    25
+Lauritsala	    25
+Munsala	    25
+Novara	    25
+Nynäshamn	    25
+Pattijoki	    25
+Pertunmaa	    25
+Rusutjärvi	    25
+Tervajoki	    25
+Tromsö	    25
+Yläne	    25
+Ylihärmä	    25
+Dragsfjärd	    24
+Keitele	    24
+Kyrö	    24
+Lokalahti	    24
+Martinkylä	    24
+Münster	    24
+Söderkulla	    24
+äkäslompolo	    23
+Bucureşti	    23
+Hammarland	    23
+Helsingin maalaiskunta	    23
+Kiel	    23
+Kihniö	    23
+Kiikala	    23
+Krakow	    23
+Kungälv	    23
+Kyröskoski	    23
+Lievestuore	    23
+Otava	    23
+Ottawa	    23
+Pelkosenniemi	    23
+Piippola	    23
+Pusula	    23
+Pyhäjoki	    23
+Seattle WA	    23
+Suomenniemi	    23
+Varpaisjärvi	    23
+Beograd	    22
+Esse	    22
+Föglö	    22
+Haarlem	    22
+Jokela	    22
+Kannonkoski	    22
+Kiikka	    22
+Nummi	    22
+Pukkila	    22
+Rymättylä	    22
+Worcester Ma	    22
+Arles	    21
+Beaverton	    21
+Beijing	    21
+Brändö	    21
+Cambridge Ma	    21
+Freiburg im Breisgau	    21
+Gießen	    21
+Järvelä	    21
+Karttula	    21
+Kirjala	    21
+Koria	    21
+Längelmäki	    21
+Merimasku	    21
+Montreal	    21
+Päntäne	    21
+Paulo	    21
+Rautjärvi	    21
+Rusko	    21
+Simpele	    21
+Vuolijoki	    21
+Westport Ct	    21
+Ylämaa	    21
+ämmänsaari	    20
+Dalsbruk	    20
+Detroit Mi	    20
+Epilä	    20
+Fuengirola	    20
+Kauvatsa	    20
+Kivijärvi	    20
+Kökar	    20
+Lanham	    20
+Leivonmäki	    20
+Onkiniemi	    20
+övermark	    20
+Pöytyä	    20
+Purmo	    20
+Pyhätunturi	    20
+Raseborg	    20
+Tenala	    20
+Antwerp	    19
+Helsingborg	    19
+Huopalahti	    19
+Jorvas	    19
+Kylmäkoski	    19
+Kylmälä	    19
+K�benhavn	    19
+Pulkkila	    19
+Saariselkä	    19
+Tervo	    19
+Viljakkala	    19
+Virkkala	    19
+Vuorela	    19
+Baltimore Md	    18
+Halle	    18
+Kello	    18
+Kemiö	    18
+Kiev	    18
+Koskenkorva	    18
+Kuusjoki	    18
+Luxembourg	    18
+Mellilä	    18
+Nantes	    18
+Övertorneå	    18
+Princeton NJ	    18
+Pyhäntä	    18
+Savukoski	    18
+Sjundea	    18
+Solf	    18
+Trondheim	    18
+Vadso	    18
+Vampula	    18
+Gdansk	    17
+Godby	    17
+Groningen	    17
+Hajala	    17
+Harmondsworth	    17
+Haukivuori	    17
+Kantvik	    17
+Lakiala	    17
+Rantsila	    17
+Rautavaara	    17
+Veikkola	    17
+Weimar	    17
+Basingstoke	    16
+Bielefeld	    16
+Columbus OH	    16
+Istanbul	    16
+Itäsalmi	    16
+Kaipola	    16
+Kiljava	    16
+Lauttakylä	    16
+Lestijärvi	    16
+Piispanristi	    16
+Roskilde	    16
+Torino	    16
+Tuntematon	    16
+Vinkkilä	    16
+Vitsiälä	    16
+Augsburg	    15
+Budabest	    15
+Espoossa	    15
+Hämeenkoski	    15
+Helsset	    15
+Hong Kong	    15
+Karasjok	    15
+Leppävesi	    15
+Maaria	    15
+Melbourne	    15
+Naples	    15
+New Haven Ct	    15
+Pärnu	    15
+Pojo	    15
+Pörtom	    15
+Särkijärvi	    15
+Sumiainen	    15
+Sund	    15
+Suodenniemi	    15
+USA	    15
+Valtimo	    15
+Voikkaa	    15
+Aitolahti	    14
+Berkeley CA	    14
+Bologna	    14
+Bremen	    14
+Dar es salaam	    14
+Edinburgh	    14
+Essen	    14
+Gutersloh	    14
+Hellerup	    14
+Iittala	    14
+Jerusalem	    14
+Karlstad	    14
+Koski	    14
+Lappila	    14
+Larbey	    14
+Madison	    14
+Mainz	    14
+Merijärvi	    14
+Murole	    14
+Panelia	    14
+Parolannummi	    14
+Portland Me	    14
+Pyhäselkä	    14
+Replot	    14
+Saltvik	    14
+Särkisalo	    14
+Savero	    14
+Skogas	    14
+Sundsvall	    14
+Tusby	    14
+Uukuniemi	    14
+Vahto	    14
+Almena Wi	    13
+Amherst NH	    13
+Eilat	    13
+Geta	    13
+Havlickův brod	    13
+Iniö	    13
+Kantele	    13
+Karlskrona	    13
+Karunki	    13
+Kelvä	    13
+Kestilä	    13
+Koli	    13
+Korkeakoski	    13
+Kuhmalahti	    13
+Kuusisto	    13
+Lisbon	    13
+Loughborough	    13
+Luhanka	    13
+Marseille	    13
+Muurla	    13
+Ostfildern	    13
+Paul	    13
+Pitäjänmäki	    13
+Pylkönmäki	    13
+Tel Aviv	    13
+Tupos	    13
+Vanhalinna	    13
+Ankara	    12
+Cleveland Oh	    12
+Deventer	    12
+Härnösand	    12
+Harviala	    12
+Helsingin yliopisto	    12
+Hinnerjoki	    12
+Juupajoki	    12
+Karinainen	    12
+Kerkkoo	    12
+Kista	    12
+Kuivaniemi	    12
+Lemland	    12
+Liljendal	    12
+Minsk	    12
+Newcastle	    12
+Northampton	    12
+Nummi pusula	    12
+övermalax	    12
+Porvoon maalaiskunta	    12
+Ravensburg	    12
+Richmond	    12
+Riistavesi	    12
+Rio de Janeiro	    12
+Rukatunturi	    12
+Saari	    12
+Sairala	    12
+St cloud minn	    12
+Sudbury On	    12
+Sydney	    12
+Toivala	    12
+Valby	    12
+Visby	    12
+Aalborg	    11
+Anjala	    11
+Brabrand	    11
+Dragsvik	    11
+Eckerö	    11
+Eräjärvi	    11
+Francisco	    11
+Hyllykallio	    11
+Iirislahti	    11
+Joskar ola	    11
+Kilo	    11
+Kymenlaakso	    11
+Lumparland	    11
+Mannheim	    11
+Mexico	    11
+Narva	    11
+Norsborg	    11
+Oripää	    11
+Petalax	    11
+Quincy Ma	    11
+Schiphol rijk	    11
+Singapore	    11
+Söderbärke	    11
+Teheran	    11
+Torshavn	    11
+Varna	    11
+Älvsjö	    10
+Annonen	    10
+Den Haag	    10
+Frauenfeld	    10
+Grevenbroich	    10
+Haapsalu	    10
+Haavisto	    10
+Hammaslahti	    10
+Hampshire	    10
+Husula	    10
+Jokikunta	    10
+Karlsruhe	    10
+Katowice	    10
+Keikyä	    10
+Kimitoön	    10
+Korso	    10
+Lielahti	    10
+Luoto	    10
+Lyngby	    10
+Malaga	    10
+Mieslahti	    10
+Naarajärvi	    10
+Nedervetil	    10
+Nyköping	    10
+Paavola	    10
+Palsböle	    10
+Pankajärvi	    10
+Peipohja	    10
+Poitiers	    10
+Salzburg	    10
+Siivikkala	    10
+Szeged	    10
+Szentendre	    10
+Thunder bay	    10
+Tikkala	    10
+Torsby	    10
+Utti	    10
+Albany NY	     9
+Aminnefors	     9
+Bollstabruk	     9
+Charlottenlund	     9
+Chillicothe Oh	     9
+Clevedon	     9
+Dickursby	     9
+Emkarby	     9
+Eskilstuna	     9
+Harbor Oh	     9
+Härmä	     9
+Huddinge	     9
+Jokkmokk	     9
+Kaamanen	     9
+Kainuu	     9
+Kärrby	     9
+Kassel	     9
+Kaunas	     9
+Kirkniemi	     9
+Koivisto	     9
+Kontioranta	     9
+Kotalato	     9
+Kylämä	     9
+Kyyjärvi	     9
+Lahela	     9
+Lappohja	     9
+Lappvik	     9
+Lemu	     9
+Lepaa	     9
+Llandow	     9
+Manchester	     9
+Mikkelin maalaiskunta	     9
+Mommila	     9
+Mosku	     9
+Mustio	     9
+Palokki	     9
+Partaharju	     9
+Piscataway	     9
+Savonranta	     9
+Siikajoki	     9
+Stabekk	     9
+Syktyvkar	     9
+Tirane	     9
+Upinniemi	     9
+Uusikylä	     9
+Verona	     9
+Vesanka	     9
+Viinijärvi	     9
+Virkby	     9
+Virtasalmi	     9
+Yttermark	     9
+Aanar	     8
+Akureyri	     8
+Bobäck	     8
+Breslau	     8
+Cincinnati Oh	     8
+Gotha	     8
+Haarajoki	     8
+Högsara	     8
+Hoilola	     8
+Honkilahti	     8
+Horsholm	     8
+Illinois	     8
+Iowa City	     8
+Iowa city ia	     8
+Ishpeming Mi	     8
+Isnäs	     8
+Katinala	     8
+Kirvu	     8
+Koningsberg	     8
+Korppoo	     8
+Kullaa	     8
+Kuusamossa	     8
+Lima	     8
+Lohjan kunta	     8
+Luzern	     8
+Molpe	     8
+Mustiala	     8
+Pensala	     8
+Pjongjang	     8
+Pyhämaa	     8
+Riihikoski	     8
+Ruha	     8
+Saarenkylä	     8
+Sammaljoki	     8
+Särkisalmi	     8
+Siltakylä	     8
+Snappertuna	     8
+Sollentuna	     8
+Sundsberg	     8
+Talvisalo	     8
+Tapanila	     8
+Tel abib	     8
+Tonsberg	     8
+Tyrväntö	     8
+Uddevalla	     8
+Ullava	     8
+Venice	     8
+Aarau	     7
+Altenahr	     7
+Angered	     7
+Archangelsk	     7
+Ateena	     7
+Austin TX	     7
+Baden	     7
+Benalmadena	     7
+Bergö	     7
+Böle	     7
+Bromarf	     7
+Bukarest	     7
+Caen	     7
+Copper cliff	     7
+Degerby	     7
+Dronninglund	     7
+Einsiedeln	     7
+Grängesberg	     7
+Hankou	     7
+Havlick uv brod	     7
+Hietanen	     7
+Hitis	     7
+Huutotöyry	     7
+Ilola	     7
+Inha	     7
+Jääli	     7
+Jelgava	     7
+Joensuun	     7
+Johkamohkki	     7
+Karperö	     7
+Kilpisjärvi	     7
+Kiruna	     7
+Koblenz	     7
+Koivulahti	     7
+Kumlinge	     7
+Lepplax	     7
+Liimattala	     7
+Marburg	     7
+Minnesota	     7
+Nauvo	     7
+Neucha tel	     7
+Nuutajärvi	     7
+Paatene	     7
+Paipis	     7
+Petsmo	     7
+Pieksämä	     7
+Pilpala	     7
+Pjelax	     7
+Puuppola	     7
+Rautio	     7
+Regensburg	     7
+Reinbek	     7
+Röykkä	     7
+Saloinen	     7
+Spånga	     7
+Szombathely	     7
+Taavetti	     7
+Tromsa	     7
+Tvärminne	     7
+Unaja	     7
+Uusikarlepyy	     7
+Va sku la	     7
+Vanaja	     7
+Vårdö	     7
+Värtsilä	     7
+Vekaranjärvi	     7
+Velkua	     7
+Viikki	     7
+Virginia Mn	     7
+Vuorentausta	     7
+Wrocław	     7
+Yonkers NY	     7
+Ytteresse	     7
+Ahlainen	     6
+Aitoo	     6
+Askainen	     6
+Barösund	     6
+Breda	     6
+Calcutta	     6
+Cape Town	     6
+Cheltenham	     6
+Chisholm MN	     6
+Dublin	     6
+Edsevö	     6
+Eugmo	     6
+Grand rapids	     6
+Graz	     6
+Györ	     6
+Halifax NS	     6
+Hangonkylä	     6
+Harjamäki	     6
+Hasselt	     6
+Hedemora	     6
+Honkalampi	     6
+Hyvinge	     6
+Isafjördur	     6
+Israel	     6
+İstanbul	     6
+Itäkylä	     6
+Jyväskylän mlk	     6
+Kalax	     6
+Kangaslampi	     6
+Kemiönsaari	     6
+Kent	     6
+Kinkomaa	     6
+Kodisjoki	     6
+Kolding	     6
+Kolho	     6
+Köping	     6
+Korpijärvi	     6
+Kuukanniemi	     6
+Kyminlinna	     6
+Lannevesi	     6
+Lehmo	     6
+Lehtoi	     6
+Lepsämä	     6
+Leuven	     6
+Lewiston ny	     6
+Lincoln	     6
+Lumijoki	     6
+Lysekil	     6
+Maakeski	     6
+Marienhamn	     6
+Mölndal	     6
+München	     6
+Nottingham	     6
+Ohkola	     6
+Onttola	     6
+Oravainen	     6
+Örkelljunga	     6
+Paattinen	     6
+Palojoki	     6
+Peterburgʺ	     6
+Pieksämäen maalaiskunta	     6
+Pohjankuru	     6
+Puhos	     6
+Quebec	     6
+Raasepori	     6
+Rahola	     6
+Räyrinki	     6
+Ruvaslahti	     6
+Sääksjärvi	     6
+Sarajevo	     6
+Saransk	     6
+Säynätsalo otsopolku	     6
+Sheffield	     6
+Skatu as	     6
+Sottunga	     6
+Staffanstorp	     6
+Suomenlinna	     6
+Suresnes	     6
+Tainionkoski	     6
+Teisko	     6
+Tihran	     6
+Tolkis	     6
+Tolkkinen	     6
+Vadstena	     6
+Västerhankmo	     6
+Veitsiluoto	     6
+Verla	     6
+Vihtavuori	     6
+Voorburg	     6
+Wanchai hong kong	     6
+Zeist	     6
+Zug	     6
+Aalen	     5
+Austria	     5
+Birmingham	     5
+Bochum	     5
+Boden	     5
+Brisbane	     5
+Brno	     5
+Brush prairie wa	     5
+Enskede	     5
+Erlangen	     5
+Farnham	     5
+Garden City NY	     5
+Gasö	     5
+Hägersten	     5
+Hamari	     5
+Haninge	     5
+Hedenäset	     5
+Heinäjoki	     5
+Helsinkin	     5
+Helsinquia	     5
+Herford	     5
+Hollanti	     5
+Hull	     5
+Huuvari	     5
+Ilmarinen	     5
+Independence mn	     5
+Indre billefjord	     5
+Innsbruck	     5
+Jaakkima	     5
+Jepua	     5
+Jollas	     5
+Jurmo	     5
+Kaivanto	     5
+Karkulla	     5
+Kasiniemi	     5
+Kastelholm	     5
+Kauklahti	     5
+Kingston	     5
+Kosel	     5
+Koski hl	     5
+Kotala	     5
+Kovelahti	     5
+Kuggom	     5
+Kuni	     5
+Kuusa	     5
+Kuusjärvi	     5
+Lampertheim	     5
+Liège	     5
+Lihoslavl	     5
+Lille	     5
+Lohiranta	     5
+Lohjalla	     5
+Los gatos ca	     5
+Lugano	     5
+Maastricht	     5
+Martinniemi	     5
+Mbour	     5
+Milwaukee Wi	     5
+Minkiö	     5
+Montfort chalosse	     5
+Muijala	     5
+Murmansk	     5
+Nadendal	     5
+Nenonpelto	     5
+Niemenkylä	     5
+Nokialla	     5
+Nora	     5
+Norderstedt	     5
+Norrmark	     5
+Norwich	     5
+Novgorod	     5
+Nytorp	     5
+Offenbach am Main	     5
+Osnabrück	     5
+österhankmo	     5
+Otanmäki	     5
+Oulun	     5
+Paimela	     5
+Paisley	     5
+Pajala	     5
+Pforzheim	     5
+Pieksamäki	     5
+Pihlajavesi	     5
+Pihlava	     5
+Pinsiö	     5
+Piscataway nj	     5
+Rasivaara	     5
+Rauha	     5
+Riitiala	     5
+Rijeka	     5
+Rupara	     5
+Rutalahti	     5
+Saarbrucken	     5
+Säkinmäki	     5
+Saukkola	     5
+Seinäjoella	     5
+Sideby	     5
+Skövde	     5
+Sotkia	     5
+St cloud mn	     5
+Szczecin	     5
+Teijo	     5
+Temmes	     5
+Terälahti	     5
+Toruń	     5
+Tuohittu kumionpääntie	     5
+Valkkinen	     5
+Västerskog	     5
+Veikars	     5
+Vöyri	     5
+Yhdysvallat	     5
+Aachen	     4
+Altdorf	     4
+Alvettula	     4
+Amman	     4
+Belo horizonte	     4
+Boca raton fla	     4
+Botkyrka	     4
+Boulder colo	     4
+Bremerhaven	     4
+Brookfield Ma	     4
+Bussum	     4
+Canberra	     4
+Canterbury	     4
+Danderyd	     4
+Delhi	     4
+Drammen	     4
+Durham	     4
+Evo	     4
+Fiskari	     4
+Florence	     4
+Forsby	     4
+Gel singforsʺ	     4
+Glasgow	     4
+Grand Rapids Mi	     4
+Guovdageaidnu kautokeino	     4
+Hallstahammar	     4
+Hallstavik	     4
+Halmstad	     4
+Hämeenkylä	     4
+Harlow	     4
+Heinämaa	     4
+Heinolan maalaiskunta	     4
+Heinolassa	     4
+Hellanmaa	     4
+Helsig	     4
+Helsingby	     4
+Hoisko	     4
+Huruksela	     4
+Iisvesi	     4
+Ikkala	     4
+Iltasmäki	     4
+Jääli kokkotie	     4
+Jungsund	     4
+Kalix	     4
+Kämmenniemi	     4
+Karesuando	     4
+Karuna	     4
+Kaukas	     4
+Kaukonen	     4
+Kazan	     4
+Kecskemet	     4
+Kem	     4
+Kharkiv	     4
+Kimola	     4
+Kintaus	     4
+Kiviniemi	     4
+Kolkontaipale	     4
+Kotila	     4
+Kukonkylä	     4
+Kulho	     4
+Kulloo	     4
+Kuohu	     4
+Kurejoki	     4
+Kutajärvi	     4
+Lankojärvi	     4
+Lappee	     4
+Launonen	     4
+Leeuwarden	     4
+Lehre	     4
+Leppälahti	     4
+Leppävaara	     4
+Leppiniemi	     4
+Levi	     4
+Liikkala	     4
+Lisse	     4
+Loimaan kunta	     4
+Louis	     4
+Louvain	     4
+Ludvika	     4
+Luhtajoki	     4
+Luhtikylä	     4
+Luikonlahti	     4
+Luoma	     4
+Luosto	     4
+Lusaka	     4
+Mäntlahti	     4
+Middlesbrough	     4
+Miettilä	     4
+Mörskom	     4
+Moscu	     4
+Mouhijärvi hopuntie	     4
+Munich	     4
+Myllymäki	     4
+Nakertaja	     4
+Näljänkä	     4
+Narni	     4
+Narvik	     4
+Neuchatel	     4
+Neumunster	     4
+New London Ct	     4
+Newark NJ	     4
+Newton Abbot	     4
+Nijmegen	     4
+Norra vallgrund	     4
+Nuijamaa	     4
+Nuuk	     4
+Odessa	     4
+Ojakkala	     4
+Oldenburg	     4
+önningeby	     4
+Oosterhout nb	     4
+Paderborn	     4
+Palma	     4
+Palokki honkasalontie	     4
+Pelsonsuo	     4
+Perheniemi	     4
+Perttula	     4
+Piney	     4
+Plovdiv	     4
+Plymouth	     4
+Porvoon mlk	     4
+Puutikkala	     4
+Pyöli	     4
+Rautalammi	     4
+Reading	     4
+Revonlahti	     4
+Rock Island IL	     4
+Rosala	     4
+Sääminki	     4
+Sanktpeterburgʺ	     4
+Santtio	     4
+Säviä	     4
+Säyneinen	     4
+Seltjarnarnesi	     4
+Seoul	     4
+Sirkka	     4
+Sorsakoski	     4
+Stanford	     4
+Sunila	     4
+Suolahti opintie	     4
+Syvänniemi	     4
+Täby	     4
+Tana	     4
+Tanska	     4
+Tbilisi	     4
+Teerijärvi	     4
+Terni	     4
+Teru	     4
+Törmä	     4
+Tottijärvi	     4
+Tumba	     4
+Uhtua	     4
+Uimaharju	     4
+Uusikirkko	     4
+Välijoki	     4
+Vaskivesi	     4
+Västanfjärd	     4
+Växjö	     4
+Venetpalo	     4
+Visingsborg	     4
+Vojakkala	     4
+Vuoksenniska	     4
+Waalwijk	     4
+Wageningen	     4
+Waterloo	     4
+Waterloo ont	     4
+Winnipeg	     4
+Wis	     4
+Wuppertal	     4
+Ylämylly nenonpelto	     4
+Ylhäinen	     4
+Zaragoza	     4
+Zutphen	     4
+äänislinna	     3
+Abcoude	     3
+Ahvenkoski	     3
+äijälä	     3
+Ala	     3
+Alapitkä	     3
+Alta	     3
+Anetjärvi	     3
+Ängelholm	     3
+Assen	     3
+Atlanta ga	     3
+Augusta Me	     3
+Bangkok	     3
+Bari	     3
+Berklei	     3
+Bishopstone	     3
+Bjästa	     3
+Björkboda	     3
+Bollsta	     3
+Box	     3
+Brazil	     3
+Brentford	     3
+Bristol	     3
+Bussy georges	     3
+Champaign ill	     3
+Chapel hill nc	     3
+Columbia SC	     3
+Cop	     3
+Copper cliff ont	     3
+Crestwood ny	     3
+Deatnu	     3
+Dekalb ill	     3
+Dessau	     3
+Dormagen	     3
+East Lansing	     3
+East rutherford nj	     3
+Edmonton	     3
+Eerikkilä	     3
+Eindhoven	     3
+Eisingen	     3
+Englewood Cliffs NJ	     3
+Eskola	     3
+Exeter	     3
+Farsta	     3
+Foligno	     3
+Fors	     3
+Fort wayne ind	     3
+Fredensborg	     3
+Fredericia	     3
+Fredrikshavn	     3
+Frinton on sea	     3
+Gardonne	     3
+Gera	     3
+Ha no	     3
+Haaga instituutti kirjasto tietopalvelu	     3
+Hagfors	     3
+Hamm	     3
+Harjumaa	     3
+Härkmeri	     3
+Haslum	     3
+Hattuvaara	     3
+Haunia	     3
+Hautjärvi	     3
+Heilbronn	     3
+Heksinki	     3
+Helmstedt	     3
+Helsincissä	     3
+Helsingin kruununhaka	     3
+Helsingin pitäjä	     3
+Helsingofors	     3
+Helsinque	     3
+Herrljunga	     3
+Hietama	     3
+Hikiä	     3
+Hindersby	     3
+Hirvihaara	     3
+Hirvlax	     3
+Hoisko voutilantie	     3
+Hoplaks	     3
+Hormisto	     3
+Houten	     3
+Huhtamo	     3
+Husupyöli	     3
+Ihode	     3
+Iisvesi vesikiventie	     3
+Imatrankoski	     3
+Ithaca NY	     3
+Jaakkola	     3
+Jäminkipohja	     3
+Järvsö	     3
+Jockis	     3
+Julkujärvi	     3
+Jurva mäkeläntie	     3
+Jyäskylä	     3
+Jylhä	     3
+Jyrkkä	     3
+Kaarlela	     3
+Kairo	     3
+Kaitsor	     3
+Kakskerta	     3
+Kalevala	     3
+Kalkkinen	     3
+Kalmar	     3
+Kalmari	     3
+Kangashäkki	     3
+Kangasto	     3
+Käpylä	     3
+Karachi	     3
+Karas̆johka	     3
+Karisto	     3
+Karvoskylä	     3
+Käsämä	     3
+Kätkäsuvanto	     3
+Keski palokka	     3
+Kevelaer neukirchen vluyn	     3
+Kitwe	     3
+Klamila	     3
+Koebenhavn	     3
+Koenigstein	     3
+Koijärvi	     3
+Koitti tennintie	     3
+Kolkanlahti	     3
+Kolkki	     3
+Kolsva	     3
+Köngäs	     3
+Königstein	     3
+Kontiomäki	     3
+Korholanmäki	     3
+Korpilahti jussinpolku	     3
+Kortela	     3
+Koskö	     3
+Köyhänperä	     3
+Krasnoa rsk	     3
+Kukkila	     3
+Kulennoinen parantaantie	     3
+Kulju	     3
+Kumla	     3
+Kungsbacka	     3
+Kuortti	     3
+Kyynärö ämmätsäntie	     3
+Laajasalo	     3
+Labby skinnarby	     3
+Lahdenpohja	     3
+Lahnanen	     3
+Laholm	     3
+Lahr	     3
+Laihialla	     3
+Laitikkala	     3
+Lake worth fl	     3
+Lake worth fla	     3
+Landskrona	     3
+Lassila	     3
+Laukkoski	     3
+Laurium mich	     3
+Laxenburg	     3
+Le Mans	     3
+Lehteä	     3
+Lempaala	     3
+Leppäkaarre	     3
+Levoca	     3
+Lievestuore antintie	     3
+Liikola	     3
+Louhioja	     3
+Maalahti	     3
+Magdeburg	     3
+Majavesi	     3
+Malmberget	     3
+Malung	     3
+Manitouwadge ont	     3
+Mäntymäki	     3
+Mariestad	     3
+Martensby	     3
+Mauvezin	     3
+Melhus	     3
+Messilä	     3
+Messukylä	     3
+Mietaa	     3
+Mijas espanja	     3
+Mikkelin	     3
+Monticello ill	     3
+Montola	     3
+Munakka	     3
+Mupini	     3
+Murska sobota	     3
+Mustamäki	     3
+Muurola	     3
+Muuruvesi	     3
+Myrkky	     3
+Nairobi	     3
+Nancy	     3
+Nanjing	     3
+Niceville fl	     3
+Nijkerk	     3
+Norrtälje	     3
+Nukari	     3
+Nummijärvi	     3
+Numminen	     3
+Nunnanlahti	     3
+Nuppulinna	     3
+Nyiregyhaza	     3
+Oberursel	     3
+Oittila	     3
+Olkkala	     3
+Ollila	     3
+Olofström	     3
+Olten	     3
+Ondangwa	     3
+Oravi	     3
+Ostfildern ruit	     3
+överpurmo	     3
+Padua	     3
+Pakila	     3
+Palokka vuoripolku f	     3
+Palus	     3
+Pankakoski	     3
+Pantin	     3
+Pattaya	     3
+Pecs	     3
+Peking	     3
+Peltosalmi	     3
+Peterborough	     3
+Peura	     3
+Piehinki	     3
+Piehinki ylipääntie	     3
+Pieksänmaa	     3
+Pilkanmaa	     3
+Pilkanmaa lohikatu	     3
+Pisa	     3
+Pitkäniemi	     3
+Polvela	     3
+Porlammi	     3
+Porto	     3
+Punkaharju kulennoinen	     3
+Punkasalmi	     3
+Putkijärvi	     3
+Pyhäkumpu	     3
+Pyhältö	     3
+Pyhänkoski	     3
+Radebeul	     3
+Räisälä	     3
+Rakvere	     3
+Raleigh NC	     3
+Rasivaara tavintie	     3
+Raudaskylä	     3
+Rautionsaari	     3
+Rekola	     3
+Rennes	     3
+Reso	     3
+Riihikallio	     3
+Rijswijk	     3
+Rockville	     3
+Rovaniemen mlk	     3
+Rovaniemen mlk ylikyläntie	     3
+Rudyard mich	     3
+Runni	     3
+Ruotsi	     3
+Saimaanharju	     3
+Sakkola	     3
+Salf	     3
+Salpakangas	     3
+Salt Lake City Ut	     3
+Salta	     3
+Sammatti leikkiläntie	     3
+Säräisniemi	     3
+Saratov	     3
+Sault ste marie mich	     3
+Schwerin	     3
+Seiskari	     3
+Selänpää	     3
+Sevenoaks	     3
+Sieppijärvi	     3
+Sigtuna	     3
+Söderkulla massbyntie	     3
+Solothurn	     3
+St cloud	     3
+Stockton	     3
+Strömfors	     3
+Stroud	     3
+Sukeva	     3
+Sulva	     3
+Suojärvi	     3
+Suovanlahti	     3
+Svängsta	     3
+Taipei	     3
+Talma	     3
+Tarttila visavuorentie	     3
+Tarvaala	     3
+Tavastkenkä	     3
+Tenhola	     3
+Tervalampi	     3
+Tiberias	     3
+Tiffin oh	     3
+Töjby	     3
+Tölby	     3
+Tollered	     3
+Tolosenmäki	     3
+Tomsk	     3
+Törnävä	     3
+Torpinkylä	     3
+Torrevieja	     3
+Toulouse	     3
+Träskända	     3
+Tuovilanlahti	     3
+Turkhauta	     3
+Turnhout	     3
+Turun yliopisto	     3
+Tynkä	     3
+Tyresö	     3
+Ucciokk	     3
+Uccjuuha	     3
+Ulm	     3
+Ummeljoki	     3
+Untamala	     3
+Uotila	     3
+Vagnhärad	     3
+Vainikkala	     3
+Valax	     3
+Vallentuna	     3
+Valparaiso	     3
+Vehmainen	     3
+Veliko rnovo	     3
+Vesajärvi haapaniementie	     3
+Vicenza	     3
+Virenoja	     3
+Virojoki	     3
+Voltti	     3
+Vuokatti peipontie	     3
+Vuotso	     3
+Watford	     3
+Wernigerode	     3
+Wilmette illinois	     3
+Windhoek	     3
+Woodbridge NJ	     3
+Yeru salayim	     3
+Yli vuokki	     3
+Yyteri	     3
+Aabenraa	     2
+Aavaranta	     2
+Aavasaksa	     2
+Aberdeen	     2
+Ahkionlahti	     2
+Aijala	     2
+Aix-en-Provence	     2
+Akujärvi	     2
+Alahärmässä alahärmä	     2
+Alavuus	     2
+Albertslund	     2
+Albuquerque	     2
+Alingsås	     2
+Altenstein	     2
+Amersfoort	     2
+Angelniemi	     2
+Anhalt	     2
+Anjalankoski kenraalintie	     2
+Anjalankoski osmontie	     2
+Anjalankoski pihtojantie	     2
+Annapolis Md	     2
+Antskog	     2
+Arboga	     2
+Ashbourne	     2
+Ashburnham	     2
+Atglen pa	     2
+Bad godesberg	     2
+Bandoeng	     2
+Banja luka	     2
+Banstead	     2
+Banstead surrey	     2
+Bayrūt	     2
+Becs	     2
+Bekescsaba	     2
+Bergamo	     2
+Björköby	     2
+Blagoevgrad	     2
+Boca raton	     2
+Bogradec	     2
+Bollstad	     2
+Boulder	     2
+Box kringelmalmi	     2
+Bradford	     2
+Braniewo	     2
+Brescia	     2
+Bridgeport Ct	     2
+Brighton	     2
+Brysseli	     2
+Bunde	     2
+Caerdydd	     2
+Cangas do morrazo	     2
+Carbondale	     2
+Caserta	     2
+Celle	     2
+Charleston SC	     2
+Charlottelund	     2
+Chatham	     2
+Chatou	     2
+Chigaco	     2
+Cikmä	     2
+Cluj napoca	     2
+Cullowhee nc	     2
+Cuttack india	     2
+Dagsmark	     2
+Dallas	     2
+Dalsjöfors	     2
+Darra	     2
+Delmenhorst	     2
+Delsbo	     2
+Denver	     2
+Dijon	     2
+Djursholm	     2
+Dodoma	     2
+Dornbirn	     2
+Driebergen rijsenburg	     2
+Dubuque	     2
+Eduskunta	     2
+Eisenach	     2
+Elfrida az	     2
+Ely Mi	     2
+Emsalö	     2
+Englewood nj	     2
+Erevan	     2
+Erfurt	     2
+Eslöv	     2
+Espoon	     2
+Evanston	     2
+Eveleth minn	     2
+Faenza	     2
+Filipstad	     2
+Finby	     2
+Finspång	     2
+Flensburg	     2
+Flumserberg grossberg	     2
+Footscray	     2
+Förby	     2
+Forssassa	     2
+Fossa	     2
+Frazee minn	     2
+Fredriksberg	     2
+Fulda	     2
+Funchal	     2
+Gagnef	     2
+Gainesville	     2
+Gamlakarby	     2
+Garpenberg	     2
+Gdańsk	     2
+Gdynia	     2
+Genoa	     2
+Gent	     2
+Gerby	     2
+Gettysburg Pa	     2
+Gjeneve	     2
+Göppingen	     2
+Graasten	     2
+Gran canaria	     2
+Granada	     2
+Grasten	     2
+Grena	     2
+Grödinge	     2
+Grossostheim	     2
+Grue finnskog	     2
+Guildford	     2
+Guilford	     2
+Győr	     2
+Haaga	     2
+Haapaniemi	     2
+Haifa	     2
+Halden	     2
+Halikossa	     2
+Halkia	     2
+Hämeenkyrössä	     2
+Hämeenlinnna	     2
+Hammars	     2
+Hannula	     2
+Hannula kouluntie	     2
+Hanover NH	     2
+Harkiv	     2
+Harmoinen	     2
+Hatsola	     2
+Hauho kellarikuja	     2
+Hautakylä	     2
+Havanna	     2
+Havlickuv Brod	     2
+Heide	     2
+Heinlahti	     2
+Heinolan mlk	     2
+Helsigissä	     2
+Helsingiae	     2
+Helsingin mlk	     2
+Helsinginfors	     2
+Helsingistä	     2
+Helsingør	     2
+Helsinkiki	     2
+Helsinkis	     2
+Herajoki	     2
+Herlev	     2
+Herning	     2
+Hiekkaharju	     2
+Hiirola	     2
+Hiitola	     2
+Hillegom	     2
+Hillerod	     2
+Hillsdale nj	     2
+Hiltulanlahti	     2
+Hinnerup	     2
+Hinthaara	     2
+Hinwil	     2
+Högbacka	     2
+Högfors	     2
+Hohenlockstedt	     2
+Hommansby	     2
+Houghton Mi	     2
+Huddersfield	     2
+Hudiksvall	     2
+Huhus	     2
+Huissi	     2
+Hujakkala	     2
+Huopana	     2
+Husula töytärintie b	     2
+Huuvari makkelintie	     2
+Hvitträsk	     2
+Hyytiälä	     2
+Iaşi	     2
+Iijoki	     2
+Iittala iharannantie	     2
+Ilvesjoki	     2
+Immola	     2
+Indianapolis	     2
+Iowa	     2
+Iskmo	     2
+Istambul	     2
+Izevsk	     2
+Jääski	     2
+Jahkamahkke	     2
+Jakarta	     2
+Jakkula	     2
+Jakokoski	     2
+Järfälla	     2
+Jerevan	     2
+Jerusalajim	     2
+Johannesburg	     2
+Jokimaa jokimaantie	     2
+Jokipii	     2
+Jormua	     2
+Jose	     2
+Joutseno juhonkuja	     2
+Joutseno kalervontie as	     2
+Joutseno tasalantie	     2
+Jukaja	     2
+Julkula	     2
+Juokslahti	     2
+Jurmu	     2
+Jurmu jurmuntie	     2
+Jurvassa	     2
+Jyväskylän	     2
+Kaarenkylä	     2
+Kaasmarkku	     2
+Kaipiainen	     2
+Kaitainen	     2
+Kalanti nummelankuja	     2
+Kalby centrumvägen	     2
+Kallby	     2
+Kallislahti	     2
+Kämmenniemi aunessalmenkatu b	     2
+Kampen	     2
+Kangasalla	     2
+Kangaskylä	     2
+Känsälä	     2
+Kanteenmaa	     2
+Kanunki	     2
+Karasjoki	     2
+Karkkilä	     2
+Karlshamn	     2
+Karlskoga	     2
+Karvionkanava	     2
+Käsämä silmutie	     2
+Kasnäs	     2
+Kauhajärvi	     2
+Kaunianen	     2
+Kaustar	     2
+Kehro	     2
+Kellomäki	     2
+Kemin maalaiskunta	     2
+Kerma	     2
+Kevelaer	     2
+Kimitoö	     2
+Kirkland lake ont	     2
+Kirvus	     2
+Kisineu	     2
+Kisko suomusjärvi	     2
+Kitinoja	     2
+Klaukkala ruispolku	     2
+Kobenhamn	     2
+Kodiksami	     2
+Koirakoski	     2
+Koitti	     2
+Kojonperä	     2
+Kokkolassa	     2
+Kondopoga	     2
+Konnunsuo	     2
+Konnuslahti	     2
+Kontioniemi	     2
+Kopenhagena	     2
+Korkeaoja	     2
+Kormu	     2
+Kornwestheim	     2
+Koro	     2
+Korsbäck	     2
+Koskenpää	     2
+Koski tl järvenmaantie	     2
+Kostamo	     2
+Kostamus	     2
+Kostula	     2
+Kotalahti	     2
+Kovjoki	     2
+Krefeld	     2
+Krems	     2
+Kruusila	     2
+Kuivalahti	     2
+Kukkola	     2
+Kulennoinen	     2
+Kuohijoki	     2
+Kurjala	     2
+Kurkimäki	     2
+Kustannuspaikka tuntematon äetsä	     2
+Kustannuspaikka tuntematoni	     2
+Kuumu	     2
+Kvarnbo	     2
+Kvävlax	     2
+Kyjiv	     2
+Kyoto	     2
+Kyrösjärvi	     2
+La Paz	     2
+La vieille	     2
+Laakkola	     2
+Laaksolahti	     2
+Laitaatsilta	     2
+Laitala	     2
+Lampeter	     2
+Langenthal	     2
+Lanse	     2
+Lantana fl	     2
+Lapinkylä	     2
+Lapissa	     2
+Lapppeenranta	     2
+Lapväärtti	     2
+Larsmo larsmovägen	     2
+Laurila	     2
+Lawrence kan	     2
+Leer	     2
+Lehtola	     2
+Lehtola salkkoniementie	     2
+Leicester	     2
+Lembois	     2
+Lempäälässä	     2
+Leppälahti leppälahdentie	     2
+Leppävesi notkotie	     2
+Leverkusen	     2
+Lidköping	     2
+Liesjärvi	     2
+Lihoslavlja	     2
+Lillby	     2
+Lincolnwood ill	     2
+Litoměrice	     2
+Littoinen seponkatu	     2
+Livonsaari	     2
+Lobonäs voxnabruk	     2
+Lohilahti	     2
+Los alamitos	     2
+Louko	     2
+Lövö	     2
+Lublin	     2
+Lucka thur	     2
+Luis obispo	     2
+Luopajärvi	     2
+Lyly	     2
+Mahwah nj	     2
+Maliskylä huitulantie	     2
+Malmi	     2
+Mankala	     2
+Manotick	     2
+Marianhamina	     2
+Marquette	     2
+Märsta	     2
+Masala näsimäentie	     2
+Matinkylä	     2
+Maxmo tottesund	     2
+Mäyry	     2
+Mbeya	     2
+Meltola	     2
+Menlo park	     2
+Merikaarto	     2
+Messina	     2
+Metsämaa	     2
+Mickelsböle	     2
+Mickelspiltom	     2
+Mieskonmäki	     2
+Miskolc	     2
+Mödling	     2
+Monninkylä	     2
+Monterey tn	     2
+Montpellier	     2
+Mora	     2
+Mosabacka	     2
+Mountain View Ca	     2
+Mouthiers boeme	     2
+Muiderberg	     2
+Munknäs	     2
+Naamijoki	     2
+Naarden	     2
+Näätsaari	     2
+Nar	     2
+Narkaus	     2
+Negaunee mich	     2
+Neptune city nj	     2
+New Brunswick NJ	     2
+Newark	     2
+Newberry mich	     2
+Ni mes	     2
+Nice	     2
+Nickby	     2
+Nicosia	     2
+Niinijoki	     2
+Niinikoski	     2
+Niinisalo karhusaarentie	     2
+Niittylahti	     2
+Nilsiä paavontie	     2
+Nivelax	     2
+Nordhausen	     2
+Norman	     2
+Norrahammar	     2
+Nörrköping	     2
+Nummi haissijantie	     2
+Nummi hieranummentie	     2
+Nuoramoinen	     2
+Nykvarn	     2
+ödkarby	     2
+Oitti pihlajantie	     2
+Oitti tyhjälänkuja	     2
+Okavango	     2
+Oravala	     2
+Oravisalo	     2
+Oregon	     2
+Orismala	     2
+Osaka	     2
+Osara	     2
+Österbybruk	     2
+Ostrava	     2
+Otanäs	     2
+Owambo	     2
+Owatonna mn	     2
+Pääjärvi	     2
+Paide	     2
+Paihola	     2
+Pakinkylä	     2
+Palermo	     2
+Paneliassa	     2
+Päntäne paikallistie	     2
+Pappinen	     2
+Parkkuu	     2
+Parola vanhankirkontie	     2
+Partille	     2
+Pasadena calif	     2
+Pasvikdalen	     2
+Pattijoki lassintie	     2
+Peiping	     2
+Pelkie mich	     2
+Pellinge	     2
+Pellinki	     2
+Peninki	     2
+Peränkylä	     2
+Perkjärvi	     2
+Pernajan vanhakylä	     2
+Perniö lepistöntie	     2
+Perth	     2
+Petroskoissa	     2
+Petroskoj	     2
+Pfaffenweiler	     2
+Pietarsaaren maalaiskunta	     2
+Pihlajasaari	     2
+Pikkala	     2
+Pikonlinna	     2
+Pinjainen	     2
+Pirkkalassa	     2
+Pispala	     2
+Pitkäjärvi	     2
+Pittsburgh Pa	     2
+Poikko kantolantie	     2
+Poitsila	     2
+Pojanluoma	     2
+Pöljä	     2
+Pölläkkälä	     2
+Pontevedra	     2
+Porokylä	     2
+Preitilä	     2
+Pretoria	     2
+Prishtine	     2
+Punjab	     2
+Pyongyang	     2
+Pyssyjoki	     2
+Quito	     2
+Raahensalo	     2
+Raatala	     2
+Rahja	     2
+Raikku	     2
+Räisälänmäki	     2
+Rajsio	     2
+Randers	     2
+Rastatt	     2
+Rautila	     2
+Red Jacket Mi	     2
+Reposaari	     2
+Rissala	     2
+Ristakallio pajula	     2
+Risulahti	     2
+Riverside calif	     2
+Rochester	     2
+Rock mich	     2
+Roismala	     2
+Rokua	     2
+Rosenheim	     2
+Rouen	     2
+Routio	     2
+Rovaniemellä	     2
+Rungsted	     2
+Rungsted kyst	     2
+Ruosniemi	     2
+Ruotila	     2
+Ruotsalo	     2
+Ruto	     2
+Ruuhimäki	     2
+Rytinki	     2
+Ryttylässä	     2
+Säffle	     2
+Saija	     2
+Säkkijärvi	     2
+Salmentaka	     2
+Salmijärvi	     2
+Salmon id eteläinen rouvinperä	     2
+Salossa	     2
+Santa monica	     2
+Santala	     2
+Santander	     2
+Santiago	     2
+Saskatchewan	     2
+Saue	     2
+Savio	     2
+Scarborough	     2
+Scheveningen	     2
+Schönbuhl	     2
+Schoorl	     2
+Schweinfurt	     2
+Sevettijärvi	     2
+Sidney	     2
+Siikaranta	     2
+Siikava	     2
+Simanala	     2
+Simrishamn	     2
+Sinettä	     2
+Sinettä verstaspolku	     2
+Sisättö	     2
+Sissala	     2
+Sivakkavaara	     2
+Skaftung	     2
+Skogby	     2
+Skuru	     2
+Smabönders	     2
+Smithville Mn	     2
+Smolensk	     2
+Solana beach ca	     2
+Söörmarkku	     2
+Soul	     2
+Sŏul	     2
+Springfield Ma	     2
+St castillon	     2
+St egreve	     2
+St karins	     2
+Stamford	     2
+Stierstadt taunus	     2
+Stralsund	     2
+Strandnäs	     2
+Suinula	     2
+Suistamo	     2
+Sundbury ont	     2
+Sunderland	     2
+Suolahdessa	     2
+Surahammar	     2
+Surrey	     2
+Suupohja	     2
+Syvänniemi louhulantie	     2
+Syvärauma	     2
+Szekesfehervar	     2
+Taalintehdas	     2
+Taklax	     2
+Tammijärvi	     2
+Tammisalo	     2
+Tampereen yliopisto	     2
+Tarttila	     2
+Taunton	     2
+Thunder bay ont	     2
+Tirana	     2
+Tiuriniemi	     2
+Tiviä	     2
+Todmorden	     2
+Toisvesi	     2
+Tollarp	     2
+Topeka	     2
+Tornea	     2
+Totonvaara	     2
+Tours	     2
+Treviso	     2
+Trier	     2
+Trieste	     2
+Trollhättan	     2
+Tromssa	     2
+Tu men	     2
+Tucson	     2
+Tuiskula	     2
+Tuku	     2
+Tunbridge Wells	     2
+Tunkkari	     2
+Tuomikylä	     2
+Tuppila	     2
+Turtola	     2
+Turu	     2
+Turun runosmäessä	     2
+Tver	     2
+Udupi	     2
+Uimaniemi	     2
+Ukarumpa	     2
+Urbana	     2
+Uusikaarleypyy	     2
+Vaajakoski haapatie	     2
+Vaajakoski oikopolku	     2
+Vääksy kissalankuja	     2
+Väätäiskylä	     2
+Vaattojärvi	     2
+Valencia	     2
+Valkama	     2
+Valkeakoskella	     2
+Vallgrund	     2
+Vällingby	     2
+Valo	     2
+Vanhakylä	     2
+Vanhala	     2
+Varberg	     2
+Vasarainen	     2
+Väsby	     2
+Vaskio	     2
+Vassor	     2
+Västra frölunda	     2
+Vehkataipale	     2
+Vejle	     2
+Velaatta	     2
+Veneranta	     2
+Venetmäki	     2
+Verkkoranta	     2
+Vesivehmaa	     2
+Veszprem	     2
+Vichtis	     2
+Victoria	     2
+Viherlaakso	     2
+Vihtavuori haavistontie	     2
+Viitasaarella	     2
+Vikajärvi	     2
+Viljandi	     2
+Vilnus	     2
+Virranniemi	     2
+Virttaa	     2
+Visuvesi	     2
+Vittangi	     2
+Voikoski	     2
+Vorna	     2
+Vuonislahti	     2
+Vuorela laaksopolku	     2
+Vuosaaressa	     2
+Warszava	     2
+Waukegan ill	     2
+Weinheim	     2
+West branch ia	     2
+Westmead	     2
+Wetherby	     2
+Wilmington De	     2
+Winterthur	     2
+Wolowiec	     2
+Yerevan	     2
+Yerushalayim	     2
+Ylimuonio	     2
+Ylipää	     2
+Ylläsjärvi äkäslompolo	     2
+Yokohama	     2
+York	     2
+Zarasuose	     2
+Żary	     2
+αthena	     2
+Aabyh�j	     1
+äänekoskella	     1
+Aarberg	     1
+Aavasaksa asemakuja	     1
+Abenra	     1
+Aberytswyth	     1
+äbo	     1
+Abyhoj	     1
+Addis ababa	     1
+Adelaide	     1
+äetsä harjuntie	     1
+Agelby	     1
+Ahkiolahti	     1
+Ahlainen ämttööntie	     1
+Ahlaisissa blummikuja	     1
+Ahmeek mich	     1
+Ahonpelto	     1
+ähtävä	     1
+Ahveninen	     1
+Ahvenisto	     1
+Ahvensalmi	     1
+äijänneva	     1
+Aitoo urheilukentäntie	     1
+äitsaari	     1
+äitsaari konttorintie	     1
+Akaassa	     1
+äkäsjoensuu	     1
+Akobstad	     1
+Akranes	     1
+Alahärmä ylihärmä	     1
+Alakeitele	     1
+Alakemijoki	     1
+Alankomaat	     1
+Alaskylä	     1
+Alaskylä alaskyläntie	     1
+Alastaipale	     1
+Alastaro kustannuspaikka tuntematon	     1
+Alastaro opintie	     1
+Alattio	     1
+Albrechtice	     1
+Alexandria Va	     1
+Alfend	     1
+Alfragide	     1
+Algarve	     1
+Alges	     1
+Allendorf eder	     1
+Allingsas	     1
+Almaty	     1
+Almeria spain	     1
+Almunge	     1
+Alpua	     1
+Alsten	     1
+Alvieska	     1
+Alvito	     1
+Alzey	     1
+Amadavad	     1
+Amadora	     1
+Amboland	     1
+Amersham	     1
+Ames	     1
+Ames IA	     1
+Aminnefors lillforsvägen	     1
+Aminnefors lillförsvägen	     1
+Anaheim ca	     1
+Anar nikulanperäntie	     1
+Anaris	     1
+Ancona	     1
+Andersböle	     1
+Ånge	     1
+Angers	     1
+Anianpelto	     1
+Anjalankoski etc	     1
+Anjalankoski heikkiläntie	     1
+Anjalankoski katteluksentie	     1
+Anjalankoski koulutie	     1
+Anjalankoski päätie	     1
+Anjalankoski saunamäentie	     1
+Anjalankoski tammenmäentie	     1
+Anjalankoski terholantie	     1
+Apali	     1
+Ardsley ny	     1
+Arezzo	     1
+Arkala	     1
+Arlington va	     1
+Armisvesi	     1
+Arneberg	     1
+Aro	     1
+Arrakoski	     1
+Arras	     1
+Artjärvi sikontie	     1
+Arusha tanzania	     1
+Arvika	     1
+Aschersleben	     1
+Åseda	     1
+As̆gabat	     1
+Asikkalan vääksyssä	     1
+Aska	     1
+Asker	     1
+Askersund	     1
+Asslar	     1
+Aston clinton	     1
+Atena	     1
+Athina	     1
+Athinae	     1
+Augusta	     1
+Aurora minn	     1
+Australia	     1
+Auttoinen	     1
+Auvainen	     1
+Ava	     1
+Aviero	     1
+Axevalla	     1
+Axvall	     1
+äyrinmäki	     1
+äystö	     1
+B lgaria	     1
+Ba le	     1
+Ba rlad	     1
+Baarn	     1
+Bacharach rh	     1
+Bad homburg dh	     1
+Bad honnef	     1
+Bad orb	     1
+Bad Segeberg	     1
+Bad Wörishofen	     1
+Bagdad	     1
+Bagsvaerd	     1
+Baile atha cliath	     1
+Bairūt	     1
+Ballerup	     1
+Balve iw	     1
+Ban luka	     1
+Bandhagen	     1
+Bandung	     1
+Barcarena	     1
+Barga	     1
+Bargo	     1
+Barnet	     1
+Bärosund	     1
+Barre	     1
+Barrytown ny	     1
+Bayonne NJ	     1
+Beer sheva	     1
+Begrolles mauges	     1
+Beirut	     1
+Bekkestua	     1
+Belfagor	     1
+Belfast	     1
+Bengtfors	     1
+Bennas	     1
+Berks	     1
+Bertby	     1
+Beuvry	     1
+Beverly hills	     1
+Biere	     1
+Bigfork minn	     1
+Binghamton	     1
+Binghamton ny	     1
+Bjärno	     1
+Bjöneborg	     1
+Björkö	     1
+Blackburn	     1
+Bloomfielf hills	     1
+Bne brak	     1
+Boca raton fl	     1
+Böda	     1
+Bodo	     1
+Bognor Regis	     1
+Bokhandelsdistr	     1
+Bollnäs	     1
+Bombay	     1
+Borgen	     1
+Borgenhaugen	     1
+Borgomanero	     1
+Borlänge	     1
+Börrum	     1
+Boskovice	     1
+Bosund	     1
+Bosund larsmo	     1
+Boulogne-sur-Mer	     1
+Bourges	     1
+Bournemouth	     1
+Boxbacka	     1
+Bracknell berkshire	     1
+Brasilia	     1
+Brasilla	     1
+Brasov	     1
+Bratislawa	     1
+Brattleboro Vt	     1
+Braunton	     1
+Bredsten	     1
+Brimson fairbanks bassett minn	     1
+British virgin islands uk	     1
+Bro	     1
+Brockhampton	     1
+Broga	     1
+Bromarv	     1
+Bruges	     1
+Brumunddal	     1
+Brunn	     1
+Buckinghamshire	     1
+Bucures̜ti	     1
+Bucureştu	     1
+Buffalo	     1
+Buharest	     1
+Bulolo	     1
+Buntingford	     1
+Burgsvik	     1
+Burgwedel	     1
+Burlington NJ	     1
+Burnaby	     1
+Burnaby bc	     1
+Butte	     1
+Cadolzburh	     1
+Calgary	     1
+California	     1
+Calton	     1
+Camarillo calif	     1
+Camden	     1
+Caministiquia ont ca	     1
+Caministiquia ont pot ca	     1
+Canton	     1
+Capetown	     1
+Caracas	     1
+Carcassonne	     1
+Carhaix	     1
+Carlton mn	     1
+Carmignano	     1
+Carnaxide	     1
+Carouge	     1
+Carrollton tx	     1
+Casalvelino scalo	     1
+Caux	     1
+Ce vetjäu rr	     1
+C̆e ́vetjäu ́rr	     1
+Cedar grove wi	     1
+Cegled	     1
+Cha teauneuf charente	     1
+Cham	     1
+Champaign il	     1
+Changsha	     1
+Chapel Hill	     1
+Charleroi	     1
+Chassell mich	     1
+Chelmsford	     1
+Cherbourg	     1
+Cherves	     1
+Chiangmai	     1
+China	     1
+Claremont ca	     1
+Claremont calif	     1
+Clarens	     1
+Clayton	     1
+Clear Creek UT	     1
+Clevedon avon	     1
+Cliffside park nj	     1
+Cloquet minn	     1
+Cloud minn	     1
+Cluj-Napoca	     1
+Cobenhagen	     1
+College station tx	     1
+Collegeville minn	     1
+Combas	     1
+Copenaghen	     1
+Copper country	     1
+Cordoba	     1
+Cornell	     1
+Corvallis	     1
+Corvallis or	     1
+Covington	     1
+Covington mich	     1
+Cracow	     1
+Cranbury nj	     1
+Crisholm minn	     1
+Croesor	     1
+Crystal falls mich	     1
+Csikszereda	     1
+Culpeper va	     1
+Culver city ca	     1
+Cuttack orissa	     1
+Czȩstochowa	     1
+Daetnu	     1
+Dahlsbruk	     1
+Dakar	     1
+Dalgränsen	     1
+Dallas ga	     1
+Dartmouth	     1
+Deatnu ohcejohka	     1
+Dehra dun	     1
+Deje	     1
+Delta bc	     1
+Denklingen	     1
+Denmark	     1
+Denton texas	     1
+Derbrecen	     1
+Detmold	     1
+Dgragsfjärd	     1
+Dharwar	     1
+Diego	     1
+Dieren	     1
+Döhnsdorf	     1
+Don mills	     1
+Donato val comino	     1
+Doornspijk	     1
+Doornwerth	     1
+Dornach	     1
+Downers grove ill	     1
+Dragsfjärd dalbruk	     1
+Dragsfjärd furulundsvägen	     1
+Dragsvoll	     1
+Drottningholm	     1
+Dubra	     1
+Dubuque iowa	     1
+Duisburg	     1
+Dunvegan	     1
+Dunwoody	     1
+Durango colorado	     1
+Dusanbe	     1
+Dyfed	     1
+Dyssegaard	     1
+East lansing mich	     1
+East lansing michigan	     1
+East stroudsburg pa	     1
+Eastbourne	     1
+Eckental	     1
+Eckental eckenhaid	     1
+Eckernförde	     1
+Edeleny	     1
+Eden prairie mn	     1
+Edistys	     1
+Egilstadir	     1
+Eibar	     1
+Eichstätt	     1
+Ekdoseis akritas	     1
+Ekenas	     1
+Ekerö	     1
+Ekestad	     1
+Eksjö	     1
+El cerrito ca	     1
+Elämäjärvi	     1
+Elberfeld	     1
+Elbingen	     1
+Elimäki kumputie	     1
+Elimäki vaskirinteentie b	     1
+Elimäki vuorelantie	     1
+Elok mpungu	     1
+Elsinki	     1
+Elva	     1
+Emäsalo	     1
+Emsalö emsalövägen	     1
+Enäjärvi	     1
+Englewood cliffs	     1
+Englewood colo	     1
+Engmo	     1
+Enköping	     1
+Eno heintie	     1
+Eno hopantie	     1
+Eno louhioja	     1
+Eno välitie	     1
+Enschede	     1
+Enso	     1
+Erzhausen	     1
+Escondido calif	     1
+Esko	     1
+Esko minn	     1
+Espanja	     1
+Espo	     1
+Espooo	     1
+Essex	     1
+Esslingen	     1
+Eteläinen	     1
+Eteläinen rouvinperä	     1
+Etienne	     1
+Etsebö	     1
+Etterstad	     1
+Eurajoella	     1
+Europe	     1
+Eveleth Mi	     1
+Evenskjer	     1
+Evevijärvi	     1
+Evitskog	     1
+F kustannus	     1
+Fagervik	     1
+Fairbanks ak	     1
+Fairport oh	     1
+Falkenberg	     1
+Fana	     1
+Farmington hills	     1
+Farmington hills mich	     1
+Fatick	     1
+Fauske	     1
+Faxe	     1
+Fellbach	     1
+Filpus	     1
+Finnland	     1
+Firenz e	     1
+Flisa	     1
+Floda	     1
+Florida	     1
+Folkestone	     1
+Foroyar	     1
+Forsa	     1
+Fort bragg calif	     1
+Fouenant	     1
+Fransisco calif	     1
+Frederiksberg	     1
+Frederikshavn	     1
+Freeport ny	     1
+Freie	     1
+Freimund	     1
+Fribourg	     1
+Friedrichshafen	     1
+Friisilä	     1
+Fritsla	     1
+Frunze	     1
+Ft lauerdale fla	     1
+Furtwangen	     1
+Furuholmen	     1
+Furuholmen västra strandvägen	     1
+Furulund	     1
+Gabrovo	     1
+Gallarate	     1
+Gällivare	     1
+Gammelby	     1
+Gammelby baggböle	     1
+Gangas do morrazo cangas	     1
+Gapmas	     1
+Gardsden al	     1
+Garesavvon	     1
+Gatineau	     1
+Gausdal	     1
+Gelsingforsi	     1
+Gelsinki	     1
+Genadendal	     1
+Genenva	     1
+Ghent	     1
+Ghum p darjeeling w bengal	     1
+Gidea	     1
+Giesen	     1
+Gillhov	     1
+Gland	     1
+Gland sveitsi	     1
+Glenrothes	     1
+Gloggnitz	     1
+Gölby	     1
+Gosford au	     1
+Goshword au	     1
+Goslar	     1
+Gottby	     1
+Gouvdageaidnu kautokeino	     1
+Graested	     1
+Gransk	     1
+Graymoor garrison ny	     1
+Grenoble	     1
+Grodinge	     1
+Grue	     1
+Guizhou province	     1
+Gumligen	     1
+Guovdagaei dno	     1
+Guovdageaidnu kantokeino	     1
+Guovdageainnu	     1
+Guterloh	     1
+Gyor	     1
+H ki tuulimyllyntie	     1
+Haapajävi	     1
+Haapamäki lehtitie	     1
+Haapamäki pihlajavedentie	     1
+Haapasaari	     1
+Habarovsk	     1
+Haderslev	     1
+Hafnarfjardar	     1
+Häijää	     1
+Haiko	     1
+Haina kloster	     1
+Hajala piintiläntie	     1
+Hakkasbyn	     1
+Häkkilä	     1
+Hakojärvi	     1
+Halberstadt	     1
+Halikko ankkurikallio angelniemi	     1
+Halikko kuusjoki	     1
+Halikko luumukuja	     1
+Halikko salontaantie	     1
+Halikko toltintie as	     1
+Halikossa piintiläntie hajala	     1
+Hallebo sommen	     1
+Hällestad	     1
+Halli juvenes	     1
+Halssila	     1
+Halstahammar	     1
+Halstahammar oxelbacksvägen	     1
+Hamari puistotie e	     1
+Hamburgsund	     1
+Hämeeninna	     1
+Hämeenlina	     1
+Hameenlinna	     1
+Hämeenlinnan	     1
+Hämevaara	     1
+Hamilton	     1
+Hammaslahti hammasjärventie	     1
+Hammenhög	     1
+Hämmenkoski	     1
+Hammerfest	     1
+Hamula	     1
+Hanau	     1
+Hangastenmaa	     1
+Hangoby	     1
+Hanhijoki	     1
+Hanhitaipale	     1
+Hann munden	     1
+Hanna WY	     1
+Hannula heinäniementie	     1
+Häntälä	     1
+Häntälä nikulantie	     1
+Hapua	     1
+Harja	     1
+Harju	     1
+Harjvalta	     1
+Härnosand	     1
+Harrisburg Pa	     1
+Harrow	     1
+Harrström	     1
+Harsböle	     1
+Harstad	     1
+Harvard	     1
+Harvlax	     1
+Hästbacka	     1
+Hatsina	     1
+Hattorf am harz	     1
+Hattuvaara hattuvaarantie	     1
+Hauho kotkontie	     1
+Hauho tierpintie	     1
+Hauho tuittulantie	     1
+Haukijärvi	     1
+Haukipudas ylikiiminki	     1
+Haukiputaa	     1
+Haukiranta	     1
+Haukivuori karhutie	     1
+Haukivuori keskustie	     1
+Haukivuori pohjanlahdentie	     1
+Haukjärvi	     1
+Hautajärvi karhujärventie	     1
+Havukoski	     1
+Hawthorn	     1
+He erxinji	     1
+Hebel	     1
+Heikinkylä	     1
+Heisinki	     1
+Helinki	     1
+Helisnki	     1
+Helnävesi	     1
+Hels inki	     1
+Helsgfors	     1
+Helsigist	     1
+Helsin	     1
+Helsin ki	     1
+Helsingby skurasvägen	     1
+Helsinge kommun	     1
+Helsingforsae	     1
+Helsingforsi	     1
+Helsingforss	     1
+Helsingin kaupunki	     1
+Helsingin kaupunki yleiskaavaosasto kaupunkisuunnitteluvirasto	     1
+Helsingisssä	     1
+Helsingist	     1
+Helsingrors	     1
+Helsini	     1
+Helsiniki	     1
+Helsinkii	     1
+Helsinkium	     1
+Helsinsinki	     1
+Helsisnki	     1
+Helsnki	     1
+Helsseqist	     1
+Helsset roavvenjarga	     1
+Hempstead	     1
+Henley-on-Thames	     1
+Hennala	     1
+Hereford	     1
+Herrala	     1
+Herrlunga	     1
+Hershey pa	     1
+Herushinki	     1
+Herzberg harz pöhlde	     1
+Heslinki	     1
+Hestra	     1
+Hetejärvi	     1
+Hetejärvi hetejärventie	     1
+Hetejärvi hetekyläntie	     1
+Hevonpää	     1
+Hfrs	     1
+Higgins australia	     1
+Hiidenniemi	     1
+Hiitelä	     1
+Hiivola	     1
+Hikiä karhinraitti	     1
+Hillosensalmi	     1
+Hillsdale ny	     1
+Himanka juoponperäntie	     1
+Hindersböle	     1
+Hindhar	     1
+Hinnerjoella	     1
+Hinthaara tyysterintie	     1
+Hirulax	     1
+Hirvelä	     1
+Hirvensalo	     1
+Hirvijärvi	     1
+Hirvijoki	     1
+Hirvilahti	     1
+Hirvivaara	     1
+Hista	     1
+Historia nykyisyys vahvistavat kasvit	     1
+Hitchin	     1
+Hiukkajoki	     1
+Hiukkajoki hälvänmäentie	     1
+Hjørring	     1
+Hoboken nj	     1
+Höchstadt	     1
+Högbacka mustikkapaikka	     1
+Hohengehren	     1
+Höljäkkä	     1
+Hollolassa	     1
+Holt	     1
+Homewood illinois	     1
+Honkilahti kallionpääntie	     1
+Honolulu	     1
+Hoorn	     1
+Hormajärvi	     1
+Horn	     1
+Horsens	     1
+Horsmanaho	     1
+Houtskari	     1
+Houtskärs	     1
+Hove	     1
+Høvik	     1
+Huhdasjärvi paljakantie b	     1
+Huhmarkoski	     1
+Huhmarniemi	     1
+Huhtilampi	     1
+Huizen	     1
+Hulst	     1
+Humlebaek	     1
+Hummovaara	     1
+Humpila	     1
+Huopanankoski	     1
+Hupeh	     1
+Hurissalo	     1
+Hurskaala	     1
+Huskvarna	     1
+Husula leiritie	     1
+Husum	     1
+Huutjärvi	     1
+Huutoniemi	     1
+Hvidovre	     1
+Hyllykallio ohdakepolku	     1
+Hyrsynkulma	     1
+Hyvinge hyvinkäänkatu	     1
+Hyvinkäää	     1
+Hyvinkäällä	     1
+Hеlsinki	     1
+Idstein	     1
+Ihamaniemi	     1
+Ihode ihodenkylätie	     1
+Ihode polttilantie	     1
+Iisalmessa	     1
+Iivislahti	     1
+Ilfracombe	     1
+Illo	     1
+Ilmajoella	     1
+Ilmolahti	     1
+Imarta	     1
+Impilahti	     1
+Indiana	     1
+Ingelheim am rhein	     1
+Inget	     1
+Ingham	     1
+Inhan tehtaat saarikyläntie	     1
+Inkere	     1
+Inkeri	     1
+Inkeroinen päätie	     1
+Inkeroisissa	     1
+Insjön	     1
+Ipswich	     1
+Isernhagen	     1
+Islamabad	     1
+Iso äiniö	     1
+Iso britannia	     1
+Isokoski	     1
+Isokylä	     1
+Ithaka ny	     1
+Ivalo pekkala	     1
+Ivalo saarineitamontie	     1
+Ivalo sairaalantie	     1
+Ivalo takkatie	     1
+Izola	     1
+Jaala ahvenistontie	     1
+Jaala kyröntie	     1
+Jääli männikkötie	     1
+Jaatila	     1
+Jabalur	     1
+Jabobstad	     1
+Jacobson Mi	     1
+Jadotville	     1
+Jakkamakkis	     1
+Jakkukylä tuomalanperäntie	     1
+Jakobstads	     1
+Jalasto	     1
+Jämsänkoski jämsäntie	     1
+Jämsänkoski koulutie	     1
+Jämsänkoski linnamäentie	     1
+Jämsänkoski puutarhurintie	     1
+Jämsänkoski rintalantie	     1
+Jämsänkoski virtasalmentie	     1
+Jämsässä	     1
+Janis abucs	     1
+Jäppilä honkalantie	     1
+Jäppilä syvänsi	     1
+Järvelä kaarelantie	     1
+Järvelä kumputie	     1
+Järvelä pl	     1
+Järventaus	     1
+Järventausta	     1
+Järvikylä	     1
+Javea alicante	     1
+Jeesiö	     1
+Jeppu	     1
+Jinan shi	     1
+Jjoensuu	     1
+Jõeääre raplamaa	     1
+Joenkylä näätäläntie	     1
+Joensuuu	     1
+Jokimaa	     1
+Jokioisilla	     1
+Jokobstad	     1
+Jongunjoki	     1
+Jönsböle	     1
+Jordania	     1
+Jordansböle	     1
+Jormua mustarannantie	     1
+Jorvas hirsolantie	     1
+Jorvas lill nägelsinrinne	     1
+Joupinkylä	     1
+Joutseno rantatie	     1
+Joutseno saimaantie b	     1
+Jumesniemi	     1
+Juokslahti morvantie	     1
+Juonikylä	     1
+Juonikylä kauhajärventie	     1
+Juopuli	     1
+Juornaankylä	     1
+Jūrmala	     1
+Jurva järvenpääntie	     1
+Jurva kauppatie	     1
+Juurikkamäki	     1
+Juurikorpi	     1
+Jväskylä	     1
+Jylhä aromaantie	     1
+Jyrinki rautiontie	     1
+Jyväksylä	     1
+Jyvaskylä	     1
+Jyväskylän maalaiskunta sievisenmäentie	     1
+Jyvsäkylä	     1
+Kaa ni	     1
+Kaapstaad	     1
+Kaarenkylä huovilanmutka	     1
+Kaarlahti	     1
+Käärmelahti	     1
+Kaarnalampi	     1
+Kaatamo	     1
+Käinby	     1
+Kaipola paperimiehenpolku	     1
+Kaipola simpeleentie	     1
+Kaisajoki	     1
+Kaisajoki sivakkajoentie	     1
+Kaitsor österövägen	     1
+Kaivanto inkinkärjentie	     1
+Kajaanin	     1
+Kakkuri	     1
+Kalajokilaakso	     1
+Kalamazoo	     1
+Kalaniemi	     1
+Kalanti as	     1
+Kalanti hasutanhua	     1
+Kalanti kappelintie	     1
+Kalanti männäistenkoskentie	     1
+Kalby	     1
+Kaleton	     1
+Kalevala uhtua	     1
+Kalifornia	     1
+Kalinin	     1
+Kalkkiranta	     1
+Kalkstrand grannarsvägen	     1
+Kallaanvaara	     1
+Kallbäck	     1
+Kalliola	     1
+Kalliosuo	     1
+Kalmarnäs kalmargränd	     1
+Kälviä harakkaperäntie	     1
+Kälviä taskulankuja	     1
+Kälviä ullava	     1
+Kälviä ullavantie	     1
+Kälviällä kälviä	     1
+Kalvola parola	     1
+Kandern	     1
+Kangas	     1
+Kangaslahti	     1
+Kankaapää	     1
+Kankainen	     1
+Kankainen tauluntie	     1
+Kankari	     1
+Kankari haukijärventie	     1
+Kansas city kan	     1
+Kantvik rabergsvägen	     1
+Kaposvari nyomda	     1
+Kaprio	     1
+Karasjahka	     1
+Karasjjahka	     1
+Karasjohka karasjok	     1
+Kärdla	     1
+Kardrag	     1
+Karesuanto	     1
+Karesuvanto	     1
+Karhe	     1
+Karhunkylä	     1
+Karigasniemi	     1
+Karikasniemi	     1
+Karjalaisenniemi	     1
+Karjalan tasavalta	     1
+Karkkilassa	     1
+Karlax	     1
+Karlby	     1
+Karlovy vary	     1
+Karlstadt	     1
+Kärrbäck	     1
+Karsikas	     1
+Karuhula	     1
+Karuna voilahdentie	     1
+Kasnäs kimitoön	     1
+Katerma	     1
+Katiala	     1
+Katihar bihar	     1
+Katrineholmissa	     1
+Kattowitz	     1
+Kaukopää	     1
+Kaulinranta	     1
+Kaune	     1
+Kauniala	     1
+Kauppakorkeakoulu	     1
+Kauppilanmäki	     1
+Kaurila	     1
+Kautokeino tuscon ariz	     1
+Kautokejno	     1
+Kauttua sepäntie	     1
+Kauttualla	     1
+Käyrä	     1
+Kbh	     1
+Kedros	     1
+Keihärinkoski	     1
+Keila	     1
+Keitelä	     1
+Kellokoski raiviotie	     1
+Kelloselkä	     1
+Kelontekemä	     1
+Kelso	     1
+Keltto	     1
+Kemijoki	     1
+Kemin mlk	     1
+Kemiö johtajanpolku	     1
+Kemiö koulutie	     1
+Kempen	     1
+Kempen niederrhein	     1
+Kerisalo	     1
+Kerisalo kerisalontie	     1
+Kerkonjoensuu	     1
+Kervo	     1
+Kervo jäspilänkatu b	     1
+Keskikylä	     1
+Kesti järvenpääntie	     1
+Kestilä keskustie	     1
+Keszthely	     1
+Keuruulla	     1
+Keweenaw county mich	     1
+Kezmarok	     1
+Kgs lyngby	     1
+Kiestinki	     1
+Kievi	     1
+Kiihtelysvaara putinatie	     1
+Kiihtelysvaara sahirinne heinävaara	     1
+Kiikala porvarinpolku	     1
+Kiikoinen taitajantie	     1
+Kiipula	     1
+Kiiruna	     1
+Kiiskilampi	     1
+Kil	     1
+Kilen	     1
+Killinkoski	     1
+Killinkoski heinämäentie	     1
+Kilvakkala jyllintie	     1
+Kimo	     1
+Kinahmo	     1
+Kiöbenh avn	     1
+Kiov	     1
+Kipinä	     1
+Kirchhain	     1
+Kirjapaja	     1
+Kirjayhtymä	     1
+Kirkenes	     1
+Kirkkonummella	     1
+Kirov	     1
+Kiskossa	     1
+Kistarca	     1
+Kistarcsa	     1
+Kiteenlahti	     1
+Kiteenlahti kankaanperäntie	     1
+Kiukainen opintie	     1
+Kivennapa	     1
+Kiviniemi syynimaantie	     1
+Kiviranta	     1
+Kivisuo	     1
+Kivitaipale	     1
+Kivitaipale niemenkuja	     1
+Kiziney	     1
+Kjarvalsstadir	     1
+Klagenfurt	     1
+Klaukkala heikintie	     1
+Klaukkala järvihaantie	     1
+Klaukkala sivurinne b	     1
+Knokke	     1
+Knoxville	     1
+Kobehavn	     1
+Kohma	     1
+Koikkala	     1
+Koirakoski rosiontie	     1
+Koisjärvi	     1
+Koitti nokantie	     1
+Koivu	     1
+Kokelv	     1
+Kokemäellä	     1
+Kolbotin	     1
+Kolbotn	     1
+Kolho keuruuntie	     1
+Koli martikkalantie	     1
+Kolind	     1
+Kolla	     1
+Kolla kourulantie	     1
+Kolmisopella	     1
+Komagane shi	     1
+Komossa kjell engström paljakvägen	     1
+Konevitsa	     1
+Konginkangas riihilahdentie	     1
+Kongsvinger	     1
+Koniipa	     1
+Koniipa mosinanangizo mission	     1
+Konijpa	     1
+Köningsberg	     1
+Konstanz	     1
+Kontio	     1
+Konttajärvi	     1
+Kontula	     1
+Kööopenhamina	     1
+Kopengagen	     1
+Kopenhamman	     1
+Koppelo	     1
+Korbach	     1
+Koria elotie	     1
+Koria kuuksontie	     1
+Koria puistolantie	     1
+Korkeakoski pengertie	     1
+Kornoby	     1
+Koroinen	     1
+Korpijärvi itärannantie	     1
+Korpilahti heinosniementie	     1
+Korpilahti hiekkatie	     1
+Korpilahti punamäentie as	     1
+Korpilahti punasuomäentie	     1
+Korpilahti vanhamoksi	     1
+Korpoström	     1
+Kortejoki	     1
+Kortela rahkeentie	     1
+Kortesjärvi jääkärintie	     1
+Korvensuu	     1
+Kosice	     1
+Koskelankylä	     1
+Koskenkylä	     1
+Koskenkylä ruukintie	     1
+Koski as koskentie	     1
+Koski as koskipolku	     1
+Koski ti	     1
+Koski tl raatalantie	     1
+Koskue	     1
+Kosula kojanlahdentie	     1
+Kosula luostaritie	     1
+Kotalato kustannuspaikka tuntematon	     1
+Kotkama	     1
+Köuliö	     1
+Kouluhallitus	     1
+Koura	     1
+Kouvolassa palokankaantie	     1
+Köyliössä	     1
+Krääkkiö	     1
+Kramfors	     1
+Kreuzlingen	     1
+Kreuzlingen sveitsi	     1
+Kreuznach	     1
+Krigarby	     1
+Kristiansand	     1
+Kristianstad	     1
+Kristiiinankaupunki	     1
+Kristiinan kaupunki	     1
+Kristinestadt	     1
+Kronstadt	     1
+Kronvik	     1
+Krylbo	     1
+Kuggo lappträskvägen	     1
+Kuhmalahti taidetie	     1
+Kuivakangas	     1
+Kuivasjärvi	     1
+Kujala	     1
+Kulkulaitosten yleisten töiden ministeriö	     1
+Kullaalla palus mäkikyläntie	     1
+Kulloby	     1
+Kulloo tavipolku b	     1
+Kulloonkylä	     1
+Kuluntalahti	     1
+Kumo	     1
+Kungsör	     1
+Kuninkaankylä	     1
+Kuohu sarvenperäntie	     1
+Kuonalla	     1
+Kuopion	     1
+Kuortti harjuntie as	     1
+Kuortti harjutie as	     1
+Kuosku	     1
+Kuosmala	     1
+Kupittaa	     1
+Kuppenheim	     1
+Kuppenheim murgtal	     1
+Kurenpolvi haajaistentie	     1
+Kuressare	     1
+Kurhila	     1
+Kurikassa	     1
+Kurkijoki	     1
+Kurolanlahti	     1
+Kurravaara	     1
+Kuru sillanpääntie	     1
+Kustannuspaikka tuntematon b viipurin läänin maatalouskomisioni	     1
+Kustannuspaikka tuntematon ind	     1
+Kustannuspaikka tuntematon ivalo	     1
+Kustannuspaikka tuntematon jurva	     1
+Kustannuspaikka tuntematon merikadettikurssi	     1
+Kustannuspaikka tuntematon ohion pennsylvanian west virginian suomalainen raittiusliitto	     1
+Kustannuspaikka tuntematon pohjois hämeen urheiluautoilijat	     1
+Kustannuspaikka tuntematon teneriffa	     1
+Kustannuspaikka tuntematon terjärv	     1
+Kustannuspaikka tuntematon tervajoki	     1
+Kustannuspaikka tuntematon tervakoski	     1
+Kustannuspaikka tuntematon untamala lehmäjoentie	     1
+Kustannuspaikka tuntematon vihanti	     1
+Kutilassa	     1
+Kuusamossa sammontie	     1
+Kuusankoskella	     1
+Kuuslahti	     1
+Kuvansi	     1
+Kuvola	     1
+Kuwait	     1
+Kyläjoki laivaniementie	     1
+Kylänlahti	     1
+Kylmälä sjökullantie	     1
+Kymentaka haukkalantie	     1
+Kymönkoski	     1
+Kynsilä	     1
+Kyŏnggi do pʻaju	     1
+Kypros	     1
+Kyrönlahti	     1
+Kyröskoski pirkantie	     1
+Kyröskoski valtakatu b	     1
+Kytäjä	     1
+Kytökylä	     1
+Kyynärö	     1
+K�benhavn grena	     1
+K�benhvn	     1
+K�penhavn	     1
+La Chapelle-Montligeon	     1
+La salle il	     1
+Laajoki	     1
+Labby	     1
+Lafayette ca	     1
+Lähdekuja nahkela	     1
+Lahden	     1
+Lahnajärvi	     1
+Laihiala	     1
+Lainio	     1
+Laitikkala kissalammintie	     1
+Laivonsaari	     1
+Lake mills	     1
+Lallinkorpi	     1
+Lamminpää	     1
+Lanciano	     1
+Landau	     1
+Landvetter	     1
+Langaminne	     1
+Längelmäki poukantie	     1
+Länkipohja	     1
+Lannevesi uuraistentie	     1
+Lanse mich	     1
+Länsi teisko	     1
+Länsikoski	     1
+Lansing mich	     1
+Lantana	     1
+Lantana florida	     1
+Lantula	     1
+Lapeenranta	     1
+Lapijoki orjasaarentie	     1
+Lapinlahdella	     1
+Lappböle	     1
+Lappeenrannan kotkan imatran kuurojen yhdistysten julkaisutoimikunta	     1
+Lappeeranta	     1
+Lappetelä	     1
+Lappfors	     1
+Lappi mäentaantie	     1
+Lappi mäkipääntie	     1
+Lappi yrittäjäntie	     1
+Lappila väreenkuja	     1
+Lappland	     1
+Lappo	     1
+Lapväärti	     1
+Larium mich	     1
+Las palmas gran canaria	     1
+Lassilassa	     1
+Lattomeri	     1
+Laukanen rinteeläntie	     1
+Laukkala	     1
+Laukkavirta	     1
+Lauritsala joutseno	     1
+Lautiosaari	     1
+Lautiosaari tervolantie	     1
+Lautiosaari vajokkaantie	     1
+Lauttasaari	     1
+Lawrence	     1
+Läyliäinen toivolantie	     1
+Le Havre	     1
+Le mont pelerin	     1
+Le quadrige	     1
+Leeds	     1
+Lehtojärvi	     1
+Lehtola harjunpääntie	     1
+Leigh	     1
+Leineperi	     1
+Leksand	     1
+Lemmenjoki	     1
+Lenigrad	     1
+Lentiira	     1
+Lentua	     1
+Leoni am starnberger see	     1
+Lepaa lepaan puutarhaoppilaitos	     1
+Lepolampi	     1
+Leppäkorpi taipaleentie	     1
+Leppäkoski	     1
+Leppälänkylä	     1
+Lepsämä lepsämäntie	     1
+Letchworth	     1
+Letku	     1
+Leufsta bruk	     1
+Leutschau	     1
+Levanto	     1
+Levi tunturitie	     1
+Lewes	     1
+Lewisburg	     1
+Lewiston	     1
+Lewiston me	     1
+Lexington KY	     1
+Liedossa	     1
+Liepaja	     1
+Lievestuore petäjätie b	     1
+Lievestuore puhakantie	     1
+Lievestuore ratatie	     1
+Lihoslav	     1
+Lihoslavlb	     1
+Liikola kylätie	     1
+Liljendahl	     1
+Lillandet	     1
+Lillehammar	     1
+Lillestrom	     1
+Limassol	     1
+Limbazi	     1
+Limburg lahn	     1
+Limhamn	     1
+Limmared	     1
+Limoges	     1
+Lincoln NE	     1
+Lincolnwood il	     1
+Linna lihoslavlja	     1
+Linnavuori	     1
+Linz	     1
+Litchfield Ct	     1
+Littilä	     1
+Littleton	     1
+Liverpool	     1
+Ljungby	     1
+Ljungsbro	     1
+Ljusdal	     1
+Llandysul	     1
+Lll kkkk	     1
+Lmajoki	     1
+Locarno	     1
+Lodź	     1
+Lohijärvi	     1
+Lohiluoma	     1
+Lohiniva	     1
+Lohjan	     1
+Lohjansaari	     1
+Loimijoki	     1
+Lomkärr	     1
+Londböle	     1
+Long beach ca	     1
+Long beach cal	     1
+Los angeles california	     1
+Loue	     1
+Louhua	     1
+Lovstraede	     1
+Löyttylä	     1
+Ludenscheid	     1
+Ludwigsburg	     1
+Ludwigshafen	     1
+Luhtajoki takahuhdantie	     1
+Luis obispo ca	     1
+Luis obispo calif	     1
+Lumijoella	     1
+Luneburg	     1
+Luoma sjövikintie	     1
+Luonetjärvi	     1
+Luopioinen puutikkala	     1
+Luopiois	     1
+Lusi juholantie	     1
+Luusua	     1
+Lviv	     1
+Lypyrtti	     1
+Lysaker	     1
+Maakeskessä	     1
+Maaselkä	     1
+Määttälä	     1
+Maavesi	     1
+Maavesi kiekankoskentie	     1
+Madeira park	     1
+Madekoski	     1
+Mahlu	     1
+Mahlu sahrajärventie	     1
+Mahopac ny	     1
+Mahwah	     1
+Mai	     1
+Maisala	     1
+Majavesi inkarilantie	     1
+Mäkiluoto	     1
+Makkola pietiläntie	     1
+Maksniemi	     1
+Malden	     1
+Malibu	     1
+Mallax	     1
+Malminkartano	     1
+Manitouwadge ca	     1
+Mankkaa	     1
+Mäntlahti simonmäentie	     1
+Mäntyluoto	     1
+Manziana	     1
+Maple grove mich	     1
+Maputo	     1
+Maracena	     1
+Marceline mo	     1
+Marguette mich	     1
+Mariefors	     1
+Marieham storagatan	     1
+Mariehamm	     1
+Marihamn	     1
+Marinkainen	     1
+Markby	     1
+Marraskoski	     1
+Martel	     1
+Martinez calif	     1
+Martinniemi martinniementie	     1
+Masaby	     1
+Maskava	     1
+Mätäsvaara	     1
+Mateszalka	     1
+Mathildedal	     1
+Matomäki	     1
+Maukkula	     1
+Maxmo oravais	     1
+Mayapur	     1
+Mccomb miss	     1
+Mckinleyville ca	     1
+Meadowlands mn	     1
+Meckfjärd	     1
+Medford	     1
+Medgora	     1
+Medvez gora	     1
+Medvezegorsk	     1
+Melalahti	     1
+Mellakoski	     1
+Mellanlösa	     1
+Meltaus	     1
+Menasha Wi	     1
+Mendocino ca	     1
+Meppel	     1
+Merchtem brussegem	     1
+Merjärv	     1
+Merrick ny	     1
+Mertie	     1
+Mesa verde national park	     1
+Metamorfose attikes	     1
+Metsä tammelantie	     1
+Metsäkansa	     1
+Metsola	     1
+Mexico City	     1
+Middlebury	     1
+Miekojärvi	     1
+Mieto	     1
+Mietoinen hietamäki	     1
+Miettilä miettiläntie	     1
+Miettilä variksenkyläntie	     1
+Miettula	     1
+Mijdrecht	     1
+Mikeli	     1
+Mikkelin mlk	     1
+Mikkelsböle	     1
+Millola	     1
+Milwaukie or	     1
+Misi	     1
+Miskolci	     1
+Mittelsdorf rhön	     1
+Mjölbollstad	     1
+Mjölby	     1
+Mjösund	     1
+Moers	     1
+Mohawk mich	     1
+Moisio	     1
+Moisiovaara	     1
+Möklinta	     1
+Molde	     1
+Molholm	     1
+Mona	     1
+Monaco	     1
+Monceaux bessin	     1
+Mönchengladbach	     1
+Monessen pa	     1
+Monmouth	     1
+Mönni	     1
+Mont aignan	     1
+Monte vito	     1
+Monterey	     1
+Monticello	     1
+Monticello il	     1
+Monticello illinois	     1
+Montreux	     1
+Moravska	     1
+Morkved	     1
+Moscau	     1
+Moskv	     1
+Möttönen	     1
+Mouhijärvi ruohostantie	     1
+Mountain iron minn	     1
+Mountain view	     1
+Mountain view cal	     1
+Mourujärvi	     1
+Moutain iron minn	     1
+Mt glen lakes	     1
+Mt gravatt qld	     1
+Mt iron minn	     1
+Mt isa	     1
+Munkedal	     1
+Munkkiniemi	     1
+Murmasi	     1
+Musashino	     1
+Muscatine iowa	     1
+Mussalo	     1
+Mustijoki	     1
+Mustila	     1
+Mutila	     1
+Muurikkala	     1
+Muurla kanneljärventie	     1
+Myhinpää	     1
+Myllykylä	     1
+Myllymaa	     1
+Myllyniemi	     1
+Myllypurossa	     1
+Myyrmäki	     1
+Myyrysniemi	     1
+N iork	     1
+Naabunka halmetie as	     1
+Naarjoki	     1
+Nacka	     1
+Näfsby	     1
+Nagoya	     1
+Nagyvarad	     1
+Nahkela	     1
+Nahkela nahkelanraitti	     1
+Nai dilli	     1
+Nakertaja haukitie	     1
+Nakskov	     1
+Nälkämäki	     1
+Nälkloukka	     1
+Nämpnäs	     1
+Nan jing	     1
+Nanaimo BC	     1
+Nanset	     1
+Naperville	     1
+Närvijoki	     1
+Nashwauk	     1
+Nastolassa akalahdentie	     1
+Nästved	     1
+Nattari	     1
+Nchen	     1
+Nellim	     1
+Nerkoo	     1
+Neubrandenburg	     1
+Neuenhagen	     1
+Neuilly seine	     1
+Neuried	     1
+Neuruppin	     1
+Neutcha tel	     1
+Neuwied	     1
+Newton	     1
+Newton centre	     1
+Niceville	     1
+Niedermayer	     1
+Niemisjärvi	     1
+Niemisvesi	     1
+Niinilahti	     1
+Niinisalo kangaskuja	     1
+Niittylahti vehkasärkäntie	     1
+Nikkarila	     1
+Nikkilä	     1
+Nilsiä haarantie	     1
+Nilsiä lapinsaarentie	     1
+Nilsiä pisantie	     1
+Nishinomiya	     1
+Nisula mich	     1
+Nitra	     1
+Nivalassa	     1
+Nivelles	     1
+Nizza	     1
+Nordbooks	     1
+Nordborg	     1
+Nordforsk	     1
+Nordisk institutt regionalpolitisk forskning nordrefo	     1
+Nordreisa	     1
+Nordstrandhogda	     1
+Norge	     1
+Normal ill	     1
+Nörpes	     1
+Norrby	     1
+Norrnäs	     1
+Norrskata	     1
+Norsholm	     1
+Northampton Ma	     1
+Northfield	     1
+Northridge calif	     1
+Northumberland Pa	     1
+Nörvenich	     1
+Norway	     1
+Norwood	     1
+Nötö	     1
+Notre dame	     1
+Noux	     1
+Novi ligure	     1
+Nummenkylä	     1
+Nummenkylä kannukuja	     1
+Nummi haarlantie	     1
+Nummi haissiantie	     1
+Nummikoski	     1
+Numminen ojankulmantie	     1
+Numminen onkimaantie	     1
+Nummipusula	     1
+Nunnanlahti joensuuntie	     1
+Nuojua	     1
+Nuolniemi	     1
+Nurmaa jaalantie	     1
+Nurmijärmi	     1
+Nurmo kalliontie	     1
+Nurmo onnelantie	     1
+Nurmo petäjätie	     1
+Nurmoo	     1
+Nuuksio	     1
+Nuutajärvi pruukinraitti as	     1
+Nuys california	     1
+Nyby	     1
+Nylotts	     1
+Nyystölä	     1
+Nyystölä haukkatie	     1
+Oakland ca	     1
+Oakville ont	     1
+Oaniemi	     1
+Oberurusel	     1
+Ockelbo	     1
+Odder	     1
+öflingen	     1
+Oitmäki österbyntie	     1
+Oitti oikotie	     1
+Oitti savelantie	     1
+Oksakoski	     1
+Oksala	     1
+Oksava	     1
+Olkkola	     1
+Ollerup	     1
+öllölä ulriikantie	     1
+Olso	     1
+Olsztyn	     1
+Omaha Ne	     1
+ömossa	     1
+Onaipa	     1
+Onkamo	     1
+Onkamo kannaksentie	     1
+Onkimaa	     1
+Onkkaala	     1
+Opetushallitus	     1
+Oradea	     1
+Orakylä	     1
+Oravais bockbergvägen	     1
+Oravais skolgränd	     1
+Oravala heinolantie	     1
+Oravasaari	     1
+Oravis	     1
+Oravisalo oravisalontie	     1
+Orbey	     1
+Oregon city or	     1
+Orimattilassa	     1
+Orlando fla	     1
+Orlando florida	     1
+Orleans	     1
+Örnsköldsvik	     1
+Orsa	     1
+Orsay	     1
+Oskarshamn	     1
+österbotten	     1
+Ostermarie	     1
+östersondom	     1
+östersudom	     1
+östersundm	     1
+östersundom björkuddsvägen	     1
+östersundon	     1
+östersundum	     1
+Ostfilder	     1
+Otamo	     1
+Otaniemi kustannuspaikka tuntematon	     1
+Otaniemi otnäs	     1
+Otaniemie	     1
+Ottava	     1
+Oulujoki	     1
+Oulun työväenopiston kirjoittajapiiri	     1
+Oulun yliopisto	     1
+Oulunsalo kuminakuja	     1
+Oulunsalo toivolankuja	     1
+Overath	     1
+överby	     1
+övermark vasavägen	     1
+Owatonna minn	     1
+Owings mills	     1
+Oxelösund	     1
+Oxkangar	     1
+Paakkila selkäniementie	     1
+Paatsjoki	     1
+Pacific grove calif	     1
+Pahajoki	     1
+Paihola paiholantie	     1
+Päijälä	     1
+Päijätsalo	     1
+Paisua	     1
+Pajulahti	     1
+Pakilassa	     1
+Palo alto	     1
+Palohuornas hakkasbyn	     1
+Palokka koskenmäentie	     1
+Palokka männikkötie	     1
+Palokka visalankuja	     1
+Palspöle	     1
+Paltamossa	     1
+Paltanen	     1
+Paltaniemi	     1
+Paltsamo	     1
+Pamplona	     1
+Pamplona iruna	     1
+Pankalahti	     1
+Pansio	     1
+Papinsalmi	     1
+Parade	     1
+Parakka	     1
+Parkkila uunilantie	     1
+Parma	     1
+Pärna	     1
+Pärnäjärvi	     1
+Parola leppätie	     1
+Parolannummi näkkikuja	     1
+Parolannummi parola	     1
+Partakko	     1
+Pasadena	     1
+Pattijoki mansikkakarintie	     1
+Pattijoki rauhantie	     1
+Pattijoki ruskatie	     1
+Pau	     1
+Paukarlahti koivuahontie	     1
+Paynesville mich	     1
+Peipohja juhanantie	     1
+Pekanpää	     1
+Pekanpää korventie	     1
+Pekola	     1
+Pelkoseniemi	     1
+Pelo	     1
+Pelso	     1
+Peltovuoma ounastie	     1
+Pennala	     1
+Pensar	     1
+Pentinmäki	     1
+Penttilä	     1
+Perälä	     1
+Peräseinäjoki seinäjoentie	     1
+Perniö merikulmantie	     1
+Perniö sepänkatu	     1
+Perniö tammisaarentie	     1
+Perniö viheriämäentie	     1
+Peroskoi	     1
+Pertteli tyryntie	     1
+Perugia	     1
+Pesiökylä	     1
+Petäjäskoski	     1
+Petalaks	     1
+Petersberg	     1
+Petersburg Va	     1
+Petersfield	     1
+Petolahti	     1
+Petrizavodsk	     1
+Petroskojn linna	     1
+Petrozabodsk	     1
+Petrozadovsk	     1
+Peurunka	     1
+Pfullingen	     1
+Pieksämäellä	     1
+Pieksämäen mlk	     1
+Pieksänkoski	     1
+Pieksanmaa	     1
+Pielisensuu	     1
+Pielisjärvi	     1
+Pienola	     1
+Pienola marjoniementie	     1
+Pihlajalahti	     1
+Piipola keskustie	     1
+Piippola keskustie	     1
+Piippola paajalantie	     1
+Piispanristi kalastajantie	     1
+Piispanristi kirjosieponkatu as	     1
+Pikkala sahlberginkuja	     1
+Pilpala salmiontie	     1
+Pilpala teväntie	     1
+Piojärvi	     1
+Piraeus	     1
+Pirkanmaa	     1
+Pirkkiö	     1
+Pirttikoski	     1
+Pisankoski	     1
+Pistoia	     1
+Pistola	     1
+Piteşti	     1
+Pitkäniitty	     1
+Pittston penn	     1
+Podkowa lesna	     1
+Pohja legazpi levadia	     1
+Pohjasperä	     1
+Pohjavaara	     1
+Poikelus	     1
+Poja	     1
+Pojo kustannuspaikka tuntematon	     1
+Politvidav ukraini	     1
+Polttila	     1
+Polvela kansalantie	     1
+Pompton Plains NJ	     1
+Pont aven	     1
+Pontoise	     1
+Porin	     1
+Pörkenäs	     1
+Porkkala	     1
+Porlammi porlammintie	     1
+Pormarkku	     1
+Porras	     1
+Porraskoski	     1
+Porsaskoski	     1
+Port angeles wash	     1
+Portlan	     1
+Pörtö	     1
+Porttila	     1
+Porz wahn	     1
+Posnan	     1
+Posti lennätinlaitos post telegrafverket	     1
+Poulsbo	     1
+Pöyli	     1
+Preitilä nummentie	     1
+Preston	     1
+Priceton	     1
+Prien	     1
+Pristina	     1
+Providence RI	     1
+Przemyśl	     1
+Ptague	     1
+Puhos teollisuustie	     1
+Puistola	     1
+Pukaro	     1
+Pukinmäki	     1
+Pukinsaari	     1
+Pulkkila viitastentie	     1
+Punkaharju porkalantie	     1
+Punkaharju sääsänniementie	     1
+Punkaharjun	     1
+Puponmäki	     1
+Purleigh	     1
+Purmojärvi	     1
+Purnujärvi	     1
+Puruvesi	     1
+Pushkin	     1
+Puskin	     1
+Pusula louhoskuja	     1
+Putkijärvi humaluksentie	     1
+Putkilahti	     1
+Puukkoinen	     1
+Puuppola salmelantie	     1
+Puuppola vähäjärventie	     1
+Puurtila	     1
+Pyhäjärvellä	     1
+Pyhäjoella	     1
+Pyhäkoski	     1
+Pyhäniemi	     1
+Pyhäntö	     1
+Pyhäsalmi komuntie	     1
+Pyhäsalmi mukurintie	     1
+Pyhäsalmi tunturintie	     1
+Pylkönmäki kapasentie	     1
+Pyttis	     1
+Pyttis strömfors	     1
+Quedlinburg	     1
+Quezon city	     1
+Quilow	     1
+Quinqueecclesiae	     1
+Qum	     1
+R ev	     1
+R ig	     1
+Raajärvi	     1
+Raatala heinäsuontie	     1
+Rahikkala	     1
+Rahula	     1
+Raisiossa	     1
+Raivola	     1
+Rajamäki koivumäenpuisto	     1
+Rajamäki lepokuja	     1
+Rajamäki puistokuja b	     1
+Rajamäki valurintie	     1
+Ramet ef al	     1
+Rämsöö	     1
+Rannebergen	     1
+Rannila	     1
+Rannila saukkolahdentie	     1
+Ranta kaarila	     1
+Rantakylä	     1
+Rantasalo	     1
+Rantsila rantsilan raitti	     1
+Rapakkojoki	     1
+Rapattila	     1
+Ratikylä	     1
+Ratingen	     1
+Raudanjoki	     1
+Raussila	     1
+Rautela	     1
+Rautiosaari	     1
+Rautu	     1
+Ravattula	     1
+Ravenna	     1
+Ravijoki	     1
+Rävlanda	     1
+Räyskälä	     1
+Räyskälä räyskäläntie	     1
+Red Lodge MT	     1
+Regina saskatchewan	     1
+Rehakka	     1
+Reichenau	     1
+Reijola	     1
+Reijola mansikkatie	     1
+Reila	     1
+Reinbeck	     1
+Reitilä	     1
+Rekijoki koivistontie	     1
+Rendsburg	     1
+Renko hyvinkääntie	     1
+Renko tuikontie b	     1
+Republic mich	     1
+Revonlahti koskitie b	     1
+Revonlahti siikajoentie as	     1
+Rheydt	     1
+Ribeirão preto	     1
+Rigã	     1
+Rĩgã	     1
+Riihikoski katajatie	     1
+Riiho	     1
+Riipi	     1
+Riippi	     1
+Rikon	     1
+Riksdagen	     1
+Rilax	     1
+Rinkeby	     1
+Rinkobing	     1
+Ristakallio	     1
+Riste	     1
+Ristiina mieluantie	     1
+Ristiina mustikintie	     1
+Ritomäki	     1
+Ritvala oitintie	     1
+Roavvenjarga	     1
+Rocanville	     1
+Rochdale	     1
+Rock Springs WY	     1
+Rodovre	     1
+Ronde	     1
+Ronni	     1
+Rosewood qld	     1
+Roslags näsby	     1
+Roslavl	     1
+Rostochis	     1
+Rostokissa	     1
+Rotenburg	     1
+Roukalahti	     1
+Rousio	     1
+Routio kalliomäentie	     1
+Rova	     1
+Rovajärvi	     1
+Royal oak mich	     1
+Röyhiö	     1
+Röykkä kustannuspaikka tuntematon	     1
+Ruaslahti	     1
+Rudolfstadt	     1
+Ruds vedby	     1
+Ruha lehdontie	     1
+Ruhtinansalmi	     1
+Rundu	     1
+Runnila	     1
+Ruorasmäki	     1
+Ruotsinpyhtää koivulanmäentie b	     1
+Ruottala	     1
+Rusiec	     1
+Ruskin fla	     1
+Rutherford nj	     1
+Rutland Vt	     1
+Ruuhijärvi	     1
+Ruukki ruukintie	     1
+Ruutana	     1
+Ruutana pitkätie	     1
+Rymättylä suikkilan tila	     1
+Rzeszow	     1
+Saakoski	     1
+Saakoski leustuntie	     1
+Saaramaa	     1
+Saarela pyhäsalmentie b	     1
+Saari uukuniemi	     1
+Sääskiniemi dahlpontie	     1
+Sables olonne	     1
+Saffron Walden	     1
+Sahalahti haapasaarentie	     1
+Sahrajärvi	     1
+Säijä kurjentie	     1
+Säikkä	     1
+Saint-Brieuc	     1
+Sainte ruffine	     1
+Sairaalamäki	     1
+Sairaalanmäki	     1
+Sairila	     1
+Sajaniemi	     1
+Saksa	     1
+Sala	     1
+Salem	     1
+Salenstein	     1
+Salgotarjan	     1
+Sälinkää	     1
+Salisbury	     1
+Salmijärvi kiiskitie	     1
+Salmis	     1
+Salmon arm	     1
+Salokylä	     1
+Salokylä häyrynlahdentie	     1
+Salomiehikkälä	     1
+Salon	     1
+Salosaari	     1
+Salpausselkä	     1
+Salt lake city utah lynge	     1
+Samara	     1
+Samaria mich	     1
+Sammakko	     1
+Sampzon	     1
+San Diego CA	     1
+Sandby	     1
+Sandomierz	     1
+Sandstone Mi	     1
+Sandton	     1
+Sandviken	     1
+Sanginkylä	     1
+Sankt augustin	     1
+Sankt peterbrurg	     1
+Sannäs	     1
+Sannäs jackarbyvägen	     1
+Sanoma pro	     1
+Santa barbara	     1
+Santa barbara calif	     1
+Santa cruz tenerife	     1
+Santa fe	     1
+Santaskylä	     1
+Santvik	     1
+Sao Paulo	     1
+Sappee	     1
+Säräisniemi säräisniementie	     1
+Särkilä särkikyläntie	     1
+Särkisalo taimintie	     1
+Sarvela	     1
+Sarvikumpu petrumantie	     1
+Sarvilahti	     1
+Sasi	     1
+Saskatoon	     1
+Saskatoon sask	     1
+Sassali	     1
+Sattajärvi	     1
+Saukkola heimolantie	     1
+Saukonkylä	     1
+Sault ste marie	     1
+Sault ste marie on	     1
+Sausalito calif	     1
+Saverne	     1
+Säviäntaipale ristisentie	     1
+Saviselkä	     1
+Savo	     1
+Savonranta hankavaarankaari	     1
+Sävsjö	     1
+Savvo	     1
+Sawonlinnassa	     1
+Sawtry	     1
+Sawtry cambs	     1
+Säynätsalo kontinpohja	     1
+Säyneinen pisankoski	     1
+Sceaux	     1
+Schaffthausen	     1
+Schenectady NY	     1
+Schiffdorf	     1
+Schleswig	     1
+Schlitz hessen	     1
+Schmelz	     1
+Schondorf ammersee	     1
+Sclayn	     1
+Scunthorpe	     1
+Sedrobol	     1
+Segeza	     1
+Seglinge	     1
+Sejna joki	     1
+Seltjarnarnes	     1
+Semic	     1
+Sepänmäki	     1
+Seutula	     1
+Sevettijärvi sevettijärventie	     1
+Shanghai	     1
+Shannon	     1
+Shekow	     1
+Shepherdstown WV	     1
+Siena	     1
+Sierra leone	     1
+Sievinkylä	     1
+Siikamäki	     1
+Siilinjärvellä	     1
+Siipyy	     1
+Siltakylä kiuruntie	     1
+Similä	     1
+Simola	     1
+Simoniemi	     1
+Simuna	     1
+Sinki	     1
+Sipoossa	     1
+Sipooy	     1
+Sippola lehmäkorventie	     1
+Sirkka levi	     1
+Sirkka tuomikuru	     1
+Sirkkamäki lamminpääntie	     1
+Sirniö	     1
+Sittard	     1
+Siuntiossa	     1
+Siuro alhonlahdentie	     1
+Siuro mettisentie	     1
+Siuro myllykylä	     1
+Sjundea kopulavägen	     1
+Skaftung sideby	     1
+Skaldö	     1
+Skärhamn	     1
+Skinnarby	     1
+Sköllersta	     1
+Skopje	     1
+Slagelse	     1
+Slovakia	     1
+Slu	     1
+Smedsby kustannuspaikka tuntematon	     1
+Snappertuna bredängsvägen b	     1
+Soanlahti	     1
+Soborg	     1
+Sockenbacka	     1
+Sodankylässä	     1
+Sodankylässä ranniotie	     1
+Söderdälje	     1
+Söderudden	     1
+Soest	     1
+Soft	     1
+Soinlahti	     1
+Soinlahti kumpulanranta	     1
+Solf solfvägen	     1
+Solon springs wi	     1
+Solor	     1
+Solovetsk	     1
+Solvang ca	     1
+Sölvesborg	     1
+Someenjärvi	     1
+Somers ny	     1
+Son	     1
+Sonkaja	     1
+Sonkajärvellä	     1
+Sopron	     1
+Sortland	     1
+Soudan minn	     1
+Soukassa	     1
+Soukka	     1
+Soukkio	     1
+Söul	     1
+Soveria mannelli	     1
+Sovero	     1
+Spauda	     1
+St ansgarius glaubens werk	     1
+St benedict or	     1
+St clement la riviere	     1
+St Ives	     1
+St Louis Kaunti Mi	     1
+St pölten	     1
+Stade	     1
+Staffanstrop	     1
+Stambaugh mich	     1
+Stanga	     1
+Stehag	     1
+Steinbach manit	     1
+Steinhagen	     1
+Stjordal	     1
+Stockhomn	     1
+Stocklholm	     1
+Stockport	     1
+Stocksund	     1
+Stonglandseidet	     1
+Stormi	     1
+Storslett	     1
+Struckum	     1
+Studio city ca	     1
+Stuttgard	     1
+Suhmura	     1
+Suinula siitamantie	     1
+Sulva dammvägen	     1
+Sumiainen karvakalliontie	     1
+Summerville sc	     1
+Sundberg	     1
+Sundby	     1
+Sunonenjoki	     1
+Suodenniemi rantakulmantie	     1
+Suolahti isomäenkatu	     1
+Suolahti marjamaankatu	     1
+Suolahti niskalantie	     1
+Suolahti riihijärvenkatu	     1
+Suomen kirkon sisälähetysseura	     1
+Suomen laivanvarustajain yhdistys	     1
+Suomen maarakentajien keskusliitto	     1
+Suomenniemi partakoskentie	     1
+Suomenniemi ratakoskentie	     1
+Suomi	     1
+Suomulahti	     1
+Suomusalmi	     1
+Suomusjärvi korvisillantie	     1
+Suoniemi	     1
+Suopelto	     1
+Surbiton	     1
+Surin	     1
+Sutton	     1
+Suuraho	     1
+Suvanto	     1
+Suvi kumsa	     1
+Sveaborg	     1
+Svendborg	     1
+Swindon	     1
+Syöte	     1
+Syracuse NY	     1
+Szekszárd	     1
+Szolnok	     1
+Taavetti koivukuja	     1
+Taavetti kustannuspaikka tuntematon	     1
+Taavetti miehikkäläntie	     1
+Taavetti muurarintie	     1
+Tacoma Wa	     1
+Tahitotfalu	     1
+Tahkovuori	     1
+Tähtelä	     1
+Taibeishi	     1
+Taimilahti	     1
+Taipalus	     1
+Taipalus peräseinäjoentie	     1
+Täkter	     1
+Talinn	     1
+Tallahassee florida	     1
+Tällberg	     1
+Tallinnn	     1
+Talluskylä	     1
+Talus	     1
+Talybont dyfed	     1
+Tamilnadu	     1
+Tammi	     1
+Tammijärvi rantakyläntie	     1
+Tammisaaren mlk	     1
+Tammisto	     1
+Tammperfors	     1
+Tampereen	     1
+Tampereen teknillinen korkeakoulu	     1
+Tamperella	     1
+Tamperen	     1
+Tampereo	     1
+Tananger	     1
+Tangen	     1
+Tanhuan kylä	     1
+Tapiola suomen tehtäväniekat	     1
+Tapiolassa	     1
+Tarrytown ny	     1
+Tartoh	     1
+Tarvaspää	     1
+Tastrup	     1
+Taufkirchen	     1
+Tavistock	     1
+Teemasaari	     1
+Teemassaari	     1
+Teisko kustannuspaikka tuntematon	     1
+Tejvo	     1
+Tel avi	     1
+Telč	     1
+Teljä	     1
+Terttilä uudenkaskistontie	     1
+Tervajoki harvakyläntie	     1
+Tervajoki kellosepäntie	     1
+Tervakoski aholanpolku	     1
+Tervakoski piilonsuontie	     1
+Tervalahti	     1
+Tervalampi tervalammentie	     1
+Tervekoski	     1
+Tervjärv	     1
+Tervolassa	     1
+Tervonsalmi	     1
+Tervuren	     1
+Tesjoki juolukkatie	     1
+Tessjö	     1
+Teuro ojajärventie	     1
+Th international congress eye research	     1
+Thaimaa	     1
+Thanh pho ho chi minh	     1
+Thessaloniki	     1
+Thisted	     1
+Thousand oaks ca	     1
+Thunder bay kanada	     1
+Thunder bay ont ca	     1
+Tiftin oh	     1
+Tiilää	     1
+Tiistenjoki	     1
+Tikkakoski liinakatu	     1
+Tikkakoski nurmeksentie	     1
+Tikkakoski terva alasentie	     1
+Tikkakoski yrjönkatu	     1
+Tikkala lahnalammentie	     1
+Timmins ont	     1
+Timola	     1
+Timola ahvenmäentie	     1
+Tirane ̈	     1
+Tirva	     1
+Tiutinen	     1
+Tjele	     1
+Tjöck	     1
+Tjudö	     1
+Toby	     1
+Toija	     1
+Toijala kustannuspaikka tuntematon	     1
+Toijala sontulantie	     1
+Toijalan	     1
+Tõkyõ	     1
+Tolkkinen harjutie h	     1
+Tolosenmäki suorlahdentie	     1
+Tookyoo	     1
+Torgelow	     1
+Torod	     1
+Torravieja	     1
+Toskent	     1
+Tostedt	     1
+Töysä hatanpäänpolku	     1
+Töysä keskustie	     1
+Tre	     1
+Trelleborg	     1
+Trichur	     1
+Trosa	     1
+Trout creek mich	     1
+Tsing-shin	     1
+Tuira	     1
+Tullinge	     1
+Tulppo ruhalantie	     1
+Tuohittu	     1
+Tuomarila	     1
+Tuopanjoki	     1
+Tuorila	     1
+Tuoviianlahti	     1
+Tuovilanlahti karsikontie	     1
+Tuovilanlahti ruissuontie	     1
+Tupas	     1
+Turc sv	     1
+Turkun	     1
+Turrialba	     1
+Tursa	     1
+Turtle Lake Wi	     1
+Tuscon ariz	     1
+Tuscon az	     1
+Tusson	     1
+Tuusjärvi	     1
+Tuusmäki	     1
+Tuusmäki peltueentie	     1
+Tuusmiemi	     1
+Tuusniemellä	     1
+Twinsburg oh	     1
+Tyrö	     1
+T�el a�b�i�b	     1
+Uddevallassa	     1
+Udg opl	     1
+Udine	     1
+Ulaan bataar	     1
+Ulaanbaatar	     1
+Ulanbaatar	     1
+Uleabors	     1
+Ulu	     1
+Ulvilassa palokuja	     1
+Upminster	     1
+Upton upon severn	     1
+Urajärvi	     1
+Urjalankylä	     1
+Uskela	     1
+Utö	     1
+Utsjok	     1
+Utsjok tana	     1
+Utula	     1
+Uuras	     1
+Uusikaarlepee	     1
+Uusikaarlepy	     1
+Uusikaarlpyy	     1
+Uusikaupaunki	     1
+Uusikaupnki	     1
+Uusikylä linniläntie	     1
+Uusitalo	     1
+Vaahtojärvi	     1
+Vaajakoski vaajarinne	     1
+Vaajakoski vaajarinne as	     1
+Vaajakoski varaslahdentie	     1
+Vaajakoski yläkoskentie	     1
+Vääksy anjantie	     1
+Vääksy aurinkotie	     1
+Vääksy honkaperäntie	     1
+Vääksy jyväskyläntie	     1
+Vääksy laurinpolku	     1
+Vääksy pakkaspolku	     1
+Vaara	     1
+Vääräkoski	     1
+Väärinmaja	     1
+Vadso murmansk	     1
+Vaduz	     1
+Vähäkyrö poikkitie	     1
+Vähäkyrö selkämäentie	     1
+Vahalahti	     1
+Vähänkyrö	     1
+Vähikkälä	     1
+Väisänen	     1
+Vajaakoski	     1
+Vakkola	     1
+Valax kvarnbrovägen	     1
+Valittula	     1
+Valkeakoksi	     1
+Valkeala heinolantie	     1
+Valkeala jauhomäentie	     1
+Valkeala keskitie	     1
+Valkeala lappakoskentie	     1
+Valkela	     1
+Valkjärvi	     1
+Valkola	     1
+Valle	     1
+Valletta	     1
+Vallvik	     1
+Valmet	     1
+Valtionrautatiet	     1
+Vammalassa	     1
+Vampula yhdystie	     1
+Vanda björkbacksvägen g	     1
+Vanda trangränden	     1
+Vantaalla	     1
+Vantaankoski	     1
+Vanttauskoski	     1
+Vapaala	     1
+Värälä	     1
+Varanasi	     1
+Vardo	     1
+Värnamo	     1
+Varpaisjärvi lapinlahdentie	     1
+Varpaisjärvi petäiköntie	     1
+Varpalota	     1
+Vartsala	     1
+Vasarainen koivupuistontie	     1
+Vasarainen muinantie	     1
+Vasaraperä	     1
+Vasaraperä rovaniementie	     1
+Västerhankmo lundevägen	     1
+Västervik	     1
+Västilä	     1
+Vastinki	     1
+Västinniemi	     1
+Vaticana	     1
+Vätti	     1
+Vechta	     1
+Vedbaek	     1
+Vehkajärvi	     1
+Vehkaoja	     1
+Vehkataipale niemisentie	     1
+Vehmasmäki	     1
+Vehmersalmi riistakoskentie	     1
+Vehmersalmi vehmersalmentie	     1
+Vehniä nelostie	     1
+Veikkola lerbackantie	     1
+Vejbystrand	     1
+Vekarajärvi	     1
+Velizy	     1
+Venejärvenkylä	     1
+Venejärvenkylä timpankuja b	     1
+Veneranta jokiniementie	     1
+Venesjärvi	     1
+Venesjärvi paattilammintie	     1
+Venetpalo kustannuspaikka tuntematon	     1
+Venosa	     1
+Ventura calif	     1
+Vercelli	     1
+Verviers	     1
+Vesajärvi	     1
+Vesala	     1
+Vesanka nyröläntie	     1
+Vesanka raiviokoskentie	     1
+Vesi ympäristöhallitus	     1
+Vesikoski	     1
+Vessö	     1
+Vestervik	     1
+Vestmanna	     1
+Vetelissä	     1
+Vevey	     1
+Vianen	     1
+Viby j	     1
+Victoria australia	     1
+Victoria mines ont	     1
+Viekijärvi viekijärventie	     1
+Vierumäki anttilantie	     1
+Vigo	     1
+Vihavuosi	     1
+Vihijärvi	     1
+Vihteljärvi iskontie	     1
+Vihtijärvi ainolantie	     1
+Viiala kirkkok b	     1
+Viiala koulukatu	     1
+Viihdeviikarit	     1
+Viinikkala	     1
+Viiri	     1
+Vilhelmina	     1
+Viljandis	     1
+Villa secondo	     1
+Villähde alvontie	     1
+Villikkala	     1
+Vilppula kustannuspaikka tuntematon	     1
+Vilppula rauhalammintie	     1
+Vinkkilä mynämäentie	     1
+Vinkkilä vinkkiläntie	     1
+Vinnipeg	     1
+Virala	     1
+Virkkalassa virkkala	     1
+Virojoki hevonniementie	     1
+Virsbo	     1
+Virum	     1
+Vitele	     1
+Viterbo	     1
+Vitoria gasteiz	     1
+Vittsar	     1
+Vladikavkaz	     1
+Voikaa	     1
+Voitoinen	     1
+Vojakkala pääjärventie	     1
+Voksenasen	     1
+Voltti korvenkuja	     1
+Voorschoten	     1
+Vöra bertby	     1
+Vöra gretelundsvägen	     1
+Vöra larsmo	     1
+Vöra maxmo	     1
+Vöra söderända	     1
+Vöra vöravägen	     1
+Vöro	     1
+Vuojoki	     1
+Vuonislahti raapiontie	     1
+Vuontisjärvi	     1
+Vuorela rinnepolku	     1
+Vuorenmaa	     1
+Vuoriniemi porkalantie	     1
+Wakefield	     1
+Wald	     1
+Wallingford	     1
+Wallnut creek cal	     1
+Walnut creek	     1
+Wandsbeck	     1
+Warazawa	     1
+Warmbronn	     1
+Warmond	     1
+Warners bay	     1
+Warren	     1
+Warsawa	     1
+Wärtsilä	     1
+Watton Mi	     1
+Waukegan	     1
+Webster groves missouri	     1
+Weggis lucerne	     1
+Weida	     1
+Weil am rhein	     1
+Weissach	     1
+Wels	     1
+Welver	     1
+Wembley	     1
+Wenzendorf	     1
+Wesel	     1
+West branch iowa	     1
+West conshohocken pa	     1
+West nyack ny	     1
+Wetzlar dutenhofen	     1
+Wiesdbaden	     1
+Wiiburi	     1
+Williamsburg Va	     1
+Willow creek	     1
+Willowdale on	     1
+Willowdale ont	     1
+Winfield	     1
+Winnenden	     1
+Winona lake	     1
+Winter park florida	     1
+Wipak	     1
+Wismar	     1
+Witten	     1
+Wolf lake mn	     1
+Wolfsburg	     1
+Worcester	     1
+Worms	     1
+Wörthsee	     1
+Wredeby	     1
+Wrocklaw	     1
+Wroxlaw	     1
+Wsoy	     1
+Wycombe	     1
+Wyk	     1
+Xelsinki	     1
+Yarmouth	     1
+Yeovil	     1
+Yerewan	     1
+Yivieska	     1
+Ykspihlaja	     1
+Ylä tuloma	     1
+Ylä tuloma neuvostoliitto	     1
+Ylä wuoksi	     1
+Ylämylly kärrytie	     1
+Ylämylly tikanpolku	     1
+Ylänen	     1
+Ylänne	     1
+Yli härmä	     1
+Ylihärmä alahärmä	     1
+Ylihärmä iisakkilantie b	     1
+Ylihärmä pohjanmaan väylä	     1
+Ylikaihnuussa	     1
+Ylikiiminki haukipudas	     1
+Ylikiiminki vasamontie	     1
+Ylikylä	     1
+Ylimarkku	     1
+Yliskylä	     1
+Ylöjärvellä	     1
+Ylojärvi	     1
+Ylönkylä falkintie	     1
+Ystad	     1
+Yttilä	     1
+Zaklad wydawnictw crs	     1
+Zalozba	     1
+Zapresić	     1
+Zarasai	     1
+Zlin	     1
+Ztokgolm	     1
+Zurigo	     1
+Zwickau	     1
+моskva	     1
