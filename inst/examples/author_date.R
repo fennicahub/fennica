@@ -11,7 +11,7 @@ df.tmp <- df.tmp %>%
 	    mutate(author_age = na_if(author_age, 0))          # Replace 0 age with NA
 
 # Add original row info as first column
-df.tmp <- bind_cols(original_row = df.orig.full$original_row,
+df.tmp <- bind_cols(melinda_id = df.orig.full$melinda_id,
                     author_date = df.orig.full$author_date, # add field column 
                     df.tmp)
 rownames(df.tmp) <- NULL
