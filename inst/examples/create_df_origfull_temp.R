@@ -3,24 +3,23 @@
 
 df.orig.full <- read.csv(file = "priority_fields_full_fennica.csv", skip = 1, head = TRUE, sep="\t")
 colnames(df.orig.full)[1] ="melinda_id" #as index
-colnames(df.orig.full)[2] ="author_name"
-colnames(df.orig.full)[3] ="author_date"
-colnames(df.orig.full)[4] ="language"
-colnames(df.orig.full)[5] ="title_uniform"
-colnames(df.orig.full)[6] ="title"
-colnames(df.orig.full)[7] ="publication_place"
-colnames(df.orig.full)[8] ="publisher"
-colnames(df.orig.full)[9] ="publication_time"
-colnames(df.orig.full)[10] ="current_publication_frequency"#?
-colnames(df.orig.full)[11] ="dates of publicaton and/or sequence designation"#?
-colnames(df.orig.full)[12] ="note_dissertation"
-colnames(df.orig.full)[13] ="note_granter"
-colnames(df.orig.full)[14] ="year_degree_granted"#?
-colnames(df.orig.full)[15] ="note_source" 
-colnames(df.orig.full)[16] ="topic" #?
-colnames(df.orig.full)[17] ="geohraphic_name"#?
-colnames(df.orig.full)[18] ="corporate"
-colnames(df.orig.full)[19] ="uncontrolled"
-colnames(df.orig.full)[20] = "successor"
-colnames(df.orig.full)[21] = "holder"
+colnames(df.orig.full)[2] ="author_name" #100a 
+colnames(df.orig.full)[3] ="author_date" #100d 
+colnames(df.orig.full)[4] ="language" #041a # sign "|" has to be change to "," because some languages are written in more than one language use gsub
+colnames(df.orig.full)[5] ="language_original"
+colnames(df.orig.full)[6] ="title_uniform" #240a"
+colnames(df.orig.full)[7] ="title" #245a
+colnames(df.orig.full)[8] ="title_remainder" #245b #not included
+colnames(df.orig.full)[9] ="publication_place"# 260a # sign "|" has to be dealt with
+colnames(df.orig.full)[10] ="publisher_name" # 260b #same issues
+colnames(df.orig.full)[11] ="publication_date" #260c #does it have multiple publication years
+colnames(df.orig.full)[12] ="extent" #300a
+colnames(df.orig.full)[13] ="other_physical_details" #300b
+colnames(df.orig.full)[14] ="dimensions" #300c
+colnames(df.orig.full)[15] ="accompanying_material" #300e
+colnames(df.orig.full)[16] ="current_publication_frequency" #310a
+colnames(df.orig.full)[17] ="dates of publicaton and/or sequence designation" #362a 
+colnames(df.orig.full)[18] ="geographic_name" #651a
+colnames(df.orig.full)[19] ="callnumbers" #callnumbersa
+
 
