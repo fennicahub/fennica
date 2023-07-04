@@ -1,13 +1,12 @@
 # Define the field to harmonize
 field <- "language"
 
-
 # Harmonize the raw data
 out <- polish_languages(df.orig.full[[field]])
 df.tmp <- out$harmonized_full
 
 # Collect the results into a data.frame
-df.tmp$original_row <- df.orig.full$original_row
+df.tmp$melinda_id <- df.orig.full$melinda_id
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV
@@ -22,7 +21,7 @@ file_discarded <- paste0(output.folder, field, "_discarded.csv")
 # Generate data summaries
 
 message("Accepted languages")
-for (myfield in c("languages", "language_primary")) {
+for (myfield in c("languages", "language_original")) {
   tmp <- write_xtable(df.tmp[[myfield]], paste(output.folder, myfield, "_accepted.csv", sep = ""), count = TRUE)
 }
 
