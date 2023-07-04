@@ -4,6 +4,9 @@
 df.orig.full <- read.csv(file = "priority_fields_full_fennica.csv", skip = 1, head = TRUE, sep="\t")
 colnames(df.orig.full)[1] ="melinda_id" #as index
 colnames(df.orig.full)[2] ="language" #041a "author_name" #100a 
+#change symbols
+df.orig.full$language <- gsub("//|"," ",df.orig.full$language)
+df.orig.full$language <- gsub(" ",";",df.orig.full$language)
 colnames(df.orig.full)[3] ="language_original"  
 colnames(df.orig.full)[4] ="author_name" #100a  # sign "|" has to be change to "," because some languages are written in more than one language use gsub
 colnames(df.orig.full)[5] ="author_date" #100d 
