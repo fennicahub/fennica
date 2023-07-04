@@ -2,11 +2,11 @@
 field <- "language"
 
 # Harmonize the raw data
-out <- polish_languages(df.orig[[field]])
+out <- polish_languages(df.orig.full[[field]])
 df.tmp <- out$harmonized_full
 
 # Collect the results into a data.frame
-df.tmp$original_row <- df.orig$original_row
+df.tmp$melinda_id <- df.orig.full$melinda_id
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV
@@ -21,17 +21,17 @@ file_discarded <- paste0(output.folder, field, "_discarded.csv")
 # Generate data summaries
 
 message("Accepted languages")
-for (myfield in c("languages", "language_primary")) {
+for (myfield in c("languages", "language_original")) {
   tmp <- write_xtable(df.tmp[[myfield]], paste(output.folder, myfield, "_accepted.csv", sep = ""), count = TRUE)
 }
 
 message("Language conversions")
-tab <- cbind(original = df.orig[[field]], df.tmp[, 1:4])
+tab <- cbind(original = df.orig.full[[field]], df.tmp[, 1:4])
 tmp <- write_xtable(tab, paste(output.folder, field, "_conversions.csv", sep = ""), count = TRUE)
 
 # Discarded
 # Original entries that were converted into NA
-s <- unlist(strsplit(df.orig$language, ";"))
+s <- unlist(strsplit(df.orig.full$language, ";"))
 original.na <- s[s %in% out$unrecognized]
 
 # .. ie. those are "discarded" cases; list them in a table

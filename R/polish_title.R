@@ -44,7 +44,7 @@ polish_title <- function (x) {
   x <- gsub("^\\[", "", x)
   x <- gsub("\\)$", "", x)
   x <- gsub("^\\(", "", x)
-
+  x <- gsub("|", "", x)
   # Map back to originals
   x <- x[xinds]
 
