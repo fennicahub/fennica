@@ -6,8 +6,7 @@ colnames(df.orig)[1] ="melinda_id" #as index
 colnames(df.orig)[2] ="language" #041a "author_name" #100a 
 
 #change symbols or change | to ; in the combine_csv would be a better solution
-#df.orig$language <- gsub("//|.*",";",df.orig$language)
-#df.orig$language <- gsub(";"," ",df.orig$language)
+df.orig$language <- gsub("\\|",";",df.orig$language)
 
 colnames(df.orig)[3] ="language_original"  
 colnames(df.orig)[4] ="author_name" #100a  # sign "|" has to be change to "," because some languages are written in more than one language use gsub
