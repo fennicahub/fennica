@@ -16,51 +16,51 @@ source("author_date.R")
 source("author_name.R")
 
 # corporate field
-source("corporate.R")
+#source("corporate.R")
 
 # Language
 source("language.R")
 
 # holder field
-source("holder.R")
+#source("holder.R")
 
 # note_510c field
 #source("note_510c.R")
 
 # note_dissertation field
-source("note_dissertation.R")
+#source("note_dissertation.R")
 
 # note_granter field
-source("note_granter.R")
+#source("note_granter.R")
 
 # note_source field
-source("note_source.R")
+#source("note_source.R")
 
 # publisher field
-source("publisher.R")
+source("publisher_name.R")
 
 #publication_interval field
-source("publication_interval.R")
+#source("publication_interval.R")
 
 # Publication place field and derived country- and geoinformation
 source("publication_place.R")
 
 # Publication place field and derived country- and geoinformation
-source("publication_time.R")
+source("publication_date.R")
 
 # note_subject_topic field
-source("subject_topic.R")
+#source("subject_topic.R")
 source("subject_geography.R")
 
 # successor field
-source("successor.R")
+#source("successor.R")
 
 # Title fields
 source("title.R")
 source("title_uniform.R")
 
 # uncontrolled field
-source("uncontrolled.R")
+#source("uncontrolled.R")
 
 # Generate an overview with links to the summary files:
 knit("overview.Rmd")
