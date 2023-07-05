@@ -1,18 +1,18 @@
 
 field <- "note_dissertation"
 
-df.tmp <- data.frame(df.orig.full[[field]])
-df.tmp <- mark_dissertations(df.orig.full[[field]])
+df.tmp <- data.frame(df.orig[[field]])
+df.tmp <- mark_dissertations(df.orig[[field]])
 names(df.tmp) <- field
 
 # Raw data
-original <- df.orig.full[[field]]
+original <- df.orig[[field]]
 
 # Harmonize the raw data
 x <- fennica::polish_entry(original)
 
 # Collect the results into a data.frame
-df.tmp <- data.frame(original_row = df.orig.full$melinda_id,
+df.tmp <- data.frame(original_row = df.orig$melinda_id,
                      note_dissertation = x)
 
 # Store the title field data
@@ -37,7 +37,7 @@ message("Discarded entries in the original data")
 inds <- which(is.na(df.tmp[[field]]))
 
 # Original entries that were converted into NA
-original.na <- df.orig.full[match(df.tmp$melinda_id[inds], df.orig.full$melinda_id), field]
+original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
 
 # .. ie. those are "discarded" cases; list them in a table
 tmp <- write_xtable(original.na, file_discarded, count = TRUE)

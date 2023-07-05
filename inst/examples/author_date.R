@@ -2,7 +2,7 @@
 field <- "author_date"
 
 # TODO make a tidy cleanup function to shorten the code here
-df.tmp <- polish_years(df.orig.full[[field]], check = TRUE, verbose = TRUE)
+df.tmp <- polish_years(df.orig[[field]], check = TRUE, verbose = TRUE)
 
 df.tmp <- df.tmp %>%
             dplyr::rename(author_birth = from) %>%
@@ -11,8 +11,8 @@ df.tmp <- df.tmp %>%
 	    mutate(author_age = na_if(author_age, 0))          # Replace 0 age with NA
 
 # Add original row info as first column
-df.tmp <- bind_cols(melinda_id = df.orig.full$melinda_id,
-                    author_date = df.orig.full$author_date, # add field column 
+df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
+                    author_date = df.orig$author_date, # add field column 
                     df.tmp)
 rownames(df.tmp) <- NULL
 
@@ -25,7 +25,7 @@ saveRDS(df.tmp, file = data.file)
 
 # Generate data summaries
 
-o <- as.character(df.orig.full[[field]])
+o <- as.character(df.orig[[field]])
 x <- as.character(df.tmp[["author_birth"]])
 y <- as.character(df.tmp[["author_death"]])
 
