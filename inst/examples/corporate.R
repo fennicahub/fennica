@@ -11,7 +11,7 @@ original <- df.orig[[field]]
 x <- fennica::polish_entry(original)
 
 # Collect the results into a data.frame
-df.tmp <- data.frame(original_row = df.orig$original_row,
+df.tmp <- data.frame(original_row = df.orig$melinda_id,
                      corporate = x)
 
 # Store the title field data
@@ -36,7 +36,7 @@ message("Discarded entries in the original data")
 inds <- which(is.na(df.tmp[[field]]))
 
 # Original entries that were converted into NA
-original.na <- df.orig[match(df.tmp$original_row[inds], df.orig$original_row), field]
+original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
 
 # .. ie. those are "discarded" cases; list them in a table
 tmp <- write_xtable(original.na, file_discarded, count = TRUE)
