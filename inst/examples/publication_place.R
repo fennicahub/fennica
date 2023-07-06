@@ -2,7 +2,7 @@ field <- "publication_place"
 field_2 <- "melinda_id"
 
 # Harmonize the raw data
-tab <- polish_place(df.orig.full[[field]], remove.unknown = FALSE)
+tab <- polish_place(df.orig[[field]], remove.unknown = FALSE)
 
 # Attach country
 tab_country <- get_country(tab)
@@ -12,7 +12,7 @@ f <- system.file("extdata/all_mapped_places_2020-06-15.csv", package = "fennica"
 geo_data <-  read.csv(f,fileEncoding = "UTF-8")
 
 # Collect the results into a data.frame
-df.tmp <- data.frame(melinda_id=df.orig.full[field_2],publication_place = tab,country=tab_country) %>% left_join(.,geo_data)
+df.tmp <- data.frame(melinda_id=df.orig[field_2],publication_place = tab,country=tab_country) %>% left_join(.,geo_data)
 colnames(df.tmp) <- c("melinda_id","publication_place","publication_country","longitude","latitude","chosen_id")
 
 # Save publication place data
@@ -29,7 +29,7 @@ message("Discarded entries in the original data")
 inds <- which(is.na(df.tmp[[field]]))
 
 # Original entries that were converted into NA
-original.na <- df.orig.full[match(df.tmp$melinda_id[inds], df.orig.full$melinda_id), field]
+original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
 
 # .. ie. those are "discarded" cases; list them in a table
 tmp <- write_xtable(original.na, paste(output.folder, field, "_discarded.csv", sep = ""), count = TRUE)
