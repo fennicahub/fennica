@@ -1,9 +1,9 @@
 field <- "publication_date"
 source("../../R/polish_years.R")
-tmp  <- polish_years(df.orig.full[[field]], check = TRUE)
+tmp  <- polish_years(df.orig[[field]], check = TRUE)
       
 # Make data.frame
-df.harmonized <- data.frame(melinda_id = df.orig.full$melinda_id,
+df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
                      publication_year_from = tmp$from,
                      publication_year_till = tmp$till)
 
@@ -23,7 +23,7 @@ saveRDS(df.harmonized, file = data.file)
 # ---------------------------------------------------------------------
 
 message("Write conversions: publication year")
-df.harmonized$original <- df.orig.full[[field]]
+df.harmonized$original <- df.orig[[field]]
 
 xx <- as.data.frame(df.harmonized) %>% filter(!is.na(publication_year)) %>%
                                        group_by(original, publication_year) %>%
@@ -37,7 +37,7 @@ tmp <- write.table(xx,
 	 row.names = FALSE)
   
 message("Discarded publication year")
-o <- as.character(df.orig.full[[field]])
+o <- as.character(df.orig[[field]])
 x <- as.character(df.harmonized[["publication_year"]])
 inds <- which(is.na(x))
 discard.file <- paste0(output.folder, field, "_discarded.csv")
