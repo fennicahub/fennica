@@ -22,8 +22,31 @@ if (!file.exists(output.folder)) {
 }
 
 # List the preprocessed data file and read the data
-df.orig <- read_bibliographic_metadata("fennica_parsed.csv.gz", verbose = TRUE, sep = "|")
-# df.orig <- sample_n(df.orig, 1000) # Try with a smaller subset first!
+df.orig <- read.csv(file = "priority_fields_full_fennica.csv", skip = 1, head = TRUE, sep="\t")
+# Column name change when 
+
+df.orig <- df.orig %>% 
+  rename("melinda_id" = 1, 
+         "language" = 2, 
+         "language_original" = 3,
+         "author_name" = 4,
+         "author_date" = 5,
+         "title_uniform" = 6, 
+         "title" = 7,
+         "title_remainder" = 8, 
+         "publication_place" = 9,
+         "publication_name" = 10, 
+         "publication_date" = 11,
+         "physical_extent" = 12, 
+         "other_physical_details" = 13, 
+         "physical_dimensions"= 14, 
+         "accompanying_material" = 15, 
+         "publication_frequency" = 16, 
+         "publication_interval" = 17, 
+         "subject_geography" = 18, 
+         "callnumbers" = 19)
+
+
 
 # ------------------------------------------------------------
 
