@@ -11,7 +11,7 @@ original <- df.orig[[field]]
 x <- fennica::polish_entry(original)
 
 # Collect the results into a data.frame
-df.tmp <- data.frame(original_row = df.orig$melinda_id,
+df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      corporate = x)
 
 # Store the title field data
