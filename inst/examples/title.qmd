@@ -1,5 +1,5 @@
 ---
-title: "Title field: summary"
+title: "Title field"
 hide-description: false
 description: "Summary of the statistics about the titles of the articles"
 ---

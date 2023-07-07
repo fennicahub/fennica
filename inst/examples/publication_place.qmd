@@ -1,5 +1,5 @@
 ---
-title : "Publication place preprocessing summary"
+title : "Publication place preprocessing"
 hide-description: false
 description: "Statistics about the place of publication of the articles"
 ---
