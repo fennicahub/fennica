@@ -20,25 +20,27 @@ book:
       - icon: facebook
         href: https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ffennica-fennica.rahtiapp.fi%2Findex.html
 
+  # file with '#' are not used anymore
+  # files with '##' are the one that need to be corrected 
   chapters:
     - index.qmd
     - author_date.qmd
     - author_name.qmd
-    - corporate.qmd
+    #- corporate.qmd
     - language.qmd
-    - holder.qmd
-    - note_dissertation.qmd
-    - note_granter.qmd
-    - note_source.qmd
-    - publisher.qmd
-    - publication_interval.qmd
+    #- holder.qmd
+    #- note_dissertation.qmd
+    #- note_granter.qmd
+    #- note_source.qmd
+    ##- publisher.qmd
+    ##- publication_interval.qmd
     - publication_place.qmd
-    - publication_time.qmd
-    - subject_topic.qmd
-    - successor.qmd
+    ##- publication_time.qmd
+    ##- subject_topic.qmd
+    #- successor.qmd
     - title.qmd
-    - title_uniform.qmd
-    - uncontrolled.qmd
+    ##- title_uniform.qmd
+    #- uncontrolled.qmd
   appendices :
     - acknowledgments.qmd
     - technical_information.qmd
