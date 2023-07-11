@@ -1,6 +1,7 @@
 # Define the field to harmonize
 field <- "language"
 
+df.orig$language <- gsub("\\|", ";", df.orig$language)
 # Harmonize the raw data
 out <- polish_languages(df.orig[[field]])
 df.tmp <- out$harmonized_full
