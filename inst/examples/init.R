@@ -21,6 +21,8 @@ if (!file.exists(output.folder)) {
   dir.create(output.folder)
 }
 
+#the file need to be zipped, otherwise it's too big to be put on github
+unzip("priority_fields_full_fennica.zip",exdir=".")
 # List the preprocessed data file and read the data
 df.orig <- read.csv(file = "priority_fields_full_fennica.csv", skip = 1, head = TRUE, sep="\t")
 
