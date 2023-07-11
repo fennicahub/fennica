@@ -35,7 +35,7 @@ book:
     ##- publisher.qmd
     ##- publication_interval.qmd
     - publication_place.qmd
-    ##- publication_time.qmd
+    - publication_time.qmd
     ##- subject_topic.qmd
     #- successor.qmd
     - title.qmd
