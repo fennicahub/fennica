@@ -1,0 +1,14 @@
+# Technical information {.unnumbered}
+
+This document was generated with the following packages:
+
+```{r}
+#| label = "source-index",
+#| include = FALSE
+source("init.R")
+# knit_bookdown <- TRUE in init.R
+```
+```{r}
+#| label = "system-information"
+sessionInfo()
+```

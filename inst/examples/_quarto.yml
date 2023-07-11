@@ -39,4 +39,7 @@ book:
     - title.qmd
     - title_uniform.qmd
     - uncontrolled.qmd
+  appendices :
+    - acknowledgments.qmd
+    - technical_information.qmd
 

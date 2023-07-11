@@ -4,7 +4,7 @@ author: "Turku Data Science Group"
 date: "`r Sys.Date()`"
 ---
 
-# Preface chapter
+<h2> Preface chapter </h2>
 
 As part of the Metadata Harmonization And Analysis work package, we use the Finnish national bibliography (FNB) Fennica dataset to create a harmonized dataset that can be used for research purposes as well as provide the groundwork for infrastructure that can be iterated further. 
 
@@ -13,18 +13,3 @@ The FNB contains metadata for 71,919 documents and spans over 450 years, more sp
 An important output of our work is a harmonized version of the FNB. The FNB metadata is an example of a dataset consisting of structured data. The FNB dataset is not created for research purposes and needs refining before it can be used. Tools are needed for accessing, cleaning, refining, enriching and analysing this type of data, and printing documentation of this process.
 
 In this bookdown project we will disseminate the FNB dataset cleaning process.
-
-
-```{r}
-#| label = "source-index",
-#| include = FALSE
-source("init.R")
-# knit_bookdown <- TRUE in init.R
-```
-
-This document was generated with the following packages:
-
-```{r}
-#| label = "system-information"
-sessionInfo()
-```
