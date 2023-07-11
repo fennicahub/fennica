@@ -1,4 +1,4 @@
-FROM rocker/r-ver:4.2.1
+FROM rocker/r-ver:4.2.1 AS builder
 RUN apt-get update && apt-get install -y  git-core libcairo2-dev libxt-dev xvfb xauth xfonts-base libgtk2.0-dev libcurl4-openssl-dev libfribidi-dev libgit2-dev libharfbuzz-dev libicu-dev libpng-dev libssl-dev libtiff-dev libxml2-dev make pandoc pandoc-citeproc zlib1g-dev && rm -rf /var/lib/apt/lists/*
 RUN mkdir -p /usr/local/lib/R/etc/ /usr/lib/R/etc/
 RUN echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl', Ncpus = 4)" | tee /usr/local/lib/R/etc/Rprofile.site | tee /usr/lib/R/etc/Rprofile.site
@@ -29,5 +29,9 @@ RUN R -e 'remotes::install_local(upgrade="never")'
 WORKDIR /home/fennica/inst/examples
 RUN chgrp -R 0 /home/fennica && \
     chmod -R g=u /home/fennica
-CMD R -e 'bookdown::render_book("index.Rmd", "bookdown::gitbook")' && \
+RUN R -e 'bookdown::render_book("index.Rmd", "bookdown::gitbook")' && \
     mv _book /public
+FROM nginxinc/nginx-unprivileged:latest
+COPY --from=builder /public /usr/share/nginx/html
+EXPOSE 8080
+CMD ["nginx", "-g", "daemon off;"]

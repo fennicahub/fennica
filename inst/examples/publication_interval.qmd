@@ -1,5 +1,5 @@
 ---
-title : "Publication interval summaries"
+title : "Publication interval"
 hide-description: false
 description: "Statistics about the publication interval of the articles"
 ---
