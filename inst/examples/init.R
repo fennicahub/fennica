@@ -23,7 +23,10 @@ if (!file.exists(output.folder)) {
 
 # List the preprocessed data file and read the data
 df.orig <- read.csv(file = "priority_fields_full_fennica.csv", skip = 1, head = TRUE, sep="\t")
-# Column name change when 
+
+# Column name has to be chabged if column is deleted or a new one added. 
+# These are also the same columns/fields that we have in rahti qmd book. 
+#It is important not to change the names 
 
 df.orig <- df.orig %>% 
   rename("melinda_id" = 1, 
