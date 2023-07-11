@@ -52,5 +52,11 @@
   },
   "uncontrolled.qmd": {
     "uncontrolled.html": "1dfd3b6c"
+  },
+  "acknowledgments.qmd": {
+    "acknowledgments.html": "fd721eff"
+  },
+  "technical_information.qmd": {
+    "technical_information.html": "988b0159"
   }
 }
