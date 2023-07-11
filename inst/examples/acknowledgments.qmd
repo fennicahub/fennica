@@ -29,9 +29,7 @@ Special issue.<br>
 
 <h3> Funders: </h3>
 - Research Council of Finland DHL-FI project
-    - <a href="https://www.aka.fi/en/">Academy of Finland website</a>
-    - <a href="https://akareport.aka.fi/ibi_apps/WFServlet?IBIF_ex=x_HakKuvaus2&CLICKED_ON=&HAKNRO1=348946&UILANG=en&YMISTA=AKA&TULOSTE=HTML">Funding decision</a>
-    
+    - <a href="https://www.aka.fi/en/">Academy of Finland website</a>    
 
 - FIN-CLARIAH research infrastructure
     - <a href="https://www.kielipankki.fi/organization/fin-clariah/">FIN-CLARIAH website</a>
