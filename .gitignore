@@ -16,3 +16,4 @@ language.Rds
 # Dockerfile
 .dockerignore
 *.csv
+!inst/examples/output.tables/*.csv
