@@ -1,5 +1,5 @@
 
-field <- "publisher_name"
+field <- "publisher"
 
 # Generic cleanup for the publisher field
 tab <- polish_publisher(df.orig[[field]])

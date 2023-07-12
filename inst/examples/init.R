@@ -28,7 +28,7 @@ if (!file.exists(output.folder)) {
 # List the preprocessed data file and read the data
 df.orig <- read.csv(file = "priority_fields_full_fennica.csv", skip = 1, head = TRUE, sep="\t")
 
-# Column name has to be chabged if column is deleted or a new one added. 
+# Column name has to be changed if column is deleted or a new one added. 
 # These are also the same columns/fields that we have in rahti qmd book. 
 #It is important not to change the names 
 
@@ -42,15 +42,15 @@ df.orig <- df.orig %>%
          "title" = 7,
          "title_remainder" = 8, 
          "publication_place" = 9,
-         "publication_name" = 10, 
-         "publication_date" = 11,
+         "publisher" = 10, 
+         "publication_time" = 11,
          "physical_extent" = 12, 
          "other_physical_details" = 13, 
          "physical_dimensions"= 14, 
-         "accompanying_material" = 15, 
-         "publication_frequency" = 16, 
-         "publication_interval" = 17, 
-         "subject_geography" = 18, 
+         "publication_frequency" = 15, 
+         "publication_interval" = 16, 
+         "subject_geography" = 17,
+         "holder"= 18,
          "callnumbers" = 19)
 
 
@@ -64,3 +64,4 @@ knit_bookdown <- TRUE
 
 # Visualization options
 theme_set(theme_bw(20))
+
