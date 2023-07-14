@@ -130,11 +130,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ffennica-fennica.rahtiapp.fi%2Findex.html" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-facebook"></i></a>
     <a href="https://github.com/fennicahub/fennica" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
     </div>
       </div>
@@ -171,20 +166,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./publisher.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Publisher preprocessing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./publication_place.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Publication place preprocessing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Publication place preprocessing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./publication_time.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Publication time</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Publication time</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./title.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Title field</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Title field</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./title_uniform.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Title uniform</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -266,24 +273,24 @@ other attached packages:
  [1] fennica_0.2.9     Cairo_1.6-0       ggplot2_3.4.2     R.utils_2.12.2   
  [5] R.oo_1.25.0       R.methodsS3_1.8.2 knitr_1.43        stringr_1.5.0    
  [9] tm_0.7-11         NLP_0.2-1         dplyr_1.1.2       devtools_2.4.5   
-[13] usethis_2.2.1    
+[13] usethis_2.2.2    
 
 loaded via a namespace (and not attached):
- [1] utf8_1.2.3        generics_0.1.3    xml2_1.3.4        slam_0.1-50      
- [5] stringi_1.7.12    digest_0.6.32     magrittr_2.0.3    grid_4.3.1       
- [9] evaluate_0.21     pkgload_1.3.2     fastmap_1.1.1     jsonlite_1.8.7   
+ [1] utf8_1.2.3        generics_0.1.3    xml2_1.3.5        slam_0.1-50      
+ [5] stringi_1.7.12    digest_0.6.33     magrittr_2.0.3    grid_4.3.1       
+ [9] evaluate_0.21     pkgload_1.3.2.1   fastmap_1.1.1     jsonlite_1.8.7   
 [13] processx_3.8.2    pkgbuild_1.4.2    sessioninfo_1.2.2 urlchecker_1.0.1 
 [17] ps_1.7.5          promises_1.2.0.1  purrr_1.0.1       fansi_1.0.4      
 [21] scales_1.2.1      stringdist_0.9.10 XML_3.99-0.14     cli_3.6.1        
-[25] shiny_1.7.4       rlang_1.1.1       crayon_1.5.2      munsell_0.5.0    
+[25] shiny_1.7.4.1     rlang_1.1.1       crayon_1.5.2      munsell_0.5.0    
 [29] ellipsis_0.3.2    withr_2.5.0       remotes_2.4.2     cachem_1.0.8     
 [33] tools_4.3.1       parallel_4.3.1    memoise_2.0.1     colorspace_2.1-0 
 [37] httpuv_1.6.11     vctrs_0.6.3       R6_2.5.1          mime_0.12        
 [41] lifecycle_1.0.3   fs_1.6.2          htmlwidgets_1.6.2 miniUI_0.1.1.1   
 [45] pkgconfig_2.0.3   callr_3.7.3       gtable_0.3.3      pillar_1.9.0     
 [49] later_1.3.1       data.table_1.14.8 glue_1.6.2        profvis_0.3.8    
-[53] Rcpp_1.0.10       xfun_0.39         tibble_3.2.1      tidyselect_1.2.0 
-[57] rstudioapi_0.14   xtable_1.8-4      htmltools_0.5.5   rmarkdown_2.23   
+[53] Rcpp_1.0.11       xfun_0.39         tibble_3.2.1      tidyselect_1.2.0 
+[57] rstudioapi_0.15.0 xtable_1.8-4      htmltools_0.5.5   rmarkdown_2.23   
 [61] compiler_4.3.1    prettyunits_1.1.1</code></pre>
 </div>
 </div>
