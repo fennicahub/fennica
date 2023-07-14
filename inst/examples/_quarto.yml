@@ -8,7 +8,8 @@ format:
       dark: darkly
 
 book:
-  reader-mode: true
+# the next option enbale the reader-mode. It hides to TOC and the otpion seems the be automatically enabled by default on Chromium
+  #reader-mode: true
   repo-url: https://github.com/fennicahub/fennica
   repo-actions: issue
   sidebar:
@@ -32,14 +33,14 @@ book:
   #- note_dissertation.qmd
   #- note_granter.qmd
   #- note_source.qmd
-  ##- publisher.qmd
+  - publisher.qmd
   ##- publication_interval.qmd
   - publication_place.qmd
   - publication_time.qmd
   ##- subject_topic.qmd
   #- successor.qmd
   - title.qmd
-  ##- title_uniform.qmd
+  - title_uniform.qmd
   #- uncontrolled.qmd
   appendices :
     - acknowledgments.qmd
