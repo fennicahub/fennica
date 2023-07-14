@@ -1,4 +1,4 @@
-field <- "publication_date"
+field <- "publication_time"
 source("../../R/polish_years.R")
 tmp  <- polish_years(df.orig[[field]], check = TRUE)
       
