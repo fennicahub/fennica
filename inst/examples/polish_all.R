@@ -1,15 +1,15 @@
 message("Entry identifier to match back to the originals")
-df.preprocessed <- data.frame(original_row = df.orig$original_row)
+df.preprocessed <- data.frame(melinda_id = df.orig$melinda_id)
 
 # List how raw data fields will be converted into
 # preprocessed data fields
 conversions <- list()
 
 # Define the fields
-update.fields <- setdiff(names(df.orig), c("original_row", "title"))
+update.fields <- setdiff(names(df.orig), c("melinda_id", "physical_dimensions"))
 
 # Harmonize title field
-source("title.R")
+source("physical_dimensions.R")
 
 # ---------------------------------------------------
 

@@ -38,7 +38,7 @@ The estimated dimensions are based on the following auxiliary information sheets
 
 
   
-<!--[Discarded dimension info](dimensions_discarded.csv)-->
+<!--[Discarded dimension info](physical_dimensions_discarded.csv)-->
 
 Left: final gatherings vs. final document dimension (width x height). Right: original gatherings versus original heights where both are available. The point size indicates the number of documents for each case. The red dots indicate the estimated height that is used when only gathering information is available. 
 
