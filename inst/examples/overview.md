@@ -1,6 +1,6 @@
 # Fennica preprocessing summary
 
-The original data set contains 71919 documents.
+The original data set contains 1187813 documents.
 
 The following fields have been harmonized.
 

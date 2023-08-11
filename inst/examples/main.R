@@ -21,6 +21,9 @@ source("author_name.R")
 # Language
 source("language.R")
 
+#Physiacl dimension
+source("physical_dimensions.R")
+
 # holder field
 #source("holder.R")
 
@@ -37,7 +40,7 @@ source("language.R")
 #source("note_source.R")
 
 # publisher field
-source("publisher_name.R")
+source("publisher.R")
 
 #publication_interval field
 #source("publication_interval.R")
@@ -46,7 +49,7 @@ source("publisher_name.R")
 source("publication_place.R")
 
 # Publication place field and derived country- and geoinformation
-source("publication_date.R")
+source("publication_time.R")
 
 # note_subject_topic field
 #source("subject_topic.R")

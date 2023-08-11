@@ -26,30 +26,34 @@ unzip("priority_fields_full_fennica.zip",exdir=".")
 # List the preprocessed data file and read the data
 df.orig <- read.csv(file = "priority_fields_full_fennica.csv", skip = 1, head = TRUE, sep="\t")
 
-# Column name has to be changed if column is deleted or a new one added. 
+# Column name (MARC code) has to be changed if column is deleted or a new one added. 
 # These are also the same columns/fields that we have in rahti qmd book. 
 #It is important not to change the names 
 
+#columns_to_pick = [("035","a"),("100","a"),("100","d"),("041","a"),
+#("041","h"),("240","a"),("245","a"),("245","b"),("260","a"),
+#("260","b"),("260","c"),("300","a"),("300","b"),("300","c"),("310","a"),
+#("362","a"),()"651","a",("callnumbers","a")]
+
 df.orig <- df.orig %>% 
-  rename("melinda_id" = 1, 
-         "language" = 2, 
-         "language_original" = 3,
-         "author_name" = 4,
-         "author_date" = 5,
-         "title_uniform" = 6, 
-         "title" = 7,
-         "title_remainder" = 8, 
-         "publication_place" = 9,
-         "publisher" = 10, 
-         "publication_time" = 11,
-         "physical_extent" = 12, 
-         "other_physical_details" = 13, 
-         "physical_dimensions"= 14, 
-         "publication_frequency" = 15, 
-         "publication_interval" = 16, 
-         "subject_geography" = 17,
-         "holder"= 18,
-         "callnumbers" = 19)
+  rename("melinda_id" = 1, #("035","a")
+         "author_name" = 2, # ("100","a")
+         "author_date" = 3, # ("100","d")
+         "language" = 4, # ("041","a")
+         "language_original" = 5, #("041","h")
+         "title_uniform" = 6, # ("240","a")
+         "title" = 7, #("245","a")
+         "title_remainder" = 8, #("245","b")
+         "publication_place" = 9, #("260","a")
+         "publisher" = 10, #("260","b")
+         "publication_time" = 11, #("260","c")
+         "physical_extent" = 12, # ("300","a")
+         "other_physical_details" = 13, #("300","b")
+         "physical_dimensions"= 14, # ("300","c")
+         "publication_frequency" = 15, # ("310","a")
+         "publication_interval" = 16, # ("362","a")
+         "subject_geography" = 17, #()"651","a"
+         "callnumbers" = 18) # ("callnumbers","a")]
 
 
 

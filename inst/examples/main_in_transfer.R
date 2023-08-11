@@ -2,10 +2,8 @@ update.fields <- c(
 
       "publication_interval", # Some overlap with time.. TODO
       "publication_frequency", 
-
       "physical_extent",       
       "physical_dimension",
-
       "subject_geography", # IT takes care?
       
       )
@@ -93,7 +91,7 @@ data.enriched <- enrich_preprocessed_data(df.preprocessed, df.orig)
 #  but that is just one example)
 data.validated <- validate_preprocessed_data(data.enriched)
 
-See also validation.R!!!
+#See also validation.R!!!
 
       "author_date" + "author_name" # OK
       # -> Once both name and date are done, we can add the combined part of the summary; pitää synkatat myös publication_year kentän kanssa..

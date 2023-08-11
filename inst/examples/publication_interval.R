@@ -3,7 +3,7 @@ field <- "publication_interval"
 tmp <- polish_years(df.orig[[field]], check = TRUE)
       
 # Add to data.frame
-df.tmp <- data.frame(original_row = df.orig$original_row,
+df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      publication_interval_from = tmp$from,
               	     publication_interval_till = tmp$till)
 
@@ -15,6 +15,7 @@ message("Enrich publication interval")
 # Assume that all cases with denoted interval have start and end year
 # If one is missing, then it means that start and end are the same year
 # therefore we fill those missing entries here
+
 df.tmp$publication_interval_from[is.na(df.tmp$publication_interval_from)] <- df.tmp$publication_interval_till[is.na(df.tmp$publication_interval_from)]
 df.tmp$publication_interval_till[is.na(df.tmp$publication_interval_till)] <- df.tmp$publication_interval_from[is.na(df.tmp$publication_interval_till)]
 
@@ -48,7 +49,7 @@ message("Discarded entries in the original data")
 inds <- which(is.na(df.tmp[[field]]))
 
 # Original entries that were converted into NA
-original.na <- df.orig[match(df.tmp$original_row[inds], df.orig$original_row), field]
+original.na <- df.orig[match(df.tmp$melinda_fi[inds], df.orig$melinda_fi), field]
 
 # .. ie. those are "discarded" cases; list them in a table
 tmp <- write_xtable(original.na, file_discarded, count = TRUE)
@@ -59,4 +60,5 @@ tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 df <- readRDS(data.file)
 # tmp <- knit(input = paste(field, ".Rmd", sep = ""), 
 #             output = paste(field, ".md", sep = ""))
+
 
