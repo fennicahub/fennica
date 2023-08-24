@@ -32,6 +32,7 @@ Top-`r ntop` publication places are shown together with the number of documents.
 #| error = FALSE,
 #| fig.width = 9,
 #| fig.height = 6
+library(comhis)
 p <- top_plot(df, "publication_place", ntop)
 p <- p + ggtitle(paste("Top publication places"))
 p <- p + scale_y_log10()

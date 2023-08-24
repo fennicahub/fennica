@@ -37,6 +37,7 @@ knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
 #| fig.width = 8,
 #| fig.height = 6
 library(ggplot2)
+library(comhis)
 theme_set(theme_bw(base_size = 12))
 p <- top_plot(df, "author_name", ntop = ntop, log10 = TRUE)+
   labs(y = "Entries (n)", title = "Top titles")
@@ -92,6 +93,7 @@ Top-`r ntop` uniquely identified authors and their productivity (title count).
 #| fig.height = 8
 knitr::opts_chunk$set(fig.path = "figure/", dev="CairoPNG")
 library(ggplot2)
+library(comhis)
 theme_set(theme_bw(base_size = 12))
 p <- NULL
 p <- top_plot(df, "author_name", ntop) +

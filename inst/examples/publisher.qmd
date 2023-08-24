@@ -34,6 +34,7 @@ The `r ntop` most common publishers are shown with the number of documents.
 #| warning = FALSE,
 #| fig.width = 12,
 #| fig.height = 9
+library(comhis)
 p <- top_plot(df, "publisher", ntop)
 p <- p + ggtitle(paste("Top publishers"))
 p <- p + scale_y_log10()

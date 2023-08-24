@@ -38,6 +38,7 @@ Top-`r ntop` titles and their title counts.
 #| fig.width = 8,
 #| fig.height = 6
 library(ggplot2)
+library(comhis)
 theme_set(theme_bw(base_size = 12))
 p <- top_plot(df, "title", ntop = ntop, log10 = TRUE)+
   labs(y = "Entries (n)", title = "Top titles")

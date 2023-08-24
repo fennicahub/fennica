@@ -53,5 +53,6 @@ Title count per language (including multi-language documents; note the log10 sca
 #| warning = FALSE,
 #| fig.width = 7,
 #| fig.height = 5
+library(comhis)
 top_plot(df, "languages", ntop = ntop, log10 = TRUE) + labs(y = "Entries (n)")
 ```
