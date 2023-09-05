@@ -25,7 +25,7 @@ book:
   # files with '##' are the one that need to be corrected 
   chapters:
   - index.qmd
-  - author_date.qmd
+  #- author_date.qmd
   #- author_name.qmd
   #- corporate.qmd
   - language.qmd
