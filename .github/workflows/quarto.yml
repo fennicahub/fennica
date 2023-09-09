@@ -9,6 +9,7 @@ on:
     - inst/examples
     - '**.Rmd'
   workflow_dispatch:
+permissions: write-all
 
 name: renderbook-quarto
 
