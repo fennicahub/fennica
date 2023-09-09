@@ -1,4 +1,7 @@
 # Title field: summary
+```{r source-index, include=FALSE}
+source("init.R")
+```
 
 ```{r source-title, include=FALSE, eval=knit_bookdown}
 # Title fields

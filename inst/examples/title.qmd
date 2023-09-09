@@ -1,12 +1,10 @@
----
-title: "Title field"
-hide-description: false
-description: "Summary of the statistics about the titles of the articles"
----
+# Title field: summary
 ```{r}
+#| label = "source-index",
 #| include = FALSE
 source("init.R")
 ```
+
 ```{r}
 #| label = "source-title",
 #| include = FALSE,
@@ -38,7 +36,6 @@ Top-`r ntop` titles and their title counts.
 #| fig.width = 8,
 #| fig.height = 6
 library(ggplot2)
-library(comhis)
 theme_set(theme_bw(base_size = 12))
 p <- top_plot(df, "title", ntop = ntop, log10 = TRUE)+
   labs(y = "Entries (n)", title = "Top titles")

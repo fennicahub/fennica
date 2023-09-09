@@ -1,4 +1,7 @@
 # Title uniform
+```{r source-index, include=FALSE}
+source("init.R")
+```
 
 ```{r source-title-uniform, include=FALSE, eval=knit_bookdown}
 # Title fields
