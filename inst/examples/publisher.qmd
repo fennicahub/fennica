@@ -1,4 +1,10 @@
 ```{r}
+#| label = "source-index",
+#| include = FALSE
+source("init.R")
+```
+
+```{r}
 #| label = "source-publisher",
 #| include = FALSE,
 #| eval = knit_bookdown
