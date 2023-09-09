@@ -1,19 +1,12 @@
----
-title: "Publisher preprocessing"
-hide-description: false
-description: "Summary of the statistics about the place of publication of the articles"
----
-
-```{r}
-#| include = FALSE
-source("init.R")
-```
 ```{r}
 #| label = "source-publisher",
 #| include = FALSE,
 #| eval = knit_bookdown
+# publisher field
 source("publisher.R")
 ```
+
+# Publisher preprocessing summary
 
  * `r length(unique(df$publisher))` [unique publishers](dataTable/data_table.html?path=../output.tables/publisher_accepted.csv)
 
@@ -34,7 +27,6 @@ The `r ntop` most common publishers are shown with the number of documents.
 #| warning = FALSE,
 #| fig.width = 12,
 #| fig.height = 9
-library(comhis)
 p <- top_plot(df, "publisher", ntop)
 p <- p + ggtitle(paste("Top publishers"))
 p <- p + scale_y_log10()
