@@ -12,7 +12,7 @@ df.tmp <- df.tmp %>%
 
 # Add original row info as first column
 df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
-                    author_date = df.orig$author_date, # add field column 
+                    author_date = df.orig$author_date, # add field column
                     df.tmp)
 rownames(df.tmp) <- NULL
 
@@ -58,8 +58,8 @@ write.table(tab, file = discard.file, quote = FALSE, row.names = FALSE, col.name
 
 # ------------------------------------------------------------
 
-# Generate markdown summary 
+# Generate markdown summary
 df <- readRDS(data.file)
-# tmp <- knit(input = paste(field, ".Rmd", sep = ""), 
+# tmp <- knit(input = paste(field, ".Rmd", sep = ""),
 #             output = paste(field, ".md", sep = ""))
 

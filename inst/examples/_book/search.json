@@ -14,65 +14,51 @@
     "text": "Author date accepted\nAuthor date discarded\nAuthor’s lifetime is available for 150930 authors (13%). The lifetime years span 1, 106. The youngest being 17 years old and the oldest 99 years old."
   },
   {
-    "objectID": "author_name.html#authors",
-    "href": "author_name.html#authors",
-    "title": "3  Author’s name",
-    "section": "3.1 Authors",
-    "text": "3.1 Authors\n\n196891 unique authors These final names capture all name variants from the custom author synonyme table, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the author synonyme table.\n747538 documents have unambiguous author information (63%).\n10 unique pseudonymes are recognized based on custom pseudonyme lists.\n20 discarded author names This list should not include any real authors (if it does, please send a note to the admin). The stopword lists are considered when discarding names.\nAuthor name conversions Non-trivial conversions from the original raw data to final names.\n\n\n3.1.1 Auxiliary files\n\nAuthor synonyme table\nStopwords for names\nStopwords for titles\nCustom pseudonyme lists\n\nTop-20 uniquely identified authors and their productivity (title count).\n\n\n\n\n\n\n\n3.1.2 Author productivity\nTitle count in relation to the paper consumed in their books(all authors):"
-  },
-  {
-    "objectID": "language.html#language-summaries",
-    "href": "language.html#language-summaries",
-    "title": "4  Languages",
-    "section": "4.1 Language summaries",
-    "text": "4.1 Language summaries\n\n170 unique languages\n148 unique primary languages\n\n1115444 single-language documents (93.91%)\n72369 multilingual documents (6.09%)\nConversions from raw to preprocessed language entries\n50515 documents (4.25%) with unrecognized language\n\nLanguage codes are from MARC; new custom abbreviations can be added in this table."
-  },
-  {
     "objectID": "language.html#top-languages",
     "href": "language.html#top-languages",
-    "title": "4  Languages",
-    "section": "4.2 Top languages",
-    "text": "4.2 Top languages\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n777706\n65.5\n\n\nEnglish\n128669\n10.8\n\n\nSwedish\n110307\n9.3\n\n\nUndetermined\n50510\n4.3\n\n\nFinnish;Swedish\n27330\n2.3\n\n\nGerman\n13954\n1.2\n\n\nFinnish;English\n12244\n1\n\n\nLatin\n9954\n0.8\n\n\nFinnish;Swedish;English\n6972\n0.6\n\n\nRussian\n4886\n0.4\n\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):"
+    "title": "3  Language summaries",
+    "section": "3.1 Top languages",
+    "text": "3.1 Top languages\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n777706\n65.5\n\n\nEnglish\n128669\n10.8\n\n\nSwedish\n110307\n9.3\n\n\nUndetermined\n50510\n4.3\n\n\nFinnish;Swedish\n27330\n2.3\n\n\nGerman\n13954\n1.2\n\n\nFinnish;English\n12244\n1\n\n\nLatin\n9954\n0.8\n\n\nFinnish;Swedish;English\n6972\n0.6\n\n\nRussian\n4886\n0.4\n\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):"
   },
   {
     "objectID": "publisher.html",
     "href": "publisher.html",
-    "title": "5  Publisher preprocessing",
+    "title": "4  Publisher preprocessing summary",
     "section": "",
     "text": "156327 unique publishers\n948595 documents have unambiguous publisher information (79.9%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\nConversions from original to final names (only non-trivial conversions shown)\n\nThe 20 most common publishers are shown with the number of documents.\n\n\n\n\n\nTitle count versus paper consumption (top publishers):\n\n\n\n\n\n\n\n\npublisher\ntitles\npaper\n\n\n\n\nGummerus,\n10534\n0\n\n\nKaristo,\n8588\n0\n\n\nMaanmittaushallitus,\n8067\n0\n\n\nMaanmittauslaitos,\n5143\n0\n\n\nOtava,\n37211\n0\n\n\nSöderström,\n8052\n0\n\n\nTammi,\n14788\n0\n\n\nUniversity of Helsinki,\n8531\n0\n\n\nWSOY,\n46354\n0\n\n\n[kustantaja tuntematon],\n26263\n0"
   },
   {
     "objectID": "publication_place.html#publication-countries",
     "href": "publication_place.html#publication-countries",
-    "title": "6  Publication place preprocessing",
-    "section": "6.1 Publication countries",
-    "text": "6.1 Publication countries\n\n46 unique publication countries; available for 889790 documents (75%).\n4239 places with unknown publication country (85.7% of the unique places; can be added to country mappings)\n6 potentially ambiguous region-country mappings (these may occur in the data in various synonymes and the country is not always clear when multiple countries have a similar place name; the default country is listed first). NOTE: possible improvements should not be done in this output summary but instead in the country mapping file.\n\nWarning: `data_frame()` was deprecated in tibble 1.1.0.\nℹ Please use `tibble()` instead.\nℹ The deprecated feature was likely used in the comhis package.\n  Please report the issue at &lt;https://github.com/comhis/comhis/issues&gt;.\n\n\n\n\nCountry\nDocuments (n)\nFraction (%)\n\n\n\n\nFinland\n844438\n71.1\n\n\nSweden\n19471\n1.6\n\n\nRussia\n5698\n0.5\n\n\nGermany\n4188\n0.4\n\n\nUSA\n3104\n0.3\n\n\nDenmark\n2772\n0.2"
+    "title": "5  Publication place preprocessing summary",
+    "section": "5.1 Publication countries",
+    "text": "5.1 Publication countries\n\n46 unique publication countries; available for 889790 documents (75%).\n4239 places with unknown publication country (85.7% of the unique places; can be added to country mappings)\n6 potentially ambiguous region-country mappings (these may occur in the data in various synonymes and the country is not always clear when multiple countries have a similar place name; the default country is listed first). NOTE: possible improvements should not be done in this output summary but instead in the country mapping file.\n\nWarning: `data_frame()` was deprecated in tibble 1.1.0.\nℹ Please use `tibble()` instead.\nℹ The deprecated feature was likely used in the fennica package.\n  Please report the issue at &lt;https://github.com/comhis/fennica/issues&gt;.\n\n\n\n\nCountry\nDocuments (n)\nFraction (%)\n\n\n\n\nFinland\n844438\n71.1\n\n\nSweden\n19471\n1.6\n\n\nRussia\n5698\n0.5\n\n\nGermany\n4188\n0.4\n\n\nUSA\n3104\n0.3\n\n\nDenmark\n2772\n0.2"
   },
   {
     "objectID": "publication_place.html#geocoordinates",
     "href": "publication_place.html#geocoordinates",
-    "title": "6  Publication place preprocessing",
-    "section": "6.2 Geocoordinates",
-    "text": "6.2 Geocoordinates\n\n74.6% of the documents were matched to geographic coordinates (based on COMHIS geomapping process).\n4299 unique places (86.9% of all unique places and 25.36% of all documents) are missing geocoordinates. See list of places missing geocoordinate information."
+    "title": "5  Publication place preprocessing summary",
+    "section": "5.2 Geocoordinates",
+    "text": "5.2 Geocoordinates\n\n74.6% of the documents were matched to geographic coordinates (based on COMHIS geomapping process).\n4299 unique places (86.9% of all unique places and 25.36% of all documents) are missing geocoordinates. See list of places missing geocoordinate information."
   },
   {
     "objectID": "publication_time.html",
     "href": "publication_time.html",
-    "title": "7  Publication time",
+    "title": "6  Publication year summaries (publication time)",
     "section": "",
     "text": "Publication year conversions\nPublication year discarded\nPublication year is available for 954789 documents (80%). The publication years span 0-2025."
   },
   {
     "objectID": "title.html",
     "href": "title.html",
-    "title": "8  Title field",
+    "title": "7  Title field: summary",
     "section": "",
     "text": "Unique accepted entries: 809964\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 1187813 / 1187813 (100%)\nOriginal documents with missing (NA) titles 0 / 1187813 documents (0%)\n\nTop-20 titles and their title counts.\n\n\n\n\n\nFrequency of unique titles:"
   },
   {
     "objectID": "title_uniform.html",
     "href": "title_uniform.html",
-    "title": "9  Title uniform",
+    "title": "8  Title uniform",
     "section": "",
     "text": "Unique accepted entries: 100595\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 1187813 / 1187813 (100%)\nOriginal documents with missing (NA) titles 0 / 1187813 documents (0%)\n\nTop-20 titles and their title counts.\n\n\n\n\n\nFrequency of unique titles:"
   },
@@ -88,6 +74,6 @@
     "href": "technical_information.html",
     "title": "Technical information",
     "section": "",
-    "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.3.1 (2023-06-16)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Ubuntu 22.04.2 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\ntime zone: UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] fennica_0.2.9     Cairo_1.6-0       ggplot2_3.4.2     R.utils_2.12.2   \n [5] R.oo_1.25.0       R.methodsS3_1.8.2 knitr_1.43        stringr_1.5.0    \n [9] tm_0.7-11         NLP_0.2-1         dplyr_1.1.2       devtools_2.4.5   \n[13] usethis_2.2.2    \n\nloaded via a namespace (and not attached):\n [1] utf8_1.2.3        generics_0.1.3    xml2_1.3.5        slam_0.1-50      \n [5] stringi_1.7.12    digest_0.6.33     magrittr_2.0.3    grid_4.3.1       \n [9] evaluate_0.21     pkgload_1.3.2.1   fastmap_1.1.1     jsonlite_1.8.7   \n[13] processx_3.8.2    pkgbuild_1.4.2    sessioninfo_1.2.2 urlchecker_1.0.1 \n[17] ps_1.7.5          promises_1.2.0.1  purrr_1.0.1       fansi_1.0.4      \n[21] scales_1.2.1      stringdist_0.9.10 XML_3.99-0.14     cli_3.6.1        \n[25] shiny_1.7.4.1     rlang_1.1.1       crayon_1.5.2      munsell_0.5.0    \n[29] ellipsis_0.3.2    withr_2.5.0       remotes_2.4.2.1   cachem_1.0.8     \n[33] tools_4.3.1       parallel_4.3.1    memoise_2.0.1     colorspace_2.1-0 \n[37] httpuv_1.6.11     vctrs_0.6.3       R6_2.5.1          mime_0.12        \n[41] lifecycle_1.0.3   fs_1.6.3          htmlwidgets_1.6.2 miniUI_0.1.1.1   \n[45] pkgconfig_2.0.3   callr_3.7.3       gtable_0.3.3      pillar_1.9.0     \n[49] later_1.3.1       data.table_1.14.8 glue_1.6.2        profvis_0.3.8    \n[53] Rcpp_1.0.11       xfun_0.39         tibble_3.2.1      tidyselect_1.2.0 \n[57] rstudioapi_0.15.0 xtable_1.8-4      htmltools_0.5.5   rmarkdown_2.23   \n[61] compiler_4.3.1    prettyunits_1.1.1"
+    "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.3.1 (2023-06-16)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Ubuntu 22.04.3 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\ntime zone: UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] fennica_0.2.9     Cairo_1.6-1       ggplot2_3.4.3     R.utils_2.12.2   \n [5] R.oo_1.25.0       R.methodsS3_1.8.2 knitr_1.43        stringr_1.5.0    \n [9] tm_0.7-11         NLP_0.2-1         dplyr_1.1.3       devtools_2.4.5   \n[13] usethis_2.2.2    \n\nloaded via a namespace (and not attached):\n [1] utf8_1.2.3        generics_0.1.3    xml2_1.3.5        slam_0.1-50      \n [5] stringi_1.7.12    digest_0.6.33     magrittr_2.0.3    grid_4.3.1       \n [9] evaluate_0.21     pkgload_1.3.2.1   fastmap_1.1.1     jsonlite_1.8.7   \n[13] processx_3.8.2    pkgbuild_1.4.2    sessioninfo_1.2.2 urlchecker_1.0.1 \n[17] ps_1.7.5          promises_1.2.1    purrr_1.0.2       fansi_1.0.4      \n[21] scales_1.2.1      stringdist_0.9.10 XML_3.99-0.14     cli_3.6.1        \n[25] shiny_1.7.5       rlang_1.1.1       crayon_1.5.2      munsell_0.5.0    \n[29] ellipsis_0.3.2    withr_2.5.0       remotes_2.4.2.1   cachem_1.0.8     \n[33] tools_4.3.1       parallel_4.3.1    memoise_2.0.1     colorspace_2.1-0 \n[37] httpuv_1.6.11     vctrs_0.6.3       R6_2.5.1          mime_0.12        \n[41] lifecycle_1.0.3   fs_1.6.3          htmlwidgets_1.6.2 miniUI_0.1.1.1   \n[45] pkgconfig_2.0.3   callr_3.7.3       gtable_0.3.4      pillar_1.9.0     \n[49] later_1.3.1       data.table_1.14.8 glue_1.6.2        profvis_0.3.8    \n[53] Rcpp_1.0.11       xfun_0.40         tibble_3.2.1      tidyselect_1.2.0 \n[57] rstudioapi_0.15.0 xtable_1.8-4      htmltools_0.5.6   rmarkdown_2.24   \n[61] compiler_4.3.1    prettyunits_1.1.1"
   }
 ]

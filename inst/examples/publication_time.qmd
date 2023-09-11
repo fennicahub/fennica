@@ -1,18 +1,18 @@
----
-title : "Publication time"
-hide-description: false
-description: "Statistics about the periods when the articles were published"
----
 ```{r}
+#| label = "source-index",
 #| include = FALSE
 source("init.R")
 ```
+
 ```{r}
 #| label = "source-publication-time",
 #| include = FALSE,
 #| eval = knit_bookdown
+# Publication place field and derived country- and geoinformation
 source("publication_time.R")
 ```
+
+# Publication year summaries (publication time)
 
 [Publication year conversions](dataTable/data_table.html?path=../output.tables/publication_time_conversion.csv)
 

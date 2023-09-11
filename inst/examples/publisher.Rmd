@@ -1,3 +1,7 @@
+```{r source-index, include=FALSE}
+source("init.R")
+```
+
 ```{r source-publisher, include=FALSE, eval=knit_bookdown}
 # publisher field
 source("publisher.R")
