@@ -68,6 +68,3 @@ jobs:
           repository: ${{ github.repository }}
           event-type: trigger-link-check-workflow
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
-      - name: Debug PAT
-        run: echo "GitHub PAT: ${{ secrets.REPO_GHA_PAT }}"
-
