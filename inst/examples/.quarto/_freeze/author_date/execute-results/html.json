@@ -1,7 +1,7 @@
 {
   "hash": "688698a699ca903ae18683ad8e2a1a58",
   "result": {
-    "markdown": "--- \ntitle: \"Author's lifetime\"\nhide-description: false\ndescription: \"Some statistics about the author's lifetime\"\n---\n\n\n\n\n\n\n[Author date accepted](dataTable/data_table.html?path=../output.tables/author_date_accepted.csv)\n\n[Author date discarded](dataTable/data_table.html?path=../output.tables/author_date_discarded.csv)\n\nAuthor's lifetime is available for 0 authors (0%). The lifetime years span \\infty{}, -\\infty{}. The youngest being 17 years old and the oldest 99 years old.\n\n\n\n\n",
+    "markdown": "--- \ntitle: \"Author's lifetime\"\nhide-description: false\ndescription: \"Some statistics about the author's lifetime\"\n---\n\n\n\n\n\n\n[Author date accepted](dataTable/data_table.html?path=../output.tables/author_date_accepted.csv)\n\n[Author date discarded](dataTable/data_table.html?path=../output.tables/author_date_discarded.csv)\n\nAuthor's lifetime is available for 150930 authors (13%). The lifetime years span 1, 106. The youngest being 17 years old and the oldest 99 years old.\n\n\n\n\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
