@@ -15,4 +15,5 @@ language.Rds
 # Docker related
 # Dockerfile
 .dockerignore
-inst/examples/priority_fields_full_fennica.csv
+inst/examples/priority_fields.csv
+*.csv
