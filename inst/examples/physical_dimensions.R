@@ -1,4 +1,3 @@
-
 field <- "physical_dimensions"
 synonyms <- read.csv("../extdata/translation_fi_en_pages.csv", sep = ";")
 df.orig$physical_dimensions <- comhis::map(df.orig$physical_dimensions,
@@ -7,7 +6,8 @@ df.orig$physical_dimensions <- comhis::map(df.orig$physical_dimensions,
 # Fill in missing entries where estimates can be obtained:
 # area, width, height, gatherings
 # (also keep pure originals before fill in)
-# devtools::load_all("~/comhis/rpkg/bibliographica")
+
+
 df.tmp <- polish_dimensions(df.orig[[field]], fill = TRUE, verbose = TRUE)
 
 # Store the title field data
