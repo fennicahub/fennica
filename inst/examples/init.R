@@ -22,9 +22,9 @@ if (!file.exists(output.folder)) {
 }
 
 #the file need to be zipped, otherwise it's too big to be put on github
-unzip("priority_fields_full_fennica.zip",exdir=".")
+unzip("priority_fields.zip",exdir=".")
 # List the preprocessed data file and read the data
-df.orig <- read.csv(file = "priority_fields_full_fennica.csv", skip = 1, head = TRUE, sep="\t")
+df.orig <- read.csv(file = "priority_fields.csv", skip = 1, head = TRUE, sep="\t")
 
 # Column name (MARC code) has to be changed if column is deleted or a new one added. 
 # These are also the same columns/fields that we have in rahti qmd book. 
@@ -40,7 +40,6 @@ df.orig <- df.orig %>%
          "author_name" = 2, # ("100","a")
          "author_date" = 3, # ("100","d")
          "language" = 4, # ("041","a")
-         "language_original" = 5, #("041","h")
          "title_uniform" = 6, # ("240","a")
          "title" = 7, #("245","a")
          "title_remainder" = 8, #("245","b")
@@ -48,12 +47,13 @@ df.orig <- df.orig %>%
          "publisher" = 10, #("260","b")
          "publication_time" = 11, #("260","c")
          "physical_extent" = 12, # ("300","a")
-         "other_physical_details" = 13, #("300","b")
-         "physical_dimensions"= 14, # ("300","c")
-         "publication_frequency" = 15, # ("310","a")
-         "publication_interval" = 16, # ("362","a")
-         "subject_geography" = 17, #()"651","a"
-         "callnumbers" = 18) # ("callnumbers","a")]
+         "physical_dimensions"= 14) # ("300","c")
+
+# TO be added later as we progress with preprosessing the fields below
+         #"publication_frequency" = 15, # ("310","a")
+         #"publication_interval" = 16, # ("362","a")
+         #"subject_geography" = 17, #()"651","a"
+         #"callnumbers" = 18) # ("callnumbers","a")]
 
 
 
