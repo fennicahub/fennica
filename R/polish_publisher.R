@@ -3,8 +3,8 @@
 #' @param x Character vector of publisher names
 #' @return Data frame with orig, mod
 #' @export
-#' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("fennica")
+#' @author Leo Lahti \email{hege.roivainen@@gmail.com}
+#' @references See citation("bibliographica")
 #' @keywords utilities
 polish_publisher <- function (x) {
 
@@ -19,7 +19,7 @@ polish_publisher <- function (x) {
 
   # s.n -> ""
   #x <- gsub("^\\[*s\\.*n\\.*\\]*$", " ", x)
-  f <- system.file("extdata/sl.csv", package = "fennica") 
+  f <- system.file("extdata/sl.csv", package = "bibliographica") 
   terms <- as.character(read.csv(f)[,1])
   x <- remove_sl(x, terms)
 

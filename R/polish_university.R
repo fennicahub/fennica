@@ -5,7 +5,7 @@
 #' @return polished university field (a vector)
 #' @export
 #' @author Niko Ilomaki \email{niko.ilomaki@@helsinki.fi}
-#' @references See citation("fennica")
+#' @references See citation("bibliographica")
 #' @examples \dontrun{v <- polish_university(c("HY","Suomen yliopisto"))}
 #' @keywords utilities
 polish_university <- function(x, synonyms=NULL) {
@@ -20,7 +20,7 @@ polish_university <- function(x, synonyms=NULL) {
   x[x=="1700"] <- NA
   
   if (is.null(synonyms)) {
-    f <- system.file("extdata/fi_end_years.csv", package = "fennica")
+    f <- system.file("extdata/fi_end_years.csv", package = "bibliographica")
     synonyms <- read_mapping(f, sep = "\t", include.lowercase = TRUE, mode = "table")
   }
   x <- map(x, synonyms)

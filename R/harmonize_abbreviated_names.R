@@ -5,20 +5,20 @@
 #' @return Vector of publishers names
 #' @export
 #' @author Hege Roivainen \email{hege.roivainen@@gmail.com}
-#' @references See citation("fennica")
+#' @references See citation("bibliographica")
 #' @examples # harmonize_abbreviated_names(c("Phil.", "Joh."), languages=c("finnish"))
 #' @keywords utilities
 harmonize_abbreviated_names <- function(x, languages="english") {
   
   for (language in languages) {
     if (language=="swedish") {
-      f <- system.file("extdata/sv_abbreviated_names.csv", package="fennica")
+      f <- system.file("extdata/sv_abbreviated_names.csv", package="bibliographica")
     } else if (language=="english") {
-      f <- system.file("extdata/en_abbreviated_names.csv", package="fennica")
+      f <- system.file("extdata/en_abbreviated_names.csv", package="bibliographica")
     } else if (language=="finnish") {
-      f <- system.file("extdata/fi_abbreviated_names.csv", package="fennica")
+      f <- system.file("extdata/fi_abbreviated_names.csv", package="bibliographica")
     } else if (language=="latin") {
-      f <- system.file("extdata/la_abbreviated_names.csv", package="fennica")
+      f <- system.file("extdata/la_abbreviated_names.csv", package="bibliographica")
     } else {
       message(paste0("Unknown language in harmonize_abbreviated_names: ", language))
       f <- NULL      			      

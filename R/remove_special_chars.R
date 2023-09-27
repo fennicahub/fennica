@@ -6,7 +6,7 @@
 #' @return Polished vector
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("fennica")
+#' @references See citation("bibliographica")
 #' @examples x2 <- remove_special_chars("test;")
 #' @keywords utilities
 remove_special_chars <- function (x, chars = c(",", ";", ":", "\\(", "\\)", "\\?", "--", "\\&"), niter = 5) {

@@ -6,7 +6,7 @@
 #' @return A vector polished
 #' @importFrom stringr str_sub
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("fennica")
+#' @references See citation("bibliographica")
 #' @examples \dontrun{x2 <- handle_ie("i.e.")}
 #' @export
 #' @keywords utilities

@@ -6,7 +6,7 @@
 #' @return Polished vector
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("fennica")
+#' @references See citation("bibliographica")
 #' @examples \dontrun{remove_letters(x)}
 #' @keywords utilities
 remove_letters <- function (x, ignore.start = c("S", "s", "N", "n", "E", "e", "W", "w"), ignore.end = c()) {

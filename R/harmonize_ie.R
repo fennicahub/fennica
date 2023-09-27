@@ -5,7 +5,7 @@
 #' @return A vector polished
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("fennica")
+#' @references See citation("bibliographica")
 #' @examples \dontrun{x2 <- harmonize_ie("i.e.")}
 #' @keywords utilities
 harmonize_ie <- function (x, separator = "i.e") {

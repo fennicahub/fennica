@@ -8,7 +8,7 @@
 #' @return a vector of first names
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("fennica")
+#' @references See citation("bibliographica")
 #' @examples pick_firstname("Hobbes, Thomas")
 #' @keywords utilities
 pick_firstname <- function (x, format = "last, first", keep.single = FALSE) {

@@ -17,7 +17,7 @@
 #' @return Vector of harmonized terms
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("comhis")
+#' @references See citation("bibliographica")
 #' @examples \dontrun{x2 <- map(x, synonymes)}
 #' @keywords utilities
 map <- function (x, synonymes, remove.unknown = FALSE, mode = "exact.match", verbose = FALSE, from = "synonyme", to = "name", keep.names = FALSE) {

@@ -6,7 +6,7 @@
 #' @return Capitalized character vector
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("fennica")
+#' @references See citation("bibliographica")
 #' @examples capitalize("print")
 #' @keywords utilities
 capitalize <- function (x, format = "first.letter") {

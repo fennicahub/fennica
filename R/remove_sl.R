@@ -5,8 +5,8 @@
 #' @return Polished vector
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("fennica")
-#' @examples # x2 <- remove_sl(c("s.l.", "London"))
+#' @references See citation("bibliographica")
+#' @examples x2 <- remove_sl(c("s.l.", "London"))
 #' @keywords utilities
 remove_sl <- function (x, terms = NULL) {
 
@@ -14,7 +14,7 @@ remove_sl <- function (x, terms = NULL) {
 
   # Get printing terms from a table
   if (is.null(terms)) {
-    f <- system.file("extdata/sl.csv", package = "fennica") 
+    f <- system.file("extdata/sl.csv", package = "bibliographica") 
     terms <- as.character(read.csv(f)[,1])
   }
 

@@ -10,7 +10,7 @@
 #' @return Vector of top counts, named by the corresponding entries
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("comhis")
+#' @references See citation("bibliographica")
 #' @examples \dontrun{p <- top(df, field, 10)}
 #' @keywords utilities
 top <- function (x, field = NULL, n = NULL, output = "vector", round = NULL, na.rm = FALSE, include.rank = FALSE) {

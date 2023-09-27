@@ -12,7 +12,7 @@
 #' @return ggplot object
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("comhis")
+#' @references See citation("bibliographica")
 #' @examples \dontrun{p <- top_plot(x, field, 50)}
 #' @keywords utilities
 top_plot <- function (x, field = NULL, ntop = NULL, highlight = NULL, max.char = Inf, show.rest = FALSE, show.percentage = FALSE, log10 = FALSE) {

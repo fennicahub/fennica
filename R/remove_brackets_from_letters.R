@@ -5,7 +5,7 @@
 #' @return A polished vector 
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("fennica")
+#' @references See citation("bibliographica")
 #' @examples x2 <- remove_brackets_from_letters("[p]")
 #' @keywords utilities
 remove_brackets_from_letters <- function (x, myletters = NULL) {

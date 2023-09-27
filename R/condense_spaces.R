@@ -6,7 +6,7 @@
 #' @details Beginning, double and ending spaces are also removed from the strings.
 #' @export 
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("fennica") 
+#' @references See citation("bibliographica") 
 #' @examples x2 <- condense_spaces(" a  b cd ") # "a b cd"
 #' @keywords utilities
 condense_spaces <- function (x) {

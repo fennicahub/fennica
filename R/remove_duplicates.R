@@ -4,8 +4,8 @@
 #' @param field_names List of field names of exactly matching values
 #' @return Data frame
 #' @export
-#' @author Hege Roivainen \email{leo.lahti@@iki.fi}
-#' @references See citation("fennica")
+#' @author Hege Roivainen \email{hege.roivainen@@gmail.com}
+#' @references See citation("bibliographica")
 #' @keywords utilities
 remove_duplicates <- function (df.preprocessed, field_names=c("short_title", "publication_place", "publication_year")) {
     

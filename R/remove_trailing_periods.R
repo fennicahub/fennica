@@ -4,7 +4,7 @@
 #' @return A polished vector
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("fennica")
+#' @references See citation("bibliographica")
 #' @examples \dontrun{x2 <- remove_trailing_periods(x)}
 #' @keywords utilities
 remove_trailing_periods <- function (x){ 
