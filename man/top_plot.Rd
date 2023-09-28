@@ -43,7 +43,7 @@ Visualizes the top entries for a given field in a data frame.
 \dontrun{p <- top_plot(x, field, 50)}
 }
 \references{
-See citation("comhis")
+See citation("bibliographica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

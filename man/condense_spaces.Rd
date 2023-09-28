@@ -22,7 +22,7 @@ Beginning, double and ending spaces are also removed from the strings.
 x2 <- condense_spaces(" a  b cd ") # "a b cd"
 }
 \references{
-See citation("fennica")
+See citation("bibliographica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

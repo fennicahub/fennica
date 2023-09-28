@@ -19,7 +19,7 @@ Polish corporate
 # x2 <- polish_corporate("unknown")
 }
 \references{
-See citation("fennica")
+See citation("bibliographica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

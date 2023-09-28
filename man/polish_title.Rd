@@ -23,7 +23,7 @@ Remove ending commas, periods, spaces and parentheses,
 \dontrun{x2 <- polish_title(x)}
 }
 \references{
-See citation("fennica")
+See citation("bibliographica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

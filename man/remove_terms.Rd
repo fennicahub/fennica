@@ -40,7 +40,7 @@ After removing the numerics, beginning, double and ending
 x2 <- remove_terms("test this", c("this", "works"), where = "all")
 }
 \references{
-See citation("fennica")
+See citation("bibliographica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

@@ -21,7 +21,7 @@ Extracts personal names.
 # extract_personal_names(x, languages=c("finnish", "swedish", "latin"))
 }
 \references{
-See citation("fennica")
+See citation("bibliographica")
 }
 \author{
 Hege Roivainen \email{hege.roivainen@gmail.com}

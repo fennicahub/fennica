@@ -23,7 +23,7 @@ Split the string by separator and pick the former or latter part.
 x2 <- splitpick("London re Edinburgh", " re ", 1)
 }
 \references{
-See citation("fennica")
+See citation("bibliographica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

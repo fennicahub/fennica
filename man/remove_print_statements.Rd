@@ -19,7 +19,7 @@ Remove print statements.
 x2 <- remove_print_statements("Printed in London")
 }
 \references{
-See citation("fennica")
+See citation("bibliographica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

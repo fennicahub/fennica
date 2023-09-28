@@ -39,7 +39,7 @@ Identify the top entries in a vector or for a given field in a data frame.
 \dontrun{p <- top(df, field, 10)}
 }
 \references{
-See citation("comhis")
+See citation("bibliographica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

@@ -21,7 +21,7 @@ Polish university names
 \dontrun{v <- polish_university(c("HY","Suomen yliopisto"))}
 }
 \references{
-See citation("fennica")
+See citation("bibliographica")
 }
 \author{
 Niko Ilomaki \email{niko.ilomaki@helsinki.fi}

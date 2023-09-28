@@ -27,7 +27,7 @@ Remove special characters.
 x2 <- remove_special_chars("test;")
 }
 \references{
-See citation("fennica")
+See citation("bibliographica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

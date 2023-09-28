@@ -21,7 +21,7 @@ Harmonize ie statements.
 \dontrun{x2 <- harmonize_ie("i.e.")}
 }
 \references{
-See citation("fennica")
+See citation("bibliographica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

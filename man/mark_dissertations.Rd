@@ -19,7 +19,7 @@ Establish two binary variables: dissertation and synodal dissertation
 \dontrun{df <- mark_dissertations(c("Diss.","Diss. synod"))}
 }
 \references{
-See citation("fennica")
+See citation("bibliographica")
 }
 \author{
 Niko Ilomaki \email{niko.ilomaki@helsinki.fi}

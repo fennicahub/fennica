@@ -33,7 +33,7 @@ Polish place names.
 # x2 <- polish_place(c("London", "Paris"))
 }
 \references{
-See citation("fennica")
+See citation("bibliographica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}
