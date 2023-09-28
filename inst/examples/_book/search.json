@@ -53,7 +53,7 @@
     "href": "title.html",
     "title": "7  Title field: summary",
     "section": "",
-    "text": "Unique accepted entries: 809964\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 1187813 / 1187813 (100%)\nOriginal documents with missing (NA) titles 0 / 1187813 documents (0%)\n\nTop-20 titles and their title counts.\n\n\n\n\n\nFrequency of unique titles:"
+    "text": "Unique accepted entries: 917795\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 1187813 / 1187813 (100%)\nOriginal documents with missing (NA) titles 0 / 1187813 documents (0%)\n\nTop-20 titles and their title counts.\n\n\n\n\n\nFrequency of unique titles:"
   },
   {
     "objectID": "title_uniform.html",
