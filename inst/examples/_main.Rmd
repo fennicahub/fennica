@@ -144,6 +144,10 @@ Placeholder
 
 <!--chapter:end:publication_place.Rmd-->
 
+```{r source-index, include=FALSE}
+source("init.R")
+```
+
 ```{r source-publication-time, include=FALSE, eval=knit_bookdown}
 # Publication place field and derived country- and geoinformation
 source("publication_time.R")
