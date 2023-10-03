@@ -19,7 +19,7 @@ source("physical_dimensions.R")
 
 ## Document size comparisons
 
-Some dimension info is provided in the original raw data for altogether `r sum(!is.na(df$physical_dimensions))` documents (`r round(100*mean(!is.na(df$physical_dimensions)),1)`%) but could not be interpreted for `r sum(!is.na(df$physical_dimensions) & (is.na(df$gatherings)))` documents (ie. dimension info was successfully estimated for `r round(100 - 100 * sum(!is.na(df$physical_dimensions) & (is.na(df$gatherings)))/sum(!is.na(df$physical_dimensions)), 1)` % of th
+Some dimension info is provided in the original raw data for altogether `r sum(!is.na(df.orig$physical_dimensions))` documents (`r round(100*mean(!is.na(df.orig$physical_dimensions)),1)`%) but could not be interpreted for `r sum(!is.na(df.orig$physical_dimensions) & (is.na(df$gatherings)))` documents (ie. dimension info was successfully estimated for `r round(100 - 100 * sum(!is.na(df``.orig``$physical_dimensions) & (is.na(df$gatherings)))/sum(!is.na(df``.orig``$physical_dimensions)), 1)` % of th
 
 e documents where this field was not empty).
 
@@ -56,7 +56,7 @@ The estimated dimensions are based on the following auxiliary information sheets
 #| fig.width = 9,
 #| fig.height = 7,
 
-df <- df.preprocessed
+#df <- df.preprocessed
 dfs <- df %>% filter(!is.na(area) & !is.na(gatherings))
 dfs <- dfs[, c("gatherings", "area")]
 dfm <- melt(table(dfs)) # TODO switch to gather here
