@@ -1,6 +1,6 @@
 field <- "physical_dimensions"
 synonyms <- read.csv("../extdata/translation_fi_en_pages.csv", sep = ";")
-df.orig$physical_dimensions <- comhis::map(df.orig$physical_dimensions,
+df.orig$physical_dimensions <- map(df.orig$physical_dimensions,
           synonyms, mode = "recursive")
 
 # Fill in missing entries where estimates can be obtained:
@@ -43,3 +43,4 @@ tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 df <- readRDS(data.file)
 # tmp <- knit(input = paste(field, ".Rmd", sep = ""), 
 #             output = paste(field, ".md", sep = ""))
+

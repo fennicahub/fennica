@@ -14,17 +14,17 @@ theme_set(theme_bw(20))
 
 ## Document size comparisons
 
-  * Some dimension info is provided in the original raw data for altogether `r sum(!is.na(df.orig$physical_dimensions))` documents (`r round(100*mean(!is.na(df.orig$physical_dimensions)),1)`%) but could not be interpreted for `r sum(!is.na(df.orig$physical_dimensions) & (is.na(df$gatherings)))` documents (ie. dimension info was successfully estimated for `r round(100 - 100 * sum(!is.na(df.orig$physical_dimensions) & (is.na(df$gatherings)))/sum(!is.na(df.orig$physical_dimensions)), 1)` % of the documents where this field was not empty).
+  * Some dimension info is provided in the original raw data for altogether `r sum(!is.na(df$physical_dimensions))` documents (`r round(100*mean(!is.na(df$physical_dimensions)),1)`%) but could not be interpreted for `r sum(!is.na(df$physical_dimensions) & (is.na(df$gatherings)))` documents (ie. dimension info was successfully estimated for `r round(100 - 100 * sum(!is.na(df$physical_dimensions) & (is.na(df$gatherings)))/sum(!is.na(df$physical_dimensions)), 1)` % of the documents where this field was not empty).
 
 
  * Document size (area) info was obtained in the final preprocessed data for altogether `r sum(!is.na(df$area))` documents (`r round(100*mean(!is.na(df$area)))`%). For the remaining documents, critical dimension information was not available or could not be interpreted: [List of entries where document surface could not be estimated](physical_dimensions_incomplete.csv) -->
 
 
-  * Document gatherings info is originally available for `r sum(!is.na(df$gatherings.original))` documents (`r round(100*mean(!is.na(df$gatherings.original)))`%), and further estimated up to `r sum(!is.na(df$gatherings))` documents (`r round(100*mean(!is.na(df$gatherings)))`%) in the final preprocessed data.
+  * Document gatherings info is originally available for `r sum(!is.na(df$gatheringsinal))` documents (`r round(100*mean(!is.na(df$gatheringsinal)))`%), and further estimated up to `r sum(!is.na(df$gatherings))` documents (`r round(100*mean(!is.na(df$gatherings)))`%) in the final preprocessed data.
 
-  * Document height info is originally available for `r sum(!is.na(df$height.original))` documents (`r round(100*mean(!is.na(df$height.original)))`%), and further estimated up to `r sum(!is.na(df$height))` documents (`r round(100*mean(!is.na(df$height)))`%) in the final preprocessed data.
+  * Document height info is originally available for `r sum(!is.na(df$heightinal))` documents (`r round(100*mean(!is.na(df$heightinal)))`%), and further estimated up to `r sum(!is.na(df$height))` documents (`r round(100*mean(!is.na(df$height)))`%) in the final preprocessed data.
 
-  * Document width info is originally available for `r sum(!is.na(df$width.original))` documents (`r round(100*mean(!is.na(df$width.original)))`%), and further estimated up to `r sum(!is.na(df$width))` documents (`r round(100*mean(!is.na(df $width)))`%) in the final preprocessed data.
+  * Document width info is originally available for `r sum(!is.na(df$widthinal))` documents (`r round(100*mean(!is.na(df$widthinal)))`%), and further estimated up to `r sum(!is.na(df$width))` documents (`r round(100*mean(!is.na(df $width)))`%) in the final preprocessed data.
 
 These tables can be used to verify the accuracy of the conversions from the raw data to final estimates:
 
@@ -135,30 +135,30 @@ Here we use the original data only:
 ```{r avedimstime, echo=FALSE, message=FALSE, warning=FALSE, fig.width=12, fig.height=7}
 # only include gatherings with sufficiently many documents
 nmin <- 2000
-top.gatherings <- setdiff(names(which(table(df$gatherings.original) > nmin)), "NA")
+top.gatherings <- setdiff(names(which(table(df$gatheringsinal) > nmin)), "NA")
 
-df2 <- filter(df, !gatherings.original == "NA" &
-                  (!is.na(height.original) | !is.na(width.original))) %>%
-       filter(gatherings.original %in% top.gatherings) %>%
-       select(publication_decade, gatherings.original, height.original, width.original)
+df2 <- filter(df, !gatheringsinal == "NA" &
+                  (!is.na(heightinal) | !is.na(widthinal))) %>%
+       filter(gatheringsinal %in% top.gatherings) %>%
+       select(publication_decade, gatheringsinal, heightinal, widthinal)
        
-df3 <- df2 %>% group_by(gatherings.original, publication_decade) %>% 
-       summarize(mean.height.original = mean(height.original, na.rm = T),
-    	         mean.width.original  = mean(width.original, na.rm = T),
+df3 <- df2 %>% group_by(gatheringsinal, publication_decade) %>% 
+       summarize(mean.heightinal = mean(heightinal, na.rm = T),
+    	         mean.widthinal  = mean(widthinal, na.rm = T),
 		 n = n())
 
 p <- ggplot()
 p <- p + geom_point(data = df3, aes(x = publication_decade,
-       	 		   	    y = mean.height.original,
+       	 		   	    y = mean.heightinal,
 				    size = n,
-				    group = gatherings.original,
-				    color = gatherings.original))
+				    group = gatheringsinal,
+				    color = gatheringsinal))
 # Use mean height here to speed up
 p <- p + geom_smooth(data = df3, method = "loess",
        	   aes(x = publication_decade,
-	       y = mean.height.original,
-	       group = gatherings.original,
-	       color = gatherings.original))
+	       y = mean.heightinal,
+	       group = gatheringsinal,
+	       color = gatheringsinal))
 p <- p + ggtitle("Height")
 print(p)
 ```
@@ -169,14 +169,14 @@ print(p)
 Only the most frequently occurring gatherings are listed here:
 
 ```{r avedims, echo=FALSE, message=FALSE, warning=FALSE}
-df2 <- filter(df, !is.na(gatherings.original) & (!is.na(height.original) | !is.na(width.original))) %>%
-       filter(gatherings.original %in% top.gatherings) %>%
-       group_by(gatherings.original) %>% 
+df2 <- filter(df, !is.na(gatheringsinal) & (!is.na(heightinal) | !is.na(widthinal))) %>%
+       filter(gatheringsinal %in% top.gatherings) %>%
+       group_by(gatheringsinal) %>% 
        summarize(
-    	    mean.width = mean(width.original, na.rm = T), 
-	    median.width = mean(width.original, na.rm = T),        
-            mean.height = mean(height.original, na.rm = T),
-	    median.height = mean(height.original, na.rm = T),
+    	    mean.width = mean(widthinal, na.rm = T), 
+	    median.width = mean(widthinal, na.rm = T),        
+            mean.height = mean(heightinal, na.rm = T),
+	    median.height = mean(heightinal, na.rm = T),
 	    n = n())
 
 mean.dimensions <- as.data.frame(df2)

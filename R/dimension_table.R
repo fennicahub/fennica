@@ -7,10 +7,9 @@
 #' @references See citation("bibliographica")
 #' @examples dimension_table()
 #' @keywords utilities
-dimension_table <- function (...) {
+dimension_table <- function () {
 
-  f <- system.file("extdata/documentdimensions.csv", package = "bibliographica")
-  dd <- read.csv(f, header = TRUE, sep = ",")# [-1,]
+  dd <- read.csv("~/git/fennica/inst/extdata/documentdimensions.csv", header = TRUE, sep = ",")# [-1,]
   colnames(dd) <- gsub("^X", "", colnames(dd))
   colnames(dd)[[1]] <- "height"
   colnames(dd) <- gsub("NA.", "NA", colnames(dd))
@@ -40,3 +39,4 @@ dimension_table <- function (...) {
   dd
 
 }
+

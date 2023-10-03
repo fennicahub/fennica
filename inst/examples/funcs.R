@@ -66,7 +66,7 @@ polish_dimensions <- function (x, fill = TRUE, dimtab = NULL, verbose = FALSE, s
   }
 
   if (is.null(sheet.dimension.table)) {
-    sheet.dimension.table <- sheet_area(verbose = FALSE)
+    sheet.dimension.table <- sheet_area(verbose = TRUE)
   }
 
 
