@@ -2,19 +2,6 @@
 
 title: "Physical dimensions" hide-description: false ---
 
-```{r}
-#| include = FALSE
-source("init.R")
-
-```
-
-```{r}
-#| label = "source-physical-dimensions",
-#| include = FALSE
-# physical dimensions
-source("physical_dimensions.R")
-```
-
 ## Document size comparisons
 
 Some dimension info is provided in the original raw data for altogether `r sum(!is.na(df.orig$physical_dimensions))` documents (`r round(100*mean(!is.na(df.orig$physical_dimensions)),1)`%) but could not be interpreted for `r sum(!is.na(df.orig$physical_dimensions) & (is.na(df$gatherings)))` documents (ie. dimension info was successfully estimated for ``` r round(100 - 100 * sum(!is.na(df``.orig``$physical_dimensions) & (is.na(df$gatherings)))/sum(!is.na(df``.orig``$physical_dimensions)), 1) ``` % of th

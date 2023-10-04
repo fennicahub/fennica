@@ -10,7 +10,7 @@
 sheet_sizes <- function (...) {  
 
   # Read the mapping table
-  tab <- as.data.frame(read.csv("~/git/fennica/inst/extdata/sheetsizes.csv", sep = ","))
+  tab <- as.data.frame(read.csv("sheetsizes.csv", sep = ","))
   tab$format <- str_trim(as.character(tab$format))
   tab$gatherings <- str_trim(as.character(tab$gatherings)) 
   tab$gatherings <- order_gatherings(tab$gatherings)
