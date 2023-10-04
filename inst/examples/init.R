@@ -43,12 +43,15 @@ df.orig <- df.orig %>%
          "publisher" = 8, #("260","b")
          "publication_time" = 9, #("260","c")
          "physical_extent" = 10, # ("300","a")
-         "physical_dimensions"= 11) # ("300","c")
+         "physical_dimensions"= 11), # ("300","c")
+          "publication_frequency" = 15, # ("310","a")
+          "publication_interval" = 16, # ("362","a")
+          "subject_geography" = 17) #("651","a")
 
 # TO be added later as we progress with preprosessing the fields below
          #"publication_frequency" = 15, # ("310","a")
          #"publication_interval" = 16, # ("362","a")
-         #"subject_geography" = 17, #()"651","a"
+         #"subject_geography" = 17, #("651","a")
          #"callnumbers" = 18) # ("callnumbers","a")]
 
 

@@ -54,7 +54,7 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
     x[inds] <- sapply(x[inds], function (x) {gsub("l", "1", x)})
   }
 
-  months <- as.character(read.csv("~/git/fennica/inst/extdata/months.csv", header = TRUE)[,1])
+  months <- as.character(read.csv("months.csv", header = TRUE)[,1])
   months <- unique(c(months, tolower(months)))
   # Handle from longest to shortest to avoid problems
   months <- months[rev(order(nchar(months)))]
