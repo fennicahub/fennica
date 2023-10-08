@@ -30,7 +30,7 @@ df = pd.concat(dfs, ignore_index=True)
 #pd.concat(df_chunks)
 
 #%%
-#save priority_fields_full_fennica file in examples
+#save priority_fields file in examples
 compression_opts = dict(method='zip',
                         archive_name='priority_fields.csv')  
 df.to_csv(f"{output_folder_priority}/priority_fields.zip", sep = "\t", index=False, compression=compression_opts)
