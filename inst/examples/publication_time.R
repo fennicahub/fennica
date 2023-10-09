@@ -2,29 +2,32 @@ field <- "publication_time"
 tmp  <- polish_years(df.orig[[field]], check = TRUE)
       
 # Make data.frame
-df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
+df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      publication_year_from = tmp$from,
                      publication_year_till = tmp$till)
 
 # Add publication_year as a separate column (same as "publication_year_from")
-df.harmonized$publication_year <- df.harmonized$publication_year_from
+df.tmp$publication_year <- df.tmp$publication_year_from
 
 # Add publication_decade
-df.harmonized$publication_decade <- decade(df.harmonized$publication_year) 
+df.tmp$publication_decade <- decade(df.tmp$publication_year) 
+
+#create df.harmonized to be used in physical_interval for comparison
+df.harmonized <- df.tmp
 
 # ---------------------------------------------------
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV
 data.file <- paste0(field, ".Rds")
-saveRDS(df.harmonized, file = data.file)
+saveRDS(df.tmp, file = data.file)
 
 # ---------------------------------------------------------------------
 
 message("Write conversions: publication year")
-df.harmonized$original <- df.orig[[field]]
+df.tmp$original <- df.orig[[field]]
 
-xx <- as.data.frame(df.harmonized) %>% filter(!is.na(publication_year)) %>%
+xx <- as.data.frame(df.tmp) %>% filter(!is.na(publication_year)) %>%
                                        group_by(original, publication_year) %>%
                                        tally() %>%
 				       arrange(desc(n))
@@ -37,7 +40,7 @@ tmp <- write.table(xx,
   
 message("Discarded publication year")
 o <- as.character(df.orig[[field]])
-x <- as.character(df.harmonized[["publication_year"]])
+x <- as.character(df.tmp[["publication_year"]])
 inds <- which(is.na(x))
 discard.file <- paste0(output.folder, field, "_discarded.csv")
 tmp <- write_xtable(o[inds],

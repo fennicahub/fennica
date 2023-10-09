@@ -33,6 +33,10 @@ for (field in update.fields) {
 
 }
 
+#remove duplicate Column Names
+duplicated_names <- duplicated(colnames(df.preprocessed))
+df.preprocessed[!duplicated_names]
+
 message("Field preprocessing ok.")
 
 

@@ -33,7 +33,7 @@ df.orig <- subset(df.orig, select = -b )
 
 #rename column names
 df.orig <- df.orig %>% 
-  rename("melinda_id" = 1, #("035","a")
+  dplyr::rename("melinda_id" = 1, #("035","a")
          "author_name" = 2, # ("100","a")
          "author_date" = 3, # ("100","d")
          "language" = 4, # ("041","a")
@@ -43,10 +43,11 @@ df.orig <- df.orig %>%
          "publisher" = 8, #("260","b")
          "publication_time" = 9, #("260","c")
          "physical_extent" = 10, # ("300","a")
-         "physical_dimensions"= 11) # ("300","c")
-          #"publication_frequency" = 15, # ("310","a")
-          #"publication_interval" = 16, # ("362","a")
-          #"subject_geography" = 17) #("651","a")
+         "physical_dimensions"= 11, # ("300","c")
+         "publication_frequency" = 12, # ("310","a")
+         "publication_interval" = 13, # ("362","a")
+         "subject_geography" = 14) #("651","a")
+
 
 # TO be added later as we progress with preprosessing the fields below
          #"publication_frequency" = 15, # ("310","a")
