@@ -27,52 +27,6 @@ df.tmp$publication_interval_till[df.tmp$publication_interval_till < 1400] <- NA
 df.tmp$publication_interval_till[df.tmp$publication_interval_till > 2000] <- NA
 
 
-
-## COMBINE PUBLICATION-YEAR AND PUBLICATION-INTERVAL FIELDS
-# Recognize issues: those that have publication interval or frequency defined
-
-message("Compare with publication year field.")
-inds <- which(is.na(df.harmonized$publication_year))  
-# When the non-NA entries are unique, use the same year for all
-tmp <- cbind(from0 = df.harmonized$publication_year_from[inds],
-             till0 = df.harmonized$publication_year_till[inds],
-             from = df.harmonized$publication_interval_from[inds],
-             till = df.harmonized$publication_interval_till[inds]
-)
-inds2 <- unname(which(apply(tmp, 1, function (x) {length(unique(na.omit(x)))}) == 1))
-
-y <- unname(apply(matrix(tmp[inds2,], ncol = ncol(tmp)), 1, function (x) {unique(na.omit(x))}))
-
-df.harmonized$publication_year_from[inds[inds2]] <- y
-df.harmonized$publication_year_till[inds[inds2]] <- y
-
-message("For conflicting years, select he largest combined span")
-tmp <- cbind(from0 = df.harmonized$publication_year_from[inds],
-             till0 = df.harmonized$publication_year_till[inds],
-             from = df.harmonized$publication_interval_from[inds],
-             till = df.harmonized$publication_interval_till[inds]
-)
-
-tmp <- matrix(tmp, ncol = ncol(tmp))
-mins <- unname(apply(tmp, 1, function (x) {min(x, na.rm = TRUE)}))
-maxs <- unname(apply(tmp, 1, function (x) {max(x, na.rm = TRUE)}))
-
-df.harmonized$publication_year_from[inds] <- mins
-df.harmonized$publication_year_till[inds] <- maxs
-
-# LL: this uses publication_interval field from df.orig; if that is
-# processed separately and stored in its own field in
-# df.preprocessed then this can be trivially handled. Note that
-# publication_interval is confusingly mixing (at least) to different
-# types of information: (1) actual years of the publication
-# interval, and (2) the number of publications during the years
-# given in the publication_time (df.orig). These should be
-# identified and separated.
-
-message("Mark potential first editions")
-df.tmp$first_edition <- is_first_edition(df.orig)
-
-
 # ---------------------------------------------------------------------
 # Store the title field data
 # FIXME: convert to feather or plain CSV

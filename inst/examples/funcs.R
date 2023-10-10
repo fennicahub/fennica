@@ -3434,14 +3434,14 @@ gender_custom <- function (...) {
 #' @export
 #' @examples \dontrun{fed <- is_first_edition(df)}
 #' @keywords utilities
-is_first_edition <- function (df.orig) {
+is_first_edition <- function (df) {
 
   # Author-title combo		 
-  id <- apply(df.orig[, c("author_name", "title")], 1, function (x) {paste(x, collapse = "|")});
+  id <- apply(df[, c("author_name", "title")], 1, function (x) {paste(x, collapse = "|")});
 
   # Split years and indices
-  spl1 <- split(df.orig$publication_time, id)
-  spl2 <- split(df.orig$melinda_id, id)
+  spl1 <- split(df$publication_time, id)
+  spl2 <- split(df$melinda_id, id)
 
   # Cases with multiple years
   inds <- which(sapply(spl1, function (x) {sum(!is.na(x))}) > 1)
@@ -3460,8 +3460,8 @@ is_first_edition <- function (df.orig) {
   # Cases with a single occurrence are listed as NA
   # (as it is not sure if there are multiple editions)
   fed <- rep(NA, nrow(df))
-  fed[df.orig$melinda_id %in% unlist(first, use.names = FALSE)] <- TRUE
-  fed[df.orig$melinda_id %in% unlist(later, use.names = FALSE)] <- FALSE
+  fed[df$melinda_id %in% unlist(first, use.names = FALSE)] <- TRUE
+  fed[df$melinda_id %in% unlist(later, use.names = FALSE)] <- FALSE
   
   fed
 

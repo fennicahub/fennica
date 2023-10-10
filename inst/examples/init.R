@@ -50,9 +50,6 @@ df.orig <- df.orig %>%
 
 
 # TO be added later as we progress with preprosessing the fields below
-         #"publication_frequency" = 15, # ("310","a")
-         #"publication_interval" = 16, # ("362","a")
-         #"subject_geography" = 17, #("651","a")
          #"callnumbers" = 18) # ("callnumbers","a")]
 
 
