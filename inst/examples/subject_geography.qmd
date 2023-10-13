@@ -1,0 +1,40 @@
+```{r}
+#| label = "source-index",
+#| include = FALSE
+source("init.R")
+```
+
+
+```{r source-subject-geography, include=FALSE, eval=knit_bookdown}
+# note_subject_topic field
+source("subject_geography.R")
+```
+
+---
+# Subject geography preprocessing summary (Subject geographical places)
+---
+
+```{r geo, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=10}
+tab <- rev(sort(table(unlist(strsplit(as.character(df$subject_geography), ";")))))
+
+```
+
+---
+Top-`r ntop` geographical places are shown together with the number of documents assigned to that region. Geography information is available for `r sum(!is.na(df$subject_geography))` documents (`r round(100*mean(!is.na(df$subject_geography)))`%). There are `r length(tab)` unique geographical places.
+---
+
+```{r geo2, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=10, eval=FALSE}
+ntop <- 50
+par(mar = c(5, 10, 3, 1)); barplot(log10(rev(tab[1:ntop])), horiz = T, las = 1, cex.names = 0.8, xlab = "Documents (log10)", main = "Most common geographic places")
+
+```
+
+```{r geo3, echo=FALSE, message=FALSE, warning=FALSE}
+f <- "output.tables/geoplaces.csv"
+write.table(cbind(Geography = names(tab), Documents = tab), file = f, sep = "|", quote = F, row.names = F)
+
+```
+
+---
+[Complete geoplace listing](dataTable/data_table.html?path=../output.tables/geoplaces.csv)
+---

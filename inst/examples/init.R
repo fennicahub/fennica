@@ -15,6 +15,7 @@ library(fennica)
 # Load misc functions needed for harmonization
 source("funcs.R")
 
+
 # Define create the output folder
 output.folder <- "output.tables/"
 if (!file.exists(output.folder)) {
@@ -53,8 +54,7 @@ df.orig <- df.orig %>%
          #"callnumbers" = 18) # ("callnumbers","a")]
 
 
-
-# ------------------------------------------------------------
+source("polish_all.R")
 
 ntop <- 20
 book_author <- "Turku Data Science Group"
