@@ -6,7 +6,7 @@ df.tmp <- data.frame(
       publication_frequency_annual = tmp$annual,
       publication_frequency_text   = tmp$freq)
 
-
+v
 
   
 # Store the title field data
