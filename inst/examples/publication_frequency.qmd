@@ -13,7 +13,7 @@ source("init.R")
 ```{r source-publication-frequency, include=FALSE, eval=knit_bookdown}
 # publication_frequency field
 source("publication_frequency.R")
-df <- read_csv("df.preprocessed.csv")
+df <- read.csv("df.preprocessed.csv")
 ```
 
 # Publication frequency summaries
