@@ -36,7 +36,8 @@ book:
   - title.qmd
   - title_uniform.qmd
   - publication_frequency.qmd
-  - physical_extent.qmd
+  
+  #physical_extent.qmd
   
   #- subject_geography-qmd
   #- subject_topic.qmd

@@ -5,7 +5,13 @@ hide-description: false
 ---
 
 ```{r}
-df <- df.preprocessed
+#| include = FALSE
+source("init.R")
+source("physical_extent.R")
+```
+
+```{r}
+df <- read.csv("df.preprocessed.csv")
 ```
 
 ---

@@ -39,5 +39,7 @@ df.preprocessed <- df.preprocessed[!duplicated_names]
 
 message("Field preprocessing ok.")
 
+#write.csv(df.preprocessed,"df.preprocessed.csv", row.names = FALSE)
+
 
 

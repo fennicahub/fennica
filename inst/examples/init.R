@@ -43,18 +43,19 @@ df.orig <- df.orig %>%
          "publication_place" = 7, #("260","a")
          "publisher" = 8, #("260","b")
          "publication_time" = 9, #("260","c")
-         "physical_extent" = 10, # ("300","a")
-         "physical_dimensions"= 11, # ("300","c")
-         "publication_frequency" = 12, # ("310","a")
-         "publication_interval" = 13, # ("362","a")
-         "subject_geography" = 14) #("651","a")
+         "physical_dimensions"= 10, # ("300","c")
+         "publication_frequency" = 11, # ("310","a")
+         "publication_interval" = 12) # ("362","a")
+         
 
 
 # TO be added later as we progress with preprosessing the fields below
+          # "physical_extent" = 10, # ("300","a")
+          #"subject_geography" = 14) #("651","a")
          #"callnumbers" = 18) # ("callnumbers","a")]
 
 
-source("polish_all.R")
+
 
 ntop <- 20
 book_author <- "Turku Data Science Group"

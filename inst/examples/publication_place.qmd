@@ -1,3 +1,9 @@
+---
+title : "Publication place"
+hide-description: false
+description: "Publication place field and derived country- and geoinformation"
+---
+
 ```{r}
 #| label = "source-index",
 #| include = FALSE
@@ -8,7 +14,7 @@ source("init.R")
 #| label = "source-publication-place",
 #| include = FALSE,
 #| eval = knit_bookdown
-# Publication place field and derived country- and geoinformation
+
 source("publication_place.R")
 ```
 

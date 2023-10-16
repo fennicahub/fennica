@@ -1,3 +1,9 @@
+---
+title : "Publisher names"
+hide-description: false
+description: "Top publisher info"
+---
+
 ```{r}
 #| label = "source-index",
 #| include = FALSE
@@ -8,7 +14,6 @@ source("init.R")
 #| label = "source-publisher",
 #| include = FALSE,
 #| eval = knit_bookdown
-# publisher field
 source("publisher.R")
 ```
 
