@@ -1829,8 +1829,7 @@ pick_lastname <- function (x, format = "last, first", keep.single = TRUE) {
 remove_time_info <- function (x, verbose = FALSE, months = NULL) {
 
   if (is.null(months)) {
-    f <- "months.csv"
-    months <- as.character(read.csv(f, header = TRUE)[,1])
+    months <- as.character(read.csv("months.csv", header = TRUE)[,1])
     months <- unique(c(months, tolower(months)))
 
     # Handle from longest to shortest to avoid problems
@@ -2846,8 +2845,7 @@ remove_print_statements <- function (x) {
   ### Get printing terms from tables in various languages
   for (lang in c("finnish", "french", "german", "swedish", "english")) {
 
-    f <- system.file(paste0("extdata/printstop_", lang, ".csv"), package = "fennica")
-    terms <- unique(str_trim(tolower(read.csv(f, stringsAsFactors = FALSE)[,1])))
+    terms <- unique(str_trim(tolower(read.csv(paste0("extdata/printstop_", lang, ".csv"), stringsAsFactors = FALSE)[,1])))
 
     # Harmonize the terms 
     terms.multi <- c(terms.multi, terms[nchar(terms) > 1])
