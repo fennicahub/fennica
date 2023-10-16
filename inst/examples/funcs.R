@@ -2844,13 +2844,10 @@ remove_print_statements <- function (x) {
 
   ### Get printing terms from tables in various languages
   for (lang in c("finnish", "french", "german", "swedish", "english")) {
-
-    terms <- unique(str_trim(tolower(read.csv(paste0("extdata/printstop_", lang, ".csv"), stringsAsFactors = FALSE)[,1])))
-
+    terms <- unique(str_trim(tolower(read.csv(paste0("printstop_", lang, ".csv"), stringsAsFactors = FALSE)[,1])))
     # Harmonize the terms 
     terms.multi <- c(terms.multi, terms[nchar(terms) > 1])
     terms.single <- c(terms.single, terms[nchar(terms) == 1])
-
   }
 
   terms.multi = unique(terms.multi)
@@ -2882,8 +2879,7 @@ remove_print_statements <- function (x) {
   x <- xuniq <- unique(xorig)
 
   # remove sine loco
-  f <- system.file("extdata/sl.csv", package = "fennica") 
-  sineloco <- as.character(read.csv(f)[,1])
+  sineloco <- as.character(read.csv("sl.csv")[,1])
   x <- remove_terms(x, sineloco, include.lowercase = TRUE)
 
   # Back to original indices, then unique again; reduces

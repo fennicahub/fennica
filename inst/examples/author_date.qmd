@@ -13,6 +13,7 @@ source("init.R")
 #| label = "source-author-date",
 #| include = FALSE
 # author_date field
+library(stringr)
 source("author_date.R")
 ```
 
