@@ -2841,10 +2841,10 @@ remove_print_statements <- function (x) {
 
   terms.single = c()
   terms.multi = c()  
-  langs <- c("finnish", "french", "german", "swedish", "english")
+  
 
   ### Get printing terms from tables in various languages
-  for (lang in langs) {
+  for (lang in c('finnish','english', 'french', 'german', 'swedish')) {
     terms <- unique(str_trim(tolower(read.csv(paste0("printstop_",lang,".csv"), stringsAsFactors = FALSE)[,1])))
     # Harmonize the terms 
     terms.multi <- c(terms.multi, terms[nchar(terms) > 1])
