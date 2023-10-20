@@ -1607,7 +1607,7 @@ remove_terms <- function (x, terms, where = "all", include.lowercase = FALSE, po
     
   }
   
-  tmp <- matrix(sapply(terms, function (term) grepl(term, x), USE.NAMES = FALSE),
+  tmp <- matrix(sapply(terms, function (terms) any (terms %in% x), USE.NAMES = FALSE),
                   ncol = length(terms))
 
   for (i in 1:length(terms)) {
