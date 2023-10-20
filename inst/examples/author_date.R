@@ -1,6 +1,6 @@
 
 field <- "author_date"
-
+source("funcs.R")
 # TODO make a tidy cleanup function to shorten the code here
 df.tmp <- polish_years(df.orig[[field]], check = TRUE, verbose = TRUE)
 

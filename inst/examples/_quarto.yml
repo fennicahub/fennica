@@ -25,17 +25,17 @@ book:
   # files with '##' are the one that need to be corrected 
   chapters:
   - index.qmd
-  - author_date.qmd
   - author_name.qmd
-  - language.qmd
-  - publisher.qmd
-  - publication_interval.qmd
-  - publication_place.qmd
-  - publication_time.qmd
-  - physical_dimensions.qmd
-  - title.qmd
-  - title_uniform.qmd
-  - publication_frequency.qmd
+  - author_date.qmd
+  #- language.qmd
+  #- publisher.qmd
+  #- publication_interval.qmd
+  #- publication_place.qmd
+  #- publication_time.qmd
+  #- physical_dimensions.qmd
+  #- title.qmd
+  #- title_uniform.qmd
+  #- publication_frequency.qmd
   
   #physical_extent.qmd
   

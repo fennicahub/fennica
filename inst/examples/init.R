@@ -29,23 +29,23 @@ df.orig <- read.csv(file = "priority_fields.csv", skip = 1, head = TRUE, sep="\t
 
 #Merge title and title_remainder
 
-df.orig$a.4 <- paste(df.orig$a.4, df.orig$b, sep=" ")
-df.orig <- subset(df.orig, select = -b )
+#df.orig$a.4 <- paste(df.orig$a.4, df.orig$b, sep=" ")
+#df.orig <- subset(df.orig, select = -b )
 
 #rename column names
 df.orig <- df.orig %>% 
   dplyr::rename("melinda_id" = 1, #("035","a")
          "author_name" = 2, # ("100","a")
-         "author_date" = 3, # ("100","d")
-         "language" = 4, # ("041","a")
-         "title_uniform" = 5, # ("240","a")
-         "title" = 6, #("245","a")
-         "publication_place" = 7, #("260","a")
-         "publisher" = 8, #("260","b")
-         "publication_time" = 9, #("260","c")
-         "physical_dimensions"= 10, # ("300","c")
-         "publication_frequency" = 11, # ("310","a")
-         "publication_interval" = 12) # ("362","a")
+         "author_date" = 3) # ("100","d")
+        # "language" = 4, # ("041","a")
+        # "title_uniform" = 5, # ("240","a")
+         #"title" = 6, #("245","a")
+         #"publication_place" = 7, #("260","a")
+        # "publisher" = 8, #("260","b")
+         #"publication_time" = 9, #("260","c")
+         #"physical_dimensions"= 10, # ("300","c")
+         #"publication_frequency" = 11, # ("310","a")
+         #"publication_interval" = 12) # ("362","a")
          
 
 

@@ -5,5 +5,26 @@
     "title": "Harmonized Finnish National Bibliography",
     "section": "",
     "text": "Preface chapter\n\nAs part of the Metadata Harmonization And Analysis work package, we use the Finnish national bibliography (FNB) Fennica dataset to create a harmonized dataset that can be used for research purposes as well as provide the groundwork for infrastructure that can be iterated further.\nThe FNB contains metadata for 1,187,813 documents and spans over 450 years, more specifically consisting of records printed between 1488 and 1955. There are 28 data fields in raw data in machine-readable cataloguing (MARC) format, which provide information on the document, for example, language, author name, author lifetime, publication title, publication place, publisher, and page count. Through harmonization and enriching the dataset with data from other sources, the abovementioned 28 fields can result in 96 data fields per document. (Tolonen, et al 2019.)\nAn important output of our work is a harmonized version of the FNB. The FNB metadata is an example of a dataset consisting of structured data. The FNB dataset is not created for research purposes and needs refining before it can be used. Tools are needed for accessing, cleaning, refining, enriching and analysing this type of data, and printing documentation of this process.\nIn this bookdown project we will disseminate the FNB dataset cleaning process."
+  },
+  {
+    "objectID": "author_name.html#authors",
+    "href": "author_name.html#authors",
+    "title": "2  Author’s name",
+    "section": "2.1 Authors",
+    "text": "2.1 Authors\n\n196891 unique authors These final names capture all name variants from the custom author synonyme table, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the author synonyme table.\n747538 documents have unambiguous author information (63%).\n10 unique pseudonymes are recognized based on custom pseudonyme lists.\n20 discarded author names This list should not include any real authors (if it does, please send a note to the admin). The stopword lists are considered when discarding names.\nAuthor name conversions Non-trivial conversions from the original raw data to final names.\n\n\n2.1.1 Auxiliary files\n\nAuthor synonyme table\nStopwords for names\nStopwords for titles\nCustom pseudonyme lists\n\nTop-20 uniquely identified authors and their productivity (title count).\n\n\n\n\n\n\n\n2.1.2 Author productivity\nTitle count in relation to the paper consumed in their books(all authors):"
+  },
+  {
+    "objectID": "language.html#top-languages",
+    "href": "language.html#top-languages",
+    "title": "4  Language summaries",
+    "section": "4.1 Top languages",
+    "text": "4.1 Top languages\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n777706\n65.5\n\n\nEnglish\n128669\n10.8\n\n\nSwedish\n110307\n9.3\n\n\nUndetermined\n50510\n4.3\n\n\nFinnish;Swedish\n27330\n2.3\n\n\nGerman\n13954\n1.2\n\n\nFinnish;English\n12244\n1\n\n\nLatin\n9954\n0.8\n\n\nFinnish;Swedish;English\n6972\n0.6\n\n\nRussian\n4886\n0.4\n\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):"
+  },
+  {
+    "objectID": "author_date.html",
+    "href": "author_date.html",
+    "title": "3  Author’s lifetime",
+    "section": "",
+    "text": "Author date accepted\nAuthor date discarded\nAuthor’s lifetime is available for 150930 authors (13%). The lifetime years span 1, 106. The youngest being 17 years old and the oldest 99 years old."
   }
 ]

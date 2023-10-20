@@ -1607,14 +1607,8 @@ remove_terms <- function (x, terms, where = "all", include.lowercase = FALSE, po
     
   }
   
-  tmp <- matrix(sapply(terms, function (terms) grepl (terms, x), USE.NAMES = FALSE),
-                  ncol = length(terms))
-
-  for (i in 1:length(terms)) {
-    if (any(tmp[, i])) {
-      x[tmp[, i]] <- remove_terms_help(x[tmp[, i]], terms[[i]], where)
-    }
-  }
+  #tmp <- sapply(terms, function (term) grepl (term, x, perl = TRUE), USE.NAMES = FALSE)
+  #for (i in 1:length(terms)) {    if (any(tmp[i])) {      x[tmp[,i]] <- remove_terms_help(x[tmp[,i]], terms[[i]], where)    }  }
   
   if (polish) {
     x <- condense_spaces(x)
@@ -2846,7 +2840,7 @@ remove_print_statements <- function (x) {
   ### Get printing terms from tables in various languages
   for (lang in c('finnish','english', 'french', 'german', 'swedish')) {
     b <- trimws(paste0("printstop_",lang,".csv"))
-    terms <- unique(str_trim(tolower(read.csv(b))[1]))
+    terms <- unique(tolower(read.csv(b))[1])
     # Harmonize the terms 
     terms.multi <- c(terms.multi, terms[nchar(terms) > 1])
     terms.single <- c(terms.single, terms[nchar(terms) == 1])

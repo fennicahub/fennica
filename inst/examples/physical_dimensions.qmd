@@ -54,7 +54,7 @@ The estimated dimensions are based on the following auxiliary information sheets
 #| fig.width = 9,
 #| fig.height = 7,
 library(reshape2)
-df <- read.csv("df.preprocessed.csv")
+df <- read.csv("df.preprocessed.csv") 
 dfs <- df %>% filter(!is.na(area) & !is.na(gatherings))
 dfs <- dfs[, c("gatherings", "area")]
 dfm <- melt(table(dfs)) # TODO switch to gather here
