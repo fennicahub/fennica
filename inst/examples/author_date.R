@@ -1,6 +1,5 @@
 
 field <- "author_date"
-source("funcs.R")
 # TODO make a tidy cleanup function to shorten the code here
 df.tmp <- polish_years(df.orig[[field]], check = TRUE, verbose = TRUE)
 
@@ -16,6 +15,11 @@ df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
                     df.tmp)
 rownames(df.tmp) <- NULL
 
+# Run publication_time.R file to get the melindas needed for the 19th century slicing
+source("publication_time.R")
+
+df.tmp <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
+
 # Store the title field data
 # FIXME: convert to feather or plain CSV
 data.file <- paste0(field, ".Rds")
@@ -23,7 +27,7 @@ saveRDS(df.tmp, file = data.file)
 
 # ------------------------------------------------------------
 
-# Generate data summaries
+# Generate data summaries for the 19th century data 
 
 o <- as.character(df.orig[[field]])
 x <- as.character(df.tmp[["author_birth"]])
@@ -58,8 +62,8 @@ write.table(tab, file = discard.file, quote = FALSE, row.names = FALSE, col.name
 
 # ------------------------------------------------------------
 
-Create subsection for the 19th century only and 
-df_19 <- df.tmp %>% filter(publication_year > 1808 & publication_year < 1917)
+
+
 
 # Generate markdown summary
 df <- readRDS(data.file)

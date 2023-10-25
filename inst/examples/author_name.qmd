@@ -8,7 +8,6 @@ description: "statistics about the authors and their productivity"
 #| include = FALSE
 source("init.R")
 source("author_name.R")
-df <- read.csv("df_19.csv")
 ```
 
 

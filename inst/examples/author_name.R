@@ -7,6 +7,10 @@ author <- polish_author(df.orig[[field]], verbose = TRUE)
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id, author_name = author)
 
+# Run publication_time.R file to get the melindas needed for the 19th century slicing
+source("publication_time.R")
+
+df.tmp <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV
