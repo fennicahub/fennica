@@ -7,15 +7,9 @@ description: "Some statistics about the author's lifetime"
 ```{r}
 #| include = FALSE
 source("init.R")
+df <- read.csv("df_19.csv")
 ```
 
-```{r}
-#| label = "source-author-date",
-#| include = FALSE
-# author_date field
-library(stringr)
-source("author_date.R")
-```
 
 [Author date accepted](dataTable/data_table.html?path=../output.tables/author_date_accepted.csv)
 

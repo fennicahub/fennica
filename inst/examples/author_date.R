@@ -58,6 +58,9 @@ write.table(tab, file = discard.file, quote = FALSE, row.names = FALSE, col.name
 
 # ------------------------------------------------------------
 
+Create subsection for the 19th century only and 
+df_19 <- df.tmp %>% filter(publication_year > 1808 & publication_year < 1917)
+
 # Generate markdown summary
 df <- readRDS(data.file)
 # tmp <- knit(input = paste(field, ".Rmd", sep = ""),

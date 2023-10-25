@@ -125,6 +125,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Author’s lifetime</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./publication_time.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Publication time</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
@@ -192,28 +198,28 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <ul>
-<li><a href="dataTable/data_table.html?path=../output.tables/author_name_accepted.csv">Unique accepted entries</a>: 196891</li>
+<li><a href="dataTable/data_table.html?path=../output.tables/author_name_accepted.csv">Unique accepted entries</a>: 9239</li>
 <li><a href="dataTable/data_table.html?path=../output.tables/author_name_discarded.csv">Unique discarded entries in original data</a> (excluding NA cases): 28</li>
-<li>Original documents with non-NA titles: 747538 / 1187813 (62.9%)</li>
-<li>Original documents with missing (NA) titles 440275 / 1187813 documents (37.1%)</li>
+<li>Original documents with non-NA titles: 33195 / 52394 (63.4%)</li>
+<li>Original documents with missing (NA) titles 19199 / 52394 documents (36.6%)</li>
 </ul>
 <p>Top-20 titles and their title counts.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="figure/rmd_author_name_summarytitle-author-name-1.png" class="img-fluid" width="768"></p>
+<p><img src="author_name_files/figure-html/summarytitle-author-name-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 <p>Frequency of unique titles:</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="figure/rmd_author_name_uniquetitles-author-name-1.png" class="img-fluid" width="768"></p>
+<p><img src="author_name_files/figure-html/uniquetitles-author-name-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 <section id="authors" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="authors"><span class="header-section-number">2.1</span> Authors</h2>
 <ul>
-<li>196891 <a href="dataTable/data_table.html?path=../output.tables/author_accepted.csv">unique authors</a> These final names capture all name variants from the custom <a href="dataTable/data_table.html?path=../output.tables/ambiguous-authors.csv">author synonyme table</a>, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the <a href="dataTable/data_table.html?path=../output.tables/ambiguous-authors.csv">author synonyme table</a>.</li>
-<li>747538 documents have unambiguous author information (63%).</li>
+<li>9239 <a href="dataTable/data_table.html?path=../output.tables/author_accepted.csv">unique authors</a> These final names capture all name variants from the custom <a href="dataTable/data_table.html?path=../output.tables/ambiguous-authors.csv">author synonyme table</a>, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the <a href="dataTable/data_table.html?path=../output.tables/ambiguous-authors.csv">author synonyme table</a>.</li>
+<li>33195 documents have unambiguous author information (63%).</li>
 <li>10 <a href="dataTable/data_table.html?path=../output.tables/pseudonyme_accepted.csv">unique pseudonymes</a> are recognized based on <a href="dataTable/data_table.html?path=../output.tables/custom_pseudonymes.csv">custom pseudonyme lists</a>.</li>
 <li>20 <a href="dataTable/data_table.html?path=../output.tables/author_discarded.csv">discarded author names</a> This list should not include any real authors (if it does, please send a note to the admin). The stopword lists are considered when discarding names.</li>
 <li><a href="dataTable/data_table.html?path=../output.tables/author_conversion_nontrivial.csv">Author name conversions</a> Non-trivial conversions from the original raw data to final names.</li>
@@ -229,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Top-20 uniquely identified authors and their productivity (title count).</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="figure/rmd_author_name_summaryauthorsnames-1.png" class="img-fluid" width="1152"></p>
+<p><img src="author_name_files/figure-html/summaryauthorsnames-1.png" class="img-fluid" width="1152"></p>
 </div>
 </div>
 </section>

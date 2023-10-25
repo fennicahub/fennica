@@ -7,20 +7,10 @@ description: "statistics about the authors and their productivity"
 ```{r}
 #| include = FALSE
 source("init.R")
+source("author_name.R")
+df <- read.csv("df_19.csv")
 ```
 
-```{r}
-#| label = "source-author-name",
-#| include = FALSE
-# author_name field
-source("author_name.R")
-```
-```{r}
-#| label = "setup-author-name",
-#| include = FALSE
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
-```
 
 * [Unique accepted entries](dataTable/data_table.html?path=../`r file_accepted`): `r length(unique(df[[field]]))`
 * [Unique discarded entries in original data](dataTable/data_table.html?path=../`r file_discarded`) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`

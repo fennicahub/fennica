@@ -11,7 +11,7 @@
     "href": "author_name.html#authors",
     "title": "2  Author’s name",
     "section": "2.1 Authors",
-    "text": "2.1 Authors\n\n196891 unique authors These final names capture all name variants from the custom author synonyme table, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the author synonyme table.\n747538 documents have unambiguous author information (63%).\n10 unique pseudonymes are recognized based on custom pseudonyme lists.\n20 discarded author names This list should not include any real authors (if it does, please send a note to the admin). The stopword lists are considered when discarding names.\nAuthor name conversions Non-trivial conversions from the original raw data to final names.\n\n\n2.1.1 Auxiliary files\n\nAuthor synonyme table\nStopwords for names\nStopwords for titles\nCustom pseudonyme lists\n\nTop-20 uniquely identified authors and their productivity (title count).\n\n\n\n\n\n\n\n2.1.2 Author productivity\nTitle count in relation to the paper consumed in their books(all authors):"
+    "text": "2.1 Authors\n\n9239 unique authors These final names capture all name variants from the custom author synonyme table, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the author synonyme table.\n33195 documents have unambiguous author information (63%).\n10 unique pseudonymes are recognized based on custom pseudonyme lists.\n20 discarded author names This list should not include any real authors (if it does, please send a note to the admin). The stopword lists are considered when discarding names.\nAuthor name conversions Non-trivial conversions from the original raw data to final names.\n\n\n2.1.1 Auxiliary files\n\nAuthor synonyme table\nStopwords for names\nStopwords for titles\nCustom pseudonyme lists\n\nTop-20 uniquely identified authors and their productivity (title count).\n\n\n\n\n\n\n\n2.1.2 Author productivity\nTitle count in relation to the paper consumed in their books(all authors):"
   },
   {
     "objectID": "language.html#top-languages",
@@ -25,13 +25,13 @@
     "href": "author_date.html",
     "title": "3  Author’s lifetime",
     "section": "",
-    "text": "Author date accepted\nAuthor date discarded\nAuthor’s lifetime is available for 150930 authors (13%). The lifetime years span 1, 106. The youngest being 17 years old and the oldest 99 years old."
+    "text": "Author date accepted\nAuthor date discarded\nAuthor’s lifetime is available for 19971 authors (38%). The lifetime years span 18, 105. The youngest being 17 years old and the oldest 99 years old."
   },
   {
     "objectID": "publication_time.html",
     "href": "publication_time.html",
     "title": "4  Publication time",
     "section": "",
-    "text": "5 Publication year summaries (publication time)\nPublication year conversions\nPublication year discarded\nPublication year is available for 957662 documents (81%). The publication years span 0-1.97919801985199e+27."
+    "text": "5 Publication year summaries (publication time)\nPublication year conversions\nPublication year discarded\nPublication year is available for 52394 documents (100%). The publication years span 1809-1917."
   }
 ]

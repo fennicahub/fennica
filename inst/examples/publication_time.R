@@ -45,14 +45,14 @@ tmp <- write_xtable(o[inds],
 # ------------------------------------------------------------
 
 #Create subsection for the 19th century only and 
-df_19 <- df.harmonized %>% filter(publication_year > 1799 & publication_year < 1901)
+#df_19 <- df.harmonized %>% filter(publication_year > 1808 & publication_year < 1917)
 
 # ---------------------------------------------------
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV
 data.file <- paste0(field, ".Rds")
-saveRDS(df_19, file = data.file)
+saveRDS(df.tmp, file = data.file)
 
 # Generate markdown summary 
 df <- readRDS(data.file)
