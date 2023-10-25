@@ -8,15 +8,9 @@ description: "Publication year summaries"
 #| label = "source-index",
 #| include = FALSE
 source("init.R")
-```
-
-```{r}
-#| label = "source-publication-time",
-#| include = FALSE,
-#| eval = knit_bookdown
-
 source("publication_time.R")
 ```
+
 
 # Publication year summaries (publication time)
 

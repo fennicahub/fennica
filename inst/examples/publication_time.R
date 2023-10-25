@@ -1,4 +1,6 @@
 field <- "publication_time"
+
+#polish full data
 tmp  <- polish_years(df.orig[[field]], check = TRUE)
       
 # Make data.frame
@@ -15,15 +17,8 @@ df.tmp$publication_decade <- decade(df.tmp$publication_year)
 #create df.harmonized to be used in physical_interval for comparison
 df.harmonized <- df.tmp
 
-# ---------------------------------------------------
-
-# Store the title field data
-# FIXME: convert to feather or plain CSV
-data.file <- paste0(field, ".Rds")
-saveRDS(df.tmp, file = data.file)
-
 # ---------------------------------------------------------------------
-
+#1M data conversions
 message("Write conversions: publication year")
 df.tmp$original <- df.orig[[field]]
 
@@ -49,8 +44,19 @@ tmp <- write_xtable(o[inds],
 
 # ------------------------------------------------------------
 
+#Create subsection for the 19th century only and 
+df_19 <- df.harmonized %>% filter(publication_year > 1799 & publication_year < 1901)
+
+# ---------------------------------------------------
+
+# Store the title field data
+# FIXME: convert to feather or plain CSV
+data.file <- paste0(field, ".Rds")
+saveRDS(df_19, file = data.file)
+
 # Generate markdown summary 
 df <- readRDS(data.file)
+
 # tmp <- knit(input = paste(field, ".Rmd", sep = ""), 
 #             output = paste(field, ".md", sep = ""))
 

@@ -36,7 +36,12 @@ df.orig <- read.csv(file = "priority_fields.csv", skip = 1, head = TRUE, sep="\t
 df.orig <- df.orig %>% 
   dplyr::rename("melinda_id" = 1, #("035","a")
          "author_name" = 2, # ("100","a")
-         "author_date" = 3) # ("100","d")
+         "author_date" = 3, # ("100","d")
+         "publication_time" = 4, #("260","c")
+         "signum" = 5) # ("callnumbers","a")
+
+
+         #"physical_dimensions"= 10, # ("300","c")
         # "language" = 4, # ("041","a")
         # "title_uniform" = 5, # ("240","a")
          #"title" = 6, #("245","a")

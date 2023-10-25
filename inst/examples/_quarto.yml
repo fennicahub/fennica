@@ -27,6 +27,8 @@ book:
   - index.qmd
   - author_name.qmd
   - author_date.qmd
+  - publication_time.qmd
+  
   #- language.qmd
   #- publisher.qmd
   #- publication_interval.qmd
