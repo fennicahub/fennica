@@ -48,12 +48,35 @@ tmp <- write_xtable(o[inds],
 df_19 <- df.harmonized %>% filter(publication_year > 1808 & publication_year < 1917)
 melindas_19 <- df_19$melinda_id
 
+message("Write conversions: publication year for 1809-1917")
+df_19$original <- df.harmonized[[field]]
+
+xx <- as.data.frame(df_19) %>% filter(!is.na(publication_year)) %>%
+  group_by(melinda_id, publication_year) %>%
+  tally() %>%
+  arrange(desc(n))
+
+conversion.file <- paste0(output.folder, field, "_conversion_19.csv")
+tmp <- write.table(xx,
+                   file = conversion.file,
+                   quote = FALSE,
+                   row.names = FALSE)
+
+message("Discarded publication year for 1809-1917")
+o <- as.character(df.harmonized[[field]])
+x <- as.character(df_19[["publication_year"]])
+inds <- which(is.na(x))
+discard.file <- paste0(output.folder, field, "_discarded_19.csv")
+tmp <- write_xtable(o[inds],
+                    file = discard.file,
+                    count = TRUE)
+
 # ---------------------------------------------------
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV
 data.file <- paste0(field, ".Rds")
-saveRDS(df.harmonized, file = data.file)
+saveRDS(df_19, file = data.file)
 
 # Generate markdown summary 
 df <- readRDS(data.file)

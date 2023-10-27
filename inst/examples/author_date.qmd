@@ -9,13 +9,15 @@ description: "Some statistics about the author's lifetime"
 source("init.R")
 source("author_date.R")
 ```
+[Author date accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/author_date_accepted_19.csv)
 
+[Author date accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/author_date_accepted_19.csv)
 
-[Author date accepted](dataTable/data_table.html?path=../output.tables/author_date_accepted.csv)
+[Author date accepted for the whole Fennica](dataTable/data_table.html?path=../output.tables/author_date_accepted.csv)
 
-[Author date discarded](dataTable/data_table.html?path=../output.tables/author_date_discarded.csv)
+[Author date discarded for the whole Fennica](dataTable/data_table.html?path=../output.tables/author_date_discarded.csv)
 
-Author's lifetime is available for `r sum(!is.na(df$author_age))` authors (`r round(100*mean(!is.na(df$author_age)))`%). The lifetime years span `r range(na.omit((df$author_age)))`. The youngest being ? years old and the oldest ? years old.
+Author's lifetime is available for `r sum(!is.na(df$author_age))` authors (`r round(100*mean(!is.na(df$author_age)))`%). The lifetime years span `r range(na.omit((df$author_age)))`. 
 
 
 

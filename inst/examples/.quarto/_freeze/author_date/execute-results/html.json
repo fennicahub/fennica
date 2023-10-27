@@ -1,7 +1,7 @@
 {
-  "hash": "70739f0d15cba9ce15510292bbfc28b6",
+  "hash": "1bffd1342bbfcb20c1725713ddc3e1b3",
   "result": {
-    "markdown": "--- \ntitle: \"Author's lifetime\"\nhide-description: false\ndescription: \"Some statistics about the author's lifetime\"\n---\n\n\n\n\n\n[Author date accepted](dataTable/data_table.html?path=../output.tables/author_date_accepted.csv)\n\n[Author date discarded](dataTable/data_table.html?path=../output.tables/author_date_discarded.csv)\n\nAuthor's lifetime is available for 19190 authors (38%). The lifetime years span 18, 105. The youngest being ? years old and the oldest ? years old.\n\n\n\n\n",
+    "markdown": "--- \ntitle: \"Author's lifetime\"\nhide-description: false\ndescription: \"Some statistics about the author's lifetime\"\n---\n\n\n\n[Author date accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/author_date_accepted_19.csv)\n\n[Author date accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/author_date_accepted_19.csv)\n\n[Author date accepted for the whole Fennica](dataTable/data_table.html?path=../output.tables/author_date_accepted.csv)\n\n[Author date discarded for the whole Fennica](dataTable/data_table.html?path=../output.tables/author_date_discarded.csv)\n\nAuthor's lifetime is available for 19190 authors (38%). The lifetime years span 18, 105. \n\n\n\n\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

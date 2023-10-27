@@ -8,17 +8,21 @@ description: "Publication year summaries"
 #| label = "source-index",
 #| include = FALSE
 source("init.R")
-df <- read.csv("df_19.csv")
+source("publication_time.R")
 ```
 
 
 # Publication year summaries (publication time)
 
-[Publication year conversions](dataTable/data_table.html?path=../output.tables/publication_time_conversion.csv)
+[Publication year conversions for the whole data](dataTable/data_table.html?path=../output.tables/publication_time_conversion.csv)
 
-[Publication year discarded](dataTable/data_table.html?path=../output.tables/publication_time_discarded.csv)
+[Publication year discarded for the whole data](dataTable/data_table.html?path=../output.tables/publication_time_discarded.csv)
 
-Publication year is available for `r sum(!is.na(df$publication_year))` documents (`r round(100*mean(!is.na(df$publication_year)))`%). The publication years span `r paste(range(na.omit(df$publication_year)), collapse = "-")`.
+[Publication year conversions for years 1809-1917](dataTable/data_table.html?path=../output.tables/publication_time_conversion_19.csv)
+
+[Publication year discarded for years 1809-1917](dataTable/data_table.html?path=../output.tables/publication_time_discarded_19.csv)
+
+Publication years in the period from 1809 to 1917 is available for `r sum(!is.na(df$publication_year))` documents (`r round(100*mean(!is.na(df$publication_year)))`%). The publication years span `r paste(range(na.omit(df$publication_year)), collapse = "-")`.
 
 ```{r}
 #| label = "summarypublicationyear",
