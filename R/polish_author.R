@@ -16,24 +16,24 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
 
     # TODO Use instead the notnames function here ?
     
-    f <- system.file("extdata/stopwords.csv", package = "bibliographica")
+    f <- system.file("extdata/stopwords.csv")
     stopwords.general <- as.character(read.csv(f, sep = "\t")[,1])
     stopwords.general <- c(stopwords.general, stopwords(kind = "en"))
 
-    f <- system.file("extdata/stopwords_for_names.csv", package = "bibliographica")
+    f <- system.file("extdata/stopwords_for_names.csv")
     stopwords.names <- as.character(read.csv(f, sep = "\t")[,1])
 
-    f <- system.file("extdata/organizations.csv", package = "bibliographica")
+    f <- system.file("extdata/organizations.csv")
     stopwords.organizations <- as.character(read.csv(f, sep = "\t")[,1])
     
-    f <- system.file("extdata/stopwords_titles.csv", package = "bibliographica")
+    f <- system.file("extdata/stopwords_titles.csv")
     stopwords.titles <- as.character(read.csv(f, sep = "\t")[,1])
     stopwords <- unique(c(stopwords.general, stopwords.organizations, stopwords.names, stopwords.titles))
   }
 
   # Accept some names that may be on the stopword lists
   # TODO add here all known names
-  f <- system.file("extdata/author_accepted.csv", package = "bibliographica")
+  f <- system.file("extdata/author_accepted.csv")
   author.accepted <- as.character(read.csv(f, sep = "\t")[,1])
   pseudo <- get_pseudonymes()  
   accept.names <- unique(c(pseudo, author.accepted))

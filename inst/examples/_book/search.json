@@ -33,5 +33,12 @@
     "title": "4  Publication time",
     "section": "",
     "text": "5 Publication year summaries (publication time)\nPublication year conversions for the whole data\nPublication year discarded for the whole data\nPublication year conversions for years 1809-1917\nPublication year discarded for years 1809-1917\nPublication years in is available for 957662 documents (81%). The publication years span is 0-1.97919801985199e+27."
+  },
+  {
+    "objectID": "author_name.html#authors-1809-1917",
+    "href": "author_name.html#authors-1809-1917",
+    "title": "2  Author’s name",
+    "section": "2.1 Authors (1809-1917)",
+    "text": "2.1 Authors (1809-1917)\n\n8883 unique authors These final names capture all name variants from the custom author synonyme table, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the author synonyme table.\n31793 documents have unambiguous author information (63%).\n10 unique pseudonymes are recognized based on custom pseudonyme lists.\n20 discarded author names This list should not include any real authors (if it does, please send a note to the admin). The stopword lists are considered when discarding names.\nAuthor name conversions Non-trivial conversions from the original raw data to final names.\n\n\n2.1.1 Auxiliary files\n\nAuthor synonyme table\nStopwords for names\nStopwords for titles\nCustom pseudonyme lists\n\nTop-20 uniquely identified authors and their productivity (title count) for 1809-1917\n\n\n\n\n\n\n\n2.1.2 Author productivity for 1809-1917\nTitle count in relation to the paper consumed in their books(all authors):"
   }
 ]
