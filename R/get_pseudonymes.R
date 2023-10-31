@@ -1,5 +1,5 @@
 get_pseudonymes <- function (...) {
-  pseudo <- as.character(read.csv(system.file("extdata/names/pseudonymes/custom_pseudonymes.csv", package = "bibliographica"), sep = "\t")[,1])
+  pseudo <- as.character(read.csv("custom_pseudonymes.csv", sep = "\t")[,1])
 
   # Remove extra spaces
   pseudo <- condense_spaces(pseudo)

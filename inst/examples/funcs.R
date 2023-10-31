@@ -6612,25 +6612,25 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
     
     # TODO Use instead the notnames function here ?
     
-    f <- system.file("extdata/stopwords.csv")
-    stopwords.general <- as.character(read.csv(f, sep = "\t")[,1])
+    #f <- system.file("extdata/stopwords.csv")
+    stopwords.general <- as.character(read.csv("stopwords.csv", sep = "\t")[,1])
     stopwords.general <- c(stopwords.general, stopwords(kind = "en"))
     
-    f <- system.file("extdata/stopwords_for_names.csv")
-    stopwords.names <- as.character(read.csv(f, sep = "\t")[,1])
+    #f <- system.file("extdata/stopwords_for_names.csv")
+    stopwords.names <- as.character(read.csv("stopwords_for_names.csv", sep = "\t")[,1])
     
-    f <- system.file("extdata/organizations.csv")
-    stopwords.organizations <- as.character(read.csv(f, sep = "\t")[,1])
+    #f <- system.file("extdata/organizations.csv")
+    stopwords.organizations <- as.character(read.csv("organizations.csv", sep = "\t")[,1])
     
-    f <- system.file("extdata/stopwords_titles.csv")
-    stopwords.titles <- as.character(read.csv(f, sep = "\t")[,1])
+    #f <- system.file("extdata/stopwords_titles.csv")
+    stopwords.titles <- as.character(read.csv("stopwords_titles.csv", sep = "\t")[,1])
     stopwords <- unique(c(stopwords.general, stopwords.organizations, stopwords.names, stopwords.titles))
   }
   
   # Accept some names that may be on the stopword lists
   # TODO add here all known names
-  f <- system.file("extdata/author_accepted.csv")
-  author.accepted <- as.character(read.csv(f, sep = "\t")[,1])
+  #f <- system.file("extdata/author_accepted.csv")
+  author.accepted <- as.character(read.csv("author_accepted.csv", sep = "\t")[,1])
   pseudo <- get_pseudonymes()  
   accept.names <- unique(c(pseudo, author.accepted))
   # Also add individual terms in these names on the list
@@ -6768,6 +6768,20 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
   
 }
 
+get_pseudonymes <- function (...) {
+  pseudo <- as.character(read.csv("custom_pseudonymes.csv", sep = "\t"[,1])
 
+# Remove extra spaces
+pseudo <- condense_spaces(pseudo)
+pseudo <- tolower(pseudo)  
+
+# Also consider removing periods, commas, dashes etc ?
+
+# Organize
+pseudo <- sort(unique(pseudo))
+
+pseudo
+
+}
 
 
