@@ -6768,12 +6768,12 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
   
 }
 
-get_pseudonymes <- function (...) {
-  pseudo <- as.character(read.csv("custom_pseudonymes.csv", sep = "\t"[,1])
+get_pseudonymes <- function (...){
+  pseudo <- as.character(read.csv("custom_pseudonymes.csv", sep = "\t")[,1])
 
 # Remove extra spaces
 pseudo <- condense_spaces(pseudo)
-pseudo <- tolower(pseudo)  
+pseudo <- tolower(pseudo)
 
 # Also consider removing periods, commas, dashes etc ?
 
