@@ -22,7 +22,7 @@ source("publication_time.R")
 
 [Publication year discarded for years 1809-1917](dataTable/data_table.html?path=../output.tables/publication_time_discarded_19.csv)
 
-Publication years in the period from 1809 to 1917 is available for `r sum(!is.na(df$publication_year))` documents (`r round(100*mean(!is.na(df$publication_year)))`%). The publication years span `r paste(range(na.omit(df$publication_year)), collapse = "-")`.
+Publication years in is available for `r sum(!is.na(df.harmonized$publication_year))` documents (`r round(100*mean(!is.na(df.harmonized$publication_year)))`%). The publication years span is `r paste(range(na.omit(df.harmonized$publication_year)), collapse = "-")`.
 
 ```{r}
 #| label = "summarypublicationyear",
