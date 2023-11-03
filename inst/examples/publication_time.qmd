@@ -11,8 +11,7 @@ source("init.R")
 source("publication_time.R")
 ```
 
-
-# Publication year summaries (publication time)
+# 
 
 [Publication year conversions for the whole data](dataTable/data_table.html?path=../output.tables/publication_time_conversion.csv)
 
@@ -39,5 +38,3 @@ p <- ggplot(df2, aes(publication_decade)) +
      ggtitle("Title count timeline")
 print(p)
 ```
-
-
