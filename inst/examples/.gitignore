@@ -24,6 +24,7 @@ data
 *.RData
 kungliga.Rds
 fennica.Rds
+*.csv
 
 
 /.quarto/
