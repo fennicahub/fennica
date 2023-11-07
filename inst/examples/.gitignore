@@ -6,7 +6,7 @@ fennica.csv.gz
 eps*
 bibliographica
 figure_flex
-# *.html
+*.html
 .obsidian/
 20160715-slides-Krakow.R
 20160715-slides-Krakow.html
