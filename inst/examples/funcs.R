@@ -6613,7 +6613,7 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
     # TODO Use instead the notnames function here ?
     
     #f <- system.file("extdata/stopwords.csv")
-    stopwords.general <- as.character(read.csv("stopwords.csv", sep = "\t")[,1])
+    stopwords.general <- as.character(read.csv("stopwords.csv", sep = "\t")[1])
     stopwords.general <- c(stopwords.general, stopwords(kind = "en"))
     
     #f <- system.file("extdata/stopwords_for_names.csv")
