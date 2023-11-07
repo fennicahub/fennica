@@ -17,3 +17,4 @@ language.Rds
 .dockerignore
 inst/examples/priority_fields.csv
 
+inst/examples/df.preprocessed.csv
