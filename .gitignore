@@ -18,3 +18,5 @@ language.Rds
 inst/examples/priority_fields.csv
 
 inst/examples/df.preprocessed.csv
+inst/extdata/geocoordinates.csv
+inst/extras/Fennica_vs_Kungliga_5_word_title2.csv
