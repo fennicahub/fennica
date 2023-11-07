@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:49ba00487c38359e3ca427f61034712c883799c510d477324ec1d41ca845382f
-size 91
+Name	Count
+Total count (na.rm TRUE): 	39191
+male	35578
+female	 2980
+ambiguous	  632
+	    1

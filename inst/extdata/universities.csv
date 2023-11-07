@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c91ea0f36009554f7c3db923d9e4039cecd61701f0ba8827de98ac54a6f6516f
-size 641
+synonyme	name	comment
+^.*Aleksan.*$	Helsinki	
+^.*Alexan.*$	Helsinki	
+^.*Helsink.*$	Helsinki	
+^.*Helsing.*$	Helsinki	
+^.*Tekn.*$	TKK	
+^.*Bern.*$	Bern	
+^.*Jena.*$	Jena	
+^.*Lund.*$	Lund	
+^.*Upps.*$	Uppsala	
+^.*Ups.*$	Uppsala	
+^.*Leipzig.*$	Leipzig	
+^.*Turk.*$	Turku	
+^.*Basel.*$	Basel	
+^.*Berlin.*$	Berliini	
+^.*Strängnäs.*$	Strängnäs	
+^.*Göteborg.*$	Göteborg	
+^.*Ludwigs.*$	Freiburg	tarkista
+^.*Hannover.*$	Hannover	"Technischen Hochschule Hannover", nykyään Hannoverin yliopisto
+^.*bingen.*$	Tübingen	
+^.*Königsberg.*$	Königsberg	
+^.*rich.*$	Zürich	
+^.*Montpellier.*$	Montpellier	
+^.*Paris.*$	Pariisi	
+^.*Wittenberg.*$	Wittenberg	

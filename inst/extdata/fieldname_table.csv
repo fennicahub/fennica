@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dcdd910e523af4a3b07a8ad45b85debda6803bb7d22620b098321dfaea2a6b27
-size 332
+Data;Name
+author;Author
+gatherings;Gatherings
+languages;Language
+language;Language
+language_primary;Language
+n;N
+pct;Fraction (%)
+pagecount;Page count
+publication_decade;Publication decade
+publication_place;Publication place
+publication_year;Publication year
+publisher;Publisher
+subject_topic;Subject
+title;Title
+topical term;Topic

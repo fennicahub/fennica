@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b1929e7f4130524b91b913e926e76d92fce69b0d64dd3f3d63bed3e42f74114e
-size 105
+synonyme	name
+[Kk]irjapaino	
+[Kk]eisarillinen	
+[Kk]ustannusliike	
+[Kk]ustannus	
+([']?in)? [Kk]p[.]?[-]?$	

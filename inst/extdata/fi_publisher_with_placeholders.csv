@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f981cb7d19fc898bb52bc5f1e8dabdca7081ae9aa39c5b5b46861871dd4664bf
-size 295
+synonyme	name
+[Ss]al[.] <name>	<name>
+[Ss]l[.] <name>	<name>
+<name> [äe]nc?ki?a	<name> leski
+<name>, [[:lower:]]+.*	<name>
+<name> lesken.*	<name> leski
+<name> wainaja.*	<name> vainaja
+[Vv]idua <name>	<name> leski
+[Kk][.] [Bb][.] <name>	<name>
+<name> regi?s? typogr.*	<name>
+typis <name>	<name>

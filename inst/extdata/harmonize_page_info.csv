@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0dc578f97a757993b006b7782e14410acca7902e7ecf7fa1e293bf5c484bdc0c
-size 56
+synonyme	name
+^pp\.	
+^p\. 	
+pp\.	p
+p\.	p
+p$	
+p\[	p, [
+
+

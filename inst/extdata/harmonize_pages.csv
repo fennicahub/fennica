@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:284069be8569a91bac54115e141f4141665b6983f7cccfb3a8393a7a9225ef96
-size 328
+synonyme	name
+[a-z][0-9][a-z][0-9]-[a-z][0-9][a-z][0-9]
+\[[a-z][0-9]\]-[a-z][0-9]
+[a-z][0-9]-[a-z][0-9]
+^p\. [0-9]{0,4}$	1
+1/ \.$	,1
+c1⁰\.$
+\] p\. \[	\] p.,\[
+\?	
+\]	\] 
+\[	 \[
+\)	\) 
+\(	 \(
+^ss\.	
+s\.	p.
+ s$	p.
+p \[	p, \[
+p \(	p, \(
+p\. \[	p, \[
+p\. \(	p, \(
+p\.\]	p\]
+^pp\.
+^p\. 	
+pp\.	p
+p\.	p
+p$	
+p\[	p, [
+p of plates*	p
+
+
