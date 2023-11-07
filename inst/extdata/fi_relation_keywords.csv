@@ -1,21 +1,3 @@
-synonyme	name
-<name> [wv]ainaj?an lesk.*	leski
-<name> [wv]ainaj?an perill.*	perilliset
-<name> [wv]ainaj?an perikun.*	perilliset
-<name> [WwVv]ainaj?an?	vainaja
-<name> [Ll]eski	leski
-<name> [Ll]esken	leski
-<name> [Pp]erilliset	perilliset
-<name> [Pp]erillisten	perilliset
-<name> [Pp]erikunta	perilliset
-<name> [Pp]erikunnan	perilliset
-[[:upper:]][[:lower:]]+,( ([[:upper:]][[:lower:]]+)|([[:upper:]][.])) [Ll]eski	leski
-[[:upper:]][[:lower:]]+,( ([[:upper:]][[:lower:]]+)|([[:upper:]][.])) [Ll]esken	leski
-[[:upper:]][[:lower:]]+,( ([[:upper:]][[:lower:]]+)|([[:upper:]][.])) [WVwv]ainaj?an leski	leski
-[[:upper:]][[:lower:]]+,( ([[:upper:]][[:lower:]]+)|([[:upper:]][.])) [WVwv]ainaj?an perilliset	perilliset
-[[:upper:]][[:lower:]]+,( ([[:upper:]][[:lower:]]+)|([[:upper:]][.])) [WVwv]ainaj?an perikunta	perikunta
-[[:upper:]][[:lower:]]+,( ([[:upper:]][[:lower:]]+)|([[:upper:]][.])) [Pp]erilliset	perilliset
-[[:upper:]][[:lower:]]+,( ([[:upper:]][[:lower:]]+)|([[:upper:]][.])) [Pp]erillisten	perilliset
-[[:upper:]][[:lower:]]+,( ([[:upper:]][[:lower:]]+)|([[:upper:]][.])) [Pp]erikunta	perilliset
-[[:upper:]][[:lower:]]+,( ([[:upper:]][[:lower:]]+)|([[:upper:]][.])) [Pp]erikunnan	perilliset
-[[:upper:]][[:lower:]]+,( ([[:upper:]][[:lower:]]+)|([[:upper:]][.])) [WVwv]ainaj?an?	vainaja
+version https://git-lfs.github.com/spec/v1
+oid sha256:f60f010ac0d2f52f3fda259fcca5ffe801eeac086124d89def691214fdd8ab2f
+size 1285
