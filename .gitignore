@@ -16,4 +16,4 @@ language.Rds
 # Dockerfile
 .dockerignore
 inst/examples/priority_fields.csv
-*.csv
+

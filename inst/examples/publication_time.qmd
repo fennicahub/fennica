@@ -11,8 +11,6 @@ source("init.R")
 source("publication_time.R")
 ```
 
-# 
-
 [Publication year conversions for the whole data](dataTable/data_table.html?path=../output.tables/publication_time_conversion.csv)
 
 [Publication year discarded for the whole data](dataTable/data_table.html?path=../output.tables/publication_time_discarded.csv)
