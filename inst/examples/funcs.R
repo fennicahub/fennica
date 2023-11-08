@@ -6726,7 +6726,14 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
     if (!is.na(la)) {    
       la <- unlist(strsplit(la, " "), use.names = FALSE)
     }
+    if (length(fi) == 0) {fi <- NA}
+    if (length(la) == 0) {la <- NA}    
     
+    #if (!is.na(fi) && !is.na(la)) {
+      #if (la == fi[[length(fi)]]) {
+        #fi <- fi[-length(fi)]
+      #}
+    }
     first[[i]] <- paste(fi, collapse = " ")
     last[[i]] <- paste(la, collapse = " ")    
   }
