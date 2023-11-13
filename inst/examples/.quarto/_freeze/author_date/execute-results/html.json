@@ -1,7 +1,7 @@
 {
-  "hash": "8ea668ad8bc2fada4dba19ff6f8ed60a",
+  "hash": "c1371d1400ad6d9b6d0dfc9983828f6f",
   "result": {
-    "markdown": "--- \ntitle: \"Author's lifetime\"\nhide-description: false\ndescription: \"Some statistics about the author's lifetime\"\n---\n\n\n\n## Complete Dataset Overview\n\n\n[Author date accepted for the whole Fennica](dataTable/data_table.html?path=../output.tables/author_date_accepted.csv)\n\n[Author date discarded for the whole Fennica](dataTable/data_table.html?path=../output.tables/author_date_discarded.csv)\n\n\n## Subset Analysis: 1809-1917\n\n[Author date accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/author_date_accepted_19.csv)\n\n[Author date accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/author_date_accepted_19.csv)\n\n\n\n",
+    "markdown": "--- \ntitle: \"Author's lifetime\"\nhide-description: false\ndescription: \"\"\n---\n\n\n\n\nThe author's lifetime section furnishes concise summaries following an extensive cleaning process, delineating the accepted and discarded years pertaining to each author.The accepted years signify the refined and validated data, while insights into the discarded years offer valuable context, shedding light on the challenges encountered and decisions made during the cleaning procedure.\n\n## Complete Dataset Overview\n\n\n[Author date accepted for the whole Fennica](dataTable/data_table.html?path=../output.tables/author_date_accepted.csv)\n\n[Author date discarded for the whole Fennica](dataTable/data_table.html?path=../output.tables/author_date_discarded.csv)\n\n\n## Subset Analysis: 1809-1917\n\n[Author date accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/author_date_accepted_19.csv)\n\n[Author date accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/author_date_accepted_19.csv)\n\n\n\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

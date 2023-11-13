@@ -1,7 +1,7 @@
 ---
 title : "Publication time"
 hide-description: false
-description: "Publication year summaries"
+description: ""
 ---
 
 ```{r}
@@ -10,6 +10,8 @@ description: "Publication year summaries"
 source("init.R")
 source("publication_time.R")
 ```
+
+The publication years section offers a comprehensive summary of the dataset's years of publication, providing anunderstanding of the temporal distribution of titles. The inclusion of links to uniquely accepted and discarded output tables adds a layer of transparency, allowing for detailed exploration of the refined and excluded data. 
 
 ## Complete Data Overview
 
@@ -25,7 +27,9 @@ Publication years in is available for `r sum(!is.na(df.harmonized$publication_ye
 
 [Publication year discarded](dataTable/data_table.html?path=../output.tables/publication_time_discarded_19.csv)
 
+### Title count per decade
 
+A plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period.
 
 ```{r}
 #| label = "summarypublicationyear",
@@ -34,7 +38,7 @@ Publication years in is available for `r sum(!is.na(df.harmonized$publication_ye
 #| warning = FALSE,
 #| fig.width = 8,
 #| fig.height = 6
-# Title count per decade
+
 
 df2 <- df %>% group_by(publication_decade) %>% filter(publication_decade < 2010) 
 p <- ggplot(df2, aes(publication_decade)) +

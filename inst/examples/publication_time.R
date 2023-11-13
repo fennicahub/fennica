@@ -7,7 +7,7 @@ as.numeric(na.omit(df.orig$publication_time))
 tmp  <- polish_years(df.orig[[field]], check = TRUE)
 
 # set to NA values which are longer than five
-tmp$from <- ifelse(nchar(tmp$from) > 5 & nchar(tmp$till) > 5, "NA", tmp$from)
+tmp$from <- ifelse(nchar(tmp$from) > 5 | nchar(tmp$till) > 5, "NA", tmp$from)
   
 # Make data.frame
 # Make sure if it called df.harmonized for publication_time, other fields have df.tmp 

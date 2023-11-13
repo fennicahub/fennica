@@ -10,6 +10,7 @@ source("init.R")
 source("author_name.R")
 ```
 
+
 Author's name section's summary tables offer insights into the dataset's integrity, illustrating the accepted and discarded author names. An examination of missing values in the original dataset provides transparency regarding data completeness. The inclusion of information on name variants and pseudonyms enriches the analysis, addressing nuances in authorship representation. This comprehensive approach ensures a thorough understanding of the dataset's composition and the intricacies associated with author identification.
 
 ## Complete Dataset Overview
@@ -42,6 +43,7 @@ Top-`r ntop` titles and their title counts for period 1809-1917.
 
 The accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.
 
+
 ```{r}
 #|label = "summarytitle-author-name",
 #| echo = FALSE,
@@ -57,9 +59,11 @@ p <- top_plot(df, "author_name", ntop = ntop, log10 = TRUE)+
 print(p)
 ```
 
+
 Frequency of unique titles 1809-1917.
 
 The plot adds a historical dimension to the analysis. By visualizing how the number of unique titles evolves over this time span, it provides insights into the literary landscape and publishing trends during the 19th and early 20th centuries.
+
 
 ```{r}
 #| label = "uniquetitles-author-name",
@@ -80,3 +84,4 @@ p <- ggplot(d, aes(x = n)) +
   labs(x = "Title duplicates (n)", y = "Documents (n)")
 print(p)
 ```
+
