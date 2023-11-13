@@ -11,15 +11,21 @@ source("init.R")
 source("publication_time.R")
 ```
 
-[Publication year conversions for the whole data](dataTable/data_table.html?path=../output.tables/publication_time_conversion.csv)
+## Complete Data Overview
 
-[Publication year discarded for the whole data](dataTable/data_table.html?path=../output.tables/publication_time_discarded.csv)
+[Publication year conversions](dataTable/data_table.html?path=../output.tables/publication_time_conversion.csv)
 
-[Publication year conversions for years 1809-1917](dataTable/data_table.html?path=../output.tables/publication_time_conversion_19.csv)
+[Publication year discarded](dataTable/data_table.html?path=../output.tables/publication_time_discarded.csv)
 
-[Publication year discarded for years 1809-1917](dataTable/data_table.html?path=../output.tables/publication_time_discarded_19.csv)
+Publication years in is available for `r sum(!is.na(df.harmonized$publication_year))` documents (`r round(100*mean(!is.na(df.harmonized$publication_year)))`%). The publication years span is `r paste(range(na.omit(as.numeric(df.harmonized$publication_year))), collapse = "-")`.
 
-Publication years in is available for `r sum(!is.na(df.harmonized$publication_year))` documents (`r round(100*mean(!is.na(df.harmonized$publication_year)))`%). The publication years span is `r paste(range(na.omit(df.harmonized$publication_year)), collapse = "-")`.
+## Subset Analysis: 1809-1917
+
+[Publication year conversions](dataTable/data_table.html?path=../output.tables/publication_time_conversion_19.csv)
+
+[Publication year discarded](dataTable/data_table.html?path=../output.tables/publication_time_discarded_19.csv)
+
+
 
 ```{r}
 #| label = "summarypublicationyear",

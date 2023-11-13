@@ -5344,7 +5344,7 @@ compare_title_paper <- function (x, field, selected = NULL, plot.mode = "text") 
 
   paper <- publication_decade <- titles <- paper <- NULL
 
-  x$field <- x[[field]]
+  x$field <- as.character(x[[field]])
 
   # Nothing selected - take all
   if (is.null(selected)) {selected <- unique(x$field)}

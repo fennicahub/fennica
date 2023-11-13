@@ -1,4 +1,4 @@
---- 
+---
 title: "Author's name"
 hide-description: false
 description: "statistics about the authors and their productivity"
@@ -10,17 +10,36 @@ source("init.R")
 source("author_name.R")
 ```
 
+Author's name section
 
-* [Unique accepted entries for the whole Fennica](dataTable/data_table.html?path=../output.tables/author_name_accepted.csv): `r length(unique(df.orig[[field]]))`
-* [Unique discarded entries in original data](dataTable/data_table.html?path=../output.tables/author_name_accepted.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
+## Complete Dataset Overview
 
-* [Unique accepted entries for for 1809-1917 years](dataTable/data_table.html?path=../output.tables/author_name_accepted_19.csv): `r length(unique(df[[field]]))`
-* [Unique discarded entries for 1809-1917 years](dataTable/data_table.html?path=../output.tables/author_name_accepted_19.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
-* Original documents with non-NA titles for 1809-1917 years: `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
-* Original documents with missing (NA) titles 1809-1917 year `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
- 
- Top-`r ntop` titles and their title counts. 1809-1917
- 
+-   Unique accepted entries in original data (dataTable/data_table.html?path=../output.tables/author_name_accepted.csv): `r length(unique(df.orig[[field]]))`
+-   [Unique discarded entries in original data](dataTable/data_table.html?path=../output.tables/author_name_accepted.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
+-   Original documents with non-NA titles `r sum(!is.na(df.orig[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
+-   Original documents with missing (NA) titles `r sum(is.na(df.orig[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
+
+### Authors
+
+-   `r length(unique(df$author_name))` [unique authors](dataTable/data_table.html?path=../output.tables/author_accepted.csv) These final names capture all name variants from the custom [author synonyme table](dataTable/data_table.html?path=../output.tables/ambiguous-authors.csv), and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the [author synonyme table](dataTable/data_table.html?path=../output.tables/ambiguous-authors.csv).
+-   `r sum(!is.na(df$author_name))` documents have unambiguous author information (`r round(100*mean(!is.na(df$author_name)))`%).
+-   `r length(readLines(paste0(getwd(),"/output.tables/pseudonyme_accepted.csv")))-2` [unique pseudonymes](dataTable/data_table.html?path=../output.tables/pseudonyme_accepted.csv) are recognized based on [custom pseudonyme lists](dataTable/data_table.html?path=../output.tables/custom_pseudonymes.csv).
+-   `r length(readLines(paste0(getwd(),"/output.tables/author_discarded.csv")))-2` [discarded author names](dataTable/data_table.html?path=../output.tables/author_discarded.csv) This list should not include any real authors (if it does, please send a note to the admin). The stopword lists are considered when discarding names.
+-   [Author name conversions](dataTable/data_table.html?path=../output.tables/author_conversion_nontrivial.csv) Non-trivial conversions from the original raw data to final names.
+
+### Auxiliary files
+
+-   [Author synonyme table](dataTable/data_table.html?path=../output.tables/ambiguous-authors.csv)
+-   [Stopwords for names](dataTable/data_table.html?path=../output.tables/stopwords_for_names.csv)
+-   [Stopwords for titles](dataTable/data_table.html?path=../output.tables/stopwords_titles.csv)
+-   [Custom pseudonyme lists](dataTable/data_table.html?path=../output.tables/custom_pseudonymes.csv)
+
+## Subset Analysis: 1809-1917
+
+-   [Unique accepted entries for for 1809-1917 years](dataTable/data_table.html?path=../output.tables/author_name_accepted_19.csv): `r length(unique(df[[field]]))`
+
+Top-`r ntop` titles and their title counts. 1809-1917
+
 ```{r}
 #| label = "summarytitle-author-name",
 #| echo = FALSE,
@@ -34,10 +53,10 @@ theme_set(theme_bw(base_size = 12))
 p <- top_plot(df, "author_name", ntop = ntop, log10 = TRUE)+
   labs(y = "Entries (n)", title = "Top titles")
 print(p)
-``` 
+```
 
 Frequency of unique titles 1809-1917:
-  
+
 ```{r}
 #| label = "uniquetitles-author-name",
 #| echo = FALSE,
@@ -57,65 +76,4 @@ p <- ggplot(d, aes(x = n)) +
   labs(x = "Title duplicates (n)", y = "Documents (n)")
 print(p)
 ```
-
-
-## Authors (1809-1917)
-
-* `r length(unique(df$author_name))` [unique authors](dataTable/data_table.html?path=../output.tables/author_accepted.csv) These final names capture all name variants from the custom [author synonyme table](dataTable/data_table.html?path=../output.tables/ambiguous-authors.csv), and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the [author synonyme table](dataTable/data_table.html?path=../output.tables/ambiguous-authors.csv).
- * `r sum(!is.na(df$author_name))` documents have unambiguous author information (`r round(100*mean(!is.na(df$author_name)))`%). 
- * `r length(readLines(paste0(getwd(),"/output.tables/pseudonyme_accepted.csv")))-2` [unique pseudonymes](dataTable/data_table.html?path=../output.tables/pseudonyme_accepted.csv) are recognized based on [custom pseudonyme lists](dataTable/data_table.html?path=../output.tables/custom_pseudonymes.csv).
- * `r length(readLines(paste0(getwd(),"/output.tables/author_discarded.csv")))-2` [discarded author names](dataTable/data_table.html?path=../output.tables/author_discarded.csv) This list should not include any real authors (if it does, please send a note to the admin). The stopword lists are considered when discarding names.
- * [Author name conversions](dataTable/data_table.html?path=../output.tables/author_conversion_nontrivial.csv) Non-trivial conversions from the original raw data to final names.
- 
-### Auxiliary files 
-
- * [Author synonyme table](dataTable/data_table.html?path=../output.tables/ambiguous-authors.csv)
- * [Stopwords for names](dataTable/data_table.html?path=../output.tables/stopwords_for_names.csv)
- * [Stopwords for titles](dataTable/data_table.html?path=../output.tables/stopwords_titles.csv)
- * [Custom pseudonyme lists](dataTable/data_table.html?path=../output.tables/custom_pseudonymes.csv)
- 
-Top-`r ntop` uniquely identified authors and their productivity (title count) for 1809-1917
-
-```{r}
-#| label = "summaryauthorsnames",
-#| echo = FALSE,
-#| message = FALSE,
-#| warning = FALSE,
-#| fig.width = 12,
-#| fig.height = 8
-
-library(ggplot2)
-library(comhis)
-theme_set(theme_bw(base_size = 12))
-p <- NULL
-p <- top_plot(df, "author_name", ntop) +
-     		  ggtitle(paste("Top authors' names")) +
-		  ylab("Documents")
-print(p)
-```
-
-
-### Author productivity for 1809-1917
-
-Title count in relation to the paper consumed in their books(all authors):
-
-```{r}
-#| label = "authortitlespapers",
-#| fig.height = 8,
-#| fig.width = 18,
-#| echo = FALSE,
-#| warning = FALSE
-library(dplyr)
-library(gridExtra)
-library(grid)
-library(ggplot2)
-library(lattice)
-
-theme_set(theme_bw(base_size = 12))
-res1 <- compare_title_paper(df, "author_name", plot.mode = "text")
-res2 <- compare_title_paper(df, "author_name", plot.mode = "point")
-grid.arrange(res2$plot, res1$plot, nrow = 1)
-#kable(res1$table)
-```
-
 

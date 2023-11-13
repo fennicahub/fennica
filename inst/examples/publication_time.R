@@ -1,8 +1,14 @@
 field <- "publication_time"
 
+# split the column by | to remove multiple publication years 
+df.orig$publication_time <- sapply(strsplit(as.character(df.orig$publication_time), "\\|"), `[`, 1)
+as.numeric(na.omit(df.orig$publication_time))
 #polish full data
 tmp  <- polish_years(df.orig[[field]], check = TRUE)
-      
+
+# set to NA values which are longer than five
+tmp$from <- ifelse(nchar(tmp$from) > 5 & nchar(tmp$till) > 5, "NA", tmp$from)
+  
 # Make data.frame
 # Make sure if it called df.harmonized for publication_time, other fields have df.tmp 
 # because publication_time field is sourced in other field processing files 
@@ -45,7 +51,7 @@ tmp <- write_xtable(o[inds],
 # ------------------------------------------------------------
 
 #Create subsection for the 19th century only and 
-df_19 <- df.harmonized %>% filter(publication_year > 1808 & publication_year < 1917)
+df_19 <- df.harmonized %>% filter(publication_year > 1808 & publication_year < 1918)
 melindas_19 <- df_19$melinda_id
 
 message("Write conversions: publication year for 1809-1917")
