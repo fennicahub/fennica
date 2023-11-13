@@ -6697,12 +6697,7 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
     first[inds] <- pick_firstname(s[inds], format = "first last")
     last[inds]  <-  pick_lastname(s[inds], format = "first last")
   }
-  # Where the name did not match the assumed formats, use the complete form as
-  # the last name
-  inds <- inds3 <- setdiff(which(is.na(first) & is.na(last)), pseudo.inds)
-  if (length(inds) > 0) {
-    last[inds] <- as.character(s[inds])
-  }
+  
   # Mark pseudonymes as first names
   inds <- inds4 <- pseudo.inds
   if (length(pseudo.inds) > 0) {
