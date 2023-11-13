@@ -49,6 +49,8 @@ The accompanying plot visually underscores the prominence of these authors, emph
 #| warning = FALSE,
 #| fig.width = 8,
 #| fig.height = 6
+library(ggplot2)
+library(comhis)
 
 theme_set(theme_bw(base_size = 12))
 p <- top_plot(df, "author_name", ntop = ntop, log10 = TRUE)+

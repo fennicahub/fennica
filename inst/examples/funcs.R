@@ -6721,21 +6721,17 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
     if (!is.na(la)) {    
       la <- unlist(strsplit(la, " "), use.names = FALSE)
     }
+    
     if (length(fi) == 0) {fi <- NA}
-    if (length(la) == 0) {la <- NA}  
-    
-    # Where the name did not match the assumed formats, use the complete form as
-    # the last name
-    inds <- inds3 <- setdiff(which(is.na(first) & is.na(last)), pseudo.inds)
-    if (length(inds) > 0) {
-      last[inds] <- as.character(s[inds])
+    if (length(la) == 0) {la <- NA}    
+    if (!is.na(fi) && !is.na(la)) {
+      if (la == fi[[length(fi)]]) {
+        fi <- fi[-length(fi)]
+      }
     }
-    
-    
     first[[i]] <- paste(fi, collapse = " ")
     last[[i]] <- paste(la, collapse = " ")    
   }
-
   
   message("Name table")
   nametab <- data.frame(last = unname(last),
@@ -6766,21 +6762,3 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
   full.name[match(sorig, suniq)]   
   
 }
-
-get_pseudonymes <- function (...){
-  pseudo <- as.character(read.csv("custom_pseudonymes.csv", sep = "\t")[,1])
-
-# Remove extra spaces
-pseudo <- condense_spaces(pseudo)
-pseudo <- tolower(pseudo)
-
-# Also consider removing periods, commas, dashes etc ?
-
-# Organize
-pseudo <- sort(unique(pseudo))
-
-pseudo
-
-}
-
-
