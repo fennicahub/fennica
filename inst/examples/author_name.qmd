@@ -43,14 +43,13 @@ Top-`r ntop` titles and their title counts for period 1809-1917.
 The accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.
 
 ```{r}
-#|label = "summarytitle-author-name",
+#| label = "summarytitle-author-name",
 #| echo = FALSE,
 #| message = FALSE,
 #| warning = FALSE,
 #| fig.width = 8,
 #| fig.height = 6
-library(ggplot2)
-library(comhis)
+
 theme_set(theme_bw(base_size = 12))
 p <- top_plot(df, "author_name", ntop = ntop, log10 = TRUE)+
   labs(y = "Entries (n)", title = "Top titles")

@@ -6722,7 +6722,14 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
       la <- unlist(strsplit(la, " "), use.names = FALSE)
     }
     if (length(fi) == 0) {fi <- NA}
-    if (length(la) == 0) {la <- NA}    
+    if (length(la) == 0) {la <- NA}  
+    
+    # Where the name did not match the assumed formats, use the complete form as
+    # the last name
+    inds <- inds3 <- setdiff(which(is.na(first) & is.na(last)), pseudo.inds)
+    if (length(inds) > 0) {
+      last[inds] <- as.character(s[inds])
+    }
     
     
     first[[i]] <- paste(fi, collapse = " ")
