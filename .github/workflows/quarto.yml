@@ -8,6 +8,7 @@ on:
     paths:
     - inst/examples
     - '**.Rmd'
+    - '**.qmd'
   workflow_dispatch:
 permissions: write-all
 
@@ -28,7 +29,12 @@ jobs:
         with:
           use-public-rspm: true
           
-    
+      - name: Install devtools package
+        run: Rscript -e 'install.packages("devtools")'
+        
+      - name: Install comhis package from GitHub
+        run: Rscript -e 'devtools::install_github("comhis/comhis")'
+
       - uses: quarto-dev/quarto-actions/setup@v2
           
       - uses: r-lib/actions/setup-r-dependencies@v2
@@ -59,7 +65,6 @@ jobs:
           git add .
           git commit -m "Re-render bookdown documents" || echo "No changes to commit"
           git push origin || echo "No changes to commit"
-
       - name: Trigger link checker workflow
         if: success()
         uses: peter-evans/repository-dispatch@v1
