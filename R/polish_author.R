@@ -6,8 +6,8 @@
 #' @return Polished vector
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("bibliographica")
-#' @examples s2 <- polish_author("Smith, William")
+#' @references See citation("fennica")
+#' @examples # s2 <- polish_author("Smith, William")
 #' @keywords utilities
 polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
 
@@ -16,31 +16,35 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
 
     # TODO Use instead the notnames function here ?
     
-    #f <- system.file("extdata/stopwords.csv")
-    stopwords.general <- as.character(read.csv("stopwords.csv", sep = "\t")[,1])
+    f <- system.file("extdata/stopwords.csv", package = "fennica")
+    stopwords.general <- as.character(read.csv(f, sep = "\t")[,1])
     stopwords.general <- c(stopwords.general, stopwords(kind = "en"))
 
-    #f <- system.file("extdata/stopwords_for_names.csv")
-    stopwords.names <- as.character(read.csv("stopwords_for_names.csv", sep = "\t")[,1])
+    f <- system.file("extdata/stopwords_for_names.csv", package = "fennica")
+    stopwords.names <- as.character(read.csv(f, sep = "\t")[,1])
 
-    #f <- system.file("extdata/organizations.csv")
-    stopwords.organizations <- as.character(read.csv("organizations.csv", sep = "\t")[,1])
+    f <- system.file("extdata/organizations.csv", package = "fennica")
+    stopwords.organizations <- as.character(read.csv(f, sep = "\t")[,1])
     
-    #f <- system.file("extdata/stopwords_titles.csv")
-    stopwords.titles <- as.character(read.csv("organizations.csv", sep = "\t")[,1])
+    f <- system.file("extdata/stopwords_titles.csv", package = "fennica")
+    stopwords.titles <- as.character(read.csv(f, sep = "\t")[,1])
     stopwords <- unique(c(stopwords.general, stopwords.organizations, stopwords.names, stopwords.titles))
   }
 
   # Accept some names that may be on the stopword lists
   # TODO add here all known names
-  #f <- system.file("extdata/author_accepted.csv")
-  author.accepted <- as.character(read.csv("author_accepted.csv", sep = "\t")[,1])
-  pseudo <- get_pseudonymes()  
+  f <- system.file("extdata/author_accepted.csv", package = "fennica")
+  author.accepted <- as.character(read.csv(f, sep = "\t")[,1])
+
+  pseudo <- get_pseudonymes()
+
   accept.names <- unique(c(pseudo, author.accepted))
+
   # Also add individual terms in these names on the list
   accept.names <- c(accept.names, unique(unlist(strsplit(accept.names, " "))))
   # Remove special chars and make lowercase to harmonize
   accept.names <- unique(condense_spaces(gsub("\\,", " ", gsub("\\.", "", tolower(accept.names)))))
+
 
   # Then remove those in stopwords (ie accept these in names)
   # Exclude some names and pseudonyms from assumed stopwords
@@ -95,7 +99,9 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
     first[inds] <- pick_firstname(s[inds], format = "last, first")
     last[inds]  <-  pick_lastname(s[inds], format = "last, first")
   }
-  
+
+
+
   inds <- inds2 <- setdiff(setdiff(grep(" ", s), inds1), pseudo.inds)
   if (length(inds) > 0) {
     first[inds] <- pick_firstname(s[inds], format = "first last")
@@ -133,8 +139,8 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
 
     if (length(fi) == 0) {fi <- NA}
     if (length(la) == 0) {la <- NA}    
-    if (!is.na(fi) & !is.na(la)) {
-      if (la == fi[[length(fi)]]) {
+    if (all(!is.na(fi)) && all(!is.na(la))) {
+      if (la[[1]] == fi[[length(fi)]]) {
         fi <- fi[-length(fi)]
       }
     }
@@ -171,6 +177,3 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
   full.name[match(sorig, suniq)]   
 
 }
-
-
-
