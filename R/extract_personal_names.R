@@ -5,7 +5,7 @@
 #' @return Data frame: orig, initials, family, full_name, init_name, guessed, relation
 #' @export
 #' @author Hege Roivainen \email{hege.roivainen@@gmail.com}
-#' @references See citation("bibliographica")
+#' @references See citation("fennica")
 #' @examples # extract_personal_names(x, languages=c("finnish", "swedish", "latin"))
 #' @keywords utilities
 extract_personal_names  <- function(x, languages=c("english")) {
@@ -49,7 +49,7 @@ extract_personal_names  <- function(x, languages=c("english")) {
   message("... before by_words")
   
   # First: try with prefixed "by", "af" etc...
-  f <- system.file("extdata/by_words.csv", package="bibliographica")
+  f <- system.file("extdata/by_words.csv", package="fennica")
   by_words <- read.csv(f, sep="\t", fileEncoding="UTF-8")
   by_w <- paste0(as.character(by_words$synonyme), collapse = "|" )
   by_w <- paste0(" (", by_w, ") ")

@@ -13,7 +13,7 @@
 #' @details Remove duplicated information. Ensure identical matches
 #' are included in synonyme list.
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("bibliographica")
+#' @references See citation("fennica")
 #' @examples \dontrun{s <- check_synonymes(synonymes)}
 #' @keywords utilities
 check_synonymes <- function (synonymes, include.lowercase = TRUE, verbose = FALSE, sort = FALSE, self = FALSE, ignore.empty = FALSE, remove.ambiguous = TRUE) {

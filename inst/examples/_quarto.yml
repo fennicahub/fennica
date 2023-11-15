@@ -27,28 +27,21 @@ book:
   - index.qmd
   - author_name.qmd
   - author_date.qmd
-  - publication_time.qmd
-  
+  #- author_name.qmd
+  #- corporate.qmd
   #- language.qmd
-  #- publisher.qmd
-  #- publication_interval.qmd
-  #- publication_place.qmd
-  #- publication_time.qmd
-  #- physical_dimensions.qmd
-  #- title.qmd
-  #- title_uniform.qmd
-  #- publication_frequency.qmd
-  
-  #physical_extent.qmd
-  
-  #- subject_geography-qmd
-  #- subject_topic.qmd
-  #- successor.qmd
   #- holder.qmd
   #- note_dissertation.qmd
   #- note_granter.qmd
   #- note_source.qmd
-  #- corporate.qmd
+  #- publisher.qmd
+  ##- publication_interval.qmd
+  #- publication_place.qmd
+  - publication_time.qmd
+  ##- subject_topic.qmd
+  #- successor.qmd
+  #- title.qmd
+  #- title_uniform.qmd
   #- uncontrolled.qmd
   appendices :
     - acknowledgments.qmd

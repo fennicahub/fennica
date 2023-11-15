@@ -26,6 +26,7 @@ Publication years in is available for `r sum(!is.na(df.harmonized$publication_ye
 [Publication year conversions](dataTable/data_table.html?path=../output.tables/publication_time_conversion_19.csv)
 
 [Publication year discarded](dataTable/data_table.html?path=../output.tables/publication_time_discarded_19.csv) 
+
 ### Title count per decade
 
 A plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period.

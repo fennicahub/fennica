@@ -22,7 +22,7 @@ For MARC field descriptions, see \url{https://www.loc.gov/marc/bibliographic/}.
 x2 <- harmonize_field_names("041a")
 }
 \references{
-See citation("bibliographica")
+See citation("comhis")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

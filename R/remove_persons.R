@@ -5,7 +5,7 @@
 #' @return Polished vector
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("bibliographica")
+#' @references See citation("fennica")
 #' @examples \dontrun{x2 <- remove_persons(x)}
 #' @keywords utilities
 remove_persons <- function (x, who = NULL) {
@@ -13,7 +13,7 @@ remove_persons <- function (x, who = NULL) {
   # Get printing terms from a table
   # TODO later add names from the complete name list as well ?
   if (is.null(who)) {
-    f <- system.file("extdata/persons.csv", package = "bibliographica") 
+    f <- system.file("extdata/persons.csv", package = "fennica") 
     terms <- as.character(read.csv(f)[,1])
   }
 

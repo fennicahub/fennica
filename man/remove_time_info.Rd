@@ -26,7 +26,7 @@ Remove months, year terms and numerics
 \dontrun{x2 <- remove_time_info(x)}
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

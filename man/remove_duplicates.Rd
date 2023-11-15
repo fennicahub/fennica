@@ -21,9 +21,9 @@ Data frame
 Tags files as to be removed
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
-Hege Roivainen \email{hege.roivainen@gmail.com}
+Hege Roivainen \email{leo.lahti@iki.fi}
 }
 \keyword{utilities}

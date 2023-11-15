@@ -2,7 +2,8 @@
 % Please edit documentation in R/polish_years.R
 \name{polish_years}
 \alias{polish_years}
-\title{Polish Years}
+\title{Polish Years
+FIXME: UNIT TESTS MISSING NOW!}
 \usage{
 polish_years(
   x,
@@ -37,9 +38,6 @@ Pick and polish the year interval (start and end years) from a time field which 
 }
 \examples{
 \dontrun{df <- polish_years(c("1746", "1745-1750"))}
-}
-\references{
-See citation("bibliographica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

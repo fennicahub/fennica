@@ -27,7 +27,7 @@ Remove specific single letters from the start and/or end of the input string(s).
 \dontrun{remove_letters(x)}
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

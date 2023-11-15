@@ -177,3 +177,6 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
   full.name[match(sorig, suniq)]   
 
 }
+
+
+

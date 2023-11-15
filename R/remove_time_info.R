@@ -7,13 +7,13 @@
 #' @export
 #' @details Remove months, year terms and numerics
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("bibliographica")
+#' @references See citation("fennica")
 #' @examples \dontrun{x2 <- remove_time_info(x)}
 #' @keywords utilities
 remove_time_info <- function (x, verbose = FALSE, months = NULL) {
 
   if (is.null(months)) {
-    f <- system.file("extdata/months.csv", package = "bibliographica")
+    f <- system.file("extdata/months.csv", package = "fennica")
     months <- as.character(read.csv(f, header = TRUE)[,1])
     months <- unique(c(months, tolower(months)))
 

@@ -6,7 +6,7 @@
 #' @return Polished string
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("bibliographica")
+#' @references See citation("fennica")
 #' @examples x2 <- splitpick("London re Edinburgh", " re ", 1)
 #' @keywords utilities
 splitpick <- function (x, sep, which) {

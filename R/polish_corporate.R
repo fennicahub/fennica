@@ -4,7 +4,7 @@
 #' @return Polished vector
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("bibliographica")
+#' @references See citation("fennica")
 #' @examples # x2 <- polish_corporate("unknown")
 #' @keywords utilities
 polish_corporate <- function (x) {

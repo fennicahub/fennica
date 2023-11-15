@@ -4,10 +4,10 @@ field <- "author_date"
 df.tmp <- polish_years(df.orig[[field]], check = TRUE, verbose = TRUE)
 
 df.tmp <- df.tmp %>%
-            dplyr::rename(author_birth = from) %>%
-  	    dplyr::rename(author_death = till) %>%
-	    mutate(author_age = author_death-author_birth) %>% # Add author age
-	    mutate(author_age = na_if(author_age, 0))          # Replace 0 age with NA
+  dplyr::rename(author_birth = from) %>%
+  dplyr::rename(author_death = till) %>%
+  mutate(author_age = author_death-author_birth) %>% # Add author age
+  mutate(author_age = na_if(author_age, 0))          # Replace 0 age with NA
 
 # Add original row info as first column
 df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
@@ -97,4 +97,3 @@ write.table(tab, file = discard.file, quote = FALSE, row.names = FALSE, col.name
 df <- readRDS(data.file)
 # tmp <- knit(input = paste(field, ".Rmd", sep = ""),
 #             output = paste(field, ".md", sep = ""))
-

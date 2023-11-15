@@ -6,7 +6,7 @@
 #' @export
 #' @importFrom stringr str_replace
 #' @author Hege Roivainen \email{hege.roivainen@@gmail.com}
-#' @references See citation("bibliographica")
+#' @references See citation("fennica")
 #' @examples # extract_personal_names(x, languages=c("finnish", "swedish", "latin"))
 #' @keywords utilities
 decapitate_keywords <- function(x, languages=c("english")) {
@@ -15,19 +15,19 @@ decapitate_keywords <- function(x, languages=c("english")) {
   f <- vector(length=length(languages))
   i <- 1
   if ("finnish" %in% languages) {
-    f[i] <- system.file("extdata/fi_lowercase_keywords.csv", package="bibliographica")
+    f[i] <- system.file("extdata/fi_lowercase_keywords.csv", package="fennica")
     i <- i + 1
   }
   if ("swedish" %in% languages) {
-    f[i] <- system.file("extdata/sv_lowercase_keywords.csv", package="bibliographica")
+    f[i] <- system.file("extdata/sv_lowercase_keywords.csv", package="fennica")
     i <- i + 1
   }
   if ("english" %in% languages) {
-    f[i] <- system.file("extdata/en_lowercase_keywords.csv", package="bibliographica")
+    f[i] <- system.file("extdata/en_lowercase_keywords.csv", package="fennica")
     i <- i + 1
   }
   if ("latin" %in% languages) {
-    f[i] <- system.file("extdata/la_lowercase_keywords.csv", package="bibliographica")
+    f[i] <- system.file("extdata/la_lowercase_keywords.csv", package="fennica")
     i <- i + 1
   }
   

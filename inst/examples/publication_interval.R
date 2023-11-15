@@ -26,7 +26,6 @@ df.tmp$publication_interval_from[df.tmp$publication_interval_from > 2000] <- NA
 df.tmp$publication_interval_till[df.tmp$publication_interval_till < 1400] <- NA
 df.tmp$publication_interval_till[df.tmp$publication_interval_till > 2000] <- NA
 
-
 # ---------------------------------------------------------------------
 # Store the title field data
 # FIXME: convert to feather or plain CSV
@@ -50,7 +49,7 @@ message("Discarded entries in the original data")
 inds <- which(is.na(df.tmp[[field]]))
 
 # Original entries that were converted into NA
-original.na <- df.orig[match(df.tmp$melinda_fi[inds], df.orig$melinda_id), field]
+original.na <- df.orig[match(df.tmp$melinda_fi[inds], df.orig$melinda_fi), field]
 
 # .. ie. those are "discarded" cases; list them in a table
 tmp <- write_xtable(original.na, file_discarded, count = TRUE)

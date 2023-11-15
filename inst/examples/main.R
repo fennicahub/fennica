@@ -21,7 +21,7 @@ source("author_name.R")
 # Language
 source("language.R")
 
-#Physical dimensions
+#Physiacl dimension
 source("physical_dimensions.R")
 
 # holder field

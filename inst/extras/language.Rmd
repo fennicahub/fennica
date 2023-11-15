@@ -1,0 +1,39 @@
+```{r source-index, include=FALSE}
+source("init.R")
+```
+
+```{r source-language, include=FALSE, eval=knit_bookdown}
+# Language
+source("language.R")
+```
+
+# Language summaries
+
+ * `r length(unique(unlist(strsplit(as.character(df$languages), ";"))))-1` [unique languages](dataTable/data_table.html?path=../output.tables/languages_accepted.csv)
+ * `r length(unique(df$language_primary))-1` [unique primary languages](dataTable/data_table.html?path=../output.tables/language_primary_accepted.csv)  
+ * `r sum(!df$multilingual, na.rm = TRUE)` single-language documents (`r round(100 * mean(!df$multilingual, na.omit = TRUE), 2)`%)
+ * `r sum(df$multilingual, na.rm = TRUE)` multilingual documents (`r round(100 * mean(df$multilingual, na.omit = TRUE), 2)`%) 
+ * [Conversions from raw to preprocessed language entries](dataTable/data_table.html?path=../output.tables/language_conversions.csv) 
+ * `r sum(is.na(df$languages) | df$language_primary == "Undetermined")` documents (`r round(100*mean(is.na(df$languages) | df$language_primary == "Undetermined"), 2)`%) with [unrecognized language](dataTable/data_table.html?path=../output.tables/language_discarded.csv)
+
+Language codes are from [MARC](https://www.loc.gov/marc/languages/language_code.html); new custom abbreviations can be added in [this table](dataTable/data_table.html?path=../output.tables/language_abbreviations.csv).
+
+
+
+## Top languages
+
+Number of titles assigned with each language (top-10). For a complete list,
+see [accepted languages](dataTable/data_table.html?path=../output.tables/language_accepted.csv).
+
+```{r summarylang2, echo=FALSE, results='asis'}
+x <- top(df, "languages")
+tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
+colnames(tab) <- c("Language", "Documents (n)", "Fraction (%)")
+kable(head(tab, 10))
+```
+
+Title count per language (including multi-language documents; note the log10 scale):
+
+```{r summarylang, echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
+top_plot(df, "languages", ntop = ntop, log10 = TRUE) + labs(y = "Entries (n)")
+```

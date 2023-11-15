@@ -6,10 +6,10 @@ df.preprocessed <- data.frame(melinda_id = df.orig$melinda_id)
 conversions <- list()
 
 # Define the fields
-update.fields <- setdiff(names(df.orig), c("melinda_id", "author_name"))
+update.fields <- setdiff(names(df.orig), c("melinda_id", "physical_dimensions"))
 
 # Harmonize title field
-source("author_name.R")
+source("physical_dimensions.R")
 
 # ---------------------------------------------------
 
@@ -33,13 +33,7 @@ for (field in update.fields) {
 
 }
 
-#remove duplicate Column Names
-duplicated_names <- duplicated(colnames(df.preprocessed))
-df.preprocessed <- df.preprocessed[!duplicated_names]
-
 message("Field preprocessing ok.")
-
-#write.csv(df.preprocessed,"df.preprocessed.csv", row.names = FALSE)
 
 
 

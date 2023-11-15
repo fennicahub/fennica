@@ -69,7 +69,7 @@ If mode = "list", each row of the input file corresponds to a unique entry with 
 \dontrun{syn <- read_mapping(file)}
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

@@ -21,7 +21,7 @@ Remove persons.
 \dontrun{x2 <- remove_persons(x)}
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

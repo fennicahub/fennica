@@ -35,29 +35,29 @@ df.orig <- read.csv(file = "priority_fields.csv", skip = 1, head = TRUE, sep="\t
 #rename column names
 df.orig <- df.orig %>% 
   dplyr::rename("melinda_id" = 1, #("035","a")
-         "author_name" = 2, # ("100","a")
-         "author_date" = 3, # ("100","d")
-         "publication_time" = 4, #("260","c")
-         "signum" = 5) # ("callnumbers","a")
+                "author_name" = 2, # ("100","a")
+                "author_date" = 3, # ("100","d")
+                "publication_time" = 4, #("260","c")
+                "signum" = 5) # ("callnumbers","a")
 
 
-         #"physical_dimensions"= 10, # ("300","c")
-        # "language" = 4, # ("041","a")
-        # "title_uniform" = 5, # ("240","a")
-         #"title" = 6, #("245","a")
-         #"publication_place" = 7, #("260","a")
-        # "publisher" = 8, #("260","b")
-         #"publication_time" = 9, #("260","c")
-         #"physical_dimensions"= 10, # ("300","c")
-         #"publication_frequency" = 11, # ("310","a")
-         #"publication_interval" = 12) # ("362","a")
-         
+#"physical_dimensions"= 10, # ("300","c")
+# "language" = 4, # ("041","a")
+# "title_uniform" = 5, # ("240","a")
+#"title" = 6, #("245","a")
+#"publication_place" = 7, #("260","a")
+# "publisher" = 8, #("260","b")
+#"publication_time" = 9, #("260","c")
+#"physical_dimensions"= 10, # ("300","c")
+#"publication_frequency" = 11, # ("310","a")
+#"publication_interval" = 12) # ("362","a")
+
 
 
 # TO be added later as we progress with preprosessing the fields below
-          # "physical_extent" = 10, # ("300","a")
-          #"subject_geography" = 14) #("651","a")
-         #"callnumbers" = 18) # ("callnumbers","a")]
+# "physical_extent" = 10, # ("300","a")
+#"subject_geography" = 14) #("651","a")
+#"callnumbers" = 18) # ("callnumbers","a")]
 
 
 
@@ -69,4 +69,3 @@ knit_bookdown <- TRUE
 
 # Visualization options
 theme_set(theme_bw(20))
-

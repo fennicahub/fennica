@@ -21,7 +21,7 @@ Remove brackets surrounding letters.
 x2 <- remove_brackets_from_letters("[p]")
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

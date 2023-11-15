@@ -21,7 +21,7 @@ Removes keywords
 # extract_personal_names(x, languages=c("finnish", "swedish", "latin"))
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
 Hege Roivainen \email{hege.roivainen@gmail.com}

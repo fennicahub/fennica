@@ -1,0 +1,246 @@
+--- 
+title: "Harmonized Finnish National Bibliography"
+author: "Turku Data Science Group"
+date: "`r Sys.Date()`"
+site: "bookdown::bookdown_site"
+output:
+  output: bookdown::gitbook
+github-repo: fennicahub/fennica
+url: https://github.com/fennicahub/fennica
+  
+documentclass: book
+---
+
+# Preface chapter
+
+Placeholder
+
+
+
+<!--chapter:end:index.Rmd-->
+
+# Author's lifetime
+
+```{r source-author-date, include=FALSE}
+# author_date field
+source("author_date.R")
+```
+
+[Author date accepted](dataTable/data_table.html?path=../output.tables/author_date_accepted.csv)
+
+[Author date discarded](dataTable/data_table.html?path=../output.tables/author_date_discarded.csv)
+
+Author's lifetime is available for `r sum(!is.na(df$author_age))` authors (`r round(100*mean(!is.na(df$author_age)))`%).The lifetime years span `r range(na.omit((df$author_age)))`. The youngest being 17 years old and the oldest 99 years old.
+
+
+
+
+
+<!--chapter:end:author_date.Rmd-->
+
+
+# Author's name
+
+Placeholder
+
+
+## Authors
+### Auxiliary files
+### Author productivity
+
+<!--chapter:end:author_name.Rmd-->
+
+
+# Corporate
+
+Placeholder
+
+
+
+<!--chapter:end:corporate.Rmd-->
+
+
+# Language summaries
+
+Placeholder
+
+
+## Top languages
+
+<!--chapter:end:language.Rmd-->
+
+
+# Holder
+
+Placeholder
+
+
+
+<!--chapter:end:holder.Rmd-->
+
+
+# Note dissertation
+
+Placeholder
+
+
+
+<!--chapter:end:note_dissertation.Rmd-->
+
+
+# Note granter
+
+Placeholder
+
+
+
+<!--chapter:end:note_granter.Rmd-->
+
+
+# Note source
+
+Placeholder
+
+
+
+<!--chapter:end:note_source.Rmd-->
+
+
+# Publisher preprocessing summary
+
+Placeholder
+
+
+
+<!--chapter:end:publisher.Rmd-->
+
+```{r source-publication-interval, include=FALSE, eval=knit_bookdown}
+#publication_interval field
+source("publication_interval.R")
+```
+
+# Publication interval summaries
+
+Publication interval is available for `r sum(!is.na(df$publication_interval_from) | !is.na(df$publication_interval_till))` documents (`r round(100*mean(!is.na(df$publication_interval_from) | !is.na(df$publication_interval_till)))`%). 
+
+[Publication interval accepted](dataTable/data_table.html?path=../output.tables/publication_interval_accepted.csv)
+
+[Publication interval conversions](dataTable/data_table.html?path=../output.tables/publication_interval_conversion_nontrivial.csv)
+
+[Publication interval discarded](dataTable/data_table.html?path=../output.tables/publication_interval_discarded.csv)
+
+
+
+<!--chapter:end:publication_interval.Rmd-->
+
+
+# Publication place preprocessing summary
+
+Placeholder
+
+
+## Publication countries	
+## Geocoordinates
+
+<!--chapter:end:publication_place.Rmd-->
+
+```{r source-publication-time, include=FALSE, eval=knit_bookdown}
+# Publication place field and derived country- and geoinformation
+source("publication_time.R")
+```
+
+# Publication year summaries (publication time)
+
+[Publication year conversions](dataTable/data_table.html?path=../output.tables/publication_time_conversion.csv)
+
+[Publication year discarded](dataTable/data_table.html?path=../output.tables/publication_time_discarded.csv)
+
+Publication year is available for `r sum(!is.na(df$publication_year))` documents (`r round(100*mean(!is.na(df$publication_year)))`%). The publication years span `r paste(range(na.omit(df$publication_year)), collapse = "-")`.
+
+```{r summarypublicationyear, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8, fig.height=6}
+# Title count per decade
+df2 <- df %>% group_by(publication_decade) %>% filter(publication_decade < 2010) 
+p <- ggplot(df2, aes(publication_decade)) +
+     geom_bar() + scale_y_log10() +
+     ggtitle("Title count timeline")
+print(p)
+```
+
+
+
+<!--chapter:end:publication_time.Rmd-->
+
+
+# Subject topic
+
+Placeholder
+
+
+
+<!--chapter:end:subject_topic.Rmd-->
+
+```{r source-subject-geography, include=FALSE, eval=knit_bookdown}
+# note_subject_topic field
+source("subject_geography.R")
+```
+
+# Subject geography preprocessing summary (Subject geographical places)
+
+```{r geo, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=10}
+tab <- rev(sort(table(unlist(strsplit(as.character(df$subject_geography), ";")))))
+```
+
+Top-`r ntop` geographical places are shown together with the number of documents assigned to that region. Geography information is available for `r sum(!is.na(df$subject_geography))` documents (`r round(100*mean(!is.na(df$subject_geography)))`%). There are `r length(tab)` unique geographical places.
+
+```{r geo2, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=10, eval=FALSE}
+ntop <- 50
+par(mar = c(5, 10, 3, 1)); barplot(log10(rev(tab[1:ntop])), horiz = T, las = 1, cex.names = 0.8, xlab = "Documents (log10)", main = "Most common geographic places")
+```
+
+```{r geo3, echo=FALSE, message=FALSE, warning=FALSE}
+f <- "output.tables/geoplaces.csv"
+write.table(cbind(Geography = names(tab), Documents = tab), file = f, sep = "|", quote = F, row.names = F)
+```
+
+[Complete geoplace listing](dataTable/data_table.html?path=../output.tables/geoplaces.csv)
+
+
+
+<!--chapter:end:subject_geography.Rmd-->
+
+
+# Successor
+
+Placeholder
+
+
+
+<!--chapter:end:successor.Rmd-->
+
+
+# Title field: summary
+
+Placeholder
+
+
+
+<!--chapter:end:title.Rmd-->
+
+
+# Title uniform
+
+Placeholder
+
+
+
+<!--chapter:end:title_uniform.Rmd-->
+
+
+# Uncontrolled
+
+Placeholder
+
+
+
+<!--chapter:end:uncontrolled.Rmd-->
+

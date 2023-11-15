@@ -23,7 +23,7 @@ Remove specified endings of strings.
 \dontrun{x2 <- remove_endings(x, endings)}
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

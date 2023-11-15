@@ -1,0 +1,16 @@
+```{r source-publication-interval, include=FALSE, eval=knit_bookdown}
+#publication_interval field
+source("publication_interval.R")
+```
+
+# Publication interval summaries
+
+Publication interval is available for `r sum(!is.na(df$publication_interval_from) | !is.na(df$publication_interval_till))` documents (`r round(100*mean(!is.na(df$publication_interval_from) | !is.na(df$publication_interval_till)))`%). 
+
+[Publication interval accepted](dataTable/data_table.html?path=../output.tables/publication_interval_accepted.csv)
+
+[Publication interval conversions](dataTable/data_table.html?path=../output.tables/publication_interval_conversion_nontrivial.csv)
+
+[Publication interval discarded](dataTable/data_table.html?path=../output.tables/publication_interval_discarded.csv)
+
+

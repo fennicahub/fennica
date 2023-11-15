@@ -7,7 +7,7 @@
 #' @export
 #' @importFrom stringr str_c
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("bibliographica")
+#' @references See citation("fennica")
 #' @examples \dontrun{x2 <- remove_endings(x, endings)}
 #' @keywords utilities
 remove_endings <- function (x, endings, random_order=FALSE) {

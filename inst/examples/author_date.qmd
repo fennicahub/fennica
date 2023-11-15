@@ -25,6 +25,3 @@ The author's lifetime section furnishes concise summaries following an extensive
 [Author date accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/author_date_accepted_19.csv)
 
 [Author date accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/author_date_accepted_19.csv)
-
-
-

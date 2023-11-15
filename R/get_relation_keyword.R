@@ -7,7 +7,7 @@
 #' @export
 #' @author Hege Roivainen \email{hege.roivainen@@gmail.com}
 #' @importFrom stringr str_extract
-#' @references See citation("bibliographica")
+#' @references See citation("fennica")
 #' @examples # get_relation_keyword(x, full_name, languages=c("finnish", "swedish", "latin"))
 #' @keywords utilities
 get_relation_keyword <- function(x, full_name, languages=c("english")) {
@@ -22,17 +22,17 @@ get_relation_keyword <- function(x, full_name, languages=c("english")) {
   f <- c()
 
   if ("finnish" %in% languages) {
-    f[["finnish"]] <- system.file("extdata/fi_relation_keywords.csv", package="bibliographica")
+    f[["finnish"]] <- system.file("extdata/fi_relation_keywords.csv", package="fennica")
   }
   if ("swedish" %in% languages) {
-    f[["swedish"]] <- system.file("extdata/sv_relation_keywords.csv", package="bibliographica")
+    f[["swedish"]] <- system.file("extdata/sv_relation_keywords.csv", package="fennica")
   }
   # TODO HR
-  # en_relation_keywords.csv does not exist in bibliographica
+  # en_relation_keywords.csv does not exist in fennica
   # also en_lowercase_keywords.csv was missing
   # add to github if available
   if ("latin" %in% languages) {
-    f[["latin"]] <- system.file("extdata/la_relation_keywords.csv", package="bibliographica")
+    f[["latin"]] <- system.file("extdata/la_relation_keywords.csv", package="fennica")
   }
 
   ret <- character(length = length(x))

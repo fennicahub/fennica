@@ -21,7 +21,7 @@ Writes out abbreviated names.
 # harmonize_abbreviated_names(c("Phil.", "Joh."), languages=c("finnish"))
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
 Hege Roivainen \email{hege.roivainen@gmail.com}
