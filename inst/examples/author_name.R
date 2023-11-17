@@ -35,35 +35,34 @@ tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 # Run publication_time.R file to get the melindas needed for the 19th century slicing
 source("publication_time.R")
 
-df.tmp <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
+df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
 field <- "author_name"
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV
 data.file <- paste0(field, ".Rds")
-saveRDS(df.tmp, file = data.file)
+saveRDS(df_19, file = data.file)
 
-# Define output files for the whole dataset
+# Define output files for the 1807-1917 subset
 file_accepted  <- paste0(output.folder, field, "_accepted_19.csv")
 file_discarded <- paste0(output.folder, field, "_discarded_19.csv")
 
 # ------------------------------------------------------------
 
-# Generate data summaries for the whole data set
-
+# Generate data summaries for 1809-1917
 message("Accepted entries in the preprocessed data for 1809-1917")
-s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE)
+s <- write_xtable(df_19[[field]], file_accepted, count = TRUE)
 
 message("Discarded entries for 1809-1917")
 
 # NA values in the final harmonized data
-inds <- which(is.na(df.tmp[[field]]))
+inds <- which(is.na(df_19[[field]]))
 
 # Original entries that were converted into NA
-original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
+original.na19 <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
 
 # .. ie. those are "discarded" cases; list them in a table
-tmp <- write_xtable(original.na, file_discarded, count = TRUE)
+tmp19 <- write_xtable(original.na19, file_discarded, count = TRUE)
 
 
 # Generate markdown summary 
