@@ -21,9 +21,9 @@ Data frame
 Gets duplicates which are tagged as dissertations in another catalog, but in the other one aren't
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
-Hege Roivainen \email{hege.roivainen@gmail.com}
+Hege Roivainen \email{leo.lahti@iki.fi}
 }
 \keyword{utilities}

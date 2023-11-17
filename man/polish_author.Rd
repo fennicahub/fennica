@@ -20,10 +20,10 @@ Polished vector
 Polish author.
 }
 \examples{
-s2 <- polish_author("Smith, William")
+# s2 <- polish_author("Smith, William")
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

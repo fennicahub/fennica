@@ -21,7 +21,7 @@ Harmonize orthography
 # harmonize_for_comparison(x, languages = "finnish")
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
 Hege Roivainen \email{hege.roivainen@gmail.com}

@@ -25,7 +25,7 @@ Pick first name from full name, assuming the format is known
 pick_firstname("Hobbes, Thomas")
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

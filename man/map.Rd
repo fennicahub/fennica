@@ -50,7 +50,7 @@ Map the input vector to harmonized versions based on the synonyme
 \dontrun{x2 <- map(x, synonymes)}
 }
 \references{
-See citation("bibliographica")
+See citation("comhis")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

@@ -4,7 +4,7 @@
 #' @return Polished vector
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("bibliographica")
+#' @references See citation("fennica")
 #' @examples x2 <- remove_print_statements("Printed in London")
 #' @keywords utilities
 remove_print_statements <- function (x) {
@@ -18,8 +18,9 @@ remove_print_statements <- function (x) {
 
   ### Get printing terms from tables in various languages
   for (lang in c("finnish", "french", "german", "swedish", "english")) {
-    
-    terms <- unique(str_trim(tolower(read.csv(paste("printstop_", lang, ".csv"), stringsAsFactors = FALSE)[,1])))
+
+    f <- system.file(paste0("extdata/printstop_", lang, ".csv"), package = "fennica")
+    terms <- unique(str_trim(tolower(read.csv(f, stringsAsFactors = FALSE)[,1])))
 
     # Harmonize the terms 
     terms.multi <- c(terms.multi, terms[nchar(terms) > 1])
@@ -56,7 +57,7 @@ remove_print_statements <- function (x) {
   x <- xuniq <- unique(xorig)
 
   # remove sine loco
-  f <- system.file("extdata/sl.csv", package = "bibliographica") 
+  f <- system.file("extdata/sl.csv", package = "fennica") 
   sineloco <- as.character(read.csv(f)[,1])
   x <- remove_terms(x, sineloco, include.lowercase = TRUE)
 

@@ -4,7 +4,7 @@
 #' @return data.frame with fields for regular disserations and for synodal dissertations
 #' @export
 #' @author Niko Ilomaki \email{niko.ilomaki@@helsinki.fi}
-#' @references See citation("bibliographica")
+#' @references See citation("fennica")
 #' @examples \dontrun{df <- mark_dissertations(c("Diss.","Diss. synod"))}
 #' @keywords utilities
 mark_dissertations <- function(x) {

@@ -22,7 +22,7 @@ Capitalize the first letter.
 capitalize("print")
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

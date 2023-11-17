@@ -1,9 +1,3 @@
----
-title : "Title uniform"
-hide-description: false
-description: "titles and their title counts"
----
-
 # Title uniform
 ```{r}
 #| label = "source-index",
@@ -19,6 +13,12 @@ source("init.R")
 source("title_uniform.R")
 ```
 
+```{r}
+#| label = "setup-title-uniform",
+#| include = FALSE
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.path=paste0("figure/rmd_", field, "_"))
+```
 
 * [Unique accepted entries](dataTable/data_table.html?path=../`r file_accepted`): `r length(unique(df[[field]]))`
 * [Unique discarded entries in original data](dataTable/data_table.html?path=../`r file_discarded`) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`

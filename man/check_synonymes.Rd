@@ -44,7 +44,7 @@ are included in synonyme list.
 \dontrun{s <- check_synonymes(synonymes)}
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
 Leo Lahti \email{leo.lahti@iki.fi}

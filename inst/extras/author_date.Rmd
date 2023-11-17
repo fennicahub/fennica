@@ -1,0 +1,16 @@
+# Author's lifetime
+
+```{r source-author-date, include=FALSE}
+# author_date field
+source("author_date.R")
+```
+
+[Author date accepted](dataTable/data_table.html?path=../output.tables/author_date_accepted.csv)
+
+[Author date discarded](dataTable/data_table.html?path=../output.tables/author_date_discarded.csv)
+
+Author's lifetime is available for `r sum(!is.na(df$author_age))` authors (`r round(100*mean(!is.na(df$author_age)))`%).The lifetime years span `r range(na.omit((df$author_age)))`. The youngest being 17 years old and the oldest 99 years old.
+
+
+
+

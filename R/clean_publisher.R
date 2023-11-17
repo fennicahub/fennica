@@ -5,7 +5,7 @@
 #' @return Vector of publisher names
 #' @export
 #' @author Hege Roivainen \email{hege.roivainen@@gmail.com}
-#' @references See citation("bibliographica")
+#' @references See citation("fennica")
 #' @examples # clean_publisher(x, languages=c("finnish", "swedish", "latin"))
 #' @keywords utilities
 clean_publisher <- function(x, languages=c("english")) {
@@ -60,13 +60,13 @@ clean_publisher <- function(x, languages=c("english")) {
   # could we just switch to those ?
   for (language in languages) {
     if (language == "swedish") {
-      f <- system.file("extdata/sv_publisher.csv", package="bibliographica")
+      f <- system.file("extdata/sv_publisher.csv", package="fennica")
     } else if (language == "english") {
-      f <- system.file("extdata/en_publisher.csv", package="bibliographica")
+      f <- system.file("extdata/en_publisher.csv", package="fennica")
     } else if (language == "finnish") {
-      f <- system.file("extdata/fi_publisher.csv", package="bibliographica")
+      f <- system.file("extdata/fi_publisher.csv", package="fennica")
     } else if (language == "latin") {
-      f <- system.file("extdata/lat_publisher.csv", package="bibliographica")
+      f <- system.file("extdata/lat_publisher.csv", package="fennica")
     } else {
       print (paste0("Unknown language in languages: ", language))
     }

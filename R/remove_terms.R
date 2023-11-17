@@ -11,7 +11,7 @@
 #'          spaces are also removed from the strings.
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("bibliographica")
+#' @references See citation("fennica")
 #' @examples x2 <- remove_terms("test this", c("this", "works"), where = "all")
 #' @keywords utilities
 remove_terms <- function (x, terms, where = "all", include.lowercase = FALSE, polish = TRUE, recursive = FALSE) {

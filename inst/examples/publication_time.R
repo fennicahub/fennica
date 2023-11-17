@@ -11,13 +11,13 @@ tmp$from <- ifelse(nchar(tmp$from) > 5, "NA", tmp$from)
 tmp$till <- ifelse(nchar(tmp$from) > 5, "NA", tmp$till)
 as.numeric(tmp$from)
 as.numeric(tmp$till)
-  
+
 # Make data.frame
 # Make sure if it called df.harmonized for publication_time, other fields have df.tmp 
 # because publication_time field is sourced in other field processing files 
 df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
-                     publication_year_from = tmp$from,
-                     publication_year_till = tmp$till)
+                            publication_year_from = tmp$from,
+                            publication_year_till = tmp$till)
 
 # Add publication_year as a separate column (same as "publication_year_from")
 df.harmonized$publication_year <- df.harmonized$publication_year_from
@@ -32,24 +32,24 @@ message("Write conversions: publication year")
 df.harmonized$original <- df.orig[[field]]
 
 xx <- as.data.frame(df.harmonized) %>% filter(!is.na(publication_year)) %>%
-                                       group_by(original, publication_year) %>%
-                                       tally() %>%
-				       arrange(desc(n))
+  group_by(original, publication_year) %>%
+  tally() %>%
+  arrange(desc(n))
 
 conversion.file <- paste0(output.folder, field, "_conversion.csv")
 tmp <- write.table(xx,
-         file = conversion.file,
-	 quote = FALSE,
-	 row.names = FALSE)
-  
+                   file = conversion.file,
+                   quote = FALSE,
+                   row.names = FALSE)
+
 message("Discarded publication year")
 o <- as.character(df.orig[[field]])
 x <- as.character(df.harmonized[["publication_year"]])
 inds <- which(is.na(x))
 discard.file <- paste0(output.folder, field, "_discarded.csv")
 tmp <- write_xtable(o[inds],
-         file = discard.file,
-      count = TRUE)
+                    file = discard.file,
+                    count = TRUE)
 
 # ------------------------------------------------------------
 

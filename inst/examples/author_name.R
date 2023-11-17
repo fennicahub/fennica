@@ -70,4 +70,3 @@ tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 df <- readRDS(data.file)
 # tmp <- knit(input = paste(field, ".Rmd", sep = ""), 
 #             output = paste(field, ".md", sep = ""))
-

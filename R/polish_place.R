@@ -8,7 +8,7 @@
 #' @return Polished vector
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("bibliographica")
+#' @references See citation("fennica")
 #' @examples # x2 <- polish_place(c("London", "Paris"))
 #' @keywords utilities
 polish_place <- function (x, synonymes = NULL, remove.unknown = FALSE, verbose = FALSE, harmonize = TRUE) {
@@ -17,17 +17,17 @@ polish_place <- function (x, synonymes = NULL, remove.unknown = FALSE, verbose =
 
   if (is.null(synonymes)) {
     # Harmonize places with synonyme table
-    f <- system.file("extdata/PublicationPlaceSynonymes.csv", package = "bibliographica")
+    f <- system.file("extdata/PublicationPlaceSynonymes.csv", package = "fennica")
     synonymes <- suppressWarnings(read_mapping(f, include.lowercase = T, self.match = T, ignore.empty = FALSE, mode = "table", trim = TRUE))
 
     if (verbose) { message(paste("Reading special char table", f)) }
     # Harmonize places with synonyme table
     f <- system.file("extdata/replace_special_chars.csv",
-		package = "bibliographica")
+		package = "fennica")
     spechars <- suppressWarnings(read_mapping(f, sep = ";", mode = "table", include.lowercase = TRUE))
 
     if (verbose) { message(paste("Reading publication place synonyme table", f)) }
-    f <- system.file("extdata/harmonize_place.csv", package = "bibliographica")
+    f <- system.file("extdata/harmonize_place.csv", package = "fennica")
     synonymes.spec <- suppressWarnings(read_mapping(f, sep = ";", mode = "table", include.lowercase = TRUE))
     if (verbose) { message(paste("Reading publication place synonyme table", f)) }
     
@@ -82,7 +82,7 @@ polish_place <- function (x, synonymes = NULL, remove.unknown = FALSE, verbose =
   x <- xuniq <- unique(xorig)
 
   if (verbose) {message("Remove stopwords")}
-  f <- system.file("extdata/stopwords_for_place.csv", package = "bibliographica")
+  f <- system.file("extdata/stopwords_for_place.csv", package = "fennica")
   message(paste("Reading stopwords from file ", f))
   stopwords <- unique(tolower(str_trim(as.character(read.csv(f)[,1]))))
   x <- suppressWarnings(remove_terms(x, stopwords, c("begin", "middle", "end"), recursive = TRUE))
@@ -100,7 +100,6 @@ polish_place <- function (x, synonymes = NULL, remove.unknown = FALSE, verbose =
   x <- xuniq <- unique(xorig)
 
   if (verbose) {message("Detailed polishing")}
-  #s <- synonymes$synonyme
 
   x <- suppressWarnings(unname(sapply(x, function (x) {polish_place_help(unlist(x, use.names = FALSE), synonymes$synonyme, verbose = verbose)}, USE.NAMES = FALSE)))
   if (length(x) == 0) { return(rep(NA, length(xorig))) }
@@ -180,9 +179,6 @@ polish_place_help <- function (x, s, verbose = FALSE) {
   # london re/now edinburgh -> london
   x <- splitpick(x, " re ", 1)
   
-  # This may loose country info so skip for now
-  #x <- splitpick(x, " now ", 1) # Should we pick latter here instead ?  
-
   # New York N Y -> New York NY
   if (length(grep(" [a-z] [a-z]$", x))>0) {
     n <- nchar(x)

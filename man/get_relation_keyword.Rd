@@ -23,7 +23,7 @@ Pick keyword denoting that the person in question is a relative to the named per
 # get_relation_keyword(x, full_name, languages=c("finnish", "swedish", "latin"))
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
 Hege Roivainen \email{hege.roivainen@gmail.com}

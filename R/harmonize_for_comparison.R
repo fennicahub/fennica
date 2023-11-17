@@ -5,7 +5,7 @@
 #' @return Vector of publishers names
 #' @export
 #' @author Hege Roivainen \email{hege.roivainen@@gmail.com}
-#' @references See citation("bibliographica")
+#' @references See citation("fennica")
 #' @examples # harmonize_for_comparison(x, languages = "finnish")
 #' @keywords utilities
 harmonize_for_comparison <- function(x, languages = "english") {
@@ -13,9 +13,9 @@ harmonize_for_comparison <- function(x, languages = "english") {
   message(languages)
   
   if ("swedish" %in% languages) {
-    f <- system.file("extdata/sv_publisher_comparison.csv", package="bibliographica")
+    f <- system.file("extdata/sv_publisher_comparison.csv", package="fennica")
   } else if ("finnish" %in% languages) {
-    f <- system.file("extdata/fi_publisher_comparison.csv", package="bibliographica")
+    f <- system.file("extdata/fi_publisher_comparison.csv", package="fennica")
   } else {
     return(NULL)    
   }

@@ -16,9 +16,9 @@ Data frame with orig, mod
 Generic cleanup of the publisher field.
 }
 \references{
-See citation("bibliographica")
+See citation("fennica")
 }
 \author{
-Leo Lahti \email{hege.roivainen@gmail.com}
+Leo Lahti \email{leo.lahti@iki.fi}
 }
 \keyword{utilities}
