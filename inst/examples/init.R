@@ -38,7 +38,8 @@ df.orig <- df.orig %>%
                 "author_name" = 2, # ("100","a")
                 "author_date" = 3, # ("100","d")
                 "publication_time" = 4, #("260","c")
-                "signum" = 5) # ("callnumbers","a")
+                "language" = 5, # ("041","a")
+                "signum" = 6) # ("callnumbers","a")
 
 
 #"physical_dimensions"= 10, # ("300","c")
