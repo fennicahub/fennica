@@ -44,14 +44,14 @@ data.file <- paste0(field, ".Rds")
 saveRDS(df_19, file = data.file)
 
 # Define output files for the 1807-1917 subset
-file_accepted  <- paste0(output.folder, field, "_accepted_19.csv")
-file_discarded <- paste0(output.folder, field, "_discarded_19.csv")
+file_accepted_19  <- paste0(output.folder, field, "_accepted_19.csv")
+file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 
 # ------------------------------------------------------------
 
 # Generate data summaries for 1809-1917
 message("Accepted entries in the preprocessed data for 1809-1917")
-s <- write_xtable(df_19[[field]], file_accepted, count = TRUE)
+s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
 
 message("Discarded entries for 1809-1917")
 
@@ -62,7 +62,7 @@ inds <- which(is.na(df_19[[field]]))
 original.na19 <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
 
 # .. ie. those are "discarded" cases; list them in a table
-tmp19 <- write_xtable(original.na19, file_discarded, count = TRUE)
+tmp19 <- write_xtable(original.na19, file_discarded_19, count = TRUE)
 
 
 # Generate markdown summary 

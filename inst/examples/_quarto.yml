@@ -29,7 +29,7 @@ book:
   - author_date.qmd
   #- author_name.qmd
   #- corporate.qmd
-  #- language.qmd
+  - language.qmd
   #- holder.qmd
   #- note_dissertation.qmd
   #- note_granter.qmd

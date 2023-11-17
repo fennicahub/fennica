@@ -71,7 +71,7 @@ y <- as.character(df_19[["author_death"]])
 
 message("Accepted entries in the 19th data")
 inds <- !is.na(x) & !is.na(y)
-accept.file <- paste0(output.folder, field, "_accepted_19.csv")
+accept.file19 <- paste0(output.folder, field, "_accepted_19.csv")
 tmp <- write_xtable(o[inds],file = accept.file,count = TRUE)
 
 
@@ -79,19 +79,19 @@ n <- rev(sort(table(o[inds])))
 tab <- as.data.frame(n);
 tab$Frequency <- round(100 * tab$Freq/sum(tab$Freq), 1)
 colnames(tab) <- c("Term", "Count", "Frequency")
-write.table(tab, file = accept.file, quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t")
+write.table(tab, file = accept.file19, quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t")
 
 
 # -------------------
 
 message("Discarded entries in the 19th cebtury data")
 inds1 <- is.na(x) & is.na(y)
-discard.file <- paste0(output.folder, field, "_discarded_19.csv")
+discard.file19 <- paste0(output.folder, field, "_discarded_19.csv")
 n <- rev(sort(table(o[inds1])))
 tab <- as.data.frame(n);
 tab$Frequency <- round(100 * tab$Freq/sum(tab$Freq), 1)
 colnames(tab) <- c("Term", "Count", "Frequency")
-write.table(tab, file = discard.file, quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t")
+write.table(tab, file = discard.file19, quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t")
 
 # Generate markdown summary
 df <- readRDS(data.file)
