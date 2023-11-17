@@ -52,20 +52,20 @@ write.table(tab, file = discard.file, quote = FALSE, row.names = FALSE, col.name
 # Run publication_time.R file to get the melindas needed for the 19th century slicing
 source("publication_time.R")
 
-df.tmp <- df.tmp[df.tmp$melinda_id %in% melindas_19,] # publication time has df.harmonized instead of df.tmp 
+df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,] # publication time has df.harmonized instead of df.tmp 
 field <- "author_date"
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV
 data.file <- paste0(field, ".Rds")
-saveRDS(df.tmp, file = data.file)
+saveRDS(df_19, file = data.file)
 
 # Generate accepted and discarded files for the 19 century subset 
-# Generate data summaries for the whole data set
+
 
 o <- as.character(df.orig[[field]])
-x <- as.character(df.tmp[["author_birth"]])
-y <- as.character(df.tmp[["author_death"]])
+x <- as.character(df_19[["author_birth"]])
+y <- as.character(df_19[["author_death"]])
 
 # -------------------
 
