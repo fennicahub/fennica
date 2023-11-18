@@ -6,14 +6,8 @@ date: "`r Sys.Date()`"
 
 <h2>Preface chapter</h2>
 
+It is imperative to underscore that this bookdown project is an evolving **work-in-progress**, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization.
+
 As part of the Metadata Harmonization And Analysis work package, we use the Finnish national bibliography (FNB) Fennica dataset to create a harmonized dataset that can be used for research purposes as well as provide the groundwork for infrastructure that can be iterated further. The FNB contains metadata for 1,187,813 documents capturing records from as early as 1488 to more contemporary records.
 
-Currently, the bookdown project comprises three distinct chapters. Notably, the harmonization process has been executed through the establishment of dual pipelines: **Whole FNB Pipeline** and **1809 to 1917 Period Pipeline** These chapters are dedicated to the following metadata categories:
-
-1\. \*\*Author's Lifetime:\*\* This chapter focuses on the temporal dimension of authorship by capturing information regarding the lifespan of the authors associated with the documents contained within the dataset. This temporal context serves as a pivotal element for the historical and biographical analysis of the documents' creators.
-
-2\. \*\*Author's Name:\*\* Another integral facet of the dataset pertains to the recording of author names. Accurate identification and standardization of author names is of paramount significance for both bibliographic and scholarly purposes, as it enables the precise attribution of authorship.
-
-3\. \*\*Publication Time:\*\* The dataset also dedicates a chapter to the systematic cataloging of publication time, which is a pivotal component for chronologically situating the documents within a historical context.
-
-It is imperative to underscore that this bookdown project is an evolving work-in-progress, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization. These augmentations will bolster the dataset's comprehensiveness, ensuring that it continues to serve as a robust foundation for scholarly research endeavors while maintaining high standards of data quality and integrity.
+Currently, the bookdown project comprises a few distinct chapters. Notably, the harmonization process has been executed through the establishment of dual pipelines: **Complete FNB Pipeline** and **1809 to 1917 Period Pipeline** These chapters are dedicated to the specific metadata categories.

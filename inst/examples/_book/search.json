@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Harmonized Finnish National Bibliography",
     "section": "",
-    "text": "Preface chapter\n\nAs part of the Metadata Harmonization And Analysis work package, we use the Finnish national bibliography (FNB) Fennica dataset to create a harmonized dataset that can be used for research purposes as well as provide the groundwork for infrastructure that can be iterated further. The FNB contains metadata for 1,187,813 documents capturing records from as early as 1488 to more contemporary records.\nCurrently, the bookdown project comprises three distinct chapters. Notably, the harmonization process has been executed through the establishment of dual pipelines: Whole FNB Pipeline and 1809 to 1917 Period Pipeline These chapters are dedicated to the following metadata categories:\n1. **Author’s Lifetime:** This chapter focuses on the temporal dimension of authorship by capturing information regarding the lifespan of the authors associated with the documents contained within the dataset. This temporal context serves as a pivotal element for the historical and biographical analysis of the documents’ creators.\n2. **Author’s Name:** Another integral facet of the dataset pertains to the recording of author names. Accurate identification and standardization of author names is of paramount significance for both bibliographic and scholarly purposes, as it enables the precise attribution of authorship.\n3. **Publication Time:** The dataset also dedicates a chapter to the systematic cataloging of publication time, which is a pivotal component for chronologically situating the documents within a historical context.\nIt is imperative to underscore that this bookdown project is an evolving work-in-progress, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization. These augmentations will bolster the dataset’s comprehensiveness, ensuring that it continues to serve as a robust foundation for scholarly research endeavors while maintaining high standards of data quality and integrity."
+    "text": "Preface chapter\n\nIt is imperative to underscore that this bookdown project is an evolving work-in-progress, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization.\nAs part of the Metadata Harmonization And Analysis work package, we use the Finnish national bibliography (FNB) Fennica dataset to create a harmonized dataset that can be used for research purposes as well as provide the groundwork for infrastructure that can be iterated further. The FNB contains metadata for 1,187,813 documents capturing records from as early as 1488 to more contemporary records.\nCurrently, the bookdown project comprises a few distinct chapters. Notably, the harmonization process has been executed through the establishment of dual pipelines: Complete FNB Pipeline and 1809 to 1917 Period Pipeline These chapters are dedicated to the specific metadata categories."
   },
   {
     "objectID": "author_name.html#complete-dataset-overview",
@@ -33,6 +33,13 @@
     "title": "3  Author’s lifetime",
     "section": "3.2 Subset Analysis: 1809-1917",
     "text": "3.2 Subset Analysis: 1809-1917\nAuthor date accepted for 1809-1917\nAuthor date accepted for 1809-1917"
+  },
+  {
+    "objectID": "language.html#complete-dataset-overview",
+    "href": "language.html#complete-dataset-overview",
+    "title": "4  Language",
+    "section": "4.1 Complete Dataset Overview",
+    "text": "4.1 Complete Dataset Overview\n\n170 unique languages\n148 unique primary languages\n\n1115444 single-language documents (93.91%)\n72369 multilingual documents (6.09%)\nConversions from raw to preprocessed language entries\n50515 documents (4.25%) with unrecognized language\n\nLanguage codes are from MARC; new custom abbreviations can be added in this table."
   },
   {
     "objectID": "language.html#subset-analysis-1809-1917",
@@ -68,12 +75,5 @@
     "title": "Technical information",
     "section": "",
     "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.1.2 (2021-11-01)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Ubuntu 22.04.3 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0\nLAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] fennica_0.2.9     Cairo_1.5-14      ggplot2_3.4.3     R.utils_2.12.2   \n [5] R.oo_1.25.0       R.methodsS3_1.8.2 knitr_1.44        stringr_1.5.0    \n [9] tm_0.7-11         NLP_0.2-1         dplyr_1.1.3       devtools_2.4.5   \n[13] usethis_2.2.2    \n\nloaded via a namespace (and not attached):\n [1] stringdist_0.9.10 Rcpp_1.0.11       prettyunits_1.2.0 ps_1.7.5         \n [5] digest_0.6.33     utf8_1.2.3        mime_0.12         slam_0.1-50      \n [9] R6_2.5.1          evaluate_0.22     pillar_1.9.0      rlang_1.1.1      \n[13] data.table_1.14.8 rstudioapi_0.15.0 miniUI_0.1.1.1    callr_3.7.3      \n[17] urlchecker_1.0.1  rmarkdown_2.25    htmlwidgets_1.6.2 munsell_0.5.0    \n[21] shiny_1.7.5       compiler_4.1.2    httpuv_1.6.11     xfun_0.40        \n[25] pkgconfig_2.0.3   pkgbuild_1.4.2    htmltools_0.5.6   tidyselect_1.2.0 \n[29] tibble_3.2.1      XML_3.99-0.14     fansi_1.0.4       crayon_1.5.2     \n[33] withr_2.5.1       later_1.3.1       grid_4.1.2        jsonlite_1.8.7   \n[37] xtable_1.8-4      gtable_0.3.4      lifecycle_1.0.3   magrittr_2.0.3   \n[41] scales_1.2.1      cli_3.6.1         stringi_1.7.12    cachem_1.0.8     \n[45] fs_1.6.3          promises_1.2.1    remotes_2.4.2.1   xml2_1.3.5       \n[49] ellipsis_0.3.2    generics_0.1.3    vctrs_0.6.3       tools_4.1.2      \n[53] glue_1.6.2        purrr_1.0.2       processx_3.8.2    pkgload_1.3.3    \n[57] parallel_4.1.2    fastmap_1.1.1     colorspace_2.1-0  sessioninfo_1.2.2\n[61] memoise_2.0.1     profvis_0.3.8"
-  },
-  {
-    "objectID": "language.html#complete-dataset-overview",
-    "href": "language.html#complete-dataset-overview",
-    "title": "4  Language",
-    "section": "4.1 Complete Dataset Overview",
-    "text": "4.1 Complete Dataset Overview\n\n170 unique languages\n148 unique primary languages\n\n1115444 single-language documents (93.91%)\n72369 multilingual documents (6.09%)\nConversions from raw to preprocessed language entries\n50515 documents (4.25%) with unrecognized language\n\nLanguage codes are from MARC; new custom abbreviations can be added in this table."
   }
 ]

@@ -27,7 +27,6 @@ book:
   - index.qmd
   - author_name.qmd
   - author_date.qmd
-  #- author_name.qmd
   #- corporate.qmd
   - language.qmd
   #- holder.qmd
@@ -40,8 +39,8 @@ book:
   - publication_time.qmd
   ##- subject_topic.qmd
   #- successor.qmd
-  #- title.qmd
-  #- title_uniform.qmd
+  - title.qmd
+  - title_uniform.qmd
   #- uncontrolled.qmd
   appendices :
     - acknowledgments.qmd

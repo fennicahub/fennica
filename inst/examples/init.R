@@ -39,11 +39,13 @@ df.orig <- df.orig %>%
                 "author_date" = 3, # ("100","d")
                 "publication_time" = 4, #("260","c")
                 "language" = 5, # ("041","a")
-                "signum" = 6) # ("callnumbers","a")
+                "title_uniform" = 6, # ("240","a")
+                "title" = 7, #("245","a")
+                "signum" = 8) # ("callnumbers","a")
 
 
 #"physical_dimensions"= 10, # ("300","c")
-# "language" = 4, # ("041","a")
+
 # "title_uniform" = 5, # ("240","a")
 #"title" = 6, #("245","a")
 #"publication_place" = 7, #("260","a")
