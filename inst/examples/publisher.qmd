@@ -1,30 +1,37 @@
+--- 
+title: "Publisher"
+hide-description: false
+description: ""
+---
+
 ```{r}
 #| label = "source-index",
 #| include = FALSE
 source("init.R")
-```
-
-```{r}
-#| label = "source-publisher",
-#| include = FALSE,
-#| eval = knit_bookdown
-# publisher field
 source("publisher.R")
 ```
 
-# Publisher preprocessing summary
+## Complete Dataset Overview
 
  * `r length(unique(df$publisher))` [unique publishers](dataTable/data_table.html?path=../output.tables/publisher_accepted.csv)
 
  * `r sum(!is.na(df$publisher))` documents have unambiguous publisher information (`r round(100*mean(!is.na(df$publisher)), 1)`%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).
 
-
  * [Discarded publisher entries](dataTable/data_table.html?path=../output.tables/publisher_discarded.csv)
 
  * [Conversions from original to final names](dataTable/data_table.html?path=../output.tables/publisher_conversion_nontrivial.csv) (only non-trivial conversions shown)
 
+## Subset Analysis: 1809-1917
 
-The `r ntop` most common publishers are shown with the number of documents. 
+ * `r length(unique(df_19$publisher))` [unique publishers](dataTable/data_table.html?path=../output.tables/publisher_accepted_19.csv)
+
+ * `r sum(!is.na(df_19$publisher))` documents have unambiguous publisher information (`r round(100*mean(!is.na(df_19$publisher)), 1)`%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).
+
+
+ * [Discarded publisher entries](dataTable/data_table.html?path=../output.tables/publisher_discarded_19.csv)
+
+
+The `r ntop` most common publishers from 1809 to 1917 are shown with the number of documents. 
 
 ```{r}
 #| label = "summarypublisher2",
@@ -33,7 +40,7 @@ The `r ntop` most common publishers are shown with the number of documents.
 #| warning = FALSE,
 #| fig.width = 12,
 #| fig.height = 9
-p <- top_plot(df, "publisher", ntop)
+p <- top_plot(df_19, "publisher", ntop)
 p <- p + ggtitle(paste("Top publishers"))
 p <- p + scale_y_log10()
 p <- p + ylab("Documents")
@@ -42,7 +49,7 @@ print(p)
 
 
 
-Title count versus paper consumption (top publishers):
+Title count versus paper consumption (top publishers in the 1809-1917):
 
 ```{r}
 #| label = "publishertitlespapers",
@@ -51,8 +58,8 @@ Title count versus paper consumption (top publishers):
 #| echo = FALSE,
 #| warning = FALSE
 #res <- compare_title_paper(df, "publisher", selected = tops)
-tops <- names(top(df, field = "publisher", n = 10))
-res <- compare_title_paper(df, "publisher")
+tops <- names(top(df_19, field = "publisher", n = 10))
+res <- compare_title_paper(df_19, "publisher")
 print(res$plot)  
 kable(subset(res$table, publisher %in% tops), digit = 2)
 ```

@@ -59,10 +59,10 @@ message("Discarded entries for 1809-1917")
 inds <- which(is.na(df_19[[field]]))
 
 # Original entries that were converted into NA
-original.na19 <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
+original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
 
 # .. ie. those are "discarded" cases; list them in a table
-tmp19 <- write_xtable(original.na19, file_discarded_19, count = TRUE)
+tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
 
 
 # Generate markdown summary 

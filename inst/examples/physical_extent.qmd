@@ -1,0 +1,12 @@
+---
+title : "Physical extent / pagecount"
+hide-description: false
+description: ""
+---
+
+```{r}
+#| label = "source-index",
+#| include = FALSE
+source("init.R")
+source("physical_extent.R")
+```

@@ -29,18 +29,21 @@ book:
   - author_date.qmd
   #- corporate.qmd
   - language.qmd
+  - physical_dimensions.qmd
+  - physical_extent.qmd
   #- holder.qmd
   #- note_dissertation.qmd
   #- note_granter.qmd
   #- note_source.qmd
-  #- publisher.qmd
+  - publisher.qmd
   ##- publication_interval.qmd
-  #- publication_place.qmd
+  - publication_place.qmd
   - publication_time.qmd
+  - publication_frequency.qmd
+  - title_uniform.qmd
+  - title.qmd
   ##- subject_topic.qmd
   #- successor.qmd
-  - title.qmd
-  - title_uniform.qmd
   #- uncontrolled.qmd
   appendices :
     - acknowledgments.qmd

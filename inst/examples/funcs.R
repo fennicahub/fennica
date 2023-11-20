@@ -5574,3 +5574,269 @@ get_geocoordinates <- function (x, geonames, places.geonames) {
 
 }
 
+#' @title Dimension Table
+#' @description Document dimension mapping table.
+#' @param ... Arguments to be passed
+#' @return Document dimension table
+#' @export
+#' @author Leo Lahti \email{leo.lahti@@iki.fi}
+#' @references See citation("bibliographica")
+#' @examples dimension_table()
+#' @keywords utilities
+dimension_table <- function (...) {
+  
+  f <- system.file("extdata/documentdimensions.csv", package = "bibliographica")
+  dd <- read.csv(f, header = TRUE, sep = ",")# [-1,]
+  colnames(dd) <- gsub("^X", "", colnames(dd))
+  colnames(dd)[[1]] <- "height"
+  colnames(dd) <- gsub("NA.", "NA", colnames(dd))
+  dd <- dd[-1,]
+  
+  dd <- apply(dd, 2, as.character)
+  
+  # Add 1to
+  ss <- sheet_sizes()
+  
+  dd <- cbind(dd, "1to" = rep("x", nrow(dd)))
+  row1 <- rep("x", ncol(dd))
+  dd <- rbind(row1, dd)  
+  dd[, "height"] <- as.character(dd[, "height"])
+  dd[,"NA"] <- as.character(dd[,"NA"])
+  dd[,"1to"] <- as.character(dd[,"1to"])
+  inds <- ss$gatherings == "1to"
+  dd[1, "height"] <- ss[inds, "height"]
+  dd[1, "NA"] <- ss[inds, "width"]
+  dd[1, "1to"] <- ss[inds, "width"]
+  
+  # Reorder columns
+  rownames(dd) <- NULL
+  
+  dd <- as.data.frame(dd, stringsAsFactors = FALSE)
+  
+  dd
+  
+}
+
+
+#' @title Dimension Table
+#' @description Document dimension mapping table.
+#' @param ... Arguments to be passed
+#' @return Document dimension table
+#' @export
+#' @author Leo Lahti \email{leo.lahti@@iki.fi}
+#' @references See citation("bibliographica")
+#' @examples dimension_table()
+#' @keywords utilities
+dimension_table <- function (...) {
+  
+  #f <- system.file("extdata/documentdimensions.csv", package = "bibliographica")
+  dd <- read.csv("documentdimensions.csv", header = TRUE, sep = ",")# [-1,]
+  colnames(dd) <- gsub("^X", "", colnames(dd))
+  colnames(dd)[[1]] <- "height"
+  colnames(dd) <- gsub("NA.", "NA", colnames(dd))
+  dd <- dd[-1,]
+  
+  dd <- apply(dd, 2, as.character)
+  
+  # Add 1to
+  ss <- sheet_sizes()
+  
+  dd <- cbind(dd, "1to" = rep("x", nrow(dd)))
+  row1 <- rep("x", ncol(dd))
+  dd <- rbind(row1, dd)  
+  dd[, "height"] <- as.character(dd[, "height"])
+  dd[,"NA"] <- as.character(dd[,"NA"])
+  dd[,"1to"] <- as.character(dd[,"1to"])
+  inds <- ss$gatherings == "1to"
+  dd[1, "height"] <- ss[inds, "height"]
+  dd[1, "NA"] <- ss[inds, "width"]
+  dd[1, "1to"] <- ss[inds, "width"]
+  
+  # Reorder columns
+  rownames(dd) <- NULL
+  
+  dd <- as.data.frame(dd, stringsAsFactors = FALSE)
+  
+  dd
+  
+}
+
+
+#' @title Sheet Area
+#' @description Sheet area in cm2.
+#' @param x Sheet size 
+#' @param sheet.dimension.table Table to estimate sheet area. 
+#' 	  If not given, the table given by sheet_sizes() is used by default.
+#' @param verbose Verbose
+#' @return Sheet area (cm2)
+#' @export
+#' @details Sheet size is calculated according to the table given as output 
+#'          from call sheet_area()
+#' @author Leo Lahti \email{leo.lahti@@iki.fi}
+#' @references See citation("bibliographica")
+#' @examples sheet_area("2to")
+#' @keywords utilities
+sheet_area <- function (x = NULL, sheet.dimension.table = NULL, verbose = FALSE) {
+  
+  if (is.null(sheet.dimension.table)) {
+    
+    if (verbose) {message("sheet.dimension.table not given, using sheet_sizes() mapping table by default")}
+    tab <- sheet_sizes()
+  } else {
+    tab <- sheet.dimension.table
+  }
+  
+  # Ensure correct formatting
+  tab$format <- str_trim(as.character(tab$format))
+  tab$gatherings <- str_trim(as.character(tab$gatherings))
+  for (i in c("width", "height", "area")) {
+    tab[,i] <- as.numeric(str_trim(as.character(tab[,i])))
+  }
+  
+  if (!is.null(x)) {
+    x <- as.character(x)
+    ind <- which((tab$format %in% x) | (tab$gatherings %in% x))
+    
+    if (length(ind) > 0) {
+      area <- tab[ind, "area"]
+      
+      if (verbose) {
+        message(paste("The input", x, "corresponds to", tab[ind, "sheet"], "paper with", tab[ind, "width"], "cm width and", tab[ind, "height"], "cm height and an area of", tab[ind, "area"], "cm2"))
+      }
+    } else {
+      # warning(paste(x, "not found from the sheet size conversion table"))
+      return(NA)
+    }
+  } else {
+    return(tab)
+  }
+  
+  area
+  
+}
+
+
+#' @title Sheet Sizes
+#' @description Read sheet size table.
+#' @param ... Arguments to be passed
+#' @return Sheet size table
+#' @export
+#' @author Leo Lahti \email{leo.lahti@@iki.fi}
+#' @references See citation("bibliographica")
+#' @examples sheetsizes <- sheet_sizes()
+#' @keywords utilities
+sheet_sizes <- function (...) {  
+  
+  # Read the mapping table
+  #f <- system.file("extdata/sheetsizes.csv", package = "bibliographica")
+  tab <- as.data.frame(read.csv("sheetsizes.csv", sep = ","))
+  tab$format <- str_trim(as.character(tab$format))
+  tab$gatherings <- str_trim(as.character(tab$gatherings)) 
+  tab$gatherings <- order_gatherings(tab$gatherings)
+  
+  tab  
+}
+
+#' @title order_gatherings
+#' @description Sort gatherings levels 
+#' @param x A vector or factor of gathering data
+#' @return A factor with ordered gatherings levels
+#' @author Leo Lahti \email{leo.lahti@@iki.fi}
+#' @references See citation("bibliographica")
+#' @examples order_gatherings(factor(c("2fo", "1to", "8vo")))
+#' @export
+#' @keywords utilities
+order_gatherings <- function (x) {
+  
+  # Remove unrecognized formats
+  x <- polish_gatherings(x)
+  
+  # Recognize gatherings format (2fo or folio)
+  format <- gatherings_format(x)
+  
+  # Denote the ordering directly in the table		 
+  glevels <- tolower(unique(gatherings_table()[[format]]))
+  
+  # Capitalize
+  x <- str_to_title(x)
+  glevels <- str_to_title(glevels)
+  
+  # Exception
+  x <- gsub("Bs", "bs", x)
+  glevels <- gsub("Bs", "bs", glevels)  
+  
+  x <- as.character(x)
+  x[is.na(x)] <- "NA"
+  fails <- unlist(setdiff(unique(x), glevels), use.names = FALSE)
+  x[x %in% fails] <- "NA"
+  inds <- which(glevels %in% x)
+  glevels <- glevels[inds]
+  
+  # Order the levels
+  factor(x, levels = glevels)
+}
+
+
+#' @title polish_gatherings
+#' @description Polish gatherings
+#' @param x A vector or factor of gathering data
+#' @return A factor with polished gatherings levels
+#' @author Leo Lahti \email{leo.lahti@@iki.fi}
+#' @references See citation("bibliographica")
+#' @examples polish_gatherings(factor(c("2fo", "1tolded", "8vo")))
+#' @export
+#' @keywords utilities
+polish_gatherings <- function (x) {
+  
+  gtab <- gatherings_table()
+  
+  # Denote the polishing directly in the table		 
+  glevels <- unique(c(gtab$Standard,
+                      gtab$Name,
+                      gtab$Alternate,
+                      gtab$Symbol))
+  
+  glevels <- unique(c(glevels, tolower(glevels)))
+  
+  # Remove unrecognized formats
+  inds <- which(!tolower(x) %in% glevels)
+  if (length(inds) > 0) {
+    warning(paste("Removing the following unrecognized gatherings:", paste(sort(unique(x[inds])), collapse = ", ")))
+    x[inds] <- NA
+  }
+  
+  tolower(x)
+  
+}
+
+#' @title Gatherings Table
+#' @description Document gatherings names mapping table.
+#' @param ... Arguments to be passed
+#' @return Document gatherings table
+#' @export
+#' @author Leo Lahti \email{leo.lahti@@iki.fi}
+#' @references See citation("bibliographica")
+#' @examples gatherings_table()
+#' @keywords utilities
+gatherings_table <- function (...) {
+  
+  #f <- system.file("extdata/document_size_abbreviations.csv", package = "bibliographica")
+  dd <- read.csv("document_size_abbreviations.csv", header = TRUE, sep = ";")
+  dd <- apply(dd, 2, as.character)
+  dd[dd == ""] <- NA
+  dd <- as.data.frame(dd, stringsAsFactors = FALSE)
+  
+  dd
+  
+}
+
+# Recognize gatherings format
+gatherings_format <- function (x) {
+  
+  gtab <- gatherings_table()
+  
+  # Majority vote
+  names(which.max(apply(gtab, 2, function (i) {sum(x %in% i)})))
+  
+}
+

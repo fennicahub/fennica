@@ -19,7 +19,7 @@ The publication years section offers a comprehensive summary of the dataset's ye
 
 [Publication year discarded](dataTable/data_table.html?path=../output.tables/publication_time_discarded.csv) 
 
-Publication years in is available for `r sum(!is.na(df.harmonized$publication_year))` documents (`r round(100*mean(!is.na(df.harmonized$publication_year)))`%). The publication years span is `r paste(range(na.omit(as.numeric(df.harmonized$publication_year))), collapse = "-")`.
+Publication years in is available for `r sum(!is.na(df_pub_time$publication_year))` documents (`r round(100*mean(!is.na(df_pub_time$publication_year)))`%). The publication years span is `r paste(range(na.omit(as.numeric(df_pub_time$publication_year))), collapse = "-")`.
 
 ## Subset Analysis: 1809-1917
 
@@ -40,7 +40,7 @@ A plot depicting title counts per decade from 1809 to 1917 enriches the analysis
 #| fig.height = 6
 
 
-df2 <- df %>% group_by(publication_decade) %>% filter(publication_decade < 2010) 
+df2 <- df_pubtime19 %>% group_by(publication_decade) %>% filter(publication_decade < 2010) 
 p <- ggplot(df2, aes(publication_decade)) +
      geom_bar() + scale_y_log10() +
      ggtitle("Title count timeline")

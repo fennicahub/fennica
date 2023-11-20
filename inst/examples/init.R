@@ -41,26 +41,19 @@ df.orig <- df.orig %>%
                 "language" = 5, # ("041","a")
                 "title_uniform" = 6, # ("240","a")
                 "title" = 7, #("245","a")
-                "signum" = 8) # ("callnumbers","a")
-
-
-#"physical_dimensions"= 10, # ("300","c")
-
-# "title_uniform" = 5, # ("240","a")
-#"title" = 6, #("245","a")
-#"publication_place" = 7, #("260","a")
-# "publisher" = 8, #("260","b")
-#"publication_time" = 9, #("260","c")
-#"physical_dimensions"= 10, # ("300","c")
-#"publication_frequency" = 11, # ("310","a")
-#"publication_interval" = 12) # ("362","a")
-
+                "publication_place" = 8, #("260","a")
+                "publisher" = 9, #("260","b")
+                "physical_dimensions"= 10, # ("300","c"),
+                "physical extent" = 11, # ("300","a")
+                "publication_frequency" = 12, # ("310","a")
+                "publication_interval" = 13, # ("362","a")
+                "signum" = 14) # ("callnumbers","a")
 
 
 # TO be added later as we progress with preprosessing the fields below
-# "physical_extent" = 10, # ("300","a")
+
 #"subject_geography" = 14) #("651","a")
-#"callnumbers" = 18) # ("callnumbers","a")]
+
 
 
 

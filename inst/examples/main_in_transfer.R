@@ -1,11 +1,10 @@
 update.fields <- c(
 
-      "publication_interval", # Some overlap with time.. TODO
+      "publication_interval", # Some overlap with time.. TODO JM: qmd works
       "publication_frequency", 
       "physical_extent",       
-      "physical_dimension",
+      "physical_dimension", #JM: qmd works 
       "subject_geography", # IT takes care?
-      
       )
 
 
@@ -17,6 +16,23 @@ catalog <- "fennica"
 languages <- c("finnish", "latin", "swedish")
 
 
+## PUBLICATION FREQUENCY ENRICH
+message("Enrich publication frequency")
+# publication_interval "1-3" etc. does not refer to years but number of publications
+# within the given years. Augment the data based on this logic.
+df.preprocessed <-read.csv("df.preprocessed.csv")
+
+if ("publication_frequency_text" %in% names(df.preprocessed)) {
+  dfo <- df.orig[df.preprocessed$melinda_id, ]
+  idx <- grep("^[0-9]{1}-[0-9]{1,2}$", gsub("\\.$", "", dfo$publication_interval))
+  if (length(idx) > 0) {
+    f <- sapply(strsplit(gsub("\\.$", "", dfo$publication_interval[idx]), "-"), function (x) {diff(sort(as.numeric(x)))+1})
+    fa <- f/(df.preprocessed$publication_year_till[idx] - df.preprocessed$publication_year_from[idx] + 1)
+    i <- is.na(df.preprocessed$publication_frequency_annual[idx])
+    df.preprocessed$publication_frequency_annual[idx[i]] <- fa[i]
+    df.preprocessed$publication_frequency_text <- publication_frequency_text(df.preprocessed$publication_frequency_text, df.preprocessed$publication_frequency_annual)
+  }
+}
 
 
 ## COMBINE PUBLICATION-YEAR AND PUBLICATION-INTERVAL FIELDS
@@ -118,4 +134,21 @@ source("analysis.run.R")
 # source("CCQ_2019/prepare_fnd_datax_for_ccq2019.R")
 
 
+
+#fix the plot
+
+#Title count versus paper consumption (top publishers in the 1809-1917):
+  
+  ```{r}
+#| label = "publishertitlespapers",
+#| fig.height = 8,
+#| fig.width = 8,
+#| echo = FALSE,
+#| warning = FALSE
+#res <- compare_title_paper(df, "publisher", selected = tops)
+tops <- names(top(df_19, field = "publisher", n = 10))
+res <- compare_title_paper(df_19, "publisher")
+print(res$plot)  
+kable(subset(res$table, publisher %in% tops), digit = 2)
+```
 
