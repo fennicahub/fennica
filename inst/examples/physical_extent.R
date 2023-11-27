@@ -1,6 +1,7 @@
 
 field <- "physical_extent"
 
+#TODO physical_extent_help function does not work 
 df.tmp <- polish_physical_extent(df.orig[[field]], verbose = TRUE)
 
 # Vol number and count fields could not be extracted from physical_extent field in Fennica - remove
