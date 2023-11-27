@@ -9,6 +9,10 @@ df.tmp <- out$harmonized_full
 # Collect the results into a data.frame
 df.tmp$melinda_id <- df.orig$melinda_id
 
+# Store the title field data
+# FIXME: convert to feather or plain CSV
+data.file <- paste0(field, ".Rds")
+saveRDS(df.tmp, file = data.file)
 
 # Define output files
 file_discarded <- paste0(output.folder, field, "_discarded.csv")
@@ -35,6 +39,9 @@ original.na <- s[s %in% out$unrecognized]
 # .. ie. those are "discarded" cases; list them in a table
 tmp2 <- write_xtable(original.na, file_discarded, count = TRUE)
 
+# Generate markdown summary
+df <- readRDS(data.file)
+
 # ------------------------------------------------------------
 #Run publication_time.R to separate melindas for 1809-1917
 source("publication_time.R")
@@ -49,7 +56,7 @@ saveRDS(df_19, file = data.file)
 
 # Define output files for 19th century
 file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
-file_accepted_19<- paste0(output.folder, field, "_accepted_19.csv")
+file_accepted_19 <- paste0(output.folder, field, "_accepted_19.csv")
 
 # Generate data summaries for the whole data set 
 
@@ -71,7 +78,7 @@ original.na <- s[s %in% out$unrecognized]
 tmp2 <- write_xtable(original.na, file_discarded_19, count = TRUE)
 
 # Generate markdown summary in title.md
- df <- readRDS(data.file)
+df_19 <- readRDS(data.file)
 # tmp <- knit(input = paste(field, ".Rmd", sep = ""), 
 #             output = paste(field, ".md", sep = ""))
 

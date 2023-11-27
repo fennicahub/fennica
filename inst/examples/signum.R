@@ -1,9 +1,13 @@
 field <- "signum"
 
-
 df.tmp <- as.data.frame(df.orig[[field]])
 df.tmp <- replace(df.tmp, df.tmp == "", NA)
 
+# Add melinda id info as first column
+df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
+                    signum = df.orig$signum, # add field column
+                    df.tmp)
+rownames(df.tmp) <- NULL
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV

@@ -18,8 +18,6 @@ source("title.R")
 
 -   [Unique accepted entries](dataTable/data_table.html?path=../output.tables/title_accepted_19.csv): `r length(unique(df_19[[field]]))`
 -   [Unique discarded entries in original data](dataTable/data_table.html?path=../output.tables/title_discarded_19.csv) (excluding NA cases): `r as.vector(countLines(file_discarded_19) - 1)`
--   Original documents with non-NA titles: `r sum(!is.na(df_19[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df_19[[field]])), 1)`%)
--   Original documents with missing (NA) titles `r sum(is.na(df_19[[field]]))` / `r nrow(df_19)` documents (`r round(100*mean(is.na(df_19[[field]])), 1)`%)
 
 Top-`r ntop` titles and their title counts for the 1809-1917 period
 

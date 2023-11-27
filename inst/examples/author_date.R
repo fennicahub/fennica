@@ -9,13 +9,17 @@ df.tmp <- df.tmp %>%
   mutate(author_age = author_death-author_birth) %>% # Add author age
   mutate(author_age = na_if(author_age, 0))          # Replace 0 age with NA
 
-# Add original row info as first column
+# Add melinda id info as first column
 df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
                     author_date = df.orig$author_date, # add field column
                     df.tmp)
 rownames(df.tmp) <- NULL
 
 # ------------------------------------------------------------
+# Store the title field data
+# FIXME: convert to feather or plain CSV
+data.file <- paste0(field, ".Rds")
+saveRDS(df.tmp, file = data.file)
 
 # Generate data summaries for the whole data set
 o <- as.character(df.orig[[field]])
@@ -48,6 +52,9 @@ tab$Frequency <- round(100 * tab$Freq/sum(tab$Freq), 1)
 colnames(tab) <- c("Term", "Count", "Frequency")
 write.table(tab, file = discard.file, quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t")
 
+
+# Generate markdown summary
+df <- readRDS(data.file)
 # ------------------------------------------------------------
 # Run publication_time.R file to get the melindas needed for the 19th century slicing
 source("publication_time.R")
@@ -94,6 +101,6 @@ colnames(tab) <- c("Term", "Count", "Frequency")
 write.table(tab, file = discard.file19, quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t")
 
 # Generate markdown summary
-df <- readRDS(data.file)
+df_19 <- readRDS(data.file)
 # tmp <- knit(input = paste(field, ".Rmd", sep = ""),
 #             output = paste(field, ".md", sep = ""))

@@ -15,13 +15,13 @@ The author's lifetime section furnishes concise summaries following an extensive
 ## Complete Dataset Overview
 
 
-[Author date accepted for the whole Fennica](dataTable/data_table.html?path=../output.tables/author_date_accepted.csv)
+[Author date accepted for the complete Fennica](dataTable/data_table.html?path=../output.tables/author_date_accepted.csv)
 
-[Author date discarded for the whole Fennica](dataTable/data_table.html?path=../output.tables/author_date_discarded.csv)
+[Author date discarded for the complete Fennica](dataTable/data_table.html?path=../output.tables/author_date_discarded.csv)
 
 
 ## Subset Analysis: 1809-1917
 
 [Author date accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/author_date_accepted_19.csv)
 
-[Author date accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/author_date_accepted_19.csv)
+[Author date discarded for 1809-1917](dataTable/data_table.html?path=../output.tables/author_date_discarded_19.csv)
