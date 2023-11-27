@@ -1,11 +1,8 @@
+field <- "signum"
 
-field <- "physical_extent"
 
-df.tmp <- polish_physical_extent(df.orig[[field]], verbose = TRUE)
-
-# Vol number and count fields could not be extracted from physical_extent field in Fennica - remove
-df.tmp$volcount <- NULL
-df.tmp$volnumber <- NULL
+df.tmp <- as.data.frame(df.orig[[field]])
+df.tmp <- replace(df.tmp, df.tmp == "", NA)
 
 
 # Store the title field data
@@ -42,13 +39,15 @@ df <- readRDS(data.file)
 # tmp <- knit(input = paste(field, ".Rmd", sep = ""), 
 #             output = paste(field, ".md", sep = ""))
 
+
 # ------------------------------------------------------------
 
 # Run publication_time.R file to get the melindas needed for the 19th century slicing
 source("publication_time.R")
 
-df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
-field <- "physical_extent"
+df_19 <- as.data.frame(df.tmp[df.tmp$melinda_id %in% melindas_19,])
+
+field <- "signum"
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV
@@ -83,5 +82,4 @@ tmp <- write_xtable(original.na, file_discarded_19, count = TRUE)
 df_19 <- readRDS(data.file)
 # tmp <- knit(input = paste(field, ".Rmd", sep = ""), 
 # 
-
 

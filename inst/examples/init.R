@@ -44,7 +44,7 @@ df.orig <- df.orig %>%
                 "publication_place" = 8, #("260","a")
                 "publisher" = 9, #("260","b")
                 "physical_dimensions"= 10, # ("300","c"),
-                "physical extent" = 11, # ("300","a")
+                "physical_extent" = 11, # ("300","a")
                 "publication_frequency" = 12, # ("310","a")
                 "publication_interval" = 13, # ("362","a")
                 "signum" = 14) # ("callnumbers","a")

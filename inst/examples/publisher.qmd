@@ -49,20 +49,7 @@ print(p)
 
 
 
-Title count versus paper consumption (top publishers in the 1809-1917):
 
-```{r}
-#| label = "publishertitlespapers",
-#| fig.height = 8,
-#| fig.width = 8,
-#| echo = FALSE,
-#| warning = FALSE
-#res <- compare_title_paper(df, "publisher", selected = tops)
-tops <- names(top(df_19, field = "publisher", n = 10))
-res <- compare_title_paper(df_19, "publisher")
-print(res$plot)  
-kable(subset(res$table, publisher %in% tops), digit = 2)
-```
 
 
 

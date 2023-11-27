@@ -61,5 +61,11 @@
   },
   "physical_dimensions.qmd": {
     "physical_dimensions.html": "b61e349e"
+  },
+  "publication_frequency.qmd": {
+    "publication_frequency.html": "57aea5e0"
+  },
+  "signum.qmd": {
+    "signum.html": "7bd36172"
   }
 }

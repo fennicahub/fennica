@@ -30,11 +30,12 @@ book:
   #- corporate.qmd
   - language.qmd
   - physical_dimensions.qmd
-  - physical_extent.qmd
+  #- physical_extent.qmd
   #- holder.qmd
   #- note_dissertation.qmd
   #- note_granter.qmd
   #- note_source.qmd
+  - signum.qmd
   - publisher.qmd
   ##- publication_interval.qmd
   - publication_place.qmd

@@ -1,0 +1,26 @@
+--- 
+title: "Signum"
+hide-description: false
+description: ""
+---
+
+```{r}
+#| include = FALSE
+source("init.R")
+source("signum.R")
+```
+
+
+## Complete Dataset Overview
+
+
+[Author date accepted for the whole Fennica](dataTable/data_table.html?path=../output.tables/signum_accepted.csv)
+
+[Author date discarded for the whole Fennica](dataTable/data_table.html?path=../output.tables/signum_discarded.csv)
+
+
+## Subset Analysis: 1809-1917
+
+[Author date accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/signum_accepted_19.csv)
+
+[Author date accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/signum_accepted_19.csv) 
