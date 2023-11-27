@@ -10,6 +10,11 @@ df.orig$physical_dimensions <- comhis::map(df.orig$physical_dimensions,
 # devtools::load_all("~/comhis/rpkg/bibliographica")
 df.tmp <- polish_dimensions(df.orig[[field]], fill = TRUE, verbose = TRUE)
 
+# Add melinda id info as first column
+df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
+                    physical_dimensions = df.orig$physical_dimensions, # add field column
+                    df.tmp)
+
 # Store the title field data
 # FIXME: convert to feather or plain CSV
 data.file <- paste0(field, ".Rds")

@@ -7,6 +7,11 @@ df.tmp <- polish_physical_extent(df.orig[[field]], verbose = TRUE)
 df.tmp$volcount <- NULL
 df.tmp$volnumber <- NULL
 
+# Add melinda id info as first column
+df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
+                    physical_extent = df.orig$physical_extent, # add field column
+                    df.tmp)
+
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV
