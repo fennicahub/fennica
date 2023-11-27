@@ -3931,42 +3931,96 @@ estimate_pages <- function (x) {
   # Initialize	       
   pagecount.info <- c(multiplier = 1, squarebracket = 0, plate = 0, arabic = 0, roman = 0, sheet = 0)
   library(stringr)
+  # 
+  # if (all(is.na(x))) {
+  #   return(pagecount.info)
+  # } else if (!is.na(suppressWarnings(as.numeric(x)))) {
+  #   pagecount.info$sheet <- as.numeric(x)
+  #   return(pagecount.info)           
+  # } else if (str_detect(x, "^[IVXLCDM]+$")) {
+  #   pagecount.info$roman <- suppressWarnings(as.numeric(as.roman(x)))
+  #   return(pagecount.info)               
+  # } else if (str_detect(x, "^\\[[0-9]+ {0,1}[p|s]{0,1}\\]$")) {
+  #   pagecount.info$squarebracket <- suppressWarnings(as.numeric(str_trim(gsub("\\[", "", gsub("\\]", "", gsub(" [p|s]", "", x))))))
+  #   return(pagecount.info)                  
+  # } else if (str_detect(x, "^[0-9]+ sheets$")) {
+  #   pagecount.info$sheet <- 2 * as.numeric(as.roman(str_trim(unlist(strsplit(x, "sheet"), use.names = FALSE)[[1]])))
+  #   return(pagecount.info)                      
+  # } else if (str_detect(x, "\\[{0,1}[0-9]* \\]{0,1} leaves")) {
+  #   pagecount.info$squarebracket <- str_trim(gsub("\\[", "", gsub("\\]", "", x)))
+  #   return(pagecount.info)                          
+  # } else if (str_detect(x, "[0-9]+ \\+ [0-9]+")) {
+  #   pagecount.info$sheet <- sum(as.numeric(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))
+  #   return(pagecount.info)                              
+  # } else if (!is.na(sum(as.numeric(roman2arabic(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))))) {
+  #   x <- gsub("\\+", ",", x)
+  # } else if (str_detect(x, "^p") && !str_detect(x, "-")) {
+  #   if (is.numeric(str_trim(gsub("^p", "", x)))) {
+  #     pagecount.info$sheet <- 1
+  #     return(pagecount.info)                              
+  #   } else if (str_detect(x, "^p") && str_detect(x, "-")) {
+  #     x <- gsub("^p", "", x)
+  #   }   
+  # } else if (str_detect(x, "^1 sheet \\[*[0-9+]\\]*")) {
+  #   x <- gsub("1 sheet", "", x)
+  #   x <- gsub("\\[1\\]", "2", x)
+  # } else if (str_detect(x, "^[0-9]+ sheets* [0-9]+ pages*$")) {
+  #   x <- gsub("^s", "", unlist(strsplit(x, "sheet"), use.names = FALSE)[[2]])
+  # }
+  
   
   if (all(is.na(x))) {
+    # "NA"
     return(pagecount.info)
   } else if (!is.na(suppressWarnings(as.numeric(x)))) {
+    # "3"
     pagecount.info$sheet <- as.numeric(x)
-    return(pagecount.info)           
-  } else if (str_detect(x, "^[IVXLCDM]+$")) {
+    return(pagecount.info)            
+  } else if ((is.roman(x) && length(unlist(strsplit(x, ","), use.names = FALSE)) == 1 && length(grep("-", x)) == 0)) {
+    # "III" but not "ccclxxiii-ccclxxiv"
     pagecount.info$roman <- suppressWarnings(as.numeric(as.roman(x)))
-    return(pagecount.info)               
-  } else if (str_detect(x, "^\\[[0-9]+ {0,1}[p|s]{0,1}\\]$")) {
+    return(pagecount.info)                
+  } else if (length(grep("^\\[[0-9]+ {0,1}[p|s]{0,1}\\]$", x)>0)) {
+    # "[3]" or [3 p]
     pagecount.info$squarebracket <- suppressWarnings(as.numeric(str_trim(gsub("\\[", "", gsub("\\]", "", gsub(" [p|s]", "", x))))))
-    return(pagecount.info)                  
-  } else if (str_detect(x, "^[0-9]+ sheets$")) {
+    return(pagecount.info)                    
+  } else if (length(grep("^[0-9]+ sheets$", x)) == 1) {
+    # "1 sheet is 2 pages"
     pagecount.info$sheet <- 2 * as.numeric(as.roman(str_trim(unlist(strsplit(x, "sheet"), use.names = FALSE)[[1]])))
-    return(pagecount.info)                      
-  } else if (str_detect(x, "\\[{0,1}[0-9]* \\]{0,1} leaves")) {
+    return(pagecount.info)                        
+  } else if (length(grep("\\[{0,1}[0-9]* \\]{0,1} leaves", x)) > 0) {
+    # "[50 ] leaves"    
     pagecount.info$squarebracket <- str_trim(gsub("\\[", "", gsub("\\]", "", x)))
-    return(pagecount.info)                          
-  } else if (str_detect(x, "[0-9]+ \\+ [0-9]+")) {
+    return(pagecount.info)                            
+  } else if (length(grep("[0-9]+ \\+ [0-9]+", x))>0) {
+    # 9 + 15
     pagecount.info$sheet <- sum(as.numeric(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))
-    return(pagecount.info)                              
+    return(pagecount.info)                                
   } else if (!is.na(sum(as.numeric(roman2arabic(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))))) {
+    # IX + 313
     x <- gsub("\\+", ",", x)
-  } else if (str_detect(x, "^p") && !str_detect(x, "-")) {
+    #sum(as.numeric(roman2arabic(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE)))))
+    #return(pagecount.info)                                    
+  } else if (length(grep("^p", x)) > 0 && length(grep("-", x)) == 0) {
+    # p66 -> 1
     if (is.numeric(str_trim(gsub("^p", "", x)))) {
       pagecount.info$sheet <- 1
-      return(pagecount.info)                              
-    } else if (str_detect(x, "^p") && str_detect(x, "-")) {
+      return(pagecount.info)                                
+    } else if (length(grep("^p", x)) > 0 && length(grep("-", x)) > 0) {
+      # p5-8 -> 5-8
       x <- gsub("^p", "", x)
-    }   
-  } else if (str_detect(x, "^1 sheet \\[*[0-9+]\\]*")) {
+    }    
+  } else if (length(grep("^1 sheet \\[*[0-9+]\\]*", x))>0) {
+    # "1 sheet [166]"
     x <- gsub("1 sheet", "", x)
+    # 1 sheet ([1+] p.)
     x <- gsub("\\[1\\]", "2", x)
-  } else if (str_detect(x, "^[0-9]+ sheets* [0-9]+ pages*$")) {
+  } else if (length(grep("^[0-9]+ sheets* [0-9]+ pages*$", x))>0) {
+    # 3 sheets 3 pages
     x <- gsub("^s", "", unlist(strsplit(x, "sheet"), use.names = FALSE)[[2]])
   }
+  
+  # --------------------------------------------
   
   # Then proceeding to the more complex cases...
   # Harmonize the items within commas
@@ -5985,6 +6039,59 @@ polish_physical_extent <- function (x, verbose = FALSE, rm.dim.file = NULL) {
    
    if (verbose) { message("Project to original list: mapping") }  
    ret[inds, ]
+  
+}
+
+#' @title Sheet Area
+#' @description Sheet area in cm2.
+#' @param x Sheet size 
+#' @param sheet.dimension.table Table to estimate sheet area. 
+#' 	  If not given, the table given by sheet_sizes() is used by default.
+#' @param verbose Verbose
+#' @return Sheet area (cm2)
+#' @export
+#' @details Sheet size is calculated according to the table given as output 
+#'          from call sheet_area()
+#' @author Leo Lahti \email{leo.lahti@@iki.fi}
+#' @references See citation("bibliographica")
+#' @examples sheet_area("2to")
+#' @keywords utilities
+sheet_area <- function (x = NULL, sheet.dimension.table = NULL, verbose = FALSE) {
+  
+  if (is.null(sheet.dimension.table)) {
+    
+    if (verbose) {message("sheet.dimension.table not given, using sheet_sizes() mapping table by default")}
+    tab <- sheet_sizes()
+  } else {
+    tab <- sheet.dimension.table
+  }
+  
+  # Ensure correct formatting
+  tab$format <- str_trim(as.character(tab$format))
+  tab$gatherings <- str_trim(as.character(tab$gatherings))
+  for (i in c("width", "height", "area")) {
+    tab[,i] <- as.numeric(str_trim(as.character(tab[,i])))
+  }
+  
+  if (!is.null(x)) {
+    x <- as.character(x)
+    ind <- which((tab$format %in% x) | (tab$gatherings %in% x))
+    
+    if (length(ind) > 0) {
+      area <- tab[ind, "area"]
+      
+      if (verbose) {
+        message(paste("The input", x, "corresponds to", tab[ind, "sheet"], "paper with", tab[ind, "width"], "cm width and", tab[ind, "height"], "cm height and an area of", tab[ind, "area"], "cm2"))
+      }
+    } else {
+      # warning(paste(x, "not found from the sheet size conversion table"))
+      return(NA)
+    }
+  } else {
+    return(tab)
+  }
+  
+  area
   
 }
 

@@ -35,12 +35,12 @@ book:
   #- note_dissertation.qmd
   #- note_granter.qmd
   #- note_source.qmd
-  - signum.qmd
   - publisher.qmd
   ##- publication_interval.qmd
   - publication_place.qmd
   - publication_time.qmd
   - publication_frequency.qmd
+  - signum.qmd
   - title_uniform.qmd
   - title.qmd
   ##- subject_topic.qmd
