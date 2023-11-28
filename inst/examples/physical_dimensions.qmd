@@ -44,4 +44,10 @@ The estimated dimensions are based on the following auxiliary information sheets
 
 * [Document dimension estimates](https://github.com/fennicahub/fennica/blob/master/inst/extdata/documentdimensions.csv) (used when information is partially missing)
 
+## Subset 1809-1917
+
+* [Accepted dimension info](dataTable/data_table.html?path=../output.tables/physical_dimensions_accepted_19.csv)
+
+* [Discarded dimension info](dataTable/data_table.html?path=../output.tables/physical_dimensions_discarded_19.csv)
+
 
