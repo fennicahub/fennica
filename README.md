@@ -3,7 +3,7 @@ Fennica: Harmonized Finnish national bibliography
 
 This repository contains code for cleaning, enriching and automatically generating reports on the Finnish national bibliography, [Fennica](https://www.kansalliskirjasto.fi/fi/palvelut/fennica-suomen-kansallisbibliografia). 
 
-This snapshot of the Fennica dataset includes bibliographic metadata for over 70,000 documents between 1488-1955, representing the publishing activity in Finland during that period. This is analyzed in parallel with [Kungliga](https://github.com/comhis/kungliga), a related collection of bibliographic metadata from the Swedish National library. In the future it will include the whole dataset, from earliest documents to the current day.
+This snapshot of the Fennica dataset includes bibliographic metadata for over one million documents between 1488-2022, representing the publishing activity in Finland during that period. This is analyzed in parallel with [Kungliga](https://github.com/comhis/kungliga), a related collection of bibliographic metadata from the Swedish National library. In the future it will include the whole dataset, from earliest documents to the current day.
 
 ### Reproducing the workflow
 
