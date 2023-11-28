@@ -29,7 +29,7 @@ book:
   - author_date.qmd
   #- corporate.qmd
   - language.qmd
-  #- physical_dimensions.qmd
+  - physical_dimensions.qmd
   #- physical_extent.qmd
   #- holder.qmd
   #- note_dissertation.qmd

@@ -38,7 +38,7 @@ source("publication_place.R")
 
 * `r length(unique(str_trim(unlist(strsplit(as.character(df_19$publication_place), ";")))))` [unique publication places](dataTable/data_table.html?path=../output.tables/publication_place_accepted_19.csv); available for `r sum(!is.na(df_19$publication_place))` documents (`r round(100*mean(!is.na(df_19$publication_place)))`%).
 
-* `r length(unique(df_19$publication_country))` [unique publication countries](dataTable/data_table.html?path=../output.tables/publication_country_accepted_19.csv); available for `r sum(!is.na(df$publication_country))` documents (`r round(100*mean(!is.na(df_19$publication_country)))`%).
+* Unique publication country for a period 1809-1917:  `r length(unique(df_19$publication_country))`; available for `r sum(!is.na(df_19$publication_country))` documents (`r round(100*mean(!is.na(df_19$publication_country)))`%).
 
  * `r length(readLines(paste0("output.tables/publication_place_discarded_19.csv"))) - 1` [discarded place names](dataTable/data_table.html?path=../output.tables/publication_place_discarded_19.csv)
 
