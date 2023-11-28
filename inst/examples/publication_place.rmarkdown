@@ -11,6 +11,7 @@ source("init.R")
 source("publication_place.R")
 ```
 
+
 ## Complete Dataset Overview
 
  * `r length(unique(str_trim(unlist(strsplit(as.character(df$publication_place), ";")))))` [unique publication places](dataTable/data_table.html?path=../output.tables/publication_place_accepted.csv); available for `r sum(!is.na(df$publication_place))` documents (`r round(100*mean(!is.na(df$publication_place)))`%).
@@ -46,6 +47,7 @@ source("publication_place.R")
 
 Top-`r ntop` publication places are shown together with the number of documents.
 
+
 ```{r}
 #| label = "summaryplace",
 #| echo = FALSE,
@@ -66,7 +68,6 @@ p <- p + scale_y_log10()
 p <- p + ylab("Title count")
 print(p)
 ```
- 
 
 ```{r}
 #| label = "summaryplace3",

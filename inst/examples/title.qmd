@@ -9,8 +9,8 @@ source("title.R")
 
 ## Complete Dataset Overview
 
--   [Unique accepted entries](dataTable/data_table.html?path=../%60r%20file_accepted%60): `r length(unique(df[[field]]))`
--   [Unique discarded entries in original data](dataTable/data_table.html?path=../%60r%20file_discarded%60) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
+-   [Unique accepted entries](dataTable/data_table.html?path=../output.tables/title_accepted.csv): `r length(unique(df[[field]]))`
+-   [Unique discarded entries in original data](dataTable/data_table.html?path=../output.tables/title_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
 -   Original documents with non-NA titles: `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
 -   Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
 

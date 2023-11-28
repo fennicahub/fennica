@@ -35,7 +35,7 @@ Language codes are from [MARC](https://www.loc.gov/marc/languages/language_code.
 ### Top languages for 1809-1917
 
 Number of titles assigned with each language (top-10). For a complete list,
-see [accepted languages](dataTable/data_table.html?path=../output.tables/language_accepted_19.csv).
+see [accepted languages](dataTable/data_table.html?path=../output.tables/language_accepted.csv).
 
 ```{r}
 #| label = "summarylang2",

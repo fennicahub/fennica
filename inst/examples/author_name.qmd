@@ -38,7 +38,7 @@ Author's name section's summary tables offer insights into the dataset's integri
 
 -   [Unique accepted entries for for 1809-1917 years](dataTable/data_table.html?path=../output.tables/author_name_accepted_19.csv): `r length(unique(df_19[[field]]))`
 
--   [Unique discarded entries in original data](dataTable/data_table.html?path=../output.tables/author_name_discraded_19.csv) (excluding NA cases): `r as.vector(countLines(file_discarded_19) - 1)`
+-   [Unique discarded entries in original data](dataTable/data_table.html?path=../output.tables/author_name_discarded_19.csv) (excluding NA cases): `r as.vector(countLines(file_discarded_19) - 1)`
 
 Top-`r ntop` titles and their title counts for period 1809-1917.
 
