@@ -4,11 +4,12 @@ field <- "publication_time"
 df.orig$publication_time <- sapply(strsplit(as.character(df.orig$publication_time), "\\|"), `[`, 1)
 as.numeric(na.omit(df.orig$publication_time))
 #polish full data
-tmp  <- polish_years(df.orig[[field]], check = TRUE)
+tmp <- polish_years(df.orig[[field]], check = TRUE)
 
 # set to NA values which are longer than five 
+# TODO has to be added to the polish_years function
 tmp$from <- ifelse(nchar(tmp$from) > 5, "NA", tmp$from)
-tmp$till <- ifelse(nchar(tmp$from) > 5, "NA", tmp$till)
+tmp$till <- ifelse(nchar(tmp$till) > 5, "NA", tmp$till)
 as.numeric(tmp$from)
 as.numeric(tmp$till)
 
@@ -25,6 +26,14 @@ df.harmonized$publication_year <- df.harmonized$publication_year_from
 # Add publication_decade
 df.harmonized$publication_decade <- decade(df.harmonized$publication_year) 
 
+#NA values that are smaller than 1488 because there are only 31 of them, 
+#and they were not properly cleaned, check from the code below
+#indices <- which(df_pub_time$publication_year < 1488)
+#melinda_ids <- df_pub_time$melinda_id[indices]
+#print(melinda_ids)
+
+df.harmonized$publication_year <- ifelse(df.harmonized$publication_year < 1488, "NA", df.harmonized$publication_year)
+
 
 # ---------------------------------------------------------------------
 #1M data conversions
@@ -37,17 +46,17 @@ xx <- as.data.frame(df.harmonized) %>% filter(!is.na(publication_year)) %>%
   arrange(desc(n))
 
 conversion.file <- paste0(output.folder, field, "_conversion.csv")
-tmp <- write.table(xx,
-                   file = conversion.file,
-                   quote = FALSE,
-                   row.names = FALSE)
+t <- write.table(xx, 
+            file = conversion.file,
+            quote = FALSE,
+            row.names = FALSE)
 
 message("Discarded publication year")
 o <- as.character(df.orig[[field]])
 x <- as.character(df.harmonized[["publication_year"]])
 inds <- which(is.na(x))
 discard.file <- paste0(output.folder, field, "_discarded.csv")
-tmp <- write_xtable(o[inds],
+t <- write_xtable(o[inds],
                     file = discard.file,
                     count = TRUE)
 # Store the title field data
@@ -73,7 +82,7 @@ xx <- as.data.frame(df_pubtime19) %>% filter(!is.na(publication_year)) %>%
   arrange(desc(n))
 
 conversion.file <- paste0(output.folder, field, "_conversion_19.csv")
-tmp <- write.table(xx,
+t <- write.table(xx,
                    file = conversion.file,
                    quote = FALSE,
                    row.names = FALSE)
@@ -83,7 +92,7 @@ o <- as.character(df.harmonized[[field]])
 x <- as.character(df_pubtime19[["publication_year"]])
 inds <- which(is.na(x))
 discard.file <- paste0(output.folder, field, "_discarded_19.csv")
-tmp <- write_xtable(o[inds],
+t <- write_xtable(o[inds],
                     file = discard.file,
                     count = TRUE)
 

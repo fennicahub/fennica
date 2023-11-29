@@ -37,10 +37,10 @@ df.orig <- df.orig %>%
   dplyr::rename("melinda_id" = 1, #("035","a")
                 "author_name" = 2, # ("100","a")
                 "author_date" = 3, # ("100","d")
-                "publication_time" = 4, #("260","c")
-                "language" = 5, # ("041","a")
-                "title_uniform" = 6, # ("240","a")
-                "title" = 7, #("245","a")
+                "publication_time" = 4, #("260","c") tai 008 
+                "language" = 5, # ("041","a") tai 008 / 35-37
+                "title_uniform" = 6, # ("240","a") 240 b c 
+                "title" = 7, #("245","a") 
                 "publication_place" = 8, #("260","a")
                 "publisher" = 9, #("260","b")
                 "physical_dimensions"= 10, # ("300","c"),
@@ -53,8 +53,6 @@ df.orig <- df.orig %>%
 # TO be added later as we progress with preprosessing the fields below
 
 #"subject_geography" = 14) #("651","a")
-
-
 
 
 
