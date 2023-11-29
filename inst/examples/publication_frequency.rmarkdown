@@ -1,0 +1,29 @@
+--- 
+title: "Publication frequency"
+hide-description: false
+description: ""
+---
+
+```{r}
+#| include = FALSE
+source("init.R")
+source("publication_frequency.R")
+```
+
+
+
+
+## Complete Dataset Overview
+
+
+[Publication_frequency accepted for the whole Fennica](dataTable/data_table.html?path=../output.tables/publication_frequency_accepted.csv)
+
+[Publication_frequency discarded for the whole Fennica](dataTable/data_table.html?path=../output.tables/publication_frequency_discarded.csv)
+
+
+## Subset Analysis: 1809-1917
+
+[Publication_frequency accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/publication_frequency_accepted_19.csv)
+
+[Publication_frequency accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/publication_frequency_accepted_19.csv)
+

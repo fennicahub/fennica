@@ -19,7 +19,7 @@ The publication years section offers a comprehensive summary of the dataset's ye
 
 [Publication year discarded](dataTable/data_table.html?path=../output.tables/publication_time_discarded.csv) 
 
-Publication years фку available for `r sum(!is.na(df_pub_time$publication_year))` documents (`r round(100*mean(!is.na(df_pub_time$publication_year)))`%). The publication years span is `r paste(range(na.omit(as.numeric(df_pub_time$publication_year))), collapse = "-")`.
+Publication years in is available for `r sum(!is.na(df_pub_time$publication_year))` documents (`r round(100*mean(!is.na(df_pub_time$publication_year)))`%). The publication years span is `r paste(range(na.omit(as.numeric(df_pub_time$publication_year))), collapse = "-")`.
 
 ## Subset Analysis: 1809-1917
 
