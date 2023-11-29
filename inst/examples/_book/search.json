@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Harmonized Finnish National Bibliography",
+    "section": "",
+    "text": "1 Preface chapter\nIt is imperative to underscore that this bookdown project is an evolving work-in-progress, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization.\nAs part of the Metadata Harmonization And Analysis work package, we use the Finnish national bibliography (FNB) Fennica dataset to create a harmonized dataset that can be used for research purposes as well as provide the groundwork for infrastructure that can be iterated further. The FNB contains metadata for 1,187,813 documents capturing records from as early as 1488 to more contemporary records.\nCurrently, the bookdown project comprises a few distinct chapters. Notably, the harmonization process has been executed through the establishment of dual pipelines: Complete FNB Pipeline and 1809 to 1917 Period Pipeline These chapters are dedicated to the specific metadata categories."
+  },
+  {
+    "objectID": "index.html#preface-chapter",
+    "href": "index.html#preface-chapter",
+    "title": "Harmonized Finnish National Bibliography",
+    "section": "0.1 Preface chapter",
+    "text": "0.1 Preface chapter\nIt is imperative to underscore that this bookdown project is an evolving work-in-progress, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization.\nAs part of the Metadata Harmonization And Analysis work package, we use the Finnish national bibliography (FNB) Fennica dataset to create a harmonized dataset that can be used for research purposes as well as provide the groundwork for infrastructure that can be iterated further. The FNB contains metadata for 1,187,813 documents capturing records from as early as 1488 to more contemporary records.\nCurrently, the bookdown project comprises a few distinct chapters. Notably, the harmonization process has been executed through the establishment of dual pipelines: Complete FNB Pipeline and 1809 to 1917 Period Pipeline These chapters are dedicated to the specific metadata categories."
+  }
+]
