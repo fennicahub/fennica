@@ -27,9 +27,9 @@ book:
   - index.qmd # fennicassa on kaikenlaista monenlaisia dokumentteja ei vain painotettuja , 
   #visualisointi aineistotyypin mukaan (monografia, kartat, kaunokirjallisuu) onko FNB:lla tommoisia? 
   - author_name.qmd
-  #- author_date.qmd
+  - author_date.qmd
   #- corporate.qmd
-  - language.qmd 
+  - language.qmd
   #- physical_dimensions.qmd
   #- physical_extent.qmd
   #- holder.qmd
@@ -42,7 +42,7 @@ book:
   - publication_time.qmd
   - publication_frequency.qmd
   - signum.qmd
-  - title_uniform.qmd 
+  - title_uniform.qmd
   - title.qmd #läpivyys mihin tiedot perustuu
   ##- subject_topic.qmd
   #- successor.qmd

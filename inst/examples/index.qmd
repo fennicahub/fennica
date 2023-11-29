@@ -4,7 +4,7 @@ author: "Turku Data Science Group"
 date: "`r Sys.Date()`"
 ---
 
-##Preface chapter
+<h2>Preface chapter</h2>
 
 It is imperative to underscore that this bookdown project is an evolving **work-in-progress**, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization.
 

@@ -1,15 +1,13 @@
 # Define the field to harmonize
 field <- "language"
 
-df.orig$language <- sapply(strsplit(as.character(df.orig$language), "\\|"), `[`, 1)
+df.orig$language <- gsub("\\|", ";", df.orig$language)
 # Harmonize the raw data
 out <- polish_languages(df.orig[[field]])
 df.tmp <- out$harmonized_full
 
 # Collect the results into a data.frame
-df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
-                    language = df.orig$language,# add field column
-                    df.tmp)
+df.tmp$melinda_id <- df.orig$melinda_id
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV
