@@ -1,4 +1,4 @@
---- 
+---
 title: "Publisher"
 hide-description: false
 description: ""
@@ -11,27 +11,27 @@ source("init.R")
 source("publisher.R")
 ```
 
+MARC: [260b](https://www.loc.gov/marc/bibliographic/bd260.html)
+
 ## Complete Dataset Overview
 
- * `r length(unique(df$publisher))` [unique publishers](dataTable/data_table.html?path=../output.tables/publisher_accepted.csv)
+-   `r length(unique(df$publisher))` [unique publishers](dataTable/data_table.html?path=../output.tables/publisher_accepted.csv)
 
- * `r sum(!is.na(df$publisher))` documents have unambiguous publisher information (`r round(100*mean(!is.na(df$publisher)), 1)`%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).
+-   `r sum(!is.na(df$publisher))` documents have unambiguous publisher information (`r round(100*mean(!is.na(df$publisher)), 1)`%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).
 
- * [Discarded publisher entries](dataTable/data_table.html?path=../output.tables/publisher_discarded.csv)
+-   [Discarded publisher entries](dataTable/data_table.html?path=../output.tables/publisher_discarded.csv)
 
- * [Conversions from original to final names](dataTable/data_table.html?path=../output.tables/publisher_conversion_nontrivial.csv) (only non-trivial conversions shown)
+-   [Conversions from original to final names](dataTable/data_table.html?path=../output.tables/publisher_conversion_nontrivial.csv) (only non-trivial conversions shown)
 
 ## Subset Analysis: 1809-1917
 
- * `r length(unique(df_19$publisher))` [unique publishers](dataTable/data_table.html?path=../output.tables/publisher_accepted_19.csv)
+-   `r length(unique(df_19$publisher))` [unique publishers](dataTable/data_table.html?path=../output.tables/publisher_accepted_19.csv)
 
- * `r sum(!is.na(df_19$publisher))` documents have unambiguous publisher information (`r round(100*mean(!is.na(df_19$publisher)), 1)`%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).
+-   `r sum(!is.na(df_19$publisher))` documents have unambiguous publisher information (`r round(100*mean(!is.na(df_19$publisher)), 1)`%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).
 
+-   [Discarded publisher entries](dataTable/data_table.html?path=../output.tables/publisher_discarded_19.csv)
 
- * [Discarded publisher entries](dataTable/data_table.html?path=../output.tables/publisher_discarded_19.csv)
-
-
-The `r ntop` most common publishers from 1809 to 1917 are shown with the number of documents. 
+The `r ntop` most common publishers from 1809 to 1917 are shown with the number of documents.
 
 ```{r}
 #| label = "summarypublisher2",
@@ -46,15 +46,3 @@ p <- p + scale_y_log10()
 p <- p + ylab("Documents")
 print(p)
 ```
-
-
-
-
-
-
-
-
-
-
-
-

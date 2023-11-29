@@ -10,6 +10,8 @@ source("init.R")
 source("author_name.R")
 ```
 
+MARC: [100a](https://www.loc.gov/marc/bibliographic/bd100.html)
+
 Author's name section's summary tables offer insights into the dataset's integrity, illustrating the accepted and discarded author names. An examination of missing values in the original dataset provides transparency regarding data completeness. The inclusion of information on name variants and pseudonyms enriches the analysis, addressing nuances in authorship representation. This comprehensive approach ensures a thorough understanding of the dataset's composition and the intricacies associated with author identification.
 
 ## Complete Dataset Overview

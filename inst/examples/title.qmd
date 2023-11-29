@@ -7,6 +7,8 @@ source("init.R")
 source("title.R")
 ```
 
+MARC: [245a,b](https://www.loc.gov/marc/bibliographic/bd245.html)
+
 ## Complete Dataset Overview
 
 -   [Unique accepted entries](dataTable/data_table.html?path=../output.tables/title_accepted.csv): `r length(unique(df[[field]]))`

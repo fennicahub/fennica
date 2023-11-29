@@ -8,6 +8,7 @@ description: "Statistics about the publication interval of the articles"
 #| include = FALSE
 source("init.R")
 ```
+
 ```{r}
 #| label = "source-publication-interval",
 #| include = FALSE,
@@ -16,12 +17,12 @@ source("init.R")
 source("publication_interval.R")
 ```
 
-Publication interval is available for `r sum(!is.na(df$publication_interval_from) | !is.na(df$publication_interval_till))` documents (`r round(100*mean(!is.na(df$publication_interval_from) | !is.na(df$publication_interval_till)))`%). 
+MARC: [362a](https://www.loc.gov/marc/bibliographic/bd362.html)
+
+Publication interval is available for `r sum(!is.na(df$publication_interval_from) | !is.na(df$publication_interval_till))` documents (`r round(100*mean(!is.na(df$publication_interval_from) | !is.na(df$publication_interval_till)))`%).
 
 [Publication interval accepted](dataTable/data_table.html?path=../output.tables/publication_interval_accepted.csv)
 
 [Publication interval conversions](dataTable/data_table.html?path=../output.tables/publication_interval_conversion_nontrivial.csv)
 
 [Publication interval discarded](dataTable/data_table.html?path=../output.tables/publication_interval_discarded.csv)
-
-

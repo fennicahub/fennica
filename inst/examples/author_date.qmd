@@ -1,4 +1,4 @@
---- 
+---
 title: "Author's lifetime"
 hide-description: false
 description: ""
@@ -10,15 +10,15 @@ source("init.R")
 source("author_date.R")
 ```
 
+MARC: [100d](https://www.loc.gov/marc/bibliographic/bd100.html)
+
 The author's lifetime section furnishes concise summaries following an extensive cleaning process, delineating the accepted and discarded years pertaining to each author.The accepted years signify the refined and validated data, while insights into the discarded years offer valuable context, shedding light on the challenges encountered and decisions made during the cleaning procedure.
 
 ## Complete Dataset Overview
 
-
 [Author date accepted for the complete Fennica](dataTable/data_table.html?path=../output.tables/author_date_accepted.csv)
 
 [Author date discarded for the complete Fennica](dataTable/data_table.html?path=../output.tables/author_date_discarded.csv)
-
 
 ## Subset Analysis: 1809-1917
 
