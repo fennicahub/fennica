@@ -1,10 +1,10 @@
 ---
-title: "Harmonized Finnish National Bibliography"
+title: "Fennica metadata conversions: statistical monitoring and analysis"
 author: "Turku Data Science Group"
 date: last-modified
 ---
 
-##Preface chapter
+## Preface chapter
 
 It is imperative to underscore that this bookdown project is an evolving **work-in-progress**, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization.
 

@@ -13,7 +13,7 @@ source("language.R")
 
 MARC: [041a](https://www.loc.gov/marc/bibliographic/bd041.html)
 
-\## Complete Dataset Overview
+## Complete Dataset Overview
 
 -   `r length(unique(unlist(strsplit(as.character(df$languages), ";"))))-1` [unique languages](dataTable/data_table.html?path=../output.tables/languages_accepted.csv)
 -   `r length(unique(df$language_primary))-1` [unique primary languages](dataTable/data_table.html?path=../output.tables/language_primary_accepted.csv)\
