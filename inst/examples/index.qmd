@@ -4,7 +4,17 @@ author: "Turku Data Science Group"
 date: "`r Sys.Date()`"
 ---
 
-<h2>Preface chapter</h2>
+##Preface chapter
+
+Code-Driven Fennica: A Bibliographic Transformation
+
+Bibliographic Transformation: Unveiling FNB Fennica's Refined Metadata
+
+**Data Enrichment in Scholarly Metadata: From Raw to Refined Insights**
+
+**Navigating Bibliographic Complexity: FNB Fennica's Data Evolution**
+
+Harmonizing FNB: Data Enrichment Guide
 
 It is imperative to underscore that this bookdown project is an evolving **work-in-progress**, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization.
 

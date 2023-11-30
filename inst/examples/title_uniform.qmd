@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 ---
 title: "Uniform Title"
-=======
---- 
-title: "Title uniform"
->>>>>>> a4d6655935b2ac20c49fbee35e57fd74efbb1dc6
 hide-description: false
 description: ""
 ---
