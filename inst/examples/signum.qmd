@@ -1,4 +1,4 @@
---- 
+---
 title: "Signum"
 hide-description: false
 description: ""
@@ -10,17 +10,16 @@ source("init.R")
 source("signum.R")
 ```
 
+A signum data, also known as a call number, is a unique combination of numbers and letters employed to indicate the specific location of a book within a library. This data was verified and provided to us by the National Library of Finland.
 
 ## Complete Dataset Overview
-
 
 [Signum accepted for the whole Fennica](dataTable/data_table.html?path=../output.tables/signum_accepted.csv)
 
 [Signum discarded for the whole Fennica](dataTable/data_table.html?path=../output.tables/signum_discarded.csv)
 
-
 ## Subset Analysis: 1809-1917
 
 [Signum accepted for 1809-1917](dataTable/data_table.html?path=../output.tables/signum_accepted_19.csv)
 
-[Signum discarded for 1809-1917](dataTable/data_table.html?path=../output.tables/signum_discarded_19.csv) 
+[Signum discarded for 1809-1917](dataTable/data_table.html?path=../output.tables/signum_discarded_19.csv)

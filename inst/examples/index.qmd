@@ -1,23 +1,13 @@
 ---
-title: "Harmonized Finnish National Bibliography"
+title: "Fennica metadata conversions: statistical monitoring and analysis"
 author: "Turku Data Science Group"
-date: "`r Sys.Date()`"
+date: last-modified
 ---
 
 ##Preface chapter
 
-Code-Driven Fennica: A Bibliographic Transformation
+It is imperative to underscore that this bookdown project is an evolving **work-in-progress**, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning, harmonization and enrichment.
 
-Bibliographic Transformation: Unveiling FNB Fennica's Refined Metadata
-
-**Data Enrichment in Scholarly Metadata: From Raw to Refined Insights**
-
-**Navigating Bibliographic Complexity: FNB Fennica's Data Evolution**
-
-Harmonizing FNB: Data Enrichment Guide
-
-It is imperative to underscore that this bookdown project is an evolving **work-in-progress**, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization.
-
-As part of the Metadata Harmonization And Analysis work package, we use the Finnish national bibliography (FNB) Fennica dataset to create a harmonized dataset that can be used for research purposes as well as provide the groundwork for infrastructure that can be iterated further. The FNB contains metadata for 1,187,813 documents capturing records from as early as 1488 to more contemporary records. Additional information about Fennica can be read on The National Finnish Library [website](https://www.kansalliskirjasto.fi/en/services/fennica-finnish-national-bibliography).
+As part of the Metadata Harmonization and Analysis work package, we use the Finnish national bibliography (FNB) Fennica dataset to create a harmonized dataset that can be used for research purposes as well as provide the groundwork for infrastructure that can be iterated further. The FNB contains metadata for over a million documents of different types such as books, newspapers, maps etc. capturing records from as early as 1488 to the most recent records. Additional information about Fennica can be found on The National Finnish Library [website](https://www.kansalliskirjasto.fi/en/services/fennica-finnish-national-bibliography).
 
 Currently, the bookdown project comprises a few distinct chapters. Notably, the harmonization process has been executed through the establishment of dual pipelines: **Complete FNB Pipeline** and **1809 to 1917 Period Pipeline** These chapters are dedicated to the specific metadata categories.
