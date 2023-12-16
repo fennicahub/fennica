@@ -3,7 +3,14 @@ Fennica: Harmonized Finnish national bibliography
 
 This repository contains code for cleaning, enriching and automatically generating reports on the Finnish national bibliography, [Fennica](https://www.kansalliskirjasto.fi/fi/palvelut/fennica-suomen-kansallisbibliografia). 
 
-This snapshot of the Fennica dataset includes bibliographic metadata for over one million documents between 1488-2022, representing the publishing activity in Finland during that period. This is analyzed in parallel with [Kungliga](https://github.com/comhis/kungliga), a related collection of bibliographic metadata from the Swedish National library. In the future it will include the whole dataset, from earliest documents to the current day.
+The live document is deployed in a CSC Rahti container:
+[http://fennica-fennica.rahtiapp.fi](http://fennica-fennica.rahtiapp.fi)
+
+This README describes how to reproduce the analyses and generate the notebook.
+
+
+
+
 
 ### Reproducing the workflow
 
@@ -61,9 +68,9 @@ The bookdown document is rendered with [GitHub Actions](https://github.com/fenni
 
 The generated bookdown document consists of 20 different sections, or "chapters". Different sections focus on different fields from the MARC formatted raw data [MARC](https://marc21.kansalliskirjasto.fi). Most chapters also have visualizations that give a quick glance on what the data looks like. For most fields processed CSV datasets can also be downloaded for further analyses.
 
-### Examples of generated reports
+### Earlier material
 
-The data is summarized in the following automatically generated files:
+Links to notebooks that are not actively maintained but may contain useful information regarding related past work.
 
  * [Fennica: a generic overview](https://github.com/fennicahub/fennica/blob/master/inst/examples/overview.md)
  * Presentation slide templates ([PDF](https://github.com/fennicahub/fennica/blob/master/inst/examples/slidetemplates.pdf)) and [code](https://github.com/fennicahub/fennica/blob/master/inst/examples/slidetemplates.Rmd)
@@ -77,36 +84,20 @@ The analyses cover several steps including XML parsing, data harmonization, remo
 
 The analyses and full [source code](https://github.com/comhis/fennica/blob/master/inst/examples/main.R) are provided in this repository and can be freely reused under the [BSD 2 clause](https://opensource.org/licenses/BSD-2-Clause) (FreeBSD) open source licence. The analyses are based on [R](http://r-project.org) and rely on various R packages.
 
-For original raw data, see National Library of Finland.
-
-### Contact
-
-Email: leo.lahti@iki.fi
-
-The project is under active open development.
-
-  * [Issues and bug reports](https://github.com/fennicahub/fennica/issues)
-  * [Pull requests](https://github.com/fennicahub/fennica/pulls) (we will acknowledge contributions)
+The original data has been published openly by National Library of Finland.
 
 
 ### Acknowledgements
 
-The project is collaboration between [Helsinki Computational History Group (COMHIS)](http://comhis.github.io/) (University of Helsinki) and [Turku Data Science Group](http://datascience.utu.fi) (University of Turku).
+The project is now developed based on research and infrastructure funding from the Research Council of Finland (DHL-FI and FIN-CLARIAH). The work is based on past and present collaboration between and [Turku Data Science Group](http://datascience.utu.fi) (University of Turku), [Helsinki Computational History Group (COMHIS)](http://comhis.github.io/) (University of Helsinki) and [National library of Finland](https://www.kansalliskirjasto.fi/en/) (Fennica data collection). For the list of contributors, see [contributors](https://github.com/fennicahub/fennica/graphs/contributors) and the related publications.
 
-Main contributors:
 
-  * [Leo Lahti](https://github.com/antagomir/)
-  * [Mikko Tolonen](https://github.com/orgs/comhis/people/tolonen)
-  * [Jani Marjanen](jmarjane)
-  * [Hege Roivainen](hegroiva)  
-  * [Niko Ilomaki](https://github.com/NVI/)
 
-Special thanks:
+### Contact
 
-  * [Finnish National library](https://www.kansalliskirjasto.fi/en/) (Fennica data collection)
-  * [VRK (Finnish population register)](http://vrk.fi) Finnish first name-gender mappings and demographic information
-  * [Maanmittauslaitos](http://mml.fi) Geographic information
-  * [Tilastokeskus](http://www.tilastokeskus.fi/) Demographic information
-  * [Open Street Map](https://www.openstreetmap.org) Geographic information
-  * [Google Maps] Geographic information  
+Email: yulia.matveeva@utu.fi / leo.lahti@iki.fi
 
+The project is under active open development:
+
+  * [Issues and bug reports](https://github.com/fennicahub/fennica/issues)
+  * [Pull requests](https://github.com/fennicahub/fennica/pulls) (we will acknowledge contributions)
