@@ -10,7 +10,7 @@ This README describes how to reproduce the analyses and generate the notebook.
 
 ### Origins of data
 The data was downloaded from The National Metadata Repository Melinda. 
-See more: [https://melinda.kansalliskirjasto.fi/](https://melinda.kansalliskirjasto.fi/)
+See more: [https://melinda.kansalliskirjasto.fi/](https://melinda.kansalliskirjasto.fi/F/?func=find-b-0&CON_LNG=fin&local_base=fin01_opac)
 
 A script collect.py was used to harvest the data. See the script in the fennica repository. 
 The script was provided to us by Osma Suominen (The National Library of Finland).
