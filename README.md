@@ -8,7 +8,7 @@ The live document is deployed in a CSC Rahti container:
 
 This README describes how to reproduce the analyses and generate the notebook.
 
-### Origins of the data
+### Origins of data
 The data was downloaded from The National Metadata Repository Melinda. 
 See more: [https://melinda.kansalliskirjasto.fi/](https://melinda.kansalliskirjasto.fi/)
 
