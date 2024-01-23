@@ -57,7 +57,7 @@ devtools::install_github("comhis/comhis")
 Render the quarto document:
 
 ```
-quarto::quarti_render("inst/examples")
+quarto::quarto_render("inst/examples")
 ```
 
 Open the rendered book in your browser. 
