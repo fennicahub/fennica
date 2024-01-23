@@ -54,10 +54,10 @@ devtools::install_deps(".", dependencies = TRUE)
 devtools::install_github("comhis/comhis")
 ```
 
-Render the bookdown document:
+Render the quarto document:
 
 ```
-bookdown::render_book("inst/examples")
+quarto::quarti_render("inst/examples")
 ```
 
 Open the rendered book in your browser. 
