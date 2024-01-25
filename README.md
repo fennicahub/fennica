@@ -4,7 +4,7 @@ Fennica: Harmonized Finnish national bibliography
 This repository contains code for cleaning, enriching and automatically generating reports on the Finnish national bibliography, [Fennica](https://www.kansalliskirjasto.fi/fi/palvelut/fennica-suomen-kansallisbibliografia). 
 
 The live document is deployed in a CSC Rahti container:
-[http://fennica-fennica.rahtiapp.fi](http://fennica-fennica.rahtiapp.fi)
+[https://fennica-fennica.rahtiapp.fi](https://fennica-fennica.rahtiapp.fi)
 
 This README describes how to reproduce the analyses and generate the notebook.
 
