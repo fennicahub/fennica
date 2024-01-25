@@ -5,7 +5,6 @@ description: ""
 ---
 
 ```{r}
-#| label = "source-index",
 #| include = FALSE
 source("init.R")
 source("language.R")
