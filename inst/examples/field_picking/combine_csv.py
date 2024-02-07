@@ -116,7 +116,7 @@ for i, chunk in enumerate(csv_filenames_chunks):
 dfs_cols = []
 for i, _ in enumerate(csv_filenames_chunks):
     # load a pivoted csv
-    df_temp = pd.read_csv(f"{path_csvs}pivoted_callnumbered_csvs/piv_callnum_chunk_{i}.csv", sep='\t', header=[0,1,], index_col=0, nrows=30)
+    df_temp = pd.read_csv(f"{path_csvs}/pivoted_callnumbered_csvs/piv_callnum_chunk_{i}.csv", sep='\t', header=[0,1,], index_col=0, nrows=30)
     # reset it's index to make record_number column again
     df_temp.reset_index(inplace=True)
     # print the number of columns in the chunk
