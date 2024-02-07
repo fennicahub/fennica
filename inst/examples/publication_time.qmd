@@ -13,7 +13,9 @@ source("publication_time.R")
 
 MARC: [260c](https://www.loc.gov/marc/bibliographic/bd260.html)
 
-The publication years section offers a comprehensive summary of the dataset's years of publication, providing anunderstanding of the temporal distribution of titles. The inclusion of links to uniquely accepted and discarded output tables adds a layer of transparency, allowing for detailed exploration of the refined and excluded data.
+[polish_years.R](https://github.com/fennicahub/fennica/blob/master/R/polish_years.R)
+
+The publication years section offers a comprehensive summary of the data set's years of publication, providing an understanding of the temporal distribution of titles. The inclusion of links to uniquely accepted and discarded output tables adds a layer of transparency, allowing for detailed exploration of the refined and excluded data.
 
 ## Complete Data Overview
 

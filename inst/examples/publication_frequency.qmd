@@ -12,6 +12,8 @@ source("publication_frequency.R")
 
 MARC: [310a](https://www.loc.gov/marc/bibliographic/bd310.html)
 
+[polish_publication_frequency.R](https://github.com/fennicahub/fennica/blob/master/R/polish_publication_frequency.R)
+
 ## Complete Dataset Overview
 
 [Publication_frequency accepted for the whole Fennica](dataTable/data_table.html?path=../output.tables/publication_frequency_accepted.csv)

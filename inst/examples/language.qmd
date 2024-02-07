@@ -12,6 +12,8 @@ source("language.R")
 
 MARC: [041a](https://www.loc.gov/marc/bibliographic/bd041.html)
 
+[polish_languages.R](https://github.com/fennicahub/fennica/blob/master/R/polish_languages.R)
+
 ## Complete Dataset Overview
 
 -   `r length(unique(unlist(strsplit(as.character(df$languages), ";"))))-1` [unique languages](dataTable/data_table.html?path=../output.tables/languages_accepted.csv)

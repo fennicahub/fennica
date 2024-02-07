@@ -13,6 +13,10 @@ source("title_uniform.R")
 
 MARC: [240a](https://www.loc.gov/marc/bibliographic/bd240.html)
 
+[polish_title.R](https://github.com/fennicahub/fennica/blob/master/R/polish_title.R)
+
+## 
+
 ## Complete Dataset Overview
 
 -   [Unique accepted entries](dataTable/data_table.html?path=../%60r%20file_accepted%60): `r length(unique(df[[field]]))`
