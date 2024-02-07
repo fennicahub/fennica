@@ -1,0 +1,54 @@
+---
+title: "content_type"
+format: html
+editor: visual
+---
+
+```{r}
+#| warning: false
+source("content_type.R")
+```
+## Leader looks like this
+
+```{r}
+print(head(df_content$leader,  50))
+```
+## 008 looks like this
+
+```{r}
+print(head(df_content$"008",  40))
+```
+
+## Missing data for each field 
+
+```{r}
+# Count the number of empty rows in each column
+empty_row_counts <- sapply(df_content, function(x) sum(x == "" | is.na(x)))
+
+# Print the result
+print(empty_row_counts)
+```
+## Unique values 336
+
+```{r}
+unique_values_336 <- unique(df_content$'336')
+
+# Print the unique values
+print( unique_values_336)
+```
+## Unique values 337
+```{r}
+unique_values_337 <- unique(df_content$'337')
+
+# Print the unique values
+print( unique_values_337)
+```
+
+
+## Unique values 338
+```{r}
+unique_values_338 <- unique(df_content$'338')
+
+# Print the unique values
+print( unique_values_338)
+```

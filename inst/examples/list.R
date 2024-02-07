@@ -36,7 +36,7 @@ df_list <- df_list %>%
 melindas <- df_pubtime19$melinda_id
 list <-  df_list[df_list$melinda_id %in% melindas, ]
 
-list$edition <- gsub("Lyh. laitos,", "", list$edition)
+#list$edition <- gsub("Lyh. laitos,", "", list$edition)
 
 
 # 5) 250 a (tyhjä) (only this gives 47627)
@@ -48,12 +48,12 @@ list <- list[is.na(list$edition) | list$edition == "" |  list$edition == "1. p."
 
 list <- list[is.na(list$language_original) | list$language_original == "", ]
 
-# 1) 041 a fin ja swe (47160)
+# 1) 041 a fin ja (tai) swe (47160)
 
 list <- list[grepl("fin|swe", list$language), ]
 
 
-# 3) 080 a 839.79 ja 894.541 (5124)
+# 3) 080 a 839.79 ja (tai) 894.541 (5124)
 
 list <- list[grepl("839.79|894.541", list$udc), ]
 
