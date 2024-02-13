@@ -15,14 +15,6 @@ df_content <- df_content %>%
                 "publication_time" = 7, #("260","c")
                 "signum" = 8) #("callnumbers","a")
 
-#df_content$publication_time <- sub("\\|.*", "", df_content$publication_time)
-
-# create a new publication_time column based on 008 info
-#take only characters from 8 to 11. 7 is always s
-# based on this https://marc21.kansalliskirjasto.fi/bib/008.htm#alku
-
-df_content$`008_07/10` <- substr(df_content$`008`,  8,  11)
-
 # Define the pattern to match from the  8th character to the first letter character
 pattern <- "^(.{7})([^a-zA-Z]*)(.)(.*)"
 
