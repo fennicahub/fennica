@@ -15,19 +15,127 @@ df_content <- df_content %>%
                 "publication_time" = 7, #("260","c")
                 "signum" = 8) #("callnumbers","a")
 
-# Define the pattern to match from the  8th character to the first letter character
-pattern <- "^(.{7})([^a-zA-Z]*)(.)(.*)"
+############## for leader #######################################################
 
-# Use sub to replace the matched pattern with the part you want to keep
-# In this case, we're keeping the part after the  8th character and before the first letter
-df_content$`008_07/10` <- sub(pattern, "\\2\\4", df_content$`008`)
+# 06 - Type of record
+df_content$type_of_record <- substr(df_content$leader, start =  7, stop =  7)
 
-# Define the pattern to match the first letter character and everything after it
-pattern <- "[a-zA-Z].*"
+df_content <- df_content %>%
+  mutate(type_of_record = case_when(
+    type_of_record == 'a' ~ 'Language material',
+    type_of_record == 'c' ~ 'Notated music',
+    type_of_record == 'd' ~ 'Manuscript notated music',
+    type_of_record == 'e' ~ 'Cartographic material',
+    type_of_record == 'f' ~ 'Manuscript cartographic material',
+    type_of_record == 'g' ~ 'Projected medium',
+    type_of_record == 'i' ~ 'Nonmusical sound recording',
+    type_of_record == 'j' ~ 'Musical sound recording',
+    type_of_record == 'k' ~ 'Two-dimensional nonprojectable graphic',
+    type_of_record == 'm' ~ 'Computer file',
+    type_of_record == 'o' ~ 'Kit',
+    type_of_record == 'p' ~ 'Mixed materials',
+    type_of_record == 'r' ~ 'Three-dimensional artifact or naturally occurring object',
+    type_of_record == 't' ~ 'Manuscript language material'
+  ))
 
-# Use sub to replace the matched pattern with an empty string
-df_content$`008_07/10` <- sub(pattern, "", df_content$`008_07/10`)
 
+# 07 - Bibliographic level
+df_content$bibliographic_level <- substr(df_content$leader, start =  8, stop =  8)
+
+df_content <- df_content %>%
+  mutate(bibliographic_level = case_when(
+    bibliographic_level == 'a' ~ 'Monographic component part',
+    bibliographic_level == 'b' ~ 'Serial component part',
+    bibliographic_level == 'c' ~ 'Collection',
+    bibliographic_level == 'd' ~ 'Subunit',
+    bibliographic_level == 'i' ~ 'Integrating resource',
+    bibliographic_level == 'm' ~ 'Monograph/Item',
+    bibliographic_level == 's' ~ 'Serial'
+    # Add more conditions here if needed
+  ))
+
+############## for the 008 ######################################################
+#00-05 (Luontipäivä)
+df_content$Date_entered <- substr(df_content$`008`, start =  1, stop =  6)
+
+#06 06 - Julkaisuajan tyyppi/Julkaisun tila
+df_content$publication_status <- substr(df_content$`008`, start = 7 , stop =  7)
+
+df_content <- df_content %>%
+mutate(publication_status = case_when(
+  publication_status == 'b' ~ 'No dates given; B.C. date involved',
+  publication_status == 'c' ~ 'Continuing resource currently published',
+  publication_status == 'd' ~ 'Continuing resource ceased publication',
+  publication_status == 'e' ~ 'Detailed date',
+  publication_status == 'i' ~ 'Inclusive dates of collection',
+  publication_status == 'k' ~ 'Range of years of bulk of collection',
+  publication_status == 'm' ~ 'Multiple dates',
+  publication_status == 'n' ~ 'Dates unknown',
+  publication_status == 'p' ~ 'Date of distribution etc',
+  publication_status == 'q' ~ 'Questionable date',
+  publication_status == 'r' ~ 'Reprint/reissue date and original date',
+  publication_status == 's' ~ 'Single known date/probable date',
+  publication_status == 't' ~ 'Publication date and copyright date',
+  publication_status == 'u' ~ 'Continuing resource status unknown',
+  publication_status == '|' ~ 'No attempt to code'
+))
+
+
+
+#07-14 (Julkaisuvuosi 1nja 2)
+df_content$date <- substr(df_content$`008`, start = 8 , stop =  15)
+
+
+
+#33 - genre 
+
+#BOOKS
+
+df_content <- df_content %>%
+  mutate(genre_book = ifelse(
+    type_of_record %in% c("Language material", "Manuscript language material") &
+      bibliographic_level %in% c("Monographic component part", "Collection", "Subunit", "Monograph/Item"),
+    substr(`008`, start =  34, stop =  34),# Extract the  34th character from the '008' column
+    " "
+    ))
+
+
+df_content <- df_content %>%
+  mutate(genre_book = case_when(
+    genre_book == "0" ~ "Not fiction (not further specified)",
+    genre_book == "1" ~ "Fiction (not further specified)",
+    genre_book == "d" ~ "Dramas",
+    genre_book == "e" ~ "Essays",
+    genre_book == "f" ~ "Novels",
+    genre_book == "h" ~ "Humor, satires, etc.",
+    genre_book == "i" ~ "Letters"
+  ))
+
+#MUSIC
+
+df_content <- df_content %>%
+  mutate(genre_music = ifelse(
+    type_of_record %in% c("Notated music", "Manuscript notated music",
+                          "Nonmusical sound recording", "Musical sound recording"),
+    substr(`008`, start =  34, stop =  34),# Extract the  34th character from the '008' column
+    " "
+  ))
+
+
+df_content <- df_content %>%
+  mutate(genre_music = case_when(
+    genre_music == "#" ~ "Not arrangement or transposition or not specified",
+    genre_music == "a" ~ "Transposition",
+    genre_music == "b" ~ "Arrangement",
+    genre_music == "c" ~ "Both transposed and arranged",
+    genre_music == "n" ~ " Not applicable",
+    genre_music == "u" ~ "Unknown",
+    genre_music == "|" ~ "No attempt to code"
+  ))
+
+
+##############################################################################
+#some testing codes 
 
 # Function to remove non-numeric characters
 remove_non_numeric <- function(x) {
@@ -37,71 +145,13 @@ remove_non_numeric <- function(x) {
 # Apply the function to each element of the column
 df_content$`008_07/10`<- sapply(df_content$`008_07/10`, remove_non_numeric)
 
-df_content$publication_time<- sapply(df_content$publication_time, remove_non_numeric)
-
-
-# Count the number of rows where column1 and column2 match
-matching_rows <- sum(df_content$publication_time == df_content$`008_07/10`)
-print(matching_rows)
-
-# Count the number of rows where column1 and column2 do not match
-non_matching_rows <- sum(df_content$publication_time != df_content$`008_07/10`)
-print(non_matching_rows)
-
-# Create df for better visualisation of non_matching_rows
-non_matching_rows2 <- as.data.frame(df_content[df_content$publication_time != df_content$`008_07/10`, ])
-
-
-
-# Identify the rows where '008_07/10' is empty
-empty_07_rows <- which(is.na(non_matching_rows2$`008_07/10`) |
-                         non_matching_rows2$`008_07/10` == "" |
-                         non_matching_rows2$`008_07/10` == " ")
-
-# Print the rows with empty '008_07/10'
-print(non_matching_rows2[empty_07_rows,  ])
-
-# Count the number of empty cells in the 'publication_time' column
-# Check for NA, empty strings, and spaces
-empty_pubtime <- sum(is.na(non_matching_rows2$publication_time) |  
-                       non_matching_rows2$publication_time == "" |  
-                       non_matching_rows2$publication_time == " ")
-
-# Print the count of empty cells
-print(empty_pubtime)
-
-# Remove rows where both 'publication_time' and '008_07/10' are empty
-non_matching_rows2 <- non_matching_rows2[!(is.na(non_matching_rows2$publication_time) &  
-                                             non_matching_rows2$publication_time == "" &  
-                                             non_matching_rows2$publication_time == " " &  
-                                             is.na(non_matching_rows2$`008_07/10`) &  
-                                             non_matching_rows2$`008_07/10` == "" &  
-                                             non_matching_rows2$`008_07/10` == " "), ]
-
-# Print the cleaned data frame
-print(non_matching_rows2)
-
-# Count the number of values longer than  4 characters
-longer_than_four <- sum(nchar(non_matching_rows2$publication_time) >  4)
 
 # Count the number of empty cells
 empty_cells <- sum(is.na(non_matching_rows2$publication_time) |
                      non_matching_rows2$publication_time == "" |
                      non_matching_rows2$publication_time == " ")
 
-# Count the number of values exactly  8 characters long
-exactly_eight <- sum(nchar(non_matching_rows2$publication_time) ==  8)
 
-# Print the counts
-print(paste("Longer than  4 characters: ", longer_than_four))
-print(paste("Empty cells: ", empty_cells))
-print(paste("Exactly  8 characters long: ", exactly_eight))
-
-# Count the number of values between  4 and  8 characters long
-count_between_4_and_8 <- sum(nchar(non_matching_rows2$publication_time) >  4 & nchar(non_matching_rows2$publication_time) <  8)
-
-# Print the count
-print(count_between_4_and_8)
 
 
 
