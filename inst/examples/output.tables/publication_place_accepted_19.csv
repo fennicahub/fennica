@@ -1,248 +1,221 @@
 Name	Count
-Helsinki	26548
-Turku	 3398
-Porvoo	 3378
-Tampere	 2395
-Kuopio	 1474
-Hämeenlinna	 1249
-Vyborg	 1125
-Stockholm	 1121
-Jyväskylä	 1015
-Kustannuspaikka tuntematon	 1010
-Vaasa	  842
-Pori	  697
-Oulu	  644
-St Petersburg	  613
-Sortavala	  531
-Mikkeli	  248
-Rauma	  236
-Hancock Mi	  216
-Leipzig	  193
-Kotka	  182
-New York NY	  176
-Lahti	  175
-Tammisaari	  172
-Hamina	  155
-London	  153
-Berlin	  148
-Paris	  137
-Fitchburg Ma	  132
-Joensuu	  129
-Kokkola	  118
-Uppsala	  114
-Copenhagen	  103
-Savonlinna	   95
-Hanko	   90
-Örebro	   88
-Pietarsaari	   88
-Mariehamn	   69
-Käkisalmi	   63
-Uusikaupunki	   61
-Lappeenranta	   58
-Kristiinankaupunki	   56
-Kajaani	   50
+Helsinki	23151
+Porvoo	 3200
+Turku	 3039
+Tampere	 2083
+Kuopio	 1349
+Hämeenlinna	 1172
+Stockholm	 1058
+Vyborg	  956
+Jyväskylä	  920
+Kustannuspaikka tuntematon	  869
+Vaasa	  695
+Pori	  594
+St Petersburg	  594
+Oulu	  524
+Sortavala	  486
+Rauma	  213
+Mikkeli	  194
+Leipzig	  189
+Hancock Mi	  179
+New York NY	  156
+Tammisaari	  151
+London	  148
+Berlin	  139
+Paris	  133
+Kotka	  132
+Hamina	  127
+Lahti	  125
+Fitchburg Ma	  121
+Uppsala	  112
+Copenhagen	  101
+Joensuu	   99
+Kokkola	   91
+Örebro	   85
+Savonlinna	   80
+Pietarsaari	   65
+Hanko	   64
+Mariehamn	   54
 Kaleva Mi	   50
-Duluth MN	   47
-Oslo	   46
-Kemi	   44
+Käkisalmi	   48
+Uusikaupunki	   43
+Kristiinankaupunki	   42
+Oslo	   42
 Moscow	   41
-Raahe	   38
-Calumet Mi	   37
-Heinola	   34
-Loviisa	   34
-Lund	   32
-Budapest	   30
-Astoria Or	   28
-Ashtabula Oh	   27
-Port Arthur On	   27
-Lapua	   25
-Uusikaarlepyy	   25
-Chicago IL	   24
-Tartu	   24
-Kruunupyy	   22
+Lappeenranta	   36
+Calumet Mi	   35
+Kajaani	   34
+Lund	   31
+Duluth MN	   29
+Budapest	   28
+Kemi	   27
+Loviisa	   27
+Astoria Or	   26
+Tartu	   23
+Lapua	   22
+Ashtabula Oh	   21
 Dresden	   21
+Port Arthur On	   21
+Chicago IL	   20
+Heinola	   20
+Kruunupyy	   20
 Stuttgart	   20
+Uusikaarlepyy	   20
 Braunschweig	   19
-Gothenburg	   19
-Kaskinen	   19
 Parkano	   19
-Hyvinkää	   17
-Superior Wi	   17
-Forssa	   16
-Ironwood Mi	   16
-Karjaa	   16
+Raahe	   19
+Hyvinkää	   16
+Kaskinen	   16
 Turenki	   16
-Iisalmi	   15
-Tornio	   14
+Gothenburg	   15
+Karjaa	   14
 Vienna	   14
-Tallinn	   13
+Superior Wi	   13
+Iisalmi	   12
 München	   12
+Ironwood Mi	   11
 Sairala	   11
-Salo	   11
-Worcester Ma	   11
-Espoo	   10
-Haaparanta	   10
 Jena	   10
-New York Mills Mn	   10
+Tallinn	   10
 Halle	    9
 Heidelberg	    9
-Isokyrö	    9
-Laihia	    9
-Seinäjoki	    9
+Tornio	    9
 Vilnius	    9
 Härnösand	    8
+Isokyrö	    8
+Laihia	    8
 Rome	    8
-Terijoki	    8
+Salo	    8
 Warsaw	    8
 Cambridge	    7
 Eura	    7
 Firenze	    7
 Hamburg	    7
-Ishpeming Mi	    7
 Milan	    7
-Parainen	    7
-Quincy Ma	    7
-Tübingen	    7
-Vammala	    7
+New York Mills Mn	    7
+Terijoki	    7
 Weimar	    7
 Zürich	    7
-Amsterdam	    6
 Bonn	    6
 Isafjördur	    6
+Ishpeming Mi	    6
+Jämsä	    6
 Jelgava	    6
-Kouvola	    6
 Peterburgʺ	    6
 Piikkiö	    6
+Quincy Ma	    6
 Reykjavik	    6
-Rovaniemi	    6
+Tübingen	    6
+Worcester Ma	    6
+Amsterdam	    5
 Archangelsk	    5
 Bergen	    5
 Bern	    5
+Forssa	    5
 Haapajärvi	    5
-Jämsä	    5
-Kerava	    5
-Lohja	    5
+Malmö	    5
 Odense	    5
+Parainen	    5
 Riga	    5
-Tromsö	    5
-Tuntematon	    5
 Wiesbaden	    5
 Antwerp	    4
-Boston Ma	    4
 Brussels	    4
 Cincinnati Oh	    4
 Gel singforsʺ	    4
 Gießen	    4
 Gotha	    4
 Karjalohja	    4
+Kouvola	    4
 Kuortane	    4
 Laitila	    4
 Leeuwarden	    4
 Lübeck	    4
 Madrid	    4
-Malmö	    4
 Montreal	    4
 Odessa	    4
 Orivesi	    4
-Parikkala	    4
 Rostock	    4
-Seattle WA	    4
-Tyrvää	    4
+Tromsö	    4
+Tuntematon	    4
 Utrecht	    4
 Barcelona	    3
 Basel	    3
+Boston Ma	    3
 Freiburg im Breisgau	    3
-Hämeenkyrö	    3
-Ikaalinen	    3
-Ilmajoki	    3
-Jaakkima	    3
+Haaparanta	    3
+Helsingborg	    3
 Juva	    3
-Kangasala	    3
+Kainuu	    3
 Karlstad	    3
-Kauvatsa	    3
 Kharkiv	    3
 Kiel	    3
 Köping	    3
 Krakow	    3
-Loimaa	    3
-Minneapolis Mn	    3
+Lohja	    3
+Luleå	    3
 Naples	    3
 Norrköping	    3
 Rock Island IL	    3
 Sääksmäki	    3
+Seattle WA	    3
+Seinäjoki	    3
 Skara	    3
 Szczecin	    3
-Urjala	    3
-Valamo	    3
-Vantaa	    3
+Tyrvää	    3
 Aabenraa	    2
 Aalborg	    2
-Almena Wi	    2
 Amersfoort	    2
 Birmingham	    2
 Breslau	    2
 Chisholm MN	    2
-Cleveland Oh	    2
 Dessau	    2
-Detroit Mi	    2
 Dordrecht	    2
+Espoo	    2
 Frankfurt	    2
 Gera	    2
 Haarlem	    2
 Hannover	    2
-Harbor Oh	    2
 Heinävesi	    2
 Heinolassa	    2
-Helsingborg	    2
-Helsingistä	    2
-Houghton Mi	    2
 Hull	    2
 Huopalahti	    2
-Janakkala	    2
+Ilmajoki	    2
+Imatra	    2
 Karhula	    2
 Karlskrona	    2
 Karstula	    2
-Kauniainen	    2
+Kauvatsa	    2
 Kazan	    2
 Kiiminki	    2
 Kirkkonummi	    2
-Kokemäki	    2
+Koivisto	    2
 Koningsberg	    2
 Litoměrice	    2
-Luleå	    2
+Mustasaari	    2
 Naantali	    2
 New Haven Ct	    2
 Nora	    2
-Oniipa	    2
-Ottawa	    2
 Oxford	    2
-Paimio	    2
 Pernaja	    2
 Petäjävesi	    2
 Pihlava	    2
-Portland Or	    2
-Prague	    2
-Red Jacket Mi	    2
 Regensburg	    2
 Saarijärvi	    2
-Sipoo	    2
 Smithville Mn	    2
 Stockton	    2
 Strasbourg	    2
 Suomussalmi	    2
-Tammela	    2
 The Hague	    2
-Toijala	    2
 Trieste	    2
+Valamo	    2
 Vicenza	    2
 Viitasaari	    2
 Viljandi	    2
 Virolahti	    2
-Ylistaro	    2
-Ypäjä	    2
 Aarhus	    1
 Akureyri	    1
 Alfend	    1
+Almena Wi	    1
 Ancona	    1
 Anttola	    1
 Arezzo	    1
@@ -257,70 +230,57 @@ Brunn	    1
 Buenos Aires	    1
 Calcutta	    1
 Clear Creek UT	    1
+Cleveland Oh	    1
 Cluj-Napoca	    1
 Cologne	    1
 Dieren	    1
-Ely Mi	    1
 Erfurt	    1
-Erlangen	    1
 Exeter	    1
 Falun	    1
 Fors	    1
 Geneva	    1
 Godby	    1
-Greifswald	    1
 Haderslev	    1
 Hanna WY	    1
+Harbor Oh	    1
 Harjavalta	    1
 Heilbronn	    1
 Heinäjoki	    1
 Helsingør	    1
 Hinnerjoki	    1
 Hirvensalmi	    1
-Hollola	    1
-Huittinen	    1
 Hvitträsk	    1
 Hyvinge	    1
-Imatra	    1
 Impilahti	    1
 Inari	    1
-Inkeri	    1
 Inkoo	    1
-Iso britannia	    1
+Jaakkima	    1
 Jääski	    1
 Jacobson Mi	    1
 Jalasjärvi	    1
+Janakkala	    1
 Jönköping	    1
-Kainuu	    1
 Kallislahti	    1
+Kangasala	    1
 Kaprio	    1
-Karleby	    1
 Kauhajoki	    1
-Kausala	    1
-Keltto	    1
 Kemijärvi	    1
 Kirchhain	    1
 Kirov	    1
 Kirvu	    1
-Kitee	    1
 Kivennapa	    1
 Kodisjoki	    1
-Koivisto	    1
 Koivulahti	    1
-Kokkolassa	    1
+Kokemäki	    1
 Korsnäs	    1
 Kurkijoki	    1
-Kustannuspaikka tuntematon b viipurin läänin maatalouskomisioni	    1
-Kustannuspaikka tuntematon ohion pennsylvanian west virginian suomalainen raittiusliitto	    1
-Kuusankoski	    1
 Kylmäkoski	    1
-Kymenlaakso	    1
 Kyrö	    1
 La Chapelle-Montligeon	    1
 Laihiala	    1
 Laihialla	    1
+Lammi	    1
 Landskrona	    1
-Lappo	    1
 Lausanne	    1
 Le Mans	    1
 Letchworth	    1
@@ -328,80 +288,75 @@ Liepaja	    1
 Liverpool	    1
 Ljungsbro	    1
 Lohtaja	    1
+Loimaa	    1
 Loimijoki	    1
+Los Angeles CA	    1
 Maaninka	    1
 Mänttä-Vilppula	    1
 Mäntyharju	    1
 Marttila	    1
 Messina	    1
 Milwaukee Wi	    1
-Molde	    1
+Minsk	    1
 Montpellier	    1
-Mustasaari	    1
 Mustiala	    1
 Mustio	    1
 Nagu	    1
-Nanaimo BC	    1
 Närpiö	    1
-Narva	    1
 Neuchatel	    1
 Nokia	    1
-Nuijamaa	    1
+Noormarkku	    1
+Nummela	    1
 Nurmijärvi	    1
 Nylotts	    1
+Oniipa	    1
 Oradea	    1
 Orimattila	    1
 Orismala	    1
 Otava	    1
+Ottawa	    1
 Oulainen	    1
 Padua	    1
+Paimio	    1
 Pännäinen	    1
 Perho	    1
 Perkjärvi	    1
-Perniö	    1
 Philadelphia Pa	    1
 Pieksämäki	    1
 Pinjainen	    1
 Pistoia	    1
-Pornainen	    1
+Portland Or	    1
 Poznań	    1
-Punkalaidun	    1
+Prague	    1
 Purleigh	    1
-Puumala	    1
 Quedlinburg	    1
 R ev	    1
 Rääkkylä	    1
-Räisälä	    1
 Raisio	    1
+Rantasalmi	    1
 Rautalampi	    1
 Rautio	    1
 Ravenna	    1
+Red Jacket Mi	    1
 Red Lodge MT	    1
-Riihimäki	    1
-Rock Springs WY	    1
 Rotterdam	    1
-Ruotsi	    1
-Säkkijärvi	    1
+Rovaniemi	    1
 Sakkola	    1
 Salossa	    1
-Sandstone Mi	    1
 Sanktpeterburgʺ	    1
 Sarvilahti	    1
 Sauvo	    1
 Sawonlinnassa	    1
 Schwerin	    1
 Simola	    1
-Sjundea	    1
 Smolensk	    1
-St Louis Kaunti Mi	    1
-Sudbury On	    1
 Sundsvall	    1
 Suonenjoki	    1
 Taipalsaari	    1
+Tammela	    1
 Tamperella	    1
 Telč	    1
 Tervonsalmi	    1
-Thunder bay	    1
 Toholampi	    1
 Tomsk	    1
 Torgelow	    1
@@ -409,14 +364,13 @@ Trondheim	    1
 Tsing-shin	    1
 Turtle Lake Wi	    1
 Tuusula	    1
-Uusikirkko	    1
-Vainikkala	    1
+Urjala	    1
 Valkjärvi	    1
-Varkaus	    1
 Verona	    1
 Virginia Mn	    1
-Watton Mi	    1
 Weida	    1
 Wurzburg	    1
 Ylimarkku	    1
+Ylistaro	    1
 Ylivieska	    1
+Ypäjä	    1

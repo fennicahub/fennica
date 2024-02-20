@@ -1,16 +1,10 @@
 field <- "publication_time"
 
-# split the column by | to remove multiple publication years 
-df.orig$publication_time <- sapply(strsplit(as.character(df.orig$publication_time), "\\|"), `[`, 1)
-as.numeric(na.omit(df.orig$publication_time))
-#polish full data
-tmp  <- polish_years(df.orig[[field]], check = TRUE)
 
-# set to NA values which are longer than five 
-tmp$from <- ifelse(nchar(tmp$from) > 5, "NA", tmp$from)
-tmp$till <- ifelse(nchar(tmp$from) > 5, "NA", tmp$till)
-as.numeric(tmp$from)
-as.numeric(tmp$till)
+#polish full data
+tmp  <- polish_years(df.orig$publication_time, check = TRUE)
+
+
 
 # Make data.frame
 # Make sure if it called df.harmonized for publication_time, other fields have df.tmp 
@@ -29,7 +23,8 @@ df.harmonized$publication_decade <- decade(df.harmonized$publication_year)
 # ---------------------------------------------------------------------
 #1M data conversions
 message("Write conversions: publication year")
-df.harmonized$original <- df.orig[[field]]
+df.harmonized$original <- df.orig$publication_time
+
 
 xx <- as.data.frame(df.harmonized) %>% filter(!is.na(publication_year)) %>%
   group_by(original, publication_year) %>%
@@ -43,7 +38,7 @@ tmp <- write.table(xx,
                    row.names = FALSE)
 
 message("Discarded publication year")
-o <- as.character(df.orig[[field]])
+o <- as.character(df.orig$publication_time)
 x <- as.character(df.harmonized[["publication_year"]])
 inds <- which(is.na(x))
 discard.file <- paste0(output.folder, field, "_discarded.csv")

@@ -27,33 +27,129 @@ unzip("priority_fields.zip",exdir=".")
 # List the preprocessed data file and read the data
 df.orig <- read.csv(file = "priority_fields.csv", skip = 1, head = TRUE, sep="\t")
 
-#Merge title and title_remainder
-
-#df.orig$a.4 <- paste(df.orig$a.4, df.orig$b, sep=" ")
-#df.orig <- subset(df.orig, select = -b )
-
 #rename column names
 df.orig <- df.orig %>% 
   dplyr::rename("melinda_id" = 1, #("035","a")
-                "author_name" = 2, # ("100","a")
-                "author_date" = 3, # ("100","d")
-                "publication_time" = 4, #("260","c")
-                "language" = 5, # ("041","a")
-                "title_uniform" = 6, # ("240","a")
-                "title" = 7, #("245","a")
-                "publication_place" = 8, #("260","a")
-                "publisher" = 9, #("260","b")
-                "physical_dimensions"= 10, # ("300","c"),
-                "physical_extent" = 11, # ("300","a")
-                "publication_frequency" = 12, # ("310","a")
-                "publication_interval" = 13, # ("362","a")
-                "signum" = 14) # ("callnumbers","a")
+                "leader" = 2, # ("leader", "-")
+                "008" = 3, #("008", "-")
+                "author_name" = 4, # ("100","a")
+                "author_date" = 5, # ("100","d")
+                "language" = 6, # ("041","a")
+                "title_uniform" = 7, # ("240","a")
+                "title" = 8, #("245","a")
+                "title_remainder" = 9, #(245 b)
+                "publication_place" = 10,#("260","a")
+                "publisher" = 11, #("260","b")
+                "physical_dimensions"= 12, #300c"),
+                "physical_extent" = 13, # ("300","a")
+                "publication_frequency" = 14, # ("310","a")
+                "publication_interval" = 15, # ("362","a")
+                "signum" = 16,  # ("callnumbers","a")
+                "UDK" = 17, #(080a)
+                "250a" = 18, 
+                "250b" = 19)
+
+#unpack leader 
+
+# 06 - Type of record
+df.orig$type_of_record <- substr(df.orig$leader, start =  7, stop =  7)
+
+df.orig <- df.orig %>%
+  mutate(type_of_record = case_when(
+    type_of_record == 'a' ~ 'Language material',
+    type_of_record == 'c' ~ 'Notated music',
+    type_of_record == 'd' ~ 'Manuscript notated music',
+    type_of_record == 'e' ~ 'Cartographic material',
+    type_of_record == 'f' ~ 'Manuscript cartographic material',
+    type_of_record == 'g' ~ 'Projected medium',
+    type_of_record == 'i' ~ 'Nonmusical sound recording',
+    type_of_record == 'j' ~ 'Musical sound recording',
+    type_of_record == 'k' ~ 'Two-dimensional nonprojectable graphic',
+    type_of_record == 'm' ~ 'Computer file',
+    type_of_record == 'o' ~ 'Kit',
+    type_of_record == 'p' ~ 'Mixed materials',
+    type_of_record == 'r' ~ 'Three-dimensional artifact or naturally occurring object',
+    type_of_record == 't' ~ 'Manuscript language material'
+  ))
 
 
-# TO be added later as we progress with preprosessing the fields below
+# 07 - Bibliographic level
+df.orig$bibliographic_level <- substr(df.orig$leader, start =  8, stop =  8)
 
-#"subject_geography" = 14) #("651","a")
+df.orig <- df.orig %>%
+  mutate(bibliographic_level = case_when(
+    bibliographic_level == 'a' ~ 'Monographic component part',
+    bibliographic_level == 'b' ~ 'Serial component part',
+    bibliographic_level == 'c' ~ 'Collection',
+    bibliographic_level == 'd' ~ 'Subunit',
+    bibliographic_level == 'i' ~ 'Integrating resource',
+    bibliographic_level == 'm' ~ 'Monograph/Item',
+    bibliographic_level == 's' ~ 'Serial'
+    # Add more conditions here if needed
+  ))
 
+# divide 008 into columns of interes
+#00-05 (Luontipäivä)
+df.orig$Date_entered <- substr(df.orig$`008`, start =  1, stop =  6)
+
+#06 06 - Julkaisuajan tyyppi/Julkaisun tila
+df.orig$publication_status <- substr(df.orig$`008`, start = 7 , stop =  7)
+
+df.orig <- df.orig %>%
+  mutate(publication_status = case_when(
+    publication_status == 'b' ~ 'No dates given; B.C. date involved',
+    publication_status == 'c' ~ 'Continuing resource currently published',
+    publication_status == 'd' ~ 'Continuing resource ceased publication',
+    publication_status == 'e' ~ 'Detailed date',
+    publication_status == 'i' ~ 'Inclusive dates of collection',
+    publication_status == 'k' ~ 'Range of years of bulk of collection',
+    publication_status == 'm' ~ 'Multiple dates',
+    publication_status == 'n' ~ 'Dates unknown',
+    publication_status == 'p' ~ 'Date of distribution etc',
+    publication_status == 'q' ~ 'Questionable date',
+    publication_status == 'r' ~ 'Reprint/reissue date and original date',
+    publication_status == 's' ~ 'Single known date/probable date',
+    publication_status == 't' ~ 'Publication date and copyright date',
+    publication_status == 'u' ~ 'Continuing resource status unknown',
+    publication_status == '|' ~ 'No attempt to code'
+  ))
+
+
+
+#07-14 (Julkaisuvuosi)
+df.orig$publication_time <- substr(df.orig$`008`, start = 8 , stop =  15)
+
+
+
+
+#33 - genre for the BOOKs only 
+
+# Create the new column 'genre_book' based on the conditions
+df.orig <- df.orig %>%
+  mutate(genre_book = ifelse(
+    type_of_record %in% c("Language material", "Manuscript language material") &
+      bibliographic_level %in% c("Monographic component part", "Collection", "Subunit", "Monograph/Item"),
+    substr(`008`, start =  34, stop =  34),# Extract the  34th character from the '008' column
+    "NA"
+  ))
+
+
+df.orig <- df.orig %>%
+  mutate(genre_book = case_when(
+    genre_book == "0" ~ "Not fiction (not further specified)",
+    genre_book == "1" ~ "Fiction (not further specified)",
+    genre_book == "d" ~ "Dramas",
+    genre_book == "e" ~ "Essays",
+    genre_book == "f" ~ "Novels",
+    genre_book == "h" ~ "Humor, satires, etc.",
+    genre_book == "i" ~ "Letters", 
+    genre_book == "j" ~ "Short stories, stories or their collections", 
+    genre_book == "m" ~ "Combimation of genres",
+    genre_book == "p" ~ "Poems", 
+    genre_book == "s" ~ "Poems", 
+    genre_book == "u" ~ "Speeches, presentations", 
+    genre_book == "|" ~ "No attempt to code", 
+  ))
 
 
 

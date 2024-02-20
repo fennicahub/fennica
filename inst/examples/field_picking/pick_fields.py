@@ -4,12 +4,10 @@ import os
 from tqdm import tqdm
 #%%
 path_csvs = "/mnt/trial/csvs"
-
 # save picked field in a format "field_code"_"subfield_code"_"explanation.csv", for instance, "035_a_melinda_id.csv"
 # select which columns to pick from  pivoted csvs, the list of columns to pick will be ready shortly
 # priority fileds are 240_a_title, 100_a_author_name, 260_c_date_publication
-columns_to_pick = [("035","a"), ("leader","-"),("008","-"), ("336","a"), ("337","a"), ("338","a"), ("260","c"),("callnumbers","a")]
-#[("035","a"),("100","a"),("100","d"),("260","c"),("041","a"),("240","a"),("245","a"),("260","a"),("260","b"),("300","c"),("300","a"),("310","a"), ("362","a"),("callnumbers","a")]
+columns_to_pick = [("035","a"), ("leader","-"),("008","-"),("100","a"),("100","d"),("041","a"),("240","a"),("245","a"),("245","b"),("260","a"),("260","b"),("300","c"),("300","a"),("310","a"), ("362","a"),("callnumbers","a"), ("080", "a"), ("250", "a"), ("250", "b")]
 output_folder = "fields_picked"
 
 output_folder_priority = ".."
@@ -39,13 +37,6 @@ df = pd.concat(dfs, ignore_index=True)
 
 #%%
 #save priority_fields file in gzip in examples
-filename = 'aineistotyypit'
+filename = 'priority_fields'
 compression_options = dict(method='zip', archive_name=f'{filename}.csv')
-df.to_csv(f"{output_folder_priority}/aineistotyypit.zip", sep = "\t", index=False, compression=compression_options)
-
-#%%
-#check for all available fields
-pd.read_csv(f"{folder}/{filename}", sep='\t', header=[0,1]).columns.levels[0]
-#%%
-df[~df.isnull().any(axis=1)]
-# %%
+df.to_csv(f"{output_folder_priority}/priority_fields.zip", sep = "\t", index=False, compression=compression_options)
