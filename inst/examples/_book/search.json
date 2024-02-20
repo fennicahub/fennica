@@ -10,40 +10,15 @@
     "objectID": "author_name.html#complete-dataset-overview",
     "href": "author_name.html#complete-dataset-overview",
     "title": "2  Author’s name",
-<<<<<<< HEAD
     "section": "2.1 Complete Dataset Overview",
     "text": "2.1 Complete Dataset Overview\n\nUnique accepted entries in original data: 196891\nUnique discarded entries in original data (excluding NA cases): 29\nOriginal documents with non-NA titles 747538 / 1187813 (62.9%)\nOriginal documents with missing (NA) titles 440275 / 1187813 documents (37.1%)\n\n\n2.1.1 Authors\n\n196891 unique authors These final names capture all name variants from the custom author synonyme table, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the author synonyme table.\n747538 documents have unambiguous author information (63%).\n10 unique pseudonymes are recognized based on custom pseudonyme lists.\n20 discarded author names This list should not include any real authors (if it does, please send a note to the admin). The stopword lists are considered when discarding names.\nAuthor name conversions Non-trivial conversions from the original raw data to final names.\n\n\n\n2.1.2 Auxiliary files\n\nAuthor synonyme table\nStopwords for names\nStopwords for titles\nCustom pseudonyme lists"
-=======
-    "section": "",
-    "text": "Unique accepted entries in original data: 196891\nUnique discarded entries in original data (excluding NA cases): 29\nOriginal documents with non-NA titles 747538 / 1187813 (62.9%)\nOriginal documents with missing (NA) titles 440275 / 1187813 documents (37.1%)\n\n\n2.1.1 Authors\n\n196891 unique authors These final names capture all name variants from the custom author synonyme table, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the author synonyme table.\n747538 documents have unambiguous author information (63%).\n10 unique pseudonymes are recognized based on custom pseudonyme lists.\n20 discarded author names This list should not include any real authors (if it does, please send a note to the admin). The stopword lists are considered when discarding names.\nAuthor name conversions Non-trivial conversions from the original raw data to final names.\n\n\n\n2.1.2 Auxiliary files\n\nAuthor synonyme table\nStopwords for names\nStopwords for titles\nCustom pseudonyme lists",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's name</span>"
-    ]
->>>>>>> 7b3234ac5bfa6f248ee026205afe3669030e2b84
   },
   {
     "objectID": "author_name.html#subset-analysis-1809-1917",
     "href": "author_name.html#subset-analysis-1809-1917",
     "title": "2  Author’s name",
     "section": "2.2 Subset Analysis: 1809-1917",
-<<<<<<< HEAD
     "text": "2.2 Subset Analysis: 1809-1917\n\nUnique accepted entries for for 1809-1917 years: 10380\nUnique discarded entries in original data (excluding NA cases): 19\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.\n\n\n\n\n\nFrequency of unique titles 1809-1917.\nThe plot adds a historical dimension to the analysis. By visualizing how the number of unique titles evolves over this time span, it provides insights into the literary landscape and publishing trends during the 19th and early 20th centuries."
-=======
-    "text": "2.2 Subset Analysis: 1809-1917\n\nUnique accepted entries for for 1809-1917 years: 10157\nUnique discarded entries in original data (excluding NA cases): 18\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.\n\n\n\n\n\n\n\n\n\nFrequency of unique titles 1809-1917.\nThe plot adds a historical dimension to the analysis. By visualizing how the number of unique titles evolves over this time span, it provides insights into the literary landscape and publishing trends during the 19th and early 20th centuries.",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's name</span>"
-    ]
-  },
-  {
-    "objectID": "language.html",
-    "href": "language.html",
-    "title": "3  Language",
-    "section": "",
-    "text": "3.1 Complete Dataset Overview\nLanguage codes are from MARC; new custom abbreviations can be added in this table.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Language</span>"
-    ]
->>>>>>> 7b3234ac5bfa6f248ee026205afe3669030e2b84
   },
   {
     "objectID": "language.html#complete-dataset-overview",
@@ -57,24 +32,7 @@
     "href": "language.html#subset-analysis-1809-1917",
     "title": "3  Language",
     "section": "3.2 Subset Analysis: 1809-1917",
-<<<<<<< HEAD
     "text": "3.2 Subset Analysis: 1809-1917\n\n52 unique languages\n59024 single-language documents (94.05%)\n3732 multilingual documents (5.95%)\n920 documents (1.47%) with unrecognized language\n\n\n3.2.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n32700\n2.8\n\n\nSwedish\n18522\n1.6\n\n\nGerman\n1980\n0.2\n\n\nFinnish;Swedish\n1934\n0.2\n\n\nLatin\n1659\n0.1\n\n\nRussian\n1578\n0.1\n\n\nUndetermined\n920\n0.1\n\n\nFrench\n623\n0.1\n\n\nEnglish\n423\n0\n\n\nSwedish;Finnish\n156\n0\n\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):"
-=======
-    "text": "3.2 Subset Analysis: 1809-1917\n\n49 unique languages\n51036 single-language documents (94.6%)\n2916 multilingual documents (5.4%)\n759 documents (1.41%) with unrecognized language\n\n\n3.2.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n27857\n2.3\n\n\nSwedish\n16309\n1.4\n\n\nGerman\n1805\n0.2\n\n\nLatin\n1641\n0.1\n\n\nFinnish;Swedish\n1510\n0.1\n\n\nRussian\n1201\n0.1\n\n\nUndetermined\n759\n0.1\n\n\nFrench\n587\n0\n\n\nEnglish\n364\n0\n\n\nDanish\n142\n0\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Language</span>"
-    ]
-  },
-  {
-    "objectID": "publisher.html",
-    "href": "publisher.html",
-    "title": "4  Publisher",
-    "section": "",
-    "text": "4.1 Complete Dataset Overview",
-    "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Publisher</span>"
-    ]
->>>>>>> 7b3234ac5bfa6f248ee026205afe3669030e2b84
   },
   {
     "objectID": "publisher.html#complete-dataset-overview",
@@ -88,24 +46,7 @@
     "href": "publisher.html#subset-analysis-1809-1917",
     "title": "4  Publisher",
     "section": "4.2 Subset Analysis: 1809-1917",
-<<<<<<< HEAD
     "text": "4.2 Subset Analysis: 1809-1917\n\n9692 unique publishers\n51103 documents have unambiguous publisher information (81.4%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\n\nThe 20 most common publishers from 1809 to 1917 are shown with the number of documents."
-=======
-    "text": "4.2 Subset Analysis: 1809-1917\n\n7669 unique publishers\n44983 documents have unambiguous publisher information (83.4%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\n\nThe 20 most common publishers from 1809 to 1917 are shown with the number of documents.",
-    "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Publisher</span>"
-    ]
-  },
-  {
-    "objectID": "publication_place.html",
-    "href": "publication_place.html",
-    "title": "5  Publication place",
-    "section": "",
-    "text": "5.1 Complete Dataset Overview",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Publication place</span>"
-    ]
->>>>>>> 7b3234ac5bfa6f248ee026205afe3669030e2b84
   },
   {
     "objectID": "publication_place.html#complete-dataset-overview",
@@ -133,29 +74,14 @@
     "href": "publication_place.html#subset-analysis-1809-1917",
     "title": "5  Publication place",
     "section": "5.4 Subset Analysis: 1809-1917",
-<<<<<<< HEAD
     "text": "5.4 Subset Analysis: 1809-1917\n\n468 unique publication places; available for 51230 documents (82%).\nUnique publication country for a period 1809-1917: 32; available for 49951 documents (80%).\n33 discarded place names\n\nTop-20 publication places are shown together with the number of documents.\n\n\n\n\n\n\n\n\n\n\n\n\nCountry\nDocuments (n)\nFraction (%)\n\n\n\n\nFinland\n45069\n71.8\n\n\nSweden\n1433\n2.3\n\n\nRussia\n1222\n1.9\n\n\nUSA\n898\n1.4\n\n\nGermany\n556\n0.9\n\n\nEngland\n171\n0.3"
-=======
-    "text": "5.4 Subset Analysis: 1809-1917\n\n376 unique publication places; available for 45104 documents (84%).\nUnique publication country for a period 1809-1917: 32; available for 44206 documents (82%).\n31 discarded place names\n\nTop-20 publication places are shown together with the number of documents.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCountry\nDocuments (n)\nFraction (%)\n\n\n\n\nFinland\n39771\n73.7\n\n\nSweden\n1345\n2.5\n\n\nRussia\n1131\n2.1\n\n\nUSA\n719\n1.3\n\n\nGermany\n512\n0.9\n\n\nEngland\n167\n0.3",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Publication place</span>"
-    ]
->>>>>>> 7b3234ac5bfa6f248ee026205afe3669030e2b84
   },
   {
     "objectID": "publication_time.html#complete-data-overview",
     "href": "publication_time.html#complete-data-overview",
     "title": "6  Publication time",
-<<<<<<< HEAD
     "section": "6.1 Complete Data Overview",
     "text": "6.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nPublication years in is available for 1170398 documents (99%). The publication years span is 0-2050."
-=======
-    "section": "",
-    "text": "6.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nPublication years in is available for 1065842 documents (90%). The publication years span is 0-2050.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Publication time</span>"
-    ]
->>>>>>> 7b3234ac5bfa6f248ee026205afe3669030e2b84
   },
   {
     "objectID": "publication_time.html#subset-analysis-1809-1917",
@@ -204,14 +130,7 @@
     "href": "title.html#subset-analysis-1809-1917",
     "title": "9  Title field: summary",
     "section": "9.2 Subset Analysis: 1809-1917",
-<<<<<<< HEAD
     "text": "9.2 Subset Analysis: 1809-1917\n\nUnique accepted entries: 46702\nUnique discarded entries in original data (excluding NA cases): 0\n\nTop-20 titles and their title counts for the 1809-1917 period\n\n\n\n\n\nFrequency of unique titles:"
-=======
-    "text": "9.2 Subset Analysis: 1809-1917\n\nUnique accepted entries: 41092\nUnique discarded entries in original data (excluding NA cases): 0\n\nTop-20 titles and their title counts for the 1809-1917 period\n\n\n\n\n\n\n\n\n\nFrequency of unique titles:",
-    "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Title field: summary</span>"
-    ]
->>>>>>> 7b3234ac5bfa6f248ee026205afe3669030e2b84
   },
   {
     "objectID": "title_uniform.html#section",
@@ -232,14 +151,7 @@
     "href": "title_uniform.html#subset-analysis-1809-1917",
     "title": "10  Uniform Title",
     "section": "10.3 Subset Analysis: 1809-1917",
-<<<<<<< HEAD
     "text": "10.3 Subset Analysis: 1809-1917\n\nUnique accepted entries: 3275\nUnique discarded entries in original data (excluding NA cases): 0\n\nTop-20 titles and their title counts for 1809-1917 period."
-=======
-    "text": "10.3 Subset Analysis: 1809-1917\n\nUnique accepted entries: 3186\nUnique discarded entries in original data (excluding NA cases): 0\n\nTop-20 titles and their title counts for 1809-1917 period.",
-    "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Uniform Title</span>"
-    ]
->>>>>>> 7b3234ac5bfa6f248ee026205afe3669030e2b84
   },
   {
     "objectID": "acknowledgments.html",
@@ -253,14 +165,6 @@
     "href": "technical_information.html",
     "title": "Technical information",
     "section": "",
-<<<<<<< HEAD
     "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.1.2 (2021-11-01)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Ubuntu 22.04.3 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0\nLAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] fennica_0.2.9     Cairo_1.5-14      ggplot2_3.4.3     R.utils_2.12.2   \n [5] R.oo_1.25.0       R.methodsS3_1.8.2 knitr_1.44        stringr_1.5.0    \n [9] tm_0.7-11         NLP_0.2-1         dplyr_1.1.3       devtools_2.4.5   \n[13] usethis_2.2.2    \n\nloaded via a namespace (and not attached):\n [1] stringdist_0.9.10 Rcpp_1.0.11       prettyunits_1.2.0 ps_1.7.5         \n [5] digest_0.6.33     utf8_1.2.3        mime_0.12         slam_0.1-50      \n [9] R6_2.5.1          evaluate_0.22     pillar_1.9.0      rlang_1.1.1      \n[13] data.table_1.14.8 rstudioapi_0.15.0 miniUI_0.1.1.1    callr_3.7.3      \n[17] urlchecker_1.0.1  rmarkdown_2.25    htmlwidgets_1.6.2 munsell_0.5.0    \n[21] shiny_1.7.5       compiler_4.1.2    httpuv_1.6.11     xfun_0.40        \n[25] pkgconfig_2.0.3   pkgbuild_1.4.2    htmltools_0.5.6   tidyselect_1.2.0 \n[29] tibble_3.2.1      XML_3.99-0.14     fansi_1.0.4       crayon_1.5.2     \n[33] withr_2.5.1       later_1.3.1       grid_4.1.2        jsonlite_1.8.7   \n[37] xtable_1.8-4      gtable_0.3.4      lifecycle_1.0.3   magrittr_2.0.3   \n[41] scales_1.2.1      cli_3.6.1         stringi_1.7.12    cachem_1.0.8     \n[45] fs_1.6.3          promises_1.2.1    remotes_2.4.2.1   xml2_1.3.5       \n[49] ellipsis_0.3.2    generics_0.1.3    vctrs_0.6.3       tools_4.1.2      \n[53] glue_1.6.2        purrr_1.0.2       processx_3.8.2    pkgload_1.3.3    \n[57] parallel_4.1.2    fastmap_1.1.1     colorspace_2.1-0  sessioninfo_1.2.2\n[61] memoise_2.0.1     profvis_0.3.8"
-=======
-    "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.3.2 (2023-10-31)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Ubuntu 22.04.3 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\ntime zone: UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] fennica_0.2.9     Cairo_1.6-2       ggplot2_3.4.4     R.utils_2.12.3   \n [5] R.oo_1.26.0       R.methodsS3_1.8.2 knitr_1.45        stringr_1.5.1    \n [9] tm_0.7-11         NLP_0.2-1         dplyr_1.1.4       devtools_2.4.5   \n[13] usethis_2.2.2    \n\nloaded via a namespace (and not attached):\n [1] utf8_1.2.4        generics_0.1.3    xml2_1.3.6        slam_0.1-50      \n [5] stringi_1.8.3     digest_0.6.34     magrittr_2.0.3    grid_4.3.2       \n [9] evaluate_0.23     pkgload_1.3.4     fastmap_1.1.1     jsonlite_1.8.8   \n[13] pkgbuild_1.4.3    sessioninfo_1.2.2 urlchecker_1.0.1  promises_1.2.1   \n[17] purrr_1.0.2       fansi_1.0.6       scales_1.3.0      stringdist_0.9.12\n[21] XML_3.99-0.16.1   cli_3.6.2         shiny_1.8.0       rlang_1.1.3      \n[25] munsell_0.5.0     ellipsis_0.3.2    withr_3.0.0       remotes_2.4.2.1  \n[29] cachem_1.0.8      tools_4.3.2       parallel_4.3.2    memoise_2.0.1    \n[33] colorspace_2.1-0  httpuv_1.6.14     vctrs_0.6.5       R6_2.5.1         \n[37] mime_0.12         lifecycle_1.0.4   fs_1.6.3          htmlwidgets_1.6.4\n[41] miniUI_0.1.1.1    pkgconfig_2.0.3   gtable_0.3.4      pillar_1.9.0     \n[45] later_1.3.2       data.table_1.15.0 glue_1.7.0        profvis_0.3.8    \n[49] Rcpp_1.0.12       xfun_0.42         tibble_3.2.1      tidyselect_1.2.0 \n[53] xtable_1.8-4      htmltools_0.5.7   rmarkdown_2.25    compiler_4.3.2",
-    "crumbs": [
-      "Appendices",
-      "Technical information"
-    ]
->>>>>>> 7b3234ac5bfa6f248ee026205afe3669030e2b84
   }
 ]
