@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 library(dplyr)
 
 unique_count <- as.data.frame(df.orig %>%
@@ -17,3 +18,6 @@ x <- top(df.orig, "type_of_record")
 tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
 colnames(tab) <- c("Type of Record", "Documents (n)", "Fraction (%)")
 kable(head(tab, 14))
+=======
+field <- "type_of_record"
+>>>>>>> cbe5f891028b99c4cb91a11c7cc9dadc11d94011

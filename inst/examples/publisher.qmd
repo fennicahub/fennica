@@ -13,8 +13,6 @@ source("publisher.R")
 
 MARC: [260b](https://www.loc.gov/marc/bibliographic/bd260.html)
 
-[polish_publisher.R](https://github.com/fennicahub/fennica/blob/master/R/polish_publisher.R)
-
 ## Complete Dataset Overview
 
 -   `r length(unique(df$publisher))` [unique publishers](dataTable/data_table.html?path=../output.tables/publisher_accepted.csv)
