@@ -164,10 +164,7 @@
     "href": "publication_time.html#subset-analysis-1809-1917",
     "title": "6  Publication time",
     "section": "6.2 Subset Analysis: 1809-1917",
-    "text": "6.2 Subset Analysis: 1809-1917\nPublication year conversions\nPublication year discarded\n\n6.2.1 Title count per decade\nA plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Publication time</span>"
-    ]
+    "text": "6.2 Subset Analysis: 1809-1917\nPublication year conversions\nPublication year discarded\n\n6.2.1 Title count per decade\nA plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period."
   },
   {
     "objectID": "publication_frequency.html",
@@ -320,5 +317,12 @@
       "Appendices",
       "Technical information"
     ]
+  },
+  {
+    "objectID": "publication_time.html#complete-data-overview",
+    "href": "publication_time.html#complete-data-overview",
+    "title": "6  Publication time",
+    "section": "6.1 Complete Data Overview",
+    "text": "6.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nPublication years in is available for 1170398 documents (99%). The publication years span is 0-2050.\n\n6.1.1 Publication status summaries\n\n\n\n\nPublication Status\nDocuments (n)\nFraction (%)\n\n\n\n\nSingle known date/probable date\n1064152\n89.6\n\n\nContinuing resource ceased publication\n44266\n3.7\n\n\nPublication date and copyright date\n34378\n2.9\n\n\nContinuing resource currently published\n25570\n2.2\n\n\nQuestionable date\n7754\n0.7\n\n\nInclusive dates of collection\n4701\n0.4\n\n\nReprint/reissue date and original date\n4188\n0.4\n\n\nMultiple dates\n1983\n0.2\n\n\nContinuing resource status unknown\n491\n0\n\n\nDate of distribution etc\n101\n0\n\n\nDetailed date\n76\n0\n\n\nNo attempt to code\n66\n0\n\n\nDates unknown\n26\n0\n\n\nNo dates given; B.C. date involved\n4\n0"
   }
 ]
