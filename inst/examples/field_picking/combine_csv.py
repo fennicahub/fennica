@@ -8,8 +8,9 @@ from tqdm import tqdm
 import numpy as np
 import more_itertools as mit
 # %%
+path_csvs = "/mnt/trial/csvs"
 # list of files in pivoted_csvs folder
-folder = "../../pivoted_csvs"
+folder = f"{path_csvs}/pivoted_csvs"
 csv_filenames = list(os.walk(folder))[0][2]
 csv_filenames
 #%%
@@ -102,7 +103,7 @@ for i, chunk in enumerate(csv_filenames_chunks):
     df_temp_merged = df_temp_exploded.merge(df_callnumbers_final, on=[("035","a")], how="left")
 
     # save new dataframe as csv
-    df_temp_merged.to_csv(f"../../pivoted_callnumbered_csvs/piv_callnum_chunk_{i}.csv", sep = '\t', index = False)
+    df_temp_merged.to_csv(f"{path_csvs}//pivoted_callnumbered_csvs/piv_callnum_chunk_{i}.csv", sep = '\t', index = False)
     # print(len(df_temp_merged.columns))
 
 #%%
@@ -113,7 +114,7 @@ for i, chunk in enumerate(csv_filenames_chunks):
 dfs_cols = []
 for i, _ in enumerate(csv_filenames_chunks):
     # load a pivoted csv
-    df_temp = pd.read_csv(f"../../pivoted_callnumbered_csvs/piv_callnum_chunk_{i}.csv", sep='\t', header=[0,1,], index_col=0, nrows=30)
+    df_temp = pd.read_csv(f"{path_csvs}/pivoted_callnumbered_csvs/piv_callnum_chunk_{i}.csv", sep='\t', header=[0,1,], index_col=0, nrows=30)
     # reset it's index to make record_number column again
     df_temp.reset_index(inplace=True)
     # print the number of columns in the chunk
@@ -132,7 +133,7 @@ df_fullindex = pd.DataFrame(columns = full_index)
 
 for i, _ in tqdm(enumerate(csv_filenames_chunks)):
     # load a pivoted csv
-    df_temp = pd.read_csv(f"../../pivoted_callnumbered_csvs/piv_callnum_chunk_{i}.csv", sep='\t', header=[0,1,], index_col=0)
+    df_temp = pd.read_csv(f"{path_csvs}/pivoted_callnumbered_csvs/piv_callnum_chunk_{i}.csv", sep='\t', header=[0,1,], index_col=0)
     # reset it's index to make record_number column again
     df_temp.reset_index(inplace=True)
     # concatenate with empty df to get its column names but keep the data

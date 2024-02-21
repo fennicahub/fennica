@@ -3,10 +3,13 @@ import pandas as pd
 import math
 from tqdm import tqdm
 #%%
-df = pd.read_csv("full.csv")
+path_csvs = "/mnt/trial/csvs"
+#https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/full.csv
+full_path = f"{path_csvs}/full.csv"
+df = pd.read_csv(full_path, engine='c')
 
 #%%
-df_small = pd.read_csv("full.csv", engine='c', nrows = 10000)
+df_small = pd.read_csv(full_path, engine='c', nrows = 10000)
 
 #%%
 #df_small = df_small.drop(columns=['field_number','subfield_number'])
@@ -39,13 +42,15 @@ df_sm_dup.to_csv("test.csv", sep = '\t', index = False)
 df_dup = df[df.duplicated(keep=False, subset=['record_number','field_code','subfield_code'])].sort_values(['record_number','field_code','subfield_code'])
 #%%
 # join duplicate entries by |
-df_small_pivoted = df_small.pivot_table(index = 'record_number', columns = ['field_code', 'subfield_code'], values = ['value'], aggfunc = lambda x: '|'.join([str(y) for y in x]))['value']
+#df_small_pivoted = df_small.pivot_table(index = 'record_number', columns = ['field_code', 'subfield_code'], values = ['value'], aggfunc = lambda x: '|'.join([str(y) for y in x]))['value']
+df_small_pivoted = df_small.pivot_table(index = 'record_number', columns = ['field_code', 'subfield_code'], values = ['value'], aggfunc = lambda x: '|'.join([str(y) for y in x]), dropna=False)['value']
 #%%
 df_small_pivoted
 #df_small_pivoted.loc[:,('value', '035','a')]
 #%%
 df_small_pivoted.to_csv("test_pivoted.csv")
 #%%
+# to split into chunks, get number of chunks with 10k rows each
 max_record_number = df['record_number'].max()
 max_record_number
 
@@ -53,13 +58,13 @@ chunk_size = 10_000
 num_chunks = math.ceil(max_record_number / chunk_size)
 num_chunks
 #%%
+# for each chunk, pivot the table and save as csv
 for i in tqdm(range(num_chunks)):
     df_test = df[df['record_number'].between(1 + i * chunk_size,(i + 1)* chunk_size)]
-    df_test_pivoted = df_test.pivot_table(index = 'record_number', columns = ['field_code', 'subfield_code'], values = ['value'], aggfunc = lambda x: '|'.join([str(y) for y in x]))['value']
-    df_test_pivoted.to_csv(f"pivoted_csvs/pivoted_chunk_{i}.csv", sep = '\t')
-
-
+    df_test_pivoted = df_test.pivot_table(index = 'record_number', columns = ['field_code', 'subfield_code'], values = ['value'], aggfunc = lambda x: '|'.join([str(y) for y in x]), dropna = False)['value']
+    df_test_pivoted.to_csv(f"{path_csvs}/pivoted_csvs/pivoted_chunk_{i}.csv", sep = '\t')
 #%%
+# checked for duplicates
 df_test = df[df['record_number'].between(8559,8559)]
 df_test_pivoted = df_test.pivot_table(index = 'record_number', columns = ['field_code', 'subfield_code'], values = ['value'], aggfunc = lambda x: '|'.join([str(y) for y in x]))
 df_test_pivoted
