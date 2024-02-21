@@ -11,11 +11,9 @@ source("init.R")
 source("publication_time.R")
 ```
 
-MARC: 008 (07-14)
+MARC: [260c](https://www.loc.gov/marc/bibliographic/bd260.html)
 
-[polish_years.R](https://github.com/fennicahub/fennica/blob/master/R/polish_years.R)
-
-The publication years section offers a comprehensive summary of the data set's years of publication, providing an understanding of the temporal distribution of titles. The inclusion of links to uniquely accepted and discarded output tables adds a layer of transparency, allowing for detailed exploration of the refined and excluded data.
+The publication years section offers a comprehensive summary of the dataset's years of publication, providing anunderstanding of the temporal distribution of titles. The inclusion of links to uniquely accepted and discarded output tables adds a layer of transparency, allowing for detailed exploration of the refined and excluded data.
 
 ## Complete Data Overview
 
@@ -24,19 +22,6 @@ The publication years section offers a comprehensive summary of the data set's y
 [Publication year discarded](dataTable/data_table.html?path=../output.tables/publication_time_discarded.csv)
 
 Publication years in is available for `r sum(!is.na(df_pub_time$publication_year))` documents (`r round(100*mean(!is.na(df_pub_time$publication_year)))`%). The publication years span is `r paste(range(na.omit(as.numeric(df_pub_time$publication_year))), collapse = "-")`.
-
-
-### Publication status 
-
-```{r}
-#| label = "publication_status",
-#| echo = FALSE,
-#| results = "asis"
-x <- top(df.orig, "publication_status")
-tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df.orig)), 1))
-colnames(tab) <- c("Publication Status", "Documents (n)", "Fraction (%)")
-kable(head(tab, 14))
-```
 
 ## Subset Analysis: 1809-1917
 
