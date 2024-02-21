@@ -25,6 +25,19 @@ The publication years section offers a comprehensive summary of the data set's y
 
 Publication years in is available for `r sum(!is.na(df_pub_time$publication_year))` documents (`r round(100*mean(!is.na(df_pub_time$publication_year)))`%). The publication years span is `r paste(range(na.omit(as.numeric(df_pub_time$publication_year))), collapse = "-")`.
 
+
+### Publication status 
+
+```{r}
+#| label = "content_type",
+#| echo = FALSE,
+#| results = "asis"
+x <- top(df.orig, "publication_status")
+tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df.orig)), 1))
+colnames(tab) <- c("Publication Status", "Documents (n)", "Fraction (%)")
+kable(head(tab, 14))
+```
+
 ## Subset Analysis: 1809-1917
 
 [Publication year conversions](dataTable/data_table.html?path=../output.tables/publication_time_conversion_19.csv)

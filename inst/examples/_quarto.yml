@@ -44,6 +44,7 @@ book:
   - signum.qmd
   - title.qmd #läpivyys mihin tiedot perustuu
   - title_uniform.qmd
+  - content_type.qmd
   ##- subject_topic.qmd
   #- successor.qmd
   #- uncontrolled.qmd

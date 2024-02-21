@@ -24,7 +24,7 @@ if (!file.exists(output.folder)) {
 
 #the file need to be zipped, otherwise it's too big to be put on github
 unzip("priority_fields.zip",exdir=".")
-# List the preprocessed data file and read the data
+# List the pre-processed data file and read the data
 df.orig <- read.csv(file = "priority_fields.csv", skip = 1, head = TRUE, sep="\t")
 
 #rename column names
@@ -47,7 +47,9 @@ df.orig <- df.orig %>%
                 "signum" = 16,  # ("callnumbers","a")
                 "UDK" = 17, #(080a)
                 "250a" = 18, 
-                "250b" = 19)
+                "250b" = 19, 
+                "language_original" = 20,  # ("041","h"))
+                "080x" = 21)
 
 #unpack leader 
 
@@ -167,10 +169,10 @@ df.orig <- df.orig %>%
     genre_book == "h" ~ "Humor, satires, etc.",
     genre_book == "i" ~ "Letters", 
     genre_book == "j" ~ "Short stories, stories or their collections", 
-    genre_book == "m" ~ "Combimation of genres",
+    genre_book == "m" ~ "Combination of genres",
     genre_book == "p" ~ "Poems", 
-    genre_book == "s" ~ "Poems", 
-    genre_book == "u" ~ "Speeches, presentations", 
+    genre_book == "s" ~ "Speeches, presentations", 
+    genre_book == "u" ~ "Unknown", 
     genre_book == "|" ~ "No attempt to code", 
   ))
 

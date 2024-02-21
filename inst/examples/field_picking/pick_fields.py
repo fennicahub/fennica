@@ -7,7 +7,7 @@ path_csvs = "/mnt/trial/csvs"
 # save picked field in a format "field_code"_"subfield_code"_"explanation.csv", for instance, "035_a_melinda_id.csv"
 # select which columns to pick from  pivoted csvs, the list of columns to pick will be ready shortly
 # priority fileds are 240_a_title, 100_a_author_name, 260_c_date_publication
-columns_to_pick = [("035","a"), ("leader","-"),("008","-"),("100","a"),("100","d"),("041","a"),("240","a"),("245","a"),("245","b"),("260","a"),("260","b"),("300","c"),("300","a"),("310","a"), ("362","a"),("callnumbers","a"), ("080", "a"), ("250", "a"), ("250", "b")]
+columns_to_pick = [("035","a"), ("leader","-"),("008","-"),("100","a"),("100","d"),("041","a"),("240","a"),("245","a"),("245","b"),("260","a"),("260","b"),("300","c"),("300","a"),("310","a"), ("362","a"),("callnumbers","a"), ("080", "a"), ("250", "a"), ("250", "b"), ("041", "h"), ("080", "x")]
 output_folder = "fields_picked"
 
 output_folder_priority = ".."

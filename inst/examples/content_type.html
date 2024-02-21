@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>content_type</title>
+<title>Types of record</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -79,7 +45,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">content_type</h1>
+<h1 class="title">Types of record</h1>
 </div>
 
 
@@ -94,446 +60,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<p><a href="https://www.loc.gov/marc/bibliographic/bdleader.html">MARC: leader/06</a></p>
+<div class="cell-output-display">
+<table class="table">
+<colgroup>
+<col style="width: 67%">
+<col style="width: 16%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Type of Record</th>
+<th style="text-align: left;">Documents (n)</th>
+<th style="text-align: left;">Fraction (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Language material</td>
+<td style="text-align: left;">1087866</td>
+<td style="text-align: left;">91.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cartographic material</td>
+<td style="text-align: left;">57928</td>
+<td style="text-align: left;">4.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nonmusical sound recording</td>
+<td style="text-align: left;">37097</td>
+<td style="text-align: left;">3.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kit</td>
+<td style="text-align: left;">1892</td>
+<td style="text-align: left;">0.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Computer file</td>
+<td style="text-align: left;">1201</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Notated music</td>
+<td style="text-align: left;">662</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Two-dimensional nonprojectable graphic</td>
+<td style="text-align: left;">427</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Projected medium</td>
+<td style="text-align: left;">290</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Musical sound recording</td>
+<td style="text-align: left;">195</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mixed materials</td>
+<td style="text-align: left;">176</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Three-dimensional artifact or naturally occurring object</td>
+<td style="text-align: left;">51</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Manuscript language material</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Manuscript cartographic material</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Title count per type of record (note the log10 scale):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"content_type.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="leader-looks-like-this" class="level2">
-<h2 class="anchored" data-anchor-id="leader-looks-like-this">Leader looks like this</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(df_content<span class="sc">$</span>leader,  <span class="dv">50</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "00000cam a2201561 i 4500" "00000cam a2202341 i 4500"
- [3] "00000cam a2201381 i 4500" "00000cam a2201057 i 4500"
- [5] "00000cam a2200757 i 4500" "00000cam a2200997 i 4500"
- [7] "00000cam a2201249 i 4500" "00000cam a2201069 i 4500"
- [9] "00000cam a2200841 i 4500" "00000cam a2200877 i 4500"
-[11] "00000cam a2200865 i 4500" "00000cam a22011172i 4500"
-[13] "00000cam a2201789 i 4500" "00000cam a2201357 i 4500"
-[15] "00000cam a2201393 i 4500" "00000cam a2201201 i 4500"
-[17] "00000cam a2201525 i 4500" "00000cam a22029414i 4500"
-[19] "00000cam a2201033 i 4500" "00000cam a2201321 i 4500"
-[21] "00000cam a2201717 i 4500" "00000cam a2202017 i 4500"
-[23] "00000cam a2202017 i 4500" "00000cam a2201477 i 4500"
-[25] "00000cam a2201957 i 4500" "00000cam a2201069 i 4500"
-[27] "00000cam a2201057 i 4500" "00000cam a2201525 i 4500"
-[29] "00000cam a2201573 i 4500" "00000cam a2200757 i 4500"
-[31] "00000cam a2201789 i 4500" "00000cam a2201597 i 4500"
-[33] "00000cam a2200625 i 4500" "00000cam a2201801 i 4500"
-[35] "00000cam a2201225 i 4500" "00000cam a22009012i 4500"
-[37] "00000cam a2201009 i 4500" "00000cam a2200961 i 4500"
-[39] "00000cam a2200601 i 4500" "00000cam a2200913 i 4500"
-[41] "00000cam a2201117 i 4500" "00000cam a22015134i 4500"
-[43] "00000cam a2200793 i 4500" "00000cam a2200829 i 4500"
-[45] "00000cam a22013094i 4500" "00000cam a2201105 i 4500"
-[47] "00000cam a2200745 i 4500" "00000cam a2201825 i 4500"
-[49] "00000cam a2201813 i 4500" "00000cam a2201021 i 4500"</code></pre>
+<div class="cell-output-display">
+<p><img src="content_type_files/figure-html/content_type2-1.png" class="img-fluid" width="1056"></p>
 </div>
 </div>
-</section>
-<section id="looks-like-this" class="level2">
-<h2 class="anchored" data-anchor-id="looks-like-this">008 looks like this</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(df_content<span class="sc">$</span><span class="st">"008"</span>,  <span class="dv">40</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "030317s2002    fi |||||||||||||||f|fin| "
- [2] "850416s1984    fi |||||||||||||||||fin| "
- [3] "080403s2008    fi |||||||||||||||||fin| "
- [4] "911002s1965    fi |||||||||||||||||fin| "
- [5] "810526s1980    fi |||||||||||||||||fin| "
- [6] "920817s1957    fi |||||||||||||||||fin| "
- [7] "790410s1978    fi |||||||||||||||f|fin| "
- [8] "861007s1986    fi |||||||||||||||||fin| "
- [9] "970813s1910    fi |||||||   |||||||fin| "
-[10] "970429s1922    fi |     |||| 00| 0aswe| "
-[11] "970429s1922    fi |     |||| 00| 0aswe| "
-[12] "970702s1909    fi |||||||||||||||||fin| "
-[13] "801219s1976    fi ||||||m   |||||||fin| "
-[14] "780221s1977    fi |||||||||||||||||fin| "
-[15] "000628s1894    fi |||||||||||||| 0bswe| "
-[16] "890427s1967    fi |||||||||||||||||fin| "
-[17] "860902s1985    fi |||||||||||||||||eng| "
-[18] "890207s1988    fi ||||||b   |||||||fin| "
-[19] "050523s2005    fi |||||||||||||||f|fin| "
-[20] "060502s2006    fi |||||||||||||||f|fin| "
-[21] "830209s1982    fi ||||||b   |||||||fin| "
-[22] "810210s1980    fi |||||||||||||||||fin| "
-[23] "000530s2000    fi ||||||||||||||||afin| "
-[24] "900328s1989    fi |||||||||||||||||fin| "
-[25] "910420s1974    fi |||||||||||||||||fin| "
-[26] "800522s1979    fi |||||||||||||||f|fin| "
-[27] "870415s1987    fi |||||||||||||||f|fin| "
-[28] "921105s1964    fi |||||||||||||||f|fin| "
-[29] "910519s1973    fi |||||||||||||||||fin| "
-[30] "880627s1968    fi |||||||||||||||||fin| "
-[31] "910519s1972    fi |||||||||||||||||fin| "
-[32] "910519s1974    fi |||||||||||||||||fin| "
-[33] "001214s1890    fi |||||||||||||| ||swe| "
-[34] "071109s2007    fi |||||||||||||||||fin| "
-[35] "980819s1896    fi |||||||||||||||||fin  "
-[36] "001214s1886    fi |||||||||||||||||fre| "
-[37] "980420s1893    fi ||||      |000 0 swe| "
-[38] "220309s1969    fi ||||g |||| 0|| f|fin|c"
-[39] "880627s1970    fi |||||||||||||||f|fin| "
-[40] "880627s1967    fi |||||||||||||||f|fin| "</code></pre>
-</div>
-</div>
-</section>
-<section id="missing-data-for-each-field" class="level2">
-<h2 class="anchored" data-anchor-id="missing-data-for-each-field">Missing data for each field</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of empty rows in each column</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>empty_row_counts <span class="ot">&lt;-</span> <span class="fu">sapply</span>(df_content, <span class="cf">function</span>(x) <span class="fu">sum</span>(x <span class="sc">==</span> <span class="st">""</span> <span class="sc">|</span> <span class="fu">is.na</span>(x)))</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the result</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(empty_row_counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      melinda_id           leader              008              336 
-               0                0                7              131 
-             337              338 publication_time           signum 
-             116             8378           225549           260929 </code></pre>
-</div>
-</div>
-</section>
-<section id="unique-values-336" class="level2">
-<h2 class="anchored" data-anchor-id="unique-values-336">Unique values 336</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>unique_values_336 <span class="ot">&lt;-</span> <span class="fu">unique</span>(df_content<span class="sc">$</span><span class="st">'336'</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the unique values</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( unique_values_336)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  [1] "teksti"                                                             
-  [2] "useita sisältötyyppejä"                                             
-  [3] "teksti|stillkuva"                                                   
-  [4] "puhe"                                                               
-  [5] "kartografinen kuva"                                                 
-  [6] "määrittelemätön"                                                    
-  [7] "nuottikirjoitus|teksti"                                             
-  [8] "stillkuva|teksti"                                                   
-  [9] "stillkuva"                                                          
- [10] "useita sisältötyyppejä|stillkuva"                                   
- [11] "kaksiulotteinen liikkuva kuva"                                      
- [12] "teksti|teksti"                                                      
- [13] "nuottikirjoitus"                                                    
- [14] "teksti8 1.1\\x|nuottikirjoitus|puhe"                                
- [15] "teksti|kartografinen kuva"                                          
- [16] "kolmiulotteinen muoto"                                              
- [17] "kaksiulotteinen liikkuva kuva|tietokoneohjelma"                     
- [18] "kartografinen kuva|teksti"                                          
- [19] "tietokoneohjelma"                                                   
- [20] "text"                                                               
- [21] ""                                                                   
- [22] "stillkuva|teksti|ääni"                                              
- [23] "stillkuva|teksti|esitetty musiikki"                                 
- [24] "stillbild|text"                                                     
- [25] "stillkuva|teksti|teksti"                                            
- [26] "Kartografinen kuva"                                                 
- [27] "esitetty musiikki"                                                  
- [28] "teksti|stillbild"                                                   
- [29] "teksti|puhe"                                                        
- [30] "teksti|kaksiulotteinen liikkuva kuva"                               
- [31] "Esine (kartografinen)"                                              
- [32] "teksti|kuva (Still)"                                                
- [33] "stillkuva|teksti|stillkuva"                                         
- [34] "teksti|nuottikirjoitus"                                             
- [35] "puhe|teksti"                                                        
- [36] "teksti|puhe|esitetty musiikki"                                      
- [37] "kartografinen kuva|stillkuva|teksti"                                
- [38] "digitaalinen data"                                                  
- [39] "puhe|esitetty musiikki"                                             
- [40] "teksti|esitetty musiikki"                                           
- [41] "esitetty musiikki|puhe"                                             
- [42] "nuottikirjoitus|stillkuva"                                          
- [43] "stillkuva|teksti|puhe|ääni"                                         
- [44] "teksti|stillkuva|puhe"                                              
- [45] "puhe|stillkuva|teksti"                                              
- [46] "stillkuva|ääni|teksti"                                              
- [47] "useita sisältötyyppejä|kaksiulotteinen liikkuva kuva"               
- [48] "teksti|ääni"                                                        
- [49] "stillkuva|esitetty musiikki"                                        
- [50] "teksti|Teksit"                                                      
- [51] "Kuva (liikkuva ; kaksi- sekä kolmeulotteinen)|tietokoneohjelma"     
- [52] "Kuva (liikkuva ; kaksi- ja kolmiulotteinen)|tietokoneohjelma"       
- [53] "kuvastill|teksti"                                                   
- [54] "Stillkuva|teksti"                                                   
- [55] "Kuva (liikkuva ; kaksi-ja kolmiulotteinen)|tietokoneohjelma"        
- [56] "Kuva (still.)|teksti"                                               
- [57] "tietokoneohjelma|teksti"                                            
- [58] "taktiili teksti"                                                    
- [59] "teksti|stillkuva|ääni|kaksiulotteinen liikkuva kuva"                
- [60] "musiikki (notatoitu)"                                               
- [61] "teksti|stillkuva|esitetty musiikki|nuottikirjoitus"                 
- [62] "Kuva"                                                               
- [63] "taktiili kuva|teksti"                                               
- [64] "text|teksti"                                                        
- [65] "Teskti"                                                             
- [66] "ääni"                                                               
- [67] "esitetty musiikki|teksti"                                           
- [68] "Teks|teksti"                                                        
- [69] "Kuvat (still)|teksti"                                               
- [70] "teksti|Nuottikirjoitus"                                             
- [71] "Teksti"                                                             
- [72] "stillkuva|teksti|stillkuva|teksti|stillkuva|teksti|stillkuva|teksti"
- [73] "stillkuva|teksti|puhe"                                              
- [74] "puhe|ääni"                                                          
- [75] "teksti|txt"                                                         
- [76] "puhe|useita sisältötyyppejä"                                        
- [77] "teksti|stillkuva|stillkuva"                                         
- [78] "Kuva (stil)|teksti"                                                 
- [79] "stillkuva|text"                                                     
- [80] "stillkuva9789522561770|teksti"                                      
- [81] "stillkuva|teksti|nuottikirjoitus"                                   
- [82] "Kuva (sill)"                                                        
- [83] "Musiikki"                                                           
- [84] "Kartografinen"                                                      
- [85] "kartografinen"                                                      
- [86] "teksti|teksti|kaksiulotteinen liikkuva kuva"                        
- [87] "teksti|stillkuva|kartografinen kuva"                                
- [88] "teksti|Musiikki (notaatio)"                                         
- [89] "Kuva|teksti"                                                        
- [90] "teksti|nuottikirjoitus|esitetty musiikki|puhe"                      
- [91] "stillkuva teksti"                                                   
- [92] "Kuva(still)|teksti"                                                 
- [93] "teksti|stillkuva|nuottikirjoitus|esitetty musiikki"                 
- [94] "flera innehållstyper"                                               
- [95] "tekstiš"                                                            
- [96] "teksti|Kuvat (still)"                                               
- [97] "teksti|teksti|stillkuva"                                            
- [98] "puhe|stillkuva|puhe"                                                
- [99] "stillkuva. teksti"                                                  
-[100] "Nuottikirjoitus"                                                    
-[101] "puhe|kaksiulotteinen liikkuva kuva"                                 
-[102] "texti"                                                              
-[103] "stillkuva|sti|teksti"                                               
-[104] "stillkuva|puhe|teksti"                                              
-[105] "useita sisältötyyppejä|kartografinen kuva"                          
-[106] "kaksiulotteinen liikkuva kuva|teksti"                               
-[107] "teksti|nuottikirjoitus|esitetty musiikki"                           
-[108] "teksti|stillkuva|kaksiulotteinen liikkuva kuva"                     
-[109] "vteksti"                                                            
-[110] "kolmiulotteinen liikkuva kuva"                                      
-[111] "teksti|ei välittävää laitetta"                                      
-[112] "stillkkuva|teksti"                                                  
-[113] "nuottikirjoitus|teksti|stillkuva"                                   
-[114] "stillkuva|kartografinen kuva|teksti"                                
-[115] "stillkuva|teksti|esitetty musiikki|kaksiulotteinen liikkuva kuva"   
-[116] "stillkuva|teksti|teksti|esitetty musiikki|puhe"                     
-[117] "stillkuva|teksti|puhe|esitetty musiikki"                            
-[118] "teksti. nuottikirjoitus"                                            
-[119] "teksti|musiikki (notaatio)"                                         
-[120] "Musiikki (notaatio)|teksti"                                         
-[121] "stiillkuva|teksti"                                                  
-[122] "stilkuva|teksti"                                                    
-[123] "teksti ;"                                                           
-[124] "stillkuva|teksti9789523305496"                                      
-[125] "eksti"                                                              
-[126] "määrittelematön"                                                    
-[127] "yeksti"                                                             
-[128] "stillkuva|Teksti"                                                   
-[129] "teksti|stillkuva|puhe|esitetty musiikki"                            
-[130] "teksti|kuva (still)"                                                
-[131] "kolmiulotteinen liikkuva kuva|tietokoneohjelma"                     
-[132] "nuottikirjoitus|stillkuva|teksti"                                   
-[133] "esitetty musiikki|stillkuva|teksti"                                 </code></pre>
-</div>
-</div>
-</section>
-<section id="unique-values-337" class="level2">
-<h2 class="anchored" data-anchor-id="unique-values-337">Unique values 337</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>unique_values_337 <span class="ot">&lt;-</span> <span class="fu">unique</span>(df_content<span class="sc">$</span><span class="st">'337'</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the unique values</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( unique_values_337)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "käytettävissä ilman laitetta"                                                                                       
- [2] "useita mediatyyppejä"                                                                                               
- [3] "audio"                                                                                                              
- [4] "tietokonekäyttöinen"                                                                                                
- [5] "heijastettava"                                                                                                      
- [6] "mikromuoto"                                                                                                         
- [7] "useita mediatyyppejä|käytettävissä ilman laitetta"                                                                  
- [8] "useita välittäviä laitteita"                                                                                        
- [9] "video"                                                                                                              
-[10] "käytettävissä ilman laitetta|audio"                                                                                 
-[11] "omedierad"                                                                                                          
-[12] "oförmedlad"                                                                                                         
-[13] ""                                                                                                                   
-[14] "omedierad|käytettävissä ilman laitetta"                                                                             
-[15] "käytettävissä ilman laitetta|tietokonekäyttöinen"                                                                   
-[16] "käytettävissä ilman laitetta|video"                                                                                 
-[17] "audio|tietokonekäyttöinen"                                                                                          
-[18] "käytettävissä ilman laitetta|käytettävissä ilman laitetta"                                                          
-[19] "tietokonekäyttöinen|käytettävissä ilman laitetta"                                                                   
-[20] "audio|audio"                                                                                                        
-[21] "notatoitu"                                                                                                          
-[22] "tietokonekäyttöinen|audio"                                                                                          
-[23] "käytetävissä ilman laitetta"                                                                                        
-[24] "käytettävissä ilmanlaitetta"                                                                                        
-[25] "k��ytettävissä ilman laitetta"                                                                                      
-[26] "käytettävissä ilman laitetta|heijastettava"                                                                         
-[27] "audio|käytettävissä ilman laitetta"                                                                                 
-[28] "käytettävissä ilman laitetta|2.2\\x|audio"                                                                          
-[29] "dator|tietokonekäyttöinen"                                                                                          
-[30] "luettavissa ilman laitetta"                                                                                         
-[31] "käytettävissä ilman laitetta|käytettävissä ilman laitetta|käytettävissä ilman laitetta|käytettävissä ilman laitetta"
-[32] "käytettävissa ilman laitetta"                                                                                       
-[33] "dator"                                                                                                              
-[34] "käytettävissä ilman etta"                                                                                           
-[35] "oförmedlad|käytettävissä ilman laitetta"                                                                            
-[36] "käytössä ilman laitetta"                                                                                            
-[37] "määrittelemätön"                                                                                                    
-[38] "Käytettävissä ilman laitetta"                                                                                       
-[39] "käytettävissä laitetta"                                                                                             
-[40] "käytettävissä ilman"                                                                                                
-[41] "Tietokonekäyttöinen"                                                                                                
-[42] "audio|video"                                                                                                        
-[43] "käytettävissä ilman laitetta|n"                                                                                     
-[44] "video|käytettävissä ilman laitetta"                                                                                 
-[45] "tiekonekäyttöinen"                                                                                                  
-[46] "käytettävissä ilman laitetta|audio|video"                                                                           
-[47] "käytettävissä ilman laitetta|käytettävissä ilman laitetta|audio"                                                    </code></pre>
-</div>
-</div>
-</section>
-<section id="unique-values-338" class="level2">
-<h2 class="anchored" data-anchor-id="unique-values-338">Unique values 338</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>unique_values_338 <span class="ot">&lt;-</span> <span class="fu">unique</span>(df_content<span class="sc">$</span><span class="st">'338'</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the unique values</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( unique_values_338)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  [1] "nide"                                                                 
-  [2] "videokasetti|piirtoheitinkalvo"                                       
-  [3] "äänilevy"                                                             
-  [4] "nide|piirtoheitinkalvo"                                               
-  [5] "muu|äänikasetti"                                                      
-  [6] "nide|muu"                                                             
-  [7] "nide|äänilevy"                                                        
-  [8] "verkkoaineisto"                                                       
-  [9] "muu|tietolevy"                                                        
- [10] "piirtoheitinkalvo"                                                    
- [11] "kortti"                                                               
- [12] "äänikasetti"                                                          
- [13] "mikrofilmirulla"                                                      
- [14] "arkki"                                                                
- [15] "piirtoheitinkalvo|arkki"                                              
- [16] "dia"                                                                  
- [17] "piirtoheitinkalvo|muu"                                                
- [18] "videokasetti"                                                         
- [19] ""                                                                     
- [20] "piirtoheitinkalvo|äänilevy"                                           
- [21] "nide|arkki"                                                           
- [22] "nide|mikrokortti"                                                     
- [23] "tietolevy"                                                            
- [24] "objekti"                                                              
- [25] "volym"                                                                
- [26] "nide|nide"                                                            
- [27] "volym|nide"                                                           
- [28] "äänilevy|nide"                                                        
- [29] "nide|verkkoaineisto"                                                  
- [30] "nide|dia"                                                             
- [31] "nide|kortti"                                                          
- [32] "muu"                                                                  
- [33] "piirtoheitinkalvo|muu|tietolevy"                                      
- [34] "videokasetti|äänikasetti"                                             
- [35] "videokasetti|äänilevy"                                                
- [36] "äänikasetti|tietolevy"                                                
- [37] "verkkoaineisto|nide"                                                  
- [38] "nide|nc"                                                              
- [39] "kortti|nide"                                                          
- [40] "nide|volym"                                                           
- [41] "videolevy"                                                            
- [42] "verkkoaineisto|videolevy"                                             
- [43] "verkkoaineisto|äänilevy"                                              
- [44] "muu|verkkoaineisto"                                                   
- [45] "verkkoaineisto|äänikasetti"                                           
- [46] "band"                                                                 
- [47] "verkkoaineisto|tekstiin perustuva"                                    
- [48] "muu|tietolevy|videolevy"                                              
- [49] "äänilevy|videolevy"                                                   
- [50] "arkki|äänilevy"                                                       
- [51] "muu|äänilevy|tietolevy"                                               
- [52] "piirtoheitinkalvo|muu|äänilevy|tietolevy"                             
- [53] "äänikela"                                                             
- [54] "nide|övrig"                                                           
- [55] "dia|äänikasetti"                                                      
- [56] "nide|äänikasetti"                                                     
- [57] "piirtoheitinkalvo|kortti"                                             
- [58] "piirtoheitinkalvo|äänikasetti"                                        
- [59] "mikrokortti"                                                          
- [60] "arkki|nide"                                                           
- [61] "nide|1930-talet"                                                      
- [62] "Käytettävissä lisenssin hankkineissa organisaatioissa.|verkkoaineisto"
- [63] "dia|arkki|äänikasetti"                                                
- [64] "arkki|muu|tietolevy"                                                  
- [65] "muu|äänikasetti|tietolevy"                                            
- [66] "nide|videokasetti"                                                    
- [67] "nidea"                                                                
- [68] "videokasetti|muu|tietolevy"                                           
- [69] "nide|mikrofilmirulla"                                                 
- [70] "nide|kortti|äänilevy"                                                 
- [71] "äänikela|äänikasetti|äänilevy"                                        
- [72] "äänikasetti|äänilevy"                                                 
- [73] "mikrofilmsrulle|verkkoaineisto"                                       
- [74] "mikrokortti|mikrofilmirulla"                                          
- [75] "arkki|videolevy"                                                      
- [76] "mikrofilmsrulle|muu"                                                  
- [77] "äänilevy|tietolevy"                                                   
- [78] "onlineresurs"                                                         
- [79] "nide|nide|nide|nide"                                                  
- [80] "nide|videolevy"                                                       
- [81] "äänikasetti|nide"                                                     
- [82] "äänikasetti|muu"                                                      
- [83] "äänilevy|videolevy|nide"                                              
- [84] "piirtoheitinkalvo|nide"                                               
- [85] "piirtoheitinkalvo|muu|äänikasetti"                                    
- [86] "piirtoheitinkalvo|dia"                                                
- [87] "dia|äänilevy"                                                         
- [88] "videokasetti|videolevy"                                               
- [89] "nide|tietolevy"                                                       
- [90] "tietolevy|äänilevy"                                                   
- [91] "määrittelemätön"                                                      
- [92] "arkki|nb"                                                             
- [93] "Saantitapa: World Wide Web.|verkkoaineisto"                           
- [94] "äänilevy|muu"                                                         
- [95] "verkkoaineisto|verkkoaineisto"                                        
- [96] "datorskiva"                                                           
- [97] "kortti|tietolevy"                                                     
- [98] "kortti|arkki"                                                         
- [99] "piirtoheitinkalvo|dia|äänikasetti"                                    
-[100] "videokasetti|piirtoheitinkalvo|muu|tietolevy"                         
-[101] "arkki|muu"                                                            
-[102] "nide|piirtoheitinkalvo|muu"                                           
-[103] "nide|piirtoheitinkalvo|kortti"                                        
-[104] "piirtoheitinkalvo|tietolevy"                                          
-[105] "kortti|mikrofilmirulla"                                               
-[106] "nid"                                                                  
-[107] "verkkoainiesto"                                                       
-[108] "nideo"                                                                
-[109] "‡a nide"                                                              
-[110] "nide|bildkort"                                                        
-[111] "muu|äänilevy"                                                         
-[112] "nide|arkki|muu|tietolevy"                                             
-[113] "arkki|mikrofilmsrulle"                                                
-[114] "mikrokortti|nide"                                                     
-[115] "objekti|rdacarrier"                                                   
-[116] "äänilevy|äänikasetti"                                                 
-[117] "arkki|nide|äänilevy"                                                  
-[118] "muu tietokonetallenne"                                                
-[119] "muu|nide"                                                             
-[120] "muistikortti"                                                         
-[121] "videolevy|äänilevy|nide"                                              
-[122] "+nide"                                                                
-[123] "verkkoaineisto (204 sivua)"                                           
-[124] "dia|nide"                                                             
-[125] "volume"                                                               
-[126] "muu|piirtoheitinkalvo|tietolevy"                                      
-[127] "nide|piirtoheitinkalvo|äänikasetti"                                   </code></pre>
-</div>
-</div>
-</section>
+<p>```</p>
 
 </main>
 <!-- /main column -->
