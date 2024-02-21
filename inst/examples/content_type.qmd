@@ -40,7 +40,7 @@ top_plot(df.orig, "bibliographic_level", ntop = 10, log10 = TRUE) + labs(y = "En
 ## Bibliographic level 
 
 ```{r}
-#| label = "content_type",
+#| label = "content_type3",
 #| echo = FALSE,
 #| results = "asis"
 x <- top(df.orig, "bibliographic_level")
@@ -51,7 +51,7 @@ kable(head(tab, 10))
 
 
 ```{r}
-#| label = "content_type2",
+#| label = "content_type4",
 #| echo = FALSE,
 #| message = FALSE,
 #| warning = FALSE,
