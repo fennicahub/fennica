@@ -29,7 +29,7 @@ Publication years in is available for `r sum(!is.na(df_pub_time$publication_year
 ### Publication status 
 
 ```{r}
-#| label = "content_type",
+#| label = "publication_status",
 #| echo = FALSE,
 #| results = "asis"
 x <- top(df.orig, "publication_status")
