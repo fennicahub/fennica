@@ -21,11 +21,10 @@ book:
       - icon: facebook
         href: https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ffennica-fennica.rahtiapp.fi%2Findex.html
 
-  # file with '#' are not used anymore
+
   # files with '##' are the one that need to be corrected 
   chapters:
-  - index.qmd # fennicassa on kaikenlaista monenlaisia dokumentteja ei vain painotettuja , 
-  #visualisointi aineistotyypin mukaan (monografia, kartat, kaunokirjallisuu) onko FNB:lla tommoisia? 
+  - index.qmd 
   - author_name.qmd
   #- author_date.qmd
   #- corporate.qmd
