@@ -8,7 +8,7 @@ To work with the fennica quarto book
 git clone https://github.com/fennicahub/fennica.git
 ```
 
-**2. Open it with R-studio and at the terminal of R-studio render the book using**
+**2. Open it with R-studio and at the terminal of R-studio change the path to inst/examples and  render the book using**
 
 ``` r
 quarto render
