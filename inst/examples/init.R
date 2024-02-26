@@ -124,27 +124,27 @@ df.orig$publication_time <- paste(substr(df.orig$`008`, start =  8, stop =  11),
                                   substr(df.orig$`008`, start =  12, stop =  15),  
                                   sep = "-")
 
-# #only the start date is kept
-# df.orig$publication_time <- ifelse(
-#   df.orig$publication_status == c("Publication date and copyright date", "Single known date/probable date"),
-#   substr(df.orig$publication_time, start =  1, stop = nchar(df.orig$publication_time) -  4),
-#   df.orig$publication_time
-# )
-# 
-# 
-# #original date is kept
-# df.orig$publication_time <- ifelse(
-#   df.orig$publication_status == "Reprint/reissue date and original date",
-#   substr(df.orig$publication_time, start = nchar(df.orig$publication_time) -  3, stop = nchar(df.orig$publication_time)),
-#   df.orig$publication_time
-# )
-# 
-# #did not work on all dates, see in the discarded
-# df.orig$publication_time <- ifelse(
-#   df.orig$publication_status == c("Date of distribution etc", "Continuing resource ceased publication","Continuing resource status unknown"),
-#   "",
-#   df.orig$publication_time
-# )
+#only the start date is kept
+df.orig$publication_time <- ifelse(
+  df.orig$publication_status == c("Publication date and copyright date", "Single known date/probable date"),
+  substr(df.orig$publication_time, start =  1, stop = nchar(df.orig$publication_time) -  4),
+  df.orig$publication_time
+)
+
+
+#original date is kept
+df.orig$publication_time <- ifelse(
+  df.orig$publication_status == "Reprint/reissue date and original date",
+  substr(df.orig$publication_time, start = nchar(df.orig$publication_time) -  3, stop = nchar(df.orig$publication_time)),
+  df.orig$publication_time
+)
+
+#did not work on all dates, see in the discarded
+df.orig$publication_time <- ifelse(
+  df.orig$publication_status == c("Date of distribution etc", "Continuing resource ceased publication","Continuing resource status unknown"),
+  "",
+  df.orig$publication_time
+)
 
 
 #33 - genre for the BOOKs only 
@@ -186,4 +186,3 @@ knit_bookdown <- TRUE
 
 # Visualization options
 theme_set(theme_bw(20))
-
