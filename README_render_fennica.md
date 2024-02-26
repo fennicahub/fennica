@@ -40,7 +40,7 @@ git commit -am "commit message"
 git push origin master
 ```
 
-If there has been changes/updates at the git repository first fetch the changes before commit one using
+If there has been changes/updates at the git repository first fetch the changes before commit using
 
 ``` r
 git fetch --all
