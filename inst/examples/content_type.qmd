@@ -25,17 +25,17 @@ colnames(tab) <- c("Type of Record", "Documents (n)", "Fraction (%)")
 kable(head(tab, 14))
 ```
 
-Title count per type of record (note the log10 scale):
+<!-- Title count per type of record (note the log10 scale): -->
 
-```{r}
-#| label = "content_type2",
-#| echo = FALSE,
-#| message = FALSE,
-#| warning = FALSE,
-#| fig.width = 11,
-#| fig.height = 7
-top_plot(df.orig, "bibliographic_level", ntop = 10, log10 = TRUE) + labs(y = "Entries (n)")
-```
+<!-- ```{r} -->
+<!-- #| label = "content_type2", -->
+<!-- #| echo = FALSE, -->
+<!-- #| message = FALSE, -->
+<!-- #| warning = FALSE, -->
+<!-- #| fig.width = 11, -->
+<!-- #| fig.height = 7 -->
+<!-- top_plot(df.orig, "bibliographic_level", ntop = 10, log10 = TRUE) + labs(y = "Entries (n)") -->
+<!-- ``` -->
 
 ## Bibliographic level 
 
@@ -50,12 +50,12 @@ kable(head(tab, 10))
 ```
 
 
-```{r}
-#| label = "content_type4",
-#| echo = FALSE,
-#| message = FALSE,
-#| warning = FALSE,
-#| fig.width = 11,
-#| fig.height = 7
-top_plot(df.orig, "bibliographic_level", ntop = 20, log10 = TRUE) + labs(y = "Entries (n)")
-```
+<!-- ```{r} -->
+<!-- #| label = "content_type4", -->
+<!-- #| echo = FALSE, -->
+<!-- #| message = FALSE, -->
+<!-- #| warning = FALSE, -->
+<!-- #| fig.width = 11, -->
+<!-- #| fig.height = 7 -->
+<!-- top_plot(df.orig, "bibliographic_level", ntop = 20, log10 = TRUE) + labs(y = "Entries (n)") -->
+<!-- ``` -->
