@@ -13,6 +13,8 @@ source("publication_time.R")
 
 MARC: [260c](https://www.loc.gov/marc/bibliographic/bd260.html)
 
+[polish_years.R](https://github.com/fennicahub/fennica/blob/master/man/polish_years.Rd)
+
 The publication years section offers a comprehensive summary of the dataset's years of publication, providing anunderstanding of the temporal distribution of titles. The inclusion of links to uniquely accepted and discarded output tables adds a layer of transparency, allowing for detailed exploration of the refined and excluded data.
 
 ## Complete Data Overview
@@ -23,7 +25,7 @@ The publication years section offers a comprehensive summary of the dataset's ye
 
 Publication years in is available for `r sum(!is.na(df_pub_time$publication_year))` documents (`r round(100*mean(!is.na(df_pub_time$publication_year)))`%). The publication years span is `r paste(range(na.omit(as.numeric(df_pub_time$publication_year))), collapse = "-")`.
 
-### Publication status summaries 
+### Publication status summaries
 
 ```{r}
 #| label = "publication_status",

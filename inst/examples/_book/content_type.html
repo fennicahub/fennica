@@ -316,12 +316,16 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-<p>Title count per type of record (note the log10 scale):</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="content_type_files/figure-html/content_type2-1.png" class="img-fluid" width="1056"></p>
-</div>
-</div>
+<!-- Title count per type of record (note the log10 scale): -->
+<!-- ```{r} -->
+<!-- #| label = "content_type2", -->
+<!-- #| echo = FALSE, -->
+<!-- #| message = FALSE, -->
+<!-- #| warning = FALSE, -->
+<!-- #| fig.width = 11, -->
+<!-- #| fig.height = 7 -->
+<!-- top_plot(df.orig, "bibliographic_level", ntop = 10, log10 = TRUE) + labs(y = "Entries (n)") -->
+<!-- ``` -->
 </section>
 <section id="bibliographic-level" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="bibliographic-level"><span class="header-section-number">10.2</span> Bibliographic level</h2>
@@ -373,11 +377,15 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="content_type_files/figure-html/content_type4-1.png" class="img-fluid" width="1056"></p>
-</div>
-</div>
+<!-- ```{r} -->
+<!-- #| label = "content_type4", -->
+<!-- #| echo = FALSE, -->
+<!-- #| message = FALSE, -->
+<!-- #| warning = FALSE, -->
+<!-- #| fig.width = 11, -->
+<!-- #| fig.height = 7 -->
+<!-- top_plot(df.orig, "bibliographic_level", ntop = 20, log10 = TRUE) + labs(y = "Entries (n)") -->
+<!-- ``` -->
 
 
 </section>
