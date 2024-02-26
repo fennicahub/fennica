@@ -1,3 +1,6 @@
+# add title_remainder info to title 
+df.orig$title <- paste(df.orig$title, df.orig$title_remainder, sep = " ")
+
 # Harmonize the titles
 field <- "title"
 
