@@ -36,7 +36,7 @@ df.orig$publication_time <- paste(substr(df.orig$`008`, start =  8, stop =  11),
 
 #only the start date is kept
 df.orig$publication_time <- ifelse(
-  df.orig$publication_status == c("Publication date and copyright date", "Single known date/probable date"),
+  df.orig$publication_status == c("Publication date and copyright date"),
   substr(df.orig$publication_time, start =  1, stop = nchar(df.orig$publication_time) -  4),
   df.orig$publication_time
 )
