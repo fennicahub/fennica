@@ -20,7 +20,7 @@ quarto render
 quarto render author_name.qmd
 ```
 
-After rendering it locally and everything goes well you can push the changes as follows
+**After rendering it locally and everything goes well you can push the changes as follows**
 
 **3.First add**
 
@@ -40,13 +40,13 @@ git commit -am "commit message"
 git push origin master
 ```
 
-If there has been changes/updates at the git repository first fetch the changes before commit using
+**If there has been changes/updates at the git repository first fetch the changes before commit using**
 
 ``` r
 git fetch --all
 ```
 
-and then you need to merge it with your local using
+**and then you need to merge it with your local using**
 
 ``` r
 git merge origin master
