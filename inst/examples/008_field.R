@@ -34,27 +34,50 @@ df.orig$publication_time <- paste(substr(df.orig$`008`, start =  8, stop =  11),
                                   substr(df.orig$`008`, start =  12, stop =  15),  
                                   sep = "-")
 
-#only the start date is kept
+
+# for publication date and a copyright date , only DATE 1 is kept 
+# also for detailed date only DATE1 is kept because the DATE2 is a month and a day
+
 df.orig$publication_time <- ifelse(
-  df.orig$publication_status == c("Publication date and copyright date"),
+  df.orig$publication_status %in% c("Publication date and copyright date","Single known date/probable date","Detailed date"),
   substr(df.orig$publication_time, start =  1, stop = nchar(df.orig$publication_time) -  4),
   df.orig$publication_time
 )
 
 
-#original date is kept
+# 
+# for Reprint/reissue date and original date only DATE2 is kept 
 df.orig$publication_time <- ifelse(
-  df.orig$publication_status == "Reprint/reissue date and original date",
-  substr(df.orig$publication_time, start = nchar(df.orig$publication_time) -  3, stop = nchar(df.orig$publication_time)),
+  df.orig$publication_status %in% c("Reprint/reissue date and original date"),
+  substr(df.orig$publication_time, start = nchar(df.orig$publication_time) -  6, stop = nchar(df.orig$publication_time)),
   df.orig$publication_time
 )
 
-#did not work on all dates, see in the discarded
-df.orig$publication_time <- ifelse(
-  df.orig$publication_status == c("Date of distribution etc", "Continuing resource ceased publication","Continuing resource status unknown"),
-  "",
-  df.orig$publication_time
-)
+# for "Multiple dates","Range of years of bulk of collection", "Inclusive dates of collection" publication status
+#if the start date and end date are the same, then only keep the start date 
+
+conditions <- c("Multiple years", "Range of years of bulk of collection", "Inclusive dates of collection")
+matching_rows <- df.orig$publication_status %in% conditions
+
+# Step  2: Extract the first four characters from publication_time for these rows
+df.orig$first_four <- substr(df.orig$publication_time,  1,  4)
+
+# Step  3: Extract the second four characters from publication_time for these rows
+df.orig$second_four <- substr(df.orig$publication_time,  6,  9)
+
+# Step  4: Compare these two sets of characters
+df.orig$is_identical <- df.orig$first_four == df.orig$second_four
+
+# Step  5: Mark the last four characters as empty for rows where the first four characters are identical to the second four characters
+df.orig$publication_time[df.orig$is_identical & matching_rows] <- paste0(df.orig$first_four[df.orig$is_identical & matching_rows], rep("",  4))
+
+df.orig$first_four <- NULL
+df.orig$second_four <- NULL
+df.orig$is_identical <- NULL
+
+
+# Replace cells containing "    -" with NA
+df.orig$publication_time <- ifelse(df.orig$publication_time == "    -", NA, df.orig$publication_time)
 
 
 #33 - genre for the BOOKs only 

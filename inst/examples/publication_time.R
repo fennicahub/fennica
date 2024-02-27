@@ -1,4 +1,5 @@
 field <- "publication_time"
+subfield <- "publication_time_19"
 
 
 #polish full data
@@ -82,9 +83,9 @@ tmp <- write_xtable(o[inds],
 
 # ---------------------------------------------------
 
-# Store the title field data
+# Store the subfield data
 # FIXME: convert to feather or plain CSV
-data.file <- paste0(field, ".Rds")
+data.file2 <- paste0(subfield, ".Rds")
 saveRDS(df_pubtime19, file = data.file)
 
 # Generate markdown summary for a subset 1809-1917

@@ -227,21 +227,15 @@
     "objectID": "title.html#complete-dataset-overview",
     "href": "title.html#complete-dataset-overview",
     "title": "9  Title field: summary",
-    "section": "",
-    "text": "Unique accepted entries: 809964\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 1187813 / 1187813 (100%)\nOriginal documents with missing (NA) titles 0 / 1187813 documents (0%)",
-    "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Title field: summary</span>"
-    ]
+    "section": "9.1 Complete Dataset Overview",
+    "text": "9.1 Complete Dataset Overview\n\nUnique accepted entries: 917795\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 1187813 / 1187813 (100%)\nOriginal documents with missing (NA) titles 0 / 1187813 documents (0%)"
   },
   {
     "objectID": "title.html#subset-analysis-1809-1917",
     "href": "title.html#subset-analysis-1809-1917",
     "title": "9  Title field: summary",
     "section": "9.2 Subset Analysis: 1809-1917",
-    "text": "9.2 Subset Analysis: 1809-1917\n\nUnique accepted entries: 46702\nUnique discarded entries in original data (excluding NA cases): 0\n\nTop-20 titles and their title counts for the 1809-1917 period\n\n\n\n\n\n\n\n\n\nFrequency of unique titles:",
-    "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Title field: summary</span>"
-    ]
+    "text": "9.2 Subset Analysis: 1809-1917\n\nUnique accepted entries: 50410\nUnique discarded entries in original data (excluding NA cases): 0\n\nTop-20 titles and their title counts for the 1809-1917 period\n\n\n\n\n\nFrequency of unique titles:"
   },
   {
     "objectID": "content_type.html",
