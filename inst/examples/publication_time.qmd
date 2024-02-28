@@ -13,11 +13,16 @@ source("publication_time.R")
 
 MARC field: [008/07-14](https://www.loc.gov/marc/bibliographic/bd008.html)
 
-Main function for harmonizing temporal data: [polish_years.R](https://github.com/fennicahub/fennica/blob/master/man/polish_years.Rd)
+Polish publication time field:
+[publication_time.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/publication_time.R)
 
-Script to polish publication time field: [publication_time.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/publication_time.R)
+Harmonize temporal data function:
+[polish_years.R](https://github.com/fennicahub/fennica/blob/master/man/polish_years.Rd)
 
-Script to render publication time field: [publication_time.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/publication_time.qmd)
+Render publication time field: 
+[publication_time.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/publication_time.qmd)
+
+
 
 The publication years section offers a comprehensive summary of the dataset's years of publication, providing anunderstanding of the temporal distribution of titles. The inclusion of links to uniquely accepted and discarded output tables adds a layer of transparency, allowing for detailed exploration of the refined and excluded data.
 
@@ -63,10 +68,15 @@ A plot depicting title counts per decade from 1809 to 1917 enriches the analysis
 #| fig.width = 8,
 #| fig.height = 6
 
+df2 <- df_pubtime19 %>% 
+ group_by(publication_decade) %>% 
+ filter(publication_decade <= 1920) 
 
-df2 <- df_pubtime19 %>% group_by(publication_decade) %>% filter(publication_decade < 2010) 
 p <- ggplot(df2, aes(publication_decade)) +
      geom_bar() + scale_y_log10() +
-     ggtitle("Title count timeline")
+     ggtitle("Title count timeline") +
+     xlim(1809, 1917) 
+
 print(p)
+
 ```
