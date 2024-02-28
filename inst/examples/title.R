@@ -1,6 +1,3 @@
-# add title_remainder info to title 
-df.orig$title <- paste(df.orig$title, df.orig$title_remainder, sep = " ")
-
 # Harmonize the titles
 field <- "title"
 
@@ -86,4 +83,3 @@ tmp <- write_xtable(original.na, file_discarded_19, count = TRUE)
 df_19 <- readRDS(data.file)
 # tmp <- knit(input = paste(field, ".Rmd", sep = ""), 
 #             output = paste(field, ".md", sep = ""))
-

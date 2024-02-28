@@ -1,51 +1,51 @@
 original	language_count	multilingual	languages	language_primary	Count
-Finnish	 1	FALSE	Finnish	Finnish	33675
-Swedish	 1	FALSE	Swedish	Swedish	19109
-Finnish;Swedish	 2	TRUE	Finnish;Swedish	Finnish	 2021
-German	 1	FALSE	German	German	 1988
-Latin	 1	FALSE	Latin	Latin	 1662
-Russian	 1	FALSE	Russian	Russian	 1586
-Undetermined	 0	FALSE	Undetermined	Undetermined	  929
-French	 1	FALSE	French	French	  628
-English	 1	FALSE	English	English	  425
-Swedish;Finnish	 2	TRUE	Swedish;Finnish	Swedish	  170
+Finnish	 1	FALSE	Finnish	Finnish	32700
+Swedish	 1	FALSE	Swedish	Swedish	18522
+German	 1	FALSE	German	German	 1980
+Finnish;Swedish	 2	TRUE	Finnish;Swedish	Finnish	 1934
+Latin	 1	FALSE	Latin	Latin	 1659
+Russian	 1	FALSE	Russian	Russian	 1578
+Undetermined	 0	FALSE	Undetermined	Undetermined	  920
+French	 1	FALSE	French	French	  623
+English	 1	FALSE	English	English	  423
+Swedish;Finnish	 2	TRUE	Swedish;Finnish	Swedish	  156
 Danish	 1	FALSE	Danish	Danish	  145
-Finnish;German	 2	TRUE	Finnish;German	Finnish	  144
+Finnish;German	 2	TRUE	Finnish;German	Finnish	  143
 Finnish;Swedish;Multiple languages	 3	TRUE	Finnish;Swedish;Multiple languages	Finnish	  130
 Swedish;Latin	 2	TRUE	Swedish;Latin	Swedish	  111
 Finnish;Russian	 2	TRUE	Finnish;Russian	Finnish	  110
-Finnish;English	 2	TRUE	Finnish;English	Finnish	  100
-Estonian	 1	FALSE	Estonian	Estonian	   95
+Estonian	 1	FALSE	Estonian	Estonian	   94
+Finnish;English	 2	TRUE	Finnish;English	Finnish	   92
 Finnish;French	 2	TRUE	Finnish;French	Finnish	   68
-Multiple languages	 1	FALSE	Multiple languages	Multiple languages	   62
 Norwegian	 1	FALSE	Norwegian	Norwegian	   61
-Swedish;Russian	 2	TRUE	Swedish;Russian	Swedish	   59
+Swedish;Russian	 2	TRUE	Swedish;Russian	Swedish	   57
 Swedish;French	 2	TRUE	Swedish;French	Swedish	   57
 Finnish;Latin	 2	TRUE	Finnish;Latin	Finnish	   57
 Latin;Swedish	 2	TRUE	Latin;Swedish	Latin	   54
 Finnish;Swedish;Russian	 3	TRUE	Finnish;Swedish;Russian	Finnish	   52
-Swedish;German	 2	TRUE	Swedish;German	Swedish	   42
+Multiple languages	 1	FALSE	Multiple languages	Multiple languages	   50
+Swedish;German	 2	TRUE	Swedish;German	Swedish	   41
 Italian	 1	FALSE	Italian	Italian	   40
-Hungarian	 1	FALSE	Hungarian	Hungarian	   39
+Hungarian	 1	FALSE	Hungarian	Hungarian	   38
 Latin;Greek, Ancient (to 1453);Swedish	 3	TRUE	Latin;Greek, Ancient (to 1453);Swedish	Latin	   35
 Afroasiatic (Other)	 1	FALSE	Afroasiatic (Other)	Afroasiatic (Other)	   35
 Russian;Finnish	 2	TRUE	Russian;Finnish	Russian	   34
-Finnish;Swedish;English	 3	TRUE	Finnish;Swedish;English	Finnish	   31
-Finnish;Swedish;French	 3	TRUE	Finnish;Swedish;French	Finnish	   30
 Latin;Persian	 2	TRUE	Latin;Persian	Latin	   27
 Finnish;German;French	 3	TRUE	Finnish;German;French	Finnish	   26
+Finnish;Swedish;English	 3	TRUE	Finnish;Swedish;English	Finnish	   26
 Russian;Swedish	 2	TRUE	Russian;Swedish	Russian	   25
 Polish	 1	FALSE	Polish	Polish	   24
 Dutch	 1	FALSE	Dutch	Dutch	   23
-Finnish;Swedish;German	 3	TRUE	Finnish;Swedish;German	Finnish	   20
+Finnish;Swedish;French	 3	TRUE	Finnish;Swedish;French	Finnish	   22
 Swedish;English	 2	TRUE	Swedish;English	Swedish	   19
+Finnish;Swedish;German	 3	TRUE	Finnish;Swedish;German	Finnish	   19
 Finnish;Swedish;German;Russian	 4	TRUE	Finnish;Swedish;German;Russian	Finnish	   15
 German;Finnish	 2	TRUE	German;Finnish	German	   15
 Finnish;Swedish;Latin	 3	TRUE	Finnish;Swedish;Latin	Finnish	   15
 Icelandic	 1	FALSE	Icelandic	Icelandic	   14
 Finno-Ugrian (Other)	 1	FALSE	Finno-Ugrian (Other)	Finno-Ugrian (Other)	   14
 Spanish	 1	FALSE	Spanish	Spanish	   14
-Finnish;Swedish;English;German	 4	TRUE	Finnish;Swedish;English;German	Finnish	   13
+Finnish;Swedish;English;German	 4	TRUE	Finnish;Swedish;English;German	Finnish	   12
 Finnish;Swedish;German;French	 4	TRUE	Finnish;Swedish;German;French	Finnish	   12
 Sami	 1	FALSE	Sami	Sami	   12
 Latin;Finnish	 2	TRUE	Latin;Finnish	Latin	   12
@@ -61,7 +61,6 @@ Finnish;Estonian	 2	TRUE	Finnish;Estonian	Finnish	    7
 Finno-Ugrian (Other);Russian	 2	TRUE	Finno-Ugrian (Other);Russian	Finno-Ugrian (Other)	    6
 Czech	 1	FALSE	Czech	Czech	    6
 Russian;French	 2	TRUE	Russian;French	Russian	    6
-Swedish;Finnish;Russian	 3	TRUE	Swedish;Finnish;Russian	Swedish	    6
 French;Swedish	 2	TRUE	French;Swedish	French	    6
 Finnish;Swedish;Esperanto	 3	TRUE	Finnish;Swedish;Esperanto	Finnish	    5
 Lithuanian	 1	FALSE	Lithuanian	Lithuanian	    5
@@ -72,7 +71,7 @@ Swedish;French;German	 3	TRUE	Swedish;French;German	Swedish	    5
 Russian;Finnish;Swedish	 3	TRUE	Russian;Finnish;Swedish	Russian	    5
 German;Swedish	 2	TRUE	German;Swedish	German	    5
 English;Finnish	 2	TRUE	English;Finnish	English	    5
-Finnish;English;German	 3	TRUE	Finnish;English;German	Finnish	    5
+Swedish;Finnish;Russian	 3	TRUE	Swedish;Finnish;Russian	Swedish	    5
 Estonian;German	 2	TRUE	Estonian;German	Estonian	    4
 German;English	 2	TRUE	German;English	German	    4
 Latin;French	 2	TRUE	Latin;French	Latin	    4
@@ -81,13 +80,13 @@ Finnish;Russian;Swedish	 3	TRUE	Finnish;Russian;Swedish	Finnish	    4
 Finnish;English;French	 3	TRUE	Finnish;English;French	Finnish	    4
 Swedish;German;French;Latin	 4	TRUE	Swedish;German;French;Latin	Swedish	    4
 Swedish;English;Finnish	 3	TRUE	Swedish;English;Finnish	Swedish	    4
-German;Russian	 2	TRUE	German;Russian	German	    4
 Karelian	 1	FALSE	Karelian	Karelian	    4
 Finnish;Hungarian	 2	TRUE	Finnish;Hungarian	Finnish	    4
-Swedish;Danish;Norwegian	 3	TRUE	Swedish;Danish;Norwegian	Swedish	    4
+Finnish;English;German	 3	TRUE	Finnish;English;German	Finnish	    4
 Swedish;Finnish;English	 3	TRUE	Swedish;Finnish;English	Swedish	    3
 Swedish;Persian	 2	TRUE	Swedish;Persian	Swedish	    3
 Swedish;Russian;Finnish	 3	TRUE	Swedish;Russian;Finnish	Swedish	    3
+German;Russian	 2	TRUE	German;Russian	German	    3
 English;German;French;Swedish	 4	TRUE	English;German;French;Swedish	English	    3
 Swedish;Finnish;Latin	 3	TRUE	Swedish;Finnish;Latin	Swedish	    3
 Hungarian;Finnish	 2	TRUE	Hungarian;Finnish	Hungarian	    3
@@ -97,8 +96,8 @@ Swedish;Finnish;French	 3	TRUE	Swedish;Finnish;French	Swedish	    3
 Finnish;Swedish;English;German;French	 5	TRUE	Finnish;Swedish;English;German;French	Finnish	    3
 Finnish;Greek, Modern (1453-)	 2	TRUE	Finnish;Greek, Modern (1453-)	Finnish	    3
 Finnish;Danish	 2	TRUE	Finnish;Danish	Finnish	    3
-German;Finnish;Swedish;English;French;Danish;Norwegian	 7	TRUE	German;Finnish;Swedish;English;French;Danish;Norwegian	German	    3
 Ndonga	 1	FALSE	Ndonga	Ndonga	    3
+Swedish;Danish;Norwegian	 3	TRUE	Swedish;Danish;Norwegian	Swedish	    3
 Catalan	 1	FALSE	Catalan	Catalan	    2
 Swedish;Estonian	 2	TRUE	Swedish;Estonian	Swedish	    2
 Norwegian;German	 2	TRUE	Norwegian;German	Norwegian	    2
@@ -110,7 +109,6 @@ Swedish;Greek, Ancient (to 1453)	 2	TRUE	Swedish;Greek, Ancient (to 1453)	Swedis
 Russian;German	 2	TRUE	Russian;German	Russian	    2
 Russian;Church Slavic	 2	TRUE	Russian;Church Slavic	Russian	    2
 English;Swedish	 2	TRUE	English;Swedish	English	    2
-Swedish;Danish	 2	TRUE	Swedish;Danish	Swedish	    2
 French;German;Russian	 3	TRUE	French;German;Russian	French	    2
 English;French	 2	TRUE	English;French	English	    2
 Greek, Ancient (to 1453);Swedish	 2	TRUE	Greek, Ancient (to 1453);Swedish	Greek, Ancient (to 1453)	    2
@@ -129,8 +127,8 @@ French;Finnish	 2	TRUE	French;Finnish	French	    2
 German;Latin;Estonian	 3	TRUE	German;Latin;Estonian	German	    2
 German;English;French	 3	TRUE	German;English;French	German	    2
 Finnish;French;Undetermined	 3	TRUE	Finnish;French;Undetermined	Finnish	    2
-French;German	 2	TRUE	French;German	French	    2
 Finnish;Swedish;English;German;Russian	 5	TRUE	Finnish;Swedish;English;German;Russian	Finnish	    2
+German;Finnish;Swedish;English;French;Danish;Norwegian	 7	TRUE	German;Finnish;Swedish;English;French;Danish;Norwegian	German	    2
 Latin;Swedish;Russian	 3	TRUE	Latin;Swedish;Russian	Latin	    2
 Swedish;Finnish;German	 3	TRUE	Swedish;Finnish;German	Swedish	    2
 Esperanto;Finnish	 2	TRUE	Esperanto;Finnish	Esperanto	    2
@@ -139,7 +137,6 @@ Finnish;French;Swedish	 3	TRUE	Finnish;French;Swedish	Finnish	    2
 French;Russian	 2	TRUE	French;Russian	French	    2
 Finnish;German;Sami	 3	TRUE	Finnish;German;Sami	Finnish	    1
 French;Russian;Ukrainian;Polish;Czech;Slovak;Serbian;Icelandic;Swedish;German;Low German;Dutch;English;Spanish;Italian;Greek, Modern (1453-);Armenian;Finnish;Hungarian;Tatar;Hebrew	21	TRUE	French;Russian;Ukrainian;Polish;Czech;Slovak;Serbian;Icelandic;Swedish;German;Low German;Dutch;English;Spanish;Italian;Greek, Modern (1453-);Armenian;Finnish;Hungarian;Tatar;Hebrew	French	    1
-German;French;English;Spanish	 4	TRUE	German;French;English;Spanish	German	    1
 Latin;Syriac	 2	TRUE	Latin;Syriac	Latin	    1
 Germanic (Other);Latin;English	 3	TRUE	Germanic (Other);Latin;English	Germanic (Other)	    1
 Afroasiatic (Other);Finnish	 2	TRUE	Afroasiatic (Other);Finnish	Afroasiatic (Other)	    1
@@ -172,11 +169,12 @@ Latin;Greek, Ancient (to 1453);German	 3	TRUE	Latin;Greek, Ancient (to 1453);Ger
 Swedish;English;French;German	 4	TRUE	Swedish;English;French;German	Swedish	    1
 Ukrainian;Russian	 2	TRUE	Ukrainian;Russian	Ukrainian	    1
 English;German;French;Spanish	 4	TRUE	English;German;French;Spanish	English	    1
+Swedish;Danish	 2	TRUE	Swedish;Danish	Swedish	    1
+French;German	 2	TRUE	French;German	French	    1
 Norwegian;Swedish;Danish	 3	TRUE	Norwegian;Swedish;Danish	Norwegian	    1
 Finnish;Swedish;Russian;German;English	 5	TRUE	Finnish;Swedish;Russian;German;English	Finnish	    1
 Finnish;Russian;Multiple languages	 3	TRUE	Finnish;Russian;Multiple languages	Finnish	    1
 Greek, Ancient (to 1453)	 1	FALSE	Greek, Ancient (to 1453)	Greek, Ancient (to 1453)	    1
-Esperanto;Finnish;Swedish	 3	TRUE	Esperanto;Finnish;Swedish	Esperanto	    1
 Swedish;English;German	 3	TRUE	Swedish;English;German	Swedish	    1
 Finnish;Swedish;Estonian;German	 4	TRUE	Finnish;Swedish;Estonian;German	Finnish	    1
 German;French;Russian	 3	TRUE	German;French;Russian	German	    1
@@ -200,9 +198,6 @@ Swedish;Latin;Greek, Ancient (to 1453)	 3	TRUE	Swedish;Latin;Greek, Ancient (to 
 Russian;Multiple languages	 2	TRUE	Russian;Multiple languages	Russian	    1
 Finno-Ugrian (Other);French	 2	TRUE	Finno-Ugrian (Other);French	Finno-Ugrian (Other)	    1
 Russian;Swedish;German;French	 4	TRUE	Russian;Swedish;German;French	Russian	    1
-Swedish;German;Finnish;English	 4	TRUE	Swedish;German;Finnish;English	Swedish	    1
-Ido;Artificial (Other);Swedish	 3	TRUE	Ido;Artificial (Other);Swedish	Ido	    1
-German;English;Russian	 3	TRUE	German;English;Russian	German	    1
 German;French;Danish	 3	TRUE	German;French;Danish	German	    1
 French;Finnish;Swedish	 3	TRUE	French;Finnish;Swedish	French	    1
 Finnish;Greek, Ancient (to 1453)	 2	TRUE	Finnish;Greek, Ancient (to 1453)	Finnish	    1

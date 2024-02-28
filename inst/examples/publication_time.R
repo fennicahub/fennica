@@ -1,10 +1,16 @@
 field <- "publication_time"
-subfield <- "publication_time_19"
 
-
+# split the column by | to remove multiple publication years 
+df.orig$publication_time <- sapply(strsplit(as.character(df.orig$publication_time), "\\|"), `[`, 1)
+as.numeric(na.omit(df.orig$publication_time))
 #polish full data
 tmp  <- polish_years(df.orig[[field]], check = TRUE)
 
+# set to NA values which are longer than five 
+tmp$from <- ifelse(nchar(tmp$from) > 5, "NA", tmp$from)
+tmp$till <- ifelse(nchar(tmp$from) > 5, "NA", tmp$till)
+as.numeric(tmp$from)
+as.numeric(tmp$till)
 
 # Make data.frame
 # Make sure if it called df.harmonized for publication_time, other fields have df.tmp 
@@ -83,9 +89,9 @@ tmp <- write_xtable(o[inds],
 
 # ---------------------------------------------------
 
-# Store the subfield data
+# Store the title field data
 # FIXME: convert to feather or plain CSV
-data.file2 <- paste0(subfield, ".Rds")
+data.file <- paste0(field, ".Rds")
 saveRDS(df_pubtime19, file = data.file)
 
 # Generate markdown summary for a subset 1809-1917
