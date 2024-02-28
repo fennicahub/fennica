@@ -11,7 +11,24 @@
     "href": "index.html#data-collection-and-transformation-scripts",
     "title": "Fennica metadata conversions: statistical monitoring and analysis",
     "section": "1.1 Data collection and transformation scripts",
+<<<<<<< HEAD
     "text": "1.1 Data collection and transformation scripts\nScripts are tailored for specific needs of the research and can be modified for different research questions:\npriority_fields.R: collects priority fields from the raw data.\nleader.R: collects type of records (leader/06) and bibliographical level (leader/07)\n008_field.R: collects date of entry (008/00-05), publication status (008/06), publication time (008/07-14) and genre (008/33) for the specific type of record and bibliographical level."
+=======
+    "text": "1.1 Data collection and transformation scripts\nScripts are tailored for specific needs of the research and can be modified for different research questions:\npriority_fields.R: collects priority fields from the raw data.\nleader.R: collects type of records (leader/06) and bibliographical level (leader/07)\n008_field.R: collects date of entry (008/00-05), publication status (008/06), publication time (008/07-14) and genre (008/33) for the specific type of record and bibliographical level.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Fennica metadata conversions: statistical monitoring and analysis</span>"
+    ]
+  },
+  {
+    "objectID": "author_name.html",
+    "href": "author_name.html",
+    "title": "2  Author’s name",
+    "section": "",
+    "text": "2.1 Complete Dataset Overview",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's name</span>"
+    ]
+>>>>>>> origin
   },
   {
     "objectID": "author_name.html#complete-dataset-overview",
@@ -39,7 +56,24 @@
     "href": "language.html#subset-analysis-1809-1917",
     "title": "3  Language",
     "section": "3.2 Subset Analysis: 1809-1917",
+<<<<<<< HEAD
     "text": "3.2 Subset Analysis: 1809-1917\n\n54 unique languages\n60635 single-language documents (94%)\n3872 multilingual documents (6%)\n929 documents (1.44%) with unrecognized language\n\n\n3.2.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n33675\n2.8\n\n\nSwedish\n19109\n1.6\n\n\nFinnish;Swedish\n2021\n0.2\n\n\nGerman\n1988\n0.2\n\n\nLatin\n1662\n0.1\n\n\nRussian\n1586\n0.1\n\n\nUndetermined\n929\n0.1\n\n\nFrench\n628\n0.1\n\n\nEnglish\n425\n0\n\n\nSwedish;Finnish\n170\n0\n\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):"
+=======
+    "text": "3.2 Subset Analysis: 1809-1917\n\n54 unique languages\n60635 single-language documents (94%)\n3872 multilingual documents (6%)\n929 documents (1.44%) with unrecognized language\n\n\n3.2.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n33675\n2.8\n\n\nSwedish\n19109\n1.6\n\n\nFinnish;Swedish\n2021\n0.2\n\n\nGerman\n1988\n0.2\n\n\nLatin\n1662\n0.1\n\n\nRussian\n1586\n0.1\n\n\nUndetermined\n929\n0.1\n\n\nFrench\n628\n0.1\n\n\nEnglish\n425\n0\n\n\nSwedish;Finnish\n170\n0\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Language</span>"
+    ]
+  },
+  {
+    "objectID": "publisher.html",
+    "href": "publisher.html",
+    "title": "4  Publisher",
+    "section": "",
+    "text": "4.1 Complete Dataset Overview",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Publisher</span>"
+    ]
+>>>>>>> origin
   },
   {
     "objectID": "publisher.html#complete-dataset-overview",
@@ -53,7 +87,24 @@
     "href": "publisher.html#subset-analysis-1809-1917",
     "title": "4  Publisher",
     "section": "4.2 Subset Analysis: 1809-1917",
+<<<<<<< HEAD
     "text": "4.2 Subset Analysis: 1809-1917\n\n10199 unique publishers\n52505 documents have unambiguous publisher information (81.4%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\n\nThe 20 most common publishers from 1809 to 1917 are shown with the number of documents."
+=======
+    "text": "4.2 Subset Analysis: 1809-1917\n\n10199 unique publishers\n52505 documents have unambiguous publisher information (81.4%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\n\nThe 20 most common publishers from 1809 to 1917 are shown with the number of documents.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Publisher</span>"
+    ]
+  },
+  {
+    "objectID": "publication_place.html",
+    "href": "publication_place.html",
+    "title": "5  Publication place",
+    "section": "",
+    "text": "5.1 Complete Dataset Overview",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+>>>>>>> origin
   },
   {
     "objectID": "publication_place.html#complete-dataset-overview",
@@ -81,7 +132,24 @@
     "href": "publication_place.html#subset-analysis-1809-1917",
     "title": "5  Publication place",
     "section": "5.4 Subset Analysis: 1809-1917",
+<<<<<<< HEAD
     "text": "5.4 Subset Analysis: 1809-1917\n\n477 unique publication places; available for 52736 documents (82%).\nUnique publication country for a period 1809-1917: 32; available for 51418 documents (80%).\n33 discarded place names\n\nTop-20 publication places are shown together with the number of documents.\n\n\n\n\n\n\n\n\n\n\n\n\nCountry\nDocuments (n)\nFraction (%)\n\n\n\n\nFinland\n46460\n72.0\n\n\nSweden\n1446\n2.2\n\n\nRussia\n1241\n1.9\n\n\nUSA\n932\n1.4\n\n\nGermany\n558\n0.9\n\n\nEngland\n173\n0.3"
+=======
+    "text": "5.4 Subset Analysis: 1809-1917\n\n477 unique publication places; available for 52736 documents (82%).\nUnique publication country for a period 1809-1917: 32; available for 51418 documents (80%).\n33 discarded place names\n\nTop-20 publication places are shown together with the number of documents.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCountry\nDocuments (n)\nFraction (%)\n\n\n\n\nFinland\n46460\n72.0\n\n\nSweden\n1446\n2.2\n\n\nRussia\n1241\n1.9\n\n\nUSA\n932\n1.4\n\n\nGermany\n558\n0.9\n\n\nEngland\n173\n0.3",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+  },
+  {
+    "objectID": "publication_time.html",
+    "href": "publication_time.html",
+    "title": "6  Publication time",
+    "section": "",
+    "text": "6.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nPublication years in is available for 1187033 documents (100%). The publication years span is 0-2050.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Publication time</span>"
+    ]
+>>>>>>> origin
   },
   {
     "objectID": "publication_time.html#complete-data-overview",
@@ -129,15 +197,40 @@
     "objectID": "title.html#complete-dataset-overview",
     "href": "title.html#complete-dataset-overview",
     "title": "9  Title field: summary",
+<<<<<<< HEAD
     "section": "9.1 Complete Dataset Overview",
     "text": "9.1 Complete Dataset Overview\n\nUnique accepted entries: 917795\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 1187813 / 1187813 (100%)\nOriginal documents with missing (NA) titles 0 / 1187813 documents (0%)"
+=======
+    "section": "",
+    "text": "Unique accepted entries: 917795\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 1187813 / 1187813 (100%)\nOriginal documents with missing (NA) titles 0 / 1187813 documents (0%)",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Title field: summary</span>"
+    ]
+>>>>>>> origin
   },
   {
     "objectID": "title.html#subset-analysis-1809-1917",
     "href": "title.html#subset-analysis-1809-1917",
     "title": "9  Title field: summary",
     "section": "9.2 Subset Analysis: 1809-1917",
+<<<<<<< HEAD
     "text": "9.2 Subset Analysis: 1809-1917\n\nUnique accepted entries: 51731\nUnique discarded entries in original data (excluding NA cases): 0\n\nTop-20 titles and their title counts for the 1809-1917 period\n\n\n\n\n\nFrequency of unique titles:"
+=======
+    "text": "9.2 Subset Analysis: 1809-1917\n\nUnique accepted entries: 51731\nUnique discarded entries in original data (excluding NA cases): 0\n\nTop-20 titles and their title counts for the 1809-1917 period\n\n\n\n\n\n\n\n\n\nFrequency of unique titles:",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Title field: summary</span>"
+    ]
+  },
+  {
+    "objectID": "content_type.html",
+    "href": "content_type.html",
+    "title": "10  Types of record",
+    "section": "",
+    "text": "10.1 Types of record",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Types of record</span>"
+    ]
+>>>>>>> origin
   },
   {
     "objectID": "content_type.html#types-of-record",
@@ -179,6 +272,14 @@
     "href": "technical_information.html",
     "title": "Technical information",
     "section": "",
+<<<<<<< HEAD
     "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.1.2 (2021-11-01)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Ubuntu 22.04.3 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0\nLAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] fennica_0.2.9     Cairo_1.5-14      ggplot2_3.4.3     R.utils_2.12.2   \n [5] R.oo_1.25.0       R.methodsS3_1.8.2 knitr_1.44        stringr_1.5.0    \n [9] tm_0.7-11         NLP_0.2-1         dplyr_1.1.3       devtools_2.4.5   \n[13] usethis_2.2.2    \n\nloaded via a namespace (and not attached):\n [1] stringdist_0.9.10 Rcpp_1.0.11       prettyunits_1.2.0 ps_1.7.5         \n [5] digest_0.6.33     utf8_1.2.3        mime_0.12         slam_0.1-50      \n [9] R6_2.5.1          evaluate_0.22     pillar_1.9.0      rlang_1.1.1      \n[13] data.table_1.14.8 rstudioapi_0.15.0 miniUI_0.1.1.1    callr_3.7.3      \n[17] urlchecker_1.0.1  rmarkdown_2.25    htmlwidgets_1.6.2 munsell_0.5.0    \n[21] shiny_1.7.5       compiler_4.1.2    httpuv_1.6.11     xfun_0.40        \n[25] pkgconfig_2.0.3   pkgbuild_1.4.2    htmltools_0.5.6   tidyselect_1.2.0 \n[29] tibble_3.2.1      XML_3.99-0.14     fansi_1.0.4       crayon_1.5.2     \n[33] withr_2.5.1       later_1.3.1       grid_4.1.2        jsonlite_1.8.7   \n[37] xtable_1.8-4      gtable_0.3.4      lifecycle_1.0.3   magrittr_2.0.3   \n[41] scales_1.2.1      cli_3.6.1         stringi_1.7.12    cachem_1.0.8     \n[45] fs_1.6.3          promises_1.2.1    remotes_2.4.2.1   xml2_1.3.5       \n[49] ellipsis_0.3.2    generics_0.1.3    vctrs_0.6.3       tools_4.1.2      \n[53] glue_1.6.2        purrr_1.0.2       processx_3.8.2    pkgload_1.3.3    \n[57] parallel_4.1.2    fastmap_1.1.1     colorspace_2.1-0  sessioninfo_1.2.2\n[61] memoise_2.0.1     profvis_0.3.8"
+=======
+    "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.3.2 (2023-10-31)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Ubuntu 22.04.4 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\ntime zone: UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] fennica_0.2.9     Cairo_1.6-2       ggplot2_3.5.0     R.utils_2.12.3   \n [5] R.oo_1.26.0       R.methodsS3_1.8.2 knitr_1.45        stringr_1.5.1    \n [9] tm_0.7-11         NLP_0.2-1         dplyr_1.1.4       devtools_2.4.5   \n[13] usethis_2.2.3    \n\nloaded via a namespace (and not attached):\n [1] utf8_1.2.4        generics_0.1.3    xml2_1.3.6        slam_0.1-50      \n [5] stringi_1.8.3     digest_0.6.34     magrittr_2.0.3    grid_4.3.2       \n [9] evaluate_0.23     pkgload_1.3.4     fastmap_1.1.1     jsonlite_1.8.8   \n[13] pkgbuild_1.4.3    sessioninfo_1.2.2 urlchecker_1.0.1  promises_1.2.1   \n[17] purrr_1.0.2       fansi_1.0.6       scales_1.3.0      stringdist_0.9.12\n[21] XML_3.99-0.16.1   cli_3.6.2         shiny_1.8.0       rlang_1.1.3      \n[25] munsell_0.5.0     ellipsis_0.3.2    withr_3.0.0       remotes_2.4.2.1  \n[29] cachem_1.0.8      tools_4.3.2       parallel_4.3.2    memoise_2.0.1    \n[33] colorspace_2.1-0  httpuv_1.6.14     vctrs_0.6.5       R6_2.5.1         \n[37] mime_0.12         lifecycle_1.0.4   fs_1.6.3          htmlwidgets_1.6.4\n[41] miniUI_0.1.1.1    pkgconfig_2.0.3   gtable_0.3.4      pillar_1.9.0     \n[45] later_1.3.2       data.table_1.15.0 glue_1.7.0        profvis_0.3.8    \n[49] Rcpp_1.0.12       xfun_0.42         tibble_3.2.1      tidyselect_1.2.0 \n[53] xtable_1.8-4      htmltools_0.5.7   rmarkdown_2.25    compiler_4.3.2",
+    "crumbs": [
+      "Appendices",
+      "Technical information"
+    ]
+>>>>>>> origin
   }
 ]
