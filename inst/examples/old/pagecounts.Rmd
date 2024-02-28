@@ -1,9 +1,0 @@
----
-title: "Page count summary"
-author: "`r author`"
-date: "`r Sys.Date()`"
-output: markdown_document
----
-
-
-Summary of page count information, including historgrams, comparisons between gathering formats etc.

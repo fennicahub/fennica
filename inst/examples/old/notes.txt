@@ -1,9 +1,0 @@
-
-
-## Krakow
-
-Nyt Filtteröity "publication_frequency" ja "publication_interval"
-perusteella sarjajulkaisut pois (ei -NAt) nämä on lehtiä ja niitä
-käsitellään myöhemmin
-
-

@@ -1,6 +1,0 @@
-library(devtools)
-document("../../")
-
-
-
-
