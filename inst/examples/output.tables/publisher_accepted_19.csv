@@ -96,10 +96,10 @@ Lutherilainen Evankeliumi-yhtiö,	  51
 Finska Missionssällskapet,	  50
 Holger Schildt,	  50
 Suomen Naisyhdistys,	  48
+Victor Hoving,	  48
 [tekijä],	  47
 Henkivakuutusyhtiö Suomi,	  47
 Suomen Matkailijayhdistys,	  47
-Victor Hoving,	  47
 Herättäjä,	  46
 Kaleva,	  46
 Sällskapet Pellervo,	  46
@@ -665,6 +665,7 @@ WSOY ,	   8
 [s.l.],	   7
 [Suomalaisen kirjallisuuden seura],	   7
 [Suomalaisen Kirjallisuuden Seuran kirjapaino],	   7
+A. Apostol,	   7
 A.C. McClurg,	   7
 Åhlén & Åkerlund,	   7
 Akademiska bokhandeln, distr.,	   7
@@ -786,7 +787,6 @@ Yhdistys yleishyödyllisen rakennustoiminnan edistämiseksi,	   7
 [Société de Géographie de Finlande],	   6
 [Suomentaja],	   6
 [Turun kaupunki],	   6
-A. Apostol,	   6
 A. Backman,	   6
 A. Manninen ja Fr. Ahlqvist,	   6
 Abr. Bohlin,	   6
@@ -2386,6 +2386,7 @@ Gösta Grotenfelt,	   2
 Gosudarstvennaâ tipografiâ,	   2
 Grahn,	   2
 Granberg'in taideteollisuus osake yhtiö,	   2
+Granberg'in taideteollisuus-o.y.,	   2
 Grant Richards,	   2
 Griesbach,	   2
 Grönholm,	   2
@@ -3097,6 +3098,7 @@ Tammerfors nyheter,	   2
 Tammisaaren kirjapaino,	   2
 Tampereen kansalliskirjapaino,	   2
 Tampereen Kansalliskirjapaino,	   2
+Tampereen kaupunginkanslia,	   2
 Tampereen kirjapaino,	   2
 Tampereen Naisyhdistys,	   2
 Tampereen paperiteos,	   2
@@ -3178,6 +3180,7 @@ Työväen kustannus-osakeyhtiö,	   2
 Työväen sanomalehti o.y.,	   2
 Työväen sanomalehti-osuuskunta Raivaaja,	   2
 Työväen sanomalehti-oy,	   2
+Työväen-opisto,	   2
 Työväenopistojen liitto,	   2
 typis Frenckelianis,	   2
 typis Frenckellanis,	   2
@@ -3268,6 +3271,7 @@ Waseniuska Bokhandeln,	   2
 Weilin & Göös,|Wickström,	   2
 Weilin & Kumpp.,	   2
 Weilin + Göös,	   2
+Weilin ja Göös :|Lutherilainen Evankeliumi-yhtiö,	   2
 Weman,	   2
 Wennberg ja K.,	   2
 Wennberg,	   2
@@ -3389,6 +3393,7 @@ Zilliacus :|Tekijä,	   2
 [Allmänna Finska Arbetsgifvareförbundet] ,	   1
 [Allmänna idrottsklubben i Åbo],	   1
 [Amerikan Suomalainen Kirjallisuuden Seura],	   1
+[Amerikan suomalainen sosialistijärjestö],	   1
 [Ammattienedistämislaitos],	   1
 [And. Cederwaller],	   1
 [Ångfartygs Aktiebolaget Bore],	   1
@@ -5856,7 +5861,6 @@ Gosudarstvennaâ Tipografìâ,	   1
 Gosudarsvennaâ tipografiâ,	   1
 Göteborgs Handels-Tidnings Aktiebolag,	   1
 Gottlieb John,	   1
-Granberg'in taideteollisuus-o.y.,	   1
 Granberg'in taideteollisuus,	   1
 Granbergin taideteollisuusosakeyhtiö,	   1
 Grankulla samskola,	   1
@@ -7621,6 +7625,7 @@ Nesslin ja Helin ,	   1
 Nestor Järvinen, Jaakko Länkelä ja Olai Wallin,	   1
 Neuphilologischer Verein in Helsinki,	   1
 Neva,	   1
+New York Finnish Betania ev. Luth. congregation,	   1
 New Yorkin suom. vapaa seura,	   1
 Nicolay,	   1
 Niemeyer,	   1
@@ -9166,7 +9171,6 @@ Tampereen ja sen ympäristön työväen agitatsioonikomitea,	   1
 Tampereen kauppaopisto,	   1
 Tampereen kaupungin rakennuskonttoori,	   1
 Tampereen kaupungin Talonomistajainyhdistys,	   1
-Tampereen kaupunginkanslia,	   1
 Tampereen kirjakauppa,	   1
 Tampereen Kirjapainajainyhdistys,	   1
 Tampereen kivipaino,	   1
@@ -9617,7 +9621,6 @@ Työväen sanomalehti.|Työväen sanomalehti-o.y.,	   1
 Työväen sanomelehti o.y.,	   1
 Työväen urheilulehti,	   1
 Työväen vallankumouksellinen keskusneuvosto,	   1
-Työväen-opisto,	   1
 Työväen-Opisto,	   1
 Työväenasiain valiokunta,	   1
 Työväenyhdistys,	   1
@@ -10055,7 +10058,6 @@ Weilin & Göösʼin kirjapainossa,	   1
 Weilin + Göös fabriks och förlags ab,	   1
 Weilin ja Göös :|"Keski-Suomi",	   1
 Weilin ja Göös :|Lutherilainen evankeliumi yhtiö,	   1
-Weilin ja Göös :|Lutherilainen Evankeliumi-yhtiö,	   1
 Weilin ja Göös :|Tekijä,	   1
 Weilin ja Göös :|Wilén,	   1
 Weilin ja Göös,|Weilin & Göös,	   1

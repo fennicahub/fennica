@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Turku Data Science Group">
-<meta name="dcterms.date" content="2024-02-28">
 
-<title>Fennica metadata conversions: statistical monitoring and analysis</title>
+<title>Technical information</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./author_name.html" rel="next">
+<link href="./acknowledgments.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -76,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fennica metadata conversions: statistical monitoring and analysis</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./acknowledgments.html">Appendices</a></li><li class="breadcrumb-item"><a href="./technical_information.html">Technical information</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -109,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fennica metadata conversions: statistical monitoring and analysis</span></span></a>
   </div>
 </li>
@@ -190,7 +222,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./technical_information.html" class="sidebar-item-text sidebar-link">
+  <a href="./technical_information.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Technical information</span></a>
   </div>
 </li>
@@ -202,42 +234,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#preface-chapter" id="toc-preface-chapter" class="nav-link active" data-scroll-target="#preface-chapter"><span class="header-section-number">1</span> Preface chapter</a>
-  <ul class="collapse">
-  <li><a href="#data-collection-and-transformation-scripts" id="toc-data-collection-and-transformation-scripts" class="nav-link" data-scroll-target="#data-collection-and-transformation-scripts"><span class="header-section-number">1.1</span> Data collection and transformation scripts</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/fennicahub/fennica/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Fennica metadata conversions: statistical monitoring and analysis</h1>
+<h1 class="title">Technical information</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Turku Data Science Group </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">February 28, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -245,21 +256,54 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="preface-chapter" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Preface chapter</h1>
-<p>It is imperative to underscore that this bookdown project is an evolving <strong>work-in-progress</strong>, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization.</p>
-<p>Within the <a href="https://www.dariah.fi/">DARIAH-FI</a> and <a href="https://www.kielipankki.fi/organization/fin-clariah/">FIN-CLARIAH</a> Metadata Harmonization and Analysis work package, we leverage the Finnish national bibliography (FNB) Fennica dataset to develop a harmonized dataset, serving research purposes and laying the groundwork for further infrastructure iterations. The project’s outcomes will be instrumental in supporting the <a href="https://sites.utu.fi/digital-history-literature-finland/">DHL-FI</a> project funded by the Research Council of Finland. The FNB encompasses metadata for over a million documents, including books, newspapers, maps, etc., with records spanning from 1488 to the present. For more details about Fennica, visit The National Finnish Library <a href="https://www.kansalliskirjasto.fi/en/services/fennica-finnish-national-bibliography">website</a>.</p>
-<p>Currently, the bookdown project comprises a few distinct chapters. Notably, the harmonization process has been executed through the establishment of dual pipelines: <strong>Complete FNB Pipeline</strong> and <strong>1809 to 1917 Period Pipeline</strong> These chapters are dedicated to the specific metadata categories.</p>
-<section id="data-collection-and-transformation-scripts" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="data-collection-and-transformation-scripts"><span class="header-section-number">1.1</span> Data collection and transformation scripts</h2>
-<p>Scripts are tailored for specific needs of the research and can be modified for different research questions:</p>
-<p><a href="https://github.com/fennicahub/fennica/blob/master/inst/examples/priority_fields.R">priority_fields.R</a>: collects priority fields from the raw data.</p>
-<p><a href="https://github.com/fennicahub/fennica/blob/master/inst/examples/leader.R">leader.R</a>: collects type of records (leader/06) and bibliographical level (leader/07)</p>
-<p><a href="https://github.com/fennicahub/fennica/blob/master/inst/examples/008_field.R">008_field.R</a>: collects date of entry (008/00-05), publication status (008/06), publication time (008/07-14) and genre (008/33) for the specific type of record and bibliographical level.</p>
+<p>This document was generated with the following packages:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R version 4.1.2 (2021-11-01)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 22.04.3 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0
+
+locale:
+ [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
+ [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
+ [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
+[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] fennica_0.2.9     Cairo_1.5-14      ggplot2_3.4.3     R.utils_2.12.2   
+ [5] R.oo_1.25.0       R.methodsS3_1.8.2 knitr_1.44        stringr_1.5.0    
+ [9] tm_0.7-11         NLP_0.2-1         dplyr_1.1.3       devtools_2.4.5   
+[13] usethis_2.2.2    
+
+loaded via a namespace (and not attached):
+ [1] stringdist_0.9.10 Rcpp_1.0.11       prettyunits_1.2.0 ps_1.7.5         
+ [5] digest_0.6.33     utf8_1.2.3        mime_0.12         slam_0.1-50      
+ [9] R6_2.5.1          evaluate_0.22     pillar_1.9.0      rlang_1.1.1      
+[13] data.table_1.14.8 rstudioapi_0.15.0 miniUI_0.1.1.1    callr_3.7.3      
+[17] urlchecker_1.0.1  rmarkdown_2.25    htmlwidgets_1.6.2 munsell_0.5.0    
+[21] shiny_1.7.5       compiler_4.1.2    httpuv_1.6.11     xfun_0.40        
+[25] pkgconfig_2.0.3   pkgbuild_1.4.2    htmltools_0.5.6   tidyselect_1.2.0 
+[29] tibble_3.2.1      XML_3.99-0.14     fansi_1.0.4       crayon_1.5.2     
+[33] withr_2.5.1       later_1.3.1       grid_4.1.2        jsonlite_1.8.7   
+[37] xtable_1.8-4      gtable_0.3.4      lifecycle_1.0.3   magrittr_2.0.3   
+[41] scales_1.2.1      cli_3.6.1         stringi_1.7.12    cachem_1.0.8     
+[45] fs_1.6.3          promises_1.2.1    remotes_2.4.2.1   xml2_1.3.5       
+[49] ellipsis_0.3.2    generics_0.1.3    vctrs_0.6.3       tools_4.1.2      
+[53] glue_1.6.2        purrr_1.0.2       processx_3.8.2    pkgload_1.3.3    
+[57] parallel_4.1.2    fastmap_1.1.1     colorspace_2.1-0  sessioninfo_1.2.2
+[61] memoise_2.0.1     profvis_0.3.8    </code></pre>
+</div>
+</div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -612,15 +656,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./acknowledgments.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Acknowledgements</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./author_name.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Author’s name</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/fennicahub/fennica/issues/new" class="toc-action">Report an issue</a></p></div></div></div></div></footer></body></html>
