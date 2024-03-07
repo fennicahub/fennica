@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"author_name.qmd":[],"title.qmd":[],"author_date.qmd":[],"publication_time.qmd":[],"publication_place.qmd":[],"signum.qmd":[],"language.qmd":[],"content_type.qmd":[],"technical_information.qmd":[],"acknowledgments.qmd":[],"publication_frequency.qmd":[],"physical_dimensions.qmd":[],"index.qmd":[],"title_uniform.qmd":[],"publisher.qmd":[]}
+=======
+{"publication_time.qmd":[],"title_uniform.qmd":[],"acknowledgments.qmd":[],"index.qmd":[],"technical_information.qmd":[],"physical_dimensions.qmd":[],"publication_frequency.qmd":[],"language.qmd":[],"publication_place.qmd":[],"title.qmd":[],"signum.qmd":[],"author_date.qmd":[],"content_type.qmd":[],"publisher.qmd":[],"author_name.qmd":[]}
+>>>>>>> acf467a7e30eabb2b56ece390df0e34fc924dbe6
