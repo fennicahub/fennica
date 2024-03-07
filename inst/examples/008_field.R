@@ -12,18 +12,18 @@ df.orig <- df.orig %>%
     publication_status == 'b' ~ 'No dates given; B.C. date involved',
     publication_status == 'c' ~ 'Continuing resource currently published',
     publication_status == 'd' ~ 'Continuing resource ceased publication',
-    publication_status == 'e' ~ 'Detailed date',
-    publication_status == 'i' ~ 'Inclusive dates of collection',
-    publication_status == 'k' ~ 'Range of years of bulk of collection',
-    publication_status == 'm' ~ 'Multiple dates',
-    publication_status == 'n' ~ 'Dates unknown',
-    publication_status == 'p' ~ 'Date of distribution etc', 
-    publication_status == 'q' ~ 'Questionable date',
-    publication_status == 'r' ~ 'Reprint/reissue date and original date',
-    publication_status == 's' ~ 'Single known date/probable date', # the meaning has to be discussed with the library
-    publication_status == 't' ~ 'Publication date and copyright date',
-    publication_status == 'u' ~ 'Continuing resource status unknown',
-    publication_status == '|' ~ 'No attempt to code'
+    publication_status == 'e' ~ 'Detailed date', # DATE1 
+    publication_status == 'i' ~ 'Inclusive dates of collection', #  
+    publication_status == 'k' ~ 'Range of years of bulk of collection', #virhelista
+    publication_status == 'm' ~ 'Multiple dates', # DATE1 
+    publication_status == 'n' ~ 'Dates unknown', # virhelista
+    publication_status == 'p' ~ 'Date of distribution etc', # date1 
+    publication_status == 'q' ~ 'Questionable date', # date1
+    publication_status == 'r' ~ 'Reprint/reissue date and original date', # DATE2
+    publication_status == 's' ~ 'Single known date/probable date', # DATE1
+    publication_status == 't' ~ 'Publication date and copyright date', #DATE1
+    publication_status == 'u' ~ 'Continuing resource status unknown',#DATE1 date 1 ja tehdään virhelista 
+    publication_status == '|' ~ 'No attempt to code' 
   ))
 
 
@@ -34,51 +34,37 @@ df.orig$publication_time <- paste(substr(df.orig$`008`, start =  8, stop =  11),
                                   substr(df.orig$`008`, start =  12, stop =  15),  
                                   sep = "-")
 
+#ignore b and | publication status types of publication time
+df.orig$publication_time <- ifelse(df.orig$publication_status %in% c("'No dates given; B.C. date involved'", "'No attempt to code'"), NA, df.orig$publication_time)
 
-# for publication date and a copyright date , only DATE 1 is kept 
-# also for detailed date only DATE1 is kept because the DATE2 is a month and a day
+
+# DATE1 is taken for those types of pulication status
 
 df.orig$publication_time <- ifelse(
-  df.orig$publication_status %in% c("Publication date and copyright date","Single known date/probable date","Detailed date"),
+  df.orig$publication_status %in% c("Publication date and copyright date",
+                                    "Single known date/probable date",
+                                    "Detailed date", 
+                                    "Multiple dates", 
+                                    'Date of distribution etc', 
+                                    'Questionable date', 
+                                    'Continuing resource status unknown'),
   substr(df.orig$publication_time, start =  1, stop = nchar(df.orig$publication_time) -  4),
   df.orig$publication_time
 )
 
 
-# 
-# for Reprint/reissue date and original date only DATE2 is kept 
+# for Reprint/reissue date and original date only DATE2 is kept
 df.orig$publication_time <- ifelse(
   df.orig$publication_status %in% c("Reprint/reissue date and original date"),
   substr(df.orig$publication_time, start = nchar(df.orig$publication_time) -  6, stop = nchar(df.orig$publication_time)),
   df.orig$publication_time
 )
 
-# for "Multiple dates","Range of years of bulk of collection", "Inclusive dates of collection" publication status
-#if the start date and end date are the same, then only keep the start date 
 
-conditions <- c("Multiple years", "Range of years of bulk of collection", "Inclusive dates of collection")
-matching_rows <- df.orig$publication_status %in% conditions
-
-# Step  2: Extract the first four characters from publication_time for these rows
-df.orig$first_four <- substr(df.orig$publication_time,  1,  4)
-
-# Step  3: Extract the second four characters from publication_time for these rows
-df.orig$second_four <- substr(df.orig$publication_time,  6,  9)
-
-# Step  4: Compare these two sets of characters
-df.orig$is_identical <- df.orig$first_four == df.orig$second_four
-
-# Step  5: Mark the last four characters as empty for rows where the first four characters are identical to the second four characters
-df.orig$publication_time[df.orig$is_identical & matching_rows] <- paste0(df.orig$first_four[df.orig$is_identical & matching_rows], rep("",  4))
-
-df.orig$first_four <- NULL
-df.orig$second_four <- NULL
-df.orig$is_identical <- NULL
-
-
-# Replace cells containing "    -" with NA
 df.orig$publication_time <- ifelse(df.orig$publication_time == "    -", NA, df.orig$publication_time)
-
+df.orig$publication_time <- ifelse(df.orig$publication_time == "    -    ", NA, df.orig$publication_time)
+df.orig$publication_time <- ifelse(df.orig$publication_time == "-    ", NA, df.orig$publication_time)
+df.orig$publication_time <- ifelse(df.orig$publication_time == "-", NA, df.orig$publication_time)
 
 #33 - genre for the BOOKs only 
 

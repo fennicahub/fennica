@@ -1,9 +1,7 @@
 field <- "publication_time"
 
-
 #polish full data
 tmp  <- polish_years(df.orig[[field]], check = TRUE)
-
 
 # Make data.frame
 # Make sure if it called df.harmonized for publication_time, other fields have df.tmp 
@@ -24,6 +22,7 @@ df.harmonized$publication_decade <- decade(df.harmonized$publication_year)
 message("Write conversions: publication year")
 df.harmonized$original <- df.orig[[field]]
 
+
 xx <- as.data.frame(df.harmonized) %>% filter(!is.na(publication_year)) %>%
   group_by(original, publication_year) %>%
   tally() %>%
@@ -43,6 +42,15 @@ discard.file <- paste0(output.folder, field, "_discarded.csv")
 tmp <- write_xtable(o[inds],
                     file = discard.file,
                     count = TRUE)
+
+#create a file for discarded with melindas
+filtered_df <- df.harmonized %>% filter(is.na(publication_year))%>% filter(!is.na(original))
+discarded_id <- filtered_df %>% select(-2, -3, -5)
+discard.file.id <- paste0(output.folder, field, "_discarded_id.csv")
+tmp <- write_xtable(discarded_id,
+                    file = discard.file.id,
+                    count = TRUE)
+
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV
