@@ -70,7 +70,7 @@ message("Write conversions: publication year for 1809-1917")
 df_pubtime19$original <- df.harmonized[[field]]
 
 xx <- as.data.frame(df_pubtime19) %>% filter(!is.na(publication_year)) %>%
-  group_by(melinda_id, publication_year) %>%
+  group_by(original, publication_year, melinda_id) %>%
   tally() %>%
   arrange(desc(n))
 
