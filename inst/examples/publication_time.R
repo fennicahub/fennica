@@ -67,10 +67,9 @@ df_pubtime19 <- df.harmonized %>% filter(publication_year > 1808 & publication_y
 melindas_19 <- df_pubtime19$melinda_id
 
 message("Write conversions: publication year for 1809-1917")
-df_pubtime19$original <- df.harmonized[[field]]
 
 xx <- as.data.frame(df_pubtime19) %>% filter(!is.na(publication_year)) %>%
-  group_by(original, publication_year, melinda_id) %>%
+  group_by(original, publication_year) %>%
   tally() %>%
   arrange(desc(n))
 
