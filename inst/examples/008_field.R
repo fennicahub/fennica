@@ -1,6 +1,5 @@
 # unpack 008 into columns of interest
 
-
 #00-05 (Luontipäivä)
 df.orig$Date_entered <- substr(df.orig$`008`, start =  1, stop =  6)
 
