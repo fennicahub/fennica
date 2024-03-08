@@ -26,7 +26,17 @@ Render publication time field:
 
 The publication years section offers a comprehensive summary of the dataset's years of publication, providing anunderstanding of the temporal distribution of titles. The inclusion of links to uniquely accepted and discarded output tables adds a layer of transparency, allowing for detailed exploration of the refined and excluded data.
 
-## Title count per decade from 1488 to 2050 (log values)
+## Complete Data Overview
+
+[Publication year conversions](dataTable/data_table.html?path=../output.tables/publication_time_conversion.csv)
+
+[Publication year discarded](dataTable/data_table.html?path=../output.tables/publication_time_discarded.csv)
+
+[Publication year discarded with melinda id](dataTable/data_table.html?path=../output.tables/publication_time_discarded_id.csv)
+
+Publication years in is available for `r sum(!is.na(df_pub_time$publication_year))` documents (`r round(100*mean(!is.na(df_pub_time$publication_year)))`%). The publication years span is `r paste(range(na.omit(as.numeric(df_pub_time$publication_year))), collapse = "-")`.
+
+### Title count per decade from 1488 to 2050 (log values)
 
 ```{r}
 #| label = "publication_timeseries",
@@ -48,17 +58,6 @@ p <- ggplot(df2, aes(publication_decade)) +
 
 print(p)
 ```
-
-
-## Complete Data Overview
-
-[Publication year conversions](dataTable/data_table.html?path=../output.tables/publication_time_conversion.csv)
-
-[Publication year discarded](dataTable/data_table.html?path=../output.tables/publication_time_discarded.csv)
-
-[Publication year discarded with melinda id](dataTable/data_table.html?path=../output.tables/publication_time_discarded_id.csv)
-
-Publication years in is available for `r sum(!is.na(df_pub_time$publication_year))` documents (`r round(100*mean(!is.na(df_pub_time$publication_year)))`%). The publication years span is `r paste(range(na.omit(as.numeric(df_pub_time$publication_year))), collapse = "-")`.
 
 ### Publication status summaries
 
