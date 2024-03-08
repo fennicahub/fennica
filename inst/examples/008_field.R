@@ -3,6 +3,7 @@
 #00-05 (Luontipäivä)
 df.orig$Date_entered <- substr(df.orig$`008`, start =  1, stop =  6)
 
+
 #06 06 - Julkaisuajan tyyppi/Julkaisun tila
 df.orig$publication_status <- substr(df.orig$`008`, start = 7 , stop =  7)
 
