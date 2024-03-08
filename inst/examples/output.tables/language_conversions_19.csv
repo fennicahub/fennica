@@ -1,10 +1,10 @@
 original	language_count	multilingual	languages	language_primary	Count
-Finnish	 1	FALSE	Finnish	Finnish	33682
+Finnish	 1	FALSE	Finnish	Finnish	33675
 Swedish	 1	FALSE	Swedish	Swedish	19109
 Finnish;Swedish	 2	TRUE	Finnish;Swedish	Finnish	 2021
 German	 1	FALSE	German	German	 1988
 Latin	 1	FALSE	Latin	Latin	 1662
-Russian	 1	FALSE	Russian	Russian	 1587
+Russian	 1	FALSE	Russian	Russian	 1586
 Undetermined	 0	FALSE	Undetermined	Undetermined	  929
 French	 1	FALSE	French	French	  628
 English	 1	FALSE	English	English	  425
@@ -14,7 +14,7 @@ Finnish;German	 2	TRUE	Finnish;German	Finnish	  144
 Finnish;Swedish;Multiple languages	 3	TRUE	Finnish;Swedish;Multiple languages	Finnish	  130
 Swedish;Latin	 2	TRUE	Swedish;Latin	Swedish	  111
 Finnish;Russian	 2	TRUE	Finnish;Russian	Finnish	  110
-Finnish;English	 2	TRUE	Finnish;English	Finnish	  102
+Finnish;English	 2	TRUE	Finnish;English	Finnish	  100
 Estonian	 1	FALSE	Estonian	Estonian	   95
 Finnish;French	 2	TRUE	Finnish;French	Finnish	   68
 Multiple languages	 1	FALSE	Multiple languages	Multiple languages	   62

@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"technical_information.qmd":[],"publisher.qmd":[],"publication_frequency.qmd":[],"signum.qmd":[],"title.qmd":[],"acknowledgments.qmd":[],"publication_time.qmd":[],"publication_place.qmd":[],"author_name.qmd":[],"physical_dimensions.qmd":[],"content_type.qmd":[],"index.qmd":[],"author_date.qmd":[],"language.qmd":[],"title_uniform.qmd":[]}
-=======
-{"content_type.qmd":[],"signum.qmd":[],"title.qmd":[],"physical_dimensions.qmd":[],"author_name.qmd":[],"language.qmd":[],"publication_time.qmd":[],"publication_frequency.qmd":[],"publication_place.qmd":[],"index.qmd":[],"acknowledgments.qmd":[],"title_uniform.qmd":[],"technical_information.qmd":[],"author_date.qmd":[],"publisher.qmd":[]}
->>>>>>> 1f40ebaf6a157899ebe2534a14b6f580dcdd50b7
+{"publication_time.qmd":[],"publication_frequency.qmd":[],"author_date.qmd":[],"acknowledgments.qmd":[],"title.qmd":[],"author_name.qmd":[],"technical_information.qmd":[],"index.qmd":[],"publisher.qmd":[],"language.qmd":[],"signum.qmd":[],"title_uniform.qmd":[],"content_type.qmd":[],"physical_dimensions.qmd":[],"publication_place.qmd":[]}

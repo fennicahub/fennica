@@ -21,8 +21,7 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
     x[inds] <- NA
     warning(paste("Removed ", length(inds), "publication year entries that are suspiciously long (over 200 characters) and include tabs"))
   }
-  
-  
+
   x <- gsub("\\.$", "", x)
   x <- gsub("\\[blank\\]", "?", x)
   x <- gsub("\\[sic\\.\\]", "", x)    
