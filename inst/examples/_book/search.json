@@ -63,15 +63,21 @@
     "objectID": "language.html#complete-dataset-overview",
     "href": "language.html#complete-dataset-overview",
     "title": "3  Language",
-    "section": "3.1 Complete Dataset Overview",
-    "text": "3.1 Complete Dataset Overview\n\n170 unique languages\n148 unique primary languages\n\n1115444 single-language documents (93.91%)\n72369 multilingual documents (6.09%)\nConversions from raw to preprocessed language entries\n50515 documents (4.25%) with unrecognized language\n\nLanguage codes are from MARC; new custom abbreviations can be added in this table."
+    "section": "",
+    "text": "170 unique languages\n148 unique primary languages\n\n1115444 single-language documents (93.91%)\n72369 multilingual documents (6.09%)\nConversions from raw to preprocessed language entries\n50515 documents (4.25%) with unrecognized language",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Language</span>"
+    ]
   },
   {
     "objectID": "language.html#subset-analysis-1809-1917",
     "href": "language.html#subset-analysis-1809-1917",
     "title": "3  Language",
     "section": "3.2 Subset Analysis: 1809-1917",
-    "text": "3.2 Subset Analysis: 1809-1917\n\n54 unique languages\n60643 single-language documents (94%)\n3874 multilingual documents (6%)\n929 documents (1.44%) with unrecognized language\n\n\n3.2.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n33682\n2.8\n\n\nSwedish\n19109\n1.6\n\n\nFinnish;Swedish\n2021\n0.2\n\n\nGerman\n1988\n0.2\n\n\nLatin\n1662\n0.1\n\n\nRussian\n1587\n0.1\n\n\nUndetermined\n929\n0.1\n\n\nFrench\n628\n0.1\n\n\nEnglish\n425\n0\n\n\nSwedish;Finnish\n170\n0\n\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):"
+    "text": "3.2 Subset Analysis: 1809-1917\n\n54 unique languages\n60643 single-language documents (94%)\n3874 multilingual documents (6%)\n929 documents (1.44%) with unrecognized language\n\n\n3.2.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n33682\n2.8\n\n\nSwedish\n19109\n1.6\n\n\nFinnish;Swedish\n2021\n0.2\n\n\nGerman\n1988\n0.2\n\n\nLatin\n1662\n0.1\n\n\nRussian\n1587\n0.1\n\n\nUndetermined\n929\n0.1\n\n\nFrench\n628\n0.1\n\n\nEnglish\n425\n0\n\n\nSwedish;Finnish\n170\n0\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Language</span>"
+    ]
   },
   {
     "objectID": "publisher.html",
@@ -158,7 +164,7 @@
     "href": "publication_time.html",
     "title": "6  Publication time",
     "section": "",
-    "text": "6.1 Title count per decade from 1488 to 2050 (log values)",
+    "text": "6.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nPublication year discarded with melinda id\nPublication years in is available for 1187184 documents (100%). The publication years span is 0-2050.",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Publication time</span>"
     ]
@@ -167,15 +173,21 @@
     "objectID": "publication_time.html#complete-data-overview",
     "href": "publication_time.html#complete-data-overview",
     "title": "6  Publication time",
-    "section": "6.1 Complete Data Overview",
-    "text": "6.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nPublication year discarded with melinda id\nPublication years in is available for 1187184 documents (100%). The publication years span is 0-2050.\n\n6.1.1 Title count per decade from 1488 to 2050 (log values)\n\n\n\n6.1.2 Publication status summaries\nThу visualization of publication status field enhances understanding of how publication years are recorded. The harmonization process depended on the publication status field due to its nuanced information, which doesn’t always directly signify the start or end of publication.\n\n\n\n\nPublication Status\nDocuments (n)\nFraction (%)\n\n\n\n\nSingle known date/probable date\n1064152\n89.6\n\n\nContinuing resource ceased publication\n44266\n3.7\n\n\nPublication date and copyright date\n34378\n2.9\n\n\nContinuing resource currently published\n25570\n2.2\n\n\nQuestionable date\n7754\n0.7\n\n\nInclusive dates of collection\n4701\n0.4\n\n\nReprint/reissue date and original date\n4188\n0.4\n\n\nMultiple dates\n1983\n0.2\n\n\nContinuing resource status unknown\n491\n0\n\n\nDate of distribution etc\n101\n0\n\n\nDetailed date\n76\n0\n\n\nNo attempt to code\n66\n0\n\n\nDates unknown\n26\n0\n\n\nNo dates given; B.C. date involved\n4\n0"
+    "section": "",
+    "text": "6.1.1 Title count per decade from 1488 to 2050 (log values)\n\n\n\n6.1.2 Publication status summaries\nThу visualization of publication status field enhances understanding of how publication years are recorded. The harmonization process depended on the publication status field due to its nuanced information, which doesn’t always directly signify the start or end of publication.\n\n\n\nPublication Status\nDocuments (n)\nFraction (%)\n\n\n\n\nSingle known date/probable date\n1064152\n89.6\n\n\nContinuing resource ceased publication\n44266\n3.7\n\n\nPublication date and copyright date\n34378\n2.9\n\n\nContinuing resource currently published\n25570\n2.2\n\n\nQuestionable date\n7754\n0.7\n\n\nInclusive dates of collection\n4701\n0.4\n\n\nReprint/reissue date and original date\n4188\n0.4\n\n\nMultiple dates\n1983\n0.2\n\n\nContinuing resource status unknown\n491\n0\n\n\nDate of distribution etc\n101\n0\n\n\nDetailed date\n76\n0\n\n\nNo attempt to code\n66\n0\n\n\nDates unknown\n26\n0\n\n\nNo dates given; B.C. date involved\n4\n0",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Publication time</span>"
+    ]
   },
   {
     "objectID": "publication_time.html#subset-analysis-1809-1917",
     "href": "publication_time.html#subset-analysis-1809-1917",
     "title": "6  Publication time",
     "section": "6.2 Subset Analysis: 1809-1917",
-    "text": "6.2 Subset Analysis: 1809-1917\nPublication year conversions\nPublication year discarded\n\n6.2.1 Title count per decade (log values)\nA plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period."
+    "text": "6.2 Subset Analysis: 1809-1917\nPublication year conversions\nPublication year discarded\n\n6.2.1 Title count per decade (log values)\nA plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Publication time</span>"
+    ]
   },
   {
     "objectID": "publication_frequency.html",
