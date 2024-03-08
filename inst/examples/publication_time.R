@@ -1,7 +1,9 @@
 field <- "publication_time"
 
+
 #polish full data
 tmp  <- polish_years(df.orig[[field]], check = TRUE)
+
 
 # Make data.frame
 # Make sure if it called df.harmonized for publication_time, other fields have df.tmp 
@@ -21,7 +23,6 @@ df.harmonized$publication_decade <- decade(df.harmonized$publication_year)
 #1M data conversions
 message("Write conversions: publication year")
 df.harmonized$original <- df.orig[[field]]
-
 
 xx <- as.data.frame(df.harmonized) %>% filter(!is.na(publication_year)) %>%
   group_by(original, publication_year) %>%
@@ -43,15 +44,6 @@ tmp <- write_xtable(o[inds],
                     file = discard.file,
                     count = TRUE)
 
-#create a file for discarded with melindas
-filtered_df <- df.harmonized %>% filter(is.na(publication_year))%>% filter(!is.na(original))
-discarded_id <- filtered_df %>% select(-2, -3, -5)
-discard.file.id <- paste0(output.folder, field, "_discarded_id.csv")
-tmp <- write_xtable(discarded_id,
-                    file = discard.file.id,
-                    count = TRUE)
-
-
 # Store the title field data
 # FIXME: convert to feather or plain CSV
 data.file <- paste0(field, ".Rds")
@@ -67,9 +59,10 @@ df_pubtime19 <- df.harmonized %>% filter(publication_year > 1808 & publication_y
 melindas_19 <- df_pubtime19$melinda_id
 
 message("Write conversions: publication year for 1809-1917")
+df_pubtime19$original <- df.harmonized[[field]]
 
 xx <- as.data.frame(df_pubtime19) %>% filter(!is.na(publication_year)) %>%
-  group_by(original, publication_year) %>%
+  group_by(melinda_id, publication_year) %>%
   tally() %>%
   arrange(desc(n))
 

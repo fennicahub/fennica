@@ -12,9 +12,3 @@ source("physical_extent.R")
 ```
 
 MARC: [300a](https://www.loc.gov/marc/bibliographic/bd300.html)
-
-Polish physical extent field: [publisher.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/physical_extent.R)
-
-Harmonize physical extent data function: [polish_physical_extent.R](https://github.com/fennicahub/fennica/blob/master/R/polish_physical_extent.R)
-
-Render physical extent field: [physical_extent.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/physical extent.qmd)
