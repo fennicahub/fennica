@@ -13,6 +13,10 @@ source("init.R")
 
 [MARC: leader/06](https://www.loc.gov/marc/bibliographic/bdleader.html)
 
+Polish type of record field: [content_type.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/content_type.R)
+
+Render type of record field: [content_type.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/content_type.qmd)
+
 ## Types of record 
 
 ```{r}

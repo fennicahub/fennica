@@ -9,6 +9,7 @@ on:
     - inst/examples
     - '**.Rmd'
     - '**.qmd'
+    - '**.R'
   workflow_dispatch:
 permissions: write-all
 
