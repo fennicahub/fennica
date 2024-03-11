@@ -17,7 +17,7 @@ Polish publication time field:
 [publication_time.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/publication_time.R)
 
 Harmonize temporal data function:
-[polish_years.R](https://github.com/fennicahub/fennica/blob/master/man/polish_years.R)
+[polish_years.R](https://github.com/fennicahub/fennica/blob/master/R/polish_years.R)
 
 Render publication time field: 
 [publication_time.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/publication_time.qmd)
