@@ -16,6 +16,12 @@ source("physical_dimensions.R")
 
 MARC: [300c](https://www.loc.gov/marc/bibliographic/bd300.html)
 
+Polish physical dimensions field: [publisher.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/physical dimensions.R)
+
+Harmonize physical attributes data function: [polish_place.R](https://github.com/fennicahub/fennica/blob/master/R/polish_dimensions.R)
+
+Render physical dimensions field: [publisher.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/physical dimensions.qmd)
+
 ## Complete Dataset Overview
 
 -   [Accepted dimension info](dataTable/data_table.html?path=../output.tables/physical_dimensions_accepted.csv)

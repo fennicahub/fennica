@@ -13,6 +13,13 @@ source("publication_place.R")
 
 MARC: [260a](https://www.loc.gov/marc/bibliographic/bd260.html)
 
+
+Polish publication place field: [publisher.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/publication place.R)
+
+Harmonize geospatial data function: [polish_place.R](https://github.com/fennicahub/fennica/blob/master/R/polish_place.R)
+
+Render publication place field: [publisher.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/publication place.qmd)
+
 ## Complete Dataset Overview
 
 -   `r length(unique(str_trim(unlist(strsplit(as.character(df$publication_place), ";")))))` [unique publication places](dataTable/data_table.html?path=../output.tables/publication_place_accepted.csv); available for `r sum(!is.na(df$publication_place))` documents (`r round(100*mean(!is.na(df$publication_place)))`%).
