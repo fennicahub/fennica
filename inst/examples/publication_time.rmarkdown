@@ -11,6 +11,7 @@ source("init.R")
 source("publication_time.R")
 ```
 
+
 MARC field: [008/07-14](https://www.loc.gov/marc/bibliographic/bd008.html)
 
 Polish publication time field:
@@ -38,6 +39,7 @@ Publication years in is available for `r sum(!is.na(df_pub_time$publication_year
 
 ### Title count per decade from 1488 to 2050 (log values)
 
+
 ```{r}
 #| label = "publication_timeseries",
 #| echo = FALSE,
@@ -56,9 +58,11 @@ p <- ggplot(df2, aes(publication_decade)) +
 print(p)
 ```
 
+
 ### Publication status summaries
 
 Thу visualization of publication status field enhances understanding of how publication years are recorded. The harmonization process depended on the publication status field due to its nuanced information, which doesn't always directly signify the start or end of publication. 
+
 
 ```{r}
 #| label = "publication_status",
@@ -72,6 +76,7 @@ colnames(tab) <- c("Publication Status", "Documents (n)", "Fraction (%)")
 kable(head(tab, 14))
 ```
 
+
 ## Subset Analysis: 1809-1917
 
 [Publication year conversions](dataTable/data_table.html?path=../output.tables/publication_time_conversion_19.csv)
@@ -81,6 +86,7 @@ kable(head(tab, 14))
 ### Title count per decade
 
 A plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period.
+
 
 ```{r}
 #| label = "summarypublicationyear",
@@ -102,3 +108,4 @@ p <- ggplot(df2, aes(publication_decade)) +
 print(p)
 
 ```
+
