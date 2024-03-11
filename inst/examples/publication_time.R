@@ -31,7 +31,7 @@ xx <- as.data.frame(df.harmonized) %>% filter(!is.na(publication_year)) %>%
 
 conversion.file <- paste0(output.folder, field, "_conversion.csv")
 tmp <- write.table(xx,
-                   file = conversion.file,
+                   file = conversion.file, 
                    quote = FALSE,
                    row.names = FALSE)
 

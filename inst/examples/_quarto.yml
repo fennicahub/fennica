@@ -39,7 +39,7 @@ book:
   ##- publication_interval.qmd
   - publication_place.qmd #enemmän läpivuuta onko suomi tai autonomia
   - publication_time.qmd
-  - publication_frequency.qmd
+  ##- publication_frequency.qmd
   - signum.qmd
   - title.qmd #läpivyys mihin tiedot perustuu
   - content_type.qmd
