@@ -44,6 +44,16 @@ tmp <- write_xtable(o[inds],
                     file = discard.file,
                     count = TRUE)
 
+
+#create a file for discarded with melindas
+filtered_df <- df.harmonized %>% filter(is.na(publication_year))%>% filter(!is.na(original))
+discarded_id <- filtered_df %>% select(-2, -3, -5)
+discard.file.id <- paste0(output.folder, field, "_discarded_id.csv")
+tmp <- write_xtable(discarded_id,
+                    file = discard.file.id,
+                    count = TRUE)
+
+
 # Store the title field data
 # FIXME: convert to feather or plain CSV
 data.file <- paste0(field, ".Rds")
