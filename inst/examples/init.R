@@ -6,8 +6,6 @@ library(knitr)
 library(R.utils)
 library(ggplot2)
 library(Cairo)
-library(lubridate)
-
 
 
 # Install latest version from Github
