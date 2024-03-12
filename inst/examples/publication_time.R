@@ -24,16 +24,14 @@ df.harmonized$publication_decade <- decade(df.harmonized$publication_year)
 message("Write conversions: publication year")
 df.harmonized$original <- df.orig[[field]]
 
-xx <- as.data.frame(df.harmonized) %>% filter(!is.na(publication_year)) %>%
-  group_by(original, publication_year) %>%
-  tally() %>%
-  arrange(desc(n))
+xx <- df.harmonized %>% filter(!is.na(publication_year)) %>%  filter(!is.na(original))
+xx <- xx %>% select(-1,-2, -3, -5)
 
 conversion.file <- paste0(output.folder, field, "_conversion.csv")
-tmp <- write.table(xx,
+tmp <- write_xtable(xx,
                    file = conversion.file, 
-                   quote = FALSE,
-                   row.names = FALSE)
+                   count = TRUE)
+
 
 message("Discarded publication year")
 o <- as.character(df.orig[[field]])

@@ -15,6 +15,8 @@ Currently, the bookdown project comprises a few distinct chapters. Notably, the 
 
 ## Data collection and transformation scripts
 
+[init.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/init.R): compiles instructions for downloading the data and specifying the required packages for installation.
+
 Scripts are tailored for specific needs of the research and can be modified for different research questions:
 
 [priority_fields.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/priority_fields.R): collects priority fields from the raw data. 
