@@ -34,9 +34,24 @@ The publication years section offers a comprehensive summary of the dataset's ye
 
 [Publication year discarded with melinda id](dataTable/data_table.html?path=../output.tables/publication_time_discarded_id.csv)
 
-Publication years in is available for `r sum(!is.na(df_pub_time$publication_year))` documents (`r round(100*mean(!is.na(df_pub_time$publication_year)))`%). The publication years span is `r paste(range(na.omit(as.numeric(df_pub_time$publication_year))), collapse = "-")`.
 
-### Title count per decade from 1488 to 2050 (log values)
+```{r}
+#| include = FALSE
+library(lubridate)
+min_year <- min(na.omit(as.numeric(df_pub_time$publication_year)), na.rm = TRUE)
+max_year <- max(na.omit(as.numeric(df_pub_time$publication_year)), na.rm = TRUE)
+
+# Ensure max_year is not greater than the current year
+current_year <- year(today())
+if (max_year > current_year) {
+ max_year <- current_year
+}
+```
+
+Publication years is available for `r sum(!is.na(df_pub_time$publication_year))` documents (`r round(100*mean(!is.na(df_pub_time$publication_year)))`%). 
+The publication years span is `r paste(min_year, max_year, sep = "-")`.
+
+### Title count per decade (log values)
 
 ```{r}
 #| label = "publication_timeseries",
@@ -48,11 +63,11 @@ Publication years in is available for `r sum(!is.na(df_pub_time$publication_year
 #| fig.height = 6
 df2 <- df_pub_time %>% 
   group_by(publication_decade) %>% 
-  filter(publication_decade <= 2050) 
+  filter(publication_decade <= 2030) 
 p <- ggplot(df2, aes(publication_decade)) +
   geom_bar() + scale_y_log10() +
   ggtitle("Title count timeline") +
-  xlim(1450, 2024) 
+  xlim(1450, current_year) 
 print(p)
 ```
 
