@@ -24,8 +24,9 @@ df.harmonized$publication_decade <- decade(df.harmonized$publication_year)
 message("Write conversions: publication year")
 df.harmonized$original <- df.orig[[field]]
 
-xx <- df.harmonized %>% filter(!is.na(publication_year)) %>%  filter(!is.na(original))
-xx <- xx %>% select(-1,-2, -3, -5)
+xx <- data.frame(original = df.harmonized$original,publication_year = df.harmonized$publication_year)
+xx <- xx %>% filter(!is.na(publication_year)) %>%  filter(!is.na(original))
+
 
 conversion.file <- paste0(output.folder, field, "_conversion.csv")
 tmp <- write_xtable(xx,
@@ -44,10 +45,10 @@ tmp <- write_xtable(o[inds],
 
 
 #create a file for discarded with melindas
-filtered_df <- df.harmonized %>% filter(is.na(publication_year))%>% filter(!is.na(original))
-discarded_id <- filtered_df %>% select(-2, -3, -5)
+xx1 <- data.frame(melinda_id = df.harmonized$melinda_id, original = df.harmonized$original,publication_year = df.harmonized$publication_year)
+xx1 <- xx1 %>% filter(is.na(publication_year))%>% filter(!is.na(original))
 discard.file.id <- paste0(output.folder, field, "_discarded_id.csv")
-tmp <- write_xtable(discarded_id,
+tmp <- write_xtable(xx1,
                     file = discard.file.id,
                     count = TRUE)
 
