@@ -164,7 +164,7 @@
     "href": "publication_time.html",
     "title": "6  Publication time",
     "section": "",
-    "text": "6.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nPublication year discarded with melinda id\nPublication years in is available for 1187033 documents (100%). The publication years span is 0-2050.",
+    "text": "6.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nPublication year discarded with melinda id\nPublication years is available for 1187033 documents (100%). The publication years span is 0-2024.",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Publication time</span>"
     ]
@@ -174,7 +174,7 @@
     "href": "publication_time.html#complete-data-overview",
     "title": "6  Publication time",
     "section": "",
-    "text": "6.1.1 Title count per decade from 1488 to 2050 (log values)\n\n\n\n6.1.2 Publication status summaries\nThу visualization of publication status field enhances understanding of how publication years are recorded. The harmonization process depended on the publication status field due to its nuanced information, which doesn’t always directly signify the start or end of publication.\n\n\n\nPublication Status\nDocuments (n)\nFraction (%)\n\n\n\n\nSingle known date/probable date\n1064152\n89.6\n\n\nContinuing resource ceased publication\n44266\n3.7\n\n\nPublication date and copyright date\n34378\n2.9\n\n\nContinuing resource currently published\n25570\n2.2\n\n\nQuestionable date\n7754\n0.7\n\n\nInclusive dates of collection\n4701\n0.4\n\n\nReprint/reissue date and original date\n4188\n0.4\n\n\nMultiple dates\n1983\n0.2\n\n\nContinuing resource status unknown\n491\n0\n\n\nDate of distribution etc\n101\n0\n\n\nDetailed date\n76\n0\n\n\nNo attempt to code\n66\n0\n\n\nDates unknown\n26\n0\n\n\nNo dates given; B.C. date involved\n4\n0",
+    "text": "6.1.1 Title count per decade (log values)\n\n\n\n6.1.2 Publication status summaries\nThу visualization of publication status field enhances understanding of how publication years are recorded. The harmonization process depended on the publication status field due to its nuanced information, which doesn’t always directly signify the start or end of publication.\n\n\n\nPublication Status\nDocuments (n)\nFraction (%)\n\n\n\n\nSingle known date/probable date\n1064152\n89.6\n\n\nContinuing resource ceased publication\n44266\n3.7\n\n\nPublication date and copyright date\n34378\n2.9\n\n\nContinuing resource currently published\n25570\n2.2\n\n\nQuestionable date\n7754\n0.7\n\n\nInclusive dates of collection\n4701\n0.4\n\n\nReprint/reissue date and original date\n4188\n0.4\n\n\nMultiple dates\n1983\n0.2\n\n\nContinuing resource status unknown\n491\n0\n\n\nDate of distribution etc\n101\n0\n\n\nDetailed date\n76\n0\n\n\nNo attempt to code\n66\n0\n\n\nDates unknown\n26\n0\n\n\nNo dates given; B.C. date involved\n4\n0",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Publication time</span>"
     ]
