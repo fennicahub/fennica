@@ -9,6 +9,12 @@ source("title.R")
 
 MARC: [245a,b](https://www.loc.gov/marc/bibliographic/bd245.html)
 
+Polish title field: [title.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/title.R)
+
+Harmonize title metadata function: [polish_title.R](https://github.com/fennicahub/fennica/blob/master/R/polish_title.R)
+
+Render title field: [title.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/title.qmd)
+
 ## Complete Dataset Overview
 
 -   [Unique accepted entries](dataTable/data_table.html?path=../output.tables/title_accepted.csv): `r length(unique(df[[field]]))`

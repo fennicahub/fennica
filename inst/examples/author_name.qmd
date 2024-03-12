@@ -12,7 +12,11 @@ source("author_name.R")
 
 MARC: [100a](https://www.loc.gov/marc/bibliographic/bd100.html)
 
-[polish_author.R](https://github.com/fennicahub/fennica/blob/master/R/polish_author.R)
+Polish author's name field: [author_name.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/author_name.R)
+
+Harmonize individual data function: [polish_author.R](https://github.com/fennicahub/fennica/blob/master/R/polish_author.R)
+
+Render author name field: [author_name.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/author_name.qmd)
 
 Author's name section's summary tables offer insights into the dataset's integrity, illustrating the accepted and discarded author names. An examination of missing values in the original dataset provides transparency regarding data completeness. The inclusion of information on name variants and pseudonyms enriches the analysis, addressing nuances in authorship representation. This comprehensive approach ensures a thorough understanding of the dataset's composition and the intricacies associated with author identification.
 

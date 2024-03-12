@@ -17,7 +17,7 @@ Polish publication time field:
 [publication_time.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/publication_time.R)
 
 Harmonize temporal data function:
-[polish_years.R](https://github.com/fennicahub/fennica/blob/master/man/polish_years.Rd)
+[polish_years.R](https://github.com/fennicahub/fennica/blob/master/R/polish_years.R)
 
 Render publication time field: 
 [publication_time.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/publication_time.qmd)
@@ -32,7 +32,29 @@ The publication years section offers a comprehensive summary of the dataset's ye
 
 [Publication year discarded](dataTable/data_table.html?path=../output.tables/publication_time_discarded.csv)
 
+[Publication year discarded with melinda id](dataTable/data_table.html?path=../output.tables/publication_time_discarded_id.csv)
+
 Publication years in is available for `r sum(!is.na(df_pub_time$publication_year))` documents (`r round(100*mean(!is.na(df_pub_time$publication_year)))`%). The publication years span is `r paste(range(na.omit(as.numeric(df_pub_time$publication_year))), collapse = "-")`.
+
+### Title count per decade from 1488 to 2050 (log values)
+
+```{r}
+#| label = "publication_timeseries",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| results = "asis",
+#| fig.width = 8,
+#| fig.height = 6
+df2 <- df_pub_time %>% 
+  group_by(publication_decade) %>% 
+  filter(publication_decade <= 2050) 
+p <- ggplot(df2, aes(publication_decade)) +
+  geom_bar() + scale_y_log10() +
+  ggtitle("Title count timeline") +
+  xlim(1450, 2024) 
+print(p)
+```
 
 ### Publication status summaries
 

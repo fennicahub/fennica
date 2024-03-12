@@ -31,7 +31,7 @@ xx <- as.data.frame(df.harmonized) %>% filter(!is.na(publication_year)) %>%
 
 conversion.file <- paste0(output.folder, field, "_conversion.csv")
 tmp <- write.table(xx,
-                   file = conversion.file,
+                   file = conversion.file, 
                    quote = FALSE,
                    row.names = FALSE)
 
@@ -43,6 +43,16 @@ discard.file <- paste0(output.folder, field, "_discarded.csv")
 tmp <- write_xtable(o[inds],
                     file = discard.file,
                     count = TRUE)
+
+
+#create a file for discarded with melindas
+filtered_df <- df.harmonized %>% filter(is.na(publication_year))%>% filter(!is.na(original))
+discarded_id <- filtered_df %>% select(-2, -3, -5)
+discard.file.id <- paste0(output.folder, field, "_discarded_id.csv")
+tmp <- write_xtable(discarded_id,
+                    file = discard.file.id,
+                    count = TRUE)
+
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV

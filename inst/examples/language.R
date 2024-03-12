@@ -17,6 +17,7 @@ saveRDS(df.tmp, file = data.file)
 # Define output files
 file_discarded <- paste0(output.folder, field, "_discarded.csv")
 file_accepted <- paste0(output.folder, field, "_accepted.csv")
+file_discarded_id <- paste0(output.folder, field, "_discarded_id.csv")
 
 # ------------------------------------------------------------
 
@@ -35,9 +36,16 @@ tmp <- write_xtable(tab, paste(output.folder, field, "_conversions.csv", sep = "
 # Original entries that were converted into NA
 s <- unlist(strsplit(df.orig$language, ";"))
 original.na <- s[s %in% out$unrecognized]
-
 # .. ie. those are "discarded" cases; list them in a table
 tmp2 <- write_xtable(original.na, file_discarded, count = TRUE)
+
+# #create a file for discarded with melindas
+# filtered_df <- df.harmonized %>% filter(is.na(publication_year))%>% filter(!is.na(original))
+# discarded_id <- filtered_df %>% select(-2, -3, -5)
+# discard.file.id <- paste0(output.folder, field, "_discarded_id.csv")
+# tmp <- write_xtable(discarded_id,
+#                     file = discard.file.id,
+#                     count = TRUE)
 
 # Generate markdown summary
 df <- readRDS(data.file)
