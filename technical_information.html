@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -185,32 +185,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./publication_frequency.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Publication frequency</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./signum.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Signum</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Signum</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./title.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Title field: summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Title field: summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./content_type.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Types of record</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Types of record</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./title_uniform.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Uniform Title</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Uniform Title</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -270,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.2 (2023-10-31)
+<pre><code>R version 4.3.3 (2024-02-29)
 Platform: x86_64-pc-linux-gnu (64-bit)
 Running under: Ubuntu 22.04.4 LTS
 
@@ -298,19 +292,19 @@ other attached packages:
 
 loaded via a namespace (and not attached):
  [1] utf8_1.2.4        generics_0.1.3    xml2_1.3.6        slam_0.1-50      
- [5] stringi_1.8.3     digest_0.6.34     magrittr_2.0.3    grid_4.3.2       
+ [5] stringi_1.8.3     digest_0.6.34     magrittr_2.0.3    grid_4.3.3       
  [9] evaluate_0.23     pkgload_1.3.4     fastmap_1.1.1     jsonlite_1.8.8   
 [13] pkgbuild_1.4.3    sessioninfo_1.2.2 urlchecker_1.0.1  promises_1.2.1   
 [17] purrr_1.0.2       fansi_1.0.6       scales_1.3.0      stringdist_0.9.12
 [21] XML_3.99-0.16.1   cli_3.6.2         shiny_1.8.0       rlang_1.1.3      
 [25] munsell_0.5.0     ellipsis_0.3.2    withr_3.0.0       remotes_2.4.2.1  
-[29] cachem_1.0.8      tools_4.3.2       parallel_4.3.2    memoise_2.0.1    
+[29] cachem_1.0.8      tools_4.3.3       parallel_4.3.3    memoise_2.0.1    
 [33] colorspace_2.1-0  httpuv_1.6.14     vctrs_0.6.5       R6_2.5.1         
 [37] mime_0.12         lifecycle_1.0.4   fs_1.6.3          htmlwidgets_1.6.4
 [41] miniUI_0.1.1.1    pkgconfig_2.0.3   gtable_0.3.4      pillar_1.9.0     
-[45] later_1.3.2       data.table_1.15.0 glue_1.7.0        profvis_0.3.8    
+[45] later_1.3.2       data.table_1.15.2 glue_1.7.0        profvis_0.3.8    
 [49] Rcpp_1.0.12       xfun_0.42         tibble_3.2.1      tidyselect_1.2.0 
-[53] xtable_1.8-4      htmltools_0.5.7   rmarkdown_2.25    compiler_4.3.2   </code></pre>
+[53] xtable_1.8-4      htmltools_0.5.7   rmarkdown_2.26    compiler_4.3.3   </code></pre>
 </div>
 </div>
 
@@ -540,6 +534,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -574,7 +586,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
