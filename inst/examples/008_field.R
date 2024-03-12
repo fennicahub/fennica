@@ -34,7 +34,7 @@ df.orig$publication_time <- paste(substr(df.orig$`008`, start =  8, stop =  11),
                                   substr(df.orig$`008`, start =  12, stop =  15),  
                                   sep = "-")
 #ignore b and | publication status types of publication time
-df.orig$publication_time <- ifelse(df.orig$publication_status %in% c("'No dates given; B.C. date involved'", "'No attempt to code'"), NA, df.orig$publication_time)
+df.orig$publication_time <- ifelse(df.orig$publication_status %in% c("'No dates given; B.C. date involved'", "'No attempt to code'", "Dates unknown"), NA, df.orig$publication_time)
 
 #DATE1 
 df.orig$publication_time <- ifelse(
@@ -45,7 +45,7 @@ df.orig$publication_time <- ifelse(
                                     'Date of distribution etc', 
                                     'Questionable date', 
                                     'Continuing resource status unknown'),
-  substr(df.orig$publication_time, start =  1, stop = nchar(df.orig$publication_time) -  4),
+  substr(df.orig$publication_time, start =  1, stop = 4),
   df.orig$publication_time
 )
 
@@ -53,15 +53,25 @@ df.orig$publication_time <- ifelse(
 # for Reprint/reissue date and original date only DATE2 is kept
 df.orig$publication_time <- ifelse(
   df.orig$publication_status %in% c("Reprint/reissue date and original date"),
-  substr(df.orig$publication_time, start = 8, stop = nchar(df.orig$publication_time)),
+  substr(df.orig$publication_time, start = 6, stop = nchar(df.orig$publication_time)),
   df.orig$publication_time
 )
 
+
+#preferably had to be transfered to polish_years.R 
 
 df.orig$publication_time <- ifelse(df.orig$publication_time == "    -", NA, df.orig$publication_time)
 df.orig$publication_time <- ifelse(df.orig$publication_time == "    -    ", NA, df.orig$publication_time)
 df.orig$publication_time <- ifelse(df.orig$publication_time == "-    ", NA, df.orig$publication_time)
 df.orig$publication_time <- ifelse(df.orig$publication_time == "-", NA, df.orig$publication_time)
+
+df.orig <- df.orig %>%
+  mutate(publication_time = ifelse(grepl("^\\s+$", publication_time), NA, publication_time))
+
+df.orig <- df.orig %>%
+  mutate(publication_time = ifelse(grepl("0000", publication_time), NA, publication_time))
+
+
 
 # Replace cells containing "    -" with NA
 df.orig$publication_time <- ifelse(df.orig$publication_time == "    -", NA, df.orig$publication_time)
