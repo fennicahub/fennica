@@ -44,7 +44,7 @@
     "href": "author_name.html#subset-analysis-1809-1917",
     "title": "2  Author’s name",
     "section": "2.2 Subset Analysis: 1809-1917",
-    "text": "2.2 Subset Analysis: 1809-1917\n\nUnique accepted entries for for 1809-1917 years: 10360\nUnique discarded entries in original data (excluding NA cases): 18\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.\n\n\n\n\n\n\n\n\n\nFrequency of unique titles 1809-1917.\nThe plot adds a historical dimension to the analysis. By visualizing how the number of unique titles evolves over this time span, it provides insights into the literary landscape and publishing trends during the 19th and early 20th centuries.",
+    "text": "2.2 Subset Analysis: 1809-1917\n\nUnique accepted entries for for 1809-1917 years: 10381\nUnique discarded entries in original data (excluding NA cases): 19\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.\n\n\n\n\n\n\n\n\n\nFrequency of unique titles 1809-1917.\nThe plot adds a historical dimension to the analysis. By visualizing how the number of unique titles evolves over this time span, it provides insights into the literary landscape and publishing trends during the 19th and early 20th centuries.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's name</span>"
     ]
@@ -74,7 +74,7 @@
     "href": "language.html#subset-analysis-1809-1917",
     "title": "3  Language",
     "section": "3.2 Subset Analysis: 1809-1917",
-    "text": "3.2 Subset Analysis: 1809-1917\n\n53 unique languages\n59661 single-language documents (94.02%)\n3796 multilingual documents (5.98%)\n928 documents (1.46%) with unrecognized language\n\n\n3.2.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n33093\n2.8\n\n\nSwedish\n18765\n1.6\n\n\nFinnish;Swedish\n1983\n0.2\n\n\nGerman\n1963\n0.2\n\n\nLatin\n1658\n0.1\n\n\nRussian\n1585\n0.1\n\n\nUndetermined\n928\n0.1\n\n\nFrench\n622\n0.1\n\n\nEnglish\n423\n0\n\n\nSwedish;Finnish\n161\n0\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
+    "text": "3.2 Subset Analysis: 1809-1917\n\n54 unique languages\n60632 single-language documents (94%)\n3872 multilingual documents (6%)\n929 documents (1.44%) with unrecognized language\n\n\n3.2.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n33674\n2.8\n\n\nSwedish\n19107\n1.6\n\n\nFinnish;Swedish\n2021\n0.2\n\n\nGerman\n1988\n0.2\n\n\nLatin\n1662\n0.1\n\n\nRussian\n1587\n0.1\n\n\nUndetermined\n929\n0.1\n\n\nFrench\n628\n0.1\n\n\nEnglish\n425\n0\n\n\nSwedish;Finnish\n170\n0\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Language</span>"
     ]
@@ -104,7 +104,7 @@
     "href": "publisher.html#subset-analysis-1809-1917",
     "title": "4  Publisher",
     "section": "4.2 Subset Analysis: 1809-1917",
-    "text": "4.2 Subset Analysis: 1809-1917\n\n9998 unique publishers\n52034 documents have unambiguous publisher information (82%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\n\nThe 20 most common publishers from 1809 to 1917 are shown with the number of documents.",
+    "text": "4.2 Subset Analysis: 1809-1917\n\n10197 unique publishers\n52502 documents have unambiguous publisher information (81.4%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\n\nThe 20 most common publishers from 1809 to 1917 are shown with the number of documents.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Publisher</span>"
     ]
@@ -154,7 +154,7 @@
     "href": "publication_place.html#subset-analysis-1809-1917",
     "title": "5  Publication place",
     "section": "5.4 Subset Analysis: 1809-1917",
-    "text": "5.4 Subset Analysis: 1809-1917\n\n448 unique publication places; available for 52265 documents (82%).\nUnique publication country for a period 1809-1917: 32; available for 51018 documents (80%).\n33 discarded place names\n\nTop-20 publication places are shown together with the number of documents.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCountry\nDocuments (n)\nFraction (%)\n\n\n\n\nFinland\n46086\n72.6\n\n\nSweden\n1439\n2.3\n\n\nRussia\n1240\n2.0\n\n\nUSA\n932\n1.5\n\n\nGermany\n542\n0.9\n\n\nEngland\n173\n0.3",
+    "text": "5.4 Subset Analysis: 1809-1917\n\n477 unique publication places; available for 52733 documents (82%).\nUnique publication country for a period 1809-1917: 32; available for 51416 documents (80%).\n33 discarded place names\n\nTop-20 publication places are shown together with the number of documents.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCountry\nDocuments (n)\nFraction (%)\n\n\n\n\nFinland\n46461\n72.0\n\n\nSweden\n1447\n2.2\n\n\nRussia\n1241\n1.9\n\n\nUSA\n930\n1.4\n\n\nGermany\n558\n0.9\n\n\nEngland\n173\n0.3",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Publication place</span>"
     ]
@@ -164,7 +164,7 @@
     "href": "publication_time.html",
     "title": "6  Publication time",
     "section": "",
-    "text": "6.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nPublication year discarded with melinda id\nPublication years is available for 1183019 documents (100%). The publication years span is 0-2024.",
+    "text": "6.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nPublication year discarded with melinda id\nPublication years is available for 1187016 documents (100%). The publication years span is 1015-2024.",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Publication time</span>"
     ]
@@ -173,15 +173,21 @@
     "objectID": "publication_time.html#complete-data-overview",
     "href": "publication_time.html#complete-data-overview",
     "title": "6  Publication time",
-    "section": "6.1 Complete Data Overview",
-    "text": "6.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nPublication year discarded with melinda id\nPublication years is available for 1187145 documents (100%). The publication years span is 0-2024.\n\n6.1.1 Title count per decade (log values)\n\n\n\n6.1.2 Publication status summaries\nThу visualization of publication status field enhances understanding of how publication years are recorded. The harmonization process depended on the publication status field due to its nuanced information, which doesn’t always directly signify the start or end of publication.\n\n\n\n\nPublication Status\nDocuments (n)\nFraction (%)\n\n\n\n\nSingle known date/probable date\n1064152\n89.6\n\n\nContinuing resource ceased publication\n44266\n3.7\n\n\nPublication date and copyright date\n34378\n2.9\n\n\nContinuing resource currently published\n25570\n2.2\n\n\nQuestionable date\n7754\n0.7\n\n\nInclusive dates of collection\n4701\n0.4\n\n\nReprint/reissue date and original date\n4188\n0.4\n\n\nMultiple dates\n1983\n0.2\n\n\nContinuing resource status unknown\n491\n0\n\n\nDate of distribution etc\n101\n0\n\n\nDetailed date\n76\n0\n\n\nNo attempt to code\n66\n0\n\n\nDates unknown\n26\n0\n\n\nNo dates given; B.C. date involved\n4\n0"
+    "section": "",
+    "text": "6.1.1 Title count per decade (log values)\n\n\n\n6.1.2 Publication status summaries\nThу visualization of publication status field enhances understanding of how publication years are recorded. The harmonization process depended on the publication status field due to its nuanced information, which doesn’t always directly signify the start or end of publication.\n\n\n\nPublication Status\nDocuments (n)\nFraction (%)\n\n\n\n\nSingle known date/probable date\n1064152\n89.6\n\n\nContinuing resource ceased publication\n44266\n3.7\n\n\nPublication date and copyright date\n34378\n2.9\n\n\nContinuing resource currently published\n25570\n2.2\n\n\nQuestionable date\n7754\n0.7\n\n\nInclusive dates of collection\n4701\n0.4\n\n\nReprint/reissue date and original date\n4188\n0.4\n\n\nMultiple dates\n1983\n0.2\n\n\nContinuing resource status unknown\n491\n0\n\n\nDate of distribution etc\n101\n0\n\n\nDetailed date\n76\n0\n\n\nNo attempt to code\n66\n0\n\n\nDates unknown\n26\n0\n\n\nNo dates given; B.C. date involved\n4\n0",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Publication time</span>"
+    ]
   },
   {
     "objectID": "publication_time.html#subset-analysis-1809-1917",
     "href": "publication_time.html#subset-analysis-1809-1917",
     "title": "6  Publication time",
     "section": "6.2 Subset Analysis: 1809-1917",
-    "text": "6.2 Subset Analysis: 1809-1917\nIn this segment we concentrate on the so called “long 19th century”: literary production during the years 1809-1917, when the Grand Duchy of Finland was an autonomous part of the Russian Empire.\nPublication year conversions\nPublication year discarded\n\n6.2.1 Title count per decade\nA plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period."
+    "text": "6.2 Subset Analysis: 1809-1917\nIn this segment we concentrate on the so called “long 19th century”: literary production during the years 1809-1917, when the Grand Duchy of Finland was an autonomous part of the Russian Empire.\nPublication year conversions\nPublication year discarded\n\n6.2.1 Title count per decade\nA plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Publication time</span>"
+    ]
   },
   {
     "objectID": "signum.html",
@@ -228,7 +234,7 @@
     "href": "title.html#subset-analysis-1809-1917",
     "title": "8  Title field: summary",
     "section": "8.2 Subset Analysis: 1809-1917",
-    "text": "8.2 Subset Analysis: 1809-1917\n\nUnique accepted entries: 47666\nUnique discarded entries in original data (excluding NA cases): 0\n\nTop-20 titles and their title counts for the 1809-1917 period\n\n\n\n\n\n\n\n\n\nFrequency of unique titles:",
+    "text": "8.2 Subset Analysis: 1809-1917\n\nUnique accepted entries: 47857\nUnique discarded entries in original data (excluding NA cases): 0\n\nTop-20 titles and their title counts for the 1809-1917 period\n\n\n\n\n\n\n\n\n\nFrequency of unique titles:",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Title field: summary</span>"
     ]
@@ -288,7 +294,7 @@
     "href": "title_uniform.html#subset-analysis-1809-1917",
     "title": "10  Uniform Title",
     "section": "10.2 Subset Analysis: 1809-1917",
-    "text": "10.2 Subset Analysis: 1809-1917\n\nUnique accepted entries: 3251\nUnique discarded entries in original data (excluding NA cases): 0\n\nTop-20 titles and their title counts for 1809-1917 period.",
+    "text": "10.2 Subset Analysis: 1809-1917\n\nUnique accepted entries: 3275\nUnique discarded entries in original data (excluding NA cases): 0\n\nTop-20 titles and their title counts for 1809-1917 period.",
     "crumbs": [
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Uniform Title</span>"
     ]
