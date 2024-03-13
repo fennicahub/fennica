@@ -20,5 +20,6 @@ df.harmonized$publication_year <- df.harmonized$publication_year_from
 df.harmonized$publication_decade <- decade(df.harmonized$publication_year) 
 
 #Create subsection for the 19th century only and 
+df.harmonized$original <- df.orig[[field]]
 df_pubtime19 <- df.harmonized %>% filter(publication_year > 1808 & publication_year < 1918)
 melindas_19 <- df_pubtime19$melinda_id

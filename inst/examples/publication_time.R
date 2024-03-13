@@ -17,6 +17,17 @@ df.harmonized$publication_year <- df.harmonized$publication_year_from
 # Add publication_decade
 df.harmonized$publication_decade <- decade(df.harmonized$publication_year) 
 
+# ------------------------------------------------------------
+
+# Store the publication time field data
+data.file <- paste0(field, ".Rds")
+saveRDS(df.harmonized, file = data.file)
+#Load the RDS file
+df <- readRDS(data.file)
+# Convert to CSV and store in the data.files folder
+write.csv(df, gzfile(paste0("data.files/", paste0(field, ".csv.gz")), "w"), row.names = FALSE)
+
+
 
 # ---------------------------------------------------------------------
 #1M data conversions
@@ -50,25 +61,17 @@ tmp <- write_xtable(xx1,
                     file = discard.file.id,
                     count = TRUE)
 
-# ------------------------------------------------------------
-
-# Store the publication time field data
-data.file <- paste0(field, ".Rds")
-saveRDS(df.harmonized, file = data.file)
-#Load the RDS file
-df <- readRDS(data.file)
-# Convert to CSV and store in the data.files folder
-#write.csv(df, file = paste0("data.files/", paste0(field, ".csv")), row.names = FALSE)
-
 
 # ------------------------------------------------------------
 
 #Create subsection for the 19th century only and 
+df.harmonized$original <- df.orig[[field]]
 df_pubtime19 <- df.harmonized %>% filter(publication_year > 1808 & publication_year < 1918)
 melindas_19 <- df_pubtime19$melinda_id
 
+
 message("Write conversions: publication year for 1809-1917")
-df_pubtime19$original <- df.harmonized[[field]]
+
 
 xx <- data.frame(original = df_pubtime19$original,publication_year = df_pubtime19$publication_year)
 xx <- xx %>% filter(!is.na(publication_year)) %>%  filter(!is.na(original))
