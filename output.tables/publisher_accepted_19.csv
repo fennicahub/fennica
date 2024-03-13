@@ -1,18 +1,18 @@
 Name	Count
-[kustantaja tuntematon],	7281
-WSOY,	2518
-Otava,	1979
+[kustantaja tuntematon],	7286
+WSOY,	2525
+Otava,	1995
 Tekijä,	1379
-Söderström,	1093
+Söderström,	1095
 Edlund,	 886
 G. W. Edlund,	 808
 typis Frenckellianis,	 621
-Karisto,	 569
-Suomalaisen Kirjallisuuden Seura,	 480
+Karisto,	 572
+Suomalaisen Kirjallisuuden Seura,	 483
 Gummerus,	 417
 Weilin & Göös,	 414
 Raittiuden ystävät,	 406
-Yrjö Weilin,	 384
+Yrjö Weilin,	 385
 Förf.,	 325
 Kansanvalistusseura,	 300
 Frenckell,	 251
@@ -34,13 +34,13 @@ Finska Vetenskapssocieteten,	 160
 Werner Söderström,	 153
 Hagelberg,	 149
 Bonnier,	 147
-Schildt,	 141
+Schildt,	 143
 [C. A. Londicer],	 137
 W. Toivonen,	 134
 Clouberg,	 133
 Universitet,	 125
-[Suomalaisen Kirjallisuuden Seura],	 122
-Svenska litteratursällskapet i Finland,	 109
+[Suomalaisen Kirjallisuuden Seura],	 123
+Svenska litteratursällskapet i Finland,	 111
 Lutherska Evangeliföreningen,	 108
 Otto Andersin,	 108
 [Tekijä],	 104
@@ -75,9 +75,9 @@ Suomalais-amerikkalainen kustannusyhtiö,	  69
 Vihtori Kosonen,	  68
 [Finska Litteratur-sällskapets tryckeri],	  63
 W. Hagelstam,	  63
+[kustantaja tuntematon] ,	  61
 Rauman kirjapaino,	  61
 Suomalaisen Kirjallisuuden seura,	  61
-[kustantaja tuntematon] ,	  60
 P. A. Norstedt & Söner,	  59
 Yrjö Weilin & Kumpp.,	  59
 Satakunnan kirjakauppa,	  57
@@ -101,9 +101,9 @@ Victor Hoving,	  48
 Henkivakuutusyhtiö Suomi,	  47
 Suomen Matkailijayhdistys,	  47
 Herättäjä,	  46
+Kaleva,	  46
 Sällskapet Pellervo,	  46
 Shell,	  46
-Kaleva,	  45
 U. W. Telén,	  45
 [Voenno-Topografičeskìj Otděl"],	  44
 Albert Bonnier,	  44
@@ -150,6 +150,7 @@ Osuuskunta Kehitys,	  32
 OWB,	  32
 U. W. Telén ja K.,	  32
 Wasenius,	  32
+[Maanmittaushallitus],	  31
 Boman ja Karlsson,	  31
 GEJ,	  31
 Akateeminen kirjakauppa,	  30
@@ -161,16 +162,18 @@ Suomen naisyhdistys,	  30
 Clouberg ja K.,	  29
 Författaren,	  29
 Societas scientiarum Fennicae ,	  29
+Tilgmann,	  29
 Utg.,	  29
 [Svenska litteratursällskapet i Finland],	  28
 Alfred Lagerbom,	  28
 Arwidson & Co.,	  28
 Lutherska evangeliföreningen,	  28
+Pellervo-seura,	  28
 Suom.-amer. kustannusyhtiö,	  28
 Suomen metsänhoitoyhdistys,	  28
-Tilgmann,	  28
 [J. C. Frenckell],	  27
 G. M. Giescke,	  27
+Lasipalatsi,	  27
 Suomen kylvösiemenyhdistys,	  27
 Valtion kotitaloustoimikunta,	  27
 Alex. Lundström,	  26
@@ -179,8 +182,8 @@ Emil Vainio,	  26
 Evankelinen kustannusliike,	  26
 Finlands Svenska Nykterhetsförbund,	  26
 Finska missionssällskapet,	  26
+Maanmittaushallitus,	  26
 Olan,	  26
-Pellervo-seura,	  26
 Statens kommission för huslig ekonomi,	  26
 Suomen maanviljelys-taloudellinen koelaitos,	  26
 Kustannus-o.y. Kansa,	  25
@@ -192,7 +195,6 @@ C. J. Bergström,	  24
 G. E. Euren,	  24
 G. L. Söderström,	  24
 K.E. Holm,	  24
-Maanmittaushallitus,	  24
 P. A. Norstedt & söner,	  24
 Pyh. Sergein ja Hermanin veljeyskunta,	  24
 Söderström & c:o,	  24
@@ -239,6 +241,7 @@ Emil Hagelberg,	  19
 Folkupplysningssällkapet,	  19
 Gyldendalske Boghandel Nordisk Forlag,	  19
 Helsingfors-Posten,	  19
+Kesävuori,	  19
 kustantaja tuntematon,	  19
 M. V. Vuolukka,	  19
 Nobel-Standard,	  19
@@ -277,6 +280,7 @@ Lantbruksstyrelsen,	  17
 Lindeberg,	  17
 Öhman,	  17
 Rauhan sanomat,	  17
+Salakirjat,	  17
 Société néophilogique de Helsinki,	  17
 Statsrådet,	  17
 Suomalaisen Kirjallisuuden Seura :|Edlund,	  17
@@ -361,6 +365,7 @@ Kauppakp.,	  13
 Länsisuomalais-osakunta,	  13
 Lilius ja Hertzberg,	  13
 Nordstedt,	  13
+ntamo,	  13
 O. B. Blomfelt,	  13
 O. W. Backman,	  13
 Päivälehden kirjapaino,	  13
@@ -383,6 +388,7 @@ H. W. Marjamaa,	  12
 Helsingfors stad,	  12
 Helsingin Autokeskus,	  12
 hos G. O. Wasenius,	  12
+Kirja kerrallaan,	  12
 Koulutarpeiden keskusliike,	  12
 Kustannusliike Tarmo,	  12
 litteris Joh. Christoph. Frenckell & fil.,	  12
@@ -390,6 +396,7 @@ Norstedt,	  12
 Pyhän Sergein ja Hermanin veljeyskunta,	  12
 Raivaajan kirjapaino,	  12
 S. Hirzel,	  12
+SKS,	  12
 Suomen ammattijärjestö,	  12
 Suomen maantieteellinen yhdistys,	  12
 Suomen muinaismuisto-yhdistys,	  12
@@ -406,6 +413,7 @@ Viipurin kaupunki,	  12
 W. Bensow,	  12
 W. Söderström,	  12
 Waseniuska Bokhandeln, jakaja,	  12
+Zentralantiquariat der Deutschen demokratischen Republik,	  12
 [Föreningen för arbetareskydd och socialförsäkring i Finland],	  11
 [Landtbruksstyrelsen],	  11
 [Suomen senaatti],	  11
@@ -497,7 +505,6 @@ S. Karger,	  10
 Satakunnan kp.,	  10
 Savon työväen sanomalehti-osuuskunta,	  10
 Simelius :|Edlund,	  10
-SKS,	  10
 Sosialidemokratinen naisliitto,	  10
 Sosialistin kirjapaino-osuuskunta,	  10
 Suomalainen sosialistinen kustannusyhtiö,	  10
@@ -510,6 +517,7 @@ Vilho Leikas,	  10
 Zilliacus :|Clouberg,	  10
 [Finska Mosskulturförening],	   9
 [J. F. Hellman],	   9
+[Otava],	   9
 [Oulun läänin talousseura],	   9
 [Uusmaalainen ylioppilas-yhdistys],	   9
 [Viipurin suomalaisen kirjallisuuden seura],	   9
@@ -578,7 +586,6 @@ W. ja G.,	   9
 [Finska kyrkohistoriska samfundet] :|J. Gummerus, jakaja,	   8
 [författare],	   8
 [Hufvudstadsbladet],	   8
-[Otava],	   8
 [Perustuslakikomitea],	   8
 [Pohjalainen osakunta],	   8
 A. C. Öhman,	   8
@@ -604,6 +611,7 @@ Försäkringsföreningen i Finland,	   8
 G. Ronelius,	   8
 G. Smidt,	   8
 GEJ. ja K.,	   8
+Geologian tutkimuskeskus,	   8
 Hachette,	   8
 Helios, distr.,	   8
 Helsingin kaupunki,	   8
@@ -639,6 +647,7 @@ Sortavalan kirjapaino,	   8
 Statistiska centralbyrån i Finland,	   8
 Suom.-lut. kustannusliike,	   8
 Suomalainen puolue,	   8
+Suomalainen tiedeakatemia - Academia scientiarum Fennica,	   8
 Suomen Höyrylaiva Oy,	   8
 Suomen maantieteellinen seura,	   8
 Suomen pelastusarmeija,	   8
@@ -654,6 +663,7 @@ WSOY ,	   8
 [K. G. Ekebom],	   7
 [Lahden kaupunki],	   7
 [s.l.],	   7
+[Suomalaisen kirjallisuuden seura],	   7
 [Suomalaisen Kirjallisuuden Seuran kirjapaino],	   7
 A. Apostol,	   7
 A.C. McClurg,	   7
@@ -703,6 +713,7 @@ Keski-Suomen kirjapaino,	   7
 Konstnärsgillet,	   7
 Kotkan kaupunki,	   7
 Koulukeittoyhdistys,	   7
+Kristosofinen kirjallisuusseura,	   7
 Kustannusliike Osmo,	   7
 Kustannusoy Kirja,	   7
 Kustannusyhtiö Osmo,	   7
@@ -736,6 +747,7 @@ Suomen matkailija-yhdistys,	   7
 Suomen Petrolituonti Masut,	   7
 Suomen teollisuuslehti,	   7
 Suomen tie- ja vesirakennusten ylihallituksen hydrografinen toimisto,	   7
+Tammi,	   7
 Tekijä ,	   7
 Tekijät,	   7
 Teosofinen kirjakauppa ja kustannusliike,	   7
@@ -909,6 +921,8 @@ Yrjö Weilin & kumpp.,	   6
 [G. W. Wilén],	   5
 [Harald],	   5
 [J. Westerback],|Oulun kirjapaino-oy	   5
+[Kristosofinen kirjallisuusseura],	   5
+[Lasipalatsin mediakeskus],	   5
 [Londicer],	   5
 [Medicinalstyrelse],	   5
 [Oulun läänin eteläinen vaalipiiri],	   5
@@ -919,6 +933,7 @@ Yrjö Weilin & kumpp.,	   6
 [Suomen ylioppilasosakuntain kansatieteellinen museo],	   5
 [Svenska Folkskolans Vänner],	   5
 [Svenska Litteratursällskapet i Finland],	   5
+A. F. Cederwaller,	   5
 A. F. Tanner,	   5
 A. Maunula,	   5
 A. W. Lindgren,	   5
@@ -931,6 +946,7 @@ Auto-Via,	   5
 Bäckman kp.,	   5
 Barck :|Wilén,	   5
 Bennett,	   5
+Björck & Börjesson,	   5
 Chapman and Hall,	   5
 Citex Öljyntuonti,	   5
 Clouberg & Co,	   5
@@ -999,6 +1015,7 @@ Länsi-Suomen karjanjalostusyhdistys,	   5
 Liewendal's lith. tryckeri,	   5
 Lindroth,	   5
 Lindstedt antikvariska bokhandel,	   5
+Littera,	   5
 Livförsäkringsbolaget Suomi,	   5
 Maalaisliitto,	   5
 Maataloustuottajain valtuuskunnan tilastotoimisto,	   5
@@ -1023,6 +1040,7 @@ Pohjalaisen kp.,	   5
 Pyhin hallitseva synoodi,	   5
 Reichsbahnzentrale Für Den Deutschen Reiseverkehr,	   5
 Russo-Française,	   5
+Ruusu-ristin kirjallisuusseura :|Kristosofinen kirjallisuusseura,	   5
 Sammon kirjapaino,	   5
 Schuster & Loeffler,	   5
 Sederholm :|Clouberg ja K.,	   5
@@ -1082,8 +1100,10 @@ Ylioppilaiden raittiusyhdistys,	   5
 [Finska Skogsvårdsföreningen Tapio],	   4
 [Föreningen Martha],	   4
 [Helsingfors stad],	   4
+[Kaleva],	   4
 [Kansanwalistus-seura],	   4
 [Keisarillinen Suomen senaatti],	   4
+[Kuopion isänmaallinen seura],	   4
 [Kuopion uusi kirjapaino],	   4
 [Lainvalmistelukunta],	   4
 [Maalaisliitto],	   4
@@ -1103,18 +1123,19 @@ Ylioppilaiden raittiusyhdistys,	   5
 [Turun kaupungin historiallinen museo],	   4
 A. B. Ljus,	   4
 A. C. McClurg,	   4
-A. F. Cederwaller,	   4
 Åbo Tryckeri och Tidnings Aktiebolag,	   4
 Abr. Hirsch,	   4
 Abr. Lundquist,	   4
 Agraarikomitea,	   4
 Akateeminen kirjakauppa [jakaja],	   4
+Aktiebolaget F. Tilgmanns bok- och stentryckeri samt kemigrafi,	   4
 Albert Bonniers förlag,	   4
 Albert Fritsch,	   4
 Ammattilaisten kirjapaino-o.y.,	   4
 Ammattilaisten kp.,	   4
 Arhiv" morskogo ministerstva,	   4
 Armand Colin,	   4
+Art House,	   4
 Arthur Runehjelmin kustantamo,	   4
 ATA,	   4
 Aug. Kajetskij,	   4
@@ -1122,7 +1143,7 @@ Auto-Tarvike,	   4
 Autosähkö,	   4
 Beijers bokförlagsab.,	   4
 Berthiaume,	   4
-Björck & Börjesson,	   4
+Biokustannus,	   4
 Bonniers,	   4
 Cadell and Davies,	   4
 Centraltryckeri,	   4
@@ -1172,6 +1193,7 @@ Hagelstams förlagsaktiebolag,	   4
 Hakaniemen kirjakauppa,	   4
 Hämäläis-osakunta,	   4
 Hämäläisen osake-yhtiö,	   4
+Hämeen sanomat,	   4
 Hämeenlinnan kaupunki,	   4
 Hämeenlinnan uusi kirjapaino,	   4
 Hannes Sjöblom,	   4
@@ -1225,7 +1247,6 @@ Lilius & Hertzberg, jakaja,	   4
 Lilius & Herzberg,	   4
 Lindfors,	   4
 Lindh,	   4
-Littera,	   4
 Lounais-Suomen maanviljelysseura,	   4
 M. Lindroth,	   4
 Maatalouden kannatusosuuskunta,	   4
@@ -1236,13 +1257,13 @@ Mikkelin Eläinsuojelusyhdistys,	   4
 Mustalaislähetyksen toimisto,	   4
 Mustalaislähetys,	   4
 Näkövammaisten keskusliitto,	   4
-New Yorkin uutiset,	   4
 Nykterhetssällskapens Centralbyrå,	   4
 Nylands och Tavastehus läns landtbrukssällskap,	   4
 Nylands svenska landskommuners kommunala centralbyrå,	   4
 Nyländska avdelningen,	   4
 O.y. Kuopion uusi kirjapaino [jakaja],	   4
 Okružnyj štab",	   4
+Ortokirja,	   4
 Osuuskunta Saimaa,	   4
 Otava [jakaja],	   4
 Otto Brandt,	   4
@@ -1346,6 +1367,7 @@ Waasan painoyhtiö,	   4
 Waseniuksen kirjakauppa, jakaja,	   4
 Waseniuska bokhandeln,	   4
 Werner Söderström,|WSOY,	   4
+WS,	   4
 WSOY,|Werner Söderström,	   4
 Yliopiston kirjasto,	   4
 Yrjö Weilin, distr.,	   4
@@ -1374,9 +1396,9 @@ Yrjö Weilin, jakaja,	   4
 [Gottlund],	   3
 [H. Wächter],	   3
 [Hangö stad],	   3
+[Helsingin kaupungin kiinteistötoimisto],	   3
 [Imperatorskaâ Akademìâ Nauk"],	   3
 [Johan Westerback],	   3
-[Kaleva],	   3
 [Kansallis-osake-pankki],	   3
 [Kansanvalistus-seura],	   3
 [Käsiteollisuuden harjoittajat],	   3
@@ -1392,7 +1414,6 @@ Yrjö Weilin, jakaja,	   4
 [Salon Strindberg],	   3
 [Sederholm],	   3
 [Senaten],	   3
-[Suomalaisen kirjallisuuden seura],	   3
 [Suomen kansallismuseo],	   3
 [Suomen maantieteellinen seura],	   3
 [Suomen metsänhoitoyhdistys Tapio],	   3
@@ -1434,6 +1455,7 @@ Amerikan sanomain kp.,	   3
 Amerikan yhdist. suom. sos. kustannusyhtiöt,	   3
 Ammattikasvatushallitus,	   3
 Ammattikasvatuskomitea,	   3
+Antiikki- ja taidekirjat,	   3
 Antropos,	   3
 Arbetets vänners västra filial,	   3
 Ares,	   3
@@ -1531,7 +1553,6 @@ Gubernskaâ tipografìâ,	   3
 H. C. Friis,	   3
 Hajander,	   3
 Hämeen kirjakauppa,	   3
-Hämeen sanomat,	   3
 Hämeenläänin maanviljelysseura,	   3
 Hämeenlinnan uusi kp.,	   3
 Haminan kaupunki,	   3
@@ -1543,6 +1564,7 @@ Helios, i distr.,	   3
 Helsinge kommun,	   3
 Helsingfors Bokhandel, jakaja,	   3
 Helsingfors Central-Tryckeri ;|G. W. Edlund, distr.,	   3
+Helsingin antikvariaatti,	   3
 Helsingin diakonissalaitos,	   3
 Helsingin Diakonissalaitos,	   3
 Helsingin kaupungin sosialilautakunta,	   3
@@ -1586,6 +1608,7 @@ Jernvägsstyrelsen,	   3
 Joel Björklund & Co,	   3
 Joensuun kirjapaino-yhtiö,	   3
 Jokamiehen viikkolehti,	   3
+Jon Hällström & Salakirjat,	   3
 Juho Häkkänen,	   3
 Juridiska Studentfakulteten :|Akademiska Bokhandeln, jakaja,	   3
 Juridiska Studentfakulteten,	   3
@@ -1667,6 +1690,7 @@ Mikkelin läänin maanviljelysseura,	   3
 Militärlitteraturföreningens förlag,	   3
 Modén,	   3
 Naisasialiitto Uniooni,	   3
+New Yorkin uutiset,	   3
 Nielsen & Lundbeck,	   3
 Nikolajeff,	   3
 Nordensvan :|Söderström,	   3
@@ -1867,7 +1891,6 @@ Wiipurin sanomain kirjapaino,	   3
 Wikberg,	   3
 Wilén ,	   3
 Winther	   3
-WS,	   3
 Yhteiskunnallinen keskusliitto ja keskustoimisto,	   3
 Ylioppilaiden kristillinen yhdistys,	   3
 Ylioppilaskunnan laulajat,	   3
@@ -1879,6 +1902,7 @@ Zacharias Heggström,	   3
 [Åbo domkyrkoförsamling],	   2
 [Åbo industriutställning],	   2
 [Amerikan suomalainen kansallis-raittius-veljeysseura],	   2
+[Arabia, kulttuurisäätiö],	   2
 [Arkitektklubben],	   2
 [Aschan],	   2
 [Bergroth],	   2
@@ -1921,11 +1945,13 @@ Zacharias Heggström,	   3
 [Hämäläinen],	   2
 [Hämeen Sanomain osake-yhtiö],	   2
 [Haminan kirjapaino- ja sanomalehti-osakeyhtiö],	   2
+[Helsingin yliopisto],	   2
 [Henkivakuutus-yhtiö Suomi],	   2
 [Henrik Renqvist],	   2
 [Heurlinska skolan],	   2
 [Hjelt],	   2
 [I. J. Ingberg],	   2
+[Inarin seurakunta],	   2
 [Industrins centrallaboratorium] ,	   2
 [Industrins centrallaboratorium],	   2
 [J. C. Frenckell ja poika],	   2
@@ -1948,6 +1974,7 @@ Zacharias Heggström,	   3
 [Kastegren],	   2
 [Keisarillisen Senaatin valtiovaraintoimituskunta],	   2
 [Kejserliga Alexanders-universitetet],	   2
+[Kesävuori Purujärvi],	   2
 [Koitto],	   2
 [Kommunal centralbyrå],	   2
 [Konepajojen työväenyhdistys],	   2
@@ -1955,14 +1982,15 @@ Zacharias Heggström,	   3
 [Konstsamlingarna i Ateneum],	   2
 [Kulutusosuuskuntien keskusliitto],	   2
 [Kuninkaallinen Preussin jääkäripataljoona 27],	   2
-[Kuopion isänmaallinen seura],	   2
 [Kuparialueen raittiusliitto],	   2
 [kustantaja tuntematon],|[kustantaja tuntematon],	   2
 [kustantaja tuntematon],|J. C. Frenckellin ja pojan kirjapainossa)	   2
 [Laihian kunta],	   2
 [Landtbruksutställning],	   2
 [Landtmätareföreningen],	   2
+[Länsi-Savo],	   2
 [Länsi-Suomen karjanjalostusyhdistys],	   2
+[Lasipalatsi],	   2
 [lifförsäkringsbolaget Suomi],	   2
 [Lillja],	   2
 [Limingan kansanopisto],	   2
@@ -1992,6 +2020,7 @@ Zacharias Heggström,	   3
 [Rauman rautatie],	   2
 [Rauman yhteislyseo],	   2
 [Ruoveden kunta],	   2
+[Ruusu-ristin kirjallisuusseura],	   2
 [S metallityöntekijäin liitto],	   2
 [S.l.],	   2
 [Sällskapet Pellervo],	   2
@@ -2004,6 +2033,7 @@ Zacharias Heggström,	   3
 [Söderström],	   2
 [Söndagskolebladet],	   2
 [Söndagsskolföreningen],	   2
+[Sosialidemokraattinen naisliitto],	   2
 [Sosialidemokratinen puolue],	   2
 [Stentryck],	   2
 [Suomalainen siirtolaisyhtiö],	   2
@@ -2019,6 +2049,7 @@ Zacharias Heggström,	   3
 [Suomen maalaisväestön liitto],	   2
 [Suomen maatalousseura],	   2
 [Suomen maataloustieteellinen seura],	   2
+[Suomen matkailuliitto],	   2
 [Suomen metallityöntekijäin liitto],	   2
 [Suomen nuorison liitto],	   2
 [Suomen osuuskauppojen keskusosuuskunta],	   2
@@ -2044,6 +2075,7 @@ Zacharias Heggström,	   3
 [Tusby svenska ungdomsförening],	   2
 [Tuusulan kunta],	   2
 [Ulvilan kunta],	   2
+[Utg.],	   2
 [Utgivare],	   2
 [Uudenmaanläänin maanviljelysseura],	   2
 [Uusi kirjapaino-yhtiö],	   2
@@ -2052,6 +2084,7 @@ Zacharias Heggström,	   3
 [Västfinska afdelningen],	   2
 [Västfinska stammen],	   2
 [Vestfinska afdelningen],	   2
+[Vihdin kunta],	   2
 [Viipurin kaupunki],	   2
 [Wartiainen],	   2
 [Wentzel Hagelstam],	   2
@@ -2085,6 +2118,7 @@ A. Tiderman,	   2
 A.-B. F. Tilgmann,	   2
 Aakkoset,	   2
 Aakkosyhdistys,	   2
+Aatma,	   2
 Åbo afdelning,	   2
 Åbo avdelning,	   2
 Åbo tidnings och tryckeri aktiebolag,	   2
@@ -2108,7 +2142,6 @@ Akademiska Bokhandeln i distr,	   2
 Akademiska Sångföreningen,	   2
 Akademiska somarkurserna i Åbo,	   2
 Akseli Kivialho,	   2
-Aktiebolaget F. Tilgmanns bok- och stentryckeri samt kemigrafi,	   2
 Ålands Tidnings-Tryckeri,	   2
 Alb. Cammermeyer,	   2
 Alex Halonen,	   2
@@ -2167,6 +2200,7 @@ Burdach,	   2
 C. & E. Gernandt,	   2
 C. E. Fritze, distr.,	   2
 C. E. Fritzes hofbokh. i komm.,	   2
+C. Hagelstamin antikvaarinen kirjakauppa,	   2
 C. Ullner,	   2
 C. W. Edlunds förlag,	   2
 Cadell & Davies,	   2
@@ -2528,6 +2562,8 @@ Juuse Blom,	   2
 Jyväskylän Eläinsuojelusyhdistys,	   2
 Jyväskylän kesäyliopisto,	   2
 Jyväskylän V. P. K.,	   2
+Jyväskylän yliopiston kirjasto,	   2
+Jyväskylän yliopiston kirjaston julkaisuyksikkö,	   2
 K. A. Waaranen,	   2
 K. Bergroth,	   2
 K. Birkenfel'd",	   2
@@ -2579,6 +2615,7 @@ Keski-Suomen hevosjalostusyhdistysten liitto,	   2
 Keski-Suomen maanviljelyseura,	   2
 Keskusmetsäseura Tapio,	   2
 KFUK,	   2
+Kiannon Turjanlinna :|Ilmari Kianto -seura,	   2
 Kirja-oy. Tieto,	   2
 Kirjaltajaliitto,	   2
 Kirjankustannus-liike,	   2
@@ -2688,6 +2725,7 @@ Mäkinen,	   2
 Manuzio,	   2
 Manz	   2
 Manz,	   2
+Marktar,	   2
 Martha-yhdistys,	   2
 Martta yhdistys,	   2
 Marttayhdistys,	   2
@@ -2820,6 +2858,7 @@ Pertti Uotila,	   2
 Petterson,	   2
 Philipp Reclam,	   2
 Pickert,	   2
+Pieksämäen kunta,	   2
 Pietari Brofeldt,	   2
 Pinsebevægelsen i Norge,	   2
 Pirkkalan kunta,	   2
@@ -2943,6 +2982,7 @@ Stadsfullmäktige,	   2
 Ståhlberg,	   2
 Statens Historiska Museum,	   2
 Statens kommission,	   2
+Statsrådets kansli :|[Tryckericentralen, jakaja],	   2
 Stentryck,	   2
 Stettiner Verkehrsverein,	   2
 Studentersamfundet,	   2
@@ -2971,6 +3011,7 @@ Suomalaisen Kirjallisuuden seuran kirjapaino,	   2
 Suomalaisen puolueen kanslia [jakaja],	   2
 Suomalaisen sosialistijärjestön toimeenpaneva komitea,	   2
 Suoman Evank. seura,	   2
+Suomen antiikki- ja taidekirjat,	   2
 Suomen apteekkariyhdistys,	   2
 Suomen Autorengas Vulkaamo,	   2
 Suomen eläinsuojeluyhdistys,	   2
@@ -3000,6 +3041,7 @@ Suomen maakauppiasliitto,	   2
 Suomen maalaisväestön liitto,	   2
 Suomen maanvuokraajain liitto,	   2
 Suomen maatalousseurojen edustajisto,	   2
+Suomen matkailuliitto,	   2
 Suomen Merimieslähetysseura,	   2
 Suomen metsästysyhdistys,	   2
 Suomen metsäyhdistys,	   2
@@ -3008,6 +3050,7 @@ Suomen muurarien liitto,	   2
 Suomen N. M. K. Y:n ja N. K. Y:n liitto,	   2
 Suomen nahkatyöntekijäin liitto,	   2
 Suomen nahkurityöntekijät,	   2
+Suomen nuorisokirjallisuuden instituutti,	   2
 Suomen nuorison liiton toimikunta,	   2
 Suomen nuorison liitto,	   2
 Suomen nuorten krisittyjen liito,	   2
@@ -3097,6 +3140,7 @@ Tipografìâ Nadežda,	   2
 Tipografìâ t-va "Obŝestvennaâ pol'za",	   2
 Tipografii Morskago Ministerstva v'' Glavnom'' Admiraltejstv'',	   2
 Toimitttaja,	   2
+Tornedalica,	   2
 Totuuden ystävän toimitus,	   2
 Toveri,	   2
 tryckt hos Christian Ludw. Hjelt. På dess förlag,	   2
@@ -3136,11 +3180,11 @@ Työväen kustannus-osakeyhtiö,	   2
 Työväen sanomalehti o.y.,	   2
 Työväen sanomalehti-osuuskunta Raivaaja,	   2
 Työväen sanomalehti-oy,	   2
-Työväen-opisto,	   2
 Työväenopistojen liitto,	   2
 typis Frenckelianis,	   2
 typis Frenckellanis,	   2
 typis Joh. Ch. Frenckell et fil.,	   2
+Tyrvään sanomat,	   2
 U. W. Telen & C:o,	   2
 U. W. Telén & Co.,	   2
 Û.N. Èrlih",	   2
@@ -3155,6 +3199,7 @@ Urheilijan kustannus,	   2
 Utgg.,	   2
 Utgifvare,	   2
 Utgifwarens förlag,	   2
+Uudenkaupungin kaupunki,	   2
 Uuno A. Varis,	   2
 Uurtaja,	   2
 Uusi Aura,	   2
@@ -3224,6 +3269,7 @@ Waseniuska bokh.,	   2
 Waseniuska Bokhandeln,	   2
 Weilin & Göös,|Wickström,	   2
 Weilin & Kumpp.,	   2
+Weilin + Göös,	   2
 Weilin ja Göös :|Lutherilainen Evankeliumi-yhtiö,	   2
 Weman,	   2
 Wennberg ja K.,	   2
@@ -3290,10 +3336,10 @@ Zilliacus :|Tekijä,	   2
 "Vapaa ajatus" förlag,	   1
 "Vapaa Ajatus",	   1
 (A. Lilius),	   1
-[ Kansanwalistus-seura],	   1
 [ kustantaja tuntematon ] ,	   1
 ["Jyske"],	   1
 [1906-1944],	   1
+[A. Ahlström, Karhulan pakkauslasitehdas],	   1
 [A. Cederwaller],	   1
 [A. E. Nordenskiöld],	   1
 [A. Hisinger],	   1
@@ -3330,10 +3376,14 @@ Zilliacus :|Tekijä,	   2
 [Akademiska Bokhandeln, jakaja],	   1
 [Aksel Paul],	   1
 [Aktiebolaget Brändö villastad],	   1
+[Alajärven kaupunki],	   1
 [Ålands folkhögskola],	   1
 [Ålands Kulturhistoriska Museum],	   1
+[Ålands kulturstiftelse],	   1
 [Ålands Missionförening],	   1
 [Ålandska student-gillet],	   1
+[Albert de la Chapelle],	   1
+[Alea-kirja],	   1
 [Alexander Ferdinand Borenius],	   1
 [Alexanders universitet],	   1
 [Alexanders Universitetet],	   1
@@ -3341,13 +3391,15 @@ Zilliacus :|Tekijä,	   2
 [Allmänna Finska Arbetsgifvareförbundet] ,	   1
 [Allmänna idrottsklubben i Åbo],	   1
 [Amerikan Suomalainen Kirjallisuuden Seura],	   1
-[Amerikan suomalainen sosialistijärjestö],	   1
+[Ammattienedistämislaitos],	   1
 [And. Cederwaller],	   1
 [Ångfartygs Aktiebolaget Bore],	   1
 [Antroposofiskt Sällskap],	   1
 [Antti J. Muikku],	   1
 [Antti Mäkinen],	   1
 [Arbetets Vänner i Vasa],	   1
+[Ari Malm],	   1
+[Arma Fennica],	   1
 [Arrhenii förlagsbokhandeln] ,	   1
 [Ascher & co.],	   1
 [Athenaeum],	   1
@@ -3390,9 +3442,11 @@ Zilliacus :|Tekijä,	   2
 [Dr Hermann Gummerus],	   1
 [Drätselkammaren i Wasa],	   1
 [Duluth, South Shore & Atlantic Railway Co.],	   1
+[Duodecim],	   1
 [E. Grönblad],	   1
 [E. Reuter],	   1
 [Eduskunta],	   1
+[Eeroaslak Koiwisto],	   1
 [Ekenäs missionsbokhandels förlag],	   1
 [Ekenäs stad],	   1
 [Eläinsuojelusseura],	   1
@@ -3441,6 +3495,7 @@ Zilliacus :|Tekijä,	   2
 [Finlands svenska publicistförbund],	   1
 [Finlands Utsädesförening],	   1
 [Finlândskìj istoričeskìi musej],	   1
+[Finn Lectura],	   1
 [Finnish Lutheran Book Concern],	   1
 [Finnish-American Mining Co.],	   1
 [Finsk farmaceutisk tidskrift],	   1
@@ -3504,6 +3559,7 @@ Zilliacus :|Tekijä,	   2
 [Folkupplysningssällkapet],	   1
 [Folkupplysningssällskapet] ,	   1
 [Forening af Officerer],	   1
+[Föreningen Brage],	   1
 [Föreningen för Finlands kyrkohistoria],	   1
 [Föreningen för Konstfliten i Finland],	   1
 [Föreningen Fylgia],	   1
@@ -3562,9 +3618,11 @@ Zilliacus :|Tekijä,	   2
 [H. Leoke],	   1
 [Haapajärven säästöpankki],	   1
 [Haga ungdomsförening],	   1
+[Halikon kulttuurilautakunta],	   1
 [Hälsovårdsnämnden i Övermark],	   1
 [Hämäläis-osakunta],	   1
 [Hämäläisen osakeyhtiön kirjapaino],	   1
+[Hämeen heimoliitto],	   1
 [Hämeen läänin maanviljelysseura],	   1
 [Hämeen läänin Maanviljelysseura],	   1
 [Hämeen Sanomain osakeyhtiö],	   1
@@ -3584,11 +3642,13 @@ Zilliacus :|Tekijä,	   2
 [Haridus],	   1
 [Hartwall],	   1
 [Hästafvelsföreningen Nylands Hippos],	   1
+[Hausjärvi-seura],	   1
 [Heinolan lehti],	   1
 [Heinricius],	   1
 [Helios] :|[Waseniuska bokhandeln i distribution],	   1
 [Helios],	   1
 [Helle],	   1
+[Hellmanin suku],	   1
 [Hellsten],	   1
 [Helluntaiherätys],	   1
 [Helsingfors arbetareförening],	   1
@@ -3635,10 +3695,14 @@ Zilliacus :|Tekijä,	   2
 [Hörberg],	   1
 [Hörlin],	   1
 [Hufvudstadbladet],	   1
+[Hufvudtadsbladet],	   1
+[Huoltaja-säätiö],	   1
+[Huoltajasäätiö],	   1
 [Huvudstadsbladet],	   1
 [Hyvinge klädesfabrik],	   1
 [Hyvinkään kirjakauppa],	   1
 [I. J. Inberg],	   1
+[Ikaalinen-seura],	   1
 [Ilmajoen kunta],	   1
 [Imperatorskaja akademija nauk] ,	   1
 [Industristyrelse],	   1
@@ -3658,6 +3722,7 @@ Zilliacus :|Tekijä,	   2
 [J. Westerback],|Oulun uusi kp	   1
 [Jac. Ahrenberg],	   1
 [Jac. Judén],	   1
+[Jahnsson-Kallioniemi-suku],	   1
 [Jakobstads kommunala reglementen],	   1
 [Janakkalan kunta],	   1
 [Järnbrukens olycksfallförsäkringbolag],	   1
@@ -3682,6 +3747,7 @@ Zilliacus :|Tekijä,	   2
 [K.-S. työväen sanomal.-kirjap.- ja -kauppa osuuskunta],	   1
 [Kajaanin kaupunki],	   1
 [Kajaanin sos.-dem.],	   1
+[Kalannin seurakunta],	   1
 [Kalastuskomitea],	   1
 [Kaleva-yhtiö],	   1
 [Kalevalaseura],	   1
@@ -3726,17 +3792,22 @@ Zilliacus :|Tekijä,	   2
 [Keski-Savon kansanopisto],	   1
 [Keski-Suomen hevosjalostusyhdistysten liitto],	   1
 [Keski-Suomen kirjapaino],	   1
+[Keski-Suomen matkailuyhdistys],	   1
 [Keski-Uusimaa],	   1
 [Keskinäinen henkivakuutusosakeyhtiö Salama],	   1
 [Keskinäinen henkivakuutusyhtiö Suomi],	   1
+[Kiannon Turjanlinna],	   1
 [Kiikalan kunta],	   1
 [Kiikoisten kunta],	   1
 [Kiikoisten osuusmeijeri],	   1
 [Kilpi-raittiusseura],	   1
+[Kirjailijaliitto],	   1
 [Kirjapaino Suomi],	   1
 [Kirkkolakikomitea],	   1
 [Kivennavan osuuskauppa],	   1
+[Kjell Ekström],	   1
 [Københavns Universitet] ;|i kommission hos Universitetsboghandel G. E. C. Gad [jakaja],	   1
+[Koillismaakunnan historiallisen kirjallisuuden tukisäätiö],	   1
 [Koito],	   1
 [Kojonjoen osuusmeijeri],	   1
 [Kokkolan Suomalaisen yhteiskoulun "Toverikunta"],	   1
@@ -3762,6 +3833,7 @@ Zilliacus :|Tekijä,	   2
 [Kronoby hushålls- och trädgårdsskola],	   1
 [Kuopion hiippakunta],	   1
 [Kuopion kauppakoulu],	   1
+[Kuopion kaupunginhallitus],	   1
 [Kuopion kaupunki],	   1
 [Kuopion kuuromykkäinkoulu],	   1
 [Kuopion läänin hevosystäväin-seura],	   1
@@ -3782,6 +3854,7 @@ Zilliacus :|Tekijä,	   2
 [Kustantaja tuntematon],	   1
 [kustantaja tuntematon]̂,	   1
 [kustantaja tuntematon],|Druckerei der Finnischen Litteratur-Gesellschaft,|Finnischen Litteratur-Gesellschaft,	   1
+[kustantaja tuntematon],|Gummerus Kirjapaino)	   1
 [kustantaja tuntematon],|J. C. Frenckellin ja pojan luona)	   1
 [kustantaja tuntematon],|J. Karstenin tykönä	   1
 [kustantaja tuntematon],|Karisto,	   1
@@ -3791,6 +3864,7 @@ Zilliacus :|Tekijä,	   2
 [kustantaja tuntematon],|Suomen kirkon sisälähetysseuran kirjapainossa,	   1
 [kustantaja tuntematon].,	   1
 [Kuusamon työväenyhdistys],	   1
+[Kvävlax hembygdsföreningen],	   1
 [Kvinnosaksförbund i Finland],	   1
 [Kymin kunta],	   1
 [Kymmene aktiebolag],	   1
@@ -3802,6 +3876,7 @@ Zilliacus :|Tekijä,	   2
 [Kytäjän osuuskauppa],	   1
 [L. Sesemann],	   1
 [L'imprimerie d'"Östra Finland"],	   1
+[Lääkintäkilta] :|[Medifarma],	   1
 [Lagerspetz],	   1
 [Lagerstedt],	   1
 [Lahden osuuskauppa r.l.],	   1
@@ -3831,6 +3906,7 @@ Zilliacus :|Tekijä,	   2
 [Lappfjärds ungdomsförening],	   1
 [Laukaan kunta],	   1
 [lauluseura Suomen Sävel],	   1
+[Lehtimäki-seura],	   1
 [Lemin julkaisutoimikunta],	   1
 [Leppävirran kunta],	   1
 [Leppävirran sos.-dem. kunnallistoimikunta],	   1
@@ -3845,8 +3921,10 @@ Zilliacus :|Tekijä,	   2
 [Lohjan kunta],	   1
 [Lohjan pitäjänkertomus],	   1
 [Loimaan ja Pöytyän säästöpankki],	   1
+[Lopen kunnan kulttuuri- ja kirjastotoimi],	   1
 [LTY],	   1
 [Lundsbergs skola],	   1
+[Luopioisten kotiseutuyhdistys/Kukkia-seura],	   1
 [Luth. Evangeliföreningen],	   1
 [Luth. Evankeliumi-yhtiö],	   1
 [Lutherilainen Evankeliumi-yhdistys],	   1
@@ -3939,10 +4017,12 @@ Zilliacus :|Tekijä,	   2
 [Öfverstyrelsen för skolväsendet],	   1
 [Öfverstyrelsen],	   1
 [Olan],	   1
+[Old Chart],	   1
 [Ollgren],	   1
 [Oloneckoe otdělenìe Karel'skago bratstva],	   1
 [Oriveden kunta],	   1
 [Oriveden osuuskauppa],	   1
+[Ortokirja],	   1
 [Oskar Dannholm],	   1
 [Österbottens svenska kontventförbund],	   1
 [Österbottniska studentlånefonden],	   1
@@ -3954,6 +4034,7 @@ Zilliacus :|Tekijä,	   2
 [Osuuskauppojen palvelushenkilöiden liitto],	   1
 [Otto Andersin],	   1
 [Oulun diakonissakoti],	   1
+[Oulun hiippakunta],	   1
 [Oulun kaupungin ja maalaiskunnan säästöpankki Sampo],	   1
 [Oulun kirjapaino-osakeyhtiö],	   1
 [Oulun läänin Hätäapukomitea],	   1
@@ -3961,6 +4042,7 @@ Zilliacus :|Tekijä,	   2
 [Oulun läänin pohjoinen vaalipiiri],	   1
 [Oulun läänin talouden-seura],	   1
 [Oulun osuuskauppa r. l.],	   1
+[Oulun puhelin],	   1
 [Oulun pyrintö],	   1
 [Oulun suomalainen yksityislyseo],	   1
 [Oulun teollisuusyhdistys],	   1
@@ -3972,9 +4054,13 @@ Zilliacus :|Tekijä,	   2
 [Padasjoen kunta],	   1
 [Paimion kauppaosuuskunta],	   1
 [Paimion kunta],	   1
+[Painatuskeskus],	   1
 [Pakkalan osuusmeijeri-osuuskunta],	   1
 [Palovakuutus-osakeyhtiö Pohjola],	   1
+[Paltamon kirjap.],	   1
+[Pargas hembygdsförening],	   1
 [Parkanon säästöpankki],	   1
+[Pasi Venho],	   1
 [Pečatano v' Gl. Gidrograf. Upravlenìi Morskogo Ministerstva],	   1
 [Pedag. fören. i Finland],	   1
 [Pedag. föreningen i Finland],	   1
@@ -3991,6 +4077,7 @@ Zilliacus :|Tekijä,	   2
 [Pietarsaaren työväenyhdistys],	   1
 [Piiritoimikunta],	   1
 [Piirustuksenopettajayhdistys],	   1
+[Pirkko Salonen],	   1
 [Pohjalainen valtuuskunta],	   1
 [Pohjalainen ylioppilaslainarahasto],	   1
 [Pohjanmaan Työväen Osuuskirjapaino],	   1
@@ -4035,9 +4122,11 @@ Zilliacus :|Tekijä,	   2
 [Rantsilan kunta],	   1
 [Rauma kirjapaino-osakeyhtiö],	   1
 [Rautalammin kunta],	   1
+[Rautaruukki],	   1
 [Rautatieläisten palkkakomitea],	   1
 [Rautatieläisten raittiusyhdistys],	   1
 [Reinhold Hausen],	   1
+[Riihimäen kaupunki],	   1
 [Riihimäen yhteiskoulu],	   1
 [Ristimäen asukastoimikunta],	   1
 [Rolver],	   1
@@ -4045,6 +4134,7 @@ Zilliacus :|Tekijä,	   2
 [Ruokolahden osuuskauppa],	   1
 [Ruskealan opettajayhdistys],	   1
 [Russkoe Geografičeskoe Obŝestvo],	   1
+[Ruusu-Ristin kirjallisuusseura ],	   1
 [Rymättylän kunta],	   1
 [S. O. N. R.],	   1
 [S. V. R. konepajat],	   1
@@ -4056,7 +4146,10 @@ Zilliacus :|Tekijä,	   2
 [Sågverksegaremötet],	   1
 [Sahanomistajayhdistys],	   1
 [Sahateollisuustyöväen liitto],	   1
+[Saimaan purjehdusmuseoyhdistys],	   1
+[Salakirjat] :|Kirjaparoni,	   1
 [Sällskapet M. M.],	   1
+[Sällskapet Smågossarna],	   1
 [Sällskapets pro fauna et flora fennica],	   1
 [Sällskaps-teater i Mariehamn],	   1
 [Sällskapsklubben],	   1
@@ -4066,16 +4159,20 @@ Zilliacus :|Tekijä,	   2
 [Sånglärare- och lärarinneföreningen],	   1
 [Sanoma],	   1
 [Sara Röyhy],	   1
+[Satakunnan painotalo],	   1
 [Satakuntalainen osakunta],	   1
 [Savo-Karjalainen ylioppilasosakunta],	   1
 [Savonlinnan hiippakunta],	   1
 [Savonlinnan reaalilyseo],	   1
+[Schildt],	   1
 [Schlüterin kirjakauppa, jakaja],	   1
 [Senaatti],	   1
 [Senatens tryckeri],	   1
 [Siikaisten kunta],	   1
 [Sjöblom'in nahkateollisuus Osake-yhtiö],	   1
 [Skandinaviska tandläkareförening],	   1
+[Släktföreningen Donner],	   1
+[SLEY-kirjat],	   1
 [Slöjdutställningen i Kuopio],	   1
 [Soc.-dem. kvinnorepresentantmötet],	   1
 [Sociala Centralbyrån] :|Akademiska Bokhandeln, jakaja,	   1
@@ -4097,7 +4194,7 @@ Zilliacus :|Tekijä,	   2
 [Sorvalin työväenyhdistys],	   1
 [Sos.-dem. puolue],	   1
 [sos.dem. eduskuntaryhmän lentokirjakomitea],	   1
-[Sosialidemokraattinen naisliitto],	   1
+[Sosialidemokraattisen nuorison keskusliitto],	   1
 [Sosialidemokratinen eduskuntaryhmä],	   1
 [Sosialidemokratinen piiritoimikunta],	   1
 [Sosialidemokratinen raittiusliitto],	   1
@@ -4106,6 +4203,7 @@ Zilliacus :|Tekijä,	   2
 [Sparbanken i Hangö],	   1
 [Städernas Allmänna Brandstodsbolag i Finland],	   1
 [Staten publikationsbyrå, distr.],	   1
+[Statsrådets kansli] :|[Tryckericentralen, jakaja],	   1
 [Statsrådets publikationsförråd],	   1
 [STL nuoriso-osasto],	   1
 [Studentfylkingen],|Ateneum, distr.,	   1
@@ -4114,9 +4212,9 @@ Zilliacus :|Tekijä,	   2
 [Suomalainen kalustokauppa P. Sidorow],	   1
 [Suomalainen kansallis-raittius-veljeysseura],	   1
 [Suomalainen kirjakauppa, jakaja],	   1
+[Suomalainen lääkäriseura Duodecim],	   1
 [Suomalainen lakimiesten yhdistys],	   1
 [Suomalainen maaseututeatteri],	   1
-[Suomalainen sosialisti-järjestö] ,	   1
 [Suomalainen tiedeakatemia],	   1
 [Suomalainen työväenliitto],	   1
 [Suomalais-ugrilainen seura],	   1
@@ -4132,6 +4230,7 @@ Zilliacus :|Tekijä,	   2
 [Suomen ewank. seura],	   1
 [Suomen hypoteekkiyhdistys],	   1
 [Suomen juustonvalmistajayhdistys],	   1
+[Suomen kansallisteatteri],	   1
 [Suomen Kanttori-urkuriyhdistys],	   1
 [Suomen kauppa- ja liiketyöntekijäin liitto],	   1
 [Suomen kirjailijaliitto],	   1
@@ -4159,6 +4258,7 @@ Zilliacus :|Tekijä,	   2
 [Suomen metalliteollisuuden harjoittajain liitto],	   1
 [Suomen metallivalajat],	   1
 [Suomen metsänhoito-yhdistys],	   1
+[Suomen metsästysmuseo],	   1
 [Suomen metsästysyhdistys],	   1
 [Suomen metsäyhdistys],	   1
 [Suomen mieskuoroliitto],	   1
@@ -4178,6 +4278,7 @@ Zilliacus :|Tekijä,	   2
 [Suomen sosialidemokraattinen nuorisoliitto],	   1
 [Suomen sosialidemokratinen puolue],	   1
 [Suomen sosialidemokratinen sanomalehtimiesliitto],	   1
+[Suomen sukututkimusseura],	   1
 [Suomen suutarit],	   1
 [Suomen talous-seura],	   1
 [Suomen tehdastyöväki],	   1
@@ -4188,10 +4289,13 @@ Zilliacus :|Tekijä,	   2
 [Suomen vanginvartijayhdistys],	   1
 [Suomen voimistelunopettajaliitto],	   1
 [Suomen wankius-yhtiö],	   1
+[Suomen yhdyspankki],	   1
 [Suomen yleinen vanginvartijayhdistys],	   1
 [suomentaja],	   1
 [Suometar],	   1
+[Suomi-Jugoslavia seura],	   1
 [Suomi-opisto],	   1
+[Suomussalmen kunta],	   1
 [Suoniemen kunta],	   1
 [Svensk-finska nykterhetsförbund],	   1
 [Svenska arbetsgifvareföreningen],	   1
@@ -4269,6 +4373,7 @@ Zilliacus :|Tekijä,	   2
 [Toimittajat],	   1
 [Tom of Finland],	   1
 [Tom studio],	   1
+[Tornedalica] :|[Tornionlaakson kotiseututoimikunta, jakaja],	   1
 [Tornion Alkeiskoulun toverikunta],	   1
 [Touristenverein in Finland],	   1
 [tryckt hos J. C. Frenckell & son],	   1
@@ -4278,6 +4383,7 @@ Zilliacus :|Tekijä,	   2
 [Turun arkkihiippakunnan tuomiokapituli],	   1
 [Turun lähetysyhdistys],	   1
 [Turun lastentyöhuone],	   1
+[Turun maakuntamuseo],	   1
 [Turun Riento],	   1
 [Turun sanomat],	   1
 [Turun suomalainen yliopistoseura],	   1
@@ -4305,7 +4411,6 @@ Zilliacus :|Tekijä,	   2
 [Urjalan kunta],	   1
 [Uskelan kunta],	   1
 [Uskelan seurakunta],	   1
-[Utg.],	   1
 [utgivare],	   1
 [Utställningskommittén],	   1
 [Uudenkaupungin kaupunki],	   1
@@ -4328,6 +4433,7 @@ Zilliacus :|Tekijä,	   2
 [Valtion julkaisutoimisto, jakaja],	   1
 [Valtion julkaisutoimisto],	   1
 [Valtionrautatiet],	   1
+[Vammalan kirjap.],	   1
 [Vapaa ajatus],	   1
 [Varkauden työväenyhdistys],	   1
 [Varsinais-Suomen näkövammaiset],	   1
@@ -4344,7 +4450,6 @@ Zilliacus :|Tekijä,	   2
 [Vetenskapliga och litterära samfunden],	   1
 [Vihannin kunta],	   1
 [Vihdin kansanopisto],	   1
-[Vihdin kunta],	   1
 [Vihdin nuorisoseura],	   1
 [Viipurin l. läntinen vaalipiiri],	   1
 [Viipurin raittiusseura],	   1
@@ -4397,6 +4502,8 @@ Zilliacus :|Tekijä,	   2
 [Yhdistyneitten edistyspuolueitten valtuuskunta],	   1
 [Yhteiskunnallinen keskusliitto],	   1
 [Yhteiskuntataloudellinen aikakauskirja],	   1
+[Ylämaan kotitalouslautakunta],	   1
+[Ylämaan kunta] ,	   1
 [Yläneen osuusliike],	   1
 [Ylihärmän nuorisoseura],	   1
 [Ylioppilaskunta],	   1
@@ -4405,6 +4512,7 @@ Zilliacus :|Tekijä,	   2
 [Ypäjän kirkonkylän osuuskauppa],	   1
 [Yritys],	   1
 [Yrjö Weilin],	   1
+[Zentralantiquariat der Deutschen demokratischen Republik],	   1
 [Zilliaci],	   1
 [Zilliacus Tryckeri],	   1
 1914-1915	   1
@@ -4587,6 +4695,7 @@ Agronominen Yhdistys,	   1
 Agronoominen yhdistys,	   1
 Åhlen & Åkerlund,	   1
 Ahlqvist,	   1
+Äidinkielen opettajain liitto,	   1
 Aikain Vartija Förlags A.-B.,	   1
 Aikain vartijan kustannus,	   1
 Aikain Wartija Förlagsaktiebolag,	   1
@@ -4598,6 +4707,7 @@ Aimo Ervasti,	   1
 Akad. bokh. ,	   1
 Akad. bokh., i distr.,	   1
 Akademìâ nauk" ,	   1
+Akadémiai Kiadó,	   1
 Akademischen buchhandlung, distr.,	   1
 Akademiska bokförlaget,	   1
 Akademiska Bokhandel [Distr.],	   1
@@ -4669,6 +4779,7 @@ Almqvist & Wiksells boktryckeri :|[Lundequistska bokhandeln (i distribution)],	 
 Alopaeus :|Hämeen Sanomain osake-yhtiö,	   1
 Alston Rivers,	   1
 Alumni Association of the Michigan college of mining and technology,	   1
+Amanita,	   1
 American Unitarian Association,	   1
 American-Scandinavian Foundation,	   1
 Amerikan suom. ev. luth. kansalliskirkkokunta,	   1
@@ -4684,6 +4795,7 @@ Amerikan suomalaisten lasten ja nuorison kirjallisuuden kustannusliike,	   1
 Amerikan yhd. suom.sos.kustannusyhtiöt,	   1
 Amerikan yhdist. suomalaiset sosialistiset kustannusyhtiöt,	   1
 Ammattikasvatushallitus	   1
+AMS Press,	   1
 ANC,	   1
 Andelsaffären Elanto,	   1
 Andelslaget Kirjapainotaito,	   1
@@ -4694,6 +4806,7 @@ Andr. Fred. Høst & Søns Forlag,	   1
 Andr. Fred. Høst & søns,	   1
 Andr. Fredr. Høst & Søn,	   1
 Andrew Ojala,	   1
+Angelika Väinönputki,	   1
 Angelniemen kunta,	   1
 Angelo Usigli Editore,	   1
 Ångfartygsaktiebolaget Bore,	   1
@@ -4704,6 +4817,8 @@ Annonsbyrån Hermes,	   1
 Antellin valtuuskunta, julkaisija,	   1
 Antellska delegationen,	   1
 Antero Taivalkoski,	   1
+Anthropological publications,	   1
+Antikvariat Gordin,	   1
 Antisosialistiliitto,	   1
 Anton Huotari,	   1
 Anton Lilius,	   1
@@ -4726,6 +4841,7 @@ Archimedes,	   1
 Argeologinen toimisto,	   1
 Arkki,	   1
 Arkkit. Jac. Ahrenberg,	   1
+Arktinen banaani,	   1
 Armas Aavikko,	   1
 Arne Cederholm,	   1
 Arno Fellman,	   1
@@ -4743,11 +4859,13 @@ Arwi Hällfors,	   1
 Aschan :|Wilén,	   1
 Aschan & Comp.,	   1
 Asikkalan kunnalislautakunta,	   1
+Asuntoreformiyhdistys,	   1
 Åsvik,	   1
 Åsvikin kp.,	   1
 at the Clarendon press,	   1
 Ateneum, distr.,	   1
 Ateneumin kirjakauppa,	   1
+AtlasArt,	   1
 Aug. Deubner,	   1
 Aug. Eklöf,	   1
 Aug. Fabritius,	   1
@@ -4820,6 +4938,7 @@ Bibelsällskapet,	   1
 Bibliothèque Royale de Stockholm,	   1
 Biet-lehden toimitus,	   1
 bij Steenbergen van Goor,	   1
+Biokustannus :|Blavatsky-looshi :|Ruusu-Ristin kirjallisuusseura,	   1
 Birke,	   1
 Birževye Vědomosti,	   1
 Björn Schauman,	   1
@@ -4842,6 +4961,7 @@ Boldt,	   1
 Bolman ja Karlsson,	   1
 Boman ja Karsson,	   1
 Bonnier,|Schildt,	   1
+Books on Demand,	   1
 Borgå lyceum,	   1
 Borgå missionsbokhandel,	   1
 Borgå museiförening,	   1
@@ -4918,6 +5038,7 @@ Carl Winter,	   1
 Carl Winter's Universitätsbuchhandlung,	   1
 Carolus J. Fahlgren,	   1
 Casa Editrice Romana,	   1
+Catholica,	   1
 Cator,	   1
 CEBck,	   1
 Cederberg,	   1
@@ -5084,6 +5205,7 @@ Edistysseurojen kustannusoy,	   1
 Édité par la Commission des collections Antell,	   1
 Edith Strengin kirjakauppa,	   1
 Édition Atar,	   1
+Edition Leipzig,	   1
 Éditions de L'Humanité Nouvelle,	   1
 Edludn,	   1
 Edlund :|Seligmann,	   1
@@ -5197,6 +5319,7 @@ Esbo hembygdsforskningförening,	   1
 Esbo idrottsförening,	   1
 Esbo segelförening,	   1
 Esbo Ungdomsförening,	   1
+Esoterica Publishing :|Unio mystica [jakaja],	   1
 Esperanto-asocio de Finnlando,	   1
 Espoon seudun näkövammaiset,	   1
 Esteri S. Kurvinen,	   1
@@ -5241,6 +5364,7 @@ Evankeelis- Luterilainen Nuorukais- Yhdistys,	   1
 Evankelinen lähetystyö,	   1
 Evankelis-luterilainen nuorukais-yhdistys,	   1
 Evankelis-lutherilainen nuorukais-yhdistys,	   1
+Evankelisluterilainen todistajaseura,	   1
 Evankeliumiyhdistys,	   1
 Evert Böcker,	   1
 Evert Em. Mesiäinen,	   1
@@ -5485,6 +5609,7 @@ Folkupplysnings-sällskapet,	   1
 Folkupplysningssällkapet ,	   1
 Folkupplysningssällsk.,	   1
 Folkupplysningssällskap,	   1
+Fondumo esperanto,	   1
 Förberedande yrkesskolan för gossar i Helsingfors,	   1
 Förbund för fysisk fostran för Finlands kvinnor,	   1
 Förbundet för inhemskt arbete,	   1
@@ -5694,6 +5819,7 @@ General läntmäterie contoiret ,	   1
 General läntmäterie contoiret,	   1
 Generalstabens litografiska anstalt,	   1
 Genetz,	   1
+Genimap,	   1
 Geografičeskij departament,	   1
 Geografiska föreningen,	   1
 Geographische Verein in Finnland,	   1
@@ -5815,10 +5941,12 @@ Hæggström,	   1
 Hagelberg :|Hildén,	   1
 Hagelberg :|Olan ,	   1
 Hagelstam,|Wentzel Hagelstam,	   1
+Hagelstamin antikvaarinen kirjakauppa,	   1
 Hagelstams bokhandel, distr.,	   1
 Hagelstams förlagsaktiebolaget,	   1
 Hakala & Kumpp.,	   1
 Håkan Ohlssons boktryckeri,	   1
+Hakkuri,	   1
 Halikon kunnallislautakunta,	   1
 Halle a. S., Tausch & Grosse,	   1
 Halme,	   1
@@ -5988,6 +6116,7 @@ Helsingin käsityö- ja tehdasyhdistys,	   1
 Helsingin kasvitieteellinen vaihto-yhdistys,	   1
 Helsingin kauppakorkeakoulu,	   1
 Helsingin Kauppaoppilaitos	   1
+Helsingin kaupungin kiinteistötoimisto,	   1
 Helsingin kaupungin muonitustoimikunta,	   1
 Helsingin kaupungin rakennustarkastuskonttori,	   1
 Helsingin kaupungin suomenkieliset kansakoulut,	   1
@@ -6046,6 +6175,7 @@ Helsingin uusi kp.-o.y.,	   1
 Helsingin V. P. K.,	   1
 Helsingin Valkonauha,	   1
 Helsingin yliopisto, meterologian laitos,	   1
+Helsingin yliopiston kirjasto,	   1
 Helsinki School of Economics and Business Administration,	   1
 Helwing,	   1
 Hembygdens Vänner i Hangö,	   1
@@ -6171,9 +6301,11 @@ Iisalmen maalaiskunta,	   1
 Iisalmen yhteiskoulu,	   1
 Iisalmen Ylivieskan Rautatiekomitea,	   1
 Ikaalinen oy,	   1
+Ikaalinen-seura,	   1
 Ikaalisten Nouseva Voima,	   1
 Ilarejo esperantista,	   1
 Ilmajoen kristillinen työväenyhdistys,	   1
+Ilmari Kianto-seura :,	   1
 Ilmari Kiianlinna,	   1
 Ilmari Palmén [jakaja],	   1
 Ilmari R. Lindqvist, utg.,	   1
@@ -6237,6 +6369,7 @@ Iv. Iverus,	   1
 Ivar Haeggströmin kp.,	   1
 Iversen,	   1
 Iwar Hæggström,	   1
+IX-Finland,	   1
 izd. "Kir'â",	   1
 izd. avtora,	   1
 Izdal' V. Berezovskìj,	   1
@@ -6374,12 +6507,14 @@ Jääskis kommun,	   1
 Jac Ahrenberg,	   1
 Jac Ahrengren,	   1
 Jac. Ahrenberg,	   1
+Jacques Gabay,	   1
 Jagtföreningen i Wasa län,	   1
 Jahnsson,	   1
 Jak. Juteini,	   1
 Jakob,	   1
 Jakobstads elektricitetsverk,	   1
 Jakobstads stad,	   1
+Jakobstads tr. och tidning,	   1
 Jakobstads tryckeri och tidnings aktiebolag,	   1
 Jakobstads tryckeri- och tidnings-aktiebolag,	   1
 Jalmar Lax,	   1
@@ -6474,6 +6609,7 @@ Julius Krohn,	   1
 Julius Nygren,	   1
 Julius Rodziewicz,	   1
 Julius Springer,	   1
+Juminkeko,	   1
 Jurid. studentfakultetens förlag,	   1
 Juridiska fakulteten,	   1
 Juridiska föreningen i Finland,	   1
@@ -6481,6 +6617,7 @@ Juridiska studentfakulteten förlagsrörelse :|Akad. bokh., distr.,	   1
 Juridiska studentfakultetens förlagsrörelse,	   1
 Justus Perthes ; Helsingfors :|Wasenius & Co [jakaja],	   1
 Justus Perthes :|J. W. Lilljas Agentur in Åbo [jakaja],	   1
+Juttuapaja,	   1
 Juuso Hyvärinen,	   1
 Jyväs-Mediat,	   1
 Jyväskylän kirjapainossa,	   1
@@ -6611,6 +6748,7 @@ Kansallis-Osake-Pankki,	   1
 Kansalliskp,	   1
 Kansalliskp.,	   1
 Kansallismielisten nuorisoliitto,	   1
+Kansallisteos,	   1
 Kansan asetuskokoelma,	   1
 Kansan kuvalehden kirjapaino,	   1
 Kansan kuvalehden kp.,	   1
@@ -6667,6 +6805,7 @@ Kastegrén,	   1
 Kasurinen,	   1
 Kasvatus-opillinen yhtiö,	   1
 Katolska kyrkan i Finland,	   1
+Kauhajoen museoyhdistys,	   1
 Kauhavan nuorisoseura,	   1
 Kauppa-asioimisto Merkur,	   1
 Kauppalehti i Mercator,	   1
@@ -6711,6 +6850,8 @@ Kemin työväenseura,	   1
 Kemin uudessa Kirjapainossa,	   1
 Keräystoimikunta vähävaraisten keuhkotautisten hyväksi,	   1
 Keräystoimikunta,	   1
+Kesälahti-seura,	   1
+Kesävuori Purujärvi,	   1
 Keski-Hämeen rautatietoimikunta,	   1
 Keski-Karjalan Hewoisystäwäin Seura,	   1
 Keski-Karjalan kustannus,	   1
@@ -6739,6 +6880,7 @@ Keskustan Kustannus,	   1
 Keskustoimikunta,	   1
 kiadja a Szent-István-Társulat,	   1
 Kiadja Hornyanszky Viktor,	   1
+Kiannon Turjanlinna,	   1
 Kieltolakikomitea,	   1
 Kiikalan kunta,	   1
 Kilpinen,	   1
@@ -6751,6 +6893,9 @@ Kirja- ja aksidenssipaino Merkantil,	   1
 Kirja-aitta,	   1
 Kirja-Aitta, jakaja,	   1
 Kirja-osakeyhtiö Tieto,	   1
+Kirja-Otava,	   1
+Kirja-vana,	   1
+Kirja-Vana,	   1
 Kirjailijaliitto,	   1
 Kirjall.-Seura Viipurissa,	   1
 Kirjamaailma,	   1
@@ -6771,6 +6916,7 @@ Kirjapaino-osakeyhtiö sana,	   1
 Kirjapaino-yht. :|Edlund,	   1
 Kirjapaino,	   1
 Kirjapainoyhtiö Walo,	   1
+Kirjaparoni,	   1
 Kirjastopalvelu,	   1
 Kirjastus Pääsuhe,	   1
 Kirjavälitys,	   1
@@ -6874,6 +7020,7 @@ Kp.-oy. Toivo,	   1
 Kreatursförsäkringsbolaget i Finland,	   1
 Kreatursförsäkringsbolaget,	   1
 Krist. naisyhdistys,	   1
+Kristillinen kirja- ja musikkikustannus,	   1
 Kristillinen kustannustoimisto,	   1
 Kristillinen työkansa,	   1
 Kristillinen ylioppilasliitto,	   1
@@ -6901,12 +7048,15 @@ KS. kirjapaino,	   1
 KS.,	   1
 Ksiazka,	   1
 Ksiegarnia Polska,	   1
+Kuhmon kirjap.,	   1
 Kulhanen,	   1
 Kullaan kunta,	   1
+Kulturföreningen Svenska odlingens vänner,	   1
 Kumikorjaamo Elektra,	   1
 Kumpuniemi,	   1
 Kun. suomalaisesa kirja-präntisä,	   1
 Kungl. krigsvetenskapsakademien,	   1
+Kungliga Gustav Adolfs Akademien för svensk folkkultur ;|Svenska litteratursällskapet i Finland,	   1
 Kuokkalan rukoushuoneyhdistys,	   1
 Kuolemajärven kunta,	   1
 Kuopio uusi kp.,	   1
@@ -6987,6 +7137,7 @@ Kustannusyhtiö Helo & Co,	   1
 Kustantamo Salama,	   1
 Kutoma- ja paperiteollisuuslehti,	   1
 Kuulijakunta ,	   1
+Kuusamon kansanopisto,	   1
 Kuusankosken työväenyhdistys,	   1
 Kuusinen,	   1
 Kuvallinen aikakauslehti Lukutupa,	   1
@@ -7007,6 +7158,7 @@ Kyminlaakson työväen kp.,	   1
 Kyminlaakson työväen sanomalehti-osuuskunta,	   1
 Kymintehtaalaisten osuuskaupan i. l. hallitus, julkaisija,	   1
 Kyrkslätt Skärgårds Ungdomsförening,	   1
+Kyröskosken perinneyhdistys,	   1
 L:rannan tuberkulosinvastustamisyhdist.,	   1
 L. Enroth,	   1
 L. Fisk,	   1
@@ -7023,6 +7175,8 @@ La España editorial,	   1
 La España Moderna,	   1
 La Plume,	   1
 La Popular,	   1
+Lääketieteellinen oppimateriaalikustantamo :|[Akateeminen kirjakauppa, jakaja],	   1
+Lääketieteellinen oppimateriaalikustantamo,	   1
 Lääkintähallitus,	   1
 Lääkintölaitos,	   1
 Labor,	   1
@@ -7048,6 +7202,7 @@ Lahden seudun nuorisoseura,	   1
 Lahden seudun nuorisoseurojen liitto,	   1
 Lahden uusi kp.,	   1
 Lahden yhteiskoulun teinikunta,	   1
+Lahden yliopistokeskus,	   1
 Lahden, Tampereen ja Viipurin puutarhaseurat,	   1
 Lähetys-seura,	   1
 Lähetysyhdistys,	   1
@@ -7097,6 +7252,7 @@ Le Monnier,	   1
 Leander & Sandberg,	   1
 Leikas and C:o,	   1
 Lempäälän kunta,	   1
+Leningradskij oblastnoj arhiv,	   1
 Lentolehtikomitea,	   1
 Leon Dekroz",	   1
 Leonard Lund,	   1
@@ -7177,6 +7333,7 @@ Loimaan nuorisoseura,	   1
 Londicer,|tryckt hos Carl Ant. Londicer,	   1
 Longman, Rees, Orme, Brown and Green,	   1
 Longmans, Green, and Co.,	   1
+Longwood Press,	   1
 Lönnroth,	   1
 Lontoo, Englannin ja ulkomaan bibliaseura,	   1
 Looström & Komp:s,	   1
@@ -7194,15 +7351,18 @@ Lounais-Karjalan kansanopisto,	   1
 Lounais-Suomen osuusmeijeriliitto,	   1
 Lounas Osuuskunta,	   1
 Lounasosuuskunnan kirjapaino,	   1
+Love & Light,	   1
 Loviisan sanomain oy,	   1
 Lovisa Sparbank,	   1
 Lübcke & Hartmann,	   1
+Lucina Hagmanin Marttakodin kannatusyhdistys,	   1
 Ludvig Dannholm,	   1
 Lundberg :|Suomentaja,	   1
 Lundberg :|Vaasan evankeliumiseura,	   1
 Lundequistska bokhandeln,	   1
 Luonnonparannus- ja terveydenhoitoyhdistys,	   1
 Luontainen terveyskunta,	   1
+Luostarinmäen käsityöläismuseon kirjapaino,	   1
 Luotsi- ja majakkalaitoksen ylihallitus,	   1
 Lut. kustannus-o.y.,	   1
 Luteerilainen kirjainkustannus,	   1
@@ -7238,6 +7398,7 @@ M. A. Vennäkoski,	   1
 M. Bähr ,	   1
 M. Heinonen,	   1
 M. I. Semenovskìj,	   1
+M. Jorpes-Friman,	   1
 M. Knutzon,	   1
 M. Latva,	   1
 M. Lindman,	   1
@@ -7359,6 +7520,7 @@ Metzler,	   1
 Miesylioppilaiden krist. yhdist.,	   1
 Miilu-Kaasu,	   1
 Miina Kilpi,	   1
+Mikkeli-seura,	   1
 Mikkelin hevosjalostusliitto,	   1
 Mikkelin kauppa-apulaisyhdistys,	   1
 Mikkelin kaupunki,	   1
@@ -7397,6 +7559,7 @@ Missionssällskapet,	   1
 Möller,	   1
 Moottoriliike Wickström J:or,	   1
 Morawe & Scheffelt Verlag,	   1
+Moreeni,	   1
 Mošhińjolišo šehangelo lja literatur ja Suomi,	   1
 Moshinjoliso sh'Ehangeno lja Literatur ja Suomi,	   1
 Moshinyoliso shEhangeno lia Literatur ya Suomi,	   1
@@ -7458,7 +7621,6 @@ Nesslin ja Helin ,	   1
 Nestor Järvinen, Jaakko Länkelä ja Olai Wallin,	   1
 Neuphilologischer Verein in Helsinki,	   1
 Neva,	   1
-New York Finnish Betania ev. Luth. congregation,	   1
 New Yorkin suom. vapaa seura,	   1
 Nicolay,	   1
 Niemeyer,	   1
@@ -7567,6 +7729,7 @@ O.y. Kirja-Aitta [jakaja],	   1
 O.y. Kirkollinen kirja- ja paperikauppa,	   1
 O.y. Waseniuksen kirjakauppa [jakaja],	   1
 O.y. Waseniuksen kirjakauppa,	   1
+Obol International,	   1
 Oesterheld & C:o,	   1
 Oesterheld & Co,	   1
 Öflund & Pettersson, bok- och stentryckeri ;|Akademiska bokhandeln i distribution,	   1
@@ -7604,6 +7767,8 @@ Oman kannan kp,	   1
 Ömsesidiga försäkringsanstalten Sampo,	   1
 Onni Corander, distr.,	   1
 Onni Palokangas,	   1
+Önningeby hembygdsförening,	   1
+Önningeby museet,	   1
 Opel,	   1
 Opettajien terveys- ja raittiusyhdistys,	   1
 Opetusministeriö. Taideosasto [jakaja],	   1
@@ -7612,6 +7777,8 @@ Ordenssamfundet Stella Nylandensis,	   1
 Ore,	   1
 Orimattilan Naisyhdistys,	   1
 Orisbergs mejeriskola,	   1
+Ortodoksinen veljestö :|Raamattutalo,	   1
+Ortodoksisen kirjallisuuden julkaisuneuvosto,	   1
 Osake-yhtiö Hämäläisen kp.,	   1
 Osake-yhtiön kirjapaino	   1
 Osake-yhtiön kp.,	   1
@@ -7696,6 +7863,7 @@ Otto Järveläinen,	   1
 Otto Massisen kustannusliike,	   1
 Otto Reinhold Frenckell,	   1
 Otto Vieweg,	   1
+Otto Zeller,	   1
 Oulujoen kunta,	   1
 Oulun agitatsionipiiritoimikunta,	   1
 Oulun et. vaalipiirin sos.-dem. piiritoimikunta,	   1
@@ -7725,6 +7893,7 @@ Oy Kuntain lehti,	   1
 Oy Länsi-Suomi,	   1
 Oy Saarijärven Paavo,	   1
 Oy Suomen kauppa, merilike ja teollisuus sanoin ja kuvin,	   1
+Oy Uusimaa,	   1
 Oy. Herman Lindell,	   1
 Oy. Kirjapaino Sanan valta, jakaja,	   1
 Oy. Valistus,	   1
@@ -7793,6 +7962,7 @@ Päivälehden kustannusyhtiö,	   1
 Päivälehti kustannusyhtiö,	   1
 Palander :|Satakunnan maanviljelysseura,	   1
 Palander :|Winnari,	   1
+Palladium kirjat,	   1
 Palmblad &c C.,	   1
 Palmblad, Sebell & C.,	   1
 Palmén,	   1
@@ -7832,6 +8002,7 @@ Pelastusarmeijan kansainvälinen päämaja,	   1
 Pelatusarmeijan päämaja,	   1
 Pellikka,	   1
 Peltomiehen toimitus,	   1
+Pentti Kaivola,	   1
 Perä-Pohjolan hevossiitosliitto,	   1
 Perä-Pohjolan ja Lapin Kotiseutuyhdistys,	   1
 Perä-Pohjolan maanmies-seura,	   1
@@ -7850,7 +8021,6 @@ Philipp J. Meijer,	   1
 Philipp Kosack,	   1
 Philosophic Publishing Co,	   1
 Pieksämäen Hot Rod Association,	   1
-Pieksämäen kunta,	   1
 Pietarin suomalainen hyväätekeväisyysseura,	   1
 Piirustusopettajayhdistys,	   1
 Piispain kokous,	   1
@@ -8000,6 +8170,7 @@ Raittiuskansan kirjapaino-o.y., jakaja,	   1
 Raittiuskansan kp,	   1
 Raittiusyhdistys Alpha,	   1
 Raja-Karjala,	   1
+Rakennusalan kustantajat,	   1
 Rakennushallitus,	   1
 Rakennustaito,	   1
 Rakentajain kustannus-oy,	   1
@@ -8051,14 +8222,17 @@ Replot, utg.,	   1
 Retinitis-yhdistys,	   1
 Reuter,	   1
 Revue politique et littéraire,	   1
+Richarz,	   1
 Ridderskapet och Adeln,	   1
 Riihimäen sanomalehti,	   1
+Riihimäki-seura,	   1
 Ristin Voitto,	   1
 Rob. Salzenstein,	   1
 Roger,	   1
 Rolf Lagerborg,	   1
 Ronelius,	   1
 Rooström,	   1
+Rosenkilde und Bagger,	   1
 Rossander ,	   1
 Rossander,	   1
 Rossïjskaâ socïal" demokratičeskaâ rabočaâ partïâ "Edinstvo",	   1
@@ -8074,6 +8248,7 @@ Russko-francuzskaâ tipografìâ,	   1
 Russo-Franҁaise,	   1
 Rütten & Loening,	   1
 Ruuki, utg.,	   1
+Ruusu-ristin kirjallisuusseura,	   1
 Rytkönen,	   1
 S-koulupalvelu	   1
 S:t Katarina sv. församlings kyrkoskola i Petrograd,	   1
@@ -8149,6 +8324,7 @@ Sanomalehtien ilmoitustoimisto,	   1
 Sanomalehtiosuuskunta Ilkka,	   1
 Sanomalehtiosuuskunta Liitto,	   1
 Sanomalehtiyhtiö Karttunen ja kumpp.,	   1
+Sarmala :|Rakennusalan kustantajat,	   1
 Satakunnan hevosjalostusyhdistysten liitto,	   1
 Satakunnan kirjakaupan kustannustoimisto,	   1
 Satakunnan kirjateollisuus,	   1
@@ -8327,9 +8503,11 @@ Sos.-dem. nuorisoliiton toimikunta,	   1
 Sos.-dem. vaalipiiritoimikunta ,	   1
 Sos.dem piiritoimikunta,	   1
 Sos.dem. eduskuntaryhmä,	   1
+Sos.dem. naisten keskusliitto,	   1
 Sosiaali ja terveysministeriö,	   1
 Sosialidemokraattinen piiritoimikunta,	   1
 Sosialidemokraattinen puoluetoimikunta,	   1
+Sosialidemokraattisen nuorison keskusliitto,	   1
 Sosialidemokraattisen raittiusliiton liittotoimikunta,	   1
 Sosialidemokratinen eduskuntaryhmä,	   1
 Sosialidemokratinen kunnallistoimikunta,	   1
@@ -8346,6 +8524,7 @@ SÖU,	   1
 Sparbankernas Central-Aktie-Bank,	   1
 Spiritistin toimitus,	   1
 Sport,	   1
+SRK:n [Suomen rauhanyhdistysten keskusyhdistyksen] työvaliokunta,	   1
 St. Marian Suomen kirkkokartano, Evangelinen kirjasto,	   1
 Stab. Tip. Pontificio Vescovile G. Rumor,	   1
 Štab' Otděl'nago Finlândskago Korpusa,	   1
@@ -8353,6 +8532,7 @@ Štab' vojsk',	   1
 Štab" Otděl'nago Finlândskago Korpusa,	   1
 Štab" vojsk",	   1
 Stadens eget förlag,	   1
+Stadens förlag :|[Ålands tidnings-tryckeri, distr.],	   1
 Stadsfullmäktige i Borgå,	   1
 Stadsfullmäktige i Jakobstad,	   1
 Ständerhusdelegationen,	   1
@@ -8369,6 +8549,7 @@ Stentr. hos G. O. Wasenius,	   1
 Stentryckeri,	   1
 Stiftelsen Hemmet för värnlösa barn i Grankulla,	   1
 Stillersche Hofbuchhandlung,	   1
+Stoa Itä-Helsingin kulttuurikeskus,	   1
 Stockholms högskola,	   1
 Stoličnaâ skoropečatnâ S. H. Zolotuhina,	   1
 Stoll & Bader,	   1
@@ -8472,6 +8653,8 @@ Suomalais-Evankelis-Lutherilainen Pyhäkoulu-Yhdistys,	   1
 Suomalais-Luteerilainen kustannusliike,	   1
 Suomalais-Luteerilainen Kustannusliikkeen Kirjapaino,	   1
 Suomalais-Lutherilainen kustannusliike,	   1
+Suomalais-ruotsalainen kulttuurirahasto,	   1
+Suomalais-ugrilainen seura :|Tiedekirja [jakaja],	   1
 Suomalaisen kansan kp.,	   1
 Suomalaisen Kansan sanomalehti- ja kirjapaino,	   1
 Suomalaisen kirjallisuuden kirjapaino,	   1
@@ -8602,6 +8785,7 @@ Suomen Kauppavaltuuskunnan keskusvaliokunta,	   1
 Suomen kaupunkiliitto,	   1
 Suomen Kirjailijaliitto,	   1
 Suomen kirjakaupan keskusvaliokunta,	   1
+Suomen kirjamessut,	   1
 Suomen kirjastoseura,	   1
 Suomen Kirjastoseura,	   1
 Suomen kirjavarasto,	   1
@@ -8690,6 +8874,7 @@ Suomen matkailijayhdistyksen Jyväskylän haaraosasto,	   1
 Suomen Matkailijayhdistyksen Sortavalan osasto,	   1
 Suomen matkailijayhdistyksen Turun haaraosasto,	   1
 Suomen matkailijayhdistys :|Waseniuksen kirjakaupan jaettavana,	   1
+Suomen matkailuliitto :|Helsingin matkailuyhdistys,	   1
 Suomen matkailuyhdistys,	   1
 Suomen Matkatoimisto,	   1
 Suomen merimieslähetys-seura,	   1
@@ -8931,6 +9116,7 @@ Svenska samskolan i Tavastehus,	   1
 Svenska scoutkåren i Åbo,	   1
 Svenska Teaterföreningen i Finland,	   1
 Svenska Teatern,	   1
+Svenska vitterhetssamfundet,	   1
 Svensson,	   1
 Sveriges Allmänna Konstförening,	   1
 Svobodnoe slovo,	   1
@@ -8958,6 +9144,7 @@ T. S. Osuuskunta Raivaaja,	   1
 T. Sederholm,	   1
 Ta-tsien-lu,	   1
 Taavi Lehtinen,	   1
+Tahko Pihkala -seura :|Suomen latu :|Suomen liikunnanohjaajat,	   1
 Tähti,	   1
 Taidetta kouluihin,|Akateeminen kirjakauppa [jakaja],	   1
 Tainio ,	   1
@@ -9055,6 +9242,7 @@ Tekijän kustantama,|[Tekijä],	   1
 Tekijätär,	   1
 Teknikern,	   1
 Teknillinen aikakauslehti konemies,	   1
+Teknillinen korkeakoulu,	   1
 Teknillinen yhdistys suomessa,	   1
 Teknillinen yhdistys Suomessa,	   1
 Tekniska Föreningen i Finland,	   1
@@ -9087,6 +9275,7 @@ Terveydenhoitoyhdistys,|Sanomalehti- ja kirjapaino-osakeyhtiön kirjapaino,	   1
 Tervolan työv.-yhd. Suvannon osasto,	   1
 Teschen,|Prochaska,	   1
 Teuvo Pakkala,	   1
+TH-Kotilääkäri,	   1
 Th. Clayhills,	   1
 Th. Stolpes förlag,	   1
 Th. Tigerstedt,	   1
@@ -9269,12 +9458,14 @@ Trävaru-aktiebolaget "Kemi",	   1
 Trewendt & Granier,	   1
 trükitud PA. ja C:i kirjadega [Aschan],	   1
 Tryckeri - och tidnings,	   1
+Tryckeri och tidnings ab i Borgå,	   1
 Tryckeri och tidnings ab i Kristinestad,	   1
 Tryckeri och tidnings ab,	   1
 Tryckeri och tidnings Ab,	   1
 Tryckeri och tidnings aktiebolag i Kristinestad,	   1
 Tryckeri- & tidnings ab i Kristinestad,	   1
 Tryckeri- & tidnings-aktiebolaget,	   1
+Tryckeri- och tidning,	   1
 Tryckeri- och Tidnings Ab i Borgå,	   1
 Tryckeri- och tidnings Ab i Fredrikshamn,	   1
 Tryckeri- och tidnings-aktiebolagets tryckeri,	   1
@@ -9375,6 +9566,7 @@ Turun teknillinen oppilaitos,	   1
 Turun tuomiokapituli,	   1
 Turun tupakka,	   1
 Turun urheiluliitto,	   1
+Turun yliopiston kirjasto,	   1
 Turveteollisuusliitto,	   1
 Tuulikki,	   1
 Tuusulan kansanopisto,	   1
@@ -9424,6 +9616,7 @@ Työväen sanomalehti.|Työväen sanomalehti-o.y.,	   1
 Työväen sanomelehti o.y.,	   1
 Työväen urheilulehti,	   1
 Työväen vallankumouksellinen keskusneuvosto,	   1
+Työväen-opisto,	   1
 Työväen-Opisto,	   1
 Työväenasiain valiokunta,	   1
 Työväenyhdistys,	   1
@@ -9437,7 +9630,6 @@ typis Societatis Biblicae Fennicae,	   1
 Typografernas förening i Helsingfors,	   1
 Typografernes förening i Helsingfors,	   1
 Tyrjän Nuorisoseura,	   1
-Tyrvään sanomat,	   1
 Tytty H. Lagerstedt,	   1
 Tyyni Nylund,	   1
 U knigoprodavca Nepejcyna,	   1
@@ -9455,6 +9647,7 @@ Ullner,	   1
 Ulosantaja,	   1
 Understödsfonden för Belgiens barn,	   1
 Undervisningsmaterialie centralen,	   1
+Unio mystica,	   1
 Union pour la vérité,	   1
 Unionen :|Söderström,	   1
 Unionen :|Söderström, distr.,	   1
@@ -9512,7 +9705,6 @@ Uuden Inkerin kannatusyhdistys,	   1
 Uuden Suomettaren oy,	   1
 Uuden-ajan toimitus,	   1
 Uudenkaupungin Eläinsuojelusyhdistys,	   1
-Uudenkaupungin kaupunki,	   1
 Uudenkaupungin kp.-osakeyhtiö,	   1
 Uudenkaupungin kunta,	   1
 Uudenkaupungin sanomalehti- ja kirjapaino-osakeyhtiö,	   1
@@ -9615,6 +9807,7 @@ Valmistava toimikunta,	   1
 Valontuote raittiusseura,	   1
 Valonvalta,	   1
 Valtion julkaisutoimisto,	   1
+Valtion painatuskeskus,	   1
 Valtion verokomitea,	   1
 Valtion vointarkastuslaitos ,	   1
 Valtion vointutkimuslaboratoorio,	   1
@@ -9654,6 +9847,7 @@ Vartiotornin raamattu- ja traktaattiseura,	   1
 Vasa bibelsällskap,	   1
 Vasa fruntimmersskola,	   1
 Vasa handelsskola,	   1
+Vasa kanotklubb,	   1
 Vasa läns landtbrukssällskap,	   1
 Vasa nation,	   1
 Vasa stad,	   1
@@ -9735,6 +9929,7 @@ Viipurin sanomain kirjapaino,	   1
 Viipurin sosialidemokratinen agitationipiiri,	   1
 Viipurin sosialidemokratisen agitationipiiri,	   1
 Viipurin Suom. kirj. seura,	   1
+Viipurin suomalainen kirjallisuusseura,	   1
 Viipurin Suomalainen Polkupyöräseura,	   1
 Viipurin suomalaisen kirjallisuuden seura,	   1
 Viipurin suomalaisen reaalilyseon toverikunta,	   1
@@ -9857,7 +10052,6 @@ Weilin & Göös'in osakeyhtiön kustantama,	   1
 Weilin & Göösin kirjakauppa [jakaja],	   1
 Weilin & Göösʼin kirjapainossa,	   1
 Weilin + Göös fabriks och förlags ab,	   1
-Weilin + Göös,	   1
 Weilin ja Göös :|"Keski-Suomi",	   1
 Weilin ja Göös :|Lutherilainen evankeliumi yhtiö,	   1
 Weilin ja Göös :|Tekijä,	   1
@@ -9948,6 +10142,7 @@ Workers Socialist Publishing Co.,	   1
 Workers Socialist Publishing,	   1
 Workers Socialist,	   1
 WS. ,	   1
+WSOY :|[Tukholma] :|AdLibris [jakaja],	   1
 WSOy,	   1
 WSOY,|Finnish Lutheran Book Concern,	   1
 WSOY,|Kuva ja sana,	   1
@@ -9970,6 +10165,8 @@ Yleinen kustannustoimisto,	   1
 Yleinen sanomalehtitoimisto,	   1
 Yleisen kansakoulun opettaja-yhdistys,	   1
 Yleisvenäläinen kansallisklubi,	   1
+Yliopiston farmasiakunta = Universitets farmaciekår,	   1
+Yliopiston farmasiakunta,	   1
 Ylioppilaiden lähetysyhdistys,	   1
 Ylioppilaiden yhteinen kansanvalistuskomitea,	   1
 Ylioppilaskunta,	   1
@@ -9986,12 +10183,14 @@ Yrjö Weilin & Kumpp.,|Weilin,	   1
 Yrjö Weilin,|Weilin,	   1
 Yrjö Wellin,	   1
 Yrkesskolan i Borgå,	   1
+Yttermarksgillet,	   1
 Z. Hæggström,	   1
 Z. U. N.,	   1
 Zacharias Haggström,	   1
 Zeit im Bild,	   1
 Zemlâ narodu",	   1
 Zenshindojo,	   1
+Zentralantiquariat der Deutschen Demokratischen Republik,	   1
 Ziarna,	   1
 Zillessen,	   1
 Zilliacus :|Toimittaja,	   1
