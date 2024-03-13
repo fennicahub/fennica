@@ -58,7 +58,7 @@ saveRDS(df.harmonized, file = data.file)
 #Load the RDS file
 df <- readRDS(data.file)
 # Convert to CSV and store in the data.files folder
-write.csv(df, file = paste0("data.files/", paste0(field, ".csv")), row.names = FALSE)
+#write.csv(df, file = paste0("data.files/", paste0(field, ".csv")), row.names = FALSE)
 
 
 # ------------------------------------------------------------
@@ -70,16 +70,14 @@ melindas_19 <- df_pubtime19$melinda_id
 message("Write conversions: publication year for 1809-1917")
 df_pubtime19$original <- df.harmonized[[field]]
 
-xx <- as.data.frame(df_pubtime19) %>% filter(!is.na(publication_year)) %>%
-  group_by(melinda_id, publication_year) %>%
-  tally() %>%
-  arrange(desc(n))
+xx <- data.frame(original = df_pubtime19$original,publication_year = df_pubtime19$publication_year)
+xx <- xx %>% filter(!is.na(publication_year)) %>%  filter(!is.na(original))
 
 conversion.file <- paste0(output.folder, field, "_conversion_19.csv")
-tmp <- write.table(xx,
-                   file = conversion.file,
-                   quote = FALSE,
-                   row.names = FALSE)
+tmp <- write_xtable(xx,
+                    file = conversion.file, 
+                    count = TRUE)
+
 
 message("Discarded publication year for 1809-1917")
 o <- as.character(df.harmonized[[field]])
@@ -95,12 +93,10 @@ tmp <- write_xtable(o[inds],
 # Store the field data for a subset 1809-1917
 data.file.19 <- paste0(field,"_19", ".Rds")
 saveRDS(df_pubtime19, file = data.file)
-
 #Load the RDS file
 df <- readRDS(data.file.19)
-
 # Convert to CSV and store in the output.tables folder
-write.csv(df, file = paste0("data.files/", paste0(field,"_19", ".csv")), row.names = FALSE)
+#write.csv(df, file = paste0("data.files/", paste0(field,"_19", ".csv")), row.names = FALSE)
 
 
 

@@ -53,7 +53,7 @@ saveRDS(df.tmp, file = data.file)
 #Load the RDS file
 df <- readRDS(data.file)
 # Convert to CSV and store in the output.tables folder
-write.csv(df, file = paste0("data.files/", paste0(field, ".csv")), row.names = FALSE)
+#write.csv(df, file = paste0("data.files/", paste0(field, ".csv")), row.names = FALSE)
 
 
 # ------------------------------------------------------------
@@ -62,8 +62,8 @@ write.csv(df, file = paste0("data.files/", paste0(field, ".csv")), row.names = F
 file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 file_accepted_19 <- paste0(output.folder, field, "_accepted_19.csv")
 
-#Run publication_time.R to separate melindas for 1809-1917
-source("publication_time.R")
+#Run melindas_19.R to get melindas for 1809-1917
+source("melindas_19.R")
 
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
 field <- "language"
@@ -96,6 +96,6 @@ saveRDS(df_19, file = data.file.19)
 df <- readRDS(data.file.19)
 
 # Convert to CSV and store in the output.tables folder
-write.csv(df, file = paste0("data.files/", paste0(field,"_19", ".csv")), row.names = FALSE)
+#write.csv(df, file = paste0("data.files/", paste0(field,"_19", ".csv")), row.names = FALSE)
 
 
