@@ -1,6 +1,5 @@
 field <- "publication_time"
 
-
 #polish full data
 tmp  <- polish_years(df.orig[[field]], check = TRUE)
 
@@ -26,8 +25,6 @@ df.harmonized$original <- df.orig[[field]]
 
 xx <- data.frame(original = df.harmonized$original,publication_year = df.harmonized$publication_year)
 xx <- xx %>% filter(!is.na(publication_year)) %>%  filter(!is.na(original))
-
-
 conversion.file <- paste0(output.folder, field, "_conversion.csv")
 tmp <- write_xtable(xx,
                    file = conversion.file, 
@@ -45,6 +42,7 @@ tmp <- write_xtable(o[inds],
 
 
 #create a file for discarded with melindas
+message("Discarded publication year with melinda ids")
 xx1 <- data.frame(melinda_id = df.harmonized$melinda_id, original = df.harmonized$original,publication_year = df.harmonized$publication_year)
 xx1 <- xx1 %>% filter(is.na(publication_year))%>% filter(!is.na(original))
 discard.file.id <- paste0(output.folder, field, "_discarded_id.csv")
@@ -52,14 +50,16 @@ tmp <- write_xtable(xx1,
                     file = discard.file.id,
                     count = TRUE)
 
+# ------------------------------------------------------------
 
-# Store the title field data
-# FIXME: convert to feather or plain CSV
+# Store the publication time field data
 data.file <- paste0(field, ".Rds")
 saveRDS(df.harmonized, file = data.file)
+#Load the RDS file
+df <- readRDS(data.file)
+# Convert to CSV and store in the data.files folder
+write.csv(df, file = paste0("data.files/", paste0(field, ".csv")), row.names = FALSE)
 
-# Generate markdown summary for the whole data
-df_pub_time <- readRDS(data.file)
 
 # ------------------------------------------------------------
 
@@ -92,14 +92,15 @@ tmp <- write_xtable(o[inds],
 
 # ---------------------------------------------------
 
-# Store the title field data
-# FIXME: convert to feather or plain CSV
-data.file <- paste0(field, ".Rds")
+# Store the field data for a subset 1809-1917
+data.file.19 <- paste0(field,"_19", ".Rds")
 saveRDS(df_pubtime19, file = data.file)
 
-# Generate markdown summary for a subset 1809-1917
-df_pubtime19 <- readRDS(data.file)
+#Load the RDS file
+df <- readRDS(data.file.19)
 
-# tmp <- knit(input = paste(field, ".Rmd", sep = ""), 
-#             output = paste(field, ".md", sep = ""))
+# Convert to CSV and store in the output.tables folder
+write.csv(df, file = paste0("data.files/", paste0(field,"_19", ".csv")), row.names = FALSE)
+
+
 
