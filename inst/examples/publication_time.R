@@ -25,7 +25,7 @@ saveRDS(df.harmonized, file = data.file)
 #Load the RDS file
 df <- readRDS(data.file)
 # Convert to CSV and store in the data.files folder
-write.csv(df, gzfile(paste0("data.files/", paste0(field, ".csv.gz")), "w"), row.names = FALSE)
+#write.csv(df, gzfile(paste0("data.files/", paste0(field, ".csv.gz")), "w"), row.names = FALSE)
 
 
 
