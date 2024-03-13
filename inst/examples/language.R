@@ -22,7 +22,7 @@ file_discarded_id <- paste0(output.folder, field, "_discarded_id.csv")
 # Generate data summaries for the whole data set 
 
 message("Accepted languages")
-for (myfield in c("languages", "language_original")) {
+for (myfield in c("languages", "language_primary")) {
   tmp <- write_xtable(df.tmp[[myfield]], paste(output.folder, myfield, "_accepted.csv", sep = ""), count = TRUE)
 }
 
@@ -37,13 +37,6 @@ original.na <- s[s %in% out$unrecognized]
 # .. ie. those are "discarded" cases; list them in a table
 tmp2 <- write_xtable(original.na, file_discarded, count = TRUE)
 
-# #create a file for discarded with melindas
-# filtered_df <- df.harmonized %>% filter(is.na(publication_year))%>% filter(!is.na(original))
-# discarded_id <- filtered_df %>% select(-2, -3, -5)
-# discard.file.id <- paste0(output.folder, field, "_discarded_id.csv")
-# tmp <- write_xtable(discarded_id,
-#                     file = discard.file.id,
-#                     count = TRUE)
 
 # ------------------------------------------------------------
 
