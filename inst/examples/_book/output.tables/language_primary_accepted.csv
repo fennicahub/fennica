@@ -1,36 +1,150 @@
 Name	Count
-Finnish	34782
-Swedish	24129
-Latin	 7965
-German	 1952
-Russian	  804
-Undetermined	  733
-French	  656
-English	  368
-Danish	  127
-Norwegian	   43
-Estonian	   40
-Italian	   40
-Multiple languages	   36
-Afroasiatic (Other)	   33
-Greek, Ancient (to 1453)	   31
-Dutch	   29
-Hungarian	   28
-Finno-Ugrian (Other)	   21
-Polish	   18
-Esperanto	   14
-Icelandic	   13
-Sami	   13
-Spanish	   13
-Germanic (Other)	    6
-Karelian	    5
-Latvian	    4
-Lithuanian	    4
-Northern Sami	    3
-Hebrew	    2
-Ukrainian	    2
-Czech	    1
-Erzya	    1
-Portuguese	    1
-Tibetan	    1
-Yiddish	    1
+Finnish	833893
+English	133425
+Swedish	115142
+Undetermined	 50515
+German	 15557
+Latin	 11673
+Russian	  5579
+Multiple languages	  4367
+French	  4266
+Danish	  1731
+Estonian	  1681
+Norwegian	  1349
+Spanish	  1198
+Italian	   880
+Sami	   797
+Hungarian	   682
+Dutch	   480
+Polish	   393
+Japanese	   375
+Czech	   335
+Karelian	   328
+Latvian	   220
+Afroasiatic (Other)	   198
+Finno-Ugrian (Other)	   197
+Esperanto	   170
+Lithuanian	   166
+Portuguese	   151
+Northern Sami	   141
+Icelandic	   138
+Chinese	   130
+Turkish	   110
+Bulgarian	   104
+Slovenian	    87
+Romanian	    86
+Slovak	    75
+Greek, Modern (1453-)	    70
+Ukrainian	    69
+Arabic	    68
+Greek, Ancient (to 1453)	    61
+Croatian	    58
+Hebrew	    58
+Tatar	    58
+Somali	    53
+Ndonga	    52
+Albanian	    43
+Afrikaans	    40
+Persian	    35
+Mari	    34
+Serbian	    34
+Inari Sami	    27
+Vietnamese	    25
+Korean	    24
+Swahili	    22
+Bantu (Other)	    21
+Faroese	    21
+Komi	    20
+Catalan	    17
+Kurdish	    16
+Romani	    15
+Skolt Sami	    13
+Udmurt	    13
+Moksha	    12
+Belarusian	    11
+Galician	     9
+Thai	     9
+Armenian	     8
+Germanic (Other)	     8
+Indo-European (Other)	     8
+Erzya	     7
+Hindi	     6
+Norwegian (Bokmål)	     6
+Welsh	     6
+Indic (Other)	     5
+Basque	     4
+Chuvash	     4
+French, Old (ca. 842-1300)	     4
+Georgian	     4
+Indonesian	     4
+Malay	     4
+Sanskrit	     4
+Votic	     4
+Filipino	     3
+Kyrgyz	     3
+Lule Sami	     3
+Papuan (Other)	     3
+Swiss German	     3
+Yiddish	     3
+Akan	     2
+Burmese	     2
+Chechen	     2
+Gujarati	     2
+Iranian (Other)	     2
+Kalâtdlisut	     2
+Kuanyama	     2
+Luo (Kenya and Tanzania)	     2
+Macedonian	     2
+Miscellaneous languages	     2
+Mongolian	     2
+No linguistic content	     2
+Nyanja	     2
+Oromo	     2
+Panjabi	     2
+Pushto	     2
+Romance (Other)	     2
+Tajik	     2
+Yoruba	     2
+Yupik languages	     2
+Aramaic	     1
+Artificial (Other)	     1
+Austronesian (Other)	     1
+Bengali	     1
+Berber (Other)	     1
+Bosnian	     1
+Chinook jargon	     1
+English, Middle (1100-1500)	     1
+Fula	     1
+Ido	     1
+Igbo	     1
+Irish	     1
+Kannada	     1
+Kazakh	     1
+Khmer	     1
+Khoisan (Other)	     1
+Kikuyu	     1
+Klingon (Artificial language)	     1
+Kongo	     1
+Lao	     1
+Low German	     1
+Malayalam	     1
+Marathi	     1
+Moldavian	     1
+Oriya	     1
+Ossetic	     1
+Semitic (Other)	     1
+Serer	     1
+Sign languages	     1
+Slavic (Other)	     1
+Southern Sami	     1
+Sumerian	     1
+Tai (Other)	     1
+Tamil	     1
+Tibetan	     1
+Tigré	     1
+Tongan	     1
+Turkmen	     1
+Urdu	     1
+Uzbek	     1
+Wolof	     1
+Xhosa	     1
