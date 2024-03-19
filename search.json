@@ -24,7 +24,7 @@
     "href": "language.html",
     "title": "2  Language",
     "section": "",
-    "text": "2.1 Complete Dataset Overview\nLanguage codes are from MARC; new custom abbreviations can be added in this table.",
+    "text": "2.1 Complete Dataset Overview\nLanguage discarded with melinda id\nLanguage codes are from MARC; new custom abbreviations can be added in this table.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Language</span>"
     ]
@@ -54,7 +54,7 @@
     "href": "publication_time.html",
     "title": "3  Publication time",
     "section": "",
-    "text": "3.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nPublication year discarded with melinda id\nPublication years is available for 1187016 documents (100%). The publication years span is 1015-2024.",
+    "text": "3.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nPublication year discarded with melinda id\nPublication years is available for 1187130 documents (100%). The publication years span is 0-2024.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Publication time</span>"
     ]
