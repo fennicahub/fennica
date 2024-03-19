@@ -10,6 +10,7 @@
 
 ``` r
  module load allas
+ allas-conf --mode s3cmd
  grep key $HOME/.s3cfg
 ```
 
