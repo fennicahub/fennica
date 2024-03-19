@@ -25,9 +25,9 @@ saveRDS(df.harmonized, file = data.file)
 # Generate markdown summary for the whole data
 df_pub_time <- readRDS(data.file)
 #Load the RDS file
-#df <- readRDS(data.file)
+df <- readRDS(data.file)
 # Convert to CSV and store in the data.files folder
-#write.csv(df, gzfile(paste0("data.files/", paste0(field, ".csv.gz")), "w"), row.names = FALSE)
+write.csv(df, gzfile(paste0(output.folder, paste0(field, ".csv.gz")), "w"), row.names = FALSE)
 
 
 
@@ -94,14 +94,12 @@ tmp <- write_xtable(o[inds],
                     count = TRUE)
 
 # ---------------------------------------------------
-# 
-# # Store the field data for a subset 1809-1917
-# data.file.19 <- paste0(field,"_19", ".Rds")
-# saveRDS(df_pubtime19, file = data.file)
-# #Load the RDS file
-# df <- readRDS(data.file.19)
-# # Convert to CSV and store in the output.tables folder
-# #write.csv(df, file = paste0("data.files/", paste0(field,"_19", ".csv")), row.names = FALSE)
-# 
-# 
+# Store the field data for a subset 1809-1917
+data.file.19 <- paste0(field,"_19", ".Rds")
+saveRDS(df_pubtime19, file = data.file)
+#Load the RDS file
+df <- readRDS(data.file.19)
+# Convert to CSV and store in the output.tables folder
+write.csv(df, gzfile(paste0(output.folder, paste0(field,"_19",".csv.gz")), "w"), row.names = FALSE)
+
 
