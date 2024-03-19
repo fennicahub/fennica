@@ -60,21 +60,21 @@ df.orig$publication_time <- ifelse(
 
 #preferably had to be transfered to polish_years.R 
 
-df.orig$publication_time <- ifelse(df.orig$publication_time == "    -", NA, df.orig$publication_time)
-df.orig$publication_time <- ifelse(df.orig$publication_time == "    -    ", NA, df.orig$publication_time)
-df.orig$publication_time <- ifelse(df.orig$publication_time == "-    ", NA, df.orig$publication_time)
-df.orig$publication_time <- ifelse(df.orig$publication_time == "-", NA, df.orig$publication_time)
-
-df.orig <- df.orig %>%
-  mutate(publication_time = ifelse(grepl("^\\s+$", publication_time), NA, publication_time))
-
-df.orig <- df.orig %>%
-  mutate(publication_time = ifelse(grepl("0000", publication_time), NA, publication_time))
-
-
-
-# Replace cells containing "    -" with NA
-df.orig$publication_time <- ifelse(df.orig$publication_time == "    -", NA, df.orig$publication_time)
+# df.orig$publication_time <- ifelse(df.orig$publication_time == "    -", NA, df.orig$publication_time)
+# df.orig$publication_time <- ifelse(df.orig$publication_time == "    -    ", NA, df.orig$publication_time)
+# df.orig$publication_time <- ifelse(df.orig$publication_time == "-    ", NA, df.orig$publication_time)
+# df.orig$publication_time <- ifelse(df.orig$publication_time == "-", NA, df.orig$publication_time)
+# 
+# df.orig <- df.orig %>%
+#   mutate(publication_time = ifelse(grepl("^\\s+$", publication_time), NA, publication_time))
+# 
+# df.orig <- df.orig %>%
+#   mutate(publication_time = ifelse(grepl("0000", publication_time), NA, publication_time))
+# 
+# 
+# 
+# # Replace cells containing "    -" with NA
+# df.orig$publication_time <- ifelse(df.orig$publication_time == "    -", NA, df.orig$publication_time)
 
 
 #33 - genre for the BOOKs only 

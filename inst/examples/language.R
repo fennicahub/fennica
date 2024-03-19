@@ -1,8 +1,8 @@
 # Define the field to harmonize
 field <- "language"
 
-#move this polish_languages.R
 df.orig$language <- gsub("\\|", ";", df.orig$language)
+
 
 # Harmonize the raw data
 out <- polish_languages(df.orig[[field]])
@@ -30,12 +30,18 @@ message("Language conversions")
 tab <- cbind(original = df.orig[[field]], df.tmp[, 1:4])
 tmp <- write_xtable(tab, paste(output.folder, field, "_conversions.csv", sep = ""), count = TRUE)
 
-# Discarded
+message("Discarded")
 # Original entries that were converted into NA
 s <- unlist(strsplit(df.orig$language, ";"))
 original.na <- s[s %in% out$unrecognized]
 # .. ie. those are "discarded" cases; list them in a table
 tmp2 <- write_xtable(original.na, file_discarded, count = TRUE)
+
+message("Discarded id")
+lo <- as.list(out$unrecognized)
+filtered_df <- df.orig[df.orig$language %in% lo, ]
+new_df <- filtered_df[, c("melinda_id", "language")]
+tmp3 <- write_xtable(new_df, file_discarded_id, count = TRUE)
 
 
 # ------------------------------------------------------------

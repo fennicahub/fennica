@@ -8,7 +8,7 @@
 #' @examples \dontrun{df <- mark_languages(c("fin;lat","eng"))}
 #' @keywords utilities
 polish_languages <- function(x) {
-  df.orig$language <- gsub(';','|',df.orig$language)
+  #x <- gsub("\\|", ";", x)
   x0 <- x
 
   # Unique entries only to speed up
