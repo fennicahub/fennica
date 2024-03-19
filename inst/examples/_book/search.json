@@ -33,21 +33,15 @@
     "objectID": "language.html#complete-dataset-overview",
     "href": "language.html#complete-dataset-overview",
     "title": "2  Language",
-    "section": "",
-    "text": "54 unique languages\n38 unique primary languages\n\n60632 single-language documents (94%)\n3872 multilingual documents (6%)\nConversions from raw to preprocessed language entries\n929 documents (1.44%) with unrecognized language",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Language</span>"
-    ]
+    "section": "2.1 Complete Dataset Overview",
+    "text": "2.1 Complete Dataset Overview\n\n54 unique languages\n38 unique primary languages\n\n60632 single-language documents (94%)\n3872 multilingual documents (6%)\nConversions from raw to preprocessed language entries\n929 documents (1.44%) with unrecognized language\n\nLanguage discarded with melinda id\nLanguage codes are from MARC; new custom abbreviations can be added in this table."
   },
   {
     "objectID": "language.html#subset-analysis-1809-1917",
     "href": "language.html#subset-analysis-1809-1917",
     "title": "2  Language",
     "section": "2.2 Subset Analysis: 1809-1917",
-    "text": "2.2 Subset Analysis: 1809-1917\n\n54 unique languages\n60632 single-language documents (94%)\n3872 multilingual documents (6%)\n929 documents (1.44%) with unrecognized language\n\n\n2.2.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n33674\n52.2\n\n\nSwedish\n19107\n29.6\n\n\nFinnish;Swedish\n2021\n3.1\n\n\nGerman\n1988\n3.1\n\n\nLatin\n1662\n2.6\n\n\nRussian\n1587\n2.5\n\n\nUndetermined\n929\n1.4\n\n\nFrench\n628\n1\n\n\nEnglish\n425\n0.7\n\n\nSwedish;Finnish\n170\n0.3\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Language</span>"
-    ]
+    "text": "2.2 Subset Analysis: 1809-1917\n\n54 unique languages\n60632 single-language documents (94%)\n3872 multilingual documents (6%)\n929 documents (1.44%) with unrecognized language\n\n\n2.2.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n33674\n52.2\n\n\nSwedish\n19107\n29.6\n\n\nFinnish;Swedish\n2021\n3.1\n\n\nGerman\n1988\n3.1\n\n\nLatin\n1662\n2.6\n\n\nRussian\n1587\n2.5\n\n\nUndetermined\n929\n1.4\n\n\nFrench\n628\n1\n\n\nEnglish\n425\n0.7\n\n\nSwedish;Finnish\n170\n0.3\n\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):"
   },
   {
     "objectID": "publication_time.html",
