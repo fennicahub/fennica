@@ -113,7 +113,7 @@ print(p)
 ```
 
 
-## Scripts 
+## Scripts  
 
 Polish publication time field: [publication_time.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/publication_time.R)
 
