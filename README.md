@@ -4,7 +4,7 @@ Fennica: Harmonized Finnish national bibliography
 This repository contains code for cleaning, enriching and automatically generating reports on the Finnish national bibliography, [Fennica](https://www.kansalliskirjasto.fi/fi/palvelut/fennica-suomen-kansallisbibliografia). 
 
 The live document is deployed in a CSC Rahti container:
-[https://fennica-fennicaa.rahtiapp.fi](https://fennica-fennicaa.rahtiapp.fi)
+[https://fennica-fennicaa.rahtiapp.fi](https://fennica-fennica.rahtiapp.fi)
 
 This README describes how to reproduce the analyses and generate the notebook.
 
@@ -12,7 +12,7 @@ This README describes how to reproduce the analyses and generate the notebook.
 The data was downloaded from The National Metadata Repository Melinda. 
 See more: [https://melinda.kansalliskirjasto.fi/](https://melinda.kansalliskirjasto.fi/F/?func=find-b-0&CON_LNG=fin&local_base=fin01_opac)
 
-A script collect.py was used to harvest the data. See the script in the fennica repository. 
+A script [collect.py](https://github.com/fennicahub/fennica/blob/master/collect.py) was used to harvest the data.  
 The script was provided to us by Osma Suominen (The National Library of Finland).
 
 
@@ -86,7 +86,7 @@ The analyses cover several steps including XML parsing, data harmonization, remo
 
 ### Licensing
 
-The analyses and full [source code](https://github.com/comhis/fennica/blob/master/inst/examples/main.R) are provided in this repository and can be freely reused under the [BSD 2 clause](https://opensource.org/licenses/BSD-2-Clause) (FreeBSD) open source licence. The analyses are based on [R](http://r-project.org) and rely on various R packages.
+The analyses and full [source code](https://github.com/fennicahub/fennica/blob/master/inst/examples/main.R)) are provided in this repository and can be freely reused under the [BSD 2 clause](https://opensource.org/licenses/BSD-2-Clause) (FreeBSD) open source licence. The analyses are based on [R](http://r-project.org) and rely on various R packages.
 
 The original data has been published openly by National Library of Finland.
 
