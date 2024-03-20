@@ -38,7 +38,8 @@ original.na <- s[s %in% out$unrecognized]
 tmp2 <- write_xtable(original.na, file_discarded, count = TRUE)
 
 message("Discarded id")
-lo <- as.list(out$unrecognized)
+
+lo <- as.list(original.na)
 filtered_df <- df.orig[df.orig$language %in% lo, ]
 new_df <- filtered_df[, c("melinda_id", "language")]
 tmp3 <- write_xtable(new_df, file_discarded_id, count = TRUE)

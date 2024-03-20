@@ -12,12 +12,6 @@ source("language.R")
 
 MARC: [041a](https://www.loc.gov/marc/bibliographic/bd041.html)
 
-Polish language field: [language.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/language.R)
-
-Harmonize language data function: [polish_languages.R](https://github.com/fennicahub/fennica/blob/master/R/polish_languages.R)
-
-Render publication time field: [language.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/language.qmd)
-
 ## Complete Dataset Overview
 
 -   `r length(unique(unlist(strsplit(as.character(df$languages), ";"))))-1` [unique languages](dataTable/data_table.html?path=../output.tables/languages_accepted.csv)
@@ -63,3 +57,11 @@ Title count per language (including multi-language documents; note the log10 sca
 #| fig.height = 5
 top_plot(df_19, "languages", ntop = ntop, log10 = TRUE) + labs(y = "Entries (n)")
 ```
+
+## Scripts 
+
+Polish language field: [language.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/language.R)
+
+Harmonize language data function: [polish_languages.R](https://github.com/fennicahub/fennica/blob/master/R/polish_languages.R)
+
+Render publication time field: [language.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/language.qmd)
