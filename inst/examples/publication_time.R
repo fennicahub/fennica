@@ -36,8 +36,10 @@ df_pub_time <- readRDS(data.file)
 message("Write conversions: publication year")
 df.harmonized$original <- df.orig[[field]]
 
-xx <- data.frame(original = df.harmonized$original,publication_year = df.harmonized$publication_year)
-xx <- xx %>% filter(!is.na(publication_year)) %>%  filter(!is.na(original))
+xx <- data.frame(original = df.harmonized$original,
+                 start_year = df.harmonized$publication_year_from,
+                 end_year = df.harmonized$publication_year_till)
+xx <- xx %>% filter(!is.na(start_year)) %>% filter(!is.na(end_year)) %>% filter(!is.na(original))
 conversion.file <- paste0(output.folder, field, "_conversion.csv")
 tmp <- write_xtable(xx,
                    file = conversion.file, 
@@ -75,8 +77,11 @@ melindas_19 <- df_pubtime19$melinda_id
 message("Write conversions: publication year for 1809-1917")
 
 
-xx <- data.frame(original = df_pubtime19$original,publication_year = df_pubtime19$publication_year)
-xx <- xx %>% filter(!is.na(publication_year)) %>%  filter(!is.na(original))
+xx <- data.frame(original = df_pubtime19$original,
+                 start_year = df_pubtime19$publication_year,
+                 end_year = df_pubtime19$publication_year_till)
+
+xx <- xx %>% filter(!is.na(start_year)) %>% filter(!is.na(end_year)) %>% filter(!is.na(original))
 
 conversion.file <- paste0(output.folder, field, "_conversion_19.csv")
 tmp <- write_xtable(xx,

@@ -22,7 +22,7 @@ file_discarded_id <- paste0(output.folder, field, "_discarded_id.csv")
 # Generate data summaries for the whole data set 
 
 message("Accepted languages")
-for (myfield in c("languages", "language_primary")) {
+for (myfield in c("language", "language_primary")) {
   tmp <- write_xtable(df.tmp[[myfield]], paste(output.folder, myfield, "_accepted.csv", sep = ""), count = TRUE)
 }
 
@@ -71,7 +71,7 @@ field <- "language"
 # Generate data summaries for the subset data set 
 
 message("Accepted languages 19th century")
-for (myfield in c("languages", "language_original")) {
+for (myfield in c("language", "language_original")) {
   tmp <- write_xtable(df_19[[myfield]], paste(output.folder, myfield, "_accepted_19.csv", sep = ""), count = TRUE)
 }
 
