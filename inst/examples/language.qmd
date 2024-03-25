@@ -23,7 +23,7 @@ MARC: [041a](https://www.loc.gov/marc/bibliographic/bd041.html)
 
 [Language discarded with melinda id](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_discarded_id.csv)
 
-Language codes are from [MARC](https://www.loc.gov/marc/languages/language_code.html); new custom abbreviations can be added in [this table](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_abbreviations.csv).
+Language codes are from [MARC](https://www.loc.gov/marc/languages/language_code.html); new custom abbreviations can be added in [this table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_abbreviations.csv).
 
 ## Subset Analysis: 1809-1917
 
