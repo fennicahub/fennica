@@ -16,7 +16,6 @@ tmp*
 slides_201606_Krakow
 *cache*
 *.pdf
-*.csv
 *~
 summary_files/
 data
