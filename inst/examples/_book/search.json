@@ -33,22 +33,31 @@
     "objectID": "language.html#complete-dataset-overview",
     "href": "language.html#complete-dataset-overview",
     "title": "2  Language",
-    "section": "2.1 Complete Dataset Overview",
-    "text": "2.1 Complete Dataset Overview\n\n54 unique languages\n38 unique primary languages\n\n60632 single-language documents (94%)\n3872 multilingual documents (6%)\nConversions from raw to preprocessed language entries\n929 documents (1.44%) with unrecognized language\n\nLanguage discarded with melinda id\nLanguage codes are from MARC; new custom abbreviations can be added in this table."
+    "section": "",
+    "text": "54 unique languages\n38 unique primary languages\n\n60632 single-language documents (94%)\n3872 multilingual documents (6%)\nConversions from raw to preprocessed language entries\n929 documents (1.44%) with unrecognized language",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Language</span>"
+    ]
   },
   {
     "objectID": "language.html#subset-analysis-1809-1917",
     "href": "language.html#subset-analysis-1809-1917",
     "title": "2  Language",
     "section": "2.2 Subset Analysis: 1809-1917",
-    "text": "2.2 Subset Analysis: 1809-1917\n\n54 unique languages\n60632 single-language documents (94%)\n3872 multilingual documents (6%)\n929 documents (1.44%) with unrecognized language\n\n\n2.2.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n33674\n52.2\n\n\nSwedish\n19107\n29.6\n\n\nFinnish;Swedish\n2021\n3.1\n\n\nGerman\n1988\n3.1\n\n\nLatin\n1662\n2.6\n\n\nRussian\n1587\n2.5\n\n\nUndetermined\n929\n1.4\n\n\nFrench\n628\n1\n\n\nEnglish\n425\n0.7\n\n\nSwedish;Finnish\n170\n0.3\n\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):"
+    "text": "2.2 Subset Analysis: 1809-1917\n\n54 unique languages\n60632 single-language documents (94%)\n3872 multilingual documents (6%)\n929 documents (1.44%) with unrecognized language\n\n\n2.2.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n33674\n52.2\n\n\nSwedish\n19107\n29.6\n\n\nFinnish;Swedish\n2021\n3.1\n\n\nGerman\n1988\n3.1\n\n\nLatin\n1662\n2.6\n\n\nRussian\n1587\n2.5\n\n\nUndetermined\n929\n1.4\n\n\nFrench\n628\n1\n\n\nEnglish\n425\n0.7\n\n\nSwedish;Finnish\n170\n0.3\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Language</span>"
+    ]
   },
   {
     "objectID": "language.html#scripts",
     "href": "language.html#scripts",
     "title": "2  Language",
     "section": "2.3 Scripts",
-    "text": "2.3 Scripts\nPolish language field: language.R\nHarmonize language data function: polish_languages.R\nRender publication time field: language.qmd"
+    "text": "2.3 Scripts\nPolish language field: language.R\nHarmonize language data function: polish_languages.R\nRender publication time field: language.qmd",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Language</span>"
+    ]
   },
   {
     "objectID": "publication_time.html",
@@ -64,22 +73,21 @@
     "objectID": "publication_time.html#complete-data-overview",
     "href": "publication_time.html#complete-data-overview",
     "title": "3  Publication time",
-    "section": "3.1 Complete Data Overview",
-    "text": "3.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nPublication year discarded with melinda id\nPublication years is available for 1187130 documents (100%). The publication years span is 0-2024.\n\n3.1.1 Title count per decade (log values)\n\n\n\n3.1.2 Publication status summaries\nThу visualization of publication status field enhances understanding of how publication years are recorded. The harmonization process depended on the publication status field due to its nuanced information, which doesn’t always directly signify the start or end of publication.\n\n\n\n\nPublication Status\nEntries (n)\nFraction (%)\n\n\n\n\nSingle known date/probable date\n1064152\n89.6\n\n\nContinuing resource ceased publication\n44266\n3.7\n\n\nPublication date and copyright date\n34378\n2.9\n\n\nContinuing resource currently published\n25570\n2.2\n\n\nQuestionable date\n7754\n0.7\n\n\nInclusive dates of collection\n4701\n0.4\n\n\nReprint/reissue date and original date\n4188\n0.4\n\n\nMultiple dates\n1983\n0.2\n\n\nContinuing resource status unknown\n491\n0\n\n\nDate of distribution etc\n101\n0\n\n\nDetailed date\n76\n0\n\n\nNo attempt to code\n66\n0\n\n\nDates unknown\n26\n0\n\n\nNo dates given; B.C. date involved\n4\n0"
+    "section": "",
+    "text": "3.1.1 Title count per decade (log values)\n\n\n\n3.1.2 Publication status summaries\nThу visualization of publication status field enhances understanding of how publication years are recorded. The harmonization process depended on the publication status field due to its nuanced information, which doesn’t always directly signify the start or end of publication.\n\n\n\nPublication Status\nEntries (n)\nFraction (%)\n\n\n\n\nSingle known date/probable date\n1064152\n89.6\n\n\nContinuing resource ceased publication\n44266\n3.7\n\n\nPublication date and copyright date\n34378\n2.9\n\n\nContinuing resource currently published\n25570\n2.2\n\n\nQuestionable date\n7754\n0.7\n\n\nInclusive dates of collection\n4701\n0.4\n\n\nReprint/reissue date and original date\n4188\n0.4\n\n\nMultiple dates\n1983\n0.2\n\n\nContinuing resource status unknown\n491\n0\n\n\nDate of distribution etc\n101\n0\n\n\nDetailed date\n76\n0\n\n\nNo attempt to code\n66\n0\n\n\nDates unknown\n26\n0\n\n\nNo dates given; B.C. date involved\n4\n0",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Publication time</span>"
+    ]
   },
   {
     "objectID": "publication_time.html#subset-analysis-1809-1917",
     "href": "publication_time.html#subset-analysis-1809-1917",
     "title": "3  Publication time",
     "section": "3.2 Subset Analysis: 1809-1917",
-    "text": "3.2 Subset Analysis: 1809-1917\nIn this segment we concentrate on the so called “long 19th century”: literary production during the years 1809-1917, when the Grand Duchy of Finland was an autonomous part of the Russian Empire.\nPublication year conversions\nPublication year discarded\n\n3.2.1 Title count per decade\nA plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period."
-  },
-  {
-    "objectID": "publication_time.html#scripts",
-    "href": "publication_time.html#scripts",
-    "title": "3  Publication time",
-    "section": "3.3 Scripts",
-    "text": "3.3 Scripts\nPolish publication time field: publication_time.R\nHarmonize temporal data function: polish_years.R\nRender publication time field: publication_time.qmd"
+    "text": "3.2 Subset Analysis: 1809-1917\nIn this segment we concentrate on the so called “long 19th century”: literary production during the years 1809-1917, when the Grand Duchy of Finland was an autonomous part of the Russian Empire.\nPublication year conversions\nPublication year discarded\n\n3.2.1 Title count per decade\nA plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Publication time</span>"
+    ]
   },
   {
     "objectID": "acknowledgments.html",
@@ -97,7 +105,7 @@
     "href": "technical_information.html",
     "title": "Technical information",
     "section": "",
-    "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.3.3 (2024-02-29)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Ubuntu 22.04.4 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\ntime zone: UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] fennica_0.2.9     Cairo_1.6-2       ggplot2_3.5.0     R.utils_2.12.3   \n [5] R.oo_1.26.0       R.methodsS3_1.8.2 knitr_1.45        stringr_1.5.1    \n [9] tm_0.7-12         NLP_0.2-1         dplyr_1.1.4       devtools_2.4.5   \n[13] usethis_2.2.3    \n\nloaded via a namespace (and not attached):\n [1] utf8_1.2.4        generics_0.1.3    xml2_1.3.6        slam_0.1-50      \n [5] stringi_1.8.3     digest_0.6.35     magrittr_2.0.3    grid_4.3.3       \n [9] evaluate_0.23     pkgload_1.3.4     fastmap_1.1.1     jsonlite_1.8.8   \n[13] pkgbuild_1.4.4    sessioninfo_1.2.2 urlchecker_1.0.1  promises_1.2.1   \n[17] purrr_1.0.2       fansi_1.0.6       scales_1.3.0      stringdist_0.9.12\n[21] XML_3.99-0.16.1   cli_3.6.2         shiny_1.8.0       rlang_1.1.3      \n[25] munsell_0.5.0     ellipsis_0.3.2    withr_3.0.0       remotes_2.5.0    \n[29] cachem_1.0.8      tools_4.3.3       parallel_4.3.3    memoise_2.0.1    \n[33] colorspace_2.1-0  httpuv_1.6.14     vctrs_0.6.5       R6_2.5.1         \n[37] mime_0.12         lifecycle_1.0.4   fs_1.6.3          htmlwidgets_1.6.4\n[41] miniUI_0.1.1.1    pkgconfig_2.0.3   gtable_0.3.4      pillar_1.9.0     \n[45] later_1.3.2       data.table_1.15.2 glue_1.7.0        profvis_0.3.8    \n[49] Rcpp_1.0.12       xfun_0.42         tibble_3.2.1      tidyselect_1.2.1 \n[53] xtable_1.8-4      htmltools_0.5.7   rmarkdown_2.26    compiler_4.3.3",
+    "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.3.3 (2024-02-29)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Ubuntu 22.04.4 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\ntime zone: UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] fennica_0.2.9     purrr_1.0.2       Cairo_1.6-2       ggplot2_3.5.0    \n [5] R.utils_2.12.3    R.oo_1.26.0       R.methodsS3_1.8.2 knitr_1.45       \n [9] stringr_1.5.1     tm_0.7-12         NLP_0.2-1         dplyr_1.1.4      \n[13] devtools_2.4.5    usethis_2.2.3    \n\nloaded via a namespace (and not attached):\n [1] utf8_1.2.4        generics_0.1.3    xml2_1.3.6        slam_0.1-50      \n [5] stringi_1.8.3     digest_0.6.35     magrittr_2.0.3    grid_4.3.3       \n [9] evaluate_0.23     pkgload_1.3.4     fastmap_1.1.1     jsonlite_1.8.8   \n[13] pkgbuild_1.4.4    sessioninfo_1.2.2 urlchecker_1.0.1  promises_1.2.1   \n[17] fansi_1.0.6       scales_1.3.0      stringdist_0.9.12 XML_3.99-0.16.1  \n[21] cli_3.6.2         shiny_1.8.0       rlang_1.1.3       munsell_0.5.0    \n[25] ellipsis_0.3.2    withr_3.0.0       remotes_2.5.0     cachem_1.0.8     \n[29] tools_4.3.3       parallel_4.3.3    memoise_2.0.1     colorspace_2.1-0 \n[33] httpuv_1.6.14     vctrs_0.6.5       R6_2.5.1          mime_0.12        \n[37] lifecycle_1.0.4   fs_1.6.3          htmlwidgets_1.6.4 miniUI_0.1.1.1   \n[41] pkgconfig_2.0.3   gtable_0.3.4      pillar_1.9.0      later_1.3.2      \n[45] data.table_1.15.2 glue_1.7.0        profvis_0.3.8     Rcpp_1.0.12      \n[49] xfun_0.42         tibble_3.2.1      tidyselect_1.2.1  xtable_1.8-4     \n[53] htmltools_0.5.7   rmarkdown_2.26    compiler_4.3.3",
     "crumbs": [
       "Appendices",
       "Technical information"
