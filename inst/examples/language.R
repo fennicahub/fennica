@@ -22,7 +22,7 @@ file_discarded_id <- paste0(output.folder, field, "_discarded_id.csv")
 # Generate data summaries for the whole data set 
 
 message("Accepted languages")
-for (myfield in c("language", "language_primary")) {
+for (myfield in c("languages", "language_primary")) {
   tmp <- write_xtable(df.tmp[[myfield]], paste(output.folder, myfield, "_accepted.csv", sep = ""), count = TRUE)
 }
 
@@ -71,7 +71,7 @@ field <- "language"
 # Generate data summaries for the subset data set 
 
 message("Accepted languages 19th century")
-for (myfield in c("language", "language_original")) {
+for (myfield in c("languages", "language_primary")) {
   tmp <- write_xtable(df_19[[myfield]], paste(output.folder, myfield, "_accepted_19.csv", sep = ""), count = TRUE)
 }
 
@@ -93,7 +93,7 @@ data.file.19 <- paste0(field,"_19", ".Rds")
 saveRDS(df_19, file = data.file.19)
 
 #Load the RDS file
-df <- readRDS(data.file.19)
+df_19 <- readRDS(data.file.19)
 
 # Convert to CSV and store in the output.tables folder
 #write.csv(df, file = paste0("data.files/", paste0(field,"_19", ".csv")), row.names = FALSE)
