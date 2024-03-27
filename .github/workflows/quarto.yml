@@ -10,6 +10,7 @@ on:
     - '**.Rmd'
     - '**.qmd'
     - '**.R'
+    - '**.yml'
   workflow_dispatch:
 permissions: write-all
 
@@ -31,8 +32,20 @@ jobs:
           use-public-rspm: true
           
       - name: Install devtools package
-        run: Rscript -e 'install.packages("devtools")'
-        
+        run: Rscript -e "install.packages('devtools')"
+
+      - name: Install aws.s3 package
+        run: Rscript -e "install.packages('aws.s3')"
+
+      - name: Install tidyverse package
+        run: Rscript -e "install.packages('tidyverse')"
+
+      - name: Install curl package
+        run: Rscript -e "install.packages('curl')"
+
+      - name: Install httr package
+        run: Rscript -e "install.packages('httr')"
+
       - name: Install comhis package from GitHub
         run: Rscript -e 'devtools::install_github("comhis/comhis")'
 
@@ -40,11 +53,8 @@ jobs:
           
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          needs: website
-          extra-packages:
-            any::devtools
-            local::.
-
+          extra-packages: local::.
+        
       - name: Render and Publish quarto
         uses: quarto-dev/quarto-actions/publish@v2
         with:
@@ -53,11 +63,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name : Import CSV visualiser
-        run : cp -r inst/examples/dataTable inst/examples/_book/
+      - name: Execute R Script with AWS Credentials
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: Rscript inst/examples/allas.R
 
-      - name : Import output.tables
-        run : cp -r inst/examples/output.tables inst/examples/_book/
+      - name: Import CSV visualiser
+        run: cp -r inst/examples/dataTable inst/examples/_book/
+
+      - name: Import output.tables
+        run: cp -r inst/examples/output.tables inst/examples/_book/
         
       - name: Deploy package
         run: |
@@ -66,6 +82,7 @@ jobs:
           git add .
           git commit -m "Re-render bookdown documents" || echo "No changes to commit"
           git push origin || echo "No changes to commit"
+          
       - name: Trigger link checker workflow
         if: success()
         uses: peter-evans/repository-dispatch@v1
