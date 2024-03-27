@@ -53,7 +53,8 @@ saveRDS(df.tmp, file = data.file)
 #Load the RDS file
 df <- readRDS(data.file)
 # Convert to CSV and store in the output.tables folder
-#write.csv(df, file = paste0("data.files/", paste0(field, ".csv")), row.names = FALSE)
+write.csv(df, paste0(output.folder, paste0(field, ".csv")), row.names = FALSE)
+
 
 
 # ------------------------------------------------------------
@@ -95,7 +96,7 @@ saveRDS(df_19, file = data.file.19)
 #Load the RDS file
 df_19 <- readRDS(data.file.19)
 
-# Convert to CSV and store in the output.tables folder
-#write.csv(df, file = paste0("data.files/", paste0(field,"_19", ".csv")), row.names = FALSE)
+# Convert to CSV and store in the data.files folder
+write.csv(df_19, paste0(output.folder, paste0(field,"_19",".csv")), row.names = FALSE)
 
 

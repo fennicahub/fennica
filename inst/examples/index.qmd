@@ -12,15 +12,4 @@ Within the [DARIAH-FI](https://www.dariah.fi/) and [FIN-CLARIAH](https://www.kie
 
 Currently, the bookdown project comprises a few distinct chapters. Notably, the harmonization process has been executed through the establishment of dual pipelines: **Complete FNB Pipeline** and **1809 to 1917 Period Pipeline** These chapters are dedicated to the specific metadata categories.
 
-
-## Data collection and transformation scripts
-
-[init.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/init.R): compiles instructions for downloading the data and specifying the required packages for installation.
-
-Scripts are tailored for specific needs of the research and can be modified for different research questions:
-
-[priority_fields.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/priority_fields.R): collects priority fields from the raw data. 
-
-[leader.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/leader.R): collects type of records (leader/06) and bibliographical level (leader/07) 
-
-[008_field.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/008_field.R): collects date of entry (008/00-05), publication status (008/06), publication time (008/07-14) and genre (008/33) for the specific type of record and bibliographical level. 
+[How to reproduce the workflow](https://github.com/fennicahub/fennica/blob/master/README.md)
