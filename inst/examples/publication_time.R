@@ -44,7 +44,8 @@ xx <- xx %>% filter(!is.na(start_year)) %>% filter(!is.na(end_year)) %>% filter(
 conversion.file <- paste0(output.folder, field, "_conversion.csv")
 tmp <- write_xtable(xx,
                    file = conversion.file, 
-                   count = TRUE)
+                   count = TRUE, 
+                   add.percentages = TRUE)
 
 
 message("Discarded publication year")
@@ -54,7 +55,8 @@ inds <- which(is.na(x))
 discard.file <- paste0(output.folder, field, "_discarded.csv")
 tmp <- write_xtable(o[inds],
                     file = discard.file,
-                    count = TRUE)
+                    count = TRUE,
+                    add.percentages = TRUE)
 
 
 #create a file for discarded with melindas
@@ -87,7 +89,8 @@ xx <- xx %>% filter(!is.na(start_year)) %>% filter(!is.na(end_year)) %>% filter(
 conversion.file <- paste0(output.folder, field, "_conversion_19.csv")
 tmp <- write_xtable(xx,
                     file = conversion.file, 
-                    count = TRUE)
+                    count = TRUE, 
+                    add.percentages = TRUE)
 
 
 message("Discarded publication year for 1809-1917")
@@ -97,7 +100,8 @@ inds <- which(is.na(x))
 discard.file <- paste0(output.folder, field, "_discarded_19.csv")
 tmp <- write_xtable(o[inds],
                     file = discard.file,
-                    count = TRUE)
+                    count = TRUE, 
+                    add.percentages = TRUE)
 
 # ---------------------------------------------------
 # Store the field data for a subset 1809-1917

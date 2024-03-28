@@ -23,26 +23,34 @@ file_discarded_id <- paste0(output.folder, field, "_discarded_id.csv")
 
 message("Accepted languages")
 for (myfield in c("languages", "language_primary")) {
-  tmp <- write_xtable(df.tmp[[myfield]], paste(output.folder, myfield, "_accepted.csv", sep = ""), count = TRUE)
+  tmp <- write_xtable(df.tmp[[myfield]], paste(output.folder, myfield, "_accepted.csv", sep = ""), 
+                      count = TRUE, 
+                      add.percentages = TRUE)
 }
 
 message("Language conversions")
 tab <- cbind(original = df.orig[[field]], df.tmp[, 1:4])
-tmp <- write_xtable(tab, paste(output.folder, field, "_conversions.csv", sep = ""), count = TRUE)
+tmp <- write_xtable(tab, paste(output.folder, field, "_conversions.csv", sep = ""), 
+                    count = TRUE,
+                    add.percentages = TRUE)
 
 message("Discarded")
 # Original entries that were converted into NA
 s <- unlist(strsplit(df.orig$language, ";"))
 original.na <- s[s %in% out$unrecognized]
 # .. ie. those are "discarded" cases; list them in a table
-tmp2 <- write_xtable(original.na, file_discarded, count = TRUE)
+tmp2 <- write_xtable(original.na, file_discarded, 
+                     count = TRUE, 
+                     add.percentages = TRUE)
 
 message("Discarded id")
 
 lo <- as.list(original.na)
 filtered_df <- df.orig[df.orig$language %in% lo, ]
 new_df <- filtered_df[, c("melinda_id", "language")]
-tmp3 <- write_xtable(new_df, file_discarded_id, count = TRUE)
+tmp3 <- write_xtable(new_df, file_discarded_id, 
+                     count = TRUE, 
+                     add.percentages = TRUE)
 
 
 # ------------------------------------------------------------
@@ -74,18 +82,24 @@ field <- "language"
 
 message("Accepted languages 19th century")
 for (myfield in c("languages", "language_primary")) {
-  tmp <- write_xtable(df_19[[myfield]], paste(output.folder, myfield, "_accepted_19.csv", sep = ""), count = TRUE)
+  tmp <- write_xtable(df_19[[myfield]], paste(output.folder, myfield, "_accepted_19.csv", sep = ""), 
+                      count = TRUE, 
+                      add.percentages = TRUE)
 }
 
 message("Language conversions for the 19th century")
 tab <- cbind(original = df_19$languages, df_19[, 1:4])
-tmp <- write_xtable(tab, paste(output.folder, field, "_conversions_19.csv", sep = ""), count = TRUE)
+tmp <- write_xtable(tab, paste(output.folder, field, "_conversions_19.csv", sep = ""), 
+                    count = TRUE, 
+                    add.percentages = TRUE)
 
 # Discarded
 # Original entries that were converted into NA
 s <- unlist(strsplit(df.orig$language, ";"))
 original.na <- s[s %in% out$unrecognized]
-tmp2 <- write_xtable(original.na, file_discarded_19, count = TRUE)
+tmp2 <- write_xtable(original.na, file_discarded_19, 
+                     count = TRUE, 
+                     add.percentages = TRUE)
 
 
 # ---------------------------------------------------
@@ -93,7 +107,6 @@ tmp2 <- write_xtable(original.na, file_discarded_19, count = TRUE)
 # Store the field data for a subset 1809-1917
 data.file.19 <- paste0(field,"_19", ".Rds")
 saveRDS(df_19, file = data.file.19)
-
 #Load the RDS file
 df_19 <- readRDS(data.file.19)
 
