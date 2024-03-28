@@ -27,7 +27,8 @@ df_pub_time <- readRDS(data.file)
 #Load the RDS file
 df <- readRDS(data.file)
 # Convert to CSV and store in the data.files folder
-write.csv(df, paste0(output.folder, paste0(field, ".csv")), row.names = FALSE)
+write.table(df, file = paste0(output.folder, paste0(field, ".csv")))
+
 
 
 
@@ -103,8 +104,9 @@ tmp <- write_xtable(o[inds],
 data.file.19 <- paste0(field,"_19", ".Rds")
 saveRDS(df_pubtime19, file = data.file)
 #Load the RDS file
-df <- readRDS(data.file.19)
+df_19 <- readRDS(data.file.19)
 # Convert to CSV and store in the output.tables folder
-write.csv(df, paste0(output.folder, paste0(field,"_19",".csv")), row.names = FALSE)
+write.table(df_19, file = paste0(output.folder, paste0(field, "_19", ".csv")))
+
 
 
