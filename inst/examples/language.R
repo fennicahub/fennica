@@ -103,7 +103,7 @@ tmp2 <- write_xtable(original.na, file_discarded_19,
 
 # Store the field data for a subset 1809-1917
 data.file.19 <- paste0(field,"_19", ".Rds")
-saveRDS(df_pubtime19, file = data.file.19)
+saveRDS(df_19, file = data.file.19)
 
 # Load the RDS file
 df_19 <- readRDS(data.file.19) 

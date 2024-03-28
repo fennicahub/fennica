@@ -109,10 +109,10 @@ data.file.19 <- paste0(field,"_19", ".Rds")
 saveRDS(df_pubtime19, file = data.file.19)
 
 # Load the RDS file
-df_19 <- readRDS(data.file.19)
+df_sub <- readRDS(data.file.19)
 
 # Convert to CSV and store in the output.tables folder
-write.table(df_19, file = paste0(output.folder, paste0(field, "_19", ".csv")))
+write.table(df_sub, file = paste0(output.folder, paste0(field, "_19", ".csv")))
 
 
 ##load to allas 
