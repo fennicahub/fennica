@@ -4,17 +4,7 @@
     "href": "index.html",
     "title": "Fennica metadata conversions: statistical monitoring and analysis",
     "section": "",
-    "text": "1 Preface chapter\nIt is imperative to underscore that this bookdown project is an evolving work-in-progress, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization.\nWithin the DARIAH-FI and FIN-CLARIAH Metadata Harmonization and Analysis work package, we leverage the Finnish national bibliography (FNB) Fennica dataset to develop a harmonized dataset, serving research purposes and laying the groundwork for further infrastructure iterations. The project’s outcomes will be instrumental in supporting the DHL-FI project funded by the Research Council of Finland. The FNB encompasses metadata for over a million documents, including books, newspapers, maps, etc., with records spanning from 1488 to the present. For more details about Fennica, visit The National Finnish Library website.\nCurrently, the bookdown project comprises a few distinct chapters. Notably, the harmonization process has been executed through the establishment of dual pipelines: Complete FNB Pipeline and 1809 to 1917 Period Pipeline These chapters are dedicated to the specific metadata categories.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Fennica metadata conversions: statistical monitoring and analysis</span>"
-    ]
-  },
-  {
-    "objectID": "index.html#data-collection-and-transformation-scripts",
-    "href": "index.html#data-collection-and-transformation-scripts",
-    "title": "Fennica metadata conversions: statistical monitoring and analysis",
-    "section": "1.1 Data collection and transformation scripts",
-    "text": "1.1 Data collection and transformation scripts\ninit.R: compiles instructions for downloading the data and specifying the required packages for installation.\nScripts are tailored for specific needs of the research and can be modified for different research questions:\npriority_fields.R: collects priority fields from the raw data.\nleader.R: collects type of records (leader/06) and bibliographical level (leader/07)\n008_field.R: collects date of entry (008/00-05), publication status (008/06), publication time (008/07-14) and genre (008/33) for the specific type of record and bibliographical level.",
+    "text": "1 Preface chapter\nIt is imperative to underscore that this bookdown project is an evolving work-in-progress, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization.\nWithin the DARIAH-FI and FIN-CLARIAH Metadata Harmonization and Analysis work package, we leverage the Finnish national bibliography (FNB) Fennica dataset to develop a harmonized dataset, serving research purposes and laying the groundwork for further infrastructure iterations. The project’s outcomes will be instrumental in supporting the DHL-FI project funded by the Research Council of Finland. The FNB encompasses metadata for over a million documents, including books, newspapers, maps, etc., with records spanning from 1488 to the present. For more details about Fennica, visit The National Finnish Library website.\nCurrently, the bookdown project comprises a few distinct chapters. Notably, the harmonization process has been executed through the establishment of dual pipelines: Complete FNB Pipeline and 1809 to 1917 Period Pipeline These chapters are dedicated to the specific metadata categories.\nHow to reproduce the workflow",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Fennica metadata conversions: statistical monitoring and analysis</span>"
     ]
@@ -24,17 +14,7 @@
     "href": "language.html",
     "title": "2  Language",
     "section": "",
-    "text": "2.1 Complete Dataset Overview\nLanguage discarded with melinda id\nLanguage codes are from MARC; new custom abbreviations can be added in this table.",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Language</span>"
-    ]
-  },
-  {
-    "objectID": "language.html#complete-dataset-overview",
-    "href": "language.html#complete-dataset-overview",
-    "title": "2  Language",
-    "section": "",
-    "text": "170 unique languages\n148 unique primary languages\n\n1115444 single-language documents (93.91%)\n72369 multilingual documents (6.09%)\nConversions from raw to preprocessed language entries\n50515 documents (4.25%) with unrecognized language",
+    "text": "2.1 Complete Dataset Overview\nUnique languages: 170\nUnique primary languages: 148\n1115444 single-language documents (93.91%)\n72369 multilingual documents (6.09%)\nUnrecognized language: 50515 documents (4.25%)\nConversions from raw to preprocessed language entries\nLanguage harmonized dataset\nLanguage codes are from MARC; new custom abbreviations can be added in this table.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Language</span>"
     ]
@@ -44,17 +24,7 @@
     "href": "language.html#subset-analysis-1809-1917",
     "title": "2  Language",
     "section": "2.2 Subset Analysis: 1809-1917",
-    "text": "2.2 Subset Analysis: 1809-1917\n\n54 unique languages\n60632 single-language documents (94%)\n3872 multilingual documents (6%)\n929 documents (1.44%) with unrecognized language\n\n\n2.2.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n33674\n2.8\n\n\nSwedish\n19107\n1.6\n\n\nFinnish;Swedish\n2021\n0.2\n\n\nGerman\n1988\n0.2\n\n\nLatin\n1662\n0.1\n\n\nRussian\n1587\n0.1\n\n\nUndetermined\n929\n0.1\n\n\nFrench\n628\n0.1\n\n\nEnglish\n425\n0\n\n\nSwedish;Finnish\n170\n0\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Language</span>"
-    ]
-  },
-  {
-    "objectID": "language.html#scripts",
-    "href": "language.html#scripts",
-    "title": "2  Language",
-    "section": "2.3 Scripts",
-    "text": "2.3 Scripts\nPolish language field: language.R\nHarmonize language data function: polish_languages.R\nRender publication time field: language.qmd",
+    "text": "2.2 Subset Analysis: 1809-1917\nUnique languages: 54\n60632 single-language documents (94%)\n3872 multilingual documents (6%)\nUnrecognized language: 929 documents (1.44%)\nLanguage harmonized dataset (1809-1917)\n\n2.2.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages.\n\n\n\nLanguage\nDocuments (n)\nFraction (%)\n\n\n\n\nFinnish\n33674\n2.8\n\n\nSwedish\n19107\n1.6\n\n\nFinnish;Swedish\n2021\n0.2\n\n\nGerman\n1988\n0.2\n\n\nLatin\n1662\n0.1\n\n\nRussian\n1587\n0.1\n\n\nUndetermined\n929\n0.1\n\n\nFrench\n628\n0.1\n\n\nEnglish\n425\n0\n\n\nSwedish;Finnish\n170\n0\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Language</span>"
     ]
@@ -64,7 +34,7 @@
     "href": "publication_time.html",
     "title": "3  Publication time",
     "section": "",
-    "text": "3.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nPublication year discarded with melinda id\nPublication years is available for 1187130 documents (100%). The publication years span is 0-2024.",
+    "text": "3.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nPublication time harmonized dataset\nPublication years is available for 1187130 documents (100%). The publication years span is 0-2024.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Publication time</span>"
     ]
@@ -84,7 +54,7 @@
     "href": "publication_time.html#subset-analysis-1809-1917",
     "title": "3  Publication time",
     "section": "3.2 Subset Analysis: 1809-1917",
-    "text": "3.2 Subset Analysis: 1809-1917\nIn this segment we concentrate on the so called “long 19th century”: literary production during the years 1809-1917, when the Grand Duchy of Finland was an autonomous part of the Russian Empire.\nPublication year conversions\nPublication year discarded\n\n3.2.1 Title count per decade\nA plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period.",
+    "text": "3.2 Subset Analysis: 1809-1917\nIn this segment we concentrate on the so called “long 19th century”: literary production during the years 1809-1917, when the Grand Duchy of Finland was an autonomous part of the Russian Empire.\nPublication year conversions\nPublication year discarded\nPublication time harmonized dataset (1809-1917)\n\n3.2.1 Title count per decade\nA plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Publication time</span>"
     ]
