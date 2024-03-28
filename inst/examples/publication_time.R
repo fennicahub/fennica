@@ -25,7 +25,7 @@ saveRDS(df.harmonized, file = data.file)
 # Generate markdown summary for the whole data
 df_pub_time <- readRDS(data.file)
 #Load the RDS file
-df <- readRDS(data.file)
+#df <- readRDS(data.file)
 # Convert to CSV and store in the data.files folder
 #write.table(df, file = paste0(output.folder, paste0(field, ".csv")))
 
@@ -43,9 +43,9 @@ xx <- data.frame(original = df.harmonized$original,
 xx <- xx %>% filter(!is.na(start_year)) %>% filter(!is.na(end_year)) %>% filter(!is.na(original))
 conversion.file <- paste0(output.folder, field, "_conversion.csv")
 tmp <- write_xtable(xx,
-                   file = conversion.file, 
-                   count = TRUE, 
-                   add.percentages = TRUE)
+                    file = conversion.file, 
+                    count = TRUE, 
+                    add.percentages = TRUE)
 
 
 message("Discarded publication year")
@@ -105,10 +105,10 @@ tmp <- write_xtable(o[inds],
 
 # ---------------------------------------------------
 # Store the field data for a subset 1809-1917
-data.file.19 <- paste0(field,"_19", ".Rds")
-saveRDS(df_pubtime19, file = data.file)
+#data.file.19 <- paste0(field,"_19", ".Rds")
+#saveRDS(df_pubtime19, file = data.file)
 #Load the RDS file
-df_19 <- readRDS(data.file.19)
+#df_19 <- readRDS(data.file.19)
 # Convert to CSV and store in the output.tables folder
 #write.table(df_19, file = paste0(output.folder, paste0(field, "_19", ".csv")))
 
