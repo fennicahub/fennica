@@ -25,7 +25,7 @@ MARC: [041a](https://www.loc.gov/marc/bibliographic/bd041.html)
 [Unrecognized language](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_discarded.csv):  `r sum(is.na(df$languages) | df$language_primary == "Undetermined")` documents (`r round(100*mean(is.na(df$languages) | df$language_primary == "Undetermined"), 2)`%) 
 
 
-[Conversions from raw to preprocessed language entries](dataTable/data_table.html?path=../output.tables/language_conversions.csv)
+[Conversions from raw to preprocessed language entries](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_conversions.csv)
 
 [Language harmonized dataset](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language.csv)
 
