@@ -9,7 +9,7 @@ Sys.setenv("AWS_S3_ENDPOINT" = "a3s.fi")
 all_files_in_bucket <- get_bucket_df("fennica-container",region='', drop = FALSE, verbose = TRUE)
 
 
-file_path <- "output.tables/"
+#file_path <- "output.tables/"
 csv_files <- list.files(path = file_path, pattern = "\\.csv$", full.names = TRUE)
 
 bucket_name <- "fennica-container"
