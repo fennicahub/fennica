@@ -33,19 +33,19 @@ Language codes are from [MARC](https://www.loc.gov/marc/languages/language_code.
 
 ## Subset Analysis: 1809-1917
 
-[Unique languages](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/languages_accepted_19.csv): `r length(unique(unlist(strsplit(as.character(df_19$languages), ";"))))-1`
+[Unique languages (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/languages_accepted_19.csv): `r length(unique(unlist(strsplit(as.character(df_19$languages), ";"))))-1`
 
 `r sum(!df_19$multilingual, na.rm = TRUE)` single-language documents (`r round(100 * mean(!df_19$multilingual, na.omit = TRUE), 2)`%)
 
 `r sum(df_19$multilingual, na.rm = TRUE)` multilingual documents (`r round(100 * mean(df_19$multilingual, na.omit = TRUE), 2)`%)
 
-[Unrecognized language](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_discarded_19.csv): `r sum(is.na(df_19$languages) | df_19$language_primary == "Undetermined")` documents (`r round(100*mean(is.na(df_19$languages) | df_19$language_primary == "Undetermined"), 2)`%)
+[Unrecognized language (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_discarded_19.csv): `r sum(is.na(df_19$languages) | df_19$language_primary == "Undetermined")` documents (`r round(100*mean(is.na(df_19$languages) | df_19$language_primary == "Undetermined"), 2)`%)
 
 [Download language harmonized dataset (1809-1917)](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_19.csv)
 
 ### Top languages for 1809-1917
 
-Number of titles assigned with each language (top-10). For a complete list, see [accepted languages](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/languages_accepted_19.csv).
+Number of titles assigned with each language (top-10). For a complete list, see [accepted languages (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/languages_accepted_19.csv).
 
 ```{r}
 #| label = "summarylang2",
