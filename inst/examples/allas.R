@@ -4,9 +4,7 @@ library(dplyr)
 library(curl)
 library(httr)
 
-Sys.setenv("AWS_ACCESS_KEY_ID" = "84be4dc0746d4116bef002201bfd7702",
-           "AWS_SECRET_ACCESS_KEY" = "6b58dea65c504433b7b059995d92b8ac",
-           "AWS_S3_ENDPOINT" = "a3s.fi")
+Sys.setenv("AWS_S3_ENDPOINT" = "a3s.fi")
 
 all_files_in_bucket <- get_bucket_df("fennica-container",region='', drop = FALSE, verbose = TRUE)
 
