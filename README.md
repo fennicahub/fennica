@@ -49,17 +49,27 @@ The script was provided to us by Osma Suominen (The National Library of Finland)
 
 [publication_time.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/publication_time.R)
 
+[title.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/title.R)
+
+[title_uniform.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/title_uniform.R)
+
 **7. Main polish functions to clean and harmonize different types of data field in fennica/R**
 
-[polish_years.R](https://github.com/fennicahub/fennica/blob/master/R/polish_years.R)
+[polish_years.R](https://github.com/fennicahub/fennica/blob/master/R/polish_years.R) 
 
 [polish_languages.R](https://github.com/fennicahub/fennica/blob/master/R/polish_languages.R)
+
+[polish_title.R](https://github.com/fennicahub/fennica/blob/master/R/polish_title.R)
 
 **8. Render qmd file for each <field.qmd> in fennica/inst/examples**
 
 [publication_time.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/publication_time.qmd)
   
 [language.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/language.qmd)
+
+[title.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/title.qmd)
+
+[title_uniform.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/title_uniform.qmd)
   
 **9. Render the whole notebook from R-Studio terminal. How to render [here](https://github.com/fennicahub/fennica/blob/master/README_render_fennica.md)**
 
@@ -72,6 +82,10 @@ quarto render
 ``` r
 quarto render <field_name>.qmd
 ```
+10. Upload summary tables to Allas by running a allas.R script
+
+[allas.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/allas.R)
+
 
 
 ## 
