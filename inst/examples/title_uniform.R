@@ -7,7 +7,7 @@ names(df.tmp) <- field
 original <- df.orig[[field]]
 
 # Harmonize the raw data
-x <- fennica::polish_title(original)
+x <- polish_title(original)
 
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
@@ -19,8 +19,8 @@ file_accepted  <- paste0(output.folder, field, "_accepted.csv")
 file_discarded <- paste0(output.folder, field, "_discarded.csv")
 
 # ------------------------------------------------------------
-
 # Generate data summaries for a complete data set 
+# ------------------------------------------------------------
 
 message("Accepted entries in the preprocessed data")
 s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE, add.percentages = TRUE)
@@ -46,17 +46,14 @@ df <- readRDS(data.file)
 # Convert to CSV and store in the data.files folder
 write.table(df, file = paste0(output.folder, paste0(field, ".csv")))
 
+
+
 # ------------------------------------------------------------
-
-# Generate markdown summary in note_source.md
-df <- readRDS(data.file)
-# tmp <- knit(input = paste(field, ".Rmd", sep = ""), 
-#             output = paste(field, ".md", sep = ""))
-
 # Subset 1809-1917 
 # ------------------------------------------------------------
-# Run publication_time.R file to get the melindas needed for the 19th century slicing
-source("publication_time.R")
+
+#Run melindas_19.R to get melindas for 1809-1917
+source("melindas_19.R")
 
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,] # publication time has df.harmonized instead of df.tmp 
 field <- "title_uniform"
@@ -84,7 +81,7 @@ original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
 tmp <- write_xtable(original.na, file_discarded_19, count = TRUE, add.percentages = TRUE)
 
 # ------------------------------------------------------------
-# Store the title field data
+# Store the title uniform field data 1809-1917
 
 data.file.19 <- paste0(field, ".Rds")
 saveRDS(df_19, file = data.file.19)

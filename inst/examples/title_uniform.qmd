@@ -16,15 +16,23 @@ MARC: [240a](https://www.loc.gov/marc/bibliographic/bd240.html)
 
 ## Complete Dataset Overview
 
--   [Unique accepted entries](dataTable/data_table.html?path=../%60r%20file_accepted%60): `r length(unique(df[[field]]))`
--   [Unique discarded entries in original data](dataTable/data_table.html?path=../%60r%20file_discarded%60) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
--   Original documents with non-NA titles: `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
--   Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
+[Unique accepted entries](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_uniform_accepted.csv): `r length(unique(df[[field]]))`
+
+[Unique discarded entries in original data](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_uniform_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
+
+Original documents with non-NA titles: `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
+
+Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
+
+[Download unifrom title field harmonized dataset](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_uniform.csv)
 
 ## Subset Analysis: 1809-1917
 
--   [Unique accepted entries (1809-1917)](dataTable/data_table.html?path=../%60r%20file_accepted%60): `r length(unique(df_19[[field]]))`
--   [Unique discarded entries in original data (1809-1917)](dataTable/data_table.html?path=../%60r%20file_discarded_19%60) (excluding NA cases): `r as.vector(countLines(file_discarded_19) - 1)`
+[Unique accepted entries (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_uniform_accepted_19.csv): `r length(unique(df_19[[field]]))`
+
+[Unique discarded entries in original data (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_uniform_discarded_19.csv) (excluding NA cases): `r as.vector(countLines(file_discarded_19) - 1)`
+
+[Download uniform title field harmonized dataset (1809-1917)](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_uniform_19.csv)
 
 Top-`r ntop` titles and their title counts for 1809-1917 period.
 

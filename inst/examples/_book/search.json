@@ -37,16 +37,30 @@
   {
     "objectID": "title.html#complete-dataset-overview",
     "href": "title.html#complete-dataset-overview",
-    "title": "4  Title field: summary",
+    "title": "4  Title",
     "section": "4.1 Complete Dataset Overview",
     "text": "4.1 Complete Dataset Overview\nUnique accepted entries: 880037\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 1187813 / 1187813 (100%)\nOriginal documents with missing (NA) titles 0 / 1187813 documents (0%)\nDownload title field harmonized dataset"
   },
   {
     "objectID": "title.html#subset-analysis-1809-1917",
     "href": "title.html#subset-analysis-1809-1917",
-    "title": "4  Title field: summary",
+    "title": "4  Title",
     "section": "4.2 Subset Analysis: 1809-1917",
     "text": "4.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 49806\nUnique discarded entries in original data (1809-1917) (excluding NA cases): 0\nDownload title field harmonized dataset\nTop-20 titles and their title counts for the 1809-1917 period\n\n\n\n\n\nFrequency of unique titles:"
+  },
+  {
+    "objectID": "title_uniform.html#complete-dataset-overview",
+    "href": "title_uniform.html#complete-dataset-overview",
+    "title": "5  Uniform Title",
+    "section": "5.1 Complete Dataset Overview",
+    "text": "5.1 Complete Dataset Overview\nUnique accepted entries: 100595\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 1187813 / 1187813 (100%)\nOriginal documents with missing (NA) titles 0 / 1187813 documents (0%)\nDownload unifrom title field harmonized dataset"
+  },
+  {
+    "objectID": "title_uniform.html#subset-analysis-1809-1917",
+    "href": "title_uniform.html#subset-analysis-1809-1917",
+    "title": "5  Uniform Title",
+    "section": "5.2 Subset Analysis: 1809-1917",
+    "text": "5.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 3275\nUnique discarded entries in original data (1809-1917) (excluding NA cases): 0\nDownload uniform title field harmonized dataset (1809-1917)\nTop-20 titles and their title counts for 1809-1917 period."
   },
   {
     "objectID": "acknowledgments.html",
