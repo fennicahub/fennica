@@ -16,6 +16,7 @@ tmp*
 slides_201606_Krakow
 *cache*
 *.pdf
+*.csv
 *publication_time.csv
 *publication_time_19.csv
 *language.csv
