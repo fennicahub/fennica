@@ -18,9 +18,9 @@ The publication years section offers a comprehensive summary of the dataset's ye
 
 ## Complete Data Overview
 
-[Publication year conversions](dataTable/data_table.html?path=../output.tables/publication_time_conversion.csv)
+[Publication year conversions](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time_conversion.csv)
 
-[Publication year discarded](dataTable/data_table.html?path=../output.tables/publication_time_discarded.csv)
+[Publication year discarded](dataTable/data_table.html?path=.https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time_discarded.csv)
 
 [Download publication time harmonized dataset](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time.csv)
 
@@ -82,9 +82,9 @@ kable(head(tab, 14))
 
 In this segment we concentrate on the so called "long 19th century": literary production during the years 1809-1917, when the Grand Duchy of Finland was an autonomous part of the Russian Empire.
 
-[Publication year conversions (1809-1917)](dataTable/data_table.html?path=../output.tables/publication_time_conversion_19.csv)
+[Publication year conversions (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time_conversion_19.csv)
 
-[Publication year discarded (1809-1917)](dataTable/data_table.html?path=../output.tables/publication_time_discarded_19.csv)
+[Publication year discarded (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time_discarded_19.csv)
 
 [Download publication time harmonized dataset (1809-1917)](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time_19.csv)
 
