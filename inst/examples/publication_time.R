@@ -26,7 +26,7 @@ saveRDS(df.harmonized, file = data.file)
 df_pub_time <- readRDS(data.file)
 #Load the RDS file
 df <- readRDS(data.file)
-# Convert to CSV and store in the data.files folder
+# Convert to CSV and store in the output.tables folder
 write.table(df, file = paste0(output.folder, paste0(field, ".csv")))
 
 

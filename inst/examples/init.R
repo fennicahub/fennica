@@ -33,6 +33,8 @@ source("leader.R")
 #genre_book and add to data
 source("008_field.R")
 
+#source("allas.R")
+
 
 ntop <- 20
 book_author <- "Turku Data Science Group"

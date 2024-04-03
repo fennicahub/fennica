@@ -13,11 +13,6 @@ source("title_uniform.R")
 
 MARC: [240a](https://www.loc.gov/marc/bibliographic/bd240.html)
 
-Polish uniform title field: [title_uniform.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/title_uniform.R)
-
-Harmonize title metadata function: [polish_title.R](https://github.com/fennicahub/fennica/blob/master/R/polish_title.R)
-
-Render uniform title field: [title_uniform.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/title_uniform.qmd)
 
 ## Complete Dataset Overview
 
@@ -28,8 +23,8 @@ Render uniform title field: [title_uniform.qmd](https://github.com/fennicahub/fe
 
 ## Subset Analysis: 1809-1917
 
--   [Unique accepted entries](dataTable/data_table.html?path=../%60r%20file_accepted%60): `r length(unique(df_19[[field]]))`
--   [Unique discarded entries in original data](dataTable/data_table.html?path=../%60r%20file_discarded_19%60) (excluding NA cases): `r as.vector(countLines(file_discarded_19) - 1)`
+-   [Unique accepted entries (1809-1917)](dataTable/data_table.html?path=../%60r%20file_accepted%60): `r length(unique(df_19[[field]]))`
+-   [Unique discarded entries in original data (1809-1917)](dataTable/data_table.html?path=../%60r%20file_discarded_19%60) (excluding NA cases): `r as.vector(countLines(file_discarded_19) - 1)`
 
 Top-`r ntop` titles and their title counts for 1809-1917 period.
 

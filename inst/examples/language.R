@@ -34,7 +34,7 @@ tmp <- write_xtable(tab, paste(output.folder, field, "_conversions.csv", sep = "
                     count = TRUE,
                     add.percentages = TRUE)
 
-message("Discarded")
+message("Language discarded")
 # Original entries that were converted into NA
 s <- unlist(strsplit(df.orig$language, ";"))
 original.na <- s[s %in% out$unrecognized]
@@ -43,7 +43,7 @@ tmp2 <- write_xtable(original.na, file_discarded,
                      count = TRUE, 
                      add.percentages = TRUE)
 
-message("Discarded id")
+message("Language discarded id")
 
 lo <- as.list(original.na)
 filtered_df <- df.orig[df.orig$language %in% lo, ]
@@ -113,7 +113,6 @@ write.table(df_19, file = paste0(output.folder, paste0(field, "_19", ".csv")))
 
 
 #load to allas 
-
 #source("allas.R")
 
 
