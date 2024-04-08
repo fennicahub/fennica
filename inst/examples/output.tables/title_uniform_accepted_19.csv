@@ -110,7 +110,6 @@ The Prince of the House of David	 5	0.09
 The way to wealth	 5	0.09
 Yxi uusi ehto-wirsi	 5	0.09
 Yxinkertainen ja jumalinen wirsi	 5	0.09
-"Wachet und betet" oder "Durch Ihn zu Ihm!"	 4	0.08
 A Tale of Two Cities	 4	0.08
 Bönbok för barn	 4	0.08
 Callimachi in Palladem hymnus svethice redditus notisque illustratus	 4	0.08
@@ -185,6 +184,7 @@ Utkast till en systematisk uppställning af de till Finlands pastoral-lagfarenhe
 Vaticinia Jesaiae in Idumaeos latine versa	 4	0.08
 Vaticinium Nahumi latine et fennice redditum, notisque illustratum	 4	0.08
 Voces Pentateuchi Persici	 4	0.08
+Wachet und betet oder Durch Ihn zu Ihm!	 4	0.08
 Wie Heinrich von Eichenfels zur Erkenntniss Gottes kam	 4	0.08
 Zweymahl zwey und funffzig auserlesene biblische Historien aus dem Alten und Neuen Testamente	 4	0.08
 A token for children	 3	0.06
@@ -311,7 +311,6 @@ Yö ja päivä	 3	0.06
 Yxi laulu laulettawa	 3	0.06
 Yxi surkuteldawa walitus-weisu	 3	0.06
 Yxi uusi surullinen weisu	 3	0.06
-"Papa hat's erlaubt"	 2	0.04
 813	 2	0.04
 A Christmas carol	 2	0.04
 A chronicle of the conquest of Granada	 2	0.04
@@ -696,7 +695,7 @@ Om wäxlar	 2	0.04
 Omatunto	 2	0.04
 On liberty	 2	0.04
 Onde makter	 2	0.04
-Opas "skruf whist" (osto) peliin alotteleville	 2	0.04
+Opas skruf whist (osto) peliin alotteleville	 2	0.04
 Opiskelijaluettelo (1819)	 2	0.04
 Opiskelijaluettelo (1820)	 2	0.04
 Opiskelijaluettelo (1821)	 2	0.04
@@ -706,6 +705,7 @@ Opiskelijaluettelo (1824)	 2	0.04
 Opiskelijaluettelo (1825)	 2	0.04
 Opiskelijaluettelo (1826)	 2	0.04
 På ski over Grønland	 2	0.04
+Papa hat's erlaubt	 2	0.04
 Papin tytär	 2	0.04
 Parabeln	 2	0.04
 Paradiset	 2	0.04
@@ -761,7 +761,7 @@ Social själfhjälp	 2	0.04
 Soedinenìe i perevod četyreh Evangelìj	 2	0.04
 Some thoughts concerning education	 2	0.04
 Specimen continens methodi residua, ex divisione numerorum oriunda, investigandi	 2	0.04
-Spravki o "konstitucìi" Finlândìi	 2	0.04
+Spravki o konstitucìi Finlândìi	 2	0.04
 Starke Per	 2	0.04
 Stimmbildung und Stimmpflege	 2	0.04
 Striden vid Tuukkala	 2	0.04
@@ -844,8 +844,8 @@ Veilchen im Walde	 2	0.04
 Vérité	 2	0.04
 Viborgs stads historia	 2	0.04
 Vilse i lifvet	 2	0.04
-Vlast' t'my ili "kogotok uvâz, vsej ptičke propast'"	 2	0.04
-Vsepoddannějšìj otčet" finlândskago general"-gubernatora po upravlenìû Velikim" Knâžestvom s" sentâbrâ 1898 po sentâbr' 1902 g.	 2	0.04
+Vlast' t'my ili kogotok uvâz, vsej ptičke propast'	 2	0.04
+Vsepoddannějšìj otčet finlândskago general-gubernatora po upravlenìû Velikim Knâžestvom s sentâbrâ 1898 po sentâbr' 1902 g.	 2	0.04
 Wähäisten lasten opetus-wirsi	 2	0.04
 What a young wife ought to know	 2	0.04
 Wiimeinen puhe ja weisu	 2	0.04
@@ -856,12 +856,7 @@ Yxi uusi joulu-wirsi	 2	0.04
 Zanoni	 2	0.04
 Ženitʹba	 2	0.04
 Zwischen Himmel und Erde	 2	0.04
-"Ich glaube an Jesum Christum, Gottes eingeboreren Sohn, unserern Herrn" : sieben Predigten über diese Worte des zweiten Glaubens-Artikels nach dem kleinen Luther'schen Katechismus	 1	0.02
-"That Rascal Pat"	 1	0.02
-"The Chronicles of the Imp"	 1	0.02
-"The Conflict in the 'Heavenlies'"	 1	0.02
-"The Self or Carnal Life and what it is"	 1	0.02
-”Min lilla gosse"	 1	0.02
+”Min lilla gosse	 1	0.02
 20.000 lieues sous les mers	 1	0.02
 606 Ehrlich-Hata-medlet och möjligheten af syfilis botande	 1	0.02
 A bid for fortune	 1	0.02
@@ -1005,7 +1000,7 @@ Ateismi, kokoelma pienempiä kirjoituksia	 1	0.02
 Au bonheur des dames	 1	0.02
 Auf den Galeeren	 1	0.02
 August Hermann Francke	 1	0.02
-Aus dem Leben eines "Unbekehrten"	 1	0.02
+Aus dem Leben eines Unbekehrten	 1	0.02
 Aus Liebe zur Kunst	 1	0.02
 Ausgewählte Kapitel der Technik	 1	0.02
 Auszug aus der Schrift: Geschichte der Mässigkeits-Gesellschaft in den vereinigten Staaten Nordamerikas	 1	0.02
@@ -1641,7 +1636,7 @@ Helsingfors F.B.K:s lefnadsöden under perioden 1864-1904	 1	0.02
 Helsningsord till presterskapet i Borgå stift	 1	0.02
 Helso- och sjukvårdslärans grunder samt Finlands lagstiftning rörande allmän helsovård	 1	0.02
 Hembygdslära	 1	0.02
-Hemgymnastik på "Palästron"	 1	0.02
+Hemgymnastik på Palästron	 1	0.02
 Hemma	 1	0.02
 Hemmets köksträdgard	 1	0.02
 Hemträdgårdens arbetskalender	 1	0.02
@@ -1711,6 +1706,7 @@ I skygger og lys	 1	0.02
 I svenska bondehem : skildringar	 1	0.02
 I telefon	 1	0.02
 Ich	 1	0.02
+Ich glaube an Jesum Christum, Gottes eingeboreren Sohn, unserern Herrn : sieben Predigten über diese Worte des zweiten Glaubens-Artikels nach dem kleinen Luther'schen Katechismus	 1	0.02
 Ihmisruumiin rakennuksen pääpiirteet ja terveysopin alkeet	 1	0.02
 Il Kalevala o la poesia tradizionale dei Finni	 1	0.02
 Il mistero del poeta	 1	0.02
@@ -1801,10 +1797,10 @@ Juridisk handbok för medborgerlig bildning	 1	0.02
 Juristerna	 1	0.02
 Justice	 1	0.02
 Juttu juomareista	 1	0.02
+K finlândskomu voprosu : stat'i po povodu rěči člena Gosudarstvennoj dumy P. N. Milûkova : 13 maâ 1908 goda pri razsmotrěnìi zaprosov po finlândskomu upravlenìû	 1	0.02
 K rabočemu narodu	 1	0.02
 K. Finska Hushållningssällskapet 1797-1897	 1	0.02
 K' finlândskomu voprosu : stat'i po povodu rěči člena Gosudarstvennoj dumy P. N. Milûkova : 13 maâ1908 goda pri razsmotrěnìi zaprosov' po finlândskomu upravlenìû	 1	0.02
-K" finlândskomu voprosu : stat'i po povodu rěči člena Gosudarstvennoj dumy P. N. Milûkova : 13 maâ 1908 goda pri razsmotrěnìi zaprosov" po finlândskomu upravlenìû	 1	0.02
 Kærlighedens Veje	 1	0.02
 Kak čitat' Evangelie i v čem ego suŝnost'?	 1	0.02
 Kak i︠a︡ popal na Sakhalin	 1	0.02
@@ -2100,7 +2096,7 @@ Kutsu (1916-03-29)	 1	0.02
 Kutsu (1916-10-04)	 1	0.02
 Kutsu (1917-10-10)	 1	0.02
 Kutsu (1917-10)	 1	0.02
-Kutteren "Vildanden"	 1	0.02
+Kutteren Vildanden	 1	0.02
 Kuulutus (1809-01-19)	 1	0.02
 Kuulutus (1809-02-06)	 1	0.02
 Kuulutus (1809-02-09)	 1	0.02
@@ -2309,8 +2305,8 @@ Lilla Pers julafton	 1	0.02
 Lille Eyolf	 1	0.02
 Lindeallee	 1	0.02
 Linearum atque superficierum theoria	 1	0.02
+Listki iz nastoâŝago i prošlago Finlândìi	 1	0.02
 Listki iz' nastoâŝago i prošlago Finlândìi	 1	0.02
-Listki iz" nastoâŝago i prošlago Finlândìi	 1	0.02
 Liten bönebok för små barn	 1	0.02
 Literaturgeschichte des achtzehnten Jahrhunderts	 1	0.02
 Litteratur	 1	0.02
@@ -2557,7 +2553,7 @@ One Thing Needful	 1	0.02
 Onkel Abels moraliska sagor och berättelser för barn och ungdom	 1	0.02
 Onkel Toms Hütte	 1	0.02
 Opas kansatieteellisellä osastolla	 1	0.02
-Opisanìe finlândskoj vojny na suhom" puti i na morě v" 1808 i 1809 godah"	 1	0.02
+Opisanìe finlândskoj vojny na suhom puti i na morě v 1808 i 1809 godah	 1	0.02
 Opiskelijaluettelo (1818)	 1	0.02
 Oppikirja suomalaisen kirjallisuuden historiassa	 1	0.02
 Originem indolemque genuinam formarum linguae Fennicae verbalium enucleare periclitatura	 1	0.02
@@ -2583,7 +2579,7 @@ Päivä Helsingissä	 1	0.02
 Päiväperhoja	 1	0.02
 Palata № 6	 1	0.02
 Palmblätter	 1	0.02
-Pamâti finlândskago general"-gubernatora Nikolaâ Ivanoviča Bobrikova	 1	0.02
+Pamâti finlândskago general-gubernatora Nikolaâ Ivanoviča Bobrikova	 1	0.02
 Papin tytär,Papin rouva	 1	0.02
 Paradisin yrti-tarha (1819)	 1	0.02
 Paradisin yrti-tarha (1853)	 1	0.02
@@ -2697,7 +2693,7 @@ Reseminnen från Egypten, Sinai och Palestina 1859-1860	 1	0.02
 Reservikasarmista	 1	0.02
 Revizor	 1	0.02
 Revolt	 1	0.02
-Revolûcìâ v Finlândìi pri knâzě Ivaně Obolenskom"	 1	0.02
+Revolûcìâ v Finlândìi pri knâzě Ivaně Obolenskom	 1	0.02
 Revolution och kontrarevolution i Ryssland och Finland	 1	0.02
 Revolutionsrörelsen i Ryssland	 1	0.02
 Revue Bleue	 1	0.02
@@ -2887,6 +2883,7 @@ Téli rege	 1	0.02
 Ten nights in a bar-room and what I saw there	 1	0.02
 Testamentti	 1	0.02
 Thaïs	 1	0.02
+That Rascal Pat	 1	0.02
 The ability to converse	 1	0.02
 The Adventures of a Modest Man	 1	0.02
 The adventures of Huckleberry Finn	 1	0.02
@@ -2917,13 +2914,15 @@ The Children of the King	 1	0.02
 The children of the New Forest	 1	0.02
 The Chimes	 1	0.02
 The Chimney Corner	 1	0.02
+The Chronicles of the Imp	 1	0.02
 The Classics for the Million	 1	0.02
 The comet of a season	 1	0.02
+The Conflict in the 'Heavenlies'	 1	0.02
 The country diary of an Edwardian lady	 1	0.02
 The crime of poverty	 1	0.02
 The Cristian	 1	0.02
 The Crofton boys	 1	0.02
-The cruise of the "Dazzler"	 1	0.02
+The cruise of the Dazzler	 1	0.02
 The danger trail	 1	0.02
 The dark flower	 1	0.02
 The Eastern crisis : a letter to the Duke of Westminster, K.G.	 1	0.02
@@ -3006,6 +3005,7 @@ The Scarlet Pimpernel	 1	0.02
 The second jungle book	 1	0.02
 The Secret	 1	0.02
 The secret of success, or finger posts on the highway of life	 1	0.02
+The Self or Carnal Life and what it is	 1	0.02
 The seven little sisters who live on the round ball that floats in the air	 1	0.02
 The Shakespeare story-book	 1	0.02
 The Simple Case of Susan	 1	0.02
@@ -3088,7 +3088,7 @@ Travels through Sweden, Finland, and Lapland, to the North Cape, in the years 17
 Tre förälskade poliskonstaplar	 1	0.02
 Tre fortællinger	 1	0.02
 Treasure island	 1	0.02
-Tremasteren "Fremtiden	 1	0.02
+Tremasteren Fremtiden	 1	0.02
 Trenta per cento	 1	0.02
 Tri smerti	 1	0.02
 Tri vstreči	 1	0.02
@@ -3170,7 +3170,7 @@ Vasilisa Melent'eva	 1	0.02
 Vaticinium Michae fennice versum notisque illustratum	 1	0.02
 Vegetarisches Kochbuch für Freunde der natürlichen Lebensweise	 1	0.02
 Veljekset	 1	0.02
-Venäläisten oikeuksista Suomessa : tarkastelu Keisarikunnan Ministerineuvoston ehdotuksesta "muiden Venäjän alamaisten saattamisesta oikeuksien puolesta yhdenvertaisiksi Suomen kansalaisten kanssa"	 1	0.02
+Venäläisten oikeuksista Suomessa : tarkastelu Keisarikunnan Ministerineuvoston ehdotuksesta muiden Venäjän alamaisten saattamisesta oikeuksien puolesta yhdenvertaisiksi Suomen kansalaisten kanssa	 1	0.02
 Vera ne gasnet	 1	0.02
 Verdens Herre	 1	0.02
 Vergleichende Märchenforschungen	 1	0.02

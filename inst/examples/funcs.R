@@ -6991,34 +6991,31 @@ polish_title <- function (x) {
   x <- unique(x)
   xinds <- match(x0, x)
   
-  
   # Remove periods at the end
-  x <- gsub("\\.$", "", as.character(x))
+  x <- gsub("\\.+$", "", as.character(x))
   x <- gsub("\\. $", "", as.character(x))
+  x <- gsub("^\\.+", "", as.character(x))
   
   x <- gsub("\\,$", "", x) # Remove commas at the end
   x <- gsub("[ ]+$", "", x) # Remove trailing spaces
   x <- gsub("\\]$", "", x) # Remove closing square brackets at the end
   x <- gsub("^\\[", "", x) # Remove opening square brackets at the start
-  #x <- gsub("\\[|\\]", "",x) #remove brackets
-  #x <- gsub("\\)$", "", x) # Remove closing parentheses at the end
   x <- gsub("^\\(", "", x) # Remove opening parentheses at the start
-  x <- gsub("\\:$", "", x) # Remove colon at the end
+  x <- gsub("\\:+$", "", x) # Remove colon at the end
   x <- gsub("^\\:", "", x) # Remove colon at the start
-  x <- gsub("\\;$", "", x) # Remove semicolon at the end
+  x <- gsub("\\;+$", "", x) # Remove semicolon at the end
   x <- gsub("/", "", x)
   x <- gsub("=", "", x)
   x <- str_replace_all(x, "\\|", "") # Remove pipe characters
   x <- str_replace_all(x, "\\/", "") # Remove slashes
-  
+  x <- gsub("\\s+$", "", x)
+  x <- gsub('"', "", x, fixed=TRUE) # Corrected line to remove double quotes
   
   # Capitalize the first letter of words
   x <- gsub("^a", "A", x)
   x <- gsub("^the", "The", x)
   
   x[x == ""] <- NA
-  
-  
   
   # Map back to originals
   x <- x[xinds]

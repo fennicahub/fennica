@@ -18,7 +18,7 @@ Original documents with non-NA titles: `r sum(!is.na(df[[field]]))` / `r nrow(df
 
 Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
 
-[Title discarded](dataTable/data_table.html?path=.https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_discarded.csv)
+[Unique discarded entries in original data](dataTable/data_table.html?path=.https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_discarded.csv): `r as.vector(countLines(file_discarded) - 1)`
 
 [Download title field harmonized dataset](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title.csv)
 
@@ -43,9 +43,8 @@ Original documents with non-NA titles: `r sum(!is.na(df_19[[field]]))` / `r nrow
 
 Original documents with missing (NA) titles `r sum(is.na(df_19[[field]]))` / `r nrow(df_19)` documents (`r round(100*mean(is.na(df_19[[field]])), 1)`%)
 
-[Title discarded (1809-1917)](dataTable/data_table.html?path=.https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_discarded_19.csv)
 
-[Download title field harmonized dataset](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_19.csv)
+[Download title field harmonized dataset(1809-1917)](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_19.csv)
 
 ### Top-`r ntop` titles and their title counts for the 1809-1917 period for every content type 
 

@@ -10,7 +10,7 @@ Sinuhe, egyptiläinen	127	0.08
 Chronicon episcoporum Finlandensium	113	0.07
 Fänrik Ståls sägner	106	0.07
 Fältskärns berättelser	 97	0.06
-Sarjakuvat	 86	0.06
+Sarjakuvat	 87	0.06
 Tuntematon sotilas	 69	0.05
 Laulu tulipunaisesta kukasta	 67	0.04
 Sinuhe egyptiläinen	 63	0.04
@@ -44,10 +44,10 @@ Hurskas kurjuus	 40	0.03
 Raamattu (lastenversio)	 40	0.03
 Anna Karenina	 39	0.03
 Insecta Fennica enumerans	 38	0.02
+Joulupukki	 38	0.02
 Pippi Långstrump	 38	0.02
 Historia ecclesiae Sveo-Gothicae	 37	0.02
 Jäniksen vuosi	 37	0.02
-Joulupukki	 37	0.02
 Les misérables	 37	0.02
 Fasciculus juridicus	 36	0.02
 Ihmiskunnan viholliset	 36	0.02
@@ -86,6 +86,7 @@ Jul i Fågelkärr	 27	0.02
 Sočinenija	 27	0.02
 Pakolaiset	 26	0.02
 Prestuplenie i nakazanie	 26	0.02
+Romaanit	 26	0.02
 Treasure island	 26	0.02
 Bambi	 25	0.02
 Idiot	 25	0.02
@@ -93,13 +94,12 @@ Lukemisia lapsille	 25	0.02
 Murhellinen ero-wirsi	 25	0.02
 Pride and prejudice	 25	0.02
 Punainen kuin veri	 25	0.02
-Romaanit	 25	0.02
+Täällä Pohjantähden alla	 25	0.02
 The jungle book	 25	0.02
 365 stories	 24	0.02
 Kuka murhasi rouva Skrofin?	 24	0.02
 Kuroshitsuji	 24	0.02
 Oivaltaja	 24	0.02
-Täällä Pohjantähden alla	 24	0.02
 The dark tower	 24	0.02
 De gratia Dei	 23	0.02
 Hur gick det sen?	 23	0.02
@@ -1041,7 +1041,7 @@ Meddelande	  7	0.00
 Mellan fyra ögon	  7	0.00
 Metropol	  7	0.00
 Miesten meri	  7	0.00
-Mondo piccolo "Don Camillo"	  7	0.00
+Mondo piccolo Don Camillo	  7	0.00
 Mr. Mercedes	  7	0.00
 Murder at the vicarage	  7	0.00
 My system for ladies	  7	0.00
@@ -1108,6 +1108,7 @@ The border legion	  7	0.00
 The borrowers	  7	0.00
 The building of Jalna	  7	0.00
 The clan of the cave bear	  7	0.00
+The cruise of the Dazzler	  7	0.00
 The Da Vinci -code	  7	0.00
 The fast metabolism diet	  7	0.00
 The first forty-nine stories	  7	0.00
@@ -1750,6 +1751,7 @@ Bakom Kuopio	  5	0.00
 Bara lite till	  5	0.00
 Barnets tillväxt och utveckling	  5	0.00
 Battle cry	  5	0.00
+Be careful what you wish for	  5	0.00
 Bear Island	  5	0.00
 Beautiful world, where are you	  5	0.00
 Bedtime	  5	0.00
@@ -1964,6 +1966,7 @@ From hell	  5	0.00
 From Potter's field	  5	0.00
 Genuine lies	  5	0.00
 Geografi med Billeder til Brug i vore Almueskoler og ved den første Undervisning	  5	0.00
+Geoidi	  5	0.00
 Geometria	  5	0.00
 Germinal	  5	0.00
 Ghosts	  5	0.00
@@ -2057,6 +2060,7 @@ Jul i krinolin	  5	0.00
 Julberättelser	  5	0.00
 Jumping	  5	0.00
 Juoppohullun päiväkirja	  5	0.00
+Just between us	  5	0.00
 Just for fun	  5	0.00
 Kadonneet alushameet	  5	0.00
 Kaerlighedens ABZ	  5	0.00
@@ -2433,7 +2437,6 @@ The Christmas murder game	  5	0.00
 The clockmaker's daughter	  5	0.00
 The cricket on the hearth	  5	0.00
 The cross and the switchblade	  5	0.00
-The cruise of the "Dazzler"	  5	0.00
 The Da Vinci code	  5	0.00
 The diamond eye	  5	0.00
 The digital photography	  5	0.00
@@ -2549,6 +2552,7 @@ Travels with Charley	  5	0.00
 Tre sekunder	  5	0.00
 Trees	  5	0.00
 Tritonus	  5	0.00
+Troe	  5	0.00
 Tropic of Cancer	  5	0.00
 True betrayals	  5	0.00
 Tulagi Hotel	  5	0.00
@@ -2613,7 +2617,6 @@ Yxinkertainen ja jumalinen wirsi	  5	0.00
 Zen and the art of motorcycle maintenance	  5	0.00
 Zoologiâ	  5	0.00
 'Tis	  4	0.00
-"Wachet und betet" oder "Durch Ihn zu Ihm!"	  4	0.00
 101 dog tricks	  4	0.00
 12 rules for life	  4	0.00
 1794	  4	0.00
@@ -2777,7 +2780,6 @@ Barbe-Rouge	  4	0.00
 Barn- och ungdomspsykologi	  4	0.00
 Båten i vassen	  4	0.00
 Battle of the Beast	  4	0.00
-Be careful what you wish for	  4	0.00
 Bear	  4	0.00
 Beastly things	  4	0.00
 Beatrice	  4	0.00
@@ -3153,7 +3155,7 @@ Det sista livet	  4	0.00
 Det som göms i snö	  4	0.00
 Detaljerna	  4	0.00
 Deti Arbata	  4	0.00
-Detskaja bolezn' "levizny" v kommunizme	  4	0.00
+Detskaja bolezn' levizny v kommunizme	  4	0.00
 Devices and desires	  4	0.00
 Diamantmysteriet	  4	0.00
 Diamonds are forever	  4	0.00
@@ -3292,7 +3294,7 @@ Familie Maulwurf	  4	0.00
 Family secrets	  4	0.00
 Fängelsemysteriet	  4	0.00
 Fanny Hill : memoirs of a woman of pleasure	  4	0.00
-Farbfernsehen ..	  4	0.00
+Farbfernsehen	  4	0.00
 Fasandræberne	  4	0.00
 Fatherland	  4	0.00
 Fear of flying	  4	0.00
@@ -3366,7 +3368,6 @@ Gelassenheit	  4	0.00
 Geliebt, gejagt und unvergessen	  4	0.00
 Genji monogatari	  4	0.00
 Gennem dine øjne	  4	0.00
-Geoidi	  4	0.00
 Geometri, i förening med linearteckning	  4	0.00
 Gerdt Bladhs undergång	  4	0.00
 Germania	  4	0.00
@@ -3581,7 +3582,6 @@ Jungle	  4	0.00
 Jūnikyū de Tsukamaete	  4	0.00
 Junior pets	  4	0.00
 Juridiikkaa ja muotoja eduskuntatyössä	  4	0.00
-Just between us	  4	0.00
 Just Patty	  4	0.00
 Justice League	  4	0.00
 Kabalmysteriet	  4	0.00
@@ -4062,7 +4062,7 @@ Peruskoulun historia	  4	0.00
 Peten onkimatka	  4	0.00
 Peter, Bingo and those others	  4	0.00
 Phaenomena luminis, viribus attractivis et repulsivis corporum subjacere et ex his derivari posse	  4	0.00
-Philokalia ..	  4	0.00
+Philokalia	  4	0.00
 Picture you dead	  4	0.00
 Pieces of her	  4	0.00
 Pierre et Jean	  4	0.00
@@ -4175,7 +4175,7 @@ Säg att du är min	  4	0.00
 Sähkötekniikka	  4	0.00
 Saksalainen sikakoira	  4	0.00
 Salattu elämä Herrassa	  4	0.00
-Salige er de som tørster..	  4	0.00
+Salige er de som tørster	  4	0.00
 Sallinen	  4	0.00
 Samhället vi lever i	  4	0.00
 Samhällsbärarna	  4	0.00
@@ -4693,7 +4693,6 @@ Tre minuter	  4	0.00
 Treasures lost, treasures found	  4	0.00
 Tria magna moralia	  4	0.00
 Trigas thesium physicarum	  4	0.00
-Troe	  4	0.00
 Trollens jul	  4	0.00
 Truck	  4	0.00
 Tsinkovyje maltšiki	  4	0.00
@@ -4787,6 +4786,7 @@ Voyage autour de ma chambre	  4	0.00
 Vuosikatsaus 2010	  4	0.00
 Vuosikatsaus 2011	  4	0.00
 Vyssan lull	  4	0.00
+Wachet und betet oder Durch Ihn zu Ihm!	  4	0.00
 Wähäisten lasten opetus-wirsi	  4	0.00
 Waiting on God	  4	0.00
 Walking	  4	0.00
@@ -5208,6 +5208,7 @@ Best of Friends	  3	0.00
 Better the blood	  3	0.00
 Between Sisters	  3	0.00
 Beyond order	  3	0.00
+Beyond the Spiderwick chronicles	  3	0.00
 Bi za Kyjiv	  3	0.00
 Bibel för barn	  3	0.00
 Bieguni	  3	0.00
@@ -6159,6 +6160,7 @@ Fractured	  3	0.00
 Fragments d'un journal intime	  3	0.00
 Frågor jag fått om förintelsen	  3	0.00
 Frälsarkransen	  3	0.00
+Främlingarnas hemliv	  3	0.00
 Framtidens religion	  3	0.00
 Frangipani	  3	0.00
 Frankenstein, or, The modern Prometheus	  3	0.00
@@ -7145,8 +7147,8 @@ Lost enchantment	  3	0.00
 Lost light	  3	0.00
 Lotta Svärd	  3	0.00
 Love from heaven	  3	0.00
+Love is	  3	0.00
 Love is walking hand in hand	  3	0.00
-Love is..	  3	0.00
 Love not the world	  3	0.00
 Love or perish	  3	0.00
 Love, Pamela	  3	0.00
@@ -7645,6 +7647,7 @@ Panda	  3	0.00
 Pandas	  3	0.00
 Pani jeziora	  3	0.00
 Pankkitoimen lakiasiat	  3	0.00
+Papa hat's erlaubt	  3	0.00
 Paperino il Grande	  3	0.00
 Pappor och pirater	  3	0.00
 Paradise lost	  3	0.00
@@ -7783,6 +7786,7 @@ Princess Mia	  3	0.00
 Prio ett	  3	0.00
 Prirodovedenie	  3	0.00
 Prison to praise	  3	0.00
+Private worlds	  3	0.00
 Pro libertate!	  3	0.00
 Procenträkning	  3	0.00
 Processen	  3	0.00
@@ -7862,8 +7866,8 @@ Real world digital photography	  3	0.00
 Realitäten ; Gottes Wirken heute erlebt	  3	0.00
 Reaper man	  3	0.00
 Rebellion	  3	0.00
-Reč' na XVIII s"ezde VKP(b)	  3	0.00
-Reč' na XX s"ezde KPSS	  3	0.00
+Reč' na XVIII sezde VKP(b)	  3	0.00
+Reč' na XX sezde KPSS	  3	0.00
 Reckless	  3	0.00
 Red lily	  3	0.00
 Red, White And Royal Blue	  3	0.00
@@ -9208,6 +9212,7 @@ Treasures	  3	0.00
 Treat your own back	  3	0.00
 Treat your own neck	  3	0.00
 Trelawny	  3	0.00
+Tremasteren Fremtiden	  3	0.00
 Tríada	  3	0.00
 Triceratops och andra horndinosaurier	  3	0.00
 Triga reqvisitorum eruditionis comparandae	  3	0.00
@@ -9388,7 +9393,7 @@ Visioita : moderni suomalainen muotoilu	  3	0.00
 Vita spår	  3	0.00
 Vladimirin kirja	  3	0.00
 Voittava usko	  3	0.00
-Vojna ï mïp"	  3	0.00
+Vojna ï mïp	  3	0.00
 Voksne mennesker	  3	0.00
 Vol 714 pour Sydney	  3	0.00
 Vom Ende der Einsamkeit	  3	0.00
@@ -9453,6 +9458,7 @@ What is man?	  3	0.00
 What shall this man do?	  3	0.00
 What she wants	  3	0.00
 What the Bible is all about	  3	0.00
+What we live by	  3	0.00
 What We Owe the Future	  3	0.00
 When breath becomes air	  3	0.00
 When God was a rabbit	  3	0.00
@@ -9556,7 +9562,7 @@ Zen attitude	  3	0.00
 Žert	  3	0.00
 Zionin hengellisen kewän wirret	  3	0.00
 Zoo	  3	0.00
-Zum ersten Mal seitdem es Kirche Jesu Christi gibt.	  3	0.00
+Zum ersten Mal seitdem es Kirche Jesu Christi gibt	  3	0.00
 Zum Gewinn ward mir das Leid	  3	0.00
 Zur Psychopathologie des Alltagslebens	  3	0.00
 Zweden en de skandinavische landen in kaart en prent	  3	0.00
@@ -9565,15 +9571,10 @@ Zwischen Himmel und Erde	  3	0.00
 Þögn	  3	0.00
 Серые пчелы	  3	0.00
 -	  2	0.00
-...And a Happy New Year?	  2	0.00
-...ja sinusta tulee pelle	  2	0.00
 'Främlingarnas' hemliv	  2	0.00
 'Sakaraharjainen linnani'	  2	0.00
 't Hooge Nest	  2	0.00
-"De är inte kloka, de där ryssarna" : ögonblicksbilder från Ryssland	  2	0.00
-"Främlingarnas" hemliv	  2	0.00
-"Papa hat's erlaubt"	  2	0.00
-”Min lilla gosse"	  2	0.00
+”Min lilla gosse	  2	0.00
 #yourlifetimematch	  2	0.00
 1 2 3	  2	0.00
 1 ret, 2 vrang	  2	0.00
@@ -10017,6 +10018,7 @@ Aika Prahassa	  2	0.00
 Aika pyhä!	  2	0.00
 Aikamatka Espoossa	  2	0.00
 Aikamme uskontotieto	  2	0.00
+Aimez-vous Brahms	  2	0.00
 Aino matkustaa	  2	0.00
 Aino pikkuinen tyttö	  2	0.00
 Aino, äidin apulainen	  2	0.00
@@ -10227,6 +10229,7 @@ Anatomy of the spirit	  2	0.00
 Anatomy of yoga	  2	0.00
 Ancient secret of the fountain of youth	  2	0.00
 And - so Victoria	  2	0.00
+And a Happy New Year?	  2	0.00
 And another thing...	  2	0.00
 And now you're back	  2	0.00
 And the beagles and the bunnies shall lie down together : the theology in Peanuts	  2	0.00
@@ -10392,6 +10395,7 @@ Arra	  2	0.00
 Arrowood	  2	0.00
 Ars magica	  2	0.00
 Arsène Lupin	  2	0.00
+Art	  2	0.00
 Art in the blood	  2	0.00
 Arte oggi	  2	0.00
 Artemidori Daldiani Onirocriticon, libri 5	  2	0.00
@@ -10709,7 +10713,6 @@ Beyond blame	  2	0.00
 Beyond compare	  2	0.00
 Beyond Order	  2	0.00
 Beyond reason	  2	0.00
-Beyond the Spiderwick chronicles 	  2	0.00
 Beyond this horizon	  2	0.00
 Beyond this place	  2	0.00
 Bez Dogmatu	  2	0.00
@@ -11311,7 +11314,7 @@ Column of Fire	  2	0.00
 Come allevare un padrone	  2	0.00
 Come die with me	  2	0.00
 Come easy - go easy	  2	0.00
-Come follow me.	  2	0.00
+Come follow me	  2	0.00
 Come si fa una tesi di laurea	  2	0.00
 Come unto Christ	  2	0.00
 Comédia infantil	  2	0.00
@@ -11650,6 +11653,7 @@ De appel en Eva	  2	0.00
 De aptitudinali propriorum separatione	  2	0.00
 De aqua	  2	0.00
 De aquis supra coelestibus	  2	0.00
+De är inte kloka, de där ryssarna : ögonblicksbilder från Ryssland	  2	0.00
 De arbitris pacis	  2	0.00
 De arbore virtutis	  2	0.00
 De architectura libri decem	  2	0.00
@@ -11949,7 +11953,7 @@ De kakopoliteía seu vitiosa republica	  2	0.00
 De kallar mig Solvallamördaren	  2	0.00
 De kommer att drunkna i sina mödrars tårar	  2	0.00
 De la terre à la lune	  2	0.00
-De laatste bewoner van het "Huis in duizend vreezen"	  2	0.00
+De laatste bewoner van het Huis in duizend vreezen	  2	0.00
 De lapidibus viventibus, I. Pet. II:5	  2	0.00
 De lapsu generis humani in quantum ex lumine naturae constat	  2	0.00
 De legatis	  2	0.00
@@ -12656,6 +12660,7 @@ Destination: Thailand	  2	0.00
 Destiny	  2	0.00
 Det angår også deg	  2	0.00
 Det är alltid för tidigt att ge upp	  2	0.00
+Det är inte sant	  2	0.00
 Det är jag, eller Jesu röst i stormen	  2	0.00
 Det är lättare att vara lycklig om man är glad!	  2	0.00
 Det är ugglor i mossen	  2	0.00
@@ -13357,7 +13362,7 @@ Estonia inimesed	  2	0.00
 Et glass melk takk	  2	0.00
 Et liv med Lego	  2	0.00
 Et liv med LEGO	  2	0.00
-Et si c'était vrai..	  2	0.00
+Et si c'était vrai	  2	0.00
 Et tu Brute! : Suomen Nato-optio ja Venäjä	  2	0.00
 Et velsignet barn	  2	0.00
 Etappijääkärinä meren hengessä	  2	0.00
@@ -13728,6 +13733,7 @@ Flygödlor och havsmonster	  2	0.00
 Flygplan	  2	0.00
 Flying saucers have landed	  2	0.00
 Flykten från ödemarken	  2	0.00
+Flykten från Sibirien	  2	0.00
 Flyttfåglar	  2	0.00
 Föda utan rädsla För en trygg förlossning	  2	0.00
 Födeinstitusjonene i Norden : en kartlegging av rutiner vedrörande fedre och sösken	  2	0.00
@@ -14815,6 +14821,7 @@ Ice age	  2	0.00
 Icecold in Alex	  2	0.00
 Iceland	  2	0.00
 Ich bin ein Cowboy und heisse Jim	  2	0.00
+Ich und du	  2	0.00
 Ich und Kaminski	  2	0.00
 Ich war Nachtjäger in Görings Luftwaffe	  2	0.00
 Ich will euch trösten	  2	0.00
@@ -14822,6 +14829,7 @@ Ich will hier bei dir stehen	  2	0.00
 Ichigo-ichie	  2	0.00
 Ichigo-Ichie	  2	0.00
 Ichthyo-theologiae primae lineae	  2	0.00
+Ickabog	  2	0.00
 Icon	  2	0.00
 Idea perfectae humanitatis humanitatis definitura	  2	0.00
 Idea statistices	  2	0.00
@@ -15125,6 +15133,7 @@ J'aime bien les animaux!	  2	0.00
 Ja	  2	0.00
 Ja kukaan ei tiedä millainen olen	  2	0.00
 Ja pesäpuu itki	  2	0.00
+ja sinusta tulee pelle	  2	0.00
 Ja, se Lotta	  2	0.00
 Jäähyväiset presidentille	  2	0.00
 Jääkarhujen matka	  2	0.00
@@ -15177,6 +15186,7 @@ Janet Carr, journalist	  2	0.00
 Jani seiklused Varjudemaal	  2	0.00
 Jäniksenpoika	  2	0.00
 Janne, Jonna ja Hämeenlinnan haamut	  2	0.00
+Janson, go home	  2	0.00
 Janu	  2	0.00
 Japanisch für Manga-Fans	  2	0.00
 Jär	  2	0.00
@@ -15463,6 +15473,7 @@ Keep It Together, Keiko Carter	  2	0.00
 Keep you close	  2	0.00
 Keeper	  2	0.00
 Keeper of the keys	  2	0.00
+Keeper of the Keys	  2	0.00
 Keeping secrets	  2	0.00
 Kehityksen kuvat : Kajaani oy 1907-1982	  2	0.00
 Kehoitus kaikille Suomen maan oikioille miehille	  2	0.00
@@ -16595,6 +16606,7 @@ Lasten paras tawara (1784)	  2	0.00
 Lasten paras tawara (1914)	  2	0.00
 Lasten satu-Kalevala	  2	0.00
 Lastensuojelun historia	  2	0.00
+Lastuja VIII, Lohilastuja ja kalakaskuja	  2	0.00
 Låt bönor förändra ditt liv	  2	0.00
 Låt stjärnorna leda dig till framgång	  2	0.00
 Late zommer	  2	0.00
@@ -16850,7 +16862,7 @@ Levoton lapsuus	  2	0.00
 Lexikon des Unwissens	  2	0.00
 Lezioni americane	  2	0.00
 Libellus aureus (1670)	  2	0.00
-Libellus aureus de civilitate morum puerilium..	  2	0.00
+Libellus aureus de civilitate morum puerilium	  2	0.00
 Liber ecclesiastae, gemina versione et notis illustratus	  2	0.00
 Liber spiritualis gratiae	  2	0.00
 Libertas civilis	  2	0.00
@@ -17165,6 +17177,7 @@ Madame Terror	  2	0.00
 Madangeul naon amtak	  2	0.00
 Mädchengeschichten	  2	0.00
 MaddAddam	  2	0.00
+Maddon's Rock	  2	0.00
 Madhouse at the end of the earth	  2	0.00
 Madigan's day	  2	0.00
 Madonna	  2	0.00
@@ -17998,7 +18011,7 @@ Myrsky ja aurinko	  2	0.00
 Mysigt med Mumintrollet	  2	0.00
 Mysterier	  2	0.00
 Mysteriet med hålet i väggen	  2	0.00
-Mysteriet paa "Oceanic"	  2	0.00
+Mysteriet paa Oceanic	  2	0.00
 Mystery of Crocodile Island	  2	0.00
 Mystery of the moss-cover mansion	  2	0.00
 Mystery of the stone tiger	  2	0.00
@@ -18480,9 +18493,9 @@ Onni on joka päivä	  2	0.00
 Önskas köpa: litet sto	  2	0.00
 Onward!	  2	0.00
 Oopâ saanijd	  2	0.00
-Opas "skruf whist" (osto) peliin alotteleville	  2	0.00
 Opas esihistoriallisella osastolla	  2	0.00
 Opas hirven iän arviointiin	  2	0.00
+Opas skruf whist (osto) peliin alotteleville	  2	0.00
 Opdragelsens historie	  2	0.00
 Open	  2	0.00
 Open content	  2	0.00
@@ -18521,7 +18534,7 @@ Ordinary vices	  2	0.00
 Ordo Levitarum in Israele	  2	0.00
 Oresteia	  2	0.00
 Organisationspsykologi och ledarskap	  2	0.00
-Organizacionnye voprosy : doklad na XVII s"ezdu VKP(b) 6 fevr. 1934 g.	  2	0.00
+Organizacionnye voprosy : doklad na XVII sezdu VKP(b) 6 fevr. 1934 g.	  2	0.00
 Organizacionnye voprosy : tezisy doklada t. Kaganoviča	  2	0.00
 Organizational psychology	  2	0.00
 Origami and papercraft	  2	0.00
@@ -18735,7 +18748,7 @@ Pelle Svanslös på tivoli	  2	0.00
 Pelle Svanslös räddar julen	  2	0.00
 Pelles nya kläder	  2	0.00
 Pendnâmeh sive librum consiliorum Scheich Musliheddin Saadi Schirasiensis persice, interpretatione latina nostique illustratum sistens	  2	0.00
-Penelope of the "Polyantha"	  2	0.00
+Penelope of the Polyantha	  2	0.00
 Penelope Strudel and the birthday treasure hunt	  2	0.00
 Pengar	  2	0.00
 Pengar och lycka	  2	0.00
@@ -19077,7 +19090,6 @@ Prisoners of hope	  2	0.00
 Privatae puerorum eruditioni praestare publicam, ostensura	  2	0.00
 Private affairs	  2	0.00
 Private scandals	  2	0.00
-Private worlds	  2	0.00
 Pro patria	  2	0.00
 Problem at Pollensa Bay	  2	0.00
 Problemata philosophica	  2	0.00
@@ -19104,7 +19116,7 @@ Promise me, dad	  2	0.00
 Promise Me, Dad - A Year Of Hope, Hardship, And Purpose	  2	0.00
 Protector	  2	0.00
 Proteus	  2	0.00
-Protiv pravogo i "levogo" opportunisma i trotskizma	  2	0.00
+Protiv pravogo i levogo opportunisma i trotskizma	  2	0.00
 Psicologia revolucionaria	  2	0.00
 PSP 100 : Postipankki sata vuotta yhteiskuntaa rakentamassa	  2	0.00
 Psychic witch	  2	0.00
@@ -19510,6 +19522,7 @@ Rövare i skogen!	  2	0.00
 Rovastin häämatkat	  2	0.00
 Royal Assassin	  2	0.00
 Royal wedding	  2	0.00
+Roždenie čeloveka	  2	0.00
 Ru	  2	0.00
 Rubber	  2	0.00
 Rucouxest ja sen cuulemisest	  2	0.00
@@ -19760,7 +19773,7 @@ Self-culture	  2	0.00
 Self-defence	  2	0.00
 Self-healing	  2	0.00
 Self-hypnosis and scientific self-suggestion	  2	0.00
-Selityksiä Aleksis Kiven "Seitsemään veljekseen" ja "Nummisuutareihin"	  2	0.00
+Selityksiä Aleksis Kiven Seitsemään veljekseen ja Nummisuutareihin	  2	0.00
 Sembazuru	  2	0.00
 Semeinaja hronika	  2	0.00
 Semejnaja hronika	  2	0.00
@@ -20228,7 +20241,7 @@ Spot's first Christmas	  2	0.00
 Spot's first walk	  2	0.00
 Spot’s slide and seek farm	  2	0.00
 Språk för en vuxen tro	  2	0.00
-Spravki o "konstitucìi" Finlândìi	  2	0.00
+Spravki o konstitucìi Finlândìi	  2	0.00
 Spravotšnyi tom k 4 izdaniju sotšineni V. I. Lenina	  2	0.00
 Spring collection	  2	0.00
 Spring Moon	  2	0.00
@@ -20769,7 +20782,6 @@ That horse Whiskey!	  2	0.00
 That must be Julian	  2	0.00
 That none should die	  2	0.00
 That's My Flower!	  2	0.00
-The "speech card method" in practical Spanish	  2	0.00
 The (mis)behaviour of markets	  2	0.00
 The 100	  2	0.00
 The 104-storey treehouse	  2	0.00
@@ -21022,6 +21034,7 @@ The calling	  2	0.00
 The calling of Emily Evans	  2	0.00
 The calling of the grave	  2	0.00
 The Canadian twins	  2	0.00
+The canary murder case	  2	0.00
 The candy machine	  2	0.00
 The captain is out to lunch and the sailors have taken over the ship	  2	0.00
 The captive	  2	0.00
@@ -21083,6 +21096,7 @@ The Christmas carol	  2	0.00
 The Christmas Pig	  2	0.00
 The Christmas train	  2	0.00
 The chronicle of western costume	  2	0.00
+The Chronicles of the Imp	  2	0.00
 The Cider House Rules	  2	0.00
 The Citadel	  2	0.00
 The citadel of the Autarch	  2	0.00
@@ -21157,7 +21171,6 @@ The Crown	  2	0.00
 The crucified ones	  2	0.00
 The cruellest month	  2	0.00
 The Cruellest Month	  2	0.00
-The cruise of the Dazzler	  2	0.00
 The crunch	  2	0.00
 The crush	  2	0.00
 The crystal children	  2	0.00
@@ -22498,6 +22511,7 @@ The Spanish connection	  2	0.00
 The spark	  2	0.00
 The Sparta medallion	  2	0.00
 The speaker of Mandarin	  2	0.00
+The speech card method in practical Spanish	  2	0.00
 The spider sapphire mystery	  2	0.00
 The spiritual preparation of a soulwinner	  2	0.00
 The spotted sphinx	  2	0.00
@@ -22519,7 +22533,6 @@ The storm keeper's battle	  2	0.00
 The Storrington papers	  2	0.00
 The story behind great medical discoveries	  2	0.00
 The story girl	  2	0.00
-The story of "The reason why"	  2	0.00
 The story of art	  2	0.00
 The story of doctor Dolittle	  2	0.00
 The story of inventions	  2	0.00
@@ -22529,6 +22542,7 @@ The story of Paul	  2	0.00
 The story of the good Samaritan	  2	0.00
 The story of the human body	  2	0.00
 The story of the lost sheep	  2	0.00
+The story of The reason why	  2	0.00
 The story of the second world war	  2	0.00
 The story of the star	  2	0.00
 The story tree	  2	0.00
@@ -22811,6 +22825,7 @@ The world as it is	  2	0.00
 The world in my pocket	  2	0.00
 The world is full of married men	  2	0.00
 The world is round	  2	0.00
+The world is yours	  2	0.00
 The world of the dinosaurs	  2	0.00
 The world record paper airplane book	  2	0.00
 The world's living religions	  2	0.00
@@ -23215,7 +23230,6 @@ Treasure islands	  2	0.00
 Treasure of Khan	  2	0.00
 Treasury of classic stories	  2	0.00
 Tregaron's daughter	  2	0.00
-Tremasteren "Fremtiden	  2	0.00
 Tri sestry	  2	0.00
 Tri sestry; Višnevyj sad	  2	0.00
 Trial and error	  2	0.00
@@ -23791,7 +23805,7 @@ Vitnos och Sverre Sork	  2	0.00
 Vitnos och Vips	  2	0.00
 Vitnos räddar Guldvinge	  2	0.00
 Vitnos träffar Brunöga	  2	0.00
-Vlast' t'my ili "kogotok uvâz, vsej ptičke propast'"	  2	0.00
+Vlast' t'my ili kogotok uvâz, vsej ptičke propast'	  2	0.00
 Vo glubine Rossii	  2	0.00
 Vocabularium latino-sveco-germanico-finnonicum	  2	0.00
 Voennaâ tajna	  2	0.00
@@ -23840,7 +23854,7 @@ Vrijgevochten!	  2	0.00
 Vroum vroum!	  2	0.00
 Vrouwen naar Jacatra	  2	0.00
 Vsâ kremlevskaâ rat	  2	0.00
-Vsepoddannějšìj otčet" finlândskago general"-gubernatora po upravlenìû Velikim" Knâžestvom s" sentâbrâ 1898 po sentâbr' 1902 g.	  2	0.00
+Vsepoddannějšìj otčet finlândskago general-gubernatora po upravlenìû Velikim Knâžestvom s sentâbrâ 1898 po sentâbr' 1902 g.	  2	0.00
 Vtoraâ Čečenskaâ	  2	0.00
 Vuorisaarna : Jeesuksen hyvä sanoma totuuden etsijöille	  2	0.00
 Vuosikertomus 2002	  2	0.00
@@ -23985,6 +23999,7 @@ Wellsprings : a book of spiritual exercises	  2	0.00
 Welt um Gertrud	  2	0.00
 Welwollinen jälkimuisto elämästä ja kuolemasta Matthias Solenius wainajalle	  2	0.00
 Wenn man dich fragt nach Glauben und Leben	  2	0.00
+Wenn mauern fallen	  2	0.00
 Wenzel Hagelstam	  2	0.00
 Wer kennt meine Tiere	  2	0.00
 Wer Tanzt aus der Reihe?	  2	0.00
@@ -24020,7 +24035,6 @@ What Marx really said	  2	0.00
 What modern hypnotism can do for you	  2	0.00
 What once was mine	  2	0.00
 What Once Was Mine	  2	0.00
-What we live by	  2	0.00
 What we talk about when we talk about love	  2	0.00
 What women should know	  2	0.00
 What's a Girl Gotta Do?	  2	0.00
@@ -24052,7 +24066,7 @@ Where is Jesus?	  2	0.00
 Where is your treasure?	  2	0.00
 Where the Crawdads Sing	  2	0.00
 Where the shadows lie	  2	0.00
-Where there's smoke..	  2	0.00
+Where there's smoke	  2	0.00
 Where's Wally now?	  2	0.00
 Where's Wally? The great speed search	  2	0.00
 While my pretty one sleeps	  2	0.00
@@ -24373,6 +24387,17 @@ ZX spectrum +	  2	0.00
 Государство и революция	  2	0.00
 Діти повітряних тривог	  2	0.00
 Майя та її мами	  2	0.00
+ als hätt der Himmel die Erde still geküsst	  1	0.00
+ and that's when it fell off in my hand	  1	0.00
+ and the girl screamed	  1	0.00
+ and the rain my drink	  1	0.00
+ but gentlemen marry brunettes	  1	0.00
+ but I wanted a pony	  1	0.00
+ ehe die Spuren verwehen	  1	0.00
+ Fertig ist das Mondgesicht	  1	0.00
+ født til kunstner. Et Ibsen-portrett	  1	0.00
+ pri ispolnenii služebnyh objazannostej	  1	0.00
+ was am See geschah	  1	0.00
 - and the girl screamed	  1	0.00
 - dess ljus lyse! : en biografisk studie över Rabbe Enckell 1937-1950	  1	0.00
 - Og hvad saa?	  1	0.00
@@ -24382,35 +24407,6 @@ ZX spectrum +	  2	0.00
 ¡Vamos a crear!: papel	  1	0.00
 ¡Vamos a crear!: plástico	  1	0.00
 ¡Vamos a crearl: tejidos	  1	0.00
-... als hätt der Himmel die Erde still geküsst	  1	0.00
-... and that's when it fell off in my hand	  1	0.00
-... and the girl screamed	  1	0.00
-... and the rain my drink	  1	0.00
-... but gentlemen marry brunettes	  1	0.00
-... but I wanted a pony	  1	0.00
-... ehe die Spuren verwehen	  1	0.00
-... Fertig ist das Mondgesicht	  1	0.00
-... født til kunstner. Et Ibsen-portrett	  1	0.00
-... pri ispolnenii služebnyh objazannostej	  1	0.00
-... was am See geschah	  1	0.00
-...À la folie	  1	0.00
-...a povídky aneb sexuální mizérie a jiné story	  1	0.00
-...and a happy new year?	  1	0.00
-...and then he ate my boy entrancers	  1	0.00
-...das verspreche ich dir	  1	0.00
-...I do	  1	0.00
-...i stället för hemland	  1	0.00
-...ja Herra otti	  1	0.00
-...ja Herra otti : kirja sinulle, joka olet menettänyt sen, mitä ilman et uskonut voivasi elää	  1	0.00
-...men jeg forstår meg på mirakler..	  1	0.00
-...och de vita skuggorna i skogen	  1	0.00
-...Och de vita skuggorna i skogen	  1	0.00
-...og hun takkede guderne	  1	0.00
-...schlaf gut und traüme schön	  1	0.00
-...so zwitschern auch die Jungen	  1	0.00
-...startled by his furry shorts!	  1	0.00
-...und das mit links!	  1	0.00
-...Your true brother	  1	0.00
 'Ach, wer da mitreisen könnte...'	  1	0.00
 'Al-Wajh al-'Ari lil-Mar'a al-'Arabiyya	  1	0.00
 'Bible et médecine'	  1	0.00
@@ -24439,90 +24435,6 @@ ZX spectrum +	  2	0.00
 'What do you care what other people think?' : further adventures of a curious character	  1	0.00
 'Won't!' said mule	  1	0.00
 ’Twas The Nightshift Before Christmas	  1	0.00
-"Alerte"	  1	0.00
-"Aller Geistesprozeß ist ein Befreiungsprozeß"	  1	0.00
-"Art"	  1	0.00
-"Bible et médecine"	  1	0.00
-"Blind Man's Year"	  1	0.00
-"Blutungen und Ausfluss"	  1	0.00
-"Borde hålla käft." En bok om Märta Tikkanen	  1	0.00
-"Coronis"	  1	0.00
-"De är inte kloka, de där ryssarna"	  1	0.00
-"De commercio animae et corporis"	  1	0.00
-"Det är som att komma hem" : betydelsen av svenskspråkig service för klienter inom socialservice	  1	0.00
-"Det er jeg, jeg som er Anna"	  1	0.00
-"Dragonwyck"	  1	0.00
-"Ekonomitšesko-filosofskie rukopisi" Marksa i ih interpretatsii	  1	0.00
-"Flykten från Sibirien"	  1	0.00
-"Follow the cranes"	  1	0.00
-"Frokostbladet"	  1	0.00
-"Gissa vem jag är i dag" sa Labolina	  1	0.00
-"He's Valentine, I'm Emerson"	  1	0.00
-"Herr er ikke mann og kvinne..."	  1	0.00
-"Ich glaube an Jesum Christum, Gottes eingeboreren Sohn, unserern Herrn" : sieben Predigten über diese Worte des zweiten Glaubens-Artikels nach dem kleinen Luther'schen Katechismus	  1	0.00
-"Ich hoffe..."	  1	0.00
-"Ich leide..."	  1	0.00
-"Ich liebe..."	  1	0.00
-"Ich sah seinen Mördern in die Augen"	  1	0.00
-"Ich will eine Welt ohne Kriege"	  1	0.00
-"Irja"	  1	0.00
-"Ja pöh", sanoi sotamies Ryhmy	  1	0.00
-"Janson, go home"	  1	0.00
-"Jees, mullikuhnuri!" sanoi vääpeli Ryhmy	  1	0.00
-"Jees, Nurmijärven mämmiä", sanoi vääpeli Ryhmy	  1	0.00
-"Jees, punamultaa", sanoi kersantti Ryhmy	  1	0.00
-"Kan doktorn komma?" : läkarhistorier från Lappmarken	  1	0.00
-"Keeper of the Keys"	  1	0.00
-"Kennst du meine Freunde?", fragt der kleine Hase	  1	0.00
-"Kennst du meine Freunde?", fragt der kleine Hund	  1	0.00
-"Kennst du meine Freunde?", fragt die kleine Katze	  1	0.00
-"Killer"-Kane	  1	0.00
-"Kommer snart", sa Laban och Labolina	  1	0.00
-"Levyi"-radikalizm i rabotšee dviženie razvityh kapitalistitšeskih stran	  1	0.00
-"Love on the Line". How to Recover from Romance Scams Gracefully and without Victimisation	  1	0.00
-"Matador"	  1	0.00
-"Merci" qui?	  1	0.00
-"Mir nach", bellt Bobbi	  1	0.00
-"Mir nach", quakt das Entchen	  1	0.00
-"Mir nach", sagt das Kaninchen	  1	0.00
-"Mir nach", schnurrt Mieze	  1	0.00
-"Neill! Neill! Orange peel!"	  1	0.00
-"Nesvjatye svjatye " i drugie rasskazy	  1	0.00
-"Nikak ne doiti do domu"	  1	0.00
-"Not me," said the monkey	  1	0.00
-"Oh, wie liebten sie ihn und sein Spiel"	  1	0.00
-"Oikea antifilatelisti", sanoi vääpeli Ryhmy	  1	0.00
-"Ole viisaasti höperö" sanoi vääpeli Ryhmy	  1	0.00
-"Podryvnaja rabota"	  1	0.00
-"Private worlds"	  1	0.00
-"Purilfinnan" : Lapuanjoen rantajätkän muistoja	  1	0.00
-"Radio tube vademecum"	  1	0.00
-"Rapsoodia kohvrivirnaga"	  1	0.00
-"Säg mig vad du äter - och ja skall säga dig vem du är..."	  1	0.00
-"Sally Bishop"	  1	0.00
-"Svampbok"	  1	0.00
-"That Rascal Pat"	  1	0.00
-"The canary murder case"	  1	0.00
-"The Chronicles of the Imp"	  1	0.00
-"The city: its growth, its decay, its future"	  1	0.00
-"The Conflict in the 'Heavenlies'"	  1	0.00
-"The nations shall know that I am Jehovah" - how?	  1	0.00
-"The Self or Carnal Life and what it is"	  1	0.00
-"The Upas Tree"	  1	0.00
-"The world is yours"	  1	0.00
-"They're all dead, aren't they"	  1	0.00
-"This Proud Heart"	  1	0.00
-"Tre män och Cecilia"	  1	0.00
-"Troe"	  1	0.00
-"tu"	  1	0.00
-"Tweet, tweet, tweet"	  1	0.00
-"Und das Licht schien in die Finsternis..."	  1	0.00
-"Und wäre Er nicht auferstanden..."	  1	0.00
-"Unter Bruder"	  1	0.00
-"Vintʺ"	  1	0.00
-"What we live by"	  1	0.00
-"Ysaïl"	  1	0.00
-"Zeitreisen"	  1	0.00
 #Goldilocks	  1	0.00
 #wetoo	  1	0.00
 007, a view to a kill	  1	0.00
@@ -24535,11 +24447,11 @@ ZX spectrum +	  2	0.00
 1 x 1	  1	0.00
 1-800-hero	  1	0.00
 1-900-Lover	  1	0.00
+1, 2, 3	  1	0.00
 1, 2, 3 -bok eller En loppbiten struts är en 9	  1	0.00
 1, 2, 3 ... go fish!	  1	0.00
 1, 2, 3 les lapins	  1	0.00
 1, 2, 3 wir sind dabei	  1	0.00
-1, 2, 3..	  1	0.00
 1, 2, lace my shoe	  1	0.00
 1,2,3, go!	  1	0.00
 1. Anders på ön ; 2. Anders i stan	  1	0.00
@@ -24622,7 +24534,7 @@ ZX spectrum +	  2	0.00
 100 reasons to be generous	  1	0.00
 100 reasons to be positive	  1	0.00
 100 reasons to be thankful	  1	0.00
-100 sätt att rädda världen..	  1	0.00
+100 sätt att rädda världen	  1	0.00
 100 simple paper flowers	  1	0.00
 100 simple things you can do to prevent Alzheimer's and age-related memory loss	  1	0.00
 100 Tage als Geisel in Angola	  1	0.00
@@ -24677,7 +24589,7 @@ ZX spectrum +	  2	0.00
 101 crazy ways to die	  1	0.00
 101 Dalmatians : a read-aloud storybook	  1	0.00
 101 Dalmatians : pop-up book	  1	0.00
-101 dalmatians "know all about" farm	  1	0.00
+101 dalmatians know all about farm	  1	0.00
 101 dalmatiner	  1	0.00
 101 Eesti looduspaika	  1	0.00
 101 expériences de philosophie quotidienne	  1	0.00
@@ -25167,7 +25079,7 @@ A charmed life	  1	0.00
 A che gioco giochiamo?	  1	0.00
 A chemical prison	  1	0.00
 A child called 'it'	  1	0.00
-A child called "it"	  1	0.00
+A child called it	  1	0.00
 A child for Cade	  1	0.00
 A child in need	  1	0.00
 A child no more	  1	0.00
@@ -25462,7 +25374,7 @@ A friendly day for Pooh	  1	0.00
 A frozen fire	  1	0.00
 A frozen world	  1	0.00
 A fugitive from love	  1	0.00
-A funny thing happened ..	  1	0.00
+A funny thing happened	  1	0.00
 Å gå	  1	0.00
 Å gå: Ett skritt av gangen	  1	0.00
 A game for heroes	  1	0.00
@@ -25682,6 +25594,7 @@ A la découverte des fresques du Tassili	  1	0.00
 A la deriva por los circuitos de la precariedad femenina	  1	0.00
 À la ferme	  1	0.00
 À la ferme avec Johan	  1	0.00
+À la folie	  1	0.00
 A la luz de la oscuridad	  1	0.00
 Á la maison avec Manon	  1	0.00
 Á la Nina : från solskenssoppa til mormors tjinuskitårta	  1	0.00
@@ -25994,6 +25907,7 @@ A port through time	  1	0.00
 A portrait of all the Russias	  1	0.00
 A portrait of an addict as a young man	  1	0.00
 A portrait of the artist as a young dog	  1	0.00
+A povídky aneb sexuální mizérie a jiné story	  1	0.00
 A practical guide to intensive interaction	  1	0.00
 A prairie boy's summer	  1	0.00
 A prairie boy's winter	  1	0.00
@@ -26001,7 +25915,7 @@ A pretend engagement	  1	0.00
 A pride of lions	  1	0.00
 A pride of lions. A portrait of Napoleons's mother	  1	0.00
 A prince among men	  1	0.00
-A prisoner and yet ..	  1	0.00
+A prisoner and yet	  1	0.00
 A prisoner of birth	  1	0.00
 A private affair	  1	0.00
 A private correspondence	  1	0.00
@@ -26503,7 +26417,7 @@ A Yid in a natsichn ouniform	  1	0.00
 A young girl helps Naaman	  1	0.00
 A yuletide seduction	  1	0.00
 A zed & two noughts	  1	0.00
-A zori zdest' tihije ..	  1	0.00
+A zori zdest' tihije	  1	0.00
 A-bomb mayor	  1	0.00
 A-H-K bombene i Bibelens lys	  1	0.00
 A-H-K- bombene i Bibelens lys	  1	0.00
@@ -26878,7 +26792,7 @@ After sundown	  1	0.00
 After the affair	  1	0.00
 After the ball	  1	0.00
 After the bugles	  1	0.00
-After the Christmas party..	  1	0.00
+After the Christmas party	  1	0.00
 After the dinosaurs : the story of prehistoric mammals and man	  1	0.00
 After the empire	  1	0.00
 After the ice	  1	0.00
@@ -26949,7 +26863,7 @@ Agnetas ovanliga dag	  1	0.00
 Agnete	  1	0.00
 Agostino	  1	0.00
 Agrariaja programma socialdemokratii v pervoj russkoj revoljucii 1905-1907 godov	  1	0.00
-Agrarnyj vopros i "Kritiki Marksa"	  1	0.00
+Agrarnyj vopros i Kritiki Marksa	  1	0.00
 Agrarnyj vopros v Rossii k koncu XIX veka	  1	0.00
 Agriculture and the reform of the structural funds	  1	0.00
 Agridagi efsanesi	  1	0.00
@@ -26998,8 +26912,6 @@ Aikuiskoulutukseen osallistuminen	  1	0.00
 Aikuisten kieltenopetuksen kehittämisryhmän muistio	  1	0.00
 Aikuisten oppiminen ja opettaminen	  1	0.00
 Aikuistyypin diabetes & liikunnan matkaopas	  1	0.00
-Aimez-vous Brahms	  1	0.00
-Aimez-vous Brahms.	  1	0.00
 Aims and purposes of the bahá'i faith	  1	0.00
 Ain't misbehaving	  1	0.00
 Aina joku eksyy	  1	0.00
@@ -27199,6 +27111,7 @@ Aleksandr Dejneka	  1	0.00
 Aleksandr Matrosov	  1	0.00
 Alene	  1	0.00
 Alene med Gud	  1	0.00
+Alerte	  1	0.00
 Alerte aux Pieds-Bleus	  1	0.00
 Alerte aux Zorkons	  1	0.00
 Alessandro Stradella	  1	0.00
@@ -27382,7 +27295,7 @@ All Creatures, Great And Small	  1	0.00
 All day long	  1	0.00
 All Dressed in White	  1	0.00
 All hell let loose	  1	0.00
-All human beings ..	  1	0.00
+All human beings	  1	0.00
 All I need to know I learned from my cat	  1	0.00
 All I need to know I learned from my cat (and then some)	  1	0.00
 All I really need to know I learned in kindergarten	  1	0.00
@@ -27490,6 +27403,7 @@ Alle ugens dage	  1	0.00
 Allein in der Höhle	  1	0.00
 Allen Carr's easyweight to lose weight	  1	0.00
 Allen Gewalten zum Trotz	  1	0.00
+Aller Geistesprozeß ist ein Befreiungsprozeß	  1	0.00
 Aller tage abend	  1	0.00
 Allergi, överkänslighet och kemiska ämnen : en värdering av kemiska ämnens benägenhet att framkalla allergi och annan överkänslighet i hud och luftvägar : sammanfattning och konklusioner ur raportter	  1	0.00
 Allergy-free cookbook	  1	0.00
@@ -27991,7 +27905,7 @@ An insider's guide	  1	0.00
 An interpet guide to the tropical aquarium	  1	0.00
 An intimate bargain	  1	0.00
 An intimate oasis	  1	0.00
-An introduction to "A course in miracles"	  1	0.00
+An introduction to A course in miracles	  1	0.00
 An introduction to contemporary history	  1	0.00
 An introduction to decorating and glazing pottery	  1	0.00
 An introduction to economic reasoning	  1	0.00
@@ -28128,6 +28042,7 @@ Ancient wisdom : numerology	  1	0.00
 Ancient wisdom : palmistry	  1	0.00
 Ancient wisdom : runes	  1	0.00
 Ancient wisdom : tarot	  1	0.00
+And a happy new year?	  1	0.00
 And be a villain	  1	0.00
 And daughter makes three	  1	0.00
 And dreams came true	  1	0.00
@@ -28147,6 +28062,7 @@ And the heaven spoke	  1	0.00
 And the hippos were boiled in their tanks	  1	0.00
 And The Mountains Echoed	  1	0.00
 And the two shall meet	  1	0.00
+And then he ate my boy entrancers	  1	0.00
 And then he heard the thunder	  1	0.00
 And then she fell	  1	0.00
 And Then There Where None	  1	0.00
@@ -28454,7 +28370,7 @@ Anna Virubova : keisarinnan hovineiti	  1	0.00
 Anna-Liisa	  1	0.00
 Anna-Stinas illusioner	  1	0.00
 Anna, 7 år	  1	0.00
-Anna, soror..	  1	0.00
+Anna, soror	  1	0.00
 Anna, where are you?	  1	0.00
 Anna's book	  1	0.00
 Anna's rubber duck	  1	0.00
@@ -28668,7 +28584,7 @@ Apostol	  1	0.00
 Apostoli Paavali ihmisenä ja opettajana juutalaisten lähteiden valossa	  1	0.00
 Äppel i norr	  1	0.00
 Äppelblom och ruiner	  1	0.00
-Äppelkakor : och annat smått & gott av äpplen..	  1	0.00
+Äppelkakor : och annat smått & gott av äpplen	  1	0.00
 Appelsinpiken	  1	0.00
 Appendicitis	  1	0.00
 Áppes. 2	  1	0.00
@@ -28802,7 +28718,7 @@ Are these my basoomas I see before me?	  1	0.00
 Are we living in the end times?	  1	0.00
 Are we smart enough to know how smart animals are?	  1	0.00
 Are we there yet?	  1	0.00
-Are you a "woman driver"?	  1	0.00
+Are you a woman driver?	  1	0.00
 Are you confused?	  1	0.00
 Are you experienced?	  1	0.00
 Are you happy now? : 10 ways to live a happy life	  1	0.00
@@ -28948,7 +28864,6 @@ Ars poetica	  1	0.00
 Ars poëtica	  1	0.00
 Arsène Lupin : gentleman cambrioleur	  1	0.00
 Arsène Lupin gentleman-cambrioleur	  1	0.00
-Art	  1	0.00
 Art and lies	  1	0.00
 Art and outrage	  1	0.00
 Art and the Bible	  1	0.00
@@ -29109,7 +29024,7 @@ Assault to Soho	  1	0.00
 Assembler-Programmierung	  1	0.00
 Assertiveness at work : a practical guide to handling awkward situations	  1	0.00
 Assertiveness for Earth Angels	  1	0.00
-Asses ..	  1	0.00
+Asses	  1	0.00
 Assessing health need using the life cycle framework	  1	0.00
 Assessment center	  1	0.00
 Assessment in infancy	  1	0.00
@@ -29472,9 +29387,9 @@ Aurora lucis evangelicae ante saeculum XII in Finlandia fuit exorta	  1	0.00
 Aurora returns	  1	0.00
 Aus dem Jenseits zurück - Berichte von Totgeglaubten	  1	0.00
 Aus dem Leben der Bienen	  1	0.00
-Aus dem Leben eines "Unbekehrten"	  1	0.00
 Aus dem Leben eines Milliardärs	  1	0.00
 Aus dem Leben eines Taugenichts	  1	0.00
+Aus dem Leben eines Unbekehrten	  1	0.00
 Aus dem Leben meiner alten Freundin	  1	0.00
 Aus dem Tagebuch eines Konterrevolutionärs	  1	0.00
 Aus den Fugen	  1	0.00
@@ -30325,7 +30240,6 @@ Be Beautiful	  1	0.00
 Be brave little penguin	  1	0.00
 Be brave, little pup	  1	0.00
 Be brave!	  1	0.00
-Be careful what you wish for..	  1	0.00
 Be certain of God	  1	0.00
 Be equal, be different	  1	0.00
 Be filled now	  1	0.00
@@ -30763,7 +30677,7 @@ Berts bekymmer	  1	0.00
 Besatt	  1	0.00
 Beschreibung aller Nationen des russischen Reichs	  1	0.00
 Beseda s pervoj amerikanskoj rabočej delegaciej 9 sentjabrja 1927 goda	  1	0.00
-Beseda tovariŝa Stalina s predsedatelem amerikanskogo gazetnogo ob'edineniâ "Skripps-Govard N'ûspejpers" g-nom Roj Govardom 1-go Marta 1936 goda	  1	0.00
+Beseda tovariŝa Stalina s predsedatelem amerikanskogo gazetnogo ob'edineniâ Skripps-Govard N'ûspejpers g-nom Roj Govardom 1-go Marta 1936 goda	  1	0.00
 Besedka v Monrepo	  1	0.00
 Besegra din allergi	  1	0.00
 Besenmann und Brillenmann	  1	0.00
@@ -30961,7 +30875,6 @@ Beyond the phantom room	  1	0.00
 Beyond the rocks	  1	0.00
 Beyond the shadows	  1	0.00
 Beyond the sky and the earth	  1	0.00
-Beyond the Spiderwick chronicles	  1	0.00
 Beyond the square crochet motifs	  1	0.00
 Beyond the Wall	  1	0.00
 Beyond the wardrobe : the official guide to Narnia	  1	0.00
@@ -31002,6 +30915,7 @@ Bible atlas	  1	0.00
 Bible basics for Catholics	  1	0.00
 Bible blessings for a special godchild	  1	0.00
 Bible days are here again	  1	0.00
+Bible et médecine	  1	0.00
 Bible facts	  1	0.00
 Bible for toddlers	  1	0.00
 Bible for young children	  1	0.00
@@ -31029,7 +30943,7 @@ Biblisk uppslagsbok	  1	0.00
 Bid for beauty	  1	0.00
 Bidrag till Åbo stads historia	  1	0.00
 Biedermann und die Brandstifter	  1	0.00
-Biegam..	  1	0.00
+Biegam	  1	0.00
 Bielejet parus odinoki	  1	0.00
 Bien fait pour toi!	  1	0.00
 Bienschens Verwandte	  1	0.00
@@ -31183,7 +31097,7 @@ Billed-ABC i bilreparation	  1	0.00
 Billedbog uden Billeder	  1	0.00
 Billeh the Kid	  1	0.00
 Billes skaistā jaunība	  1	0.00
-Billet Mrk. "286"	  1	0.00
+Billet Mrk. 286	  1	0.00
 Billi möcht gern Pferde streicheln	  1	0.00
 Billi Seehund	  1	0.00
 Billiard and snooker	  1	0.00
@@ -31479,6 +31393,7 @@ Blind into doom	  1	0.00
 Blind justice	  1	0.00
 Blind man looking for Jesus	  1	0.00
 Blind man with a pistol	  1	0.00
+Blind Man's Year	  1	0.00
 Blind Mans Buff	  1	0.00
 Blind spot	  1	0.00
 Blind to love	  1	0.00
@@ -31626,6 +31541,7 @@ Bluey	  1	0.00
 Blutiger Zahltag	  1	0.00
 Blutmafia	  1	0.00
 Blutspurenmusteranalyse	  1	0.00
+Blutungen und Ausfluss	  1	0.00
 Bly er usundt	  1	0.00
 BMA-testi	  1	0.00
 Bo Bedre's havebog	  1	0.00
@@ -31836,7 +31752,7 @@ Bony buys a woman	  1	0.00
 Boo	  1	0.00
 Boo boo baby and the giraffe	  1	0.00
 Boo.com och it-bubblan som sprack	  1	0.00
-Booger book ..	  1	0.00
+Booger book	  1	0.00
 Boogie Bear	  1	0.00
 Book art	  1	0.00
 Book bugs : Ben's birthday	  1	0.00
@@ -31877,6 +31793,7 @@ Boquitas pintadas	  1	0.00
 Bord - duka dig!	  1	0.00
 Borde hålla käft	  1	0.00
 Borde hålla käft : En bok om Märta Tikkanen	  1	0.00
+Borde hålla käft. En bok om Märta Tikkanen	  1	0.00
 Border districts	  1	0.00
 Border hell	  1	0.00
 Border storm	  1	0.00
@@ -32339,7 +32256,7 @@ Brownies, fudges and toppings	  1	0.00
 Browsing the web	  1	0.00
 Brrrr	  1	0.00
 Bruce Moose and the what-ifs	  1	0.00
-Bruce! Driven av kärlek eller..	  1	0.00
+Bruce! Driven av kärlek eller	  1	0.00
 Bruce's big move	  1	0.00
 Bruchko	  1	0.00
 Bruchlandung am Bärenfelsen	  1	0.00
@@ -32385,7 +32302,7 @@ Brygg öl	  1	0.00
 Bryggan håller	  1	0.00
 Bryggeriets retlige og økonomiske organisation	  1	0.00
 Bryllopreisen	  1	0.00
-Bryllupet i "Arken"	  1	0.00
+Bryllupet i Arken	  1	0.00
 Bryta mot lagen	  1	0.00
 Bryta om	  1	0.00
 Brytningstider	  1	0.00
@@ -32730,7 +32647,7 @@ C++ primer	  1	0.00
 C++ Primer plus	  1	0.00
 Ça c'est mon corps!	  1	0.00
 Ça c'est mon visage	  1	0.00
-Ça épate les filles..	  1	0.00
+Ça épate les filles	  1	0.00
 Ca, c'est Poussy	  1	0.00
 Cabanes des champs	  1	0.00
 Cabin boy to Advent crusader	  1	0.00
@@ -33646,7 +33563,7 @@ Chip'n Dale rescue rangers, rootin' tootin' rangers	  1	0.00
 Chip's favourite season	  1	0.00
 Chipmunk in the forest	  1	0.00
 Chips	  1	0.00
-Chissà com'è il Coccodrillo..	  1	0.00
+Chissà com'è il Coccodrillo	  1	0.00
 Chitty Chitty Bang Bang	  1	0.00
 Chizu suito homu	  1	0.00
 Chlorophylle et les conspirateurs	  1	0.00
@@ -34007,7 +33924,7 @@ Clickertraining für Katzen	  1	0.00
 Client mafia	  1	0.00
 Cliente	  1	0.00
 Clifton : Sir Jason	  1	0.00
-Clifton "alias Lord X"	  1	0.00
+Clifton alias Lord X	  1	0.00
 Clifton, 7 jours pour mourir	  1	0.00
 Climate change	  1	0.00
 Climate change and society	  1	0.00
@@ -34447,7 +34364,7 @@ Conflict free living : how to build healthy relationships for life	  1	0.00
 Conflict of interest	  1	0.00
 Conflict within	  1	0.00
 Conformation	  1	0.00
-Confusius says ..	  1	0.00
+Confusius says	  1	0.00
 Conger's woman	  1	0.00
 Congo nurse	  1	0.00
 Congo song	  1	0.00
@@ -34636,6 +34553,7 @@ Coriander wird Osterhase	  1	0.00
 Coriolanus	  1	0.00
 Cornerstones of truth	  1	0.00
 Coronary? Cancer? God's answer: prevent it!	  1	0.00
+Coronis	  1	0.00
 Corporate culture : from vicious to virtuous circles	  1	0.00
 Corporate cultures	  1	0.00
 Corporate failure	  1	0.00
@@ -35815,6 +35733,7 @@ Das Verlobungsbad	  1	0.00
 Das verrückte Dino-Klappbuch	  1	0.00
 Das verschwundene Tagebuch	  1	0.00
 Das verspielte Kätzchen	  1	0.00
+das verspreche ich dir	  1	0.00
 Das versprechen hinder'n heerd	  1	0.00
 Das Versprechen hinter'n Heerd	  1	0.00
 Das Versteckspiel	  1	0.00
@@ -35996,6 +35915,7 @@ De apostolatu laicorum. Apostolicam actuositatem & De instrumentis communication
 De aqua magnalium divinorum praecone	  1	0.00
 De aqua medicata Kuppisensi	  1	0.00
 De aquis supracoelestibus	  1	0.00
+De är inte kloka, de där ryssarna	  1	0.00
 De archivis veterum	  1	0.00
 De arcubus luminosis in coelo conspectis	  1	0.00
 De ardua et difficultatis plena eruditionis consecutione	  1	0.00
@@ -36118,6 +36038,7 @@ De coloribus	  1	0.00
 De coluris	  1	0.00
 De cometis	  1	0.00
 De commerciis veterum Rossorum	  1	0.00
+De commercio animae et corporis	  1	0.00
 De commodis et incommodis philosophiae liberae	  1	0.00
 De commodis status naturalis, per statum civilem non sublatis	  1	0.00
 De communicatione idiomatvm	  1	0.00
@@ -37522,7 +37443,7 @@ Dein Mord in Gottes Ohr	  1	0.00
 Dein Sonntag	  1	0.00
 Deine Feste, deine Gäste	  1	0.00
 Deine Marianne	  1	0.00
-Déjame que te cuente..	  1	0.00
+Déjame que te cuente	  1	0.00
 Déjame que te cuente...	  1	0.00
 Dejatel'nost, coznanie, litšnost	  1	0.00
 Dejstvie na organizm boevyh otravlâûŝih veŝestv	  1	0.00
@@ -38022,7 +37943,7 @@ Der er en Morder	  1	0.00
 Der Erfolgreiche	  1	0.00
 Der erste Amerikaner	  1	0.00
 Der Esel Napoleon	  1	0.00
-Der ewige Zweite ..	  1	0.00
+Der ewige Zweite	  1	0.00
 Der Fall Collini	  1	0.00
 Der Fall Gouffé	  1	0.00
 Der Fall Hirn	  1	0.00
@@ -38480,7 +38401,7 @@ Deserters don't come back	  1	0.00
 Desertion	  1	0.00
 Deserto Mohave	  1	0.00
 Desibelipelleily ja neperinäpertely viimeisellä tuomiolla	  1	0.00
-Design for dedication ; Tomorrow will be too late ..	  1	0.00
+Design for dedication ; Tomorrow will be too late	  1	0.00
 Design for vengeance	  1	0.00
 Design of my world	  1	0.00
 Design revoluutio : yrityksen muotoilustrategia estetiikan aikakaudella	  1	0.00
@@ -38540,18 +38461,17 @@ Det är aldrig för sent	  1	0.00
 Det är bara tidig morgon	  1	0.00
 Det är dit vi längtar	  1	0.00
 Det är inte lätt att va vuxen, förstod jag i somras	  1	0.00
-Det är inte sant	  1	0.00
-Det är inte sant..	  1	0.00
 Det är jag som är chefen!	  1	0.00
 Det är kallt, det brinner	  1	0.00
 Det är kväll, det är mycket sent	  1	0.00
 Det är Lotta förstås!	  1	0.00
 Det är Lotta, förstås!	  1	0.00
-Det är mycket man måste..	  1	0.00
+Det är mycket man måste	  1	0.00
 Det är mycket med det jordiska	  1	0.00
 Det är något som inte stämmer	  1	0.00
 Det är slut mellan Gud och mig	  1	0.00
 Det är slut mellan Rödluvan och vargen	  1	0.00
+Det är som att komma hem : betydelsen av svenskspråkig service för klienter inom socialservice	  1	0.00
 Det återuppståndna Polen	  1	0.00
 Det bio-dynamiske havebrug	  1	0.00
 Det blå bandet	  1	0.00
@@ -38565,6 +38485,7 @@ Det brinner!	  1	0.00
 Det enda könet	  1	0.00
 Det ensamma trollet	  1	0.00
 Det er ganske vist	  1	0.00
+Det er jeg, jeg som er Anna	  1	0.00
 Det er jo deg jag er glad i	  1	0.00
 Det er noe de har glemt, pastor	  1	0.00
 Det er nok nu	  1	0.00
@@ -38738,7 +38659,7 @@ Deti krasnogo solnca	  1	0.00
 Deti Rozentalâ	  1	0.00
 Detjam	  1	0.00
 Detroit deathwatch	  1	0.00
-Detskaâ bolezn' "levizny" v kommunizme	  1	0.00
+Detskaâ bolezn' levizny v kommunizme	  1	0.00
 Detstvo ; Otročestvo ; Junost'	  1	0.00
 Detstvo Temy	  1	0.00
 Detstvo v Solombale	  1	0.00
@@ -39083,7 +39004,7 @@ Die Frau, die Lassiter befreite	  1	0.00
 Die Frauenbewegung	  1	0.00
 Die Freiheit des Gefangenen	  1	0.00
 Die fröhliche Wissenschaft  ('La gaya scienza')	  1	0.00
-Die fröhliche Wissenschaft ("La gaya scienza")	  1	0.00
+Die fröhliche Wissenschaft (La gaya scienza)	  1	0.00
 Die Frühglocke	  1	0.00
 Die fünf Kätzchen	  1	0.00
 Die Fürstin reitet	  1	0.00
@@ -39113,10 +39034,10 @@ Die Geschäfte des Herrn Julius Cäsar	  1	0.00
 Die Geschäfte des Onkel Dagobert	  1	0.00
 Die Geschichte eines Genies	  1	0.00
 Die Geschichte und Bedingungen der anthroposophischen Bewegung in Verhältnis zur Anthroposophischen Gesellschaft	  1	0.00
-Die Geschichte vom "Mäuseken Wackelohr"	  1	0.00
 Die Geschichte vom guten Fridolin	  1	0.00
 Die Geschichte vom guten Wolf	  1	0.00
 Die Geschichte vom kleinen grünen Elefanten	  1	0.00
+Die Geschichte vom Mäuseken Wackelohr	  1	0.00
 Die Geschichte vom Rehkind Kitzi	  1	0.00
 Die Geschichte vom verlorenen Sohn	  1	0.00
 Die Geschichte von Jona	  1	0.00
@@ -39330,7 +39251,7 @@ Die Privatdetektivin	  1	0.00
 Die proletarische Revolution und ihr Programm	  1	0.00
 Die Provinz des Menschen	  1	0.00
 Die Prüfung	  1	0.00
-Die Prüfung der Seele, szenisches Lebensbild als Nachspiel zur "Pforte der Einweihung"	  1	0.00
+Die Prüfung der Seele, szenisches Lebensbild als Nachspiel zur Pforte der Einweihung	  1	0.00
 Die Psalmen : das Gebetbuch der Bibel	  1	0.00
 Die Rättin	  1	0.00
 Die Rebellion	  1	0.00
@@ -40099,7 +40020,7 @@ Doklad delegacii VKP(b) ikki na XVIII c'ezde VKP(b)	  1	0.00
 Doklad o proekte konstitcii Soûza SSR	  1	0.00
 Doklad o proekte konstitucii Soûza SSR	  1	0.00
 Doklad o revoljucii 1905 goda	  1	0.00
-Doklad o žurnalach "Zvezda" i "Leningrad"	  1	0.00
+Doklad o žurnalach Zvezda i Leningrad	  1	0.00
 Doklady i rezolûcii XV partkonferencii VKP (b)	  1	0.00
 Doklady Pika, Dimitrova, Èrkoli i Manuil'skogo na VII kongresse Kominterna i rezolûcii po dokladam	  1	0.00
 Doktor Aibolit	  1	0.00
@@ -40327,7 +40248,7 @@ Dork Diaries 6: Tales from a Not-So-Happy Heartbreaker	  1	0.00
 Dork Diaries 7: Tales from a Not-So-Glam TV Star	  1	0.00
 Dork Diaries 8: Tales from a Not-So-Happily Ever After	  1	0.00
 Dork on the run	  1	0.00
-Doroga k "Krasnoj planete"	  1	0.00
+Doroga k Krasnoj planete	  1	0.00
 Doroga na okean	  1	0.00
 Doroga v kosmos	  1	0.00
 Dorogie moi mal čiški	  1	0.00
@@ -40510,6 +40431,7 @@ Dragons, gods & spirits from Chinese mythology	  1	0.00
 Dragonsdale	  1	0.00
 Dragonsong	  1	0.00
 Dragonworld	  1	0.00
+Dragonwyck	  1	0.00
 Drakberget	  1	0.00
 Drakdödaren	  1	0.00
 Draken med de röda ögonen	  1	0.00
@@ -41410,7 +41332,7 @@ Eine einfältige Weise zu beten für einen guten Freund	  1	0.00
 Eine Einladung ins Ballett	  1	0.00
 Eine Falle für Familie Bär	  1	0.00
 Eine Frau geht ihren Weg	  1	0.00
-Eine Frau hat geschrien..	  1	0.00
+Eine Frau hat geschrien	  1	0.00
 Eine Frau in Berlin : Tagebuchaufzeichnungen vom 20. April bis 22. Juni 1945	  1	0.00
 Eine Frau, ein Buch	  1	0.00
 Eine Freundin zum Anbeissen	  1	0.00
@@ -41505,6 +41427,7 @@ Ekonomisk psykologi	  1	0.00
 Ekonomisk utveckling och ekonomisk politik i Finland	  1	0.00
 Ekonomisk utveckling och ekonomisk politik i Finland ; en undersökning av åren 1949-1962 samt några framtidsperspektiv	  1	0.00
 Ekonomitsesko-filosofskie rukopisi 1844 goda	  1	0.00
+Ekonomitšesko-filosofskie rukopisi Marksa i ih interpretatsii	  1	0.00
 Ekonomitšesko-filosofskije rukopisi 1844 goda	  1	0.00
 Ekonomižeskaja geografija zarubežnyh stran	  1	0.00
 Ekornløven	  1	0.00
@@ -42303,7 +42226,7 @@ En upbyggelig evangelisk hand-postilla för de enfaldiga	  1	0.00
 En upptäcktsresa i vinlandet Portugal	  1	0.00
 En vacances	  1	0.00
 En vän i stallet	  1	0.00
-En vandrare huset där det dracks bojorna två timmar samtal med.	  1	0.00
+En vandrare huset där det dracks bojorna två timmar samtal med	  1	0.00
 En varg söker sin flock	  1	0.00
 En verden i pil	  1	0.00
 En vinter i Stockholm	  1	0.00
@@ -42388,7 +42311,7 @@ Enfaldig förklaring öfwer d. Martin Lutheri Lilla cateches, stäld genom spör
 Enfaldig förklaring öfwer d. Martin Luthers Lilla katekes	  1	0.00
 Enfaldig förklaring öfwer Lutheri lilla catechismum	  1	0.00
 Enfaldiga tanckar wisande hwad en präst kan bidraga til oeconomiens uphjelpande	  1	0.00
-Enfaldige tanckar om caffé och de inhemska wäxter, som plåga brukas i des ställe, .	  1	0.00
+Enfaldige tanckar om caffé och de inhemska wäxter, som plåga brukas i des ställe,	  1	0.00
 Enfin Calife!	  1	0.00
 Engaged to Jarrod Stone	  1	0.00
 Engaged to the doctor	  1	0.00
@@ -42807,7 +42730,7 @@ Et kävele yksin	  1	0.00
 Et l'enfant créa le père	  1	0.00
 Et l'homme créa les dieux	  1	0.00
 Et le diable hurla de joie...	  1	0.00
-Et le septième jour ..	  1	0.00
+Et le septième jour	  1	0.00
 Et levende håp	  1	0.00
 Et Midas-Døgn gik over Landet	  1	0.00
 Et nyt liv truer	  1	0.00
@@ -43424,7 +43347,7 @@ Faith food : daily devotions for winter	  1	0.00
 Faith food: daily devotions for autumn	  1	0.00
 Faith for the older years	  1	0.00
 Faith has no country	  1	0.00
-Faith is..	  1	0.00
+Faith is	  1	0.00
 Faith on the march	  1	0.00
 Faith to win!	  1	0.00
 Faith, Hope & Carnage	  1	0.00
@@ -44029,7 +43952,7 @@ Fiesta of the flesh	  1	0.00
 Fiesta San Antonio	  1	0.00
 Fiffelin får göra allt	  1	0.00
 Fiffig förvaring	  1	0.00
-Fiffigs fyra katter 	  1	0.00
+Fiffigs fyra katter	  1	0.00
 Fifth Avenue, 5 A.M.	  1	0.00
 Fifth gospel	  1	0.00
 Fifth planet	  1	0.00
@@ -44709,7 +44632,6 @@ Flying friends	  1	0.00
 Flying fury : five years in the Royal Flying Corps	  1	0.00
 Flying machine	  1	0.00
 Flying saucers - serious business	  1	0.00
-Flykten från Sibirien	  1	0.00
 Flytande bjørn	  1	0.00
 Flyte	  1	0.00
 Flyter på vågen	  1	0.00
@@ -44778,6 +44700,7 @@ Follow that hat!	  1	0.00
 Follow that sausage dog!	  1	0.00
 Follow that star	  1	0.00
 Follow that train	  1	0.00
+Follow the cranes	  1	0.00
 Follow the drum	  1	0.00
 Follow the rangers roundup	  1	0.00
 Follow the swallow	  1	0.00
@@ -45206,7 +45129,6 @@ Frame-up	  1	0.00
 Främling i eget land	  1	0.00
 Främlingar på vår jord	  1	0.00
 Främlingarna	  1	0.00
-Främlingarnas hemliv	  1	0.00
 Främlingarnes hemlif	  1	0.00
 Främlingsvägen	  1	0.00
 Framtid och hopp	  1	0.00
@@ -45509,6 +45431,7 @@ Fröken Märkvärdig och karriären	  1	0.00
 Fröken Milla Lund och Fiken, hennes hund	  1	0.00
 Fröken Sprakfåle	  1	0.00
 Fröken Sprakfåle växer upp	  1	0.00
+Frokostbladet	  1	0.00
 From 1 to 10. Richard Scarry's Little Learners	  1	0.00
 From Caligari to Hitler	  1	0.00
 From clay to kiln	  1	0.00
@@ -45739,7 +45662,7 @@ Für Dich	  1	0.00
 Für die Kinder	  1	0.00
 Für nervöse Frauen	  1	0.00
 Für schlaflose Nächte	  1	0.00
-Für Volk and Führer 	  1	0.00
+Für Volk and Führer	  1	0.00
 Furanshisuko to ōkami	  1	0.00
 Furcht und Freiheit	  1	0.00
 Furðustrandir	  1	0.00
@@ -45815,7 +45738,7 @@ Gå ner i vikt med LCHF	  1	0.00
 Gå ner i vikt och rena kroppen med detox	  1	0.00
 Gå över gränser	  1	0.00
 Gå på! : sjøfortelling	  1	0.00
-Gå ud..	  1	0.00
+Gå ud	  1	0.00
 Gå ut min själ	  1	0.00
 Gabe	  1	0.00
 Gaben der Anthroposophie	  1	0.00
@@ -46206,7 +46129,6 @@ Geografiske farvebilleder	  1	0.00
 Geographica : the complete illustrated atlas of the world	  1	0.00
 Geographie öfver Sveriges rike	  1	0.00
 Geographisk, physicoeconomisk och historisk beskrifning, öfwer Birckala socken uti Åbo höfdingedöme	  1	0.00
-Geoidi 	  1	0.00
 Geoidi : elämän edellytykset	  1	0.00
 Geologia i poleznye iskopaemye Karelii	  1	0.00
 Geologica : Earth's geological past	  1	0.00
@@ -46434,7 +46356,7 @@ Gille und der Gammler	  1	0.00
 Gim	  1	0.00
 Gimme danger: the story of Iggy Pop	  1	0.00
 Gimmi	  1	0.00
-Gimpel the fool ; The spinoza of Market street and other stories.	  1	0.00
+Gimpel the fool ; The spinoza of Market street and other stories	  1	0.00
 Gimpses of grace	  1	0.00
 Gin	  1	0.00
 Gina la ruspa	  1	0.00
@@ -46526,6 +46448,7 @@ Girls under pressure	  1	0.00
 Girlsville	  1	0.00
 Giro intorno al mondo	  1	0.00
 Gísla saga Súrssonar	  1	0.00
+Gissa vem jag är i dag sa Labolina	  1	0.00
 Gittan gömmer bort sej	  1	0.00
 Gittan och älgbrorsorna	  1	0.00
 Gittan och fårskallarna	  1	0.00
@@ -46542,7 +46465,7 @@ Giuseppe Arcimboldo 1527-1593	  1	0.00
 Giuseppe Garibaldi	  1	0.00
 Giv ham en chance	  1	0.00
 Giv oss jorden!	  1	0.00
-Givakt! Fru minister..	  1	0.00
+Givakt! Fru minister	  1	0.00
 Give a cuddle	  1	0.00
 Give a man a bad name	  1	0.00
 Give and take	  1	0.00
@@ -47019,7 +46942,7 @@ Goofy and the white elk	  1	0.00
 Goofy joins the circus	  1	0.00
 Goofy minds the house	  1	0.00
 Goofy on safari : an adventure in Kenya	  1	0.00
-Goofy pintor "pop"	  1	0.00
+Goofy pintor pop	  1	0.00
 Goofy takes off	  1	0.00
 Goofy the clown	  1	0.00
 Goofy the gaucho	  1	0.00
@@ -47076,7 +46999,7 @@ Gösta Berglunds saga	  1	0.00
 Gösta Diehl	  1	0.00
 Gösta Serlachiuksen taidemuseo : omat kokoelmat : kansallisia ja kansainvälisiä taideaarteita	  1	0.00
 Gösta Serlachiuksen taidemuseo : omat kokoelmat 2006 : kansallisia ja kansainvälisiä taideaarteita	  1	0.00
-Gosti s"ezžalis' na daču	  1	0.00
+Gosti sezžalis' na daču	  1	0.00
 Gosudarstvenno-monopolističeskaja politika dohodov : koncepcija i praktika	  1	0.00
 Gosudarstvennoe ustrojstvo SSSR	  1	0.00
 Gosudarstvennyi Ermitaž	  1	0.00
@@ -47487,7 +47410,7 @@ GU Naturführer : Schmetterlinge	  1	0.00
 Guadalupe	  1	0.00
 Guaimas!	  1	0.00
 Guantánamo diary	  1	0.00
-Guarda, s'è un buco..	  1	0.00
+Guarda, s'è un buco	  1	0.00
 Guardian angel	  1	0.00
 Guardian groom	  1	0.00
 Guardians of being	  1	0.00
@@ -48161,7 +48084,7 @@ Här är Helsingfors	  1	0.00
 Här är min hand	  1	0.00
 Har De Komplekser?	  1	0.00
 Har døden taget noget fra dig så giv det tilbage	  1	0.00
-Har du tänkt på..	  1	0.00
+Har du tänkt på	  1	0.00
 Har ha-'etsah ha-ra 'ah	  1	0.00
 Här har du ditt liv	  1	0.00
 Här har du ditt liv ; Nu var det 1914	  1	0.00
@@ -48415,6 +48338,7 @@ He's all that	  1	0.00
 He's been faitfull	  1	0.00
 He's just not that into you	  1	0.00
 He's my husband!	  1	0.00
+He's Valentine, I'm Emerson	  1	0.00
 Hea enesetunde road	  1	0.00
 Head injury - a practical guide	  1	0.00
 Head of the mountain	  1	0.00
@@ -48792,7 +48716,7 @@ Hemåt i höstregn	  1	0.00
 Hembakat matbröd	  1	0.00
 Hembygdslära	  1	0.00
 Hemförsäljning av prydnadsväxter	  1	0.00
-Hemgymnastik på "Palästron"	  1	0.00
+Hemgymnastik på Palästron	  1	0.00
 Hemingway : pieza teatral para dos o más actores	  1	0.00
 Hemkomsten	  1	0.00
 Hemkonservering	  1	0.00
@@ -48884,7 +48808,7 @@ Her husband's Christmas bargain	  1	0.00
 Her kind of man	  1	0.00
 Her knight comes riding	  1	0.00
 Her kommer Bamse	  1	0.00
-Her kommer en hund ..	  1	0.00
+Her kommer en hund	  1	0.00
 Her longed-for family	  1	0.00
 Her man upstairs	  1	0.00
 Her millionaire marine	  1	0.00
@@ -48987,6 +48911,7 @@ Herpat mitsrajim	  1	0.00
 Herpes zoster	  1	0.00
 Herr Corpwieth : gentleman-detektiv : hans första äventyr	  1	0.00
 Herr der Diebe	  1	0.00
+Herr er ikke mann og kvinne...	  1	0.00
 Herr Hase und Frau Bär	  1	0.00
 Herr Hase und Frau Bär : der große Ausflug	  1	0.00
 Herr Hase und Frau Bär bekommen Besuch	  1	0.00
@@ -49494,7 +49419,7 @@ Hjertet bløder	  1	0.00
 Hjortronlandet	  1	0.00
 HKLJ : Helsingin kaupunginkirjaston luokitusjärjestelmä	  1	0.00
 Hlubinami pravěku	  1	0.00
-Hmm..	  1	0.00
+Hmm	  1	0.00
 HMS Marlborough will enter harbour	  1	0.00
 Ho fame	  1	0.00
 Ho Hagios Arsenios ho Kappadokēs	  1	0.00
@@ -50728,6 +50653,7 @@ I denna stilla matt	  1	0.00
 I det landet Utopia	  1	0.00
 I detta tecken	  1	0.00
 I divoratori	  1	0.00
+I do	  1	0.00
 I do, but here's the catch	  1	0.00
 I dödens väntrum	  1	0.00
 I Dominicus fotspår	  1	0.00
@@ -50773,7 +50699,7 @@ I hate school	  1	0.00
 I haven	  1	0.00
 I havsbandet	  1	0.00
 I hear	  1	0.00
-I hear the Lord say "New Era"	  1	0.00
+I hear the Lord say New Era	  1	0.00
 I heard a voice	  1	0.00
 I heard that song before	  1	0.00
 I heard the owl call	  1	0.00
@@ -50827,8 +50753,8 @@ I love this movie	  1	0.00
 I love trouble	  1	0.00
 I love trucks	  1	0.00
 I love you as big as the world	  1	0.00
-I love You because ..	  1	0.00
-I love you because..	  1	0.00
+I love you because	  1	0.00
+I love You because	  1	0.00
 I love you brighter than the stars	  1	0.00
 I love you daddy	  1	0.00
 I love you daddy Grizzle	  1	0.00
@@ -50922,13 +50848,14 @@ I slept with Joey Ramone	  1	0.00
 I slept with my best friend's boyfriend	  1	0.00
 I slutet borde jag dö	  1	0.00
 I sogni della Bella Addormentata	  1	0.00
-I som här inträden..	  1	0.00
+I som här inträden	  1	0.00
 I sommersi e i salvati	  1	0.00
 I speak for the silent	  1	0.00
 I spy	  1	0.00
 I spy with Spot	  1	0.00
-I stället för en blomma..	  1	0.00
+I stället för en blomma	  1	0.00
 I stället för en pappa	  1	0.00
+i stället för hemland	  1	0.00
 I stället för vapen	  1	0.00
 I stånd att döda	  1	0.00
 I stand with Christ	  1	0.00
@@ -51108,10 +51035,11 @@ Ich denke oft an Piroschka	  1	0.00
 Ich fahre einen ShiguliLada	  1	0.00
 Ich fahre einen Skoda	  1	0.00
 Ich fahre einen Wartburg	  1	0.00
-Ich feiere ..	  1	0.00
-Ich gestalte und forme..	  1	0.00
+Ich feiere	  1	0.00
+Ich gestalte und forme	  1	0.00
 Ich gestehe alles	  1	0.00
-Ich glaube und vertraue..	  1	0.00
+Ich glaube an Jesum Christum, Gottes eingeboreren Sohn, unserern Herrn : sieben Predigten über diese Worte des zweiten Glaubens-Artikels nach dem kleinen Luther'schen Katechismus	  1	0.00
+Ich glaube und vertraue	  1	0.00
 Ich hab da so ein Gefühl	  1	0.00
 Ich hab dich und du hast mich	  1	0.00
 Ich hab eine Freundin, die ist Notärztin	  1	0.00
@@ -51125,29 +51053,31 @@ Ich hab Freunde, die sind Bauern	  1	0.00
 Ich hab noch einen Toten in Berlin	  1	0.00
 Ich habe Adolf Hitler verbrannt	  1	0.00
 Ich habe nur dies eine Leben	  1	0.00
-Ich kämpfe ..	  1	0.00
+Ich hoffe...	  1	0.00
+Ich kämpfe	  1	0.00
 Ich kämpfte für Allah : eine Frau auf der Suche nach der Wahrheit	  1	0.00
 Ich kämpfte für Arafat	  1	0.00
 Ich kann allein zur Schule geh'n!	  1	0.00
 Ich lasse dich nicht, du segnest mich denn : Predigten zum 1. Buch Moses	  1	0.00
+Ich leide...	  1	0.00
 Ich lerne leben, weil du sterben musst	  1	0.00
 Ich liebe dich ja so bestialisch	  1	0.00
+Ich liebe...	  1	0.00
 Ich liege auf meiner Matte und bete	  1	0.00
 Ich mache mir Sorgen, Mama	  1	0.00
 Ich muss mit dir reden	  1	0.00
 Ich nannte ihn Krawatte	  1	0.00
+Ich sah seinen Mördern in die Augen	  1	0.00
 Ich schwöre bei Apollo	  1	0.00
 Ich schwöre und gelobe	  1	0.00
 Ich sehe was, siehst du es auch?	  1	0.00
-Ich staune..	  1	0.00
-Ich suche..	  1	0.00
-Ich träume ..	  1	0.00
-Ich und du	  1	0.00
+Ich staune	  1	0.00
+Ich suche	  1	0.00
+Ich träume	  1	0.00
 Ich und Du	  1	0.00
-Ich und du..	  1	0.00
 Ich vertraue dier, mein Vater	  1	0.00
-Ich wachse und reife..	  1	0.00
-Ich wage..	  1	0.00
+Ich wachse und reife	  1	0.00
+Ich wage	  1	0.00
 Ich war die Neuberin	  1	0.00
 Ich war ein hässliches Mädchen	  1	0.00
 Ich war Hitlers Gefangener	  1	0.00
@@ -51165,11 +51095,12 @@ Ich weiss was von der Feuerwehr	  1	0.00
 Ich werde gerne alt	  1	0.00
 Ich will dich trösten	  1	0.00
 Ich will dir Heimat geben	  1	0.00
+Ich will eine Welt ohne Kriege	  1	0.00
 Ich will hinaus	  1	0.00
 Ich will nicht leide sterben	  1	0.00
 Ich will Zeugnis ableben bis zum Letzten : Tagebücher 1933-1945	  1	0.00
 Ich wünsche dir Genesung	  1	0.00
-Ich wünsche mir..	  1	0.00
+Ich wünsche mir	  1	0.00
 Ich wünscht' ich wär ... ein Baby	  1	0.00
 Ich wünscht' ich wär ... ein Vogel	  1	0.00
 Ich zeig' dir den Weg, Häschen Hopp	  1	0.00
@@ -51181,8 +51112,6 @@ Ich, der Reporter	  1	0.00
 Ich, Goofy 1-2	  1	0.00
 Ici même	  1	0.00
 Ici Paris	  1	0.00
-Ickabog	  1	0.00
-Ickabog 	  1	0.00
 Icke Picke Pöö	  1	0.00
 Icky little duckling	  1	0.00
 Icon to narrative	  1	0.00
@@ -52048,7 +51977,7 @@ Inna?	  1	0.00
 Innaha Lundun, ya azizi	  1	0.00
 Innan du försvinner	  1	0.00
 Innansveitarkronika	  1	0.00
-Innbruddet på "Møllestua kafé"	  1	0.00
+Innbruddet på Møllestua kafé	  1	0.00
 Innelek	  1	0.00
 Inner engineering	  1	0.00
 Inner healing through healing of memories	  1	0.00
@@ -52121,7 +52050,7 @@ Inspector Hornleigh investigates	  1	0.00
 Inspector Queen's own case	  1	0.00
 Inspector Saito's small satori	  1	0.00
 Inspector West takes charge	  1	0.00
-Inspektor vsegda prav..	  1	0.00
+Inspektor vsegda prav	  1	0.00
 Inspirations finlandaises	  1	0.00
 Inspired children	  1	0.00
 Inspirerande betong : 44 projekt att gjuta själv	  1	0.00
@@ -52342,6 +52271,7 @@ Irene och sedelsugen	  1	0.00
 Irgendwann werden wir uns alles erzählen	  1	0.00
 Iriacynthe	  1	0.00
 Irish thoroughbred	  1	0.00
+Irja	  1	0.00
 Irlanti	  1	0.00
 Iron and silk	  1	0.00
 Iron Heart, war chief of the Iroquois	  1	0.00
@@ -52725,9 +52655,12 @@ J'étais derrière toi	  1	0.00
 Ja - syn trudovogo naroda	  1	0.00
 Ja dolžna rasskazat	  1	0.00
 Ja echt Hij leeft	  1	0.00
+ja Herra otti	  1	0.00
+ja Herra otti : kirja sinulle, joka olet menettänyt sen, mitä ilman et uskonut voivasi elää	  1	0.00
 Ja kukaan ei tiedä millainen olen : Helene Schjerfbeckin omakuvat 1878-1945	  1	0.00
 Ja ljublju	  1	0.00
 Ja otvetšaju za vse	  1	0.00
+Ja pöh, sanoi sotamies Ryhmy	  1	0.00
 Ja prišel dat'vam volju	  1	0.00
 Ja syn trudovogo naroda	  1	0.00
 Ja tack : mat för diabetiker och alla andra	  1	0.00
@@ -52998,7 +52931,6 @@ Janne on tiikeri	  1	0.00
 Jannis 6 A	  1	0.00
 Jannis und Lisa auf dem Bauernhof	  1	0.00
 Jannis und Lisa auf dem Spielplatz	  1	0.00
-Janson, go home	  1	0.00
 Jàntes	  1	0.00
 Janua linguarum reserata aurea	  1	0.00
 Japan through the looking glass	  1	0.00
@@ -53135,6 +53067,9 @@ Jedes Tierchen hat sein Häuchen	  1	0.00
 Jedi search	  1	0.00
 Jedidee haja'ar	  1	0.00
 Jedidee hajaár	  1	0.00
+Jees, mullikuhnuri! sanoi vääpeli Ryhmy	  1	0.00
+Jees, Nurmijärven mämmiä, sanoi vääpeli Ryhmy	  1	0.00
+Jees, punamultaa, sanoi kersantti Ryhmy	  1	0.00
 Jeesuksen elämä tapahtumajärjestyksessä	  1	0.00
 Jeesuksen haavat ja veri	  1	0.00
 Jeesuksen jooga	  1	0.00
@@ -53150,7 +53085,7 @@ Jeg - en elsker	  1	0.00
 Jeg - en kvinde	  1	0.00
 Jeg - en mand	  1	0.00
 Jeg - en utro mand	  1	0.00
-Jeg anklager.	  1	0.00
+Jeg anklager	  1	0.00
 Jeg elsker dig	  1	0.00
 Jeg er Frantz	  1	0.00
 Jeg har fået hund	  1	0.00
@@ -53335,7 +53270,7 @@ Jewish insights into the New testament	  1	0.00
 Jews don't need Jesus & other misconceptions	  1	0.00
 Jews without money	  1	0.00
 Jezus blijft bij ons	  1	0.00
-Jezus deelt uit.	  1	0.00
+Jezus deelt uit	  1	0.00
 Jezus houdt ook veel van kinderen	  1	0.00
 Jezus is de Koning	  1	0.00
 Jezus is opgestaan	  1	0.00
@@ -53588,7 +53523,6 @@ Joulun aikaan	  1	0.00
 Joulun ikkuna	  1	0.00
 Joulupukin jäljillä	  1	0.00
 Joulupukin joululoma	  1	0.00
-Joulupukki 	  1	0.00
 Joulupukki : kirja joulupukin ja tonttujen puuhista Korvatunturilla	  1	0.00
 Joulupuutarinoita	  1	0.00
 Jour de silence à Tanger	  1	0.00
@@ -53852,7 +53786,6 @@ Just another sucker	  1	0.00
 Just as I am	  1	0.00
 Just ask for Margaret	  1	0.00
 Just between friends	  1	0.00
-Just between us..	  1	0.00
 Just cause	  1	0.00
 Just courage	  1	0.00
 Just desserts	  1	0.00
@@ -53914,19 +53847,19 @@ Jyväskylä	  1	0.00
 K čertu	  1	0.00
 K charakteristike ekonomičeskogo romantizma	  1	0.00
 K derevenskoj bednote : ob'jasnenie dlja krest'jan, čego hotjat social-demokraty	  1	0.00
+K finlândskomu voprosu : stat'i po povodu rěči člena Gosudarstvennoj dumy P. N. Milûkova : 13 maâ 1908 goda pri razsmotrěnìi zaprosov po finlândskomu upravlenìû	  1	0.00
 K is for killer	  1	0.00
 K novomu beregu	  1	0.00
 K rabočemu narodu	  1	0.00
 K voprosu o razvitii monistitšeskogo vzgljada na istoriju	  1	0.00
 K voprosu ob istorii bol'ševistskih organizacij v Zakavkaz'e	  1	0.00
-K XVII s"ezdu partii Sovetskaâ Ukraina prišla s krupnymi pobedami	  1	0.00
+K XVII sezdu partii Sovetskaâ Ukraina prišla s krupnymi pobedami	  1	0.00
 K. Davids poenitentz (1620)	  1	0.00
 K. Davids poenitentz (1640)	  1	0.00
 K. Finska Hushållningssällskapet 1797-1897	  1	0.00
 K. G. E. Mannergeim bez retushi 1940-1944	  1	0.00
 K. J. Ståhlberg ja Suomen itsenäisyys	  1	0.00
 K' finlândskomu voprosu : stat'i po povodu rěči člena Gosudarstvennoj dumy P. N. Milûkova : 13 maâ1908 goda pri razsmotrěnìi zaprosov' po finlândskomu upravlenìû	  1	0.00
-K" finlândskomu voprosu : stat'i po povodu rěči člena Gosudarstvennoj dumy P. N. Milûkova : 13 maâ 1908 goda pri razsmotrěnìi zaprosov" po finlândskomu upravlenìû	  1	0.00
 K9 behavior basics	  1	0.00
 Ka-choww!	  1	0.00
 Käännetty saksankielisestä alkuteoksesta: Gebete	  1	0.00
@@ -54175,6 +54108,7 @@ Kamrat med kannibaler	  1	0.00
 Kamrathustrun	  1	0.00
 Kamratklubben Villervallan	  1	0.00
 Kan det bli värre?	  1	0.00
+Kan doktorn komma? : läkarhistorier från Lappmarken	  1	0.00
 Kan du säga perkele?	  1	0.00
 Kan du vissla Johanna	  1	0.00
 Kan ej : familjemålning i två akter	  1	0.00
@@ -54591,7 +54525,6 @@ Keep your brain fit	  1	0.00
 Keep Your Brain Healthy for Life	  1	0.00
 Keep your love on!	  1	0.00
 Keeper of the Grail	  1	0.00
-Keeper of the Keys	  1	0.00
 Keepers of death	  1	0.00
 Keepers of the best	  1	0.00
 Keepers of the house	  1	0.00
@@ -54681,6 +54614,9 @@ Kennst du diese Fahrzeuge?	  1	0.00
 Kennst du diese Waldtiere?	  1	0.00
 Kennst du meine Freunde? : fragt Emma, die kleine Ente	  1	0.00
 Kennst du meine Freunde? : fragt Felix, das Fohlen	  1	0.00
+Kennst du meine Freunde?, fragt der kleine Hase	  1	0.00
+Kennst du meine Freunde?, fragt der kleine Hund	  1	0.00
+Kennst du meine Freunde?, fragt die kleine Katze	  1	0.00
 Kennst du Robert?	  1	0.00
 Kennst du Winnie Puuh?	  1	0.00
 Kenta och barbisarna	  1	0.00
@@ -55295,6 +55231,7 @@ Killer group	  1	0.00
 Killer in the chorus	  1	0.00
 Killer in white	  1	0.00
 Killer takes all	  1	0.00
+Killer-Kane	  1	0.00
 Killer's cargo	  1	0.00
 Killer's choice	  1	0.00
 Killer's noon	  1	0.00
@@ -55726,7 +55663,7 @@ Klondike '97	  1	0.00
 Klondyke Bill	  1	0.00
 Klosteret i Petschenga	  1	0.00
 Klostret	  1	0.00
-Klug wie die Schlangen..	  1	0.00
+Klug wie die Schlangen	  1	0.00
 Kluger kleiner Balthasar	  1	0.00
 Knacka på!	  1	0.00
 Knattarna och den mystiska asken	  1	0.00
@@ -55947,7 +55884,7 @@ Kolobok idjot po sledu	  1	0.00
 Kolportören	  1	0.00
 Kolumbowie Rocznik 20	  1	0.00
 Kolumbus falter	  1	0.00
-Kolury.	  1	0.00
+Kolury	  1	0.00
 Kolymskie rasskazy	  1	0.00
 Kom herop!	  1	0.00
 Kom igen, Peter!	  1	0.00
@@ -55979,6 +55916,7 @@ Kommando Holger Meins : dramat på västtyska ambassaden och operation Leo	  1	0
 Kommen af Skarnsfolk	  1	0.00
 Kommentar till Nordiskt Speditörförbunds allmänna bestämmelser NSAB 2000	  1	0.00
 Kommentar über den Ersten Brief Petri	  1	0.00
+Kommer snart, sa Laban och Labolina	  1	0.00
 Kommissar Pfote – Schnüffel- Einsatz auf dem Schulhof	  1	0.00
 Kommissarie Kvadrat	  1	0.00
 Kommissarien och tyssnaden	  1	0.00
@@ -56001,7 +55939,7 @@ Kompetens i rörelse	  1	0.00
 Kompisar	  1	0.00
 Komplementärmedizin - Schulmedizin	  1	0.00
 Komplet sangteknik	  1	0.00
-Kompletterande källhänvisningar till Ingeborg Lagercrantz' "Lutherska kyrkovisor"	  1	0.00
+Kompletterande källhänvisningar till Ingeborg Lagercrantz' Lutherska kyrkovisor	  1	0.00
 Komplexa metoden vid växelströmsberäkningar	  1	0.00
 Kompromiss	  1	0.00
 Komtesse Käthe	  1	0.00
@@ -56438,7 +56376,7 @@ Krzyzacy	  1	0.00
 Kto kak živët	  1	0.00
 Kto pomogal Gitleru	  1	0.00
 Kto sil'nej	  1	0.00
-Kto skazal "mjau"?	  1	0.00
+Kto skazal mjau?	  1	0.00
 Kto skoree podrastët	  1	0.00
 Kto upravljaet zavodom v SSSR	  1	0.00
 Kto že my?	  1	0.00
@@ -56460,7 +56398,7 @@ Kuin Pietari hiilivalkealla : sotasyyllisyysasiain vaiheet 1944-1949	  1	0.00
 Kuin salama kirkkaalta taivaalta	  1	0.00
 Kuinka kopla eli ja vaikutti	  1	0.00
 Kuinka paratiisimetsä pelastettiin	  1	0.00
-Kuinkas sitten kävikään? : Muumikirjojen tarina 	  1	0.00
+Kuinkas sitten kävikään? : Muumikirjojen tarina	  1	0.00
 Kuinkas sitten kävikään? (2017)	  1	0.00
 Kuiskaava tyttö	  1	0.00
 Kuitu : mekaanisen massan energiataloudellinen valmistus : energiatutkimusohjelman loppuraportti 1988-1992	  1	0.00
@@ -56551,7 +56489,7 @@ Kun lapsella on diabetes	  1	0.00
 Kun minä tulen suureksi	  1	0.00
 Kun on tunteet	  1	0.00
 Kun projekti päättyy, mitä jää jäljelle?	  1	0.00
-Kun sydämeen sattuu..	  1	0.00
+Kun sydämeen sattuu	  1	0.00
 Kun valta vaihtui	  1	0.00
 Kunden kaufen nur von Siegern	  1	0.00
 Kundschafter am St. Lorenzstrom, die Abenteuer des Samuel Champlain	  1	0.00
@@ -57262,7 +57200,7 @@ Kutsu (1919-05-28)	  1	0.00
 Kutsu (1919-11-26)	  1	0.00
 Kutsu (1927-05-31)	  1	0.00
 Kutsu (1957-05-31)	  1	0.00
-Kutteren "Vildanden"	  1	0.00
+Kutteren Vildanden	  1	0.00
 Kuu-ukko Suomen kansan elämässä	  1	0.00
 Kuuden elämän saari	  1	0.00
 Kuudennen kerroksen Maikki	  1	0.00
@@ -60205,7 +60143,7 @@ La libellule de ses huit ans	  1	0.00
 La liste de mes envies	  1	0.00
 La Lizardière	  1	0.00
 La llegenda de sant Jordi	  1	0.00
-La lógica del "Reinado de Dios"	  1	0.00
+La lógica del Reinado de Dios	  1	0.00
 La lógica del vampiro	  1	0.00
 La loi de la steppe	  1	0.00
 La loi du préau	  1	0.00
@@ -60365,7 +60303,7 @@ La psychologie de l'enfant	  1	0.00
 La psychologie de l'intelligence	  1	0.00
 La psychologie des foules	  1	0.00
 La puissance et la fragilité	  1	0.00
-La qu..	  1	0.00
+La qu	  1	0.00
 La qualité de service, à la conquête du client	  1	0.00
 La question du plébiscite	  1	0.00
 La ragazza di Bube	  1	0.00
@@ -60423,7 +60361,7 @@ La souris	  1	0.00
 La souris tombeé du ciel	  1	0.00
 La souris, la mouche et l'homme	  1	0.00
 La spirale du temps	  1	0.00
-La spiritualité des pères du désert : "un défi pour la vie"	  1	0.00
+La spiritualité des pères du désert : un défi pour la vie	  1	0.00
 La storia dei colori	  1	0.00
 La storia dei tre porcellini e tante altre	  1	0.00
 La storia del bambino che aveva paura del buio	  1	0.00
@@ -60507,13 +60445,13 @@ La vie merveilleuse de Sarah Bernhardt	  1	0.00
 La vie mode d'emploi	  1	0.00
 La vie mode d'emploi : romans	  1	0.00
 La vie privée des hommes	  1	0.00
-La vie privée des hommes : "au temps des premières automobiles..."	  1	0.00
 La vie privée des hommes : a bord des grands voiliers du XVIIIe siècle	  1	0.00
 La vie privée des hommes : au temps des anciens égyptiens	  1	0.00
 La vie privée des hommes : au temps des chevaliers et des châteaux forts	  1	0.00
-La vie privée des hommes : au temps des mousquetaires..	  1	0.00
-La vie privée des hommes au temps des légionnaires romains..	  1	0.00
-La vie privée des hommes. Les temps préhistoriques..	  1	0.00
+La vie privée des hommes : au temps des mousquetaires	  1	0.00
+La vie privée des hommes : au temps des premières automobiles...	  1	0.00
+La vie privée des hommes au temps des légionnaires romains	  1	0.00
+La vie privée des hommes. Les temps préhistoriques	  1	0.00
 La vie promise	  1	0.00
 La vie quotidienne des Aztèques à la veille de la conquête espagnole	  1	0.00
 La vie quotidienne en Allemagne au temps de Guillaume II en 1900	  1	0.00
@@ -60888,7 +60826,7 @@ Lasse är en tjuv	  1	0.00
 Lasse är mörkrädd	  1	0.00
 Lasse är ute om natten	  1	0.00
 Lasse i lekparken	  1	0.00
-Lasse liten och andra sagor ur "Läsning för barn"	  1	0.00
+Lasse liten och andra sagor ur Läsning för barn	  1	0.00
 LasseMajas Detektivbyrå: Samlade serier 1	  1	0.00
 Lassemajas sommarlovsbok	  1	0.00
 LasseMajas sommarlovsbok : en dag på stranden	  1	0.00
@@ -61021,8 +60959,6 @@ Lastensuojelulaki (4172007) : soveltamisopas	  1	0.00
 Lastentarha	  1	0.00
 Lastenvaatteet	  1	0.00
 Lasting legacy	  1	0.00
-Lastuja VIII, Lohilastuja ja kalakaskuja	  1	0.00
-Lastuja VIII, Lohilastuja ja kalakaskuja ..	  1	0.00
 Lastuja, 1	  1	0.00
 Läsundervisning i grundskolan	  1	0.00
 Låt barnen slöjda	  1	0.00
@@ -61097,7 +61033,7 @@ Latvia	  1	0.00
 Latvian kohtalonvuodet : Krišjānis Berķiksen ja Hilma Lehtosen tarina	  1	0.00
 Latvija	  1	0.00
 Latvija-júras republika	  1	0.00
-Laudatio funebris viro amplissimo celeberrimoque D:no Johanni Bellmanno ..	  1	0.00
+Laudatio funebris viro amplissimo celeberrimoque D:no Johanni Bellmanno	  1	0.00
 Laudato si´	  1	0.00
 Laudatur	  1	0.00
 Laudin und die Seinen	  1	0.00
@@ -61295,7 +61231,7 @@ Le dernier jour d'un confamné	  1	0.00
 Le dernier lapon	  1	0.00
 Le dernier pharaon	  1	0.00
 Le dernier spartiate	  1	0.00
-Le dernier voyage du "Port Polis"	  1	0.00
+Le dernier voyage du Port Polis	  1	0.00
 Le désert est fertile	  1	0.00
 Le désert sans lumière	  1	0.00
 Le dessein de Dieu	  1	0.00
@@ -62539,7 +62475,7 @@ Lettre d'un ami de Dantzig à son ami de Königsberg relativement à l'affaire
 Lettres á une princesse d'Allemagne sur divers sujets de physique et de philosophie	  1	0.00
 Lettres Persanes	  1	0.00
 Lettres Portugaises	  1	0.00
-Letzte Chance für "Golden star"	  1	0.00
+Letzte Chance für Golden star	  1	0.00
 Leurs vies éclatantes	  1	0.00
 Lev - og lev lenger	  1	0.00
 Lev farligt!	  1	0.00
@@ -62568,6 +62504,7 @@ Levitan	  1	0.00
 Levnadsnivå och kulturvanor i Jakobstads- och Karleby-regionerna	  1	0.00
 Levoton leiri	  1	0.00
 Levyarvostelun tuolla puolen	  1	0.00
+Levyi-radikalizm i rabotšee dviženie razvityh kapitalistitšeskih stran	  1	0.00
 Lewis Percy	  1	0.00
 Lewis resa	  1	0.00
 Lex naturalis est indispensabile	  1	0.00
@@ -63011,8 +62948,8 @@ Listening to Prozac	  1	0.00
 Listening to your feelings	  1	0.00
 Listerdale mystery	  1	0.00
 Listig och lustig	  1	0.00
+Listki iz nastoâŝago i prošlago Finlândìi	  1	0.00
 Listki iz' nastoâŝago i prošlago Finlândìi	  1	0.00
-Listki iz" nastoâŝago i prošlago Finlândìi	  1	0.00
 Lists for curious kids, animals	  1	0.00
 Listy kamennoj knigi	  1	0.00
 Liszt	  1	0.00
@@ -63181,7 +63118,7 @@ Little train	  1	0.00
 Little tree	  1	0.00
 Little vampire's diary	  1	0.00
 Little Vixen	  1	0.00
-Little ways to say "I love you"	  1	0.00
+Little ways to say I love you	  1	0.00
 Little wheelies : choo	  1	0.00
 Little wheelies : chug	  1	0.00
 Little wheelies : fizz	  1	0.00
@@ -63757,6 +63694,7 @@ Love on a branch line	  1	0.00
 Love on a string	  1	0.00
 Love on account	  1	0.00
 Love on the line	  1	0.00
+Love on the Line. How to Recover from Romance Scams Gracefully and without Victimisation	  1	0.00
 Love on the wind	  1	0.00
 Love one another	  1	0.00
 Love or money	  1	0.00
@@ -64432,8 +64370,6 @@ Maddalena	  1	0.00
 Maddes melodi	  1	0.00
 Maddie's love-child	  1	0.00
 Maddon's rock	  1	0.00
-Maddon's Rock	  1	0.00
-Maddon's Rock ..	  1	0.00
 Made by me	  1	0.00
 Made in Japan : Akio Morita and Sony	  1	0.00
 Made to be loved	  1	0.00
@@ -65450,7 +65386,7 @@ Mary Anne	  1	0.00
 Mary Anne saves the day	  1	0.00
 Mary Anne's bad-luck mystery	  1	0.00
 Mary Barnes	  1	0.00
-Mary Brooks Picken "Sewing simplified"	  1	0.00
+Mary Brooks Picken Sewing simplified	  1	0.00
 Mary Gilliatt's interior design course	  1	0.00
 Mary had a little lamb and other animal rhymes	  1	0.00
 Mary Jones and her bible	  1	0.00
@@ -65549,6 +65485,7 @@ Mat som skyddar mot cancer	  1	0.00
 Mät- och reglerteknik	  1	0.00
 Mat, miljö, rättvisa	  1	0.00
 Mat' i muzyka	  1	0.00
+Matador	  1	0.00
 Matbok för fattig gourmet	  1	0.00
 Match and Make Colours	  1	0.00
 Match and Make Shapes	  1	0.00
@@ -66165,8 +66102,9 @@ Men det skete	  1	0.00
 Men from the boys	  1	0.00
 Men grunden står kvar	  1	0.00
 Men in groups	  1	0.00
+men jeg forstår meg på mirakler	  1	0.00
 Men of steel	  1	0.00
-Men om Kalle fått bestämma..	  1	0.00
+Men om Kalle fått bestämma	  1	0.00
 Men who hate women & the women who love them	  1	0.00
 Men with knives	  1	0.00
 Men, love & sex : the complete user's guide for women	  1	0.00
@@ -66239,6 +66177,7 @@ Mercenaires	  1	0.00
 Mercenary kill	  1	0.00
 Mercenary mountain	  1	0.00
 Mercenary's woman	  1	0.00
+Merci qui?	  1	0.00
 Mercier et Camier	  1	0.00
 Mercy Island	  1	0.00
 Mere anarchy	  1	0.00
@@ -66987,6 +66926,10 @@ Minutengebete	  1	0.00
 Minx	  1	0.00
 Mir bes oružija - mir bez vojn	  1	0.00
 Mir bez oružija - mir bez vojn	  1	0.00
+Mir nach, bellt Bobbi	  1	0.00
+Mir nach, quakt das Entchen	  1	0.00
+Mir nach, sagt das Kaninchen	  1	0.00
+Mir nach, schnurrt Mieze	  1	0.00
 Mira #venner #forelsket #etårimitliv	  1	0.00
 Mira's stora skoldag	  1	0.00
 Mirabel findet das Glück	  1	0.00
@@ -67692,7 +67635,7 @@ Morfars pistol	  1	0.00
 Morfars pistol: ett familjedrama	  1	0.00
 Morgan Kane	  1	0.00
 Morgan Kane - menneskejeger	  1	0.00
-Morgan Kane og "The Wild Bunch"	  1	0.00
+Morgan Kane og The Wild Bunch	  1	0.00
 Morgan's child	  1	0.00
 Morgan's run	  1	0.00
 Morgen Abend stirbt MacKing	  1	0.00
@@ -68009,10 +67952,10 @@ Mr. Plod's new whistle	  1	0.00
 Mr. Right Now	  1	0.00
 Mr. Rolie to the rescue	  1	0.00
 Mr. Sammler's planet	  1	0.00
-Mr. See-more says "Look around"	  1	0.00
-Mr. See-more says "Look down"	  1	0.00
-Mr. See-more says "Look inside"	  1	0.00
-Mr. See-more says "Look up"	  1	0.00
+Mr. See-more says Look around	  1	0.00
+Mr. See-more says Look down	  1	0.00
+Mr. See-more says Look inside	  1	0.00
+Mr. See-more says Look up	  1	0.00
 Mr. Splitfoot	  1	0.00
 Mr. Stink	  1	0.00
 Mr. Tiger goes wild	  1	0.00
@@ -68855,7 +68798,7 @@ Mysteriestromen in Europa en die nieuwe mysterien	  1	0.00
 Mysteriet i Genbrugsen	  1	0.00
 Mysteriet i Mumindalen	  1	0.00
 Mysteriet om det levende lig	  1	0.00
-Mysteriet på "Blå Ugglan"	  1	0.00
+Mysteriet på Blå Ugglan	  1	0.00
 Mysterious disappearance of a bride	  1	0.00
 Mysterious mountain man	  1	0.00
 Mysterium Cantori	  1	0.00
@@ -68930,7 +68873,7 @@ Na rodnoij zemle	  1	0.00
 Na sohranenii	  1	0.00
 Nå taler han fra himmelen	  1	0.00
 Na vysotah duha	  1	0.00
-Na zolotom kryl'ce sideli.	  1	0.00
+Na zolotom kryl'ce sideli	  1	0.00
 Naaman's dreadful secret	  1	0.00
 Naamiona terve mieli	  1	0.00
 Naantali	  1	0.00
@@ -68942,7 +68885,7 @@ Näbbmöss	  1	0.00
 Nabokov's dozen	  1	0.00
 Nabots sten	  1	0.00
 Nach dem dritten Kind	  1	0.00
-Nach Hause kommst du nie..	  1	0.00
+Nach Hause kommst du nie	  1	0.00
 Nachdenken über Christa	  1	0.00
 Nachfolge	  1	0.00
 Nachhilfe für elefanten	  1	0.00
@@ -69173,7 +69116,7 @@ Nästan fri	  1	0.00
 Nastepny do raju	  1	0.00
 Nastrand	  1	0.00
 Nat King Cole : a personal and professional biography	  1	0.00
-Natacha 14 "cauchemirage"	  1	0.00
+Natacha 14 cauchemirage	  1	0.00
 Natacha et le maharadjah	  1	0.00
 Natacha et les dinosaures	  1	0.00
 Natales Academiae Aboensis (1648)	  1	0.00
@@ -69355,7 +69298,7 @@ Nègres jaunes	  1	0.00
 Negyen prédikator	  1	0.00
 Négyszög	  1	0.00
 Nehemiah's greatest day	  1	0.00
-Nehmt nur mein Leben.	  1	0.00
+Nehmt nur mein Leben	  1	0.00
 Nehru	  1	0.00
 Nei territori del nordovest	  1	0.00
 Nei! sagði lítla skrímslið	  1	0.00
@@ -69364,6 +69307,7 @@ Neighborhood animals	  1	0.00
 Neighbourhood friends	  1	0.00
 Neil Young	  1	0.00
 Neill & Summerhill, a man and his work	  1	0.00
+Neill! Neill! Orange peel!	  1	0.00
 Nein, nein, nein, das kann ich ganz allein	  1	0.00
 Neiti talonmies	  1	0.00
 Neitsytperho	  1	0.00
@@ -69428,6 +69372,7 @@ Nest of vipers	  1	0.00
 Neste år i Jerusalem	  1	0.00
 Nesting birds	  1	0.00
 Nestwärme	  1	0.00
+Nesvjatye svjatye  i drugie rasskazy	  1	0.00
 Nesvoevremennye mysli	  1	0.00
 Net bandits	  1	0.00
 Net of fear	  1	0.00
@@ -69739,6 +69684,7 @@ Nijntje in de speeltuin	  1	0.00
 Nijntje op de fiets	  1	0.00
 Nijntje schuifboekje open of dicht?	  1	0.00
 Nijntje schuifboekje wat zie je daar?	  1	0.00
+Nikak ne doiti do domu	  1	0.00
 Nike's great race	  1	0.00
 Niki	  1	0.00
 Nikki and the rocking horse	  1	0.00
@@ -70157,6 +70103,7 @@ Not just a witch	  1	0.00
 Not just another perfect wife	  1	0.00
 Not Just For Christmas	  1	0.00
 Not me, inspector	  1	0.00
+Not me, said the monkey	  1	0.00
 Not my thing	  1	0.00
 Not my will	  1	0.00
 Not now, Mrs Wolf!	  1	0.00
@@ -70454,7 +70401,6 @@ Nytt perspektiv på psykiatrien	  1	0.00
 Nytta af wåra inländska wäxter	  1	0.00
 Nyttig snekring	  1	0.00
 O	  1	0.00
-O "Dialektike prirody" Èngel'sa	  1	0.00
 O Ágios Paḯsios o Agioreítis	  1	0.00
 O Alquimista	  1	0.00
 O anno da morte de Ricardo Reis	  1	0.00
@@ -70467,6 +70413,7 @@ O conto da ilha desconhedica	  1	0.00
 O delfim	  1	0.00
 O desejo de Kianda	  1	0.00
 O dialektičeskom i istoričeskom materializme (Sentâbr' 1938 g.)	  1	0.00
+O Dialektike prirody Èngel'sa	  1	0.00
 O dialektitšeskom materializme	  1	0.00
 O diario de um mago	  1	0.00
 O diese Rasselbande, 1 Mädchen und 24 Jungen	  1	0.00
@@ -70492,7 +70439,7 @@ O kulture i kulturnoi revoljutsii	  1	0.00
 O lapis do carpinteiro	  1	0.00
 O literatura i iskusstvo	  1	0.00
 O literature i iskusstve	  1	0.00
-O lozunge "razoruženiâ"	  1	0.00
+O lozunge razoruženiâ	  1	0.00
 O lozunge Soedinennych Štatov Evropy ; Voennaja programma proletarskoj revoljucii	  1	0.00
 O Manuscrito de Birkenau	  1	0.00
 O Megas Synaxaristēs tēs Orthodoxou Ekklēsias. Tomos 11	  1	0.00
@@ -70527,7 +70474,7 @@ O vendedor de passados	  1	0.00
 O vrede tabaka	  1	0.00
 O vypolnenii pâtiletnego plana promyšlennosti	  1	0.00
 O zadačah partijnogo kontrolâ i kontrol'noj rabote profsoûzov, komsomola i pečati	  1	0.00
-O zadačah profsoûzov SSSR na dannom ètape razvitiâ : reč' na IX s"ezde profsoûzov 28 apr. 1932-g.	  1	0.00
+O zadačah profsoûzov SSSR na dannom ètape razvitiâ : reč' na IX sezde profsoûzov 28 apr. 1932-g.	  1	0.00
 O ztra ceném koťátku	  1	0.00
 O. K. Corral	  1	0.00
 O'Gay	  1	0.00
@@ -70621,6 +70568,8 @@ Očerki iz žizni v Sibiri	  1	0.00
 Očerki o razvitii promyšlennoj tehniki	  1	0.00
 Očerki raznyh let	  1	0.00
 Och cancern bara försvann	  1	0.00
+och de vita skuggorna i skogen	  1	0.00
+Och de vita skuggorna i skogen	  1	0.00
 Och dörrarna öppnade sig	  1	0.00
 Och hjärtat vänder sig om	  1	0.00
 Och hjärtat, det var mitt	  1	0.00
@@ -70726,6 +70675,7 @@ Ofkos seltsame Reisen	  1	0.00
 Öfwer siö-staden Nystad	  1	0.00
 Öfwer swarta winbärs-buskars nytta i hushållningen	  1	0.00
 Og hanen galede anden gang	  1	0.00
+og hun takkede guderne	  1	0.00
 Og nu venter vi paa skib	  1	0.00
 Og skærm os med en englevakt	  1	0.00
 Og tok de enn vårt liv	  1	0.00
@@ -70755,6 +70705,7 @@ Oh, mum!	  1	0.00
 Oh, play that thing	  1	0.00
 Oh, what a busy day!	  1	0.00
 Oh, what a mess	  1	0.00
+Oh, wie liebten sie ihn und sein Spiel	  1	0.00
 Oheim und Neffe	  1	0.00
 Ohi houkutusten	  1	0.00
 Ohje tietoturvallisuudesta valtionhallinnossa annetun asetuksen täytäntöönpanosta	  1	0.00
@@ -70783,6 +70734,7 @@ Oi puppies!	  1	0.00
 Oidipous turannos	  1	0.00
 Õige mehe koda	  1	0.00
 Õigus puhkusele	  1	0.00
+Oikea antifilatelisti, sanoi vääpeli Ryhmy	  1	0.00
 Oikeistosuunnasta NKP(b):ssa	  1	0.00
 Oikonomikos	  1	0.00
 Oil	  1	0.00
@@ -70888,6 +70840,7 @@ Ole skibsdreng blandt kinesiske Sørøvere	  1	0.00
 Ole Skibsdreng blandt kinesiske sørøvere	  1	0.00
 Ole Skibsdreng paa verdensrejse	  1	0.00
 Ole Skipsdreng paa Verdensrejse	  1	0.00
+Ole viisaasti höperö sanoi vääpeli Ryhmy	  1	0.00
 Ole, Dole og Doffen på eventyr Gullbyen	  1	0.00
 Olen ylpeä sinusta	  1	0.00
 Óleo	  1	0.00
@@ -71025,7 +70978,7 @@ Om inflammation i venerne efter yttre mechaniska laesioner	  1	0.00
 Om informations-werket i Österbotn, i synnerhet det privata	  1	0.00
 Om jag var född till groda	  1	0.00
 Om jaktvård i Finland	  1	0.00
-Om jeg får være lykkelig..	  1	0.00
+Om jeg får være lykkelig	  1	0.00
 Om jernets förvandling til stål	  1	0.00
 Om Jesus	  1	0.00
 Om jord-naturen i Sverige	  1	0.00
@@ -71070,7 +71023,7 @@ Om myr-järnets tilwärckning	  1	0.00
 Om några besynnerliga bevis i rättegången	  1	0.00
 Om näringarnas samband och medvärkan på hvarandra	  1	0.00
 Om natten	  1	0.00
-Om ni inte hade mig.	  1	0.00
+Om ni inte hade mig	  1	0.00
 Om nödvändigheten af oeconomisk kundskap för lagstiftande magten	  1	0.00
 Om nödwändigheten af skogarnas bettre wård och ans i Finland	  1	0.00
 Om nödwändigheten at utdika och upodla kärr och mossar i Finland	  1	0.00
@@ -71217,7 +71170,7 @@ On n'empêche pas un petit coeur d'aimer	  1	0.00
 On n'en meurt pas	  1	0.00
 On nature	  1	0.00
 On nursing : toward a new endowment	  1	0.00
-On our way rejoicing.	  1	0.00
+On our way rejoicing	  1	0.00
 On Peace and Happiness	  1	0.00
 On photography	  1	0.00
 On rakkautes ääretön	  1	0.00
@@ -71248,7 +71201,7 @@ On the mysteries of re-incarnation	  1	0.00
 On the night of the seventh moon	  1	0.00
 On the night of the shooting star	  1	0.00
 On the other side	  1	0.00
-On the road ; The cruise of the "Dazzler"	  1	0.00
+On the road ; The cruise of the Dazzler	  1	0.00
 On the road : the original scroll	  1	0.00
 On the road to Kandahar : travels through conflict in the Islamic world	  1	0.00
 On the road to perdition	  1	0.00
@@ -71272,7 +71225,7 @@ On your potty!	  1	0.00
 On your toes	  1	0.00
 Ön, bilder från en sandrevel	  1	0.00
 Onassis	  1	0.00
-Once a cowboy..	  1	0.00
+Once a cowboy	  1	0.00
 Once a hero	  1	0.00
 Once a lover	  1	0.00
 Once a sheriff	  1	0.00
@@ -71393,7 +71346,7 @@ One Shot	  1	0.00
 One small candle	  1	0.00
 One small step	  1	0.00
 One small step : moving beyond trauma and therapy to a life of joy	  1	0.00
-One snowbound weekend ..	  1	0.00
+One snowbound weekend	  1	0.00
 One snowy rescue	  1	0.00
 One special Christmas	  1	0.00
 One special sleepover	  1	0.00
@@ -71547,7 +71500,6 @@ Operasjon Tordensky	  1	0.00
 Operasjon Vindkast	  1	0.00
 Operatiivisen laskentatoimen perusteet	  1	0.00
 Operation	  1	0.00
-Operation "N"	  1	0.00
 Operation Barbarossa 1941	  1	0.00
 Operation Barbro	  1	0.00
 Operation breakthrough	  1	0.00
@@ -71568,6 +71520,7 @@ Operation m	  1	0.00
 Operation Mammouth	  1	0.00
 Operation mommy	  1	0.00
 Operation Moses	  1	0.00
+Operation N	  1	0.00
 Operation Nightfall	  1	0.00
 Operation Nineveh	  1	0.00
 Operation no name	  1	0.00
@@ -71607,7 +71560,7 @@ Opi taikomaan	  1	0.00
 Opinioner kring träförädlingen	  1	0.00
 Opinnäyte luovasti	  1	0.00
 Opinto-opas 2011-2012 : Taideteollinen korkeakoulu	  1	0.00
-Opisanìe finlândskoj vojny na suhom" puti i na morě v" 1808 i 1809 godah"	  1	0.00
+Opisanìe finlândskoj vojny na suhom puti i na morě v 1808 i 1809 godah	  1	0.00
 Opiskelijaluettelo (1818)	  1	0.00
 Opiskelukykyä ja yhteisöllisyyttä	  1	0.00
 Opium	  1	0.00
@@ -71877,9 +71830,9 @@ Otčet C. K. K. VKP (b) i R. K. I	  1	0.00
 Otčet CK VLKCM desâtomu vsesoûznomu s'ezdu leninskogo komsomola	  1	0.00
 Otčet CKK-NK RKI XVI s'ezdu VKP(b)	  1	0.00
 Otčetnyj doklad central'nogo komiteta kommunističeskoj partii sovetskogo sojuza XX s'ezdu partii	  1	0.00
-Otčetnyj doklad na XVIII s"ezde partii o rabote CK VKP(b)	  1	0.00
+Otčetnyj doklad na XVIII sezde partii o rabote CK VKP(b)	  1	0.00
 Otčetnyj doklad o rabote pravitel'stva VII s'ezdu sovetov SSSR	  1	0.00
-Otčetnyj doklad XVII c"ezdu partii o rabote CK VKP(b)	  1	0.00
+Otčetnyj doklad XVII cezdu partii o rabote CK VKP(b)	  1	0.00
 Otčetnyj doklad XVII s'ezdu VKP(b) o rabote delegacii VKP(b) v IKKI	  1	0.00
 Otdyh ûnogo pionera	  1	0.00
 Öteki renkler	  1	0.00
@@ -72351,7 +72304,7 @@ Palvelun valttikortit	  1	0.00
 Palveluseteli ja peruspalvelut	  1	0.00
 Palveränd	  1	0.00
 Pam's trail ride adventure	  1	0.00
-Pamâti finlândskago general"-gubernatora Nikolaâ Ivanoviča Bobrikova	  1	0.00
+Pamâti finlândskago general-gubernatora Nikolaâ Ivanoviča Bobrikova	  1	0.00
 Pamâti pamâti	  1	0.00
 Pamâtka o zadačah vesennogo seva 1935 goda	  1	0.00
 Pamela, or Virtue rewarded, Part 1	  1	0.00
@@ -72420,7 +72373,6 @@ Pao	  1	0.00
 Paofeng tsou-yü	  1	0.00
 Paolos träningsbibel	  1	0.00
 Pàp	  1	0.00
-Papa hat's erlaubt	  1	0.00
 Papa Pit und Tim	  1	0.00
 Papa Wapper und das rote Wohnmobil	  1	0.00
 Papa, please get the moon for me	  1	0.00
@@ -72539,7 +72491,7 @@ Pargeters	  1	0.00
 Parhaat ruokasienet	  1	0.00
 Parhaat veneet tehtiin Turun Veneveistämöllä	  1	0.00
 Pariis : (kakskümmend viis aastat hiljem)	  1	0.00
-Pariisiin! ... ei kai taas..	  1	0.00
+Pariisiin! ... ei kai taas	  1	0.00
 Pariisilaissolmio ; Fine van Brooklyn ; Ihmisen vapaus	  1	0.00
 Paris : discovering Art Nouveau	  1	0.00
 Paris au mois d'août	  1	0.00
@@ -73389,7 +73341,7 @@ Pflanzenlegenden	  1	0.00
 Pflanzenspracht für Ihr Zuhause	  1	0.00
 Pflücke den Klee	  1	0.00
 PH, youthing not ageing	  1	0.00
-pH, youthing not ageing : how to reverse the ageing process and cure "age- related" diseases	  1	0.00
+pH, youthing not ageing : how to reverse the ageing process and cure age- related diseases	  1	0.00
 Phaic Tăn : sunstroke on a shoestring	  1	0.00
 Phantasmagoria and other poems	  1	0.00
 Phantom crown	  1	0.00
@@ -73412,9 +73364,9 @@ Phil et le crocodile	  1	0.00
 Phil Gordon's little blue book	  1	0.00
 Philby	  1	0.00
 Philémon et la château suspendu	  1	0.00
-Philémon et la naufragé du "A"	  1	0.00
+Philémon et la naufragé du A	  1	0.00
 Philémon et la sauvage	  1	0.00
-Philémon et le naufragé du "A"	  1	0.00
+Philémon et le naufragé du A	  1	0.00
 Philip of Pokanoket	  1	0.00
 Philip, Duke of Edinburgh	  1	0.00
 Philipp Jakob Spener, ein Reformator nach der Reformation	  1	0.00
@@ -73903,7 +73855,6 @@ Playfull pets	  1	0.00
 Playgirl	  1	0.00
 Playgirl for keeps	  1	0.00
 Playgirl Patsy	  1	0.00
-Playing "Nordic"	  1	0.00
 Playing and colors	  1	0.00
 Playing by the rules	  1	0.00
 Playing cards	  1	0.00
@@ -73912,6 +73863,7 @@ Playing for time	  1	0.00
 Playing hard to get	  1	0.00
 Playing in the dark	  1	0.00
 Playing murder	  1	0.00
+Playing Nordic	  1	0.00
 Playing safe	  1	0.00
 Playing the royal game	  1	0.00
 Playing with books	  1	0.00
@@ -74017,6 +73969,7 @@ Podgotovka pulemeta k strel'be	  1	0.00
 Podporutšik Kiže	  1	0.00
 Podrostok v trudnoj situacii	  1	0.00
 Podružki idut v školu	  1	0.00
+Podryvnaja rabota	  1	0.00
 Podvig	  1	0.00
 Poe : a life cut short	  1	0.00
 Poedinok ; Olesja ; Granatovyi braslet	  1	0.00
@@ -74754,7 +74707,7 @@ Prière aux ancêtres	  1	0.00
 Priesthood in action	  1	0.00
 Příhody lišky Bystroušky	  1	0.00
 Prikazano vyžit	  1	0.00
-Priključenija katera "Smelyj"	  1	0.00
+Priključenija katera Smelyj	  1	0.00
 Priključenija neznajki i ego druzej	  1	0.00
 Prikljutšenija Karandaša i Samodelkina	  1	0.00
 Priklûčeniâ Ronika v Tallinne	  1	0.00
@@ -74762,7 +74715,7 @@ Priklûčeniâ Travki	  1	0.00
 Příliš hlučná samota	  1	0.00
 Prilla and the butterfly lie	  1	0.00
 Prilliga prinsessboken	  1	0.00
-Prima che tu dica "Pronto"	  1	0.00
+Prima che tu dica Pronto	  1	0.00
 Prima-EF : guidance on the European framework for psychosocial risk	  1	0.00
 Primae scientiae educationis lineae	  1	0.00
 Primal fear	  1	0.00
@@ -74841,7 +74794,7 @@ Princess treasury	  1	0.00
 Princess's secret baby	  1	0.00
 Princesses	  1	0.00
 Princesses behaving badly	  1	0.00
-Princesses oubliées ou inconnues..	  1	0.00
+Princesses oubliées ou inconnues	  1	0.00
 Principal defence	  1	0.00
 Principes d'économie politique	  1	0.00
 Principes de la nature et de la grace fondés en raison	  1	0.00
@@ -75241,6 +75194,7 @@ Pure dead magic	  1	0.00
 Pure dead wicked	  1	0.00
 Pure juicing for life	  1	0.00
 Pure, white and deadly	  1	0.00
+Purilfinnan : Lapuanjoen rantajätkän muistoja	  1	0.00
 Purity and danger	  1	0.00
 Purjeet pullistuvat	  1	0.00
 Purnell's nature wordbook	  1	0.00
@@ -75555,7 +75509,7 @@ Rabbits in trouble	  1	0.00
 Rabe Raff	  1	0.00
 Rabén & Sjögrens Stora bok om bilar	  1	0.00
 Rabén & Sjögrens Stora bok om djur [Ryggradsdjur	  1	0.00
-Rabies..	  1	0.00
+Rabies	  1	0.00
 Rabota aktera nad rol'jo	  1	0.00
 Rabota aktera nad rol'ju	  1	0.00
 Rabota aktera nad soboj 2	  1	0.00
@@ -75614,6 +75568,7 @@ Radical self-forgiveness	  1	0.00
 Radikal	  1	0.00
 Radio for everybody	  1	0.00
 Radio sodissamme 1939-1945	  1	0.00
+Radio tube vademecum	  1	0.00
 Radio- ja televisiojournalismi vuonna 2000	  1	0.00
 Radio-konstruktørens håndbog 6	  1	0.00
 Radio-mysteriet	  1	0.00
@@ -75832,6 +75787,7 @@ Rapport från ett slakteri	  1	0.00
 Rapport från Europa	  1	0.00
 Rapport från ödemarken	  1	0.00
 Rapsodia elämästä	  1	0.00
+Rapsoodia kohvrivirnaga	  1	0.00
 Rapto	  1	0.00
 Rapture	  1	0.00
 Rapture in death	  1	0.00
@@ -76607,7 +76563,7 @@ Revolt in the desert	  1	0.00
 Revolting rhymes	  1	0.00
 Revolução e contra-revolução	  1	0.00
 Revolûciâ i graždanskaâ vojna v Finlândii 1917-1918 gody : vospominaniâ i materialy	  1	0.00
-Revolûcìâ v Finlândìi pri knâzě Ivaně Obolenskom"	  1	0.00
+Revolûcìâ v Finlândìi pri knâzě Ivaně Obolenskom	  1	0.00
 Revolûcionerka Tanâ	  1	0.00
 Revolutie der eenzamen	  1	0.00
 Revolution in learning	  1	0.00
@@ -77049,7 +77005,6 @@ Roll of thunder, hear my cry	  1	0.00
 Rollo	  1	0.00
 Rollo and Ruff and the Little Fluffy Bird	  1	0.00
 Rom	  1	0.00
-Romaanit.	  1	0.00
 Romain Rolland. Tõe ja inimsuse eestvõitleja	  1	0.00
 Roman 1987	  1	0.00
 Roman affair	  1	0.00
@@ -77252,8 +77207,6 @@ Royal love stories	  1	0.00
 Royal picnic	  1	0.00
 Royal punishment	  1	0.00
 Roza mira	  1	0.00
-Roždenie čeloveka	  1	0.00
-Roždenie čeloveka ..	  1	0.00
 Roždenie genija	  1	0.00
 Roždenie graždanina	  1	0.00
 Roždenie morja	  1	0.00
@@ -77650,6 +77603,7 @@ Safta, sylta och lägg in	  1	0.00
 Säg aah	  1	0.00
 Säg hej!	  1	0.00
 Sag ja zu dir	  1	0.00
+Säg mig vad du äter - och ja skall säga dig vem du är...	  1	0.00
 Säg mig vad du drömde	  1	0.00
 Sag mir, wohin: Weg und Ziel des Menschen	  1	0.00
 Šag za šagom	  1	0.00
@@ -77775,6 +77729,7 @@ Sällskapsresan	  1	0.00
 Sally	  1	0.00
 Sally and Simon go to playgroup	  1	0.00
 Sally and Simon visit the farm	  1	0.00
+Sally Bishop	  1	0.00
 Sally Shopkeeper	  1	0.00
 Sally smaalotte	  1	0.00
 Sally sticks it out	  1	0.00
@@ -77952,7 +77907,7 @@ Sankarimatkailija Tallinnan raitiovaunuissa	  1	0.00
 Sankarimerkki	  1	0.00
 Sänkt sedebetyg	  1	0.00
 Sanminimum	  1	0.00
-Sånn omtrent ..	  1	0.00
+Sånn omtrent	  1	0.00
 Sanna kvinnor	  1	0.00
 Sannas kafferep	  1	0.00
 Sannas likörbok	  1	0.00
@@ -78032,7 +77987,6 @@ Såret for våre overtredelser	  1	0.00
 Såret hjerte	  1	0.00
 Sargento Getúlio	  1	0.00
 sarjakuvat	  1	0.00
-Sarjakuvat.	  1	0.00
 Sarjiskoulu	  1	0.00
 Sarkhan	  1	0.00
 Sarmatia	  1	0.00
@@ -78152,7 +78106,7 @@ Savutuuletus pelastustyössä	  1	0.00
 Savvy	  1	0.00
 Sawdust Caesar	  1	0.00
 Saxon Ashe, secret agent	  1	0.00
-Say "Ahhh..."	  1	0.00
+Say Ahhh...	  1	0.00
 Say beep, beep, Bambi!	  1	0.00
 Say boo to the animals!	  1	0.00
 Say cheese and die screaming!	  1	0.00
@@ -78255,8 +78209,9 @@ Schipps - Ein Zuhause an Weihnachten	  1	0.00
 Schism	  1	0.00
 Schismatrix	  1	0.00
 Schlachtkreuzer Scharnhorst und Gneisenau : die Bildchronik 1939-1945	  1	0.00
-Schlaf Füchslein.	  1	0.00
+Schlaf Füchslein	  1	0.00
 Schlaf gut kleiner Bär	  1	0.00
+schlaf gut und traüme schön	  1	0.00
 Schlaf gut, Hansi Hase!	  1	0.00
 Schlaf gut, kleine Ente Nelli	  1	0.00
 Schlaf gut, kleiner Regenbogenfisch	  1	0.00
@@ -78414,7 +78369,7 @@ Se ken tulee viimeiseksi	  1	0.00
 Se människan	  1	0.00
 Se mig, mor	  1	0.00
 Se non ora, quando?	  1	0.00
-Se on pienestä kiinni..	  1	0.00
+Se on pienestä kiinni	  1	0.00
 Se on sitten kevät	  1	0.00
 Se på oss nå	  1	0.00
 Se på små djur!	  1	0.00
@@ -78425,7 +78380,7 @@ Se till mig som liten är	  1	0.00
 Se upp för elefanterna	  1	0.00
 Se upp för krokodilen!	  1	0.00
 Se upp, salige! (1960)	  1	0.00
-Se, drömmaren kommer där..	  1	0.00
+Se, drömmaren kommer där	  1	0.00
 Se, Guds lamm!	  1	0.00
 Se, Han kommer med skyarna	  1	0.00
 Sea animals with Ariel	  1	0.00
@@ -78694,7 +78649,7 @@ Selbstgebaut - und Geld gespart	  1	0.00
 Selbstmanagement, effektiv und effizient	  1	0.00
 Selbsttherapie von Homosexualität	  1	0.00
 Selbstvertrauen und Depression	  1	0.00
-Selected messages from the writings of Ellen G. White 	  1	0.00
+Selected messages from the writings of Ellen G. White	  1	0.00
 Selected messages from the writings of Ellen G. White, book 2, section I and II	  1	0.00
 Selected messages from the writings of Ellen G. White, book two, section I and II	  1	0.00
 Selected poems	  1	0.00
@@ -79109,7 +79064,7 @@ Sheikh's forbidden conquest	  1	0.00
 Sheikh's ransom	  1	0.00
 Sheikhs̕ temptation	  1	0.00
 Sheiks's honor	  1	0.00
-Sheila's future : " a restoration of all things"	  1	0.00
+Sheila's future :  a restoration of all things	  1	0.00
 Shekawati	  1	0.00
 Shell fire	  1	0.00
 Shell game	  1	0.00
@@ -79223,7 +79178,7 @@ Shylock is my name	  1	0.00
 Shylock, trial, Venice	  1	0.00
 Shyness	  1	0.00
 Si det med papir	  1	0.00
-Si j'étais..	  1	0.00
+Si j'étais	  1	0.00
 Si tú me dices ven lo dejo todo... pero dime ven	  1	0.00
 Si tu veux aller loin	  1	0.00
 Siamäk Naghianin uskomaton elämä - Tuulen kieltä etsimässä	  1	0.00
@@ -79308,7 +79263,7 @@ Signs of life	  1	0.00
 Signs of music	  1	0.00
 Signs of music : a guide to musical semiotics	  1	0.00
 Sigrid Schauman	  1	0.00
-Sigris bok om torkning av bär, frukt, grönsaker, svamp, örter..	  1	0.00
+Sigris bok om torkning av bär, frukt, grönsaker, svamp, örter	  1	0.00
 Sihti : energia- ja ympäristöteknologia : energiatutkimusohjelman loppuraportti 1991-1992	  1	0.00
 Sihti 2 : energia- ja ympäristöteknologia : energiateknologian tutkimusohjelman runkosuunnitelma 1993-1998	  1	0.00
 Siili ja taikakorut	  1	0.00
@@ -79522,7 +79477,7 @@ Single & Single	  1	0.00
 Single dad	  1	0.00
 Single malt and Scotch whisky	  1	0.00
 Single man meets single mom	  1	0.00
-Single sheriff seeks ..	  1	0.00
+Single sheriff seeks	  1	0.00
 Single, sexy ... and sold!	  1	0.00
 Singleton	  1	0.00
 Singleton. 2. osa	  1	0.00
@@ -79760,7 +79715,7 @@ Skeppskocken	  1	0.00
 Sketching school	  1	0.00
 Sketeboard : a step-by-step quide to improving your technique	  1	0.00
 Ski court, ski long en 10 leçons	  1	0.00
-Skibdrengens fortælling ; Peter och Rosa, Barbettes gjestebud, Spøgelses hestene ..	  1	0.00
+Skibdrengens fortælling ; Peter och Rosa, Barbettes gjestebud, Spøgelses hestene	  1	0.00
 Skibet gaar videre	  1	0.00
 Skibsmarkinanlaeg	  1	0.00
 Skilda vägar	  1	0.00
@@ -80158,8 +80113,8 @@ Snön över Azharia	  1	0.00
 Snoopy - le mie grandi avventure	  1	0.00
 Snoopy : il manuale del giovane scrittore creativo	  1	0.00
 Snoopy & the gang out west	  1	0.00
-Snoopy and "It was a dark and stormy night"	  1	0.00
 Snoopy and his Sopwith Camel	  1	0.00
+Snoopy and It was a dark and stormy night	  1	0.00
 Snoopy and the Red baron	  1	0.00
 Snoopy features as the great philosopher	  1	0.00
 Snoopy features as the winter	  1	0.00
@@ -80251,14 +80206,15 @@ So you want to be a jedi?	  1	0.00
 So you want to be a sprinter; The rocket (sprint) start	  1	0.00
 So you want to be a wizard	  1	0.00
 So you want to grow	  1	0.00
-So you want to paint..	  1	0.00
+So you want to paint	  1	0.00
 So you're 40!	  1	0.00
 So you're 50!	  1	0.00
 So you're 60!	  1	0.00
 So you've been publicly shamed	  1	0.00
 So young, so vicked	  1	0.00
 So your children want a dog	  1	0.00
-So, Anyway..	  1	0.00
+so zwitschern auch die Jungen	  1	0.00
+So, Anyway	  1	0.00
 So, anyway...	  1	0.00
 Soap bubbles	  1	0.00
 Soar and surrender	  1	0.00
@@ -80680,7 +80636,7 @@ Sotsiologija	  1	0.00
 Sötsug	  1	0.00
 Sotto il ponte di pietra	  1	0.00
 Sotvorenie	  1	0.00
-Souchon, der "Goeben"-Admiral, greift in die Weltgeschichte ein	  1	0.00
+Souchon, der Goeben-Admiral, greift in die Weltgeschichte ein	  1	0.00
 Soul	  1	0.00
 Soul coaching	  1	0.00
 Soul detox	  1	0.00
@@ -80752,7 +80708,7 @@ Soveltava liikunnanopetus	  1	0.00
 Sover mor ennå?	  1	0.00
 Sovereign state ; the secret history of ITT	  1	0.00
 Sovet ekonomičeskoj vzaimopomošči	  1	0.00
-Sovetskaja demokratija i buržuaznaja "sovetologija"	  1	0.00
+Sovetskaja demokratija i buržuaznaja sovetologija	  1	0.00
 Sovetskaja glava olimpijskoj istorii	  1	0.00
 Sovetskaja literatura	  1	0.00
 Sovetskaja ugroza	  1	0.00
@@ -81286,7 +81242,7 @@ Stalin's revenge	  1	0.00
 Stalin's war through the eyes of his commanders	  1	0.00
 Staline : aperçu historique du bolchévisme	  1	0.00
 Stalingrad, the turning point	  1	0.00
-Stalingrad"...bis zur letzten Patrone..."	  1	0.00
+Stalingrad...bis zur letzten Patrone...	  1	0.00
 Stalingradskaâ bitva	  1	0.00
 Stalinin vainot : Toivo ja Sanna Jääskeläinen, inkerinsuomalaiset selviytyjät	  1	0.00
 Stalins makaroner	  1	0.00
@@ -81408,6 +81364,7 @@ Starting soccer	  1	0.00
 Starting to count	  1	0.00
 Starting to drive	  1	0.00
 Starting to write	  1	0.00
+startled by his furry shorts!	  1	0.00
 Starye portrety	  1	0.00
 Stat och rätt	  1	0.00
 Stat'i 1923 g	  1	0.00
@@ -81721,9 +81678,9 @@ Stories for boys who dare to be different	  1	0.00
 Stories for boys who dare to be different 2	  1	0.00
 Stories for children	  1	0.00
 Stories for kids who dare to be different	  1	0.00
-Stories from "The dawn-breakers"	  1	0.00
 Stories from around the world	  1	0.00
 Stories from nature	  1	0.00
+Stories from The dawn-breakers	  1	0.00
 Stories from the delight of hearts	  1	0.00
 Stories from the front lines	  1	0.00
 Stories from the history of Ceylon	  1	0.00
@@ -82682,6 +82639,7 @@ Svalorna flyga högt	  1	0.00
 Svampar	  1	0.00
 Svampar i naturen	  1	0.00
 Svampar i naturenn	  1	0.00
+Svampbok	  1	0.00
 Svampbok för matälskare	  1	0.00
 Svampboken	  1	0.00
 Svamplycka	  1	0.00
@@ -82969,7 +82927,6 @@ Ta vare på huset ditt : utvendige sjekkpunkter	  1	0.00
 Ta vare på sommeren	  1	0.00
 Ta'ir al dahsha	  1	0.00
 Täällä Pohjantähden alla : 1	  1	0.00
-Täällä Pohjantähden alla ..	  1	0.00
 Täällä pohjantähden alla 2	  1	0.00
 Täältä pesee	  1	0.00
 Täältä pohjoiseen	  1	0.00
@@ -83428,8 +83385,8 @@ Taškent - gorod hlěbnyj	  1	0.00
 Tasmanian devil	  1	0.00
 Tasogeometrian punainen lanka	  1	0.00
 Tasoituslasku	  1	0.00
-TASS upolnomotšen zajavit..	  1	0.00
-Tass... tass... tass..	  1	0.00
+TASS upolnomotšen zajavit	  1	0.00
+Tass... tass... tass	  1	0.00
 Tassulan tarinoita	  1	0.00
 Tassulan tarinoita 3	  1	0.00
 Tästä ei puhuta julkisesti	  1	0.00
@@ -83879,7 +83836,7 @@ Terrore sul Rio Sonora	  1	0.00
 Terrorism, Jihad, and the Bible	  1	0.00
 Terugkeer tot Thera	  1	0.00
 Tervakosken paperitehtaan historia 1818-2018	  1	0.00
-Terve kala 	  1	0.00
+Terve kala	  1	0.00
 Terve talous	  1	0.00
 Terve, Tomppa!	  1	0.00
 Terveellinen ja turvallinen koulurakennus	  1	0.00
@@ -84011,6 +83968,7 @@ That night on thistle lane	  1	0.00
 That old ace in the hole	  1	0.00
 That old feeling	  1	0.00
 That quail, Robert	  1	0.00
+That Rascal Pat	  1	0.00
 That special kiss	  1	0.00
 That special touch	  1	0.00
 That sweet enemy	  1	0.00
@@ -85113,7 +85071,6 @@ The camera and the tsars	  1	0.00
 The camera book	  1	0.00
 The Camerons	  1	0.00
 The camp in the mountains	  1	0.00
-The canary murder case	  1	0.00
 The candleberry tree	  1	0.00
 The Cannibal galaxy	  1	0.00
 The cannon mound gang	  1	0.00
@@ -85410,7 +85367,6 @@ The Christmas tale of Peter Rabbit	  1	0.00
 The Christmas tree	  1	0.00
 The chronicles of Meap	  1	0.00
 The chronicles of Narnia	  1	0.00
-The Chronicles of the Imp	  1	0.00
 The chronology of fashion	  1	0.00
 The chrysantemum and the sword	  1	0.00
 The chuckling fingers	  1	0.00
@@ -85443,6 +85399,7 @@ The city of joy	  1	0.00
 The city of mirrors	  1	0.00
 The city of the stars	  1	0.00
 The city-girl bride	  1	0.00
+The city: its growth, its decay, its future	  1	0.00
 The claiming of Sleeping Beauty	  1	0.00
 The clan of the scorpion	  1	0.00
 The clash of civilizations : remaking of world order	  1	0.00
@@ -85628,6 +85585,7 @@ The confessions of Nat Turner	  1	0.00
 The confidential agent	  1	0.00
 The confidential clerk	  1	0.00
 The confirmed bachelor	  1	0.00
+The Conflict in the 'Heavenlies'	  1	0.00
 The conflict within	  1	0.00
 The Conquest of Fear	  1	0.00
 The conquest of Mexico	  1	0.00
@@ -85790,7 +85748,7 @@ The cruel empress	  1	0.00
 The cruel flame	  1	0.00
 The cruellest lie	  1	0.00
 The cruelty	  1	0.00
-The Cruise of the "Cachalot"	  1	0.00
+The Cruise of the Cachalot	  1	0.00
 The cruise of the Maiden Castle	  1	0.00
 The cry of the Icemark	  1	0.00
 The cry of the owl	  1	0.00
@@ -86598,7 +86556,7 @@ The F-plan	  1	0.00
 The fabric of cosmos : space, time and the texture of reality	  1	0.00
 The fabric of reality	  1	0.00
 The fabulous Furry Freak brothers	  1	0.00
-The fabulous Furry Freak brothers in "Grass roots", Fat Freddy's cat in chariot of the globs and further adventures of those fabulous Furry Freak brothers	  1	0.00
+The fabulous Furry Freak brothers in Grass roots, Fat Freddy's cat in chariot of the globs and further adventures of those fabulous Furry Freak brothers	  1	0.00
 The Fabulous Valley	  1	0.00
 The face beside the fire	  1	0.00
 The face of innocence	  1	0.00
@@ -86721,7 +86679,7 @@ The feud at Chimney Rock	  1	0.00
 The feud at Spanish Ford	  1	0.00
 The feuders	  1	0.00
 The fever	  1	0.00
-The few : the American "knights of the air" who risked everything to fight in the Battle of Britain	  1	0.00
+The few : the American knights of the air who risked everything to fight in the Battle of Britain	  1	0.00
 The field guide to dinosaurs	  1	0.00
 The field guide to natural wonders	  1	0.00
 The Field of Swords. Emperor 3	  1	0.00
@@ -86759,7 +86717,7 @@ The Finnish SS-volunteers and atrocities against jews, civilians and prisoners o
 The Finnish tradition : essays on structures and identities in the North of Europe	  1	0.00
 The fire	  1	0.00
 The fire and the ice	  1	0.00
-The fire and the staff : chapter 3 "The fire spreads"	  1	0.00
+The fire and the staff : chapter 3 The fire spreads	  1	0.00
 The fire came by	  1	0.00
 The Fire Cat	  1	0.00
 The fire eaters	  1	0.00
@@ -86905,7 +86863,7 @@ The fortunate pilgrim	  1	0.00
 The Fortunate Youth	  1	0.00
 The fortune	  1	0.00
 The fortune of war	  1	0.00
-The fortunes and misfortunes of the famous Moll Flanders..	  1	0.00
+The fortunes and misfortunes of the famous Moll Flanders	  1	0.00
 The forty rules of love	  1	0.00
 The foundation of Buddhist meditation	  1	0.00
 The Foundry	  1	0.00
@@ -87132,7 +87090,7 @@ The girl guide	  1	0.00
 The girl he left behind	  1	0.00
 The girl in black	  1	0.00
 The girl known as D 13	  1	0.00
-The girl most likely to..	  1	0.00
+The girl most likely to	  1	0.00
 The girl nobody wanted	  1	0.00
 The girl of the Sea of Cortez	  1	0.00
 The girl on the landing	  1	0.00
@@ -89402,7 +89360,7 @@ The mushroom at the end of the world	  1	0.00
 The music of chance	  1	0.00
 The music of love	  1	0.00
 The music of passion	  1	0.00
-The Mutiny of the "Albatross"	  1	0.00
+The Mutiny of the Albatross	  1	0.00
 The Mynns' Mystery	  1	0.00
 The myopic mermaid	  1	0.00
 The mysteries of Pittsburgh	  1	0.00
@@ -89489,6 +89447,7 @@ The narrative of Arthur Gordon Pym	  1	0.00
 The narrow corridor	  1	0.00
 The narrow way of attainment	  1	0.00
 The natashas	  1	0.00
+The nations shall know that I am Jehovah - how?	  1	0.00
 The native Americans	  1	0.00
 The Nativity	  1	0.00
 The nativity play	  1	0.00
@@ -90218,11 +90177,11 @@ The potter's studio handbook	  1	0.00
 The Power	  1	0.00
 The power and use of thought	  1	0.00
 The power is within you	  1	0.00
-The power of a "second touch"	  1	0.00
 The power of a positive no	  1	0.00
 The power of a positive no : how to say no and still get to yes	  1	0.00
 The power of a praying	  1	0.00
 The power of a praying parent	  1	0.00
+The power of a second touch	  1	0.00
 The power of a whisper	  1	0.00
 The power of beauty	  1	0.00
 The power of being thankful	  1	0.00
@@ -91059,6 +91018,7 @@ The seekers I	  1	0.00
 The seekers II	  1	0.00
 The seer and the sword	  1	0.00
 The seizing of Yankee Green Mall	  1	0.00
+The Self or Carnal Life and what it is	  1	0.00
 The selfish gene	  1	0.00
 The Selina crisis	  1	0.00
 The sense of an ending	  1	0.00
@@ -91655,7 +91615,7 @@ The sultry madonna	  1	0.00
 The summer at Whispering Hope	  1	0.00
 The summer house	  1	0.00
 The summer I turned pretty	  1	0.00
-The summer of "69"	  1	0.00
+The summer of 69	  1	0.00
 The summer of evil	  1	0.00
 The summer of Katya	  1	0.00
 The summer of love	  1	0.00
@@ -92313,6 +92273,7 @@ The unwanted	  1	0.00
 The unwelcome visitor	  1	0.00
 The unwilling mistress	  1	0.00
 The unworry book	  1	0.00
+The Upas Tree	  1	0.00
 The upside of unrequited	  1	0.00
 The Upside of Unrequited	  1	0.00
 The upstairs downstairs bears : the teddy bear hunt	  1	0.00
@@ -92853,7 +92814,6 @@ The world is fat	  1	0.00
 The world is flat : a brief history of the twenty-first century	  1	0.00
 The world is made of glass	  1	0.00
 The world is not enough	  1	0.00
-The world is yours	  1	0.00
 The world Jones made	  1	0.00
 The world of animals	  1	0.00
 The world of Bruin	  1	0.00
@@ -93171,9 +93131,10 @@ They shall expel demons	  1	0.00
 They shoot horses don't they	  1	0.00
 They shoot horses don't they?	  1	0.00
 They sought a new world	  1	0.00
-They think I'm too easy..	  1	0.00
+They think I'm too easy	  1	0.00
 They told me their stories	  1	0.00
 They would never hurt a fly : war criminals on trial in The Hague	  1	0.00
+They're all dead, aren't they	  1	0.00
 Thick as thieves	  1	0.00
 Thick as Thieves	  1	0.00
 Thief of clubs	  1	0.00
@@ -93286,6 +93247,7 @@ This new life	  1	0.00
 This other Eden	  1	0.00
 This present darkness	  1	0.00
 This present glory	  1	0.00
+This Proud Heart	  1	0.00
 This range is mine	  1	0.00
 This Rock is mine!	  1	0.00
 This side of brightness	  1	0.00
@@ -93714,7 +93676,7 @@ Timur i jego komanda	  1	0.00
 Tin fish	  1	0.00
 Tina - Genom eld och vatten	  1	0.00
 Tina : bästisfejden	  1	0.00
-Tina : bättre fly..	  1	0.00
+Tina : bättre fly	  1	0.00
 Tina : en tjuv i skolan	  1	0.00
 Tina : Florida tur och retur	  1	0.00
 Tina : hämnd på villovägar	  1	0.00
@@ -93787,7 +93749,7 @@ Tio hjärnor	  1	0.00
 Tio minuter i tolv	  1	0.00
 Tio sorglustiga berättelser med lärorika bilder om hur Drummel Petronella omsider blev Snälla Petronella	  1	0.00
 Tio svenskar måste dö	  1	0.00
-Tio till, att följa dig.	  1	0.00
+Tio till, att följa dig	  1	0.00
 Tip's tips on friendship	  1	0.00
 Tippana Helsingissä : vedestä kertova satu- ja tehtäväkirja lapsille	  1	0.00
 Tips and shortcuts for jewellery making	  1	0.00
@@ -93799,7 +93761,7 @@ Tirkistelyä förmaakeihin ja ylishuoneisiin	  1	0.00
 Tisbiten Elia eller Avskild för Herrens räkning	  1	0.00
 Tischchen deck dich, Goldesel und Knüppel aus dem Sack	  1	0.00
 Tischleni, deck dich!	  1	0.00
-Tischreden..	  1	0.00
+Tischreden	  1	0.00
 Tisha	  1	0.00
 Tisha : a story of a young teacher in Alaska wilderness	  1	0.00
 Tishomingo blues	  1	0.00
@@ -93921,7 +93883,7 @@ To marry for duty	  1	0.00
 To mend a marriage	  1	0.00
 To Michael with love	  1	0.00
 To mum with love	  1	0.00
-To my daughter in France..	  1	0.00
+To my daughter in France	  1	0.00
 To noč sem jo videl	  1	0.00
 To paradise	  1	0.00
 To perish for their saving	  1	0.00
@@ -94247,7 +94209,7 @@ Topolino d'oro	  1	0.00
 Topolino e il circo aereo	  1	0.00
 Topolino e il mostro	  1	0.00
 Topolino e il pizzaiolo scomparso	  1	0.00
-Topolino e la "Pietra di saggezza"	  1	0.00
+Topolino e la Pietra di saggezza	  1	0.00
 Topolino estate	  1	0.00
 Topologia. I	  1	0.00
 Toppa laget	  1	0.00
@@ -94569,6 +94531,7 @@ Tre förälskade poliskonstaplar	  1	0.00
 Tre fortællinger	  1	0.00
 Tre fruar	  1	0.00
 Tre gange Dronning	  1	0.00
+Tre män och Cecilia	  1	0.00
 Tre revolutioner	  1	0.00
 Tre små gummor	  1	0.00
 Tre systrar och en berättare	  1	0.00
@@ -94613,7 +94576,6 @@ Tregaron's daughter ; Kirkby's changeling	  1	0.00
 Treize contre un	  1	0.00
 Trelawney's woman	  1	0.00
 Tremannskärrin luontopolku	  1	0.00
-Tremasteren "Fremtiden"	  1	0.00
 Tremendous tractors	  1	0.00
 Tremor of intent	  1	0.00
 Trendy hekling	  1	0.00
@@ -94866,7 +94828,7 @@ Tschitschi der Bambusbär	  1	0.00
 Tsej eto pen	  1	0.00
 Tšekkiä suomalaisille	  1	0.00
 Tsemah tenore Esaj. 4:v.2. Jerem. 23:v.5. Zach. 3:v.8	  1	0.00
-Tsemppi 	  1	0.00
+Tsemppi	  1	0.00
 Tsemppi : englanti, verbit	  1	0.00
 Tsemppi : jakolasku	  1	0.00
 Tsemppi : käsiala A	  1	0.00
@@ -94883,7 +94845,7 @@ Tshuzhaja zhena i muzh pod krovatju	  1	0.00
 Tsi-na-pah	  1	0.00
 Tsistyje ptitsy	  1	0.00
 Tšjortov palets	  1	0.00
-Tšto takoe molitva Iisusova po predaniju pravoslavnoj tserkvi. Besedi inoka-startsa s mirskim iereem, vyzvannyja "Sbornikom o molitve Iisusovoj"	  1	0.00
+Tšto takoe molitva Iisusova po predaniju pravoslavnoj tserkvi. Besedi inoka-startsa s mirskim iereem, vyzvannyja Sbornikom o molitve Iisusovoj	  1	0.00
 Tšto takoje istorija	  1	0.00
 Tšto takoje istoritšeski materializm, izdatelstvo polititšeskoi literatury	  1	0.00
 Tšto takoje teorija otnositelnosti	  1	0.00
@@ -94893,6 +94855,7 @@ Tsurezuregusa	  1	0.00
 Tšužaja žena	  1	0.00
 Tšužie pis'ma	  1	0.00
 TTT	  1	0.00
+tu	  1	0.00
 Tu comprendras quand tu s'ras grand!	  1	0.00
 Tu m'apportes l'amour	  1	0.00
 Tu ne s'ras jamais grand!	  1	0.00
@@ -95115,6 +95078,7 @@ Tvorčestvo Fransua Rable i narodnaja kultura srednevekovja i renessansa	  1	0.
 Twänne predikningar, på nyårs-dagen och Christi himmelsfärds-dag år 1757	  1	0.00
 Tweak the devil's nose	  1	0.00
 Twee broers en hun vader	  1	0.00
+Tweet, tweet, tweet	  1	0.00
 Twelfth night proposal	  1	0.00
 Twelve	  1	0.00
 Twelve angels from hell	  1	0.00
@@ -95204,7 +95168,7 @@ Two secrets and the Tibs	  1	0.00
 Two serious ladies	  1	0.00
 Two shy pandas	  1	0.00
 Two stories Jesus Told	  1	0.00
-Two summer cruises with the Baltic fleet, in 1854-5 : being the log of the "Pet" yacht, 8 tons, R.T.Y.C	  1	0.00
+Two summer cruises with the Baltic fleet, in 1854-5 : being the log of the Pet yacht, 8 tons, R.T.Y.C	  1	0.00
 Two swords	  1	0.00
 Two tall strangers	  1	0.00
 Two thirds of a ghost	  1	0.00
@@ -95283,7 +95247,7 @@ U gorodskih vorot	  1	0.00
 U istokov dobrososedstva	  1	0.00
 U kolybeli nauki	  1	0.00
 U tebja est' solnce?	  1	0.00
-U vojny - ne ženskoe lico.	  1	0.00
+U vojny - ne ženskoe lico	  1	0.00
 U-700	  1	0.00
 U-977 : Geheimfahrt nach Südamerika	  1	0.00
 U-boat	  1	0.00
@@ -95383,7 +95347,7 @@ Ukrepim zernovoe hozâjstvo v Leningradskoj oblasti	  1	0.00
 Üle lahe	  1	0.00
 Uletajuštšij Monahov	  1	0.00
 Uli in Lebensgefahr	  1	0.00
-Uli und der "Rote Hahn"	  1	0.00
+Uli und der Rote Hahn	  1	0.00
 Ulica mladšego syna	  1	0.00
 Ulkoasiainhallinnon haasteet 2000-luvun alussa	  1	0.00
 Ulkoiluystäväksi iäkkäälle	  1	0.00
@@ -95533,9 +95497,9 @@ Una giornata nell'antica Roma	  1	0.00
 Una giornata nera	  1	0.00
 Una granita di mosche per il conte	  1	0.00
 Una mujer llega al pueblo	  1	0.00
-Una principessa piccola così, ma..	  1	0.00
+Una principessa piccola così, ma	  1	0.00
 Una rana nello stagna	  1	0.00
-Una sera in una stalla..	  1	0.00
+Una sera in una stalla	  1	0.00
 Una storia al giorno : storie veri di animali	  1	0.00
 Una storia al giorno di animaletti in famiglia	  1	0.00
 Una vita violenta (1959)	  1	0.00
@@ -95576,12 +95540,15 @@ Uncovering nature : the four seasons	  1	0.00
 Uncovering science : the human body	  1	0.00
 Uncovering technology : airplanes	  1	0.00
 Uncovering technology : skyscrapers	  1	0.00
+Und das Licht schien in die Finsternis...	  1	0.00
+und das mit links!	  1	0.00
 Und die Bibel hat doch recht	  1	0.00
 Und die Sonne stand still	  1	0.00
 Und es ward Licht : Roman der Weltallforschung	  1	0.00
 Und Gott redet	  1	0.00
 Und immer wieder Pferde	  1	0.00
 Und keiner wollte es glauben	  1	0.00
+Und wäre Er nicht auferstanden...	  1	0.00
 Und wer fährt vorn?	  1	0.00
 Und wieder schreit der Frieder: Oma!	  1	0.00
 Und wo wohnst Du?	  1	0.00
@@ -95688,7 +95655,7 @@ Undulat bortflugen	  1	0.00
 Une autre terre	  1	0.00
 Une aventure d evanhouy le siège	  1	0.00
 Une aventure de Basil et Victoria	  1	0.00
-Une baraque rouge et moche comme tout, à Venice, Amérique.	  1	0.00
+Une baraque rouge et moche comme tout, à Venice, Amérique	  1	0.00
 Une bavure bien baveuse	  1	0.00
 Une belle mort	  1	0.00
 Une bourgeoise fatale	  1	0.00
@@ -95858,6 +95825,7 @@ Untamed desire	  1	0.00
 Untamed witch	  1	0.00
 Unten durch	  1	0.00
 Unteni Afrikka	  1	0.00
+Unter Bruder	  1	0.00
 Unter Brüder	  1	0.00
 Unter dem roten Halbmond	  1	0.00
 Unter Falscher Flagge	  1	0.00
@@ -96157,10 +96125,11 @@ V puti ja zanemog	  1	0.00
 V rjadach borcov	  1	0.00
 V spiskah ne znatšilsja	  1	0.00
 V starom gorode Lachore	  1	0.00
+V stranata na bělitě lilii : Suomi - Finlandiâ	  1	0.00
 V strane belyh nočej	  1	0.00
 V tjur'mah fašistskoj Pol'ši	  1	0.00
 V trudnom pohode	  1	0.00
-V tšas dnja, vaše prevoshoditelstvo ..	  1	0.00
+V tšas dnja, vaše prevoshoditelstvo	  1	0.00
 V. I. Lenin	  1	0.00
 V. I. Lenin : kratkij biografitšeskij otšerk	  1	0.00
 V. I. Lenin i J. V. Stalin o vospitanii kommunsitičeskoj morali	  1	0.00
@@ -96168,7 +96137,6 @@ V. I. Lenin. Kratkij biografičeskij očerk	  1	0.00
 V. J. Lenin i Sovetskaja Karelija	  1	0.00
 V. V.'s Eyes	  1	0.00
 V'ychova kojence v rodině	  1	0.00
-V" stranata na bělitě lilii : Suomi - Finlandiâ	  1	0.00
 VA-teknik och avfallshantering i samhällen	  1	0.00
 Va' dove ti porta il cuore	  1	0.00
 Va'dove ti porta il cuore	  1	0.00
@@ -96386,7 +96354,7 @@ Valley of skulls	  1	0.00
 Valley of the vapours	  1	0.00
 Valley of the vines	  1	0.00
 Valley of violent men	  1	0.00
-Vallhundsträning : så här gör vi..	  1	0.00
+Vallhundsträning : så här gör vi	  1	0.00
 Välmenta råd i missvext-år	  1	0.00
 Valo muuttaa kaiken	  1	0.00
 Valo työssä : Wallac oy : seitsemäntoista tarinaa 50 vuodesta tieteen etujoukoissa	  1	0.00
@@ -96782,7 +96750,7 @@ Venäjän Pohjola	  1	0.00
 Venäläinen Helsinki	  1	0.00
 Venäläinen rationaalisuus	  1	0.00
 Venäläistä balettia ja rulettia Olavinlinnassa	  1	0.00
-Venäläisten oikeuksista Suomessa : tarkastelu Keisarikunnan Ministerineuvoston ehdotuksesta "muiden Venäjän alamaisten saattamisesta oikeuksien puolesta yhdenvertaisiksi Suomen kansalaisten kanssa"	  1	0.00
+Venäläisten oikeuksista Suomessa : tarkastelu Keisarikunnan Ministerineuvoston ehdotuksesta muiden Venäjän alamaisten saattamisesta oikeuksien puolesta yhdenvertaisiksi Suomen kansalaisten kanssa	  1	0.00
 Vendégjátek bolzanoban	  1	0.00
 Vendela	  1	0.00
 Vendetta for the Saint	  1	0.00
@@ -97172,7 +97140,7 @@ Viktor och fartdåren	  1	0.00
 Viktoria och viktorianerna	  1	0.00
 Viktoria und ihr Husar	  1	0.00
 Vil du binde mit snørebånd	  1	0.00
-Vil du se min smukke navle.	  1	0.00
+Vil du se min smukke navle	  1	0.00
 Vilda Bebin får en hund	  1	0.00
 Vilda blommor i våra marker	  1	0.00
 Vilda blommor i våra marker: fotografiska flora i färg	  1	0.00
@@ -97274,6 +97242,7 @@ Vinnerhjerte: Historien om Marit Bjørgen	  1	0.00
 Vinsent van Gog [Vincent van Gogh	  1	0.00
 Vinski ja Vinsentti	  1	0.00
 Vinslag i natten	  1	0.00
+Vintʺ	  1	0.00
 Vintage crochet : 30 specially commissioned patterns	  1	0.00
 Vintage fashion : collecting and wearing designer classics	  1	0.00
 Vintage furniture : collecting and living with modern design classics	  1	0.00
@@ -97530,10 +97499,10 @@ Volvo 440, 460 and 480 (1987-97) service and repair manual	  1	0.00
 Volvo 850 service and repair manual	  1	0.00
 Volvo lastvagnar	  1	0.00
 Volynetz-expeditionen : enligt anteckningar i skeppsjournalen	  1	0.00
-Vom "Dicken Ich" und seiner Hingabe	  1	0.00
 Vom Abendmahl Christi, Bekenntnis	  1	0.00
 Vom Arbeiter zum Astronomen	  1	0.00
 Vom Bären, der nicht mer schlafen konnte	  1	0.00
+Vom Dicken Ich und seiner Hingabe	  1	0.00
 Vom Erleben der Menschenweihehandlung : der Kultus und die zwölf Sinne	  1	0.00
 Vom Eros zur Ehe	  1	0.00
 Vom Essen und Trinken	  1	0.00
@@ -97592,7 +97561,7 @@ Vorlesung über den 1. Johannisbrief	  1	0.00
 Vorlesungen der Einführung in die Psychoanalyse	  1	0.00
 Vorlesungen über die Philosophie der Geschichte	  1	0.00
 Vorlesungen über soziale Ethik	  1	0.00
-Vorlesungen zur Einführung ins "Kapital"	  1	0.00
+Vorlesungen zur Einführung ins Kapital	  1	0.00
 Vorob'iško	  1	0.00
 Võrratud koogid	  1	0.00
 Vorschulische Intelligenzförderung	  1	0.00
@@ -97648,9 +97617,9 @@ Vrouw Grobelaar's leading Cases	  1	0.00
 Vrouwenarts	  1	0.00
 Vrouwenkruistocht	  1	0.00
 Vrøvlesygen	  1	0.00
-Vse li "srednij klass"?	  1	0.00
+Vse li srednij klass?	  1	0.00
 Vse tam budem	  1	0.00
-Vse tečët ..	  1	0.00
+Vse tečët	  1	0.00
 Vseobščij mir utopija ili real'nost'?	  1	0.00
 Vsesojuznoje agentstvo po avtorskim pravam ja	  1	0.00
 Vsja kremlevskaya rat	  1	0.00
@@ -97700,7 +97669,7 @@ Vykup raâ	  1	0.00
 Vyöhyketerapia ja refleksologia koliikkivauvan hoidon tukena : opas vanhemmille ja muille vauvaa hoitaville	  1	0.00
 Vystrěl	  1	0.00
 Vystrel na perevale	  1	0.00
-Vystuplenie na diskussii po knige G. F. Aleksandrova "Istorija zapadnoevropejskoj filosofii" 24 ijunga 1947 g	  1	0.00
+Vystuplenie na diskussii po knige G. F. Aleksandrova Istorija zapadnoevropejskoj filosofii 24 ijunga 1947 g	  1	0.00
 Vzaimodeistvie obstšeštva i prirody	  1	0.00
 Vzgljad na SSSR	  1	0.00
 W.A.R. : the unauthorized biography of William Axl Rose	  1	0.00
@@ -98190,7 +98159,7 @@ Weight training for runners	  1	0.00
 Weights for weight loss : the fast track to a slimmer, stronger, firmer body	  1	0.00
 Weihnachten bei Grossvater	  1	0.00
 Weihnachten im Winterwald	  1	0.00
-Weihnachten ist, wenn..	  1	0.00
+Weihnachten ist, wenn	  1	0.00
 Weihnachten mit Fuchs und Schweinchen	  1	0.00
 Weihnachtsbüchlein	  1	0.00
 Weihnachtsfest im Wichtelland	  1	0.00
@@ -98211,7 +98180,7 @@ Weiss dein Herz was es vill?	  1	0.00
 Weisses Gold vom Matterhorn	  1	0.00
 Weisst du was ich werden will?	  1	0.00
 Weisst du, wer die Träume bringt?	  1	0.00
-Weisst du, wie viel Sternlein stehen..	  1	0.00
+Weisst du, wie viel Sternlein stehen	  1	0.00
 Weisst du, wieviel Sternlein stehen	  1	0.00
 Welche Bedeutung hat die okkulte Entwicklung des Menschen für seine Hüllen	  1	0.00
 Welcher Po passt auf dieses Klo?	  1	0.00
@@ -98276,9 +98245,7 @@ Wenn Kinder Fehler machen	  1	0.00
 Wenn Kinder lügen	  1	0.00
 Wenn Kinder trotzen	  1	0.00
 Wenn Leiden einen Sinn haben soll	  1	0.00
-Wenn mauern fallen	  1	0.00
-Wenn mauern fallen..	  1	0.00
-Wenn Mauern fallen..	  1	0.00
+Wenn Mauern fallen	  1	0.00
 Wenn mauern fallen...	  1	0.00
 Wenn Mauern fallen... : zwei Marienschwestern entdecken die Freiheit des Evangeliums	  1	0.00
 Wenn Mutter allein erzieht	  1	0.00
@@ -98571,7 +98538,7 @@ What`s up with my cat?	  1	0.00
 What`s up with my dog?	  1	0.00
 Whatever comes	  1	0.00
 Whatever happened to the Caped Crusader?	  1	0.00
-Whatever Reilly wants..	  1	0.00
+Whatever Reilly wants	  1	0.00
 Whatever the price	  1	0.00
 Whatever you say I am : the life and times of Eminem	  1	0.00
 Whatnot takes charge	  1	0.00
@@ -98608,7 +98575,7 @@ When I go to the park	  1	0.00
 When I go to the supermarket	  1	0.00
 When I grow up... I want to be an adult	  1	0.00
 When I pray	  1	0.00
-When I saw Him ..	  1	0.00
+When I saw Him	  1	0.00
 When I talk to you : a cartoonist talks to God	  1	0.00
 When I whistle	  1	0.00
 When iron gates yield	  1	0.00
@@ -98650,7 +98617,7 @@ When the game is over, it all goes back in the box	  1	0.00
 When the Gods choose	  1	0.00
 When the Green Woods Laugh	  1	0.00
 When the king comes back	  1	0.00
-When the lights go out..	  1	0.00
+When the lights go out	  1	0.00
 When the night grows cold	  1	0.00
 When the sacred ginnmill closes	  1	0.00
 When the stars are dark	  1	0.00
@@ -99071,7 +99038,7 @@ Wie ich Gott erlebte ; Sein Weg mit mir durch sieben Jahrzehnte	  1	0.00
 Wie ich Vatis Auto verborgte	  1	0.00
 Wie intelligent ist mein Hund?	  1	0.00
 Wie is er bang?	  1	0.00
-Wie is van hout..	  1	0.00
+Wie is van hout	  1	0.00
 Wie Karma wirkt	  1	0.00
 Wie kommt das Salz ins Meer	  1	0.00
 Wie neugeboren durch Fasten	  1	0.00
@@ -99467,7 +99434,7 @@ With tears in our eyes	  1	0.00
 With the Adepts : an adventure among the Rosicrucians	  1	0.00
 With the Fire on High	  1	0.00
 With the Russian pilgrims to Jerusalem	  1	0.00
-With this baby..	  1	0.00
+With this baby	  1	0.00
 With your paw in mine	  1	0.00
 Without conscience : the disturbing world of the psychopaths among us	  1	0.00
 Without consent	  1	0.00
@@ -100039,9 +100006,9 @@ You go, girl : keep dreaming	  1	0.00
 You have yourself a deal	  1	0.00
 You just don't understand	  1	0.00
 You know you love me	  1	0.00
-You know you're over 40 when.	  1	0.00
-You know you're over 50 when.	  1	0.00
-You know you're year older when ..	  1	0.00
+You know you're over 40 when	  1	0.00
+You know you're over 50 when	  1	0.00
+You know you're year older when	  1	0.00
 You learn by living	  1	0.00
 You make me happy	  1	0.00
 You may all prophesy	  1	0.00
@@ -100157,6 +100124,7 @@ Your special gift	  1	0.00
 Your spiritual gifts can help your church grow	  1	0.00
 Your star guide to sex	  1	0.00
 Your stars at work	  1	0.00
+Your true brother	  1	0.00
 Yours and mine	  1	0.00
 Yours forever	  1	0.00
 Yours to seduce	  1	0.00
@@ -100187,6 +100155,7 @@ Yrkesteknik	  1	0.00
 Yrkesteknik. 1 : verktygslära	  1	0.00
 Yrkesteori for anleggsmaskinopplaeringen : bulldosere	  1	0.00
 Yrkesteori for anleggsmaskinopplaeringen : rammestyrte dumpere	  1	0.00
+Ysaïl	  1	0.00
 Ystävä sä lapsien... : Raamatun kertomuksia lapsille	  1	0.00
 Ystävällisesti K. H. Renlund	  1	0.00
 Ystäväni tuonilmaisissa	  1	0.00
@@ -100285,7 +100254,7 @@ Zadači soûzov molodeži	  1	0.00
 Zadači tâželoj promyšlennosti v svâzi vo stahanovskim dviženiem	  1	0.00
 Zadači vtoroj pâtiletki	  1	0.00
 Zadig ou La destinée	  1	0.00
-Zadrž blesk na cestě jeho.	  1	0.00
+Zadrž blesk na cestě jeho	  1	0.00
 Zagadka 'snežnogo čeloveka'	  1	0.00
 Zagadka kapitala : marksistskaja točka zrenija	  1	0.00
 Zagovor obrečennyh	  1	0.00
@@ -100365,6 +100334,7 @@ Zeit für mich	  1	0.00
 Zeit ist eine Illusion	  1	0.00
 Zeit ist Geld	  1	0.00
 Zeitmanagement	  1	0.00
+Zeitreisen	  1	0.00
 Zeke	  1	0.00
 Zelenaja ulica	  1	0.00
 Zelenskyi bez hrymu	  1	0.00
@@ -100532,7 +100502,7 @@ Zu seiner Zeit	  1	0.00
 Zuccinis dyreorkester	  1	0.00
 Zuckerman unbound	  1	0.00
 Zuerst die Freiheit	  1	0.00
-Zuerst wollte ich dir Blumen schenken..	  1	0.00
+Zuerst wollte ich dir Blumen schenken	  1	0.00
 Zuhause	  1	0.00
 Zuleikha otkrivaet glaza	  1	0.00
 Zulu moon	  1	0.00
