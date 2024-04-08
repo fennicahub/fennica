@@ -19,6 +19,7 @@ polish_title <- function (x) {
   
   # Remove periods at the end
   x <- gsub("\\.$", "", as.character(x))
+  x <- gsub("\\. $", "", as.character(x))
   
   x <- gsub("\\,$", "", x) # Remove commas at the end
   x <- gsub("[ ]+$", "", x) # Remove trailing spaces
@@ -31,13 +32,18 @@ polish_title <- function (x) {
   x <- gsub("^\\:", "", x) # Remove colon at the start
   x <- gsub("\\;$", "", x) # Remove semicolon at the end
   x <- gsub("/", "", x)
+  x <- gsub("=", "", x)
   x <- str_replace_all(x, "\\|", "") # Remove pipe characters
   x <- str_replace_all(x, "\\/", "") # Remove slashes
-
   
+
   # Capitalize the first letter of words
   x <- gsub("^a", "A", x)
   x <- gsub("^the", "The", x)
+  
+  x[x == ""] <- NA
+  
+  
   
   # Map back to originals
   x <- x[xinds]

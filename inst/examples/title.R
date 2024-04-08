@@ -25,14 +25,15 @@ s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE, add.percentages 
 
 message("Discarded entries in the original data")
 
-# NA values in the final harmonized data
-inds <- which(is.na(df.tmp[[field]]))
-
-# Original entries that were converted into NA
-original.na <- df.orig[match(df.tmp$melida_id[inds], df.orig$melinda_id), field]
-
-# .. ie. those are "discarded" cases; list them in a table
-tmp <- write_xtable(original.na, file_discarded, count = TRUE, add.percentages = TRUE)
+message("Discarded title")
+o <- as.character(df.orig[[field]])
+x <- as.character(df.tmp[["title"]])
+inds <- which(is.na(x))
+discard.file <- paste0(output.folder, field, "_discarded.csv")
+tmp <- write_xtable(o[inds],
+                    file = discard.file,
+                    count = TRUE,
+                    add.percentages = TRUE)
 
 # ------------------------------------------------------------
 

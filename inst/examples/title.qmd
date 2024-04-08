@@ -7,7 +7,7 @@ source("init.R")
 source("title.R")
 ```
 
-MARC: [245a,b](https://www.loc.gov/marc/bibliographic/bd245.html)
+MARC: [245a](https://www.loc.gov/marc/bibliographic/bd245.html)
 
 
 ## Complete Dataset Overview
@@ -17,6 +17,8 @@ MARC: [245a,b](https://www.loc.gov/marc/bibliographic/bd245.html)
 Original documents with non-NA titles: `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
 
 Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
+
+[Title discarded](dataTable/data_table.html?path=.https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_discarded.csv)
 
 [Download title field harmonized dataset](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title.csv)
 
@@ -40,6 +42,8 @@ kable(head(tab, 20))
 Original documents with non-NA titles: `r sum(!is.na(df_19[[field]]))` / `r nrow(df_19)` (`r round(100*mean(!is.na(df_19[[field]])), 1)`%)
 
 Original documents with missing (NA) titles `r sum(is.na(df_19[[field]]))` / `r nrow(df_19)` documents (`r round(100*mean(is.na(df_19[[field]])), 1)`%)
+
+[Title discarded (1809-1917)](dataTable/data_table.html?path=.https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_discarded_19.csv)
 
 [Download title field harmonized dataset](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_19.csv)
 

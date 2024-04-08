@@ -27,5 +27,3 @@ df.orig <- df.orig %>%
                 "language_original" = 20,  # ("041","h"))
                 "080x" = 21)
 
-# merge title and title_remainder
-df.orig$title <- paste(as.character(df.orig$title), as.character(df.orig$title_remainder), sep = " ")
