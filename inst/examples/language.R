@@ -7,6 +7,10 @@ df.orig$language <- gsub("\\|", ";", df.orig$language)
 # Harmonize the raw data
 out <- polish_languages(df.orig[[field]])
 df.tmp <- out$harmonized_full
+# Reset the index to convert it into a single-index DataFrame
+row.names(df.tmp) <- NULL
+
+
 
 # Collect the results into a data.frame
 df.tmp$melinda_id <- df.orig$melinda_id
@@ -43,14 +47,12 @@ tmp2 <- write_xtable(original.na, file_discarded,
                      count = TRUE, 
                      add.percentages = TRUE)
 
-message("Language discarded id")
-
-lo <- as.list(original.na)
-filtered_df <- df.orig[df.orig$language %in% lo, ]
-new_df <- filtered_df[, c("melinda_id", "language")]
-tmp3 <- write_xtable(new_df, file_discarded_id, 
-                     count = TRUE, 
-                     add.percentages = TRUE)
+# message("Language discarded id")
+# 
+# lo <- as.list(original.na)
+# filtered_df <- df.orig[df.orig$language %in% lo, ]
+# new_df <- filtered_df[, c("melinda_id", "language")]
+# write.csv(new_df, "language_discarded_id.csv", row.names=FALSE)
 
 
 # ------------------------------------------------------------

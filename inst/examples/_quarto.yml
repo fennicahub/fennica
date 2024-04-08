@@ -38,11 +38,11 @@ book:
   #- publisher.qmd
   ##- publication_interval.qmd
   #- publication_place.qmd #enemmän läpivuuta onko suomi tai autonomia
-  - publication_time.qmd
+  #- publication_time.qmd
   ##- publication_frequency.qmd
-  #- signum.qmd
+  - signum.qmd
   - title.qmd #läpivyys mihin tiedot perustuu
-  #- content_type.qmd
+  - content_type.qmd
   - title_uniform.qmd
   ##- subject_topic.qmd
   #- successor.qmd

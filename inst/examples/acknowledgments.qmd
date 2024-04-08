@@ -13,6 +13,9 @@
 - Teo Dallier
 - Elliot Gaudron-Parry
 
+
+The authors wish to acknowledge CSC – IT Center for Science, Finland, for computational resources.
+
 <h3> References: </h3>
 A national public sphere? Analyzing the language, location, and form of newspapers in finland, 1771–1917 <br>
 Marjanen J, Vaara V, Kanner A, Roivainen H, Mäkelä E, Lahti L & Tolonen M.<br>

@@ -59,14 +59,12 @@ tmp <- write_xtable(o[inds],
                     add.percentages = TRUE)
 
 
-#create a file for discarded with melindas
-message("Discarded publication year with melinda ids")
-xx1 <- data.frame(melinda_id = df.harmonized$melinda_id, original = df.harmonized$original,publication_year = df.harmonized$publication_year)
-xx1 <- xx1 %>% filter(is.na(publication_year))%>% filter(!is.na(original))
-discard.file.id <- paste0(output.folder, field, "_discarded_id.csv")
-tmp <- write_xtable(xx1,
-                    file = discard.file.id,
-                    count = TRUE)
+# #create a file for discarded with melindas
+# message("Discarded publication year with melinda ids")
+# xx1 <- data.frame(melinda_id = df.harmonized$melinda_id, original = df.harmonized$original,publication_year = df.harmonized$publication_year)
+# xx1 <- xx1 %>% filter(is.na(publication_year))%>% filter(!is.na(original))
+# write.csv(xx1, "publication_time_discarded_id.csv", row.names=FALSE)
+
 
 
 # ------------------------------------------------------------

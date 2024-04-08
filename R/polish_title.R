@@ -10,44 +10,40 @@
 #' @examples \dontrun{x2 <- polish_title(x)}
 #' @keywords utilities
 polish_title <- function (x) {
-
+  
   x0 <- x
+  x <- as.character(x)
   x <- unique(x)
   xinds <- match(x0, x)
+  
+  # Remove periods at the end
+  x <- gsub("\\.$", "", x, fixed = TRUE) 
+  x <- gsub("\\.$", "", x, fixed = TRUE)
+  x <- gsub("\\. $", "", x)
+  x <- gsub("[.]", "", x)
+  x <- gsub(".", "", x, fixed = TRUE)
+ 
+  
+  x <- gsub("\\,$", "", x) # Remove commas at the end
+  x <- gsub("[ ]+$", "", x) # Remove trailing spaces
+  x <- gsub("\\]", "", x) # Remove closing square brackets at the end
+  x <- gsub("\\[", "", x) # Remove opening square brackets at the start
+  x <- gsub("\\[|\\]", "",x) #remove brackets
+  #x <- gsub("\\)$", "", x) # Remove closing parentheses at the end
+  x <- gsub("^\\(", "", x) # Remove opening parentheses at the start
+  x <- gsub("\\:$", "", x) # Remove colon at the end
+  x <- gsub("\\;$", "", x) # Remove semicolon at the end
+  x <- gsub("/", "", x)
+  x <- str_replace_all(x, "\\|", "") # Remove pipe characters
+  x <- str_replace_all(x, "\\/", "") # Remove slashes
 
-  x <- as.character(x)
-
-  x <- gsub("\\,$", "", x)
-  x <- gsub("\\.$", "", x)
-
-  x <- gsub(":$", "", x)
-  x <- gsub(";$", "", x)
-
-  x <- gsub("^a ", "^A ", x)
-  x <- gsub("^\\[A\\] ", "^A ", x)
-  x <- gsub("^\\[a\\] ", "^A ", x)
-  x <- gsub("^\\[d\\] ", "^D ", x)
-  x <- gsub("^\\[D\\] ", "^D ", x)
-  x <- gsub("^the ", "^The ", x)
-  x <- gsub("\\. A  ", ", a ", x)
-  x <- gsub(" TEST TEST TEST ", " ", x)
-
-  # Additions for Kungliga
-   x <- gsub("(^[^/]+)([/]+)$", "\\1", x) 
-	# Remove slashes from the end
-	# unless slashes are used as a container
-  x <- gsub("\\.$", "", x)
-  x <- gsub("[ ]+$", "", x)
-  # Additions end here
-
-  x <- gsub("\\]$", "", x)
-  x <- gsub("^\\[", "", x)
-  x <- gsub("\\)$", "", x)
-  x <- gsub("^\\(", "", x)
-  x <- gsub("|", "", x)
+  
+  # Capitalize the first letter of words
+  x <- gsub("^a", "A", x)
+  x <- gsub("^the", "The", x)
+  
   # Map back to originals
   x <- x[xinds]
-
-  x
   
+  x
 }

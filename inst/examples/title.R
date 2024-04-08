@@ -1,10 +1,10 @@
-# merge title and title_remainder
-df.orig$title <- paste(df.orig$title, df.orig$title_uniform, sep = " ")
 
 field <- "title"
 
 # Harmonize the raw data
+
 x <- polish_title(df.orig[[field]])
+#x <- df.orig[[field]]
 
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
