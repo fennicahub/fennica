@@ -30,103 +30,83 @@
     ]
   },
   {
-    "objectID": "signum.html",
-    "href": "signum.html",
-    "title": "3  Signum",
-    "section": "",
-    "text": "3.1 Complete Dataset Overview\nSignum accepted for the whole Fennica\nSignum discarded for the whole Fennica",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Signum</span>"
-    ]
-  },
-  {
-    "objectID": "signum.html#subset-analysis-1809-1917",
-    "href": "signum.html#subset-analysis-1809-1917",
-    "title": "3  Signum",
-    "section": "3.2 Subset Analysis: 1809-1917",
-    "text": "3.2 Subset Analysis: 1809-1917\nSignum accepted for 1809-1917\nSignum discarded for 1809-1917",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Signum</span>"
-    ]
-  },
-  {
     "objectID": "title.html",
     "href": "title.html",
-    "title": "4  Title",
+    "title": "3  Title",
     "section": "",
-    "text": "4.1 Complete Dataset Overview\nUnique accepted entries: 920549\nOriginal documents with non-NA titles: 1187813 / 1187813 (100%)\nOriginal documents with missing (NA) titles 0 / 1187813 documents (0%)\nDownload title field harmonized dataset",
+    "text": "3.1 Complete Dataset Overview\nUnique accepted entries: 838098\nOriginal documents with non-NA titles: 1187444 / 1187813 (100%)\nOriginal documents with missing (NA) titles 369 / 1187813 documents (0%)\nTitle discarded\nDownload title field harmonized dataset",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Title</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Title</span>"
     ]
   },
   {
     "objectID": "title.html#complete-dataset-overview",
     "href": "title.html#complete-dataset-overview",
-    "title": "4  Title",
+    "title": "3  Title",
     "section": "",
-    "text": "4.1.1 Top-20 titles and their title counts\n\n\n\n\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nPeruskartta 1:20000\n5923\n0.5\n\n\nMaastokartta : peruskartta 1:20000 = grundkarta 1:20000\n2977\n0.3\n\n\nPitäjänkartta 1:20000\n1967\n0.2\n\n\nPeruskartta 1:20000 = Grundkarta 1:20000\n1241\n0.1\n\n\nTopografinen kartta 1:20000\n1204\n0.1\n\n\nPeruskartta 1:25000 = Grundkarta 1:25000 = Basic map 1:25000\n1138\n0.1\n\n\nTopografičeskaâ karta 1:42000\n740\n0.1\n\n\nMaastokartta 1:50000 = Terrängkarta 1:50000 = Topographic map 1:50000\n675\n0.1\n\n\nMaaperäkartta 1:20000\n480\n0\n\n\nPeruskartan pienennös 1:50000\n443\n0\n\n\nKootut teokset\n419\n0\n\n\nMaastokartta : topografinen kartta 1:50000 = topografisk karta 1:50000\n391\n0\n\n\nTopografinen kartta 1:50000\n387\n0\n\n\nTienumerokartta\n376\n0\n\n\nTopografinen kartta 1:100000\n362\n0\n\n\nJulkaisu\n324\n0\n\n\nSilta- ja lauttapaikkakartta\n301\n0\n\n\nJäsentiedote\n295\n0\n\n\nTuhattaituri\n271\n0\n\n\nVuosikirja\n267\n0",
+    "text": "3.1.1 Top-20 titles and their title counts\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nPeruskartta 1:20000\n5923\n0.5\n\n\nMaastokartta\n3376\n0.3\n\n\nPitäjänkartta 1:20000\n1968\n0.2\n\n\nPeruskartta 1:20000\n1251\n0.1\n\n\nTopografinen kartta 1:20000\n1206\n0.1\n\n\nPeruskartta 1:25000\n1139\n0.1\n\n\nTopografičeskaâ karta 1:42000\n740\n0.1\n\n\nMaastokartta 1:50000\n675\n0.1\n\n\nTienumerokartta\n613\n0.1\n\n\nMaaperäkartta 1:20000\n480\n0\n\n\nKootut teokset\n469\n0\n\n\nPeruskartan pienennös 1:50000\n443\n0\n\n\nSilta- ja lauttapaikkakartta\n420\n0\n\n\nHelsinki\n398\n0\n\n\nTopografinen kartta 1:50000\n391\n0\n\n\nInstrument approach chart - ICAO\n386\n0\n\n\nSuomi\n366\n0\n\n\nTopografinen kartta 1:100000\n362\n0\n\n\nJulkaisu\n329\n0\n\n\nFinland\n309\n0",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Title</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Title</span>"
     ]
   },
   {
     "objectID": "title.html#subset-analysis-1809-1917",
     "href": "title.html#subset-analysis-1809-1917",
-    "title": "4  Title",
-    "section": "4.2 Subset Analysis: 1809-1917",
-    "text": "4.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 51825\nOriginal documents with non-NA titles: 64504 / 64504 (100%)\nOriginal documents with missing (NA) titles 0 / 64504 documents (0%)\nDownload title field harmonized dataset\n\n4.2.1 Top-20 titles and their title counts for the 1809-1917 period for every content type\n\n\n\n\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nTopografičeskaâ karta 1:42000\n738\n1.1\n\n\nKalmbergin kartasto\n87\n0.1\n\n\nTheses\n72\n0.1\n\n\nKertomuksia Suomen historiasta\n62\n0.1\n\n\nDikter\n60\n0.1\n\n\nHomeri Odyssea svethice reddita\n57\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder : (ny följd)\n52\n0.1\n\n\nLähetysrukoushetkiä warten sowitettuja kertomuksia lähetystoimesta : (uusi jakso)\n52\n0.1\n\n\nFänrik Ståls sägner : en samling sånger\n47\n0.1\n\n\nSuomen virallinen tilasto\n45\n0.1\n\n\nSuomen yleiskartta = Generalkarta öfver Finland\n41\n0.1\n\n\nSamlade arbeten\n40\n0.1\n\n\nJohan Ludvig Runebergs samlade skrifter\n40\n0.1\n\n\nSuomen taloudellinen kartta 1:100000 : (kihlakunnankartta) = Finlands ekonomiska karta 1:100000 : (häradskarta)\n37\n0.1\n\n\nEvankelinen Lähetys Afrikassa : katsastettu lähetysrukous-hetkinä\n37\n0.1\n\n\nLäsning för barn\n33\n0.1\n\n\nTopografičeskaâ karta 1:84000\n32\n0\n\n\nLukemisia lapsille\n32\n0\n\n\nHandlingar rörande Finlands historia kring medlet af 17:de århundradet\n32\n0\n\n\nDissertatio entomologica insecta Fennica enumerans\n32\n0\n\n\n\n\n\n4.2.2 Top-20 titles and their title counts for the 1809-1917 period for “Language material” content type\n\n\n\n\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nTheses\n72\n0.1\n\n\nKertomuksia Suomen historiasta\n62\n0.1\n\n\nDikter\n60\n0.1\n\n\nHomeri Odyssea svethice reddita\n57\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder : (ny följd)\n52\n0.1\n\n\nLähetysrukoushetkiä warten sowitettuja kertomuksia lähetystoimesta : (uusi jakso)\n52\n0.1\n\n\nFänrik Ståls sägner : en samling sånger\n47\n0.1\n\n\nSuomen virallinen tilasto\n45\n0.1\n\n\nSamlade arbeten\n40\n0.1\n\n\nJohan Ludvig Runebergs samlade skrifter\n40\n0.1\n\n\nEvankelinen Lähetys Afrikassa : katsastettu lähetysrukous-hetkinä\n37\n0.1\n\n\nLäsning för barn\n33\n0.1\n\n\nLukemisia lapsille\n32\n0\n\n\nHandlingar rörande Finlands historia kring medlet af 17:de århundradet\n32\n0\n\n\nDissertatio entomologica insecta Fennica enumerans\n32\n0\n\n\nKatekismus, Suomen evankelis-lutherisen kirkon : hyväksytty Suomen kolmannessa yleisessä kirkolliskokouksessa vuonna 1893 : (kysymyksillä varustettu)\n30\n0\n\n\nFältskärns berättelser\n29\n0\n\n\nDramoja\n26\n0\n\n\nCommentarii in scriptores graecos et latinos : commentarii in Sallustium\n26\n0\n\n\nNordische Reisen und Forschungen\n25\n0",
+    "title": "3  Title",
+    "section": "3.2 Subset Analysis: 1809-1917",
+    "text": "3.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 48743\nOriginal documents with non-NA titles: 64504 / 64504 (100%)\nOriginal documents with missing (NA) titles 0 / 64504 documents (0%)\nTitle discarded (1809-1917)\nDownload title field harmonized dataset\n\n3.2.1 Top-20 titles and their title counts for the 1809-1917 period for every content type\n\n\n\n\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nTopografičeskaâ karta 1:42000\n738\n1.1\n\n\nKalmbergin kartasto\n87\n0.1\n\n\nDikter\n82\n0.1\n\n\nTheses\n72\n0.1\n\n\nFänrik Ståls sägner\n68\n0.1\n\n\nKertomuksia Suomen historiasta\n62\n0.1\n\n\nHomeri Odyssea svethice reddita\n57\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder\n52\n0.1\n\n\nLähetysrukoushetkiä warten sowitettuja kertomuksia lähetystoimesta\n52\n0.1\n\n\nSuomen virallinen tilasto\n45\n0.1\n\n\nSamlade arbeten\n44\n0.1\n\n\nSuomen yleiskartta\n41\n0.1\n\n\nJohan Ludvig Runebergs samlade skrifter\n40\n0.1\n\n\nSuomen taloudellinen kartta 1:100000\n37\n0.1\n\n\nEvankelinen Lähetys Afrikassa\n37\n0.1\n\n\nLutheruksen vähän katekismuksen yksinkertainen selitys kysymysten ja vastausten kautta\n34\n0.1\n\n\nLukemisia lapsille\n33\n0.1\n\n\nLäsning för barn\n33\n0.1\n\n\nKalevala\n33\n0.1\n\n\nTopografičeskaâ karta 1:84000\n32\n0\n\n\n\n\n\n3.2.2 Top-20 titles and their title counts for the 1809-1917 period for “Language material” content type\n\n\n\n\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nDikter\n82\n0.1\n\n\nTheses\n72\n0.1\n\n\nFänrik Ståls sägner\n68\n0.1\n\n\nKertomuksia Suomen historiasta\n62\n0.1\n\n\nHomeri Odyssea svethice reddita\n57\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder\n52\n0.1\n\n\nLähetysrukoushetkiä warten sowitettuja kertomuksia lähetystoimesta\n52\n0.1\n\n\nSuomen virallinen tilasto\n45\n0.1\n\n\nSamlade arbeten\n44\n0.1\n\n\nJohan Ludvig Runebergs samlade skrifter\n40\n0.1\n\n\nEvankelinen Lähetys Afrikassa\n37\n0.1\n\n\nLutheruksen vähän katekismuksen yksinkertainen selitys kysymysten ja vastausten kautta\n34\n0.1\n\n\nLukemisia lapsille\n33\n0.1\n\n\nLäsning för barn\n33\n0.1\n\n\nKalevala\n33\n0.1\n\n\nHandlingar rörande Finlands historia kring medlet af 17:de århundradet\n32\n0\n\n\nDissertatio entomologica insecta Fennica enumerans\n32\n0\n\n\nKatekismus, Suomen evankelis-lutherisen kirkon\n30\n0\n\n\nFältskärns berättelser\n29\n0\n\n\nHanna\n28\n0",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Title</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Title</span>"
     ]
   },
   {
     "objectID": "content_type.html",
     "href": "content_type.html",
-    "title": "5  Types of record",
+    "title": "4  Types of record",
     "section": "",
-    "text": "5.1 Types of record\nTitle count per type of record (note the log10 scale):",
+    "text": "4.1 Types of record\nTitle count per type of record (note the log10 scale):",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Types of record</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Types of record</span>"
     ]
   },
   {
     "objectID": "content_type.html#types-of-record",
     "href": "content_type.html#types-of-record",
-    "title": "5  Types of record",
+    "title": "4  Types of record",
     "section": "",
     "text": "Type of Record\nDocuments (n)\nFraction (%)\n\n\n\n\nLanguage material\n1087866\n91.6\n\n\nCartographic material\n57928\n4.9\n\n\nNonmusical sound recording\n37097\n3.1\n\n\nKit\n1892\n0.2\n\n\nComputer file\n1201\n0.1\n\n\nNotated music\n662\n0.1\n\n\nTwo-dimensional nonprojectable graphic\n427\n0\n\n\nProjected medium\n290\n0\n\n\nMusical sound recording\n195\n0\n\n\nMixed materials\n176\n0\n\n\nThree-dimensional artifact or naturally occurring object\n51\n0\n\n\nManuscript language material\n7\n0\n\n\nManuscript cartographic material\n4\n0",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Types of record</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Types of record</span>"
     ]
   },
   {
     "objectID": "content_type.html#bibliographic-level",
     "href": "content_type.html#bibliographic-level",
-    "title": "5  Types of record",
-    "section": "5.2 Bibliographic level",
-    "text": "5.2 Bibliographic level\n\n\n\nBibliographic level\nDocuments (n)\nFraction (%)\n\n\n\n\nMonograph/Item\n1105384\n93.1\n\n\nSerial\n71133\n6\n\n\nSubunit\n5692\n0.5\n\n\nSerial component part\n4570\n0.4\n\n\nCollection\n403\n0\n\n\nIntegrating resource\n346\n0\n\n\nMonographic component part\n268\n0",
+    "title": "4  Types of record",
+    "section": "4.2 Bibliographic level",
+    "text": "4.2 Bibliographic level\n\n\n\nBibliographic level\nDocuments (n)\nFraction (%)\n\n\n\n\nMonograph/Item\n1105384\n93.1\n\n\nSerial\n71133\n6\n\n\nSubunit\n5692\n0.5\n\n\nSerial component part\n4570\n0.4\n\n\nCollection\n403\n0\n\n\nIntegrating resource\n346\n0\n\n\nMonographic component part\n268\n0",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Types of record</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Types of record</span>"
     ]
   },
   {
     "objectID": "title_uniform.html",
     "href": "title_uniform.html",
-    "title": "6  Uniform Title",
+    "title": "5  Uniform Title",
     "section": "",
-    "text": "6.1 Complete Dataset Overview\nUnique accepted entries: 100614\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles: 1187813 / 1187813 (100%)\nOriginal documents with missing (NA) titles 0 / 1187813 documents (0%)\nDownload unifrom title field harmonized dataset",
+    "text": "5.1 Complete Dataset Overview\nUnique accepted entries: 100614\nUnique discarded entries in original data (excluding NA cases): 2\nOriginal documents with non-NA titles: 152861 / 1187813 (12.9%)\nOriginal documents with missing (NA) titles 1034952 / 1187813 documents (87.1%)\nDownload unifrom title field harmonized dataset",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uniform Title</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Uniform Title</span>"
     ]
   },
   {
     "objectID": "title_uniform.html#subset-analysis-1809-1917",
     "href": "title_uniform.html#subset-analysis-1809-1917",
-    "title": "6  Uniform Title",
-    "section": "6.2 Subset Analysis: 1809-1917",
-    "text": "6.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 3275\nUnique discarded entries in original data (1809-1917) (excluding NA cases): 0\nDownload uniform title field harmonized dataset (1809-1917)\nTop-20 titles and their title counts for 1809-1917 period.",
+    "title": "5  Uniform Title",
+    "section": "5.2 Subset Analysis: 1809-1917",
+    "text": "5.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 3275\nUnique discarded entries in original data (1809-1917) (excluding NA cases): 1\nDownload uniform title field harmonized dataset (1809-1917)\nTop-20 titles and their title counts for 1809-1917 period.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uniform Title</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Uniform Title</span>"
     ]
   },
   {
