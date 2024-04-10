@@ -1,6 +1,6 @@
 
-#' @title Polish Title
-#' @description Polish the title field.
+#' @title Polish Title Remainder 245b
+#' @description Polish the title remainder field.
 #' @param x Vector of titles
 #' @return Vector of titles polished
 #' @export
@@ -10,7 +10,7 @@
 #' @references See citation("fennica")
 #' @examples \dontrun{x2 <- polish_title(x)}
 #' @keywords utilities
-polish_title <- function (x) {
+polish_title_remainder <- function (x) {
   
   x0 <- x
   x <- as.character(x)
@@ -33,9 +33,8 @@ polish_title <- function (x) {
   x <- gsub("^\\s+", "", x)
   x <- gsub('"', "", x, fixed=TRUE) # Corrected line to remove double quotes
   
-  # Capitalize the first letter of words
-  x <- gsub("^a", "A", x)
-  x <- gsub("^the", "The", x)
+  x <- tolower(x) #decapitalize
+  
   
   # Remove periods 
   x <- gsub("\\.+$", "", as.character(x))

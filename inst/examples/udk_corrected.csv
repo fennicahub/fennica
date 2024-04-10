@@ -1,7 +1,7 @@
-﻿1;Tiede. Tieteen teoria. Tiedehallinto. Tiedepolitiikka. Tutkimuspolitiikka. Tutkimustyö. Tieteen popularisointi. Tulevaisuuden tutkimus. Futurologia
+1;Tiede. Tieteen teoria. Tiedehallinto. Tiedepolitiikka. Tutkimuspolitiikka. Tutkimustyö. Tieteen popularisointi. Tulevaisuuden tutkimus. Futurologia
 2;Tietopalvelu. Dokumentaatiopalvelu. Informaatiopalvelu. Tietokannat
 3;Semiotiikka. Merkit. Symbolit. Kirjoitus. Kirjoitusjärjestelmät
-004 ;Tietotekniikka. Tietojenkäsittely. Atk
+004;Tietotekniikka. Tietojenkäsittely. Atk
 6;Standardit. Normit. Standardisoiminen
 7;Kybernetiikka. Informaatioteoria. Kommunikaatioteoria
 8;Sivilisaatio. Kulttuuri. Edistys
@@ -11,18 +11,12 @@
 3;Tietosanakirjat. Yleiset hakuteokset
 5;Kausijulkaisut. Aikakauslehdet. Sarjat
 61;Yhteisöt. Järjestöt. Säätiöt. Tutkimuslaitokset. Kokoukset. Näyttelyt
-;- tietyn alan järjestöt, yhteisöt, säätiöt, tutkimuslaitokset ja kokoukset: ko. alan luokka
-;- kuvataidenäyttelyt: 7.091 ja ko. kuvataiteen luokka
-;- valokuvanäyttelyt: 7.091 ja 77
 069;Museot. Museologia
 7;Lehdistö. Journalismi. Sanomalehdet
 08 (2002-);Sekasisältöiset teokset
 9;Käsikirjoitukset. Harvinaiskirjat. Bibliofilia. Exlibrikset
 1;Filosofia
 11.joulu;Metafysiikka. Ontologia. Estetiikka. Luonnonfilosofia
-;- kuvataide-estetiikka: 7.0
-;- musiikin estetiikka: 78
-;- kirjallisuusestetiikka: 82
 13;Okkultismi. Salatieteet. Astrologia. Paranormaalit ilmiöt
 14;Filosofiset suuntaukset
 141.33;Teosofia. Kristosofia. Antroposofia. Filosofinen mystiikka
@@ -37,8 +31,6 @@
 22;Raamattu
 23;Dogmatiikka
 24;Kristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset
-;- kristillinen taide: ko. taiteen luokka ja 24
-;- hengellinen musiikki, virret : 78 ja 24
 25;Pastoraaliteologia. Homiletiikka. Saarnaoppi. Saarnat. Sielunhoito
 26;Kristillinen kirkko. Kirkon hallinto. Kirkko ja yhteiskunta. Ekumenia. Liturgiikka. Sakramentit. Kristillinen kasvatus. Kristilliset järjestöt. Diakonia. Lähetystyö
 27;Yleinen kirkkohistoria. Patristiikka
@@ -93,7 +85,7 @@
 35.08;Hallintoviranomaiset. Virkamiehet. Viranhaltijat. Toimenhaltijat
 351/354;Julkinen hallinto. Hallinto-oikeus. Hallinto-oppi. Poliisitoimi
 352;Kunnallishallinto. Paikallishallinto
-353/354;Valtionhallinto. Keskushallinto. Väliportaan hallinto. Lääninhallinto. Maakuntahallinto. Aluehallinto
+353/354;Valtionhallinto. Keskushallinto. Väliportaan hallinto. Lääninhallinto
 355/359;Sotataito. Sotatiede. Maanpuolustus
 364;Sosiaaliturva. Sosiaalihuolto. Sosiaalityö. Sosiaalipalvelut. Sosiaaliavustukset. Kansanterveys. Sairaalat
 365;Asuminen. Asuntopolitiikka
@@ -195,37 +187,24 @@
 678;Muoviteollisuus
 681.5;Säätötekniikka. Säätöjärjestelmät. Säätömenetelmät. Säätölaitteet. Automaatiotekniikka. Robotiikka
 688/689;Käsityöt. Leikkikalut. Koristeet. Askartelu
-;- taidekäsityö: 74
 69;Talonrakennus
 696/697;LVI-tekniikka. Rakennusten lämmitys. Ilmastointi. Ilmanvaihto
 7.0;Taide
 7.091;Taidenäyttelyt
-;- tietyn alan taidenäyttelyt: 7.091 ja ko. taiteen alan luokka, esim. kuvanveistonäyttelyt: 7.091 ja 73
 711;Aluesuunnittelu. Seutusuunnittelu. Maaseudun suunnittelu. Kaupunkisuunnittelu. Yhdyskuntasuunnittelu. Aluetutkimus. Kaavoitus
-;- aluetalous: 332
 712/719;Maisemasuunnittelu. Puutarha-arkkitehtuuri. Viherrakentaminen. Maisemansuojelu. Hautausmaat
-;- maisemansuojelu ks. myös 502/504
-;- viherrakentaminen ks. myös 633+635
-;- liikunta-alueet: 712/719 ja 796/799
 72;Arkkitehtuuri. Rakennustaide
 73/76;Kuvataide
 73;Kuvanveisto. Keramiikkataide. Metallitaide. Numismatiikka. Mitalitaide
 74;Piirustus. Taideteollisuus. Taidekäsityö. Sisustustaide. Lasitaide
-;- käsityöt: 688/689
 741.5;Sarjakuvat
 75;Maalaustaide
 76;Grafiikka
 77;Valokuvaus
 78;Musiikki - kansanmusiikki: 78 ja 39
-;- hengellinen musiikki, virret: 78 ja 24
-;- ooppera, baletti ks. myös 791/792
 791/792;Huvit. Elokuva. Videotaide. Teatteri. Ooppera. Tanssitaide. Baletti. Sirkus
-;- ooppera- ja balettimusiikki: 78
-;- tanssit (ei esittävänä taiteena): 793/794
 793/794;Seuraleikit. Tanssit. Tanssiurheilu. Tietokilpailut. Pelit. Taikatemput
-;- tanssitaide: 791/792
 796/799;Liikunta. Urheilu. Voimistelu. Liikuntavälineet. Urheiluvälineet. Retkeily
-;- kuntoliikunta: 613
 8;Kielitiede. Kirjallisuus
 80;Kielet
 800/801;Kielitiede. Lingvistiikka

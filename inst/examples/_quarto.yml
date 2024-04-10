@@ -42,6 +42,7 @@ book:
   ##- publication_frequency.qmd
   #- signum.qmd
   - title.qmd #läpivyys mihin tiedot perustuu
+  - title_remainder.qmd
   - content_type.qmd
   - title_uniform.qmd
   ##- subject_topic.qmd

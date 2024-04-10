@@ -1,14 +1,13 @@
-
-field <- "title"
+field <- "title_remainder"
 
 # Harmonize the raw data
 
-x <- polish_title(df.orig[[field]])
+x <- polish_title_remainder(df.orig[[field]])
 
 
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
-		     title = x)
+                     title_remainder = x)
 
 
 # Define output files
@@ -54,7 +53,7 @@ write.table(df, file = paste0(output.folder, paste0(field, ".csv")))
 source("melindas_19.R")
 
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,] # publication time has df.harmonized instead of df.tmp 
-field <- "title"
+field <- "title_remainder"
 
 # Define output files
 file_accepted_19  <- paste0(output.folder, field, "_accepted_19.csv")
