@@ -90,53 +90,83 @@
     ]
   },
   {
+    "objectID": "title_remainder.html",
+    "href": "title_remainder.html",
+    "title": "5  Remainder of title",
+    "section": "",
+    "text": "5.1 Complete Dataset Overview\nUnique accepted entries: 319153\nOriginal documents with non-NA titles: 465827 / 1187813 (39.2%)\nOriginal documents with missing (NA) titles 721986 / 1187813 documents (60.8%)\nUnique discarded entries in original data: 0\nDownload title field harmonized dataset",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Remainder of title</span>"
+    ]
+  },
+  {
+    "objectID": "title_remainder.html#complete-dataset-overview",
+    "href": "title_remainder.html#complete-dataset-overview",
+    "title": "5  Remainder of title",
+    "section": "",
+    "text": "5.1.1 Top-20 titles and their title counts\n\n\n\n\n\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n7275\n0.6\n\n\nsuunnistuskartta\n3548\n0.3\n\n\nrunoja\n3219\n0.3\n\n\nperuskartta 1:20000 grundkarta 1:20000\n2977\n0.3\n\n\nroman\n1627\n0.1\n\n\ngrundkarta 1:20000\n1241\n0.1\n\n\ngrundkarta 1:25000 basic map 1:25000\n1138\n0.1\n\n\njännitysromaani\n1065\n0.1\n\n\nerotisk novell\n942\n0.1\n\n\neroottinen novelli\n915\n0.1\n\n\nloppuraportti\n906\n0.1\n\n\nopetuskartta\n802\n0.1\n\n\nkuunnelma\n747\n0.1\n\n\nterrängkarta 1:50000 topographic map 1:50000\n675\n0.1\n\n\nsalapoliisiromaani\n654\n0.1\n\n\nnovelleja\n573\n0\n\n\ntalouskartta 1:20000\n511\n0\n\n\nerotiska noveller\n511\n0\n\n\nkertomus\n484\n0\n\n\ndikter\n455\n0",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Remainder of title</span>"
+    ]
+  },
+  {
+    "objectID": "title_remainder.html#subset-analysis-1809-1917",
+    "href": "title_remainder.html#subset-analysis-1809-1917",
+    "title": "5  Remainder of title",
+    "section": "5.2 Subset Analysis: 1809-1917",
+    "text": "5.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 16271\nOriginal documents with non-NA titles: 23379 / 64504 (36.2%)\nOriginal documents with missing (NA) titles 41125 / 64504 documents (63.8%)\nDownload title field harmonized dataset(1809-1917)\n\n5.2.1 Top-20 titles and their title counts for the 1809-1917 period for every content type\n\n\n\n\n\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n237\n0.4\n\n\nkertomus\n140\n0.2\n\n\nroman\n137\n0.2\n\n\nrunoja\n91\n0.1\n\n\nesitelmä\n87\n0.1\n\n\nberättelse\n84\n0.1\n\n\nkansakouluja varten\n81\n0.1\n\n\nyksinäytöksinen huvinäytelmä\n80\n0.1\n\n\n1810-1944\n68\n0.1\n\n\nen samling sånger\n67\n0.1\n\n\ndikter\n57\n0.1\n\n\nhistoriallinen romaani\n56\n0.1\n\n\n1810-1999\n53\n0.1\n\n\nuusi jakso)\n52\n0.1\n\n\nny följd)\n52\n0.1\n\n\nnovell\n51\n0.1\n\n\nföredrag\n48\n0.1\n\n\nyksinäytöksinen pila\n47\n0.1\n\n\ngeneralkarta öfver finland\n41\n0.1\n\n\nkihlakunnankartta) finlands ekonomiska karta 1:100000 : (häradskarta)\n37\n0.1\n\n\n\n\n\n5.2.2 Top-20 titles and their title counts for the 1809-1917 period for “Language material” content type\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n237\n0.4\n\n\nkertomus\n140\n0.2\n\n\nroman\n137\n0.2\n\n\nrunoja\n91\n0.1\n\n\nesitelmä\n87\n0.1\n\n\nberättelse\n84\n0.1\n\n\nkansakouluja varten\n81\n0.1\n\n\nyksinäytöksinen huvinäytelmä\n80\n0.1\n\n\nen samling sånger\n67\n0.1\n\n\ndikter\n57\n0.1\n\n\nhistoriallinen romaani\n56\n0.1\n\n\nuusi jakso)\n52\n0.1\n\n\nny följd)\n52\n0.1\n\n\nnovell\n51\n0.1\n\n\nföredrag\n48\n0.1\n\n\nyksinäytöksinen pila\n47\n0.1\n\n\nkatsastettu lähetysrukous-hetkinä\n37\n0.1\n\n\nhuvinäytelmä yhdessä näytöksessä\n34\n0.1\n\n\nyksinäytöksinen näytelmä\n33\n0.1\n\n\nnovelli\n33\n0.1",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Remainder of title</span>"
+    ]
+  },
+  {
     "objectID": "content_type.html",
     "href": "content_type.html",
-    "title": "5  Types of record",
+    "title": "6  Types of record",
     "section": "",
-    "text": "5.1 Types of record\nTitle count per type of record (note the log10 scale):",
+    "text": "6.1 Types of record\nTitle count per type of record (note the log10 scale):",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Types of record</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Types of record</span>"
     ]
   },
   {
     "objectID": "content_type.html#types-of-record",
     "href": "content_type.html#types-of-record",
-    "title": "5  Types of record",
+    "title": "6  Types of record",
     "section": "",
     "text": "Type of Record\nDocuments (n)\nFraction (%)\n\n\n\n\nLanguage material\n1087866\n91.6\n\n\nCartographic material\n57928\n4.9\n\n\nNonmusical sound recording\n37097\n3.1\n\n\nKit\n1892\n0.2\n\n\nComputer file\n1201\n0.1\n\n\nNotated music\n662\n0.1\n\n\nTwo-dimensional nonprojectable graphic\n427\n0\n\n\nProjected medium\n290\n0\n\n\nMusical sound recording\n195\n0\n\n\nMixed materials\n176\n0\n\n\nThree-dimensional artifact or naturally occurring object\n51\n0\n\n\nManuscript language material\n7\n0\n\n\nManuscript cartographic material\n4\n0",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Types of record</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Types of record</span>"
     ]
   },
   {
     "objectID": "content_type.html#bibliographic-level",
     "href": "content_type.html#bibliographic-level",
-    "title": "5  Types of record",
-    "section": "5.2 Bibliographic level",
-    "text": "5.2 Bibliographic level\n\n\n\nBibliographic level\nDocuments (n)\nFraction (%)\n\n\n\n\nMonograph/Item\n1105384\n93.1\n\n\nSerial\n71133\n6\n\n\nSubunit\n5692\n0.5\n\n\nSerial component part\n4570\n0.4\n\n\nCollection\n403\n0\n\n\nIntegrating resource\n346\n0\n\n\nMonographic component part\n268\n0",
+    "title": "6  Types of record",
+    "section": "6.2 Bibliographic level",
+    "text": "6.2 Bibliographic level\n\n\n\nBibliographic level\nDocuments (n)\nFraction (%)\n\n\n\n\nMonograph/Item\n1105384\n93.1\n\n\nSerial\n71133\n6\n\n\nSubunit\n5692\n0.5\n\n\nSerial component part\n4570\n0.4\n\n\nCollection\n403\n0\n\n\nIntegrating resource\n346\n0\n\n\nMonographic component part\n268\n0",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Types of record</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Types of record</span>"
     ]
   },
   {
     "objectID": "title_uniform.html",
     "href": "title_uniform.html",
-    "title": "6  Uniform Title",
+    "title": "7  Uniform Title",
     "section": "",
-    "text": "6.1 Complete Dataset Overview\nUnique accepted entries: 100584\nUnique discarded entries in original data (excluding NA cases): 2\nOriginal documents with non-NA titles: 152861 / 1187813 (12.9%)\nOriginal documents with missing (NA) titles 1034952 / 1187813 documents (87.1%)\nDownload unifrom title field harmonized dataset",
+    "text": "7.1 Complete Dataset Overview\nUnique accepted entries: 100584\nUnique discarded entries in original data (excluding NA cases): 2\nOriginal documents with non-NA titles: 152861 / 1187813 (12.9%)\nOriginal documents with missing (NA) titles 1034952 / 1187813 documents (87.1%)\nDownload unifrom title field harmonized dataset",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uniform Title</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Uniform Title</span>"
     ]
   },
   {
     "objectID": "title_uniform.html#subset-analysis-1809-1917",
     "href": "title_uniform.html#subset-analysis-1809-1917",
-    "title": "6  Uniform Title",
-    "section": "6.2 Subset Analysis: 1809-1917",
-    "text": "6.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 3275\nUnique discarded entries in original data (1809-1917) (excluding NA cases): 1\nDownload uniform title field harmonized dataset (1809-1917)\nTop-20 titles and their title counts for 1809-1917 period.",
+    "title": "7  Uniform Title",
+    "section": "7.2 Subset Analysis: 1809-1917",
+    "text": "7.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 3275\nUnique discarded entries in original data (1809-1917) (excluding NA cases): 1\nDownload uniform title field harmonized dataset (1809-1917)\nTop-20 titles and their title counts for 1809-1917 period.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uniform Title</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Uniform Title</span>"
     ]
   },
   {
