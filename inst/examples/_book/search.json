@@ -64,7 +64,7 @@
     "href": "title.html",
     "title": "4  Title",
     "section": "",
-    "text": "4.1 Complete Dataset Overview\nUnique accepted entries: 807817\nOriginal documents with non-NA titles: 1187442 / 1187813 (100%)\nOriginal documents with missing (NA) titles 371 / 1187813 documents (0%)\nUnique discarded entries in original data: 4\nDownload title field harmonized dataset",
+    "text": "4.1 Complete Dataset Overview\nOriginal documents with titles: 1187442 / 1187813 (100%)\nOriginal documents with missing (NA) titles 371 / 1187813 documents (0%)\nUnique discarded entries in original data: 4\nDownload title field harmonized dataset",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Title</span>"
     ]
@@ -74,7 +74,7 @@
     "href": "title.html#complete-dataset-overview",
     "title": "4  Title",
     "section": "",
-    "text": "4.1.1 Top-20 titles and their title counts\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nPeruskartta 1:20000\n7174\n0.6\n\n\nMaastokartta\n3376\n0.3\n\n\nPitäjänkartta 1:20000\n2163\n0.2\n\n\nTopografinen kartta 1:20000\n1211\n0.1\n\n\nPeruskartta 1:25000\n1139\n0.1\n\n\nTopografičeskaâ karta 1:42000\n740\n0.1\n\n\nMaastokartta 1:50000\n675\n0.1\n\n\nTienumerokartta\n613\n0.1\n\n\nPeruskartan pienennös 1:50000\n544\n0\n\n\nTopografinen kartta 1:50000\n536\n0\n\n\nMaaperäkartta 1:20000\n507\n0\n\n\nKootut teokset\n484\n0\n\n\nTopografinen kartta 1:100000\n467\n0\n\n\nSuomi\n436\n0\n\n\nSuomen taloudellinen kartta 1:100000\n430\n0\n\n\nSilta- ja lauttapaikkakartta\n420\n0\n\n\nHelsinki\n410\n0\n\n\nJäsentiedote\n394\n0\n\n\nInstrument approach chart - ICAO\n386\n0\n\n\nValitut teokset\n354\n0",
+    "text": "4.1.1 Top-20 titles and their title counts\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nPeruskartta 1:20000\n7174\n0.6\n\n\nMaastokartta\n3376\n0.3\n\n\nPitäjänkartta 1:20000\n2163\n0.2\n\n\nTopografinen kartta 1:20000\n1211\n0.1\n\n\nPeruskartta 1:25000\n1139\n0.1\n\n\nTopografičeskaâ karta 1:42000\n740\n0.1\n\n\nMaastokartta 1:50000\n675\n0.1\n\n\nTienumerokartta\n613\n0.1\n\n\nPeruskartan pienennös 1:50000\n544\n0\n\n\nTopografinen kartta 1:50000\n536\n0\n\n\nMaaperäkartta 1:20000\n507\n0\n\n\nKootut teokset\n484\n0\n\n\nTopografinen kartta 1:100000\n467\n0\n\n\nSuomi\n436\n0\n\n\nSuomen taloudellinen kartta 1:100000\n430\n0\n\n\nSilta- ja lauttapaikkakartta\n420\n0\n\n\nHelsinki\n410\n0\n\n\nJäsentiedote\n394\n0\n\n\nInstrument approach chart - ICAO\n386\n0\n\n\nValitut teokset\n354\n0\n\n\n\n\n\n4.1.2 Top-20 titles and their title counts for “Language material” content type\n\n\n\n\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nKootut teokset\n483\n0\n\n\nJäsentiedote\n389\n0\n\n\nValitut teokset\n354\n0\n\n\nJulkaisu\n347\n0\n\n\nKalevala\n343\n0\n\n\nMatematiikka\n299\n0\n\n\nOpinto-opas\n293\n0\n\n\nVuosikirja\n279\n0\n\n\nTuhattaituri\n272\n0\n\n\nKoulun biologia\n256\n0\n\n\nFinland\n243\n0\n\n\nJulkaisuja\n240\n0\n\n\nKirjavaliot\n237\n0\n\n\nRaportti\n226\n0\n\n\nLaskutaito\n222\n0\n\n\nRunoja\n219\n0\n\n\nAnnual report\n212\n0\n\n\nJulkaisusarja\n201\n0\n\n\nMatikka\n199\n0\n\n\nSuomen evankelis-luterilaisen kirkon virsikirja\n198\n0",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Title</span>"
     ]
@@ -94,7 +94,7 @@
     "href": "title_remainder.html",
     "title": "5  Remainder of title",
     "section": "",
-    "text": "5.1 Complete Dataset Overview\nUnique accepted entries: 319153\nOriginal documents with non-NA titles: 465827 / 1187813 (39.2%)\nOriginal documents with missing (NA) titles 721986 / 1187813 documents (60.8%)\nUnique discarded entries in original data: 0\nDownload title field harmonized dataset",
+    "text": "5.1 Complete Dataset Overview\nOriginal documents with titles: 465827 / 1187813 (39.2%)\nOriginal documents with missing (NA) titles 721986 / 1187813 documents (60.8%)\nUnique discarded entries in original data: 0\nDownload title field harmonized dataset",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Remainder of title</span>"
     ]
@@ -104,7 +104,7 @@
     "href": "title_remainder.html#complete-dataset-overview",
     "title": "5  Remainder of title",
     "section": "",
-    "text": "5.1.1 Top-20 titles and their title counts\n\n\n\n\n\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n7275\n0.6\n\n\nsuunnistuskartta\n3548\n0.3\n\n\nrunoja\n3219\n0.3\n\n\nperuskartta 1:20000 grundkarta 1:20000\n2977\n0.3\n\n\nroman\n1627\n0.1\n\n\ngrundkarta 1:20000\n1241\n0.1\n\n\ngrundkarta 1:25000 basic map 1:25000\n1138\n0.1\n\n\njännitysromaani\n1065\n0.1\n\n\nerotisk novell\n942\n0.1\n\n\neroottinen novelli\n915\n0.1\n\n\nloppuraportti\n906\n0.1\n\n\nopetuskartta\n802\n0.1\n\n\nkuunnelma\n747\n0.1\n\n\nterrängkarta 1:50000 topographic map 1:50000\n675\n0.1\n\n\nsalapoliisiromaani\n654\n0.1\n\n\nnovelleja\n573\n0\n\n\ntalouskartta 1:20000\n511\n0\n\n\nerotiska noveller\n511\n0\n\n\nkertomus\n484\n0\n\n\ndikter\n455\n0",
+    "text": "5.1.1 Top-20 titles and their title counts\n\n\n\n\n\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n7275\n0.6\n\n\nsuunnistuskartta\n3548\n0.3\n\n\nrunoja\n3219\n0.3\n\n\nperuskartta 1:20000 grundkarta 1:20000\n2977\n0.3\n\n\nroman\n1627\n0.1\n\n\ngrundkarta 1:20000\n1241\n0.1\n\n\ngrundkarta 1:25000 basic map 1:25000\n1138\n0.1\n\n\njännitysromaani\n1065\n0.1\n\n\nerotisk novell\n942\n0.1\n\n\neroottinen novelli\n915\n0.1\n\n\nloppuraportti\n906\n0.1\n\n\nopetuskartta\n802\n0.1\n\n\nkuunnelma\n747\n0.1\n\n\nterrängkarta 1:50000 topographic map 1:50000\n675\n0.1\n\n\nsalapoliisiromaani\n654\n0.1\n\n\nnovelleja\n573\n0\n\n\ntalouskartta 1:20000\n511\n0\n\n\nerotiska noveller\n511\n0\n\n\nkertomus\n484\n0\n\n\ndikter\n455\n0\n\n\n\n\n\n5.1.2 Top-20 remainders of titles and their counts for “Language material” content type\n\n\n\nRemainder of Title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n7200\n0.6\n\n\nrunoja\n3189\n0.3\n\n\nroman\n1625\n0.1\n\n\njännitysromaani\n1040\n0.1\n\n\nloppuraportti\n906\n0.1\n\n\nkuunnelma\n743\n0.1\n\n\nsalapoliisiromaani\n654\n0.1\n\n\nnovelleja\n568\n0\n\n\nkertomus\n483\n0\n\n\neroottinen novelli\n460\n0\n\n\ndikter\n455\n0\n\n\nerotisk novell\n441\n0\n\n\nrikosromaani\n425\n0\n\n\nopettajan opas\n407\n0\n\n\nhistoriallinen romaani\n352\n0\n\n\näidinkieli ja kirjallisuus\n305\n0\n\n\nerotiska noveller\n263\n0\n\n\nyksinäytöksinen huvinäytelmä\n261\n0\n\n\n1\n237\n0\n\n\nopettajan materiaali\n232\n0",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Remainder of title</span>"
     ]
