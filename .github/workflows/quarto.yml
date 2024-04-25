@@ -31,8 +31,6 @@ jobs:
         with:
           use-public-rspm: true
           
-      - name: Install devtools package
-        run: Rscript -e "install.packages('devtools')"
 
       - name: Install aws.s3 package
         run: Rscript -e "install.packages('aws.s3')"
@@ -46,8 +44,14 @@ jobs:
       - name: Install httr package
         run: Rscript -e "install.packages('httr')"
 
+      - name: Install devtools package
+        run: Rscript -e "install.packages('devtools')"
+        
+      - name: Install devtools package
+        run: Rscript -e "install.packages('remotes')"
+
       - name: Install comhis package from GitHub
-        run: Rscript -e 'devtools::install_github("comhis/comhis")'
+        run: Rscript -e 'remotes::install_github("comhis/comhis")'
 
       - uses: quarto-dev/quarto-actions/setup@v2
           
