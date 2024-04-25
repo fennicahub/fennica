@@ -25,8 +25,8 @@ book:
   # files with '##' are the one that need to be corrected 
   chapters:
   - index.qmd 
-  #- author_name.qmd
-  #- author_date.qmd
+  - author_name.qmd
+  - author_date.qmd
   #- corporate.qmd
   - language.qmd
   #- physical_dimensions.qmd
@@ -35,12 +35,12 @@ book:
   #- note_dissertation.qmd
   #- note_granter.qmd
   #- note_source.qmd
-  #- publisher.qmd
+  - publisher.qmd
   ##- publication_interval.qmd
-  #- publication_place.qmd #enemmän läpivuuta onko suomi tai autonomia
+  - publication_place.qmd #enemmän läpivuuta onko suomi tai autonomia
   - publication_time.qmd
   ##- publication_frequency.qmd
-  #- signum.qmd
+  - signum.qmd
   - title.qmd #läpivyys mihin tiedot perustuu
   - title_remainder.qmd
   - content_type.qmd
