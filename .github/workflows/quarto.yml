@@ -47,7 +47,7 @@ jobs:
       - name: Install devtools package
         run: Rscript -e "install.packages('devtools')"
         
-      - name: Install devtools package
+      - name: Install remotes package
         run: Rscript -e "install.packages('remotes')"
 
       - name: Install comhis package from GitHub
