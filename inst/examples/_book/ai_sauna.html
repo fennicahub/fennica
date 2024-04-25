@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Turku Data Science Group">
-<meta name="dcterms.date" content="2024-04-25">
 
-<title>Fennica metadata conversions: statistical monitoring and analysis</title>
+<title>7&nbsp; AI Sauna</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./language.html" rel="next">
+<link href="./acknowledgments.html" rel="next">
+<link href="./content_type.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -84,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fennica metadata conversions: statistical monitoring and analysis</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ai_sauna.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">AI Sauna</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -117,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fennica metadata conversions: statistical monitoring and analysis</span></span></a>
   </div>
 </li>
@@ -153,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ai_sauna.html" class="sidebar-item-text sidebar-link">
+  <a href="./ai_sauna.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">AI Sauna</span></span></a>
   </div>
 </li>
@@ -190,7 +189,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface-chapter" id="toc-preface-chapter" class="nav-link active" data-scroll-target="#preface-chapter"><span class="header-section-number">1</span> Preface chapter</a></li>
+  <li><a href="#fennica-data-set" id="toc-fennica-data-set" class="nav-link active" data-scroll-target="#fennica-data-set"><span class="header-section-number">7.1</span> Fennica data set</a></li>
+  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code"><span class="header-section-number">7.2</span> Running Code</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/fennicahub/fennica/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -199,26 +199,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Fennica metadata conversions: statistical monitoring and analysis</h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">AI Sauna</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Turku Data Science Group </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">April 25, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -228,12 +216,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface-chapter" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Preface chapter</h1>
-<p>It is imperative to underscore that this bookdown project is an evolving <strong>work-in-progress</strong>, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization.</p>
-<p>Within the <a href="https://www.kielipankki.fi/organization/fin-clariah/">FIN-CLARIAH</a> Metadata Harmonization and Analysis work package, we leverage the Finnish national bibliography (FNB) Fennica dataset to develop a harmonized dataset, serving research purposes and laying the groundwork for further infrastructure iterations. The project’s outcomes will be instrumental in supporting the <a href="https://sites.utu.fi/digital-history-literature-finland/">DHL-FI</a> project funded by the Research Council of Finland. The FNB encompasses metadata for over a million documents, including books, newspapers, maps, etc., with records spanning from 1488 to the present. For more details about Fennica, visit The National Finnish Library <a href="https://www.kansalliskirjasto.fi/en/services/fennica-finnish-national-bibliography">website</a>.</p>
-<p>Currently, the bookdown project comprises a few distinct chapters. Notably, the harmonization process has been executed through the establishment of dual pipelines: <strong>Complete FNB Pipeline</strong> and <strong>1809 to 1917 Period Pipeline</strong> These chapters are dedicated to the specific metadata categories.</p>
-<p><a href="https://github.com/fennicahub/fennica/blob/master/README.md">How to reproduce the workflow</a></p>
+<section id="fennica-data-set" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="fennica-data-set"><span class="header-section-number">7.1</span> Fennica data set</h2>
+<p>This fennica data set conists of 12 harmonized fields.</p>
+<p>melinda_id authot_name author_date, author_birth_deat, age language.qmd publisher.qmd publication_place publication_time (start date, end_date, publication_decade) signum title title_remainder type of record bibliographic level</p>
+<p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/fennica.csv">Download fennica.csv (235,7 MB)</a></p>
+</section>
+<section id="running-code" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="running-code"><span class="header-section-number">7.2</span> Running Code</h2>
 
 
 </section>
@@ -794,10 +784,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./content_type.html" class="pagination-link" aria-label="Types of record">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Types of record</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./language.html" class="pagination-link" aria-label="Language">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Language</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./acknowledgments.html" class="pagination-link" aria-label="Acknowledgements">
+        <span class="nav-page-text">Acknowledgements</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
