@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Uniform Title</title>
+<title>7&nbsp; AI Sauna</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./title_uniform.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Uniform Title</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ai_sauna.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">AI Sauna</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -152,8 +152,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./title_uniform.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Uniform Title</span></span></a>
+  <a href="./ai_sauna.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">AI Sauna</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -189,8 +189,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#complete-dataset-overview" id="toc-complete-dataset-overview" class="nav-link active" data-scroll-target="#complete-dataset-overview"><span class="header-section-number">7.1</span> Complete Dataset Overview</a></li>
-  <li><a href="#subset-analysis-1809-1917" id="toc-subset-analysis-1809-1917" class="nav-link" data-scroll-target="#subset-analysis-1809-1917"><span class="header-section-number">7.2</span> Subset Analysis: 1809-1917</a></li>
+  <li><a href="#fennica-data-set" id="toc-fennica-data-set" class="nav-link active" data-scroll-target="#fennica-data-set"><span class="header-section-number">7.1</span> Fennica data set</a></li>
+  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code"><span class="header-section-number">7.2</span> Running Code</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/fennicahub/fennica/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -199,7 +199,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Uniform Title</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">AI Sauna</span></h1>
 </div>
 
 
@@ -216,30 +216,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>MARC: <a href="https://www.loc.gov/marc/bibliographic/bd240.html">240a</a></p>
-<section id="complete-dataset-overview" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="complete-dataset-overview"><span class="header-section-number">7.1</span> Complete Dataset Overview</h2>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_uniform_accepted.csv">Unique accepted entries</a>: 100584</p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_uniform_discarded.csv">Unique discarded entries in original data</a> (excluding NA cases): 2</p>
-<p>Original documents with non-NA titles: 152861 / 1187813 (12.9%)</p>
-<p>Original documents with missing (NA) titles 1034952 / 1187813 documents (87.1%)</p>
-<p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_uniform.csv">Download unifrom title field harmonized dataset</a></p>
+<section id="fennica-data-set" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="fennica-data-set"><span class="header-section-number">7.1</span> Fennica data set</h2>
+<p>This fennica data set conists of 12 harmonized fields.</p>
+<p>melinda_id authot_name author_date, author_birth_deat, age language.qmd publisher.qmd publication_place publication_time (start date, end_date, publication_decade) signum title title_remainder type of record bibliographic level</p>
+<p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/fennica.csv">Download fennica.csv (235,7 MB)</a></p>
 </section>
-<section id="subset-analysis-1809-1917" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="subset-analysis-1809-1917"><span class="header-section-number">7.2</span> Subset Analysis: 1809-1917</h2>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_uniform_accepted_19.csv">Unique accepted entries (1809-1917)</a>: 3275</p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_uniform_discarded_19.csv">Unique discarded entries in original data (1809-1917)</a> (excluding NA cases): 1</p>
-<p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_uniform_19.csv">Download uniform title field harmonized dataset (1809-1917)</a></p>
-<p>Top-20 titles and their title counts for 1809-1917 period.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="title_uniform_files/figure-html/summarytitle-title-uniform-1.png" class="img-fluid figure-img" width="768"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="running-code" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="running-code"><span class="header-section-number">7.2</span> Running Code</h2>
 
 
 </section>
