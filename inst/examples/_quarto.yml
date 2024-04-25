@@ -44,10 +44,11 @@ book:
   - title.qmd #läpivyys mihin tiedot perustuu
   - title_remainder.qmd
   - content_type.qmd
-  - title_uniform.qmd
+  #- title_uniform.qmd
   ##- subject_topic.qmd
   #- successor.qmd
   #- uncontrolled.qmd
+  - ai_sauna.qmd
   appendices :
     - acknowledgments.qmd
     - technical_information.qmd

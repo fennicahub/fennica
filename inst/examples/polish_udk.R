@@ -1,113 +1,75 @@
-#' @param x udk field (a vector)
-#' @return 
-#' @export
-#' @author Julia Matveeva \email{yulmat@utu.fi}
-#' @references See citation("fennica")
-#' @examples 
-#' @keywords 
-#polish_udk <- function(x) {
-  
-x <- as.data.frame(head(df.tmp$udk, 1000))
+# Load necessary libraries
+library(stringi)
 
-#save original
-#xorig <- x
-
-#remove some characters 
-x <- gsub("\\|", ";", x) #udks separated by ;
-x <- gsub(":", ";", x)
-x <- gsub(",", ";", x)
-x <- gsub("\\\\", "", x)
-x <- gsub('"', "", x)
-x <- gsub("\\(", ";", x)
-x <- gsub("\\)", ";", x)
-x <- gsub("c", ";", x)
-x <- gsub("\n", ";", x)
-x <- gsub("\\+", ";", x)
-x <- gsub("\\s+$", "", x)
-x <- gsub(" ", "", x)
-x
-
-xuniq <- unique(unlist(strsplit(as.character(x), ";")))
-
-print(xuniq)
-
-  x <- xuniq
+polish_udk <- function(x) {
+  # Pre-allocate memory for the result
+  x0 <- x
   
-
+  # Combine multiple gsub operations into fewer calls for efficiency
+  # Replace spaces, colons, pipe characters, and commas with semicolons
+  x <- gsub(" ", "", x)
+  x <- stri_replace_all_regex(x, "[:|,]", ";")
   
-  #load udk names
-  udk <- read.csv("udk_corrected.csv", sep = ";", header = FALSE, encoding = "UTF-8")
+  # Remove all backslashes, forward slashes at the beginning and the end of the string,
+  # double quotes, opening parentheses at the beginning of x, occurrences of the letter c at the beginning of x,
+  # newline characters, and trailing whitespace at the end of x
+  x <- stri_replace_all_regex(x, "\\\\|/^|/$|\"|^\\(+|^c|\n|\\s+$", "")
   
+  # Remove the exact string "9FENNI<KEEP>" from x
+  x <- stri_replace_all_fixed(x, "9FENNI<KEEP>", "")
   
+  # Convert to lowercase and remove duplicates within each element of x
+  x <- sapply(strsplit(tolower(x), ";"), function(x) paste(unique(x), collapse = ";"))
   
+  # Replace empty strings with NA
+  x[x == ''] <- NA
   
- # _______________________________________________
-  # Unrecognized languages?
-  unrec <- as.vector(na.omit(setdiff(
-    unique(unlist(strsplit(as.character(unique(x)), ";"))),
-    abrv$synonyme
-  )))
+  # Load udk names
+  udk <- read.csv("udk_monografia.csv", sep = ";", header = FALSE, encoding = "UTF-8")
+  colnames(udk) <- c("synonyme", "name")
   
-  if (length(unrec) > 0) {
-    warning(paste("Unidentified languages: ", paste(unrec, collapse = ";")))
-  }
+  df <- data.frame(original = x0, cleaned = x)
   
-  # TODO Vectorize to speed up ?
-  for (i in 1:length(x)) {    
-    lll <- sapply(unlist(strsplit(x[[i]], ";")), function (xx) {
-      as.character(map(xx, abrv, remove.unknown = TRUE, mode = "exact.match"))
-    })
+  # Function to match and concatenate names, including undetermined and handling NA
+  match_and_concatenate <- function(value) {
+    if (is.na(value)) {
+      return(NA)
+    }
     
-    lll <- na.omit(as.character(unname(lll)))
-    if (length(lll) == 0) {lll <- NA}
+    split_value <- strsplit(value, ";")[[1]]
+    converted_values <- c()
     
-    # Just unique languages
-    # "Undetermined;English;Latin;Undetermined"
-    # -> "Undetermined;English;Latin"
-    lll <- unique(lll)
-    x[[i]] <- paste(lll, collapse = ";")
+    for (val in split_value) {
+      match_index <- match(val, udk$synonyme)
+      if (!is.na(match_index)) {
+        converted_values <- c(converted_values, udk$name[match_index])
+      } else {
+        converted_values <- c(converted_values, "Undetermined")
+      }
+    }
     
+    return(paste(converted_values, collapse = ";"))
   }
   
-  # List all unique languages in the data
-  x[x %in% c("NA", "Undetermined", "und")] <- NA
-  xu <- na.omit(unique(unname(unlist(strsplit(unique(x), ";")))))
-  
-  # Only accept the official / custom abbreviations
-  # (more can be added on custom list if needed)
-  xu <- intersect(xu, abrv$name)
-  
-  # Now check just the unique and accepted ones, and collapse
-  # TODO: add ID for those that are not recognized
-  # NOTE: the language count and multilingual fields should be fine however
-  # as they are defined above already
-  x <- sapply(strsplit(x, ";"), function (xi) {paste(unique(intersect(xi, xu)), collapse = ";")})
-  
-  # Multilinguality info
-  len <- sapply(strsplit(x, ";"), length)
-  dff <- data.frame(language_count = len)    
-  multilingual <- len > 1
-  dff$multilingual <- multilingual
-  
-  dff$languages <- x
-  inds <- which(dff$languages == "")
-  if (length(inds) > 0) {
-    dff$languages[inds] <- "Undetermined"
-  }
-  
-  # Add primary language
-  if (length(grep(";", dff$languages)) > 0) {
-    dff$language_primary <- sapply(strsplit(dff$languages, ";"),
-                                   function (x) {x[[1]]})
-  } else {
-    dff$language_primary <- dff$languages
-  }
-  
-  # Convert to factors
-  dff$languages <- as.factor(str_trim(dff$languages))
-  dff$language_primary <- as.factor(str_trim(dff$language_primary))
-  
-  list(harmonized_full = dff[match(xorig, xuniq),], unrecognized = unrec)
-  
+  # Apply the function to each element of x to get df$converted
 
-
+  df$converted <- sapply(x, match_and_concatenate)
+  
+  # Split values for further processing
+  split_values <- strsplit(df$cleaned, ";")
+  
+  # Create a data frame for further analysis
+  xu <- data.frame(unlist(split_values))
+  xu2 <- data.frame(unlist(strsplit(df$converted, ";")))
+  
+  f <- data.frame(c = xu, h = xu2)
+  colnames(f) <- c("udk", "explanation")
+  f$explanation <- as.character(f$explanation)
+  
+  # Filter for undetermined and accepted values
+  undetermined <- filter(f, f$explanation == "Undetermined")
+  accepted <- filter(f,f$explanation != "Undetermined")
+  
+  # Return the results
+  return(list(full = df, undetermined = undetermined, accepted = accepted))
+}

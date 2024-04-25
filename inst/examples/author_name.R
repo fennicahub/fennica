@@ -11,6 +11,8 @@ df.tmp <- data.frame(melinda_id = df.orig$melinda_id, author_name = author)
 # FIXME: convert to feather or plain CSV
 data.file <- paste0(field, ".Rds")
 saveRDS(df.tmp, file = data.file)
+# Generate markdown summary
+df <- readRDS(data.file)
 
 # Define output files for the whole dataset
 file_accepted  <- paste0(output.folder, field, "_accepted.csv")
@@ -34,12 +36,11 @@ original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field
 # .. ie. those are "discarded" cases; list them in a table
 tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 
-# Generate markdown summary
-df <- readRDS(data.file)
+
 # ------------------------------------------------------------
 
 # Run publication_time.R file to get the melindas needed for the 19th century slicing
-source("publication_time.R")
+source("melindas_19.R")
 
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
 field <- "author_name"
@@ -48,6 +49,10 @@ field <- "author_name"
 # FIXME: convert to feather or plain CSV
 data.file <- paste0(field, ".Rds")
 saveRDS(df_19, file = data.file)
+
+# Generate markdown summary 
+df_19 <- readRDS(data.file)
+
 
 # Define output files for the 1807-1917 subset
 file_accepted_19  <- paste0(output.folder, field, "_accepted_19.csv")
@@ -71,7 +76,4 @@ original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
 tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
 
 
-# Generate markdown summary 
-df_19 <- readRDS(data.file)
-# tmp <- knit(input = paste(field, ".Rmd", sep = ""), 
-#             output = paste(field, ".md", sep = ""))
+

@@ -47,7 +47,7 @@ df <- readRDS(data.file)
 # ------------------------------------------------------------
 
 # Run publication_time.R file to get the melindas needed for the 19th century slicing
-source("publication_time.R")
+source("melindas_19.R")
 
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
 field <- "publisher"

@@ -57,7 +57,7 @@ write.table(tab, file = discard.file, quote = FALSE, row.names = FALSE, col.name
 df <- readRDS(data.file)
 # ------------------------------------------------------------
 # Run publication_time.R file to get the melindas needed for the 19th century slicing
-source("publication_time.R")
+source("melindas_19.R")
 
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,] # publication time has df.harmonized instead of df.tmp 
 field <- "author_date"

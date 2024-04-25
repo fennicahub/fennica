@@ -7,6 +7,7 @@ library(R.utils)
 library(ggplot2)
 library(Cairo)
 library(purrr)
+library(stringi)
 
 # Install latest version from Github
 # install_github("fennicahub/fennica") # or

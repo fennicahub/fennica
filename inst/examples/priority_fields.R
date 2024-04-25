@@ -27,3 +27,5 @@ df.orig <- df.orig %>%
                 "language_original" = 20,  # ("041","h"))
                 "080x" = 21)
 
+df.orig$melinda_id <- gsub(" ", "", df.orig$melinda_id)
+df.orig$melinda_id <- gsub("\\(FI-MELINDA\\)", "", df.orig$melinda_id)
