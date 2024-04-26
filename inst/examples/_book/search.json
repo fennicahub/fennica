@@ -7,144 +7,158 @@
     "text": "1 Preface chapter\nIt is imperative to underscore that this bookdown project is an evolving work-in-progress, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization.\nWithin the FIN-CLARIAH Metadata Harmonization and Analysis work package, we leverage the Finnish national bibliography (FNB) Fennica dataset to develop a harmonized dataset, serving research purposes and laying the groundwork for further infrastructure iterations. The project’s outcomes will be instrumental in supporting the DHL-FI project funded by the Research Council of Finland. The FNB encompasses metadata for over a million documents, including books, newspapers, maps, etc., with records spanning from 1488 to the present. For more details about Fennica, visit The National Finnish Library website.\nCurrently, the bookdown project comprises a few distinct chapters. Notably, the harmonization process has been executed through the establishment of dual pipelines: Complete FNB Pipeline and 1809 to 1917 Period Pipeline These chapters are dedicated to the specific metadata categories.\nHow to reproduce the workflow"
   },
   {
-    "objectID": "language.html",
-    "href": "language.html",
-    "title": "2  Language",
-    "section": "",
-    "text": "2.1 Complete Dataset Overview\nUnique languages: 170\nUnique primary languages: 148\n1115444 single-language entries (93.91%)\n72369 multilingual entries (6.09%)\nUnrecognized language: 50515 documents (4.25%)\nConversions from raw to preprocessed language entries\nDownload language harmonized dataset\nLanguage codes are from MARC; new custom abbreviations can be added in this table.",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Language</span>"
-    ]
+    "objectID": "author_name.html#complete-dataset-overview",
+    "href": "author_name.html#complete-dataset-overview",
+    "title": "2  Author’s name",
+    "section": "2.1 Complete Dataset Overview",
+    "text": "2.1 Complete Dataset Overview\n\nUnique accepted entries in original data: 196891\nUnique discarded entries in original data (excluding NA cases): 29\nOriginal documents with non-NA titles 747538 / 1187813 (62.9%)\nOriginal documents with missing (NA) titles 440275 / 1187813 documents (37.1%)\n\n\n2.1.1 Authors\n\n196891 unique authors These final names capture all name variants from the custom author synonyme table, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the author synonyme table.\n747538 documents have unambiguous author information (63%).\nAuthor name conversions Non-trivial conversions from the original raw data to final names.\n\n\n\n2.1.2 Auxiliary files\n\nAuthor synonyme table\nStopwords for names\nStopwords for titles\nCustom pseudonyme lists"
+  },
+  {
+    "objectID": "author_name.html#subset-analysis-1809-1917",
+    "href": "author_name.html#subset-analysis-1809-1917",
+    "title": "2  Author’s name",
+    "section": "2.2 Subset Analysis: 1809-1917",
+    "text": "2.2 Subset Analysis: 1809-1917\n\nUnique accepted entries for for 1809-1917 years: 10381\nUnique discarded entries in original data (excluding NA cases): 19\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author."
+  },
+  {
+    "objectID": "author_date.html#complete-dataset-overview",
+    "href": "author_date.html#complete-dataset-overview",
+    "title": "3  Author’s lifetime",
+    "section": "3.1 Complete Dataset Overview",
+    "text": "3.1 Complete Dataset Overview\nAuthor date accepted for the complete Fennica\nAuthor date discarded for the complete Fennica"
+  },
+  {
+    "objectID": "author_date.html#subset-analysis-1809-1917",
+    "href": "author_date.html#subset-analysis-1809-1917",
+    "title": "3  Author’s lifetime",
+    "section": "3.2 Subset Analysis: 1809-1917",
+    "text": "3.2 Subset Analysis: 1809-1917\nAuthor date accepted for 1809-1917\nAuthor date discarded for 1809-1917"
+  },
+  {
+    "objectID": "language.html#complete-dataset-overview",
+    "href": "language.html#complete-dataset-overview",
+    "title": "4  Language",
+    "section": "4.1 Complete Dataset Overview",
+    "text": "4.1 Complete Dataset Overview\nUnique languages: 170\nUnique primary languages: 148\n1115444 single-language entries (93.91%)\n72369 multilingual entries (6.09%)\nUnrecognized language: 50515 documents (4.25%)\nConversions from raw to preprocessed language entries\nDownload language harmonized dataset\nLanguage codes are from MARC; new custom abbreviations can be added in this table."
   },
   {
     "objectID": "language.html#subset-analysis-1809-1917",
     "href": "language.html#subset-analysis-1809-1917",
-    "title": "2  Language",
-    "section": "2.2 Subset Analysis: 1809-1917",
-    "text": "2.2 Subset Analysis: 1809-1917\nUnique languages (1809-1917): 54\n60632 single-language entries (94%)\n3872 multilingual entries (6%)\nUnrecognized language (1809-1917): 929 documents (1.44%)\nDownload language harmonized dataset (1809-1917)\n\n2.2.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages (1809-1917).\n\n\n\nLanguage\nEntries (n)\nFraction (%)\n\n\n\n\nFinnish\n33674\n2.8\n\n\nSwedish\n19107\n1.6\n\n\nFinnish;Swedish\n2021\n0.2\n\n\nGerman\n1988\n0.2\n\n\nLatin\n1662\n0.1\n\n\nRussian\n1587\n0.1\n\n\nUndetermined\n929\n0.1\n\n\nFrench\n628\n0.1\n\n\nEnglish\n425\n0\n\n\nSwedish;Finnish\n170\n0\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Language</span>"
-    ]
+    "title": "4  Language",
+    "section": "4.2 Subset Analysis: 1809-1917",
+    "text": "4.2 Subset Analysis: 1809-1917\nUnique languages (1809-1917): 54\n60632 single-language entries (94%)\n3872 multilingual entries (6%)\nUnrecognized language (1809-1917): 929 documents (1.44%)\nDownload language harmonized dataset (1809-1917)\n\n4.2.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages (1809-1917).\n\n\n\n\nLanguage\nEntries (n)\nFraction (%)\n\n\n\n\nFinnish\n33674\n2.8\n\n\nSwedish\n19107\n1.6\n\n\nFinnish;Swedish\n2021\n0.2\n\n\nGerman\n1988\n0.2\n\n\nLatin\n1662\n0.1\n\n\nRussian\n1587\n0.1\n\n\nUndetermined\n929\n0.1\n\n\nFrench\n628\n0.1\n\n\nEnglish\n425\n0\n\n\nSwedish;Finnish\n170\n0\n\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):"
   },
   {
-    "objectID": "publication_time.html",
-    "href": "publication_time.html",
-    "title": "3  Publication time",
-    "section": "",
-    "text": "3.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nDownload publication time harmonized dataset\nPublication years is available for 1187130 documents (100%). The publication years span is 0-2024.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Publication time</span>"
-    ]
+    "objectID": "publisher.html#complete-dataset-overview",
+    "href": "publisher.html#complete-dataset-overview",
+    "title": "5  Publisher",
+    "section": "5.1 Complete Dataset Overview",
+    "text": "5.1 Complete Dataset Overview\n\n156327 unique publishers\n948595 documents have unambiguous publisher information (79.9%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\nConversions from original to final names (only non-trivial conversions shown)"
+  },
+  {
+    "objectID": "publisher.html#subset-analysis-1809-1917",
+    "href": "publisher.html#subset-analysis-1809-1917",
+    "title": "5  Publisher",
+    "section": "5.2 Subset Analysis: 1809-1917",
+    "text": "5.2 Subset Analysis: 1809-1917\n\n10197 unique publishers\n52502 documents have unambiguous publisher information (81.4%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\n\nThe 20 most common publishers from 1809 to 1917 are shown with the number of documents."
+  },
+  {
+    "objectID": "publication_place.html#complete-dataset-overview",
+    "href": "publication_place.html#complete-dataset-overview",
+    "title": "6  Publication place",
+    "section": "6.1 Complete Dataset Overview",
+    "text": "6.1 Complete Dataset Overview\n\n4947 unique publication places; available for 956556 documents (81%).\nambiguous publication places; some of these can be possibly resolved by checking that the the synonyme list does not contain multiple versions of the final name (case sensitive).\nunknown place names These terms do not map to any known place on the synonyme list; either because they require further cleaning or have not yet been encountered in the analyses. Terms that are clearly not place names can be added to stopwords; borderline cases that are not accepted as place names can be added as NA on the synonyme list.\ndiscarded place names These terms are potential place names but with a closer check have been explicitly rejected on the synonyme list\nConversions from the original to the accepted place names"
+  },
+  {
+    "objectID": "publication_place.html#publication-countries",
+    "href": "publication_place.html#publication-countries",
+    "title": "6  Publication place",
+    "section": "6.2 Publication countries",
+    "text": "6.2 Publication countries\n\n46 unique publication countries; available for 889790 documents (75%).\n4239 places with unknown publication country (85.7% of the unique places; can be added to country mappings)\npotentially ambiguous region-country mappings (these may occur in the data in various synonymes and the country is not always clear when multiple countries have a similar place name; the default country is listed first). NOTE: possible improvements should not be done in this output summary but instead in the country mapping file."
+  },
+  {
+    "objectID": "publication_place.html#geocoordinates",
+    "href": "publication_place.html#geocoordinates",
+    "title": "6  Publication place",
+    "section": "6.3 Geocoordinates",
+    "text": "6.3 Geocoordinates\n\n74.6% of the documents were matched to geographic coordinates (based on COMHIS geomapping process).\n4299 unique places (86.9% of all unique places and 25.36% of all documents) are missing geocoordinates. See list of places missing geocoordinate information."
+  },
+  {
+    "objectID": "publication_place.html#subset-analysis-1809-1917",
+    "href": "publication_place.html#subset-analysis-1809-1917",
+    "title": "6  Publication place",
+    "section": "6.4 Subset Analysis: 1809-1917",
+    "text": "6.4 Subset Analysis: 1809-1917\n\n477 unique publication places; available for 52733 documents (82%).\nUnique publication country for a period 1809-1917: 32; available for 51416 documents (80%).\ndiscarded place names\n\nTop-20 publication places are shown together with the number of documents.\n\n\n\n\n\n\n\n\n\n\n\n\nCountry\nDocuments (n)\nFraction (%)\n\n\n\n\nFinland\n46461\n72.0\n\n\nSweden\n1447\n2.2\n\n\nRussia\n1241\n1.9\n\n\nUSA\n930\n1.4\n\n\nGermany\n558\n0.9\n\n\nEngland\n173\n0.3"
   },
   {
     "objectID": "publication_time.html#complete-data-overview",
     "href": "publication_time.html#complete-data-overview",
-    "title": "3  Publication time",
-    "section": "",
-    "text": "3.1.1 Title count per decade (log values)\n\n\n\n3.1.2 Publication status summaries\nThу visualization of publication status field enhances understanding of how publication years are recorded. The harmonization process depended on the publication status field due to its nuanced information, which doesn’t always directly signify the start or end of publication.\n\n\n\nPublication Status\nEntries (n)\nFraction (%)\n\n\n\n\nSingle known date/probable date\n1064152\n89.6\n\n\nContinuing resource ceased publication\n44266\n3.7\n\n\nPublication date and copyright date\n34378\n2.9\n\n\nContinuing resource currently published\n25570\n2.2\n\n\nQuestionable date\n7754\n0.7\n\n\nInclusive dates of collection\n4701\n0.4\n\n\nReprint/reissue date and original date\n4188\n0.4\n\n\nMultiple dates\n1983\n0.2\n\n\nContinuing resource status unknown\n491\n0\n\n\nDate of distribution etc\n101\n0\n\n\nDetailed date\n76\n0\n\n\nNo attempt to code\n66\n0\n\n\nDates unknown\n26\n0\n\n\nNo dates given; B.C. date involved\n4\n0",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Publication time</span>"
-    ]
+    "title": "7  Publication time",
+    "section": "7.1 Complete Data Overview",
+    "text": "7.1 Complete Data Overview\nPublication year conversions\nPublication year discarded\nDownload publication time harmonized dataset\nPublication years is available for 1187130 documents (100%). The publication years span is 0-2024.\n\n7.1.1 Title count per decade (log values)\n\n\n\n7.1.2 Publication status summaries\nThу visualization of publication status field enhances understanding of how publication years are recorded. The harmonization process depended on the publication status field due to its nuanced information, which doesn’t always directly signify the start or end of publication.\n\n\n\n\nPublication Status\nEntries (n)\nFraction (%)\n\n\n\n\nSingle known date/probable date\n1064152\n89.6\n\n\nContinuing resource ceased publication\n44266\n3.7\n\n\nPublication date and copyright date\n34378\n2.9\n\n\nContinuing resource currently published\n25570\n2.2\n\n\nQuestionable date\n7754\n0.7\n\n\nInclusive dates of collection\n4701\n0.4\n\n\nReprint/reissue date and original date\n4188\n0.4\n\n\nMultiple dates\n1983\n0.2\n\n\nContinuing resource status unknown\n491\n0\n\n\nDate of distribution etc\n101\n0\n\n\nDetailed date\n76\n0\n\n\nNo attempt to code\n66\n0\n\n\nDates unknown\n26\n0\n\n\nNo dates given; B.C. date involved\n4\n0"
   },
   {
     "objectID": "publication_time.html#subset-analysis-1809-1917",
     "href": "publication_time.html#subset-analysis-1809-1917",
-    "title": "3  Publication time",
-    "section": "3.2 Subset Analysis: 1809-1917",
-    "text": "3.2 Subset Analysis: 1809-1917\nIn this segment we concentrate on the so called “long 19th century”: literary production during the years 1809-1917, when the Grand Duchy of Finland was an autonomous part of the Russian Empire.\nPublication year conversions (1809-1917)\nPublication year discarded (1809-1917)\nDownload publication time harmonized dataset (1809-1917)\n\n3.2.1 Title count per decade\nA plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Publication time</span>"
-    ]
+    "title": "7  Publication time",
+    "section": "7.2 Subset Analysis: 1809-1917",
+    "text": "7.2 Subset Analysis: 1809-1917\nIn this segment we concentrate on the so called “long 19th century”: literary production during the years 1809-1917, when the Grand Duchy of Finland was an autonomous part of the Russian Empire.\nPublication year conversions (1809-1917)\nPublication year discarded (1809-1917)\nDownload publication time harmonized dataset (1809-1917)\n\n7.2.1 Title count per decade\nA plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period."
   },
   {
-    "objectID": "title.html",
-    "href": "title.html",
-    "title": "4  Title",
-    "section": "",
-    "text": "4.1 Complete Dataset Overview\nOriginal documents with titles: 1187442 / 1187813 (100%)\nOriginal documents with missing (NA) titles 371 / 1187813 documents (0%)\nUnique discarded entries in original data: 4\nDownload title field harmonized dataset",
-    "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Title</span>"
-    ]
+    "objectID": "signum.html#complete-dataset-overview",
+    "href": "signum.html#complete-dataset-overview",
+    "title": "8  Signum",
+    "section": "8.1 Complete Dataset Overview",
+    "text": "8.1 Complete Dataset Overview\nSignum accepted for the whole Fennica\nSignum discarded for the whole Fennica"
+  },
+  {
+    "objectID": "signum.html#subset-analysis-1809-1917",
+    "href": "signum.html#subset-analysis-1809-1917",
+    "title": "8  Signum",
+    "section": "8.2 Subset Analysis: 1809-1917",
+    "text": "8.2 Subset Analysis: 1809-1917\nSignum accepted for 1809-1917\nSignum discarded for 1809-1917"
   },
   {
     "objectID": "title.html#complete-dataset-overview",
     "href": "title.html#complete-dataset-overview",
-    "title": "4  Title",
-    "section": "",
-    "text": "4.1.1 Top-20 titles and their title counts\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nPeruskartta 1:20000\n7174\n0.6\n\n\nMaastokartta\n3376\n0.3\n\n\nPitäjänkartta 1:20000\n2163\n0.2\n\n\nTopografinen kartta 1:20000\n1211\n0.1\n\n\nPeruskartta 1:25000\n1139\n0.1\n\n\nTopografičeskaâ karta 1:42000\n740\n0.1\n\n\nMaastokartta 1:50000\n675\n0.1\n\n\nTienumerokartta\n613\n0.1\n\n\nPeruskartan pienennös 1:50000\n544\n0\n\n\nTopografinen kartta 1:50000\n536\n0\n\n\nMaaperäkartta 1:20000\n507\n0\n\n\nKootut teokset\n484\n0\n\n\nTopografinen kartta 1:100000\n467\n0\n\n\nSuomi\n436\n0\n\n\nSuomen taloudellinen kartta 1:100000\n430\n0\n\n\nSilta- ja lauttapaikkakartta\n420\n0\n\n\nHelsinki\n410\n0\n\n\nJäsentiedote\n394\n0\n\n\nInstrument approach chart - ICAO\n386\n0\n\n\nValitut teokset\n354\n0\n\n\n\n\n\n4.1.2 Top-20 titles and their title counts for “Language material” content type\n\n\n\n\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nKootut teokset\n483\n0\n\n\nJäsentiedote\n389\n0\n\n\nValitut teokset\n354\n0\n\n\nJulkaisu\n347\n0\n\n\nKalevala\n343\n0\n\n\nMatematiikka\n299\n0\n\n\nOpinto-opas\n293\n0\n\n\nVuosikirja\n279\n0\n\n\nTuhattaituri\n272\n0\n\n\nKoulun biologia\n256\n0\n\n\nFinland\n243\n0\n\n\nJulkaisuja\n240\n0\n\n\nKirjavaliot\n237\n0\n\n\nRaportti\n226\n0\n\n\nLaskutaito\n222\n0\n\n\nRunoja\n219\n0\n\n\nAnnual report\n212\n0\n\n\nJulkaisusarja\n201\n0\n\n\nMatikka\n199\n0\n\n\nSuomen evankelis-luterilaisen kirkon virsikirja\n198\n0",
-    "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Title</span>"
-    ]
+    "title": "9  Title",
+    "section": "9.1 Complete Dataset Overview",
+    "text": "9.1 Complete Dataset Overview\nOriginal documents with titles: 1187442 / 1187813 (100%)\nOriginal documents with missing (NA) titles 371 / 1187813 documents (0%)\nUnique discarded entries in original data: 4\nDownload title field harmonized dataset\n\n9.1.1 Top-20 titles and their title counts\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nPeruskartta 1:20000\n7174\n0.6\n\n\nMaastokartta\n3376\n0.3\n\n\nPitäjänkartta 1:20000\n2163\n0.2\n\n\nTopografinen kartta 1:20000\n1211\n0.1\n\n\nPeruskartta 1:25000\n1139\n0.1\n\n\nTopografičeskaâ karta 1:42000\n740\n0.1\n\n\nMaastokartta 1:50000\n675\n0.1\n\n\nTienumerokartta\n613\n0.1\n\n\nPeruskartan pienennös 1:50000\n544\n0\n\n\nTopografinen kartta 1:50000\n536\n0\n\n\nMaaperäkartta 1:20000\n507\n0\n\n\nKootut teokset\n484\n0\n\n\nTopografinen kartta 1:100000\n467\n0\n\n\nSuomi\n436\n0\n\n\nSuomen taloudellinen kartta 1:100000\n430\n0\n\n\nSilta- ja lauttapaikkakartta\n420\n0\n\n\nHelsinki\n410\n0\n\n\nJäsentiedote\n394\n0\n\n\nInstrument approach chart - ICAO\n386\n0\n\n\nValitut teokset\n354\n0\n\n\n\n\n\n\n9.1.2 Top-20 titles and their title counts for “Language material” content type\n\n\n\n\n\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nKootut teokset\n483\n0\n\n\nJäsentiedote\n389\n0\n\n\nValitut teokset\n354\n0\n\n\nJulkaisu\n347\n0\n\n\nKalevala\n343\n0\n\n\nMatematiikka\n299\n0\n\n\nOpinto-opas\n293\n0\n\n\nVuosikirja\n279\n0\n\n\nTuhattaituri\n272\n0\n\n\nKoulun biologia\n256\n0\n\n\nFinland\n243\n0\n\n\nJulkaisuja\n240\n0\n\n\nKirjavaliot\n237\n0\n\n\nRaportti\n226\n0\n\n\nLaskutaito\n222\n0\n\n\nRunoja\n219\n0\n\n\nAnnual report\n212\n0\n\n\nJulkaisusarja\n201\n0\n\n\nMatikka\n199\n0\n\n\nSuomen evankelis-luterilaisen kirkon virsikirja\n198\n0"
   },
   {
     "objectID": "title.html#subset-analysis-1809-1917",
     "href": "title.html#subset-analysis-1809-1917",
-    "title": "4  Title",
-    "section": "4.2 Subset Analysis: 1809-1917",
-    "text": "4.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 47753\nOriginal documents with non-NA titles: 64504 / 64504 (100%)\nOriginal documents with missing (NA) titles 0 / 64504 documents (0%)\nDownload title field harmonized dataset(1809-1917)\n\n4.2.1 Top-20 titles and their title counts for the 1809-1917 period for every content type\n\n\n\n\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nTopografičeskaâ karta 1:42000\n738\n1.1\n\n\nDikter\n98\n0.2\n\n\nKalmbergin kartasto\n87\n0.1\n\n\nFänrik Ståls sägner\n77\n0.1\n\n\nTheses\n74\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder\n63\n0.1\n\n\nKertomuksia Suomen historiasta\n62\n0.1\n\n\nHomeri Odyssea svethice reddita\n57\n0.1\n\n\nKalevala\n53\n0.1\n\n\nLähetysrukoushetkiä warten sowitettuja kertomuksia lähetystoimesta\n52\n0.1\n\n\nSamlade arbeten\n48\n0.1\n\n\nSuomen virallinen tilasto\n46\n0.1\n\n\nJohan Ludvig Runebergs samlade skrifter\n44\n0.1\n\n\nSuomen yleiskartta\n41\n0.1\n\n\nSuomen taloudellinen kartta 1:100000\n37\n0.1\n\n\nFinland\n37\n0.1\n\n\nEvankelinen Lähetys Afrikassa\n37\n0.1\n\n\nSuomi\n36\n0.1\n\n\nKarta öfver Finland\n35\n0.1\n\n\nVirsikirja, Suomalainen, evankelis-lutherilaisille seurakunnille Suomen Suuriruhtinaan-maassa\n34\n0.1\n\n\n\n\n\n4.2.2 Top-20 titles and their title counts for the 1809-1917 period for “Language material” content type\n\n\n\n\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nDikter\n98\n0.2\n\n\nFänrik Ståls sägner\n77\n0.1\n\n\nTheses\n74\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder\n63\n0.1\n\n\nKertomuksia Suomen historiasta\n62\n0.1\n\n\nHomeri Odyssea svethice reddita\n57\n0.1\n\n\nKalevala\n53\n0.1\n\n\nLähetysrukoushetkiä warten sowitettuja kertomuksia lähetystoimesta\n52\n0.1\n\n\nSamlade arbeten\n48\n0.1\n\n\nSuomen virallinen tilasto\n46\n0.1\n\n\nJohan Ludvig Runebergs samlade skrifter\n44\n0.1\n\n\nEvankelinen Lähetys Afrikassa\n37\n0.1\n\n\nVirsikirja, Suomalainen, evankelis-lutherilaisille seurakunnille Suomen Suuriruhtinaan-maassa\n34\n0.1\n\n\nLutheruksen vähän katekismuksen yksinkertainen selitys kysymysten ja vastausten kautta\n34\n0.1\n\n\nLäsning för barn\n34\n0.1\n\n\nLukemisia lapsille\n33\n0.1\n\n\nHandlingar rörande Finlands historia kring medlet af 17:de århundradet\n32\n0\n\n\nDissertatio entomologica insecta Fennica enumerans\n32\n0\n\n\nFinland\n31\n0\n\n\nSuomen historia\n30\n0",
-    "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Title</span>"
-    ]
-  },
-  {
-    "objectID": "title_remainder.html",
-    "href": "title_remainder.html",
-    "title": "5  Remainder of title",
-    "section": "",
-    "text": "5.1 Complete Dataset Overview\nOriginal documents with titles: 465827 / 1187813 (39.2%)\nOriginal documents with missing (NA) titles 721986 / 1187813 documents (60.8%)\nUnique discarded entries in original data: 0\nDownload title field harmonized dataset",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Remainder of title</span>"
-    ]
+    "title": "9  Title",
+    "section": "9.2 Subset Analysis: 1809-1917",
+    "text": "9.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 47753\nOriginal documents with non-NA titles: 64504 / 64504 (100%)\nOriginal documents with missing (NA) titles 0 / 64504 documents (0%)\nDownload title field harmonized dataset(1809-1917)\n\n9.2.1 Top-20 titles and their title counts for the 1809-1917 period for every content type\n\n\n\n\n\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nTopografičeskaâ karta 1:42000\n738\n1.1\n\n\nDikter\n98\n0.2\n\n\nKalmbergin kartasto\n87\n0.1\n\n\nFänrik Ståls sägner\n77\n0.1\n\n\nTheses\n74\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder\n63\n0.1\n\n\nKertomuksia Suomen historiasta\n62\n0.1\n\n\nHomeri Odyssea svethice reddita\n57\n0.1\n\n\nKalevala\n53\n0.1\n\n\nLähetysrukoushetkiä warten sowitettuja kertomuksia lähetystoimesta\n52\n0.1\n\n\nSamlade arbeten\n48\n0.1\n\n\nSuomen virallinen tilasto\n46\n0.1\n\n\nJohan Ludvig Runebergs samlade skrifter\n44\n0.1\n\n\nSuomen yleiskartta\n41\n0.1\n\n\nSuomen taloudellinen kartta 1:100000\n37\n0.1\n\n\nFinland\n37\n0.1\n\n\nEvankelinen Lähetys Afrikassa\n37\n0.1\n\n\nSuomi\n36\n0.1\n\n\nKarta öfver Finland\n35\n0.1\n\n\nVirsikirja, Suomalainen, evankelis-lutherilaisille seurakunnille Suomen Suuriruhtinaan-maassa\n34\n0.1\n\n\n\n\n\n\n9.2.2 Top-20 titles and their title counts for the 1809-1917 period for “Language material” content type\n\n\n\n\n\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nDikter\n98\n0.2\n\n\nFänrik Ståls sägner\n77\n0.1\n\n\nTheses\n74\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder\n63\n0.1\n\n\nKertomuksia Suomen historiasta\n62\n0.1\n\n\nHomeri Odyssea svethice reddita\n57\n0.1\n\n\nKalevala\n53\n0.1\n\n\nLähetysrukoushetkiä warten sowitettuja kertomuksia lähetystoimesta\n52\n0.1\n\n\nSamlade arbeten\n48\n0.1\n\n\nSuomen virallinen tilasto\n46\n0.1\n\n\nJohan Ludvig Runebergs samlade skrifter\n44\n0.1\n\n\nEvankelinen Lähetys Afrikassa\n37\n0.1\n\n\nVirsikirja, Suomalainen, evankelis-lutherilaisille seurakunnille Suomen Suuriruhtinaan-maassa\n34\n0.1\n\n\nLutheruksen vähän katekismuksen yksinkertainen selitys kysymysten ja vastausten kautta\n34\n0.1\n\n\nLäsning för barn\n34\n0.1\n\n\nLukemisia lapsille\n33\n0.1\n\n\nHandlingar rörande Finlands historia kring medlet af 17:de århundradet\n32\n0\n\n\nDissertatio entomologica insecta Fennica enumerans\n32\n0\n\n\nFinland\n31\n0\n\n\nSuomen historia\n30\n0"
   },
   {
     "objectID": "title_remainder.html#complete-dataset-overview",
     "href": "title_remainder.html#complete-dataset-overview",
-    "title": "5  Remainder of title",
-    "section": "",
-    "text": "5.1.1 Top-20 titles and their title counts\n\n\n\n\n\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n7275\n0.6\n\n\nsuunnistuskartta\n3548\n0.3\n\n\nrunoja\n3219\n0.3\n\n\nperuskartta 1:20000 grundkarta 1:20000\n2977\n0.3\n\n\nroman\n1627\n0.1\n\n\ngrundkarta 1:20000\n1241\n0.1\n\n\ngrundkarta 1:25000 basic map 1:25000\n1138\n0.1\n\n\njännitysromaani\n1065\n0.1\n\n\nerotisk novell\n942\n0.1\n\n\neroottinen novelli\n915\n0.1\n\n\nloppuraportti\n906\n0.1\n\n\nopetuskartta\n802\n0.1\n\n\nkuunnelma\n747\n0.1\n\n\nterrängkarta 1:50000 topographic map 1:50000\n675\n0.1\n\n\nsalapoliisiromaani\n654\n0.1\n\n\nnovelleja\n573\n0\n\n\ntalouskartta 1:20000\n511\n0\n\n\nerotiska noveller\n511\n0\n\n\nkertomus\n484\n0\n\n\ndikter\n455\n0\n\n\n\n\n\n5.1.2 Top-20 remainders of titles and their counts for “Language material” content type\n\n\n\nRemainder of Title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n7200\n0.6\n\n\nrunoja\n3189\n0.3\n\n\nroman\n1625\n0.1\n\n\njännitysromaani\n1040\n0.1\n\n\nloppuraportti\n906\n0.1\n\n\nkuunnelma\n743\n0.1\n\n\nsalapoliisiromaani\n654\n0.1\n\n\nnovelleja\n568\n0\n\n\nkertomus\n483\n0\n\n\neroottinen novelli\n460\n0\n\n\ndikter\n455\n0\n\n\nerotisk novell\n441\n0\n\n\nrikosromaani\n425\n0\n\n\nopettajan opas\n407\n0\n\n\nhistoriallinen romaani\n352\n0\n\n\näidinkieli ja kirjallisuus\n305\n0\n\n\nerotiska noveller\n263\n0\n\n\nyksinäytöksinen huvinäytelmä\n261\n0\n\n\n1\n237\n0\n\n\nopettajan materiaali\n232\n0",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Remainder of title</span>"
-    ]
+    "title": "10  Remainder of title",
+    "section": "10.1 Complete Dataset Overview",
+    "text": "10.1 Complete Dataset Overview\nOriginal documents with titles: 465827 / 1187813 (39.2%)\nOriginal documents with missing (NA) titles 721986 / 1187813 documents (60.8%)\nUnique discarded entries in original data: 0\nDownload title field harmonized dataset\n\n10.1.1 Top-20 titles and their title counts\n\n\n\n\n\n\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n7275\n0.6\n\n\nsuunnistuskartta\n3548\n0.3\n\n\nrunoja\n3219\n0.3\n\n\nperuskartta 1:20000 grundkarta 1:20000\n2977\n0.3\n\n\nroman\n1627\n0.1\n\n\ngrundkarta 1:20000\n1241\n0.1\n\n\ngrundkarta 1:25000 basic map 1:25000\n1138\n0.1\n\n\njännitysromaani\n1065\n0.1\n\n\nerotisk novell\n942\n0.1\n\n\neroottinen novelli\n915\n0.1\n\n\nloppuraportti\n906\n0.1\n\n\nopetuskartta\n802\n0.1\n\n\nkuunnelma\n747\n0.1\n\n\nterrängkarta 1:50000 topographic map 1:50000\n675\n0.1\n\n\nsalapoliisiromaani\n654\n0.1\n\n\nnovelleja\n573\n0\n\n\ntalouskartta 1:20000\n511\n0\n\n\nerotiska noveller\n511\n0\n\n\nkertomus\n484\n0\n\n\ndikter\n455\n0\n\n\n\n\n\n\n10.1.2 Top-20 remainders of titles and their counts for “Language material” content type\n\n\n\n\nRemainder of Title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n7200\n0.6\n\n\nrunoja\n3189\n0.3\n\n\nroman\n1625\n0.1\n\n\njännitysromaani\n1040\n0.1\n\n\nloppuraportti\n906\n0.1\n\n\nkuunnelma\n743\n0.1\n\n\nsalapoliisiromaani\n654\n0.1\n\n\nnovelleja\n568\n0\n\n\nkertomus\n483\n0\n\n\neroottinen novelli\n460\n0\n\n\ndikter\n455\n0\n\n\nerotisk novell\n441\n0\n\n\nrikosromaani\n425\n0\n\n\nopettajan opas\n407\n0\n\n\nhistoriallinen romaani\n352\n0\n\n\näidinkieli ja kirjallisuus\n305\n0\n\n\nerotiska noveller\n263\n0\n\n\nyksinäytöksinen huvinäytelmä\n261\n0\n\n\n1\n237\n0\n\n\nopettajan materiaali\n232\n0"
   },
   {
     "objectID": "title_remainder.html#subset-analysis-1809-1917",
     "href": "title_remainder.html#subset-analysis-1809-1917",
-    "title": "5  Remainder of title",
-    "section": "5.2 Subset Analysis: 1809-1917",
-    "text": "5.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 16271\nOriginal documents with non-NA titles: 23379 / 64504 (36.2%)\nOriginal documents with missing (NA) titles 41125 / 64504 documents (63.8%)\nDownload title field harmonized dataset(1809-1917)\n\n5.2.1 Top-20 titles and their title counts for the 1809-1917 period for every content type\n\n\n\n\n\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n237\n0.4\n\n\nkertomus\n140\n0.2\n\n\nroman\n137\n0.2\n\n\nrunoja\n91\n0.1\n\n\nesitelmä\n87\n0.1\n\n\nberättelse\n84\n0.1\n\n\nkansakouluja varten\n81\n0.1\n\n\nyksinäytöksinen huvinäytelmä\n80\n0.1\n\n\n1810-1944\n68\n0.1\n\n\nen samling sånger\n67\n0.1\n\n\ndikter\n57\n0.1\n\n\nhistoriallinen romaani\n56\n0.1\n\n\n1810-1999\n53\n0.1\n\n\nuusi jakso)\n52\n0.1\n\n\nny följd)\n52\n0.1\n\n\nnovell\n51\n0.1\n\n\nföredrag\n48\n0.1\n\n\nyksinäytöksinen pila\n47\n0.1\n\n\ngeneralkarta öfver finland\n41\n0.1\n\n\nkihlakunnankartta) finlands ekonomiska karta 1:100000 : (häradskarta)\n37\n0.1\n\n\n\n\n\n5.2.2 Top-20 titles and their title counts for the 1809-1917 period for “Language material” content type\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n237\n0.4\n\n\nkertomus\n140\n0.2\n\n\nroman\n137\n0.2\n\n\nrunoja\n91\n0.1\n\n\nesitelmä\n87\n0.1\n\n\nberättelse\n84\n0.1\n\n\nkansakouluja varten\n81\n0.1\n\n\nyksinäytöksinen huvinäytelmä\n80\n0.1\n\n\nen samling sånger\n67\n0.1\n\n\ndikter\n57\n0.1\n\n\nhistoriallinen romaani\n56\n0.1\n\n\nuusi jakso)\n52\n0.1\n\n\nny följd)\n52\n0.1\n\n\nnovell\n51\n0.1\n\n\nföredrag\n48\n0.1\n\n\nyksinäytöksinen pila\n47\n0.1\n\n\nkatsastettu lähetysrukous-hetkinä\n37\n0.1\n\n\nhuvinäytelmä yhdessä näytöksessä\n34\n0.1\n\n\nyksinäytöksinen näytelmä\n33\n0.1\n\n\nnovelli\n33\n0.1",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Remainder of title</span>"
-    ]
-  },
-  {
-    "objectID": "content_type.html",
-    "href": "content_type.html",
-    "title": "6  Types of record",
-    "section": "",
-    "text": "6.1 Types of record\nTitle count per type of record (note the log10 scale):",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Types of record</span>"
-    ]
+    "title": "10  Remainder of title",
+    "section": "10.2 Subset Analysis: 1809-1917",
+    "text": "10.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 16271\nOriginal documents with non-NA titles: 23379 / 64504 (36.2%)\nOriginal documents with missing (NA) titles 41125 / 64504 documents (63.8%)\nDownload title field harmonized dataset(1809-1917)\n\n10.2.1 Top-20 titles and their title counts for the 1809-1917 period for every content type\n\n\n\n\n\n\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n237\n0.4\n\n\nkertomus\n140\n0.2\n\n\nroman\n137\n0.2\n\n\nrunoja\n91\n0.1\n\n\nesitelmä\n87\n0.1\n\n\nberättelse\n84\n0.1\n\n\nkansakouluja varten\n81\n0.1\n\n\nyksinäytöksinen huvinäytelmä\n80\n0.1\n\n\n1810-1944\n68\n0.1\n\n\nen samling sånger\n67\n0.1\n\n\ndikter\n57\n0.1\n\n\nhistoriallinen romaani\n56\n0.1\n\n\n1810-1999\n53\n0.1\n\n\nuusi jakso)\n52\n0.1\n\n\nny följd)\n52\n0.1\n\n\nnovell\n51\n0.1\n\n\nföredrag\n48\n0.1\n\n\nyksinäytöksinen pila\n47\n0.1\n\n\ngeneralkarta öfver finland\n41\n0.1\n\n\nkihlakunnankartta) finlands ekonomiska karta 1:100000 : (häradskarta)\n37\n0.1\n\n\n\n\n\n\n10.2.2 Top-20 titles and their title counts for the 1809-1917 period for “Language material” content type\n\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n237\n0.4\n\n\nkertomus\n140\n0.2\n\n\nroman\n137\n0.2\n\n\nrunoja\n91\n0.1\n\n\nesitelmä\n87\n0.1\n\n\nberättelse\n84\n0.1\n\n\nkansakouluja varten\n81\n0.1\n\n\nyksinäytöksinen huvinäytelmä\n80\n0.1\n\n\nen samling sånger\n67\n0.1\n\n\ndikter\n57\n0.1\n\n\nhistoriallinen romaani\n56\n0.1\n\n\nuusi jakso)\n52\n0.1\n\n\nny följd)\n52\n0.1\n\n\nnovell\n51\n0.1\n\n\nföredrag\n48\n0.1\n\n\nyksinäytöksinen pila\n47\n0.1\n\n\nkatsastettu lähetysrukous-hetkinä\n37\n0.1\n\n\nhuvinäytelmä yhdessä näytöksessä\n34\n0.1\n\n\nyksinäytöksinen näytelmä\n33\n0.1\n\n\nnovelli\n33\n0.1"
   },
   {
     "objectID": "content_type.html#types-of-record",
     "href": "content_type.html#types-of-record",
-    "title": "6  Types of record",
-    "section": "",
-    "text": "Type of Record\nDocuments (n)\nFraction (%)\n\n\n\n\nLanguage material\n1087866\n91.6\n\n\nCartographic material\n57928\n4.9\n\n\nNonmusical sound recording\n37097\n3.1\n\n\nKit\n1892\n0.2\n\n\nComputer file\n1201\n0.1\n\n\nNotated music\n662\n0.1\n\n\nTwo-dimensional nonprojectable graphic\n427\n0\n\n\nProjected medium\n290\n0\n\n\nMusical sound recording\n195\n0\n\n\nMixed materials\n176\n0\n\n\nThree-dimensional artifact or naturally occurring object\n51\n0\n\n\nManuscript language material\n7\n0\n\n\nManuscript cartographic material\n4\n0",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Types of record</span>"
-    ]
+    "title": "11  Types of record",
+    "section": "11.1 Types of record",
+    "text": "11.1 Types of record\n\n\n\n\n\n\n\n\n\nType of Record\nDocuments (n)\nFraction (%)\n\n\n\n\nLanguage material\n1087866\n91.6\n\n\nCartographic material\n57928\n4.9\n\n\nNonmusical sound recording\n37097\n3.1\n\n\nKit\n1892\n0.2\n\n\nComputer file\n1201\n0.1\n\n\nNotated music\n662\n0.1\n\n\nTwo-dimensional nonprojectable graphic\n427\n0\n\n\nProjected medium\n290\n0\n\n\nMusical sound recording\n195\n0\n\n\nMixed materials\n176\n0\n\n\nThree-dimensional artifact or naturally occurring object\n51\n0\n\n\nManuscript language material\n7\n0\n\n\nManuscript cartographic material\n4\n0\n\n\n\n\nTitle count per type of record (note the log10 scale):"
   },
   {
     "objectID": "content_type.html#bibliographic-level",
     "href": "content_type.html#bibliographic-level",
-    "title": "6  Types of record",
-    "section": "6.2 Bibliographic level",
-    "text": "6.2 Bibliographic level\n\n\n\nBibliographic level\nDocuments (n)\nFraction (%)\n\n\n\n\nMonograph/Item\n1105384\n93.1\n\n\nSerial\n71133\n6\n\n\nSubunit\n5692\n0.5\n\n\nSerial component part\n4570\n0.4\n\n\nCollection\n403\n0\n\n\nIntegrating resource\n346\n0\n\n\nMonographic component part\n268\n0",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Types of record</span>"
-    ]
+    "title": "11  Types of record",
+    "section": "11.2 Bibliographic level",
+    "text": "11.2 Bibliographic level\n\n\n\n\nBibliographic level\nDocuments (n)\nFraction (%)\n\n\n\n\nMonograph/Item\n1105384\n93.1\n\n\nSerial\n71133\n6\n\n\nSubunit\n5692\n0.5\n\n\nSerial component part\n4570\n0.4\n\n\nCollection\n403\n0\n\n\nIntegrating resource\n346\n0\n\n\nMonographic component part\n268\n0"
   },
   {
     "objectID": "ai_sauna.html",
@@ -154,42 +168,17 @@
     "text": "This chapter, temporarily created for the AI Sauna event, forms a part of our GitBook showcasing The Finnish National Bibliography, Fennica, dataset. Fennica encompasses metadata for over a million documents, including books, newspapers, maps, etc., with records spanning from 1488 to the present. For more details about Fennica, visit The National Finnish Library website.\nThe choice of fields to harmonize is guided by the needs of the Digital History for Literature in Finland (2022-2026) project funded by the Research Council of Finland. The project aims to use digital collections and methods to significantly expand the prevailing understanding of Finnish literature history.\nEach section of the book focuses on refining and analyzing a specific field within the dataset. By exploring these chapters, readers can gain valuable insights into the nuances of each field.\nTo access a portion of the Fennica dataset, simply download the fennica.csv file from the provided link. This dataset includes bibliographic details such as author information, titles, publication years, publication locations, publishers, content types, bibliographic levels, and call numbers (signum) indicating the books’ locations within a library.\nDownload fennica.csv (235,7 MB)\nFor more information contact Julia Matveeva (yulmat@utu.fi). Julia is also a participant at the AI Sauna event."
   },
   {
-    "objectID": "ai_sauna.html#running-code",
-    "href": "ai_sauna.html#running-code",
-    "title": "7  AI Sauna",
-    "section": "7.2 Running Code",
-    "text": "7.2 Running Code",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>AI Sauna</span>"
-    ]
-  },
-  {
     "objectID": "acknowledgments.html",
     "href": "acknowledgments.html",
     "title": "Acknowledgements",
     "section": "",
-    "text": "Authors:\n\n\nJulia Matveeva\nOsma Suominen\nKati Launis\nLeo Lahti\n\n\nContributors:\n\n\nJeba Akewak\nPyry Kantanen\nTeo Dallier\nElliot Gaudron-Parry\n\nThe authors wish to acknowledge CSC – IT Center for Science, Finland, for computational resources.\n\nReferences:\n\nA national public sphere? Analyzing the language, location, and form of newspapers in finland, 1771–1917  Marjanen J, Vaara V, Kanner A, Roivainen H, Mäkelä E, Lahti L & Tolonen M. Journal of European Periodical Studies 4(1), 2019 Special issue: Digital Approaches Towards Serial Publications 10.21825/jeps.v4i1.10483 | PDF \nBibliographic data science and the history of the book (c. 1500–1800) Lahti L, Marjanen J, Roivainen H & Tolonen M. Cataloging & Classification Quarterly 57(1) Routledge, 2019 Special issue. 10.1080/01639374.2018.1543747 | PDF\n\nFunders:\n\n\nResearch Council of Finland DHL-FI project\n\nAcademy of Finland website\n\nFIN-CLARIAH research infrastructure\n\nFIN-CLARIAH website",
-    "crumbs": [
-      "Appendices",
-      "Acknowledgements"
-    ]
+    "text": "Authors:\n\n\nJulia Matveeva\nOsma Suominen\nKati Launis\nLeo Lahti\n\n\nContributors:\n\n\nJeba Akewak\nPyry Kantanen\nTeo Dallier\nElliot Gaudron-Parry\n\nThe authors wish to acknowledge CSC – IT Center for Science, Finland, for computational resources.\n\nReferences:\n\nA national public sphere? Analyzing the language, location, and form of newspapers in finland, 1771–1917  Marjanen J, Vaara V, Kanner A, Roivainen H, Mäkelä E, Lahti L & Tolonen M. Journal of European Periodical Studies 4(1), 2019 Special issue: Digital Approaches Towards Serial Publications 10.21825/jeps.v4i1.10483 | PDF \nBibliographic data science and the history of the book (c. 1500–1800) Lahti L, Marjanen J, Roivainen H & Tolonen M. Cataloging & Classification Quarterly 57(1) Routledge, 2019 Special issue. 10.1080/01639374.2018.1543747 | PDF\n\nFunders:\n\n\nResearch Council of Finland DHL-FI project\n\nAcademy of Finland website\n\nFIN-CLARIAH research infrastructure\n\nFIN-CLARIAH website"
   },
   {
     "objectID": "technical_information.html",
     "href": "technical_information.html",
     "title": "Technical information",
     "section": "",
-    "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.4.0 (2024-04-24)\nPlatform: x86_64-pc-linux-gnu\nRunning under: Ubuntu 22.04.4 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\ntime zone: UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] fennica_0.2.9     stringi_1.8.3     purrr_1.0.2       Cairo_1.6-2      \n [5] ggplot2_3.5.1     R.utils_2.12.3    R.oo_1.26.0       R.methodsS3_1.8.2\n [9] knitr_1.46        stringr_1.5.1     tm_0.7-13         NLP_0.2-1        \n[13] dplyr_1.1.4       devtools_2.4.5    usethis_2.2.3    \n\nloaded via a namespace (and not attached):\n [1] utf8_1.2.4        generics_0.1.3    xml2_1.3.6        slam_0.1-50      \n [5] digest_0.6.35     magrittr_2.0.3    grid_4.4.0        evaluate_0.23    \n [9] pkgload_1.3.4     fastmap_1.1.1     jsonlite_1.8.8    pkgbuild_1.4.4   \n[13] sessioninfo_1.2.2 urlchecker_1.0.1  promises_1.3.0    fansi_1.0.6      \n[17] scales_1.3.0      stringdist_0.9.12 XML_3.99-0.16.1   cli_3.6.2        \n[21] shiny_1.8.1.1     rlang_1.1.3       munsell_0.5.1     ellipsis_0.3.2   \n[25] withr_3.0.0       remotes_2.5.0     cachem_1.0.8      tools_4.4.0      \n[29] parallel_4.4.0    memoise_2.0.1     colorspace_2.1-0  httpuv_1.6.15    \n[33] vctrs_0.6.5       R6_2.5.1          mime_0.12         lifecycle_1.0.4  \n[37] fs_1.6.3          htmlwidgets_1.6.4 miniUI_0.1.1.1    pkgconfig_2.0.3  \n[41] gtable_0.3.5      pillar_1.9.0      later_1.3.2       data.table_1.15.4\n[45] glue_1.7.0        profvis_0.3.8     Rcpp_1.0.12       xfun_0.43        \n[49] tibble_3.2.1      tidyselect_1.2.1  xtable_1.8-4      htmltools_0.5.8.1\n[53] rmarkdown_2.26    compiler_4.4.0",
-    "crumbs": [
-      "Appendices",
-      "Technical information"
-    ]
-  },
-  {
-    "objectID": "ai_sauna.html#fennica-data-set",
-    "href": "ai_sauna.html#fennica-data-set",
-    "title": "12  AI Sauna",
-    "section": "12.1 Fennica data set",
-    "text": "12.1 Fennica data set\nThis chapter, temporary created for the AI Sauna event, forms a part of our GitBook showcasing the Finnish National Bibliography, Fennica, dataset. The FNB encompasses metadata for over a million documents, including books, newspapers, maps, etc., with records spanning from 1488 to the present. For more details about Fennica, visit The National Finnish Library website.\nEach section of the book focuses on refining and analyzing a specific field within the dataset. We’ve meticulously cleaned and redefined each field to uncover missing values, errors, and conversions. By exploring these chapters, readers can gain valuable insights into the nuances of each field.\nTo access a portion of the Fennica dataset, simply download the fennica.csv file from the provided link. This dataset includes bibliographic details such as author information, titles, publication years, locations, publishers, content types, bibliographic levels, and call numbers (signum) indicating the books’ locations within a library.\nDownload fennica.csv (235,7 MB)"
+    "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.1.2 (2021-11-01)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Ubuntu 22.04.3 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0\nLAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] fennica_0.2.9     stringi_1.8.3     purrr_1.0.2       Cairo_1.5-14     \n [5] ggplot2_3.5.0     R.utils_2.12.3    R.oo_1.26.0       R.methodsS3_1.8.2\n [9] knitr_1.45        stringr_1.5.1     tm_0.7-12         NLP_0.2-1        \n[13] dplyr_1.1.4       devtools_2.4.5    usethis_2.2.3    \n\nloaded via a namespace (and not attached):\n [1] stringdist_0.9.12 tidyselect_1.2.1  xfun_0.42         slam_0.1-50      \n [5] remotes_2.5.0     colorspace_2.1-0  vctrs_0.6.5       generics_0.1.3   \n [9] miniUI_0.1.1.1    htmltools_0.5.7   XML_3.99-0.16.1   utf8_1.2.4       \n[13] rlang_1.1.3       pkgbuild_1.4.4    urlchecker_1.0.1  later_1.3.2      \n[17] pillar_1.9.0      withr_3.0.0       glue_1.7.0        sessioninfo_1.2.2\n[21] lifecycle_1.0.4   munsell_0.5.0     gtable_0.3.4      htmlwidgets_1.6.4\n[25] memoise_2.0.1     evaluate_0.23     fastmap_1.1.1     httpuv_1.6.14    \n[29] parallel_4.1.2    fansi_1.0.6       Rcpp_1.0.12       xtable_1.8-4     \n[33] promises_1.2.1    scales_1.3.0      cachem_1.0.8      pkgload_1.3.4    \n[37] jsonlite_1.8.8    mime_0.12         fs_1.6.3          digest_0.6.35    \n[41] shiny_1.8.0       grid_4.1.2        cli_3.6.2         tools_4.1.2      \n[45] magrittr_2.0.3    tibble_3.2.1      profvis_0.3.8     pkgconfig_2.0.3  \n[49] ellipsis_0.3.2    data.table_1.15.2 xml2_1.3.6        rmarkdown_2.26   \n[53] rstudioapi_0.16.0 R6_2.5.1          compiler_4.1.2"
   }
 ]
