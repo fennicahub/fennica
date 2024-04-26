@@ -4,10 +4,7 @@
     "href": "index.html",
     "title": "Fennica metadata conversions: statistical monitoring and analysis",
     "section": "",
-    "text": "1 Preface chapter\nIt is imperative to underscore that this bookdown project is an evolving work-in-progress, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization.\nWithin the FIN-CLARIAH Metadata Harmonization and Analysis work package, we leverage the Finnish national bibliography (FNB) Fennica dataset to develop a harmonized dataset, serving research purposes and laying the groundwork for further infrastructure iterations. The project’s outcomes will be instrumental in supporting the DHL-FI project funded by the Research Council of Finland. The FNB encompasses metadata for over a million documents, including books, newspapers, maps, etc., with records spanning from 1488 to the present. For more details about Fennica, visit The National Finnish Library website.\nCurrently, the bookdown project comprises a few distinct chapters. Notably, the harmonization process has been executed through the establishment of dual pipelines: Complete FNB Pipeline and 1809 to 1917 Period Pipeline These chapters are dedicated to the specific metadata categories.\nHow to reproduce the workflow",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Fennica metadata conversions: statistical monitoring and analysis</span>"
-    ]
+    "text": "1 Preface chapter\nIt is imperative to underscore that this bookdown project is an evolving work-in-progress, and several additional fields will be incorporated into the dataset as they undergo the rigorous processes of data cleaning and harmonization.\nWithin the FIN-CLARIAH Metadata Harmonization and Analysis work package, we leverage the Finnish national bibliography (FNB) Fennica dataset to develop a harmonized dataset, serving research purposes and laying the groundwork for further infrastructure iterations. The project’s outcomes will be instrumental in supporting the DHL-FI project funded by the Research Council of Finland. The FNB encompasses metadata for over a million documents, including books, newspapers, maps, etc., with records spanning from 1488 to the present. For more details about Fennica, visit The National Finnish Library website.\nCurrently, the bookdown project comprises a few distinct chapters. Notably, the harmonization process has been executed through the establishment of dual pipelines: Complete FNB Pipeline and 1809 to 1917 Period Pipeline These chapters are dedicated to the specific metadata categories.\nHow to reproduce the workflow"
   },
   {
     "objectID": "language.html",
@@ -152,12 +149,9 @@
   {
     "objectID": "ai_sauna.html",
     "href": "ai_sauna.html",
-    "title": "7  AI Sauna",
+    "title": "12  AI Sauna",
     "section": "",
-    "text": "7.1 Fennica data set\nThis fennica data set conists of 12 harmonized fields.\nmelinda_id authot_name author_date, author_birth_deat, age language.qmd publisher.qmd publication_place publication_time (start date, end_date, publication_decade) signum title title_remainder type of record bibliographic level\nDownload fennica.csv (235,7 MB)",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>AI Sauna</span>"
-    ]
+    "text": "This chapter, temporarily created for the AI Sauna event, forms a part of our GitBook showcasing The Finnish National Bibliography, Fennica, dataset. Fennica encompasses metadata for over a million documents, including books, newspapers, maps, etc., with records spanning from 1488 to the present. For more details about Fennica, visit The National Finnish Library website.\nThe choice of fields to harmonize is guided by the needs of the Digital History for Literature in Finland (2022-2026) project funded by the Research Council of Finland. The project aims to use digital collections and methods to significantly expand the prevailing understanding of Finnish literature history.\nEach section of the book focuses on refining and analyzing a specific field within the dataset. By exploring these chapters, readers can gain valuable insights into the nuances of each field.\nTo access a portion of the Fennica dataset, simply download the fennica.csv file from the provided link. This dataset includes bibliographic details such as author information, titles, publication years, publication locations, publishers, content types, bibliographic levels, and call numbers (signum) indicating the books’ locations within a library.\nDownload fennica.csv (235,7 MB)\nFor more information contact Julia Matveeva (yulmat@utu.fi). Julia is also a participant at the AI Sauna event."
   },
   {
     "objectID": "ai_sauna.html#running-code",
@@ -190,5 +184,12 @@
       "Appendices",
       "Technical information"
     ]
+  },
+  {
+    "objectID": "ai_sauna.html#fennica-data-set",
+    "href": "ai_sauna.html#fennica-data-set",
+    "title": "12  AI Sauna",
+    "section": "12.1 Fennica data set",
+    "text": "12.1 Fennica data set\nThis chapter, temporary created for the AI Sauna event, forms a part of our GitBook showcasing the Finnish National Bibliography, Fennica, dataset. The FNB encompasses metadata for over a million documents, including books, newspapers, maps, etc., with records spanning from 1488 to the present. For more details about Fennica, visit The National Finnish Library website.\nEach section of the book focuses on refining and analyzing a specific field within the dataset. We’ve meticulously cleaned and redefined each field to uncover missing values, errors, and conversions. By exploring these chapters, readers can gain valuable insights into the nuances of each field.\nTo access a portion of the Fennica dataset, simply download the fennica.csv file from the provided link. This dataset includes bibliographic details such as author information, titles, publication years, locations, publishers, content types, bibliographic levels, and call numbers (signum) indicating the books’ locations within a library.\nDownload fennica.csv (235,7 MB)"
   }
 ]

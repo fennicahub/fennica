@@ -4,25 +4,18 @@ format: html
 editor: visual
 ---
 
-## Fennica data set
 
-This fennica data set conists of 12 harmonized fields. 
+This chapter, temporarily created for the AI Sauna event, forms a part of our GitBook showcasing The Finnish National Bibliography, Fennica, dataset. Fennica encompasses metadata for over a million documents, including books, newspapers, maps, etc., with records spanning from 1488 to the present. For more details about Fennica, visit The National Finnish Library [website](https://www.kansalliskirjasto.fi/en/services/fennica-finnish-national-bibliography).
 
-melinda_id
-authot_name
-author_date, author_birth_deat, age
-language.qmd
-publisher.qmd
-publication_place
-publication_time (start date, end_date, publication_decade)
-signum
-title
-title_remainder
-type of record 
-bibliographic level
+The choice of fields to harmonize is guided by the needs of the [Digital History for Literature in Finland (2022-2026)](https://sites.utu.fi/digital-history-literature-finland/) project funded by the Research Council of Finland. The project aims to use digital collections and methods to significantly expand the prevailing understanding of Finnish literature history.
+
+Each section of the book focuses on refining and analyzing a specific field within the dataset. By exploring these chapters, readers can gain valuable insights into the nuances of each field.
+
+To access a portion of the Fennica dataset, simply download the **fennica.csv** file from the provided link. This dataset includes bibliographic details such as author information, titles, publication years, publication locations, publishers, content types, bibliographic levels, and call numbers (signum) indicating the books' locations within a library.
 
 [Download fennica.csv (235,7 MB)](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/fennica.csv)
 
-## Running Code
+For more information contact Julia Matveeva (yulmat@utu.fi).
+Julia is also a participant at the AI Sauna event. 
 
 
