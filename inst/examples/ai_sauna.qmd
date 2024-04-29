@@ -13,7 +13,7 @@ Each section of the book focuses on refining and analyzing a specific field with
 
 To access a portion of the Fennica dataset, simply download the **fennica.csv** file from the provided link. This dataset includes bibliographic details such as author information, titles, publication years, publication locations, publishers, content types, bibliographic levels, and call numbers (signum) indicating the books' locations within a library.
 
-[Download fennica.csv (235,7 MB)](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/fennica.csv)
+[Download fennica.csv (213,5 MB)](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/fennica.csv)
 
 For more information contact Julia Matveeva (yulmat@utu.fi).
 Julia is also a participant at the AI Sauna event. 
