@@ -43,6 +43,7 @@ book:
   - signum.qmd
   - title.qmd #läpivyys mihin tiedot perustuu
   - title_remainder.qmd
+  - title2.qmd
   - content_type.qmd
   #- title_uniform.qmd
   ##- subject_topic.qmd

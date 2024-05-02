@@ -34,7 +34,7 @@ Title count per type of record (note the log10 scale):
 #| warning = FALSE,
 #| fig.width = 11,
 #| fig.height = 7
-top_plot(df.orig, "bibliographic_level", ntop = 10, log10 = TRUE) + labs(y = "Entries (n)")
+top_plot(df.orig, "type_of_record", ntop = 10, log10 = TRUE) + labs(y = "Entries (n)")
 ```
 
 ## Bibliographic level 

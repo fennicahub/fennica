@@ -6998,6 +6998,7 @@ polish_title <- function (x) {
   
   x <- gsub("\\,$", "", x) # Remove commas at the end
   x <- gsub("[ ]+$", "", x) # Remove trailing spaces
+  x <- gsub("\\(|\\)", "", x) 
   x <- gsub("\\]$", "", x) # Remove closing square brackets at the end
   x <- gsub("^\\[", "", x) # Remove opening square brackets at the start
   x <- gsub("^\\(", "", x) # Remove opening parentheses at the start
@@ -7047,7 +7048,7 @@ polish_title_remainder <- function (x) {
   x <- gsub("[ ]+$", "", x) # Remove trailing spaces
   x <- gsub("\\]$", "", x) # Remove closing square brackets at the end
   x <- gsub("^\\[", "", x) # Remove opening square brackets at the start
-  x <- gsub("^\\(", "", x) # Remove opening parentheses at the start
+  x <- gsub("\\(|\\)", "", x) 
   x <- gsub("\\:+$", "", x) # Remove colon at the end
   x <- gsub("^\\:", "", x) # Remove colon at the start
   x <- gsub("\\;+$", "", x) # Remove semicolon at the end
