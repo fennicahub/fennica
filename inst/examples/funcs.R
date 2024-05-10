@@ -7106,6 +7106,46 @@ polish_udk <- function(x) {
   udk <- read.csv("udk_monografia.csv", sep = ";", header = FALSE, encoding = "UTF-8")
   colnames(udk) <- c("synonyme", "name")
   
+  # Function to match and concatenate names, including undetermined and handling NA
+  match_and_concatenate <- function(value) {
+    if (is.na(value)) {
+      return(NA)
+    }
+    
+    split_value <- strsplit(value, ";")[[1]]
+    converted_values <- c()
+    
+    for (val in split_value) {
+      match_index <- match(val, udk$synonyme)
+      if (!is.na(match_index)) {
+        converted_values <- c(converted_values, udk$name[match_index])
+      } else {
+        converted_values <- c(converted_values, "Undetermined")
+      }
+    }
+    
+    return(paste(converted_values, collapse = ";"))
+  }
+  
+  # Apply the function to each element of x to get df$converted
+  df <- data.frame(original = x0, cleaned = x)
+  df$converted <- sapply(x, match_and_concatenate)
+  
+  # Split values for further processing
+  split_values <- strsplit(df$cleaned, ";")
+  
+  # Create a data frame for further analysis
+  xu <- data.frame(unlist(split_values))
+  xu2 <- data.frame(unlist(strsplit(df$converted, ";")))
+  
+  f <- data.frame(c = xu, h = xu2)
+  colnames(f) <- c("udk", "explanation")
+  f$explanation <- as.character(f$explanation)
+  
+  # Filter for undetermined and accepted values
+  undetermined <- filter(f, f$explanation == "Undetermined")
+  accepted <- filter(f,f$explanation!= "Undetermined")
+  
   # Handle unrecognized udk
   unrec <- as.vector(na.omit(setdiff(
     unique(unlist(strsplit(as.character(unique(x)), ";"))),
@@ -7156,5 +7196,9 @@ polish_udk <- function(x) {
   dff$udk_first <- as.factor(str_trim(dff$udk_first))
   
   # Return both data frames and the unrecognized vector
-  return(list(harmonized = dff, unrecognized = unrec))
+  return(list(df_multi= dff,
+              df_full = df, 
+              unrecognized = unrec, 
+              undtermined = undetermined, 
+              accepted = accepted))
 }
