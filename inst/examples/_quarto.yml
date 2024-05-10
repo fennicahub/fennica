@@ -49,7 +49,7 @@ book:
   ##- subject_topic.qmd
   #- successor.qmd
   #- uncontrolled.qmd
-  - ai_sauna.qmd
+  #- ai_sauna.qmd
   appendices :
     - acknowledgments.qmd
     - technical_information.qmd

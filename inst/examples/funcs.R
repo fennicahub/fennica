@@ -7106,48 +7106,55 @@ polish_udk <- function(x) {
   udk <- read.csv("udk_monografia.csv", sep = ";", header = FALSE, encoding = "UTF-8")
   colnames(udk) <- c("synonyme", "name")
   
-  df <- data.frame(original = x0, cleaned = x)
+  # Handle unrecognized udk
+  unrec <- as.vector(na.omit(setdiff(
+    unique(unlist(strsplit(as.character(unique(x)), ";"))),
+    udk$synonyme
+  )))
   
-  # Function to match and concatenate names, including undetermined and handling NA
-  match_and_concatenate <- function(value) {
-    if (is.na(value)) {
-      return(NA)
-    }
-    
-    split_value <- strsplit(value, ";")[[1]]
-    converted_values <- c()
-    
-    for (val in split_value) {
-      match_index <- match(val, udk$synonyme)
-      if (!is.na(match_index)) {
-        converted_values <- c(converted_values, udk$name[match_index])
-      } else {
-        converted_values <- c(converted_values, "Undetermined")
-      }
-    }
-    
-    return(paste(converted_values, collapse = ";"))
+  if (length(unrec) > 0) {
+    warning(paste("Unidentified udk: ", paste(unrec, collapse = ";")))
   }
   
-  # Apply the function to each element of x to get df$converted
+  # Further processing for harmonization
+  for (i in 1:length(x)) {
+    lll <- sapply(unlist(strsplit(x[[i]], ";")), function (xx) {
+      as.character(map(xx, udk, remove.unknown = TRUE, mode = "exact.match"))
+    })
+    
+    lll <- na.omit(as.character(unname(lll)))
+    if (length(lll) == 0) {lll <- NA}
+    
+    lll <- unique(lll)
+    x[[i]] <- paste(lll, collapse = ";")
+  }
   
-  df$converted <- sapply(x, match_and_concatenate)
+  # Final adjustments and return
+  x[x %in% c("NA", "Undetermined", "und")] <- NA
+  xu <- na.omit(unique(unname(unlist(strsplit(unique(x), ";")))))
+  xu <- intersect(xu, udk$name)
+  x <- sapply(strsplit(x, ";"), function (xi) {paste(unique(intersect(xi, xu)), collapse = ";")})
   
-  # Split values for further processing
-  split_values <- strsplit(df$cleaned, ";")
+  dff <- data.frame(udk_count = sapply(strsplit(x, ";"), length))
+  multi_udk <- sapply(strsplit(x, ";"), length) > 1
+  dff$multi_udk <- multi_udk
+  dff$udks <- x
+  inds <- which(dff$udks == "")
+  if (length(inds) > 0) {
+    dff$udks[inds] <- "Undetermined"
+  }
   
-  # Create a data frame for further analysis
-  xu <- data.frame(unlist(split_values))
-  xu2 <- data.frame(unlist(strsplit(df$converted, ";")))
+  # Add the first only udk
+  if (length(grep(";", dff$udks)) > 0) {
+    dff$udk_first <- sapply(strsplit(dff$udks, ";"),
+                                   function (x) {x[[1]]})
+  } else {
+    dff$udk_first <- dff$udks
+  }
   
-  f <- data.frame(c = xu, h = xu2)
-  colnames(f) <- c("udk", "explanation")
-  f$explanation <- as.character(f$explanation)
+  dff$udks <- as.factor(str_trim(dff$udks))
+  dff$udk_first <- as.factor(str_trim(dff$udk_first))
   
-  # Filter for undetermined and accepted values
-  undetermined <- filter(f, f$explanation == "Undetermined")
-  accepted <- filter(f,f$explanation != "Undetermined")
-  
-  # Return the results
-  return(list(full = df, undetermined = undetermined, accepted = accepted))
+  # Return both data frames and the unrecognized vector
+  return(list(harmonized = dff, unrecognized = unrec))
 }
