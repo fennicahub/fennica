@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; UDC</title>
+<title>13&nbsp; Universal Decimal Classification</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./udk.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">UDC</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./udk.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Universal Decimal Classification</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -189,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./udk.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">UDC</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Universal Decimal Classification</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -238,7 +238,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">UDC</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Universal Decimal Classification</span></h1>
 </div>
 
 
@@ -256,12 +256,16 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>MARC: <a href="https://www.loc.gov/marc/bibliographic/bd080.html">080a</a></p>
+<p>Polish_udk.R is a function designed to standardize the ‘Universal Decimal Classification’ field. Currently, it only harmonizes entries categorized under the bibliography level of Monograph/Item.</p>
+<p>In total, there are 1187813 entries in Fennica, with 321943 missing UDC values in our dataset. Specifically, there are <a href="https://fennica-fennica.rahtiapp.fi/content_type.html">1105384</a> Monograph/Item entries, yet UDC numbers are missing for 300851 of them.</p>
 <section id="complete-dataset-overview" class="level2" data-number="13.1">
 <h2 data-number="13.1" class="anchored" data-anchor-id="complete-dataset-overview"><span class="header-section-number">13.1</span> Complete Dataset Overview</h2>
 <p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_accepted.csv">Unique UDC</a>: 298</p>
-<p>451844 single-UDC entries (40.88%)</p>
-<p>352689 multi-UDC entries (31.91%)</p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk_discarded.csv">Unrecognized UDC</a>: 38885</p>
+<p>UDC is available for 804533 Monograph/Item documents (73%).</p>
+<p>451844 single UDC entries (40.88%)</p>
+<p>352689 multiple UDC entries (31.91%)</p>
+<p>300851 missing/NA entries (27%)</p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_discarded.csv">Unrecognized UDC</a>: 38885</p>
 <p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK.csv">Download UDC harmonized dataset</a></p>
 <p>Language codes are from <a href="https://www.kiwi.fi/display/Kansallisbibliografiapalvelut/Monografia-aineiston+UDK-luokituskaavio">The National Library of Finland</a>; new custom abbreviations can be added in <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk_monografia.csv">this table</a>.</p>
 <table class="table">
@@ -380,20 +384,10 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="udk_files/figure-html/summaryudk2-1.png" class="img-fluid figure-img" width="1824"></p>
-</figure>
-</div>
-</div>
-</div>
 </section>
 <section id="subset-analysis-1809-1917" class="level2" data-number="13.2">
 <h2 data-number="13.2" class="anchored" data-anchor-id="subset-analysis-1809-1917"><span class="header-section-number">13.2</span> Subset Analysis: 1809-1917</h2>
 <p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_accepted_19.csv">Unique UDC (1809-1917)</a>: 256</p>
-<p>UDC is available for 804533 documents (73%).</p>
 <p>7850 single-UDC entries (13.96%)</p>
 <p>16543 multi-UDC entries (29.42%)</p>
 <p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_discarded_19.csv">Unrecognized UDC (1809-1917)</a>: 2339</p>
@@ -517,16 +511,6 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>Title count per language (including multi-language documents; note the log10 scale):</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="udk_files/figure-html/summaryudk4-1.png" class="img-fluid figure-img" width="1824"></p>
-</figure>
-</div>
-</div>
-</div>
 
 
 </section>
