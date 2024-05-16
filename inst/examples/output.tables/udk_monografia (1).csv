@@ -1,0 +1,303 @@
+001;Tiede. Tieteen teoria. Tiedehallinto. Tiedepolitiikka. Tutkimuspolitiikka. Tutkimustyö. Tieteen popularisointi. Tulevaisuuden tutkimus. Futurologia 
+002;Tietopalvelu. Dokumentaatiopalvelu. Informaatiopalvelu. Tietokannat
+003;Semiotiikka. Merkit. Symbolit. Kirjoitus. Kirjoitusjärjestelmät
+004;Tietotekniikka. Tietojenkäsittely. Atk
+006;Standardit. Normit. Standardisoiminen
+007;Kybernetiikka. Informaatioteoria. Kommunikaatioteoria
+008;Sivilisaatio. Kulttuuri. Edistys
+009;Humanistiset tieteet, yleistä
+01;Bibliografiat. Julkaisuluettelot
+02;Kirjastotoimi. Kirjastotiede
+03;Tietosanakirjat. Yleiset hakuteokset 
+05;Kausijulkaisut. Aikakauslehdet. Sarjat
+061;Yhteisöt. Järjestöt. Säätiöt. Tutkimuslaitokset. Kokoukset. Näyttelyt 
+069;Museot. Museologia
+07;Lehdistö. Journalismi. Sanomalehdet 
+08 (2002-);Sekasisältöiset teokset
+1;Filosofia 
+1(07);Filosofia. Koulukirja, oppikirja
+09;Käsikirjoitukset. Harvinaiskirjat. Bibliofilia. Exlibrikset
+11/12;Metafysiikka. Ontologia. Estetiikka. Luonnonfilosofia 
+13;Okkultismi. Salatieteet. Astrologia. Paranormaalit ilmiöt
+14;Filosofiset suuntaukset
+141.33;Teosofia. Kristosofia. Antroposofia. Filosofinen mystiikka
+159.9;Psykologia
+159.92;Kehityspsykologia. Persoonallisuuden psykologia. Luovuus. Lahjakkuus. Älykkyys.
+159.94/.95;Henkiset perustoiminnot. Psykomotoriikka. Tunteet. Motivaatio. Kognitio. Muisti. Oppiminen. Ajattelu
+16;Logiikka. Tietoteoria. Epistemologia
+17;Etiikka. Moraali. Käytännöllinen filosofia. Elämäntaito
+2;Uskonto. Teologia
+21;Luonnollinen teologia. Vapaa-ajattelu. Ateismi. Panteismi
+22/28;Kristinusko. Kristillinen teologia.
+22/28(07);Kristinusko. Kristillinen teologia. Koulukrja, oppikirja
+22;Raamattu
+23;Dogmatiikka
+24;Kristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset 
+25;Pastoraaliteologia. Homiletiikka. Saarnaoppi. Saarnat. Sielunhoito
+26;Kristillinen kirkko. Kirkon hallinto. Kirkko ja yhteiskunta. Ekumenia. Liturgiikka. Sakramentit. Kristillinen kasvatus. Kristilliset järjestöt. Diakonia. Lähetystyö
+27;Yleinen kirkkohistoria. Patristiikka
+28;Kristilliset kirkot. Kristilliset yhteisöt. Kristillisperäiset yhteisöt
+281.9;Ortodoksinen kirkko
+29;Uskontotiede. Mytologia. Ei-kristilliset uskonnot - mytologia ks. myös 39
+3;Yhteiskuntatieteet
+303;Yhteiskuntatieteiden tutkimusmenetelmät. Yhteiskuntatieteiden metodologia 
+304;Yhteiskuntapolitiikka. Sosiaalipolitiikka 
+305;Sukupuolentutkimus. Sukupuoliroolit
+308;Sosiografia. Yhteiskuntakuvaus
+311;Tilastotiede. Tilaston teoria. Tilastomenetelmät 
+314;Väestötiede. Väestötutkimus. Demografia. Muuttoliike. Siirtolaisuus
+316;Sosiologia
+316.6;Sosiaalinen käyttäytyminen. Sosiaalipsykologia
+316.6(07);Sosiaalinen käyttäytyminen. Sosiaalipsykologia. Koulukirja, oppikirja
+316.7;Kulttuurisosiologia. Kulttuuriantropologia. Sosiaaliantropologia 
+32;Politiikantutkimus. Valtio-oppi
+323;Sisäpolitiikka
+323.1;Kansallisuusliikkeet. Kansallisuuskysymykset. Kansalliset vähemmistöt
+324;Vaalit
+327;Kansainväliset suhteet. Kansainvälinen politiikka. Ulkopolitiikka
+327.3;Rauhanliike. Pasifismi. Aseidenriisunta
+328;Kansanedustuslaitokset. Hallitukset
+329;Poliittiset puolueet. Poliittiset liikkeet
+33;Kansantalous. Kansantaloustiede
+330;Kansantaloustieteen yleiset käsitteet. Kansantalouden teoria. Kansantulo. Kulutus. Elintaso
+331;Työ. Työtiede
+331.1;Työelämän suhteet. Työmarkkinajärjestöt. Ammattiyhdistysliike. Työpaikkademokratia. Työtaistelut
+331.2;Palkat. Palkkaus
+331.4;Työolot. Työympäristö. Työsuojelu. Työturvallisuus. Työterveys. Työperäiset sairaudet. Työtapaturmat. Työterveyshuolto 
+331.5;Työllisyys. Työttömyys. Työmarkkinat
+332;Aluetalous. Maa. Kiinteistöt 
+334;Osuustoiminta. Kauppakamarit
+336;Julkinen talous. Valtiontalous. Kunnallistalous 
+336.2;Verotus
+336.7;Raha. Valuutta. Pankit. Arvopaperit. Luotot
+338;Taloudellinen tila. Suhdanteet. Talouspolitiikka. Taloussuunnittelu 
+338.4;Elinkeinot. Palvelusektori. Matkailuelinkeino
+338.5;Hinnat 
+339;Kauppa 
+339.5/.9;Ulkomaankauppa. Kansainvälinen kauppa. Kauppapolitiikka. Tullit. Kansainväliset taloussuhteet. Maailmantalous
+339.96;Kehitysyhteistyö. Kehitysapu
+34;Oikeus
+34(07); Oikeus. Koulukirja, oppikirja
+340;Oikeuden aputieteet. Oikeustieteen metodologia
+341;Kansainvälinen oikeus
+342;Julkisoikeus. Valtio-oikeus. Valtiosääntöoikeus. Perusoikeudet. Kansalaisoikeudet. Ihmisoikeudet 
+343;Rikosoikeus. Kriminologia. Vankeinhoito
+347;Siviilioikeus
+347.7;Kauppaoikeus. Yhtiöoikeus. Immateriaalioikeus. Tekijänoikeus
+348;Kirkko-oikeus
+349;Oikeuden erikoisaloja
+35.08;Hallintoviranomaiset. Virkamiehet. Viranhaltijat. Toimenhaltijat
+351/354;Julkinen hallinto. Hallinto-oikeus. Hallinto-oppi. Poliisitoimi
+352;Kunnallishallinto. Paikallishallinto
+353/354;Valtionhallinto. Keskushallinto. Väliportaan hallinto. Lääninhallinto. Maakuntahallinto. Aluehallinto
+355/359;Sotataito. Sotatiede. Maanpuolustus
+364;Sosiaaliturva. Sosiaalihuolto. Sosiaalityö. Sosiaalipalvelut. Sosiaaliavustukset. Kansanterveys. Sairaalat 
+364-053.2;Lastenhuolto. Lastensuojelu. Päivähoito. Nuortenhuolto
+364-053.9 ;Vanhustenhuolto. Vanhuspolitiikka 
+364-056.26;Vammaishuolto. Invalidihuolto. Kehitysvammahuolto 
+365;Asuminen. Asuntopolitiikka
+366;Kuluttajapolitiikka. Kuluttajansuoja. Kuluttajaneuvonta. Kuluttajakäyttäytyminen 
+368/369;Vakuutus. Eläkkeet
+37;Kasvatus. Opetus. Koulutus
+371;Kasvatuksen ja opetuksen organisaatio. Koulutoimi. Opetusmenetelmät 
+372;Esikouluopetus. Aineopetus
+373;Peruskoulu. Lukio 
+374;Aikuiskasvatus. Nuorisotyö. Työväenopistot. Kansalaisopistot
+376;Erityiskasvatus. Erityisopetus
+377;Ammatillinen koulutus. Ammattikoulutus
+378;Akateeminen koulutus. Korkeanasteen koulutus. Korkeakoululaitos. Tieteellinen opetus
+378.4;Yliopistot
+378.6;Eri alojen korkeakoulut
+379.8;Vapaa-aika. Harrastukset 
+379.8(024.7);Lasten katselukirjat
+389;Mitat. Painot
+39;Perinnetieteet. Etnologia. Kansatiede. Kansanrunous. Folkloristiikka
+5;Matematiikka. Luonnontieteet
+502/504;Luonto. Luonnonsuojelu. Ympäristönsuojelu. Ympäristötieteet. Ympäristön tila
+51;Matematiikka
+52;Tähtitiede. Avaruustutkimus. Geodesia. Maanmittaus. Kartografia 
+53;Fysiikka
+54;Kemia
+55;Geologia. Geofysiikka. Geokemia. Seismologia. Glasiaaligeologia. Geomorfologia. Oseanografia. Petrologia. Malmit
+551.5;Meteorologia. Ilmatiede
+556;Hydrologia. Limnologia
+56;Paleontologia
+57;Biologiset tieteet. Biologia
+574.5;Hydrobiologia
+58;Kasvitiede
+59;Eläintiede
+59(024.7):Eläintiede, lapsille
+608;Keksinnöt. Innovaatiot. Patentit
+61;Lääketiede
+611;Anatomia
+612;Fysiologia
+613;Henkilökohtainen terveydenhoito ja hygienia. Ravitsemus. Lepo. Kuntoliikunta
+613(07);Henkilökohtainen terveydenhoito ja hygienia. Ravitsemus. Lepo. Kuntoliikunta. Koulukirja, oppikirja
+613.8;Päihteet. Tupakointi. Alkoholinkäyttö. Huumeiden käyttö. Sukupuolielämä
+614;Terveydenhuoltohenkilöstö. Lääkärit. Elintarvikevalvonta. Ympäristöterveys
+614.8;Tapaturmat. Tapaturmantorjunta. Palontorjunta. Säteilyturvallisuus. Pelastuspalvelu.Ensiapu
+615;Farmakologia. Farmasia. Lääkkeet. Lääkeaineet. Toksikologia. Apteekit
+615.8;Hoitomenetelmät. Terapia. Psykoterapia. Psykoanalyysi. Kuntoutus. Fysioterapia. Vaihtoehtoiset hoitomenetelmät. Kansanlääkintä
+616;Patologia. Tautioppi
+616.8;Neurologia. Neurokirurgia. Hermoston taudit. Psykiatria
+616.314;Odontologia. Hammaslääketiede. Hammastaudit
+617;Kirurgia. Ortopedia. Oftalmologia. Silmätaudit
+619;Eläinlääketiede. Kotieläinten taudit
+618;Gynekologia. Naistentaudit. Synnytysoppi
+62;Insinööritieteet. Tekniikka
+620;Aineoppi. Materiaalioppi. Aineenkoetus
+620.9;Energiatalous. Energiapolitiikka
+621;Konetekniikka. Konepajatekniikka. Mekaaninen teknologia. Työstö
+621.039;Ydintekniikka
+621.3;Sähkötekniikka. Voimalat. Elektroniikka
+621.39;Viestintätekniikka. Tietoliikennetekniikka
+622;Kaivostekniikka
+623;Sotatekniikka. Asetekniikka
+624;Rakennustekniikka yleensä. Rakennusstatiikka. Geotekniikka. Maarakennus. Perustukset. Sillanrakennus. Kalliorakennus. Tunnelinrakennus
+625;Tienrakennus. Radanrakennus
+626/627;Vesirakennus. Satamat. Padot 
+628;Yhdyskuntatekniikka. Kunnallistekniikka. Vesihuolto. Ympäristönsuojelutekniikka
+628.3/.6;Jätteet. Jätevesi. Jätteiden käsittely. Jätehuolto. Teollisuushygienia
+629;Kulkuneuvot. Liikennevälineet
+63;Maatalous. Metsätalous. Metsästys. Kalastus. Yleistä
+630;Metsätalous. Metsänhoito
+631;Maatalous. Maatalouspolitiikka
+632;Kasvitaudit. Kasvituholaiset. Rikkakasvit. Kasvinsuojelu 
+633+635;Kasvinviljely. Vihannesviljely. Puutarhat. Huonekasvit 
+634;Hedelmänviljely. Marjanviljely
+636;Kotieläintalous. Kotieläinhoito. Lemmikkieläimet. Turkiseläimet
+637;Kotieläintuotteet. Meijerit. Teurastamot
+638;Mehiläishoito
+639.1;Metsästys. Riistatalous. Riistanhoito
+639.2/.6;Kalastus. Kalatalous. Kalanviljely. Ravustus
+64;Kotitalous. Laitostalous. Suurtalous. Ravitsemisala. Majoitusala
+641/642;Ruoka-aineet. Ruoanvalmistus. Ateriat. Keittokirjat 
+643/649;Kodinhoito. Kodinsisustus. Siivous. Lastenhoito. Kauneudenhoito. Vaatehuolto. Kiinteistönhoito 
+65;Teollisuuden, kaupan ja liikenteen organisaatio
+65.01;Organisaatiotutkimus. Organisaatioteoria. Johtaminen
+651;Toimistot. Toimistotekniikka. Toimistotyö
+654;Tietoliikenne. Radio. Televisio. Tietoverkot. Internet 
+655;Graafinen teollisuus. Kirjapainotaito. Kustannustoiminta. Kirjakaupat 
+656;Liikenne. Liikenneturvallisuus. Liikenneonnettomuudet. Postilaitos 
+656.6;Vesiliikenne. Merenkulku 
+657;Laskentatoimi. Kirjanpito
+658;Liiketalous
+658.5/.6;Tuotannonsuunnittelu. Laadunvalvonta. Tuotesuunnittelu
+658.8;Markkinointi. Myynti. Vähittäiskauppa. Tukkukauppa - kauppa kansantalouden kannalta: 339 
+659;Mainonta. Tiedotustoiminta. Joukkoviestintä. Suhdetoiminta. 
+66/68;Eri teollisuudenaloja
+66;Kemianteollisuus. Kemian tekniikka
+662;Räjähdysaineet. Polttoaineet. Polttotekniikka
+663/664;Tekninen mikrobiologia. Käymisteollisuus. Juomateollisuus. Nautintoaineteollisuus. Elintarviketeollisuus. Elintarviketeknologia 
+669;Metallurgia
+674;Puuteollisuus. Mekaaninen metsäteollisuus
+675;Nahkateollisuus. Nahkatuotteet
+676;Massateollisuus. Paperiteollisuus
+677+687;Tekstiiliteollisuus. Vaatetusteollisuus. Muoti
+678;Muoviteollisuus
+681.5;Säätötekniikka. Säätöjärjestelmät. Säätömenetelmät. Säätölaitteet. Automaatiotekniikka. Robotiikka
+688/689;Käsityöt. Leikkikalut. Koristeet. Askartelu 
+69;Talonrakennus
+696/697;LVI-tekniikka. Rakennusten lämmitys. Ilmastointi. Ilmanvaihto
+7.0;Taide
+7.091;Taidenäyttelyt 
+711;Aluesuunnittelu. Seutusuunnittelu. Maaseudun suunnittelu. Kaupunkisuunnittelu. Yhdyskuntasuunnittelu. Aluetutkimus. Kaavoitus 
+712/719;Maisemasuunnittelu. Puutarha-arkkitehtuuri. Viherrakentaminen. Maisemansuojelu. Hautausmaat 
+72;Arkkitehtuuri. Rakennustaide
+73/76;Kuvataide
+73;Kuvanveisto. Keramiikkataide. Metallitaide. Numismatiikka. Mitalitaide
+74;Piirustus. Taideteollisuus. Taidekäsityö. Sisustustaide. Lasitaide 
+741.5;Sarjakuvat
+75;Maalaustaide
+76;Grafiikka
+77;Valokuvaus
+78;Musiikki - kansanmusiikki: 78 ja 39 
+791/792;Huvit. Elokuva. Videotaide. Teatteri. Ooppera. Tanssitaide. Baletti. Sirkus 
+793/794;Seuraleikit. Tanssit. Tanssiurheilu. Tietokilpailut. Pelit. Taikatemput 
+796/799;Liikunta. Urheilu. Voimistelu. Liikuntavälineet. Urheiluvälineet. Retkeily
+8;Kielitiede. Kirjallisuus
+80;Kielet
+800/801;Kielitiede. Lingvistiikka
+801.3;Sanakirjat
+802.0;Englannin kieli
+803;Germaaniset kielet
+803.0;Saksan kieli
+803.97;Ruotsin kieli
+804;Romaaniset kielet
+804.0;Ranskan kieli
+805.0;Italian kieli
+806.0;Espanjan kieli
+807;Latinan kieli. Kreikan kieli
+808;Slaavilaiset kielet. Venäjän kieli. Balttilaiset kielet. Latvian kieli. Liettuan kieli
+809;Itämaiset, afrikkalaiset, seemiläiset, altailaiset ja uralilaiset kielet. Muut kielet
+809.45;Suomalais-ugrilaiset kielet
+809.454.1;Suomen kieli
+82;Yleinen kirjallisuustiede. Kirjallisuudentutkimus. Suullinen esitystaito
+820/89;Eri kansojen ja kielialueiden kirjallisuus 
+820/89-1;Eri kansojen ja kielialueiden kirjallisuus(runous) 
+820/89-2;Eri kansojen ja kielialueiden kirjallisuus(näytelmäkirjallisuus, kuunnelmat, libretot, filmikäsikirjoitukset)
+820/89-3;Eri kansojen ja kielialueiden kirjallisuus(proosa)
+820/89-4; Eri kansojen ja kielialueiden kirjallisuus(esseet)
+820/89-5;Eri kansojen ja kielialueiden kirjallisuus(puheet, esitelmä) 
+820/89-6;Eri kansojen ja kielialueiden kirjallisuus(kirjeet)
+820/89-8;Eri kansojen ja kielialueiden kirjallisuus(antologiat, aforismit)
+820/89-3(024.7);Eri kansojen ja kielialueiden kirjallisuus(proosa lapsile)
+820/89-8(024.7);Eri kansojen ja kielialueiden kirjallisuus(antologiat, aforismit lapsille)
+820;Englanninkielinen kirjallisuus
+830;Saksankielinen kirjallisuus. Jiddišinkielinen kirjallisuus
+839.3;Hollanninkielinen kirjallisuus. Flaaminkielinen kirjallisuus. Afrikaansinkielinen kirjallisuus
+839.59;Islanninkielinen kirjallisuus
+839.6;Norjankielinen kirjallisuus
+839.7;Ruotsinkielinen kirjallisuus
+839.7(07);Ruotsinkielinen kirjallisuus. Koulukirja, oppikirja
+839.79;Suomenruotsalainen kirjallisuus
+839.8;Tanskankielinen kirjallisuus
+84;Romaanisen kielialueen kirjallisuus
+840;Ranskankielinen kirjallisuus
+850;Italiankielinen kirjallisuus
+860+869.0;Espanjankielinen kirjallisuus. Portugalinkielinen kirjallisuus
+87;Antiikin kirjallisuus. Latinankielinen kirjallisuus. Kreikankielinen kirjallisuus
+882;Venäjänkielinen kirjallisuus
+884;Puolankielinen kirjallisuus
+885;Tšekinkielinen kirjallisuus. Slovakinkielinen kirjallisuus
+886/888;Serbokroaatinkielinen kirjallisuus. Sloveeninkielinen kirjallisuus. Makedoniankielinen kirjallisuus. Bulgariankielinen kirjallisuus. Latviankielinen kirjallisuus. Liettuankielinen kirjallisuus
+89;Muu indoeurooppalainen kirjallisuus. Itämaiden kirjallisuus. Arabiankielinen kirjallisuus. Hepreankielinen kirjallisuus. Turkinkielinen kirjallisuus 
+894.5;Suomalais-ugrilaisten kansojen kirjallisuus
+894.511;Unkarinkielinen kirjallisuus
+894.541;Suomenkielinen kirjallisuus
+894.541-1;Suomenkielinen kirjallisuus(runous)
+894.541-2;Suomenkielinen kirjallisuus(näytelmäkirjallisuus, kuunnelmat, libretot, filmikäsikirjoitukset)
+894.541-3;Suomenkielinen kirjallisuus(proosa)
+894.541-4;Suomenkielinen kirjallisuus(esseet)
+894.541-5;Suomenkielinen kirjallisuus(puheet, esitelmä)
+894.541-6;Suomenkielinen kirjallisuus(kirjeet)
+894.541-8;Suomenkielinen kirjallisuus(antologiat, aforismit)
+894.541-1(024.7);Suomenkielinen kirjallisuus(runous), lapsille
+894.541-3(024.7);Suomenkielinen kirjallisuus(proosa), lapsille
+894.545;Vironkielinen kirjallisuus
+894.55;Saamenkielinen kirjallisuus
+895;Kiinankielinen kirjallisuus. Japaninkielinen kirjallisuus
+896;Afrikan maiden kirjallisuus (negroafrikkalaiset kielet)
+902/904;Arkeologia. Esihistoria
+908;Paikallishistoriat. Kotiseutu 
+91;Maantiede. Matkat 
+912;Kartat. Kartastot 
+914;Eurooppa
+914.80;Suomi
+915;Aasia
+916;Afrikka
+917;Pohjois-Amerikka. Keski-Amerikka
+918;Etelä-Amerikka
+919;Australia. Oseania. Napa-alueet
+929;Henkilöhistoria. Elämäkerrat. Muistelmat. Matrikkelit 
+929.5/.9;Sukututkimus. Genealogia. Vaakunatiede. Heraldiikka
+93/99;Historia. Maailmanhistoria
+930;Historiatiede. Historian aputieteet. Arkistot. Epigrafia. Paleografia. Papyrologia. Kulttuurihistoria
+931/939;Vanhan ajan historia
+940;Euroopan historia
+948.0;Suomen historia
+950;Aasian historia
+960;Afrikan historia
+970;Pohjois-Amerikan historia. Keski-Amerikan historia
+980;Etelä-Amerikan historia
+990;Australian historia. Oseanian historia. Napa-alueiden historia
