@@ -14,7 +14,8 @@
 069;Museot. Museologia
 07;Lehdistö. Journalismi. Sanomalehdet 
 08 (2002-);Sekasisältöiset teokset
-01;Filosofia  
+1;Filosofia 
+1(07);Filosofia. Koulukirja, oppikirja
 09;Käsikirjoitukset. Harvinaiskirjat. Bibliofilia. Exlibrikset
 11/12;Metafysiikka. Ontologia. Estetiikka. Luonnonfilosofia 
 13;Okkultismi. Salatieteet. Astrologia. Paranormaalit ilmiöt
@@ -28,6 +29,7 @@
 2;Uskonto. Teologia
 21;Luonnollinen teologia. Vapaa-ajattelu. Ateismi. Panteismi
 22/28;Kristinusko. Kristillinen teologia.
+22/28(07);Kristinusko. Kristillinen teologia. Koulukrja, oppikirja
 22;Raamattu
 23;Dogmatiikka
 24;Kristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset 
@@ -46,6 +48,7 @@
 314;Väestötiede. Väestötutkimus. Demografia. Muuttoliike. Siirtolaisuus
 316;Sosiologia
 316.6;Sosiaalinen käyttäytyminen. Sosiaalipsykologia
+316.6(07);Sosiaalinen käyttäytyminen. Sosiaalipsykologia. Koulukirja, oppikirja
 316.7;Kulttuurisosiologia. Kulttuuriantropologia. Sosiaaliantropologia 
 32;Politiikantutkimus. Valtio-oppi
 323;Sisäpolitiikka
@@ -74,6 +77,7 @@
 339.5/.9;Ulkomaankauppa. Kansainvälinen kauppa. Kauppapolitiikka. Tullit. Kansainväliset taloussuhteet. Maailmantalous
 339.96;Kehitysyhteistyö. Kehitysapu
 34;Oikeus
+34(07); Oikeus. Koulukirja, oppikirja
 340;Oikeuden aputieteet. Oikeustieteen metodologia
 341;Kansainvälinen oikeus
 342;Julkisoikeus. Valtio-oikeus. Valtiosääntöoikeus. Perusoikeudet. Kansalaisoikeudet. Ihmisoikeudet 
@@ -88,9 +92,9 @@
 353/354;Valtionhallinto. Keskushallinto. Väliportaan hallinto. Lääninhallinto. Maakuntahallinto. Aluehallinto
 355/359;Sotataito. Sotatiede. Maanpuolustus
 364;Sosiaaliturva. Sosiaalihuolto. Sosiaalityö. Sosiaalipalvelut. Sosiaaliavustukset. Kansanterveys. Sairaalat 
-364-053.2; Lastenhuolto. Lastensuojelu. Päivähoito. Nuortenhuolto
+364-053.2;Lastenhuolto. Lastensuojelu. Päivähoito. Nuortenhuolto
 364-053.9 ;Vanhustenhuolto. Vanhuspolitiikka 
-364-056.26 ;Vammaishuolto. Invalidihuolto. Kehitysvammahuolto 
+364-056.26;Vammaishuolto. Invalidihuolto. Kehitysvammahuolto 
 365;Asuminen. Asuntopolitiikka
 366;Kuluttajapolitiikka. Kuluttajansuoja. Kuluttajaneuvonta. Kuluttajakäyttäytyminen 
 368/369;Vakuutus. Eläkkeet
@@ -105,7 +109,7 @@
 378.4;Yliopistot
 378.6;Eri alojen korkeakoulut
 379.8;Vapaa-aika. Harrastukset 
-379.8(024.7) ; lasten katselukirjat
+379.8(024.7);Lasten katselukirjat
 389;Mitat. Painot
 39;Perinnetieteet. Etnologia. Kansatiede. Kansanrunous. Folkloristiikka
 5;Matematiikka. Luonnontieteet
@@ -122,16 +126,26 @@
 574.5;Hydrobiologia
 58;Kasvitiede
 59;Eläintiede
+59(024.7):Eläintiede, lapsille
 608;Keksinnöt. Innovaatiot. Patentit
 61;Lääketiede
 611;Anatomia
 612;Fysiologia
-613;Henkilökohtainen terveydenhoito ja hygienia. Ravitsemus. Lepo. Kuntoliikunta 
-614;Terveydenhuoltohenkilöstö. Lääkärit. Elintarvikevalvonta. Ympäristöterveys 
+613;Henkilökohtainen terveydenhoito ja hygienia. Ravitsemus. Lepo. Kuntoliikunta
+613(07);Henkilökohtainen terveydenhoito ja hygienia. Ravitsemus. Lepo. Kuntoliikunta. Koulukirja, oppikirja
+613.8;Päihteet. Tupakointi. Alkoholinkäyttö. Huumeiden käyttö. Sukupuolielämä
+614;Terveydenhuoltohenkilöstö. Lääkärit. Elintarvikevalvonta. Ympäristöterveys
+614.8;Tapaturmat. Tapaturmantorjunta. Palontorjunta. Säteilyturvallisuus. Pelastuspalvelu.Ensiapu
 615;Farmakologia. Farmasia. Lääkkeet. Lääkeaineet. Toksikologia. Apteekit
-616;Patologia. Tautioppi 
-617;Kirurgia. Ortopedia. Oftalmologia. Silmätaudit 
+615.8;Hoitomenetelmät. Terapia. Psykoterapia. Psykoanalyysi. Kuntoutus. Fysioterapia. Vaihtoehtoiset hoitomenetelmät. Kansanlääkintä
+616;Patologia. Tautioppi
+616.8;Neurologia. Neurokirurgia. Hermoston taudit. Psykiatria
+616.314;Odontologia. Hammaslääketiede. Hammastaudit
+617;Kirurgia. Ortopedia. Oftalmologia. Silmätaudit
+619;Eläinlääketiede. Kotieläinten taudit
 618;Gynekologia. Naistentaudit. Synnytysoppi
+62;Insinööritieteet. Tekniikka
+620;Aineoppi. Materiaalioppi. Aineenkoetus
 620.9;Energiatalous. Energiapolitiikka
 621;Konetekniikka. Konepajatekniikka. Mekaaninen teknologia. Työstö
 621.039;Ydintekniikka
@@ -220,21 +234,22 @@
 809.454.1;Suomen kieli
 82;Yleinen kirjallisuustiede. Kirjallisuudentutkimus. Suullinen esitystaito
 820/89;Eri kansojen ja kielialueiden kirjallisuus 
-820/89-1;runous 
-820/89-2 ;näytelmäkirjallisuus, kuunnelmat, libretot, filmikäsikirjoitukset 
-820/89-3  ;proosa
-820/89-4 ;esseet
-820/89-5 ;puheet, esitelmät 
-820/89-6 ;kirjeet 
-820/89-8;antologiat, aforismit
-820/89-3(024.7);proosa lapsile 
-820/89-8(024.7);antologiat, aforismit lapsille
+820/89-1;Eri kansojen ja kielialueiden kirjallisuus(runous) 
+820/89-2;Eri kansojen ja kielialueiden kirjallisuus(näytelmäkirjallisuus, kuunnelmat, libretot, filmikäsikirjoitukset)
+820/89-3;Eri kansojen ja kielialueiden kirjallisuus(proosa)
+820/89-4; Eri kansojen ja kielialueiden kirjallisuus(esseet)
+820/89-5;Eri kansojen ja kielialueiden kirjallisuus(puheet, esitelmä) 
+820/89-6;Eri kansojen ja kielialueiden kirjallisuus(kirjeet)
+820/89-8;Eri kansojen ja kielialueiden kirjallisuus(antologiat, aforismit)
+820/89-3(024.7);Eri kansojen ja kielialueiden kirjallisuus(proosa lapsile)
+820/89-8(024.7);Eri kansojen ja kielialueiden kirjallisuus(antologiat, aforismit lapsille)
 820;Englanninkielinen kirjallisuus
 830;Saksankielinen kirjallisuus. Jiddišinkielinen kirjallisuus
 839.3;Hollanninkielinen kirjallisuus. Flaaminkielinen kirjallisuus. Afrikaansinkielinen kirjallisuus
 839.59;Islanninkielinen kirjallisuus
 839.6;Norjankielinen kirjallisuus
 839.7;Ruotsinkielinen kirjallisuus
+839.7(07);Ruotsinkielinen kirjallisuus. Koulukirja, oppikirja
 839.79;Suomenruotsalainen kirjallisuus
 839.8;Tanskankielinen kirjallisuus
 84;Romaanisen kielialueen kirjallisuus
@@ -250,6 +265,15 @@
 894.5;Suomalais-ugrilaisten kansojen kirjallisuus
 894.511;Unkarinkielinen kirjallisuus
 894.541;Suomenkielinen kirjallisuus
+894.541-1;Suomenkielinen kirjallisuus(runous)
+894.541-2;Suomenkielinen kirjallisuus(näytelmäkirjallisuus, kuunnelmat, libretot, filmikäsikirjoitukset)
+894.541-3;Suomenkielinen kirjallisuus(proosa)
+894.541-4;Suomenkielinen kirjallisuus(esseet)
+894.541-5;Suomenkielinen kirjallisuus(puheet, esitelmä)
+894.541-6;Suomenkielinen kirjallisuus(kirjeet)
+894.541-8;Suomenkielinen kirjallisuus(antologiat, aforismit)
+894.541-1(024.7);Suomenkielinen kirjallisuus(runous), lapsille
+894.541-3(024.7);Suomenkielinen kirjallisuus(proosa), lapsille
 894.545;Vironkielinen kirjallisuus
 894.55;Saamenkielinen kirjallisuus
 895;Kiinankielinen kirjallisuus. Japaninkielinen kirjallisuus

@@ -8,7 +8,7 @@ library(ggplot2)
 library(Cairo)
 library(fennica) 
 source("funcs.R")
-#source("publication_time.R")
+source("melindas_19.R")
 
 
 # Parameters: 
@@ -17,10 +17,10 @@ source("funcs.R")
 #publication_time field in df.orig
 
 melindas_list <- df_pubtime19$melinda_id
-list <-  df.orig[df.orig$melinda_id %in% melindas, ]
+list <-  df.orig[df.orig$melinda_id %in% melindas_19, ]
 
 # 2) 250 a (tyhjä) - ei luotettava 
-list <- list[is.na(list$"250a") | list$"250a" == "", ]
+#list <- list[is.na(list$"250a") | list$"250a" == "", ]
 
 
 # 3) 041 h (tyhjä) - kieli
@@ -37,7 +37,7 @@ list <- list[grepl("fin|swe", list$language) | is.na(list$language), ]
 list <- list[grepl("839.79|839.7|894.541|820/89|894.54", list$UDK)| is.na(list$UDK), ]
 
 
-# 6) 080 x -1, -2, -3, -4 (only this parameter gives 4993 obs)
+# 6) 080 x -1, -2, -3, -4
 
 
 list <- list[grepl("-1|-2|-3|-4", list$'080x') | is.na(list$'080x'), ]
@@ -56,7 +56,7 @@ list <- list %>% filter(genre_book %in% genres_to_keep)
 
 # 9) verkkoainesto in physical extent exclude 
 
-list <- list[!grepl("verkkoaineisto", list$physical_extent), ]
+#list <- list[!grepl("verkkoaineisto", list$physical_extent), ]
 
 ############################################################################
 

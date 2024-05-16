@@ -7083,10 +7083,12 @@ polish_udk <- function(x) {
   # Pre-allocate memory for the result
   x0 <- x
   
+  ######### CLEAN #########################################
   # Combine multiple gsub operations into fewer calls for efficiency
   # Replace spaces, colons, pipe characters, and commas with semicolons
-  x <- gsub(" ", "", x)
-  x <- stri_replace_all_regex(x, "[:|,]", ";")
+  x <- gsub("^ *|(?<= ) | *$", "", x, perl = TRUE)
+  
+  x <- stri_replace_all_regex(x, "[:|]", ";")
   
   # Remove all backslashes, forward slashes at the beginning and the end of the string,
   # double quotes, opening parentheses at the beginning of x, occurrences of the letter c at the beginning of x,
@@ -7095,12 +7097,18 @@ polish_udk <- function(x) {
   
   # Remove the exact string "9FENNI<KEEP>" from x
   x <- stri_replace_all_fixed(x, "9FENNI<KEEP>", "")
+  # Assuming 'df' is your dataframe and 'column_name' is the name of the column you want to modify
+  x <- gsub("[a-zA-ZÅÄÖåäö]", "", x)
+  x <- gsub(",", "", x)
   
   # Convert to lowercase and remove duplicates within each element of x
   x <- sapply(strsplit(tolower(x), ";"), function(x) paste(unique(x), collapse = ";"))
+  x <- gsub("^ *|(?<= ) | *$", "", x, perl = TRUE)
   
   # Replace empty strings with NA
   x[x == ''] <- NA
+  
+  ############ CONVERSIONS #####################
   
   # Load udk names
   udk <- read.csv("udk_monografia.csv", sep = ";", header = FALSE, encoding = "UTF-8")
@@ -7130,6 +7138,8 @@ polish_udk <- function(x) {
   # Apply the function to each element of x to get df$converted
   df <- data.frame(original = x0, cleaned = x)
   df$converted <- sapply(x, match_and_concatenate)
+  # Correctly calculate udk_count with adjustments for NA values
+  df$udk_count <- ifelse(is.na(df$cleaned), 0, str_count(df$cleaned, ";") + 1)
   
   # Split values for further processing
   split_values <- strsplit(df$cleaned, ";")
@@ -7146,59 +7156,5 @@ polish_udk <- function(x) {
   undetermined <- filter(f, f$explanation == "Undetermined")
   accepted <- filter(f,f$explanation!= "Undetermined")
   
-  # Handle unrecognized udk
-  unrec <- as.vector(na.omit(setdiff(
-    unique(unlist(strsplit(as.character(unique(x)), ";"))),
-    udk$synonyme
-  )))
-  
-  if (length(unrec) > 0) {
-    warning(paste("Unidentified udk: ", paste(unrec, collapse = ";")))
-  }
-  
-  # Further processing for harmonization
-  for (i in 1:length(x)) {
-    lll <- sapply(unlist(strsplit(x[[i]], ";")), function (xx) {
-      as.character(map(xx, udk, remove.unknown = TRUE, mode = "exact.match"))
-    })
-    
-    lll <- na.omit(as.character(unname(lll)))
-    if (length(lll) == 0) {lll <- NA}
-    
-    lll <- unique(lll)
-    x[[i]] <- paste(lll, collapse = ";")
-  }
-  
-  # Final adjustments and return
-  x[x %in% c("NA", "Undetermined", "und")] <- NA
-  xu <- na.omit(unique(unname(unlist(strsplit(unique(x), ";")))))
-  xu <- intersect(xu, udk$name)
-  x <- sapply(strsplit(x, ";"), function (xi) {paste(unique(intersect(xi, xu)), collapse = ";")})
-  
-  dff <- data.frame(udk_count = sapply(strsplit(x, ";"), length))
-  multi_udk <- sapply(strsplit(x, ";"), length) > 1
-  dff$multi_udk <- multi_udk
-  dff$udks <- x
-  inds <- which(dff$udks == "")
-  if (length(inds) > 0) {
-    dff$udks[inds] <- "Undetermined"
-  }
-  
-  # Add the first only udk
-  if (length(grep(";", dff$udks)) > 0) {
-    dff$udk_first <- sapply(strsplit(dff$udks, ";"),
-                                   function (x) {x[[1]]})
-  } else {
-    dff$udk_first <- dff$udks
-  }
-  
-  dff$udks <- as.factor(str_trim(dff$udks))
-  dff$udk_first <- as.factor(str_trim(dff$udk_first))
-  
-  # Return both data frames and the unrecognized vector
-  return(list(df_multi= dff,
-              df_full = df, 
-              unrecognized = unrec, 
-              undtermined = undetermined, 
-              accepted = accepted))
+  return(list(df = df, undetermined = undetermined, accepted = accepted))
 }
