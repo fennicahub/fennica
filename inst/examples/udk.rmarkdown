@@ -12,6 +12,7 @@ source("udk.R")
 
 ```
 
+
 MARC: [080a](https://www.loc.gov/marc/bibliographic/bd080.html)
 
 Polish_udk.R is a function designed to standardize the 'Universal Decimal Classification' field. Currently, it only harmonizes entries categorized under the bibliography level of Monograph/Item.
@@ -36,6 +37,7 @@ UDC is available for `r sum(!is.na(df$cleaned))` Monograph/Item documents  (`r r
 
 Language codes are from [The National Library of Finland](https://www.kiwi.fi/display/Kansallisbibliografiapalvelut/Monografia-aineiston+UDK-luokituskaavio); new custom abbreviations can be added in [this table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk_monografia.csv).
 
+
 ```{r}
 #| label = "summaryudk1",
 #| echo = FALSE,
@@ -45,6 +47,7 @@ tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
 colnames(tab) <- c("UDC", "Entries (n)", "Fraction (%)")
 kable(head(tab, 20))
 ```
+
 
 
 ## Subset Analysis: 1809-1917
@@ -62,6 +65,7 @@ kable(head(tab, 20))
 ### Top languages for 1809-1917
 
 Number of titles assigned with each UDC (top-10). For a complete list, see [accepted UDC (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_accepted_19.csv).
+
 
 ```{r}
 #| label = "summaryudk3",
