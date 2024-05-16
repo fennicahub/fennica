@@ -122,4 +122,4 @@ saveRDS(df.tmp_19, file = data.file)
 #Load the RDS file
 df_19 <- readRDS(data.file)
 # Convert to CSV and store in the output.tables folder
-write.table(df_19, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE, sep = ";", row.names = FALSE, fileEncoding = "UTF-8")
+write.table(df_19, file = paste0(output.folder, paste0(field, "_19.csv")), quote = FALSE, sep = ";", row.names = FALSE, fileEncoding = "UTF-8")
