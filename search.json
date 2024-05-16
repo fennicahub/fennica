@@ -330,6 +330,36 @@
     ]
   },
   {
+    "objectID": "udk.html",
+    "href": "udk.html",
+    "title": "13  UDC",
+    "section": "",
+    "text": "13.1 Complete Dataset Overview\nUnique UDC: 298\n451844 single-UDC entries (40.88%)\n352689 multi-UDC entries (31.91%)\nUnrecognized UDC: 38885\nDownload UDC harmonized dataset\nLanguage codes are from The National Library of Finland; new custom abbreviations can be added in this table.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>UDC</span>"
+    ]
+  },
+  {
+    "objectID": "udk.html#complete-dataset-overview",
+    "href": "udk.html#complete-dataset-overview",
+    "title": "13  UDC",
+    "section": "",
+    "text": "UDC\nEntries (n)\nFraction (%)\n\n\n\n\nSuomenkielinen kirjallisuus\n93543\n8.5\n\n\nEnglanninkielinen kirjallisuus\n50114\n4.5\n\n\nHenkilöhistoria. Elämäkerrat. Muistelmat. Matrikkelit\n24471\n2.2\n\n\nSosiaaliturva. Sosiaalihuolto. Sosiaalityö. Sosiaalipalvelut. Sosiaaliavustukset. Kansanterveys. Sairaalat\n24412\n2.2\n\n\nLuonto. Luonnonsuojelu. Ympäristönsuojelu. Ympäristötieteet. Ympäristön tila\n20096\n1.8\n\n\nPatologia. Tautioppi\n19432\n1.8\n\n\nTietotekniikka. Tietojenkäsittely. Atk\n17770\n1.6\n\n\nLiiketalous\n17657\n1.6\n\n\nMatematiikka\n17050\n1.5\n\n\nSuomenruotsalainen kirjallisuus\n16094\n1.5\n\n\nFysiikka\n14224\n1.3\n\n\nBiologiset tieteet. Biologia\n12808\n1.2\n\n\nPaikallishistoriat. Kotiseutu\n12304\n1.1\n\n\nSotataito. Sotatiede. Maanpuolustus\n12160\n1.1\n\n\nKristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset\n11712\n1.1\n\n\nTyö. Työtiede\n11677\n1.1\n\n\nKasvatus. Opetus. Koulutus\n11481\n1\n\n\nLiikunta. Urheilu. Voimistelu. Liikuntavälineet. Urheiluvälineet. Retkeily\n10940\n1\n\n\nOrganisaatiotutkimus. Organisaatioteoria. Johtaminen\n10510\n1\n\n\nYleinen kirjallisuustiede. Kirjallisuudentutkimus. Suullinen esitystaito\n10450\n0.9",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>UDC</span>"
+    ]
+  },
+  {
+    "objectID": "udk.html#subset-analysis-1809-1917",
+    "href": "udk.html#subset-analysis-1809-1917",
+    "title": "13  UDC",
+    "section": "13.2 Subset Analysis: 1809-1917",
+    "text": "13.2 Subset Analysis: 1809-1917\nUnique UDC (1809-1917): 256\nUDC is available for 804533 documents (73%).\n7850 single-UDC entries (13.96%)\n16543 multi-UDC entries (29.42%)\nUnrecognized UDC (1809-1917): 2339\nDownload UDC harmonized dataset (1809-1917)\n\n13.2.1 Top languages for 1809-1917\nNumber of titles assigned with each UDC (top-10). For a complete list, see accepted UDC (1809-1917).\n\n\n\n\n\n\n\n\nUDC\nEntries (n)\nFraction (%)\n\n\n\n\nSuomenkielinen kirjallisuus\n4600\n0.4\n\n\nSuomenruotsalainen kirjallisuus\n2612\n0.2\n\n\nSuomen historia\n1065\n0.1\n\n\nBibliografiat. Julkaisuluettelot\n979\n0.1\n\n\nEnglanninkielinen kirjallisuus\n926\n0.1\n\n\nGraafinen teollisuus. Kirjapainotaito. Kustannustoiminta. Kirjakaupat\n829\n0.1\n\n\nSaksankielinen kirjallisuus. Jiddišinkielinen kirjallisuus\n816\n0.1\n\n\nKristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset\n812\n0.1\n\n\nHenkilöhistoria. Elämäkerrat. Muistelmat. Matrikkelit\n733\n0.1\n\n\nRuotsinkielinen kirjallisuus\n714\n0.1\n\n\nYliopistot\n617\n0.1\n\n\nPerinnetieteet. Etnologia. Kansatiede. Kansanrunous. Folkloristiikka\n535\n0\n\n\nRanskankielinen kirjallisuus\n438\n0\n\n\nVenäjänkielinen kirjallisuus\n369\n0\n\n\nPaikallishistoriat. Kotiseutu\n369\n0\n\n\nSuomen kieli\n356\n0\n\n\nSotataito. Sotatiede. Maanpuolustus\n296\n0\n\n\nAntiikin kirjallisuus. Latinankielinen kirjallisuus. Kreikankielinen kirjallisuus\n288\n0\n\n\nPatologia. Tautioppi\n267\n0\n\n\nSuomi\n253\n0\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>UDC</span>"
+    ]
+  },
+  {
     "objectID": "acknowledgments.html",
     "href": "acknowledgments.html",
     "title": "Acknowledgements",
@@ -345,7 +375,7 @@
     "href": "technical_information.html",
     "title": "Technical information",
     "section": "",
-    "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.4.0 (2024-04-24)\nPlatform: x86_64-pc-linux-gnu\nRunning under: Ubuntu 22.04.4 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\ntime zone: UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] fennica_0.2.9     stringi_1.8.4     purrr_1.0.2       Cairo_1.6-2      \n [5] ggplot2_3.5.1     R.utils_2.12.3    R.oo_1.26.0       R.methodsS3_1.8.2\n [9] knitr_1.46        stringr_1.5.1     tm_0.7-13         NLP_0.2-1        \n[13] dplyr_1.1.4       devtools_2.4.5    usethis_2.2.3    \n\nloaded via a namespace (and not attached):\n [1] utf8_1.2.4        generics_0.1.3    xml2_1.3.6        slam_0.1-50      \n [5] digest_0.6.35     magrittr_2.0.3    grid_4.4.0        evaluate_0.23    \n [9] pkgload_1.3.4     fastmap_1.1.1     jsonlite_1.8.8    pkgbuild_1.4.4   \n[13] sessioninfo_1.2.2 urlchecker_1.0.1  promises_1.3.0    fansi_1.0.6      \n[17] scales_1.3.0      stringdist_0.9.12 XML_3.99-0.16.1   cli_3.6.2        \n[21] shiny_1.8.1.1     rlang_1.1.3       munsell_0.5.1     ellipsis_0.3.2   \n[25] withr_3.0.0       remotes_2.5.0     cachem_1.0.8      tools_4.4.0      \n[29] parallel_4.4.0    memoise_2.0.1     colorspace_2.1-0  httpuv_1.6.15    \n[33] vctrs_0.6.5       R6_2.5.1          mime_0.12         lifecycle_1.0.4  \n[37] fs_1.6.4          htmlwidgets_1.6.4 miniUI_0.1.1.1    pkgconfig_2.0.3  \n[41] gtable_0.3.5      pillar_1.9.0      later_1.3.2       data.table_1.15.4\n[45] glue_1.7.0        profvis_0.3.8     Rcpp_1.0.12       xfun_0.43        \n[49] tibble_3.2.1      tidyselect_1.2.1  xtable_1.8-4      htmltools_0.5.8.1\n[53] rmarkdown_2.26    compiler_4.4.0",
+    "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.4.0 (2024-04-24)\nPlatform: x86_64-pc-linux-gnu\nRunning under: Ubuntu 22.04.4 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\ntime zone: UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] fennica_0.2.9     stringi_1.8.4     purrr_1.0.2       Cairo_1.6-2      \n [5] ggplot2_3.5.1     R.utils_2.12.3    R.oo_1.26.0       R.methodsS3_1.8.2\n [9] knitr_1.46        stringr_1.5.1     tm_0.7-13         NLP_0.2-1        \n[13] dplyr_1.1.4       devtools_2.4.5    usethis_2.2.3    \n\nloaded via a namespace (and not attached):\n [1] utf8_1.2.4        generics_0.1.3    xml2_1.3.6        slam_0.1-50      \n [5] digest_0.6.35     magrittr_2.0.3    grid_4.4.0        evaluate_0.23    \n [9] pkgload_1.3.4     fastmap_1.2.0     jsonlite_1.8.8    pkgbuild_1.4.4   \n[13] sessioninfo_1.2.2 urlchecker_1.0.1  promises_1.3.0    fansi_1.0.6      \n[17] scales_1.3.0      stringdist_0.9.12 XML_3.99-0.16.1   cli_3.6.2        \n[21] shiny_1.8.1.1     rlang_1.1.3       munsell_0.5.1     ellipsis_0.3.2   \n[25] withr_3.0.0       remotes_2.5.0     cachem_1.0.8      tools_4.4.0      \n[29] parallel_4.4.0    memoise_2.0.1     colorspace_2.1-0  httpuv_1.6.15    \n[33] vctrs_0.6.5       R6_2.5.1          mime_0.12         lifecycle_1.0.4  \n[37] fs_1.6.4          htmlwidgets_1.6.4 miniUI_0.1.1.1    pkgconfig_2.0.3  \n[41] gtable_0.3.5      pillar_1.9.0      later_1.3.2       data.table_1.15.4\n[45] glue_1.7.0        profvis_0.3.8     Rcpp_1.0.12       xfun_0.44        \n[49] tibble_3.2.1      tidyselect_1.2.1  xtable_1.8-4      htmltools_0.5.8.1\n[53] rmarkdown_2.26    compiler_4.4.0",
     "crumbs": [
       "Appendices",
       "Technical information"

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; AI Sauna</title>
+<title>13&nbsp; UDC</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ai_sauna.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">AI Sauna</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./udk.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">UDC</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -188,8 +188,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ai_sauna.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">AI Sauna</span></span></a>
+  <a href="./udk.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">UDC</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -221,14 +221,24 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#complete-dataset-overview" id="toc-complete-dataset-overview" class="nav-link active" data-scroll-target="#complete-dataset-overview"><span class="header-section-number">13.1</span> Complete Dataset Overview</a></li>
+  <li><a href="#subset-analysis-1809-1917" id="toc-subset-analysis-1809-1917" class="nav-link" data-scroll-target="#subset-analysis-1809-1917"><span class="header-section-number">13.2</span> Subset Analysis: 1809-1917</a>
+  <ul class="collapse">
+  <li><a href="#top-languages-for-1809-1917" id="toc-top-languages-for-1809-1917" class="nav-link" data-scroll-target="#top-languages-for-1809-1917"><span class="header-section-number">13.2.1</span> Top languages for 1809-1917</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/fennicahub/fennica/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">AI Sauna</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">UDC</span></h1>
 </div>
 
 
@@ -245,14 +255,282 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This chapter, temporarily created for the AI Sauna event, forms a part of our GitBook showcasing The Finnish National Bibliography, Fennica, dataset. Fennica encompasses metadata for over a million documents, including books, newspapers, maps, etc., with records spanning from 1488 to the present. For more details about Fennica, visit The National Finnish Library <a href="https://www.kansalliskirjasto.fi/en/services/fennica-finnish-national-bibliography">website</a>.</p>
-<p>The choice of fields to harmonize is guided by the needs of the <a href="https://sites.utu.fi/digital-history-literature-finland/">Digital History for Literature in Finland (2022-2026)</a> project funded by the Research Council of Finland. The project aims to use digital collections and methods to significantly expand the prevailing understanding of Finnish literature history.</p>
-<p>Each section of the book focuses on refining and analyzing a specific field within the dataset. By exploring these chapters, readers can gain valuable insights into the nuances of each field.</p>
-<p>To access a portion of the Fennica dataset, simply download the <strong>fennica.csv</strong> file from the provided link. This dataset includes bibliographic details such as author information, titles, publication years, publication locations, publishers, content types, bibliographic levels, and call numbers (signum) indicating the books’ locations within a library.</p>
-<p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/fennica.csv">Download fennica.csv (213,5 MB)</a></p>
-<p>For more information contact Julia Matveeva (yulmat@utu.fi). Julia is also a participant at the AI Sauna event.</p>
+<p>MARC: <a href="https://www.loc.gov/marc/bibliographic/bd080.html">080a</a></p>
+<section id="complete-dataset-overview" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="complete-dataset-overview"><span class="header-section-number">13.1</span> Complete Dataset Overview</h2>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_accepted.csv">Unique UDC</a>: 298</p>
+<p>451844 single-UDC entries (40.88%)</p>
+<p>352689 multi-UDC entries (31.91%)</p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk_discarded.csv">Unrecognized UDC</a>: 38885</p>
+<p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK.csv">Download UDC harmonized dataset</a></p>
+<p>Language codes are from <a href="https://www.kiwi.fi/display/Kansallisbibliografiapalvelut/Monografia-aineiston+UDK-luokituskaavio">The National Library of Finland</a>; new custom abbreviations can be added in <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk_monografia.csv">this table</a>.</p>
+<table class="table">
+<colgroup>
+<col style="width: 81%">
+<col style="width: 9%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">UDC</th>
+<th style="text-align: left;">Entries (n)</th>
+<th style="text-align: left;">Fraction (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Suomenkielinen kirjallisuus</td>
+<td style="text-align: left;">93543</td>
+<td style="text-align: left;">8.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Englanninkielinen kirjallisuus</td>
+<td style="text-align: left;">50114</td>
+<td style="text-align: left;">4.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Henkilöhistoria. Elämäkerrat. Muistelmat. Matrikkelit</td>
+<td style="text-align: left;">24471</td>
+<td style="text-align: left;">2.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sosiaaliturva. Sosiaalihuolto. Sosiaalityö. Sosiaalipalvelut. Sosiaaliavustukset. Kansanterveys. Sairaalat</td>
+<td style="text-align: left;">24412</td>
+<td style="text-align: left;">2.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Luonto. Luonnonsuojelu. Ympäristönsuojelu. Ympäristötieteet. Ympäristön tila</td>
+<td style="text-align: left;">20096</td>
+<td style="text-align: left;">1.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Patologia. Tautioppi</td>
+<td style="text-align: left;">19432</td>
+<td style="text-align: left;">1.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tietotekniikka. Tietojenkäsittely. Atk</td>
+<td style="text-align: left;">17770</td>
+<td style="text-align: left;">1.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Liiketalous</td>
+<td style="text-align: left;">17657</td>
+<td style="text-align: left;">1.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Matematiikka</td>
+<td style="text-align: left;">17050</td>
+<td style="text-align: left;">1.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Suomenruotsalainen kirjallisuus</td>
+<td style="text-align: left;">16094</td>
+<td style="text-align: left;">1.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fysiikka</td>
+<td style="text-align: left;">14224</td>
+<td style="text-align: left;">1.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Biologiset tieteet. Biologia</td>
+<td style="text-align: left;">12808</td>
+<td style="text-align: left;">1.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Paikallishistoriat. Kotiseutu</td>
+<td style="text-align: left;">12304</td>
+<td style="text-align: left;">1.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sotataito. Sotatiede. Maanpuolustus</td>
+<td style="text-align: left;">12160</td>
+<td style="text-align: left;">1.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset</td>
+<td style="text-align: left;">11712</td>
+<td style="text-align: left;">1.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Työ. Työtiede</td>
+<td style="text-align: left;">11677</td>
+<td style="text-align: left;">1.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kasvatus. Opetus. Koulutus</td>
+<td style="text-align: left;">11481</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Liikunta. Urheilu. Voimistelu. Liikuntavälineet. Urheiluvälineet. Retkeily</td>
+<td style="text-align: left;">10940</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Organisaatiotutkimus. Organisaatioteoria. Johtaminen</td>
+<td style="text-align: left;">10510</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Yleinen kirjallisuustiede. Kirjallisuudentutkimus. Suullinen esitystaito</td>
+<td style="text-align: left;">10450</td>
+<td style="text-align: left;">0.9</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="udk_files/figure-html/summaryudk2-1.png" class="img-fluid figure-img" width="1824"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="subset-analysis-1809-1917" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="subset-analysis-1809-1917"><span class="header-section-number">13.2</span> Subset Analysis: 1809-1917</h2>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_accepted_19.csv">Unique UDC (1809-1917)</a>: 256</p>
+<p>UDC is available for 804533 documents (73%).</p>
+<p>7850 single-UDC entries (13.96%)</p>
+<p>16543 multi-UDC entries (29.42%)</p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_discarded_19.csv">Unrecognized UDC (1809-1917)</a>: 2339</p>
+<p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_19.csv">Download UDC harmonized dataset (1809-1917)</a></p>
+<section id="top-languages-for-1809-1917" class="level3" data-number="13.2.1">
+<h3 data-number="13.2.1" class="anchored" data-anchor-id="top-languages-for-1809-1917"><span class="header-section-number">13.2.1</span> Top languages for 1809-1917</h3>
+<p>Number of titles assigned with each UDC (top-10). For a complete list, see <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_accepted_19.csv">accepted UDC (1809-1917)</a>.</p>
+<table class="table">
+<colgroup>
+<col style="width: 81%">
+<col style="width: 9%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">UDC</th>
+<th style="text-align: left;">Entries (n)</th>
+<th style="text-align: left;">Fraction (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Suomenkielinen kirjallisuus</td>
+<td style="text-align: left;">4600</td>
+<td style="text-align: left;">0.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Suomenruotsalainen kirjallisuus</td>
+<td style="text-align: left;">2612</td>
+<td style="text-align: left;">0.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Suomen historia</td>
+<td style="text-align: left;">1065</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bibliografiat. Julkaisuluettelot</td>
+<td style="text-align: left;">979</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Englanninkielinen kirjallisuus</td>
+<td style="text-align: left;">926</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Graafinen teollisuus. Kirjapainotaito. Kustannustoiminta. Kirjakaupat</td>
+<td style="text-align: left;">829</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Saksankielinen kirjallisuus. Jiddišinkielinen kirjallisuus</td>
+<td style="text-align: left;">816</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset</td>
+<td style="text-align: left;">812</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Henkilöhistoria. Elämäkerrat. Muistelmat. Matrikkelit</td>
+<td style="text-align: left;">733</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ruotsinkielinen kirjallisuus</td>
+<td style="text-align: left;">714</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Yliopistot</td>
+<td style="text-align: left;">617</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Perinnetieteet. Etnologia. Kansatiede. Kansanrunous. Folkloristiikka</td>
+<td style="text-align: left;">535</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ranskankielinen kirjallisuus</td>
+<td style="text-align: left;">438</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Venäjänkielinen kirjallisuus</td>
+<td style="text-align: left;">369</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Paikallishistoriat. Kotiseutu</td>
+<td style="text-align: left;">369</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Suomen kieli</td>
+<td style="text-align: left;">356</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sotataito. Sotatiede. Maanpuolustus</td>
+<td style="text-align: left;">296</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Antiikin kirjallisuus. Latinankielinen kirjallisuus. Kreikankielinen kirjallisuus</td>
+<td style="text-align: left;">288</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Patologia. Tautioppi</td>
+<td style="text-align: left;">267</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Suomi</td>
+<td style="text-align: left;">253</td>
+<td style="text-align: left;">0</td>
+</tr>
+</tbody>
+</table>
+<p>Title count per language (including multi-language documents; note the log10 scale):</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="udk_files/figure-html/summaryudk4-1.png" class="img-fluid figure-img" width="1824"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -825,4 +1103,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/fennicahub/fennica/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/fennicahub/fennica/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
