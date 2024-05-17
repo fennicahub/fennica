@@ -7,7 +7,6 @@ description: ""
 ```{r}
 #| include = FALSE
 source("init.R")
-source("melindas_19.R")
 source("udk.R")
 ```
 
@@ -39,7 +38,7 @@ UDC codes are from [The National Library of Finland](https://www.kiwi.fi/display
 #| label = "summaryudk1",
 #| echo = FALSE,
 #| results = "asis"
-x <- top(df.tmp2, "explanation")
+x <- top(df.tmp, "converted")
 tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
 colnames(tab) <- c("UDC", "Entries (n)", "Fraction (%)")
 kable(head(tab, 20))
@@ -68,7 +67,7 @@ Number of titles assigned with each UDC (top-10). For a complete list, see [acce
 #| label = "summaryudk3",
 #| echo = FALSE,
 #| results = "asis"
-x <- top(df.tmp2_19, "explanation")
+x <- top(df.tmp_19, "converted")
 tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
 colnames(tab) <- c("UDC", "Entries (n)", "Fraction (%)")
 kable(head(tab, 20))

@@ -7097,7 +7097,7 @@ polish_udk <- function(x) {
   
   # Remove the exact string "9FENNI<KEEP>" from x
   x <- stri_replace_all_fixed(x, "9FENNI<KEEP>", "")
-  # Assuming 'df' is your dataframe and 'column_name' is the name of the column you want to modify
+  
   x <- gsub("[a-zA-ZÅÄÖåäö]", "", x)
   x <- gsub(",", "", x)
   
@@ -7105,6 +7105,7 @@ polish_udk <- function(x) {
   x <- sapply(strsplit(tolower(x), ";"), function(x) paste(unique(x), collapse = ";"))
   x <- gsub("^ *|(?<= ) | *$", "", x, perl = TRUE)
   
+  x <- gsub(" ", "", x)
   # Replace empty strings with NA
   x[x == ''] <- NA
   
@@ -7137,7 +7138,7 @@ polish_udk <- function(x) {
   
   # Apply the function to each element of x to get df$converted
   df <- data.frame(original = x0, cleaned = x)
-  df$converted <- sapply(x, match_and_concatenate)
+  df$converted <- sapply(x, match_and_concatenate) #undetermined appear several times in one row
   # Correctly calculate udk_count with adjustments for NA values
   df$udk_count <- ifelse(is.na(df$cleaned), 0, str_count(df$cleaned, ";") + 1)
   
@@ -7154,7 +7155,6 @@ polish_udk <- function(x) {
   
   # Filter for undetermined and accepted values
   undetermined <- filter(f, f$explanation == "Undetermined")
-  accepted <- filter(f,f$explanation!= "Undetermined")
   
-  return(list(df = df, undetermined = undetermined, accepted = accepted))
+  return(list(df = df, undetermined = undetermined))
 }
