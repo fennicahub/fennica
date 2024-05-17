@@ -18,12 +18,11 @@ df.tmp <- out$df
 df.tmp$melinda_id <- df_udk_full$melinda_id
 
 df.tmp1 <- out$undetermined
-df.tmp2 <- out$accepted
 
 # Reset the index to convert it into a single-index DataFrame
 row.names(df.tmp) <- NULL
 row.names(df.tmp1) <- NULL
-row.names(df.tmp1) <- NULL
+
 
 
 # Define output files
@@ -36,10 +35,11 @@ file_accepted <- paste0(output.folder, field, "_accepted.csv")
 
 # Generate data summaries for the whole data set 
 
-message("Accepted udks")
-tmp <- write_xtable(df.tmp2, file_accepted, 
-                      count = TRUE, 
-                      add.percentages = TRUE)
+message("UDK accepted")
+tab <- cbind(original = df.tmp$original, converted = df.tmp$converted)
+tmp <- write_xtable(tab, paste(output.folder, field, "_accepted.csv", sep = ""), 
+                    count = TRUE,
+                    add.percentages = TRUE)
 
 
 message("UDK discarded")
@@ -76,7 +76,6 @@ df.tmp_19 <- out$df
 df.tmp_19$melinda_id <- df_udk_19$melinda_id
 
 df.tmp1_19 <- out$undetermined
-df.tmp2_19 <- out$accepted
 
 # Reset the index to convert it into a single-index DataFrame
 row.names(df.tmp) <- NULL
@@ -92,9 +91,10 @@ file_accepted <- paste0(output.folder, field, "_accepted_19.csv")
 
 # Generate data summaries for the whole data set 
 
-message("Accepted udks")
-tmp_19 <- write_xtable(df.tmp2_19, file_accepted, 
-                    count = TRUE, 
+message("UDK accepted")
+tab_19 <- cbind(original = df.tmp_19$original, converted = df.tmp_19$converted)
+tmp_19 <- write_xtable(tab, paste(output.folder, field, "_accepted_19.csv", sep = ""), 
+                    count = TRUE,
                     add.percentages = TRUE)
 
 
