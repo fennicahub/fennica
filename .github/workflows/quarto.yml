@@ -11,7 +11,7 @@ on:
      - '**.qmd'
      - '**.R'
      - '**.yml'
-    workflow_dispatch:
+   workflow_dispatch:
 permissions: write-all
 
 name: renderbook-quarto
