@@ -9,12 +9,11 @@ description: ""
 source("init.R")
 source("melindas_19.R")
 source("udk.R")
-
 ```
 
 MARC: [080a](https://www.loc.gov/marc/bibliographic/bd080.html)
 
-Polish_udk.R is a function designed to standardize the 'Universal Decimal Classification' field. Currently, it only harmonizes entries categorized under the bibliography level of Monograph/Item.
+Polish_udk.R is a function designed to harmonize the 'Universal Decimal Classification' field. Currently, it only harmonizes entries categorized under the bibliography level of Monograph/Item.
 
 In total, there are `r length(df.orig$UDK)` entries in Fennica, with `r sum(is.na(df.orig$UDK) | df.orig$UDK == "")` missing UDC values in our dataset. Specifically, there are [1105384](https://fennica-fennica.rahtiapp.fi/content_type.html) Monograph/Item entries, yet UDC numbers are missing for `r sum(is.na(df$cleaned))` of them.
 
@@ -34,7 +33,7 @@ UDC is available for `r sum(!is.na(df$cleaned))` Monograph/Item documents  (`r r
 
 [Download UDC harmonized dataset](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK.csv)
 
-Language codes are from [The National Library of Finland](https://www.kiwi.fi/display/Kansallisbibliografiapalvelut/Monografia-aineiston+UDK-luokituskaavio); new custom abbreviations can be added in [this table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk_monografia.csv).
+UDC codes are from [The National Library of Finland](https://www.kiwi.fi/display/Kansallisbibliografiapalvelut/Monografia-aineiston+UDK-luokituskaavio); new custom abbreviations can be added in [this table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk_monografia.csv).
 
 ```{r}
 #| label = "summaryudk1",
@@ -51,9 +50,11 @@ kable(head(tab, 20))
 
 [Unique UDC (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_accepted_19.csv): `r length(unique(unlist(strsplit(as.character(df_19$converted), ";"))))-1`
 
-`r sum((df_19$udk_count > 1), na.rm = TRUE)` single-UDC entries (`r round(100 * mean(df_19$udk_count > 1, na.omit = TRUE), 2)`%)
+`r sum((df_19$udk_count > 1), na.rm = TRUE)` single UDC entries (`r round(100 * mean(df_19$udk_count > 1, na.omit = TRUE), 2)`%)
 
-`r sum(df_19$udk_count == 1, na.rm = TRUE)` multi-UDC entries (`r round(100 * mean(df_19$udk_count == 1, na.omit = TRUE), 2)`%)
+`r sum(df_19$udk_count == 1, na.rm = TRUE)` multiple UDC entries (`r round(100 * mean(df_19$udk_count == 1, na.omit = TRUE), 2)`%)
+
+`r sum(is.na(df_19$cleaned))` missing/NA entries (`r round(mean(is.na(df_19$cleaned)) * 100)`%)
 
 [Unrecognized UDC (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_discarded_19.csv): `r length(unique(df.tmp1_19$udk))`
 
