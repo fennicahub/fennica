@@ -11,21 +11,23 @@ df.orig <- df.orig %>%
                 "author_name" = 4, # ("100","a")
                 "author_date" = 5, # ("100","d")
                 "language" = 6, # ("041","a")
-                "title_uniform" = 7, # ("240","a")
-                "title" = 8, #("245","b")
-                "title_remainder" = 9, #(245 b)
-                "publication_place" = 10,#("260","a")
-                "publisher" = 11, #("260","b")
-                "physical_dimensions"= 12, #300c"),
-                "physical_extent" = 13, # ("300","a")
-                "publication_frequency" = 14, # ("310","a")
-                "publication_interval" = 15, # ("362","a")
-                "signum" = 16,  # ("callnumbers","a")
-                "UDK" = 17, #(080a)
-                "250a" = 18, 
-                "250b" = 19, 
-                "language_original" = 20,  # ("041","h"))
-                "080x" = 21)
+                "language_original" = 7,  # ("041","h"))
+                "042a" = 8, 
+                "title_uniform" = 9, # ("240","a")
+                "title" = 10, #("245","a")
+                "title_remainder" = 11, #(245 b)
+                "250a" = 12, 
+                "250b" = 13, 
+                "publication_place" = 14,#("260","a")
+                "publisher" = 15, #("260","b")
+                "physical_dimensions"= 16, #300c"),
+                "physical_extent" = 17, # ("300","a")
+                "publication_frequency" = 18, # ("310","a")
+                "publication_interval" = 19, # ("362","a")
+                "signum" = 20,  # ("callnumbers","a")
+                "UDK" = 21, #(080a)
+                "080-8" = 22, 
+                "080x" = 23)
 
 df.orig$melinda_id <- gsub(" ", "", df.orig$melinda_id)
 df.orig$melinda_id <- gsub("\\(FI-MELINDA\\)", "", df.orig$melinda_id)
