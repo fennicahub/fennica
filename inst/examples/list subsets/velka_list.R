@@ -104,20 +104,26 @@ write.table(velka_not_full_fennica_df, file = paste0(output.folder, "velka_not_f
 ################################################################################
 
 # Read Excel file
-velka_big <- read_excel("Kirjallisuuden ensipainokset.xlsx")
-# Change the column name using colnames
-colnames(velka_list)[colnames(velka_list) == "MelindaID"] <- "melinda_id"
-colnames(velka_list)[colnames(velka_list) == "...5"] <- "title_remainder"
-colnames(velka_list)[colnames(velka_list) == "Title"] <- "title"
-colnames(velka_list)[colnames(velka_list) == "Publication year"] <- "publication_time"
-
+velka_big <- read_excel("Kauno 1809-1917.xlsx")
+velka_big <- velka_big %>% slice(1:9212)
 
 # change FCC to FI-MELINDA to match df.orig melindas 
-velka_list$melinda_id <- gsub(".*FCC", "FCC", velka_list$melinda_id)
-velka_list$melinda_id <- sub("FCC", "", velka_list$melinda_id)
-velka_list$melinda_id <- sub(" ", "", velka_list$melinda_id)
-velka_list$melinda_id <- sub("(FI-MELINDA)", "", velka_list$melinda_id)
+velka_big$MelindaID <- gsub(".*FCC", "FCC", velka_big$MelindaID)
+velka_big$MelindaID <- sub("FCC", "", velka_big$MelindaID)
+velka_big$MelindaID <- sub(" ", "", velka_big$MelindaID)
+velka_big$MelindaID <- sub("(FI-MELINDA)", "", velka_big$MelindaID)
 
-velka_list$melinda_id <- substr(velka_list$melinda_id, start =  1, stop =  9)
-velka_list$signum <- gsub(" ", "", velka_list$Signum)
+velka_big$MelindaID <- substr(velka_big$MelindaID, start =  1, stop =  9)
+velka_big$Signum <- gsub(" ", "", velka_big$Signum)
 df.orig$signum <- gsub(" ", "", df.orig$signum)
+
+
+big_and_orig_same <- intersect(velka_big$MelindaID, df.orig$melinda_id)#8457
+big_and_orig_diff <- setdiff(velka_big$MelindaID, df.orig$melinda_id) #650 are not in our dataset
+
+
+big_and_julia_same <- intersect(velka_big$MelindaID, list$melinda_id)
+big_and_julia_diff <- setdiff(velka_big$MelindaID, list$melinda_id)
+
+big_and_velka_same <- intersect(velka_big$MelindaID, velka_list$melinda_id)
+big_and_velka_diff <- setdiff(velka_big$MelindaID, velka_list$melinda_id)

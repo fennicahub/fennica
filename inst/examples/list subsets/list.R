@@ -44,30 +44,34 @@ list <- list[grepl("-1|-2|-3|-4", list$`080x`) | is.na(list$`080x`), ]
 
 list <- list[is.na(list$language_original), ]
 
-# # genre  
+# # genre
 
-#list <- list %>% filter(genre_book %in% genres_to_keep)
-# 
+list <- list %>% filter(genre_book %in% genres_to_keep)
+
 
 # Check if signum contains "Suom. kaunokirj." or "Ruots. kaunokirj."
 kauno_rows <- grepl("Suom\\.kaunokirj.1|Suom\\.kaunokirj.3|Suom\\.kaunokirj.4|Suom\\.kaunokirj.5|
-Suom\\.kaunokirj.6|K\\.Suom.kaunokirj.1|K\\.Suomal.kaunokirj.|K\\.Suom.kaunok.|K\\.Ruots.kaunok.|K\\.Ruots.kaunokirj.|Ruots\\.kaunokirj.1|Ruots\\.kaunokirj.3|Ruots\\.kaunokirj.4|Ruots\\.kaunokirj.5|
+Suom\\.kaunokirj.6|K\\.Suom.kaunokirj.|K\\.Suom.kaunokirj.1|K\\.Suomal.kaunokirj.|K\\.Suom.kaunok.|K\\.Ruots.kaunok.|K\\.Ruots.kaunokirj.|Ruots\\.kaunokirj.1|Ruots\\.kaunokirj.3|Ruots\\.kaunokirj.4|Ruots\\.kaunokirj.5|
 Ruots\\.kaunokirj.6", list$signum)
 udk_rows <- grepl("839\\.79|894\\.541", list$UDK)
 
 list <- list %>% filter(kauno_rows | udk_rows)
 
+#filterout lasten kirjallisuus
+list <- list %>% 
+  filter(!grepl("Ruots\\.lastenkirj.|Suom\\.lastenkirj|last", list$signum) &!grepl("\\(024\\.7\\)", list$`080x`))
+
 
 # 
-# #9) work with unique titles and keep the earliest title
+#9) work with unique titles and keep the earliest title
 # Filter the DataFrame to keep only one entry per title with the smallest publication_year
 # result <- list %>%
 #   group_by(title) %>%
 #   filter(publication_time == min(publication_time)) %>%
-  # distinct(title,.keep_all = TRUE)
-
-
-# If you want to sort the result by publication_year (optional)
+# distinct(title,.keep_all = TRUE)
+# 
+# 
+# # If you want to sort the result by publication_year (optional)
 # list <- result %>% arrange(publication_time)
 
 
