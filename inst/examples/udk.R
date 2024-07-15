@@ -93,7 +93,7 @@ file_accepted <- paste0(output.folder, field, "_accepted_19.csv")
 
 message("UDK accepted")
 tab_19 <- cbind(original = df.tmp_19$original, converted = df.tmp_19$converted)
-tmp_19 <- write_xtable(tab, paste(output.folder, field, "_accepted_19.csv", sep = ""), 
+tmp_19 <- write_xtable(tab_19, paste(output.folder, field, "_accepted_19.csv", sep = ""), 
                     count = TRUE,
                     add.percentages = TRUE)
 
@@ -123,3 +123,4 @@ saveRDS(df.tmp_19, file = data.file)
 df_19 <- readRDS(data.file)
 # Convert to CSV and store in the output.tables folder
 write.table(df_19, file = paste0(output.folder, paste0(field, "_19.csv")), quote = FALSE, sep = ";", row.names = FALSE, fileEncoding = "UTF-8")
+
