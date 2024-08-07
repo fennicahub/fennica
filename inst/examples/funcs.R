@@ -7079,7 +7079,7 @@ polish_title_remainder <- function (x) {
 }
 
 
-polish_udk <- function(x) {
+polish_udk_m <- function(x) {
   # Pre-allocate memory for the result
   x0 <- x
   
