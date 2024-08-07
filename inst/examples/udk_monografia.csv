@@ -126,7 +126,7 @@
 574.5;Hydrobiologia
 58;Kasvitiede
 59;Eläintiede
-59(024.7):Eläintiede, lapsille
+59(024.7);Eläintiede, lapsille
 608;Keksinnöt. Innovaatiot. Patentit
 61;Lääketiede
 611;Anatomia
@@ -310,3 +310,593 @@
 970;Pohjois-Amerikan historia. Keski-Amerikan historia
 980;Etelä-Amerikan historia
 990;Australian historia. Oseanian historia. Napa-alueiden historia
+244;Japanilainen buddhalaisuus
+242;Mahajana-buddhalaisuus. Suuri vaunu
+06;Erilaiset yhteisöt
+252;Mesopotamian uskonnot
+631.3;Maatalouskoneet, -välineet ja -laitteet
+910.4;Tutkimusmatkat
+631.1;Maatilan hoito ja organisointi (maatalousekonomia)
+111;Yleinen metafysiikka. Ontologia
+639;Metsästys. Kalastus. Kalanviljely
+639.2;Kalastus. Kalatalous
+08;Moniaiheiset teokset. Kokoomateokset
+241;Hinajana-buddhalaisuus. Pieni vaunu. Theravada-buddhalaisuus. Pālin koulukunta
+796.4;Voimistelu. Akrobatia. Yleisurheilu
+234;Jainalaisuus
+528;Geodesia. Maanmittaus. Fotogrammetria. Kaukokartoitus. Kartografia
+264;Sefardijuutalaisuus
+581.9;Kasvimaantiede. Kasvistot. Kasvien levinneisyysalueet
+631.4;Maaperätiede. Maantutkimus
+633;Kasvinviljely ja tuotanto
+71;Yhdyskuntasuunnittelu. Alue-, kaupunki- ja seutusuunnittelu. Maisemat, puistot, puutarhat
+92;Henkilöhistorialliset tutkimukset. Sukututkimus. Heraldiikka. Liput
+796;Urheilu. Kisat. Liikunta
+930.85;Sivistyshistoria. Kulttuurihistoria
+784;Laulumusiikki
+243;Lamalaisuus
+613.2;Ruokavalio-oppi. Ravitsemuksen periaatteet ruokailuun ja elintarvikkeisiin sovellettuna
+398;Kansanperinne tiukasti määriteltynä
+266;Reformijuutalaisuus
+808.2;Editointi. Tekstin muokkaaminen ja sovittaminen julkaisua varten
+261;Raamatun ajan uskonto. Muinainen juutalaisuus. Vanhan testamentin uskonto
+512;Algebra
+792;Teatteri. Näyttämötekniikka. Teatteriesitykset
+664;Elintarviketeknologia
+911.2;Luonnonmaantiede
+677;Tekstiiliteollisuus
+303;Yhteiskuntatieteiden tutkimusmenetelmät
+547;Orgaaninen kemia
+635;Vihannesviljely. Koristepuutarhat
+687;Vaateteollisuus. Asusteiden valmistus. Kauneudenhoitoala
+173;Perhe-etiikka
+641;Ruoka ja elintarvikkeet. Ruoanvalmistus. Ruokalajit
+689;Käsityöt. Tekniset harrastukset
+746;Käsityöt. Taidekudonnaiset
+171;Yksilönmoraali. Ihmisen velvollisuudet itseän kohtaan
+598.2;Aves (linnut)
+616.89;Psykiatria. Patologinen psykiatria. Psykopatologia. Psykoosit. Mielenterveyden häriöt. Sairaat mielentilat. Käyttäytymisen ja tunne-elämän häiriöt
+82.02;Kirjallisuuden koulukunnat, suuntaukset ja liikkeet
+395;Juhlamenot. Etiketti. Hyvät tavat. Seurustelusäännöt. Sosiaalinen asema. Tittelit
+929.5;Sukututkimus
+061.2;Kansalaisjärjestöt ja yksityinen yhteistyö
+628.1;Vedenhankinta. Käyttöveden käsittely. Veden tarve ja kulutus
+625.1;Rautatiet yleensä. Junaradat. Radanrakennus
+656.2;Rautatiekuljetus. Raideliikenne
+514;Geometria
+35;Julkinen hallinto. Hallintoelimet. Sotilaalliset asiat
+355;Sotataito yleisesti
+79;Virkistys. Viihde. Pelit. Urheilu
+582.29;Jäkälät
+636.1;Hevoseläimet kotieläiminä. Hevoset
+342.4;Perustuslait. Lakiasäätävät kokoukset. Kansalliskokoukset
+556.5;Pintavesien hydrologia. Maanpinnan vesien hydrologia
+368;Vakuutustoimi. Yhteisöllinen varautuminen jakamalla riskit
+794.1;Shakki
+581.1;Kasvifysiologia
+636.7;Koirat
+551;Yleinen geologia. Meteorologia. Klimatologia. Geomorfologia. Stratigrafia. Paleomaantiede
+177;Etiikka ja yhteiskunta
+7.03;Taiteen aikakaudet ja vaiheet. Koulukunnat, tyylit, vaikutteet
+781.1;Musiikkia koskevat tieteelliset teoriat. Matemaattiset, fysikaaliset, fysiologiset, psykologiset perusteet. Musiikkiakustiikka
+133;Paranormaalit ilmiöt. Okkultismi. Psi-ilmiöt
+9;MAANTIEDE. HENKILÖHISTORIA. HISTORIA
+36;Elämän henkisten ja materaalisten tarpeiden turvaaminen
+502;Ympäristö. Ympäristönsuojelu. Luonto. Luonnonsuojelu
+582;Systemaattinen kasvitiede
+539.1;Ydinfysiikka. Atomifysiikka. Molekyylifysiikka
+621.9;Lastuava työstö. Hionta. Vasarat ja prässit
+7;TAITEET. VIRKISTYS. VIIHDE. URHEILU
+7.01;Taideteoriat ja taidefilosofia. Sommitteluperiaatteet, mittasuhteet, optiset vaikutukset
+015;Aluebibliografiat
+321;Poliittisen organisaation muodot. Valtiot poliittisinä tekijöina
+347.6;Perheoikeus. Perintöoikeus. Perilliset. Jälkeläiset
+37.01;Kasvatuksen perusteet. Teoria. Tutkimusmenetelmät
+504;Ympäristökysymykset. Ympäristön saastuminen
+391;Puvut. Vaatetus. Kansallispuvut. Muoti. Korut
+582.28;Fungi. Eumycetes (sienet). Homeet
+616.9;Tartuntataudit. Infektiotaudit, kuumetaudit
+656.1;Tieliikenne
+621.7;mekaaninen teknologia yleensä: prosessit, työkalut, koneet, laitteet
+784.5;Maalliset oratoriot (serenatat) ja kantaatit
+286;Baha'i-usko
+344;Erityinen rikosoikeus. Sotilaslainsäädäntö
+347.2;Varallisuusoikeus. Esineoikeudet. Esineet. Irtaimisto
+347.4;Sitoumukset. Sopimusvelvoitteet. Obligaatiot. Sopimukset
+579;Mikrobiologia
+531;Yleinen mekaniikka. Kiinteiden ja jäykkien kappaleiden mekaniikka
+575;Yleisgenetiikka. Yleinen sytogenetiikka
+595.7;Hexapoda. Insecta (hyönteiset)
+793.8;Tieteelliset ja pseudotieteelliset huvit. Temput. Silmänkääntötemput. Illuusiot. Taikatemput
+911.3;Kulttuurimaantiede
+581.5;Kasvien elintavat. Kasvien reaktiot ympäristöön. Kasviekologia. Kasvi ja sen ympäristö. Kasviekologia. Kasvien bionomia
+549;Mineralogia. Kivennäisaineiden tutkimus
+546;Epäorgaaninen kemia
+311;Tilastotiede. Tilaston teoria
+613.6;Työterveysriskit. Työterveys ja hygienia
+82.09;Kirjallisuuskritiikki. Kirjallisuudentutkimus
+159.94;Henkiset perustoiminnot
+176;Seksuaalietiikka. Sukupuolimoraali
+323.2;Väestön ja valtion välinen suhde. Sisäpoliittinen toiminta
+343.2;Rikoslaki, varsinainen
+355.2;Värväys. Asehankinnat. Sodankäyntikyky. Kutsunnat
+592;Invertebrata (selkärangattomat)
+611/612;Ihmisen biologia
+613.4;Henkilökohtainen hygienia. Vaatetus
+625.7;Valtatiet yleensä. Tiet. Ajoradat. Kadut. Maaseudun ja kaupunkien tieverkko
+636.5;Siipikarja
+659.1;Julkisuus. Mainonta
+796.5;Retkeily. Kävely. Vuorikiipeily. Suunnistus. Leirintä
+225;Japanin uskonnot
+282;Sunni. Sunnalaisuus
+347.9;Oikeudenkäyntimenettely. Oikeuslaitos ja sen henkilöstö
+517;Matemaattinen analyysi
+592/599;Systemaattinen eläintiede
+599;Mammalia (nisäkkäät)
+744;Linjapiirustus ja geometrinen piirustus. Tekninen piirustus
+793.3;Liikuntataide. Tanssi
+93/94;Historia
+130.2;Kulttuurifolosofia. Kulttuurijärjestelmät
+159.93;Aistihavainnot. Psykometriikka
+164;Logistiikka. Lauselogiikka. Matemaattinen logiikka. Lausekalkyyli
+262;Aškenasijuutalaisuus
+339.5;Valtioiden välinen kauppa. Ulkomaankauppa. Kansainvälinen kauppa
+37.01;Kasvatuksen perusteet. Teoria. Tutkimusmenetelmät
+392;Tavat ja käytös yksityiselämässä
+519.2;Todennäköisyyslaskenta. Matemaattinen tilastotiede
+537;Sähkö. Magnetismi. Sähkömagnetismi
+572;Fyysinen antropologia
+577;Elämän ainesosat. Biokemia. Molekyylibiologia. Biofysiikka
+591.5;Eläinten tavat. Eläinten käyttäytyminen. Ekologia. Etologia. Eläimet ja ympäristö
+615.3;Lääkkeet alkuperän mukaan
+616.2;Hengityselinten patologia. Hengityselinten taudit
+621.1;Lämpövoima. Höyryn tuotanto, jakelu ja käyttö. Höyrykoneet. Lämmityskattilat
+629.7;Lentokone- ja avaruustekniikka. Ilmailu ja ilmakulkuneuvot. Raketit ja ohjukset. Astronautikka ja avaruusalukset
+616.3;Ruoansulatuselimistön patologia. Ruoansulatuselinten taudit
+636.2;Nautaeläimet ja muut suuret märehtijät
+646.2;Vaatteiden valmistus ja korjaaminen kotona
+691;Rakennusaineet. Rakennustarvikkeet
+745/749;Taideteollisuus ja taidekäsityö. Käyttötaide
+796.1;Ulkoleikit ja virkistys
+796.3;Palloilu
+903;Esihistoria. Esihistorialliset jäänteet, esineistö ja muinaismuistot
+910;Yleiset kysymykset. Maantiede tieteenä. Tutkimusmatkat. Matkustaminen
+005;Johtaminen
+281;Sufilaisuus
+342.8;Vaalilaki. Äänestäminen. Vaalijärjestelmät
+355.5;Aselajien taktiikka. Joukkojen ja puseerien koulutus. Sotaharjoitukset
+552;Petrologia. Kallioperägeologia
+591.9;Eläinmaantiede. Eläimistö. Eläinten levinneisyys
+582.261/.279;Levät
+612.8;Hermosto. Aistielimet
+616.1/.9;Erityispatologia
+633/635;Puutarhanhoito yleisesti. Erityiset kasvit
+635.9;Koristekasvit. Koristekasviviljely. Koristepuutarhat. Viherrakentaminen
+639.3;Kalanviljely
+648;Pesu. Pyykinpesu. Siivous
+655.4;Kustannus- ja kirjakauppatoimi, yleistä
+656.8;Postipalvelut ja -hallinto
+667.6;Pinnoitteet ja pinnotustekniikat. Maalit. Vernissat. Lakat
+748;Lasitaide. Taidelasi ja kristallilasi
+784.4;Laulettu populaarimusiikki, perinnemusiikki, entisajan musiikki
+791.4;Elokuvasosiologia
+930.1;Historiatiede
+027.7;Korkea-asteen oppilaitosten kirjastot
+330.1;Taloustiede. Ekonomian peruskäsitteet ja teoria. Arvo. Pääoma. Varat
+338.48;Matkailu
+343.8;Rangaistukset. Rangaistusten täytäntöönpano. Rikollisuuden torjunta. Pelotusvaikutus
+354;Ylimmän tason hallinto. Keskushallinto, valtionhallinto
+353;Maakuntahallinto. Lääninhallinto. Aluehallinto
+355.3;Asevoimien yleinen organisointi
+355.4;Sotatoimet yleensä. Taktiikka. Strategia. Sotatoimialue. Taistelujen historia
+536;Lämpö. Termodynamiikka. Tilastollinen fysiikka
+528.7;Fotogrammetria
+543;Analyyttinen kemia
+551.4;Geomorfologia. Maanpinnan muodot
+550;Geologian tukitieteet
+615.4;Farmaseuttiset valmisteet. Lääketieteelliset materiaalit. Välineet
+581.4;Kasvimorfologia. Kasvianatomia
+625.7/.8;Tienrakennus (kadunrakennus)
+625.8;Valtateiden pintamateriaali. Päällyste, kulutuspinta. Päällysteiden valmistus ja käyttö
+636.3;Pienet märehtijät
+646.7;Henkilökohtainen hygienia. Kauneudenhoito. Pukeutuminen
+658.1;Yritysmuodot. Rahoitus
+64.048;Kotityön ja kotityön menetelmien tutkimus
+659.4;Suhdetoiminta. Public relations (PR)
+737;Numismatiikka (raha- ja mitalitaide)
+7.033;Keskiajan taide (kristillinen taide, islamilainen taide)
+741/744;Piirustus
+792.2;Puheteatteri. Näytelmät
+791;Elokuva. Elokuvat
+016;Erikoisbibliografiat
+082;Useiden tekijöiden eriaiheisia julkaisuja sisältävät kokoomateokset
+159.95;Korkeammat henkiset prosessit
+097;Provenienssia tai alkuperää osoittavat merkit
+159.96;Erityiset henkiset tilat ja prosessit
+172;Sosiaalietiikka. Velvollisuudet lähimmäisiä kohtaan
+233;Hindulaisuus rajatusti
+251;Muinaisen Egyptin uskonnot
+267;Juutalaisuudesta virinneet nykyaikaiset liikkeet
+327.5;Kansainväliset liittymät. Poliittinen jännite, konfliktit
+332.2;Kiinteistötalous
+339.3;Valtion sisäinen kauppa. Sisäkauppa. Kotimaankauppa
+351;Julkisen hallinnon erityiset toimet
+37.02;Didaktiikan yleisiä kysymyksiä
+511;Lukuteoria
+517.9;Differentiaaliyhtälöt. Integraaliyhtälöt. Muut funktionaaliyhtälöt. Variaatiolaskenta. Funktionaalianalyysi
+523;Aurinkokunta
+536.2;Lämmön johtuminen. Lämmön siirtyminen
+542;Käytännön laboratoriokemia. Kokeellinen kemia
+579.6;Soveltava mikrobiologia
+582.32;Bryophyta (sammalet)
+591;Yleinen eläintiede
+591.1;Eläinfysiologia
+591.3;Embryologia. Ontogenia. Yksilönkehitys
+591.4;Eläinten elinten tutkimus. Eläinorganologia. Eläinanatomia
+591.8;Eläinhistologia. Kudosoppi
+612.1;Veri. Sydän, verenkiertoelimet
+613.7;Virkistys, kuntoliikunta, uni
+616.1;Verenkiertoelimistön patologia, verisuonet. Sydän- ja verisuonitaudit
+621.8;Kone-elimet. Käyttövoimatekniikka. Materiaalinkäsittely. Lisätarvikkeet. Voitelu
+636.09;Eläinlääketiede
+649;Kotona tapahtuva lastenhoito, vammaishoito ja vieraista huolehtiminen
+656.7;Ilmaliikenne. Lentoliikenne
+663;Teollinen mikrobiologia. Teollinen mykologia. Käyminen, käymisteollisuus. Panimoteollisuus. Nautintoaineteollisuus
+68;Valmiiden tai osista koottavien tavaroiden valmistus ja kauppa
+697;Rakennusten lämmitys, ilmanvaihto ja ilmastointi
+7.07;Taiteisiin ja viihteeseen liittyvät ammatit ja toiminta
+719;Maisemansuojelu. Maaseudun ja kaupungin palvelujen säilyttäminen yleisesti
+72.01;Arkkitehtuuriteoria ja -filosofia. Periaatteet suunnittelun, mittasuhteiden, optisten vaikutelmien osalta
+72.03;Arkkitehtuurin historia. Koulukunnat, tyylit, vaikutteet
+726;Uskonnollinen, kirkollinen arkkitehtuuri. Uskonnolliset rakennukset ja hautarakennukset
+741;Piirustus yleensä
+742;Perspektiivipiirustus
+793;Seurahuvit ja virkistys. Liikuntataide. Tanssi
+902;Arkeologia
+910.2;Maantieteellisten tutkimusmatkojen tyypit ja menetelmät
+94;Yleinen historia
+012;Tietyn tekijän tuotantoa koskevat bibliografiat. Tiettyä teosta koskevat bibliografiat
+021;Kirjastojen tehtävä, merkitys, perustaminen ja kehittäminen
+11;Metafysiikka
+159.91;Psykofysiologia (fysiologinen psykologia). Mentaalifysiologia
+165;Tietoteoria. Epistemologia
+284;Shīʿah. Šiialaisuus
+316.2;Sosiologiset koulukunnat. Sosiologiset suuntaukset
+330.5;Kansantalouden tilinpito. Kansantulo. Kansantuote. Talouden tasapaino. Kansantuotteen arviointi
+331.3;Työolot muu kuin palkka
+338.2;Talouspolitiikka. Talouden säätely. Talouden johtaminen. Taloussuunnittelu
+343.9;Kriminologia. Kriminaalitieteet. Kriminalistiikka
+343.3/.7;Tietyt rikokset. Erityiset rangaistavat teot
+358.1;Tykistö
+358.4;Sotilasilmailu. Lennostot. Ilmavoimat
+359;Merivoimat. Sotalaivasto. Laivasto: henkilöstö, organisaatio
+524;Tähdet. Tähtijärjestelmät. Maailmankaikkeus
+524.8;Maailmankaikkeus. Metagalaksi. Kosmologia
+53.08;Mittausten ja mittalaitteiden rakenteen yleiset periaatteet. Mittausmenetelmät
+528.9;Kartografia. Kartoitus (tekstiaineistot)
+539;Aineen fyysiset ominaisuudet
+539.2;Kiinteiden molekyylirakenteiden ominaisuudet ja rakenne
+551.1;Maapallon muoto, rakenne ja synty yleisesti
+551.46;Merentutkimus. Oseanografia. Merenpohjan topgrafia. Merenpohja
+574;Yleinen ekologia ja biodiversiteetti
+581;Yleinen kasvitiede
+582.4;Siemenkasvit
+597.2/.5;Pisces. Kalat (tieteellisesti vanhentunut luokka)
+6;SOVELTAVAT TIETEET. LÄÄKETIEDE. TEKNIIKKA
+616.5;Iho. Ihovaippa. Dermatologia. Ihotaudit
+621.4;Lämpövoimakoneet (patsi höyrkoneet)
+624.1;Maanalaiset rakenteet. Maarakennus. Perustukset. Tunnelirakennus. (Geotekniikka. Rakennusgeologia. Kalliorakennus)
+625.1/.5;Rautatiet. Raitiotiet. Köysiradat
+627;Vesiväylien ja satamien rakentaminen. Ruoppaus. Padot ja vesivoimalaitokset
+628.5;Toimenpiteet erilaisia haittoja ja vahingonaiheuttajia vastaan
+628.8;Huoneilma. Ilmastointitekniikka. Lämmitys ja jäähdytys. Tuuletus
+631.2;Maatalousrakennukset, -rakenteet ja -laitokset. Rakennukset eläimiä, tuotteita, koneita ja laitteita varten
+633.1;Viljakasvit
+634.7;Marjakasvit
+636.8;Kissat
+645;Kodin sisustus ja kalustus
+655.1;Kirjapainoala yleensä
+658.6;Kauppatekniikka. Tuotteet. Palvelut
+658.3;Henkilöstöhallinto. Henkilöstölehdet
+659.3;Joukkoviestintä
+664.8/.9;Säilöntämenetelmät
+663.1;Mikrobiologinen teollisuus. Sovellettu mikrobiologia. Sovellettu mykologia
+663.4;Olut. Panimot. Mallastamot
+663.2;Viini. Viininvalmistus. Viinitiede, enologia
+666.9;Kipsi-, kalkki- ja sementtiteollisuus. Kovettuvat materiaalit. Rappausaineet ja komposiitit. Laasti ja betoni
+669.1;Rautametallurgia. Rauta ja teräs
+684;Huonekaluteollisuus. Huonekalujen valmistus. Verhoilu
+698;Viimeistely- ja koristelutyöt
+7.034;Renessanssi. Barokki. Rokokoo. Siirtomaatyylit
+728;Asuntoarkkitehtuuri. Asuinrakennukset
+730;Kuvanveisto yleensä. Veistotaide
+780.6;Soittimet ja musiikkivälineet
+796.03;Urheiluliike. Liikuntaan osallistuminen eri näkökulmista
+796.06;Urheilun organisointi, yleensä
+796.32;Palloilu, jossa suurikokoista palloa pelataan heittämällä
+801.6;Prosodiikka: runomitat, rytmi-, loppusointu- ja säemuodot
+811.124;Latinan kieli
+911;Yleismaantiede. Systemaattinen maantiede. Teoreettinen maantiede
+930.2;Historian metodologia. Historian aputieteet
+001.1;Tieteen ja tietämyksen käsitteet
+027.6;Tietyille käyttäjäryhmille tarkoitetut kirjastot
+061.23;Humanitääriset ja filantrooppiset järjestöt
+084;Kuva-aineistot
+113/119;Kosmologia. Luonnonfilosofia
+130.1;Yleiset käsitteet ja lait
+130.3;Henkisen elämän metafysiikka
+159.9;Psykologia
+159.9;Psykologia
+159.97;Poikkeavuuksien psykologia
+159.98;Soveltava psykologia (psykotekniikka) yleensä
+161/162;Alkeislogiikka
+221;Kiinan uskonnot
+223;Korean uskonnot
+265;Ortodoksijuutalaisuus
+271;Idän kirkko. Itäinen kristinusko
+272;Roomalaiskatolinen kirkko
+311.3;Tilastojen yleinen jäsentely. Viralliset tilastot
+316.1;Sosiologian ala ja tutkimuskohteet
+325;Asuttaminen. Kolonisaatio. Kolonialismi
+327.2;Imperialismi. Imperialistinen politiikka. Poliittinen ekspansionismi
+330.3;Kansantalouden dynaamisuus. Taloudellinen kiertokulku
+330.8;Kansantaloustieteelliset teoriat, doktriinit ja dogmit
+332.1;Aluetalous
+332.6;Maan arvo. Tonttien ja pientilojen arvo. Kiinteistöjen arvo. Tuottavuus. Vuokrat
+332.8;Asuntotalous
+340.1;Oikeusjärjestykset ja oikeusjärjestelmät
+340.6;Oikeuden aputieteet. Oikeuspsykologia. Oikeuskemia. Oikeuslääketiede
+341.9;Kansainvälinen yksityisoikeus. Lainvalinta
+342.5;Valtiovalta. Hallintojärjestelmät ja hallintoelimet
+343.1;Rikosoikeus. Rikostutkinta. Rikosoikeudellinen menettely
+347.1;Siviilioikeus, yleistä
+352/354;Julkisen hallinnon organisaatio. Paikallinen, alueellinen ja keskushallinto
+355.1;Asevoimat yleisesti. Puolustushaarat. Sotilaselämä
+393;Kuolema. Vainajan valmistelu. Hautajaiset. Kuolinriitit
+502;Ympäristö. Ympäristönsuojelu. Luonto. Luonnonsuojelu
+510.6;Matemaattinen logiikka
+515.1;Topologia
+519.6;Numeerinen matematiikka. Numeerinen analyysi
+523.6;Planeettainvälinen avaruus. Komeetat. Meteorit. Meteoriitit
+528.2;Maan muoto. Maan mittaus. Matemaattinen geodesia. Fysikaalinen geodesia. Astronominen geodesia
+531.3;Dynamiikka. Kinetiikka
+532;Nesteiden mekaniikka (hydromekaniikka)
+532.5;Nesteen liike. Hydrodynamiikka
+535.6;Värit ja niiden ominaisuudet. Värioppi
+536.7;Termodynamiikka. Energetiikka
+537.5;Elektroni ja ioni-ilmiöt
+539.4;Lujuus. Rasituskestävyys
+542.4;Kuumennus ja jäähdytys
+543.3;Vesinäytteen otto ja vesianalyysi
+550.3;Geofysiikka
+550.4;Geokemia
+553;Taloudellinen geologia. Malmiesiintymät
+553.6;Erilaiset pääasiassa epämetalliset hyödylliset mineraalit ja maalajit
+552.5;Sedimenttikivilajit
+57.08;Biologiset menetelmät, kokeelliset menetelmät ja laitteet yleensä
+576;Solubiologia. Sytologia
+594;Nilviäiset. Sammaleläimet. Lonkerojalkaiset
+596/599;Chordata (selkäjänteiset)
+597.2/.5;Pisces. Kalat (tieteellisesti vanhentunut luokka)
+612.3;Ravinto. Syöminen. Ruoansulatus. Ravitsemus
+614.2;Julkinen ja ammatillinen terveydenhuolto
+615.2;Lääkkeet pääasiallisen vaikutuksen mukaan
+616.7;Liikuntaelimistön patologia. Tuki- ja liikuntaelimet
+617.3;Ortopedia yleensä
+623.5;Ballistiikka. Ammunta. Teoreettiset ja kokeelliset kysymykset
+624.04;Rakennesuunnittelu. Rakenteiden statiikka. Kuormien ja jännitysten laskenta
+624.07;Rakenteiden mekaniikka. Kantavat rakenteet
+624.21/.8;Sillanrakennus
+626;Vesirakennus yleensä
+628.2;Jäteveden poisjohtaminen. Erillisviemäröinti. Viemäröinti
+628.3;Jätevesi. Jäteveden käsittely ja uudelleenkäyttö
+628.9;Valaistustekniikka
+631.5;Maatalouden toiminta
+631.8;Lannoitteet, lanta, maanparannus. Kasvun edistäminen. Kasvinravitsemus
+633.2;Nurmiheinäkasvit
+636.4;Siat
+64.01;Kotitaloudet. Kotitalous
+646;Pukineet. Henkilökohtainen hygienia
+643/645;Koti. Kodin varustus ja sisustus. Kiinteistönhoito
+658.5;Tuotannonsuunnittelu. Tuotesuunnittelu. Laadunvalvonta
+662.2;Räjähdysaineet
+662.6;Polttoainetalous, yleistä. Palaminen. Luonnon polttoaineet
+665.5;Eteeriset öljyt. Hajuvedet. Kosmetiikka
+672;Rauta- ja teräsesineet yleensä
+666;Lasiteollisuus. Keramiikka. Sementti ja betoni
+677.3;Eläinkuidut
+678.5;Muovit
+682;Pajatyö. Sepäntyöt. Hevosenkengitys. Käsin taotut esineet
+687.1;Pukimien valmistus. Räätälintyö
+683;Rautakauppa. Rautatavara. Lukkosepäntyöt. Pullotus. Lamput. Lämmityslaitteet
+688;Koruesineet. Leikkikalut. Koriste-esineet
+693;Muuraus. Betonivalu ym. rakennustyöt
+694;Puurakenteet. Kirvesmiehentyöt. Rakennuspuusepäntyöt
+7.08;Ominaispiirteet, muodot, rakenteet jne. (taiteessa, viihteessä ja urheilussa)
+712;Maisemasuunnittelu. Puistot. Puutarhat
+721;Rakennukset yleisesti
+718;Hautausmaat. Kalmistot. Krematoriot. Muut hautauspaikat (suunnittelu, kunnossapito jne.)
+738;Keramiikkataide. Keramiikka
+739.1;Kulta- ja hopeasepäntyöt
+77.04;Piktorialistinen valokuvaus, taidevalokuvaus. Valokuvat aiheen mukaan
+761;Kohopaino
+781.2;Yleinen musiikinteoria
+781.4;Soinnutus. Kontrapunkti. Melodiikka
+783;Kirkkomusiikki. Hengellinen musiikki. Uskonnollinen musiikki
+785;Soitinmusiikki. Sinfoninen musiikki. Soitinyhtyemusiikki
+785.1;Orkesterimusiikki
+792.8;Liikuntataide-esitykset. Koreografia
+794.4;Korttipelit
+796.01;Liikuntafilosofia, urheilun teoria, tarkoitus, menetelmät, etiikka ja estetiikka
+796.7;Autourheilu. Moottoripyöräurheilu
+796.2;Liikuntaleikit, joissa käytetään välineitä
+798.2;Ratsastus
+801;Prosodiikka. Filologian aputieteet ja lähteet
+811.112.2;Saksan kieli (yläsaksa, kirjoitettu standardisaksa)
+821.112.2;Saksankielinen kirjallisuus
+821.161.1;Venäjänkielinen kirjallisuus
+904;Historiallisen ajan kulttuurijäänteet
+929.6;Heraldiikka
+93/94;Historia
+929.7;Aateli. Arvonimet. Ritarihuonejärjestys
+001.8;Metodologia
+001.89;Tiedehallinto. Tiedepolitiikka
+004.41;Ohjelmistotekniikka
+005.9;Hallinnon osa-alueet
+013;Yhteisbibliografiat
+017;Luettelot yleensä. Aihehakemistot
+024;Asiakassuhteet. Kirjaston käytön sääntely
+025;Kirjastonhoito
+027;Yleiset kirjastot
+06.05;Apurahat. Kunnianosoitukset. Palkinnot. Palkintojen ja apurahojen jakaminen
+027.8;Perus- ja toisen asteen oppilaitosten kirjastot
+122/129;Erityinen metafysiikka
+122/129;Erityinen metafysiikka
+141;Erilaiset näkökannat
+159.944;Työ ja väsymys. Tehokkuus
+159.946;Psykomotoriikka. Puhe. Lukeminen. Kirjoittaminen
+159.943;Vietit. Vaistot. Motivaatio
+159.947;Tahto. Tahdon vapaus
+257;Euroopan uskonnot
+311.1;Tilastotieteen peruskäsitteet
+316.3;Sosiaalinen rakenne. Yhteiskunta
+316.4;Sosiaaliset prosessit. Sosiaalinen muutos
+327.7;Kansainvälisten ja hallitustenvälisten järjestöjen toiminta
+332.7;Maan ja kiinteistöjen kauppa
+336.1;Julkinen talous. Valtiontalous
+336.5;Julkiset menot. Valtion menot
+338.1;Taloudellinen tila. Suhdanteet.Taloudellisten rakenteiden kehitys. Kasvu
+339.1;Kaupan ja kaupankäynnin yleiset kysymykset. Markkinat
+339.7;Kansainväliset finanssit
+341.1;Kansainvälisiä organisaatioita käsittelevä oikeus
+342.1;Valtio. Kansa. Kansakunta. Valtiovalta
+342.2;Valtio. Valtiomuodot
+341.7;Diplomaattinen koskemattomuus. Diplomaatioikeus
+342.3;Täydellinen valta. Suvereenisuus. Valtiomuodot. Hallitusmuodot
+342.7;Perusoikeudet. Ihmisoikeudet. Kansalaisen oikeudet ja velvollisuudet
+342.9;Hallinto-oikeus
+344.1;Erityinen rikosoikeus. Sotilaslainsäädäntö
+347.3;Irtaimisto yleensä. Henkilökohtainen omaisuus
+356.1;Maavoimat yleisesti. Jalkaväki. Jalkaväkimiehet
+355.6;Sotilashallinto
+364.2;Ihmisen perustarpeet. Hyvinvoinnin edellytykset
+37.04;Kasvatus suhteessa kasvatettavaan, oppilaaseen. Ohjaus
+37.07;Hallinnollinen näkökulma oppilaitoksiin
+394;Julkinen elämä. Prameus. Sosiaalinen elämä. Kansanelämä
+510;Matematiikan yleiset perusteet
+521.9;Astrometria. Pallotähtitiede
+528.3;Geodeettinen mittaus
+53.01;Ilmiöiden teoria ja luonne
+528.4;Geodeettiset kenttämittaukset. Maanmittaus. Maanjakomittaus. Topografia. Kiinteistötekniikka. Geodeettisten mittausten erikoisalat
+531.1;Kinematiikka. Geometrinen liikeoppi
+531.7;Geometristen ja mekaanisten suureiden mittaus: välineet, menetelmät ja yksiköt
+534;Värähtelyt. Aaltoliike. Akustiikka
+534.6;Akustiset mittaukset
+534.1;Kappaleiden värähtely. Värahtelyn viritys. Värähtelevät kappaleet
+535;Optiikka
+543.5;Fysikokemialliset analyysimenetelmät (paitsi optiset menetelmät)
+548.5;Kiteiden syntyminen, kasvu ja liukenemisilmiöt
+548/549;Mineralogiset tieteet. Kidetiede. Mineralogia
+550.8;Soveltava geologia ja geofysiikka. Malminetsintä. Löydösten tulkinta
+551.3;Ulkoinen geodynamiikka (eksogeeniset prosessit)
+551.7;Geologiset kaudet. Stratigrafia
+552.1;Kivilajien ominaispiirteet ja ominaisuudet yleisesti. Fysikaalinen ja fysikokemiallinen petrologia
+552.6;Meteoriitit
+553.8;Jalokivien ja puolijalokivien esiintymät. Korukiviesiintymät
+556.3;Pohjavesi. Geohydrologia. Hydrogeologia
+573;Yleinen ja teoreettinen biologia
+572.9;Ihmismaantiede. Yksittäiset ihmisen syntyperäryhmät
+582.261/.279;Levät
+591.2;Villieläinten taudit. Eläinpatologia
+595;Articulata
+598;Sauropsida. Synapsida
+598.1;Reptilia (matelijat)
+604;Biotekniikan tuotteet
+60;Biotekniikka
+612.4;Rauhaset. Eritteet. Eritys
+612.6;Lisääntyminen. Kasvu. Kehitys
+614.3;Terveysvalvonta
+614.4;Tartuntatautien ehkäisy ja valvonta. Epidemioiden ehkäisy
+615.1;Yleinen ja ammatillinen farmasia
+615.9;Yleinen toksikologia. Myrkyt ja myrkytykset yleensä
+616.31;Suulääketiede. Suuontelo. Suu. Suun ja hampaiden sairaudet
+616.4;Imukudosjärjestelmän, verisoluja tuottavien elinten ja endokriininen patologia
+616.6;Virtsa- ja sukupuolielinten patologia. Virtsateiden ja sukupuolielinten taudit. Urologia
+617.7;Silmätautioppi. Silmäsairaudet ja niiden hoito
+621.22;Hydraulinen energia. Vesivoima. Hydrauliset koneet
+621.6;Nesteiden käsittely-, varastonti- ja jakelutekniikka
+622.2;Vuoriteollisuus. Mineraalilöydösten etsintä, avaaminen, kehitys, käyttöönotto ja louhinta
+622.6;Kuljetus ja käsittely. Malmien nosto. Maanpäällinen kuljetus
+624.01;Rakennelmat ja rakennusosat valmistusmateriaalin ja rakennustavan mukaan
+626.1;Sisävesiväylät. Kanavat. Kanavoidut joet
+626.8;Maatalouden vesirakennus. Kastelu- ja kuivatustekniikka
+627.4;Rannikon ja rantapenkereiden suojaaminen. Jokien ja virtojen oikaisu. Muut vesirakennustyöt
+627.8;Voimalaitospadot. Vesivoimalat
+628.4;Jätehuolto. Kiinteiden jätteiden käsittely. Roskat. Kierrätys
+631.6;Maaseudun suunnittelu
+631/635;Maatilatalous. Maatalous. Puutarhanhoito
+633.4;Juurikasvit. Mukulakasvit. Juurekset
+635.7;Yrttikasvit. Maustekasvit
+636.08;Kotieläintalous, yleistä
+636.9;Muut kotieläimet
+642;Ateriat ja ruoka-ajat. Astiastot
+644.1;Sisäilman säätely. Lämmitys. Tuuletus. Ilmastointi
+654.1;Lennätin, puhelin, radio, televisio
+656.5;Maakuljetus kuljetinjärjestelmillä ja putkilla
+658.7;Osto. Hankinta. Varastointi
+659.2;Tietotyö. Neuvonta- ja konsultointipalvelut
+662.6/.9;Polttoaineet. Polttotekniikka. Lämmitys
+662.7;Polttoaineteknologia
+662.9;Polttotekniikka. Lämpötalous
+663.6;Juomiin ja muuhun teolliseen käyttöön tarkoitettu vesi. Kivennäisvesi. Lääkevesi. Syötävä jää
+664.6;Leipominen. Leipä. Leipomoteollisuus
+664.7;Viljateknologia. Myllytekniikka. Viljateollisuus
+664.8/.9;Säilöntämenetelmät
+666.3/.7;Keramiikka
+667.7;Eri materiaalien värjäys (muilla menetelmillä kuin painamalla tai maalaamalla)
+671;Jalometalli-, jalokivi-, korukiviesineet
+673;Muut kuin rautametalliesineet (paitsi jalometalliset)
+677.4;Tekokuidut
+679.8;Kiviteknologia. Kiviteollisuus
+678.4;Kautsu. Muut luonnolliset makromolekyyliyhdisteet, joissa vain hiiltä ja vetyä
+681.2;Instrumenttien valmistus yleensä. Instrumentointi. Mittauslaitteet ja niiden valmistus. Vaa'at. Punnituslaitteet
+681;Hienomekaniikka ja hienomekaaniset välineet
+684.6;Viilutus. Marketeria. Intarsia jne.
+687.3;Neuletuotteet. Solmiot. Vaatteiden kiinnitys ja suojaus
+696;Laitteet, asennukset rakennuksissa (saniteettitekniikka, kaasu, höyry, sähkö). Putkiasentaja. Putkimies. Metallimies. Viemäriasentaja. Sähköasentaja. Muut ammatit
+72.01;Arkkitehtuuriteoria ja -filosofia. Periaatteet suunnittelun, mittasuhteiden, optisten vaikutelmien osalta
+738.5;Mosaiikit
+745;Taidekäsityö
+749;Designhuonekalut, -lämmityslaitteet ja -valaisimet
+762;Syväpaino
+77.02;Valokuvausmenetelmät
+778;Valokuvauksen erikoissovellukset ja erikoistekniikat
+78.01;Musiikin teoria ja filosofia
+78.03;Musiikin historian aikakaudet ja vaiheet. Musiikin koulukunnat, tyylit ja vaikutteet
+78.07;Musiikkiin liittyvät ammatit ja toiminta
+782;Näyttämömusiikki. Oopperat
+781.6;Säveltämistä ja tulkintaa koskevat yleiset kysymykset
+791.2;Elokuvan lajityyppi, aihe, tyyli
+796.01;Liikuntafilosofia, urheilun teoria, tarkoitus, menetelmät, etiikka ja estetiikka
+796.6;Pyöräurheilu. Pyöräily. Rullaluistelu ja -lautailu
+796.8;Kamppailulajit. Itsepuolustuslajit. Voimailu. Voimamieskisat
+796.9;Talviurheilu. Jääurheilu. Hiihto. Kelkkailu
+797.1;Vesikulkuneuvourheilu. Veneily
+81;Kielitiede ja kielet
+811.161.1;Venäjän kieli
+811;Kielet
+821;Eri kielten ja kielikuntien kirjallisuus
+821.511.111;Suomenkielinen kirjallisuus
+902;Arkeologia
+930.25;Arkistotiede. Arkistot (sisältäen julkiset ja muut asiakirjat)
+930.85;Sivistyshistoria. Kulttuurihistoria
+630.9;Metsät ja metsätalous kansantaloudelliselta ja yhteiskunnalliselta kannalta. 
+630.2;Metsänhoito
+630.0;Metsät, metsätalous ja metsätuotteiden käyttö
+630.1;Ympäristötekijät. Metsäbiologia
+630.3;Metsätyö (työntutkimus). Puunkorjuu: hakkuu ja kuljetus. Metsäteknologia
+630.4;Metsätuhot ja metsänsuojelu
+630.5;Metsänarvioiminen. Puutavaran mittaus. Metsiköiden kasvu, kehitys ja rakenne. Maanmittaus ja kartoitus
+630.6;6Metsätalouden suunnittelu. Metsäekonomia. Metsätalouden hallinto ja organisaatio
+630.7;Metsäntuotteiden markkinointi. Kuljetustalous ja metsä- ja puuteollisuuden talous
+630.8;Metsätuotteet ja niiden käyttö

@@ -7084,11 +7084,9 @@ polish_udk <- function(x) {
   x0 <- x
   
   ######### CLEAN #########################################
-  # Combine multiple gsub operations into fewer calls for efficiency
-  # Replace spaces, colons, pipe characters, and commas with semicolons
-  x <- gsub("^ *|(?<= ) | *$", "", x, perl = TRUE)
+  x <- gsub("^\\s+|\\s+$", "", x, perl = TRUE) # Removes leading and trailing spaces
   
-  x <- stri_replace_all_regex(x, "[:|]", ";")
+  x <- gsub("\\|", ";", x) 
   
   # Remove all backslashes, forward slashes at the beginning and the end of the string,
   # double quotes, opening parentheses at the beginning of x, occurrences of the letter c at the beginning of x,
@@ -7099,12 +7097,15 @@ polish_udk <- function(x) {
   x <- stri_replace_all_fixed(x, "9FENNI<KEEP>", "")
   
   x <- gsub("[a-zA-ZÅÄÖåäö]", "", x)
-  x <- gsub(",", "", x)
+  # Remove comma at the end of the string
+  x <- gsub(",*$", "", x)
+  x <- gsub("\\:", ";", x) 
+  x <- gsub(";*$", "", x)
+  x <- gsub(" ", "", x)
+  
   
   # Convert to lowercase and remove duplicates within each element of x
   x <- sapply(strsplit(tolower(x), ";"), function(x) paste(unique(x), collapse = ";"))
-  x <- gsub("^ *|(?<= ) | *$", "", x, perl = TRUE)
-  
   x <- gsub(" ", "", x)
   # Replace empty strings with NA
   x[x == ''] <- NA
