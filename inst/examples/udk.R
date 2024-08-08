@@ -2,27 +2,17 @@
 
 field <- "UDK"
 
-# #for monographic items only 
-
-# First, filter the rows where bibliographic_level is "Monograph/Item"
-df_udk_full <- df.orig %>%
-  filter(bibliographic_level == "Monograph/Item")
-
-# #monographic for 19 
-df_udk_19 <- df_udk_full %>% filter(melinda_id %in% melindas_19)
-
-
 # Harmonize the raw data
-out <- polish_udk(df_udk_full[[field]])
+out <- polish_udk(df.orig[[field]])
 df.tmp <- out$df
-df.tmp$melinda_id <- df_udk_full$melinda_id
+df.tmp$melinda_id <- df.orig$melinda_id
+df.tmp <- select(df.tmp, melinda_id, everything())
 
 df.tmp1 <- out$undetermined
 
 # Reset the index to convert it into a single-index DataFrame
 row.names(df.tmp) <- NULL
 row.names(df.tmp1) <- NULL
-
 
 
 # Define output files
@@ -43,18 +33,16 @@ tmp <- write_xtable(tab, paste(output.folder, field, "_accepted.csv", sep = ""),
 
 
 message("UDK discarded")
-# Original entries that were converted into NA
-s <- unlist(strsplit(df_udk_full$UDK, ";"))
-original.na <- s[s %in% df.tmp1$udk]
 # .. ie. those are "discarded" cases; list them in a table
-tmp2 <- write_xtable(original.na, file_discarded, 
+tmp2 <- write_xtable(df.tmp1, file_discarded, 
                      count = TRUE, 
                      add.percentages = TRUE)
 
 
+
 message("UDK discarded id")
 lo <- as.list(original.na)
-filtered_df <- df_udk_full[df_udk_full$UDK %in% lo, ]
+filtered_df <- df.orig[df.origl$UDK %in% lo, ]
 x <- filtered_df[, c("melinda_id", "UDK")]
 write.csv(x, "udk_discarded_id.csv", row.names=FALSE)
 
@@ -69,13 +57,11 @@ df <- readRDS(data.file)
 write.table(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE, sep = ";", row.names = FALSE, fileEncoding = "UTF-8")
 
 # ------------------------------------------------------------
-
-# Harmonize the raw data
-out <- polish_udk(df_udk_19[[field]])
-df.tmp_19 <- out$df
-df.tmp_19$melinda_id <- df_udk_19$melinda_id
-
-df.tmp1_19 <- out$undetermined
+# #monographic for 19 
+#Run melindas_19.R to get melindas for 1809-1917
+source("melindas_19.R")
+df.tmp_19 <- df.tmp %>% filter(melinda_id %in% melindas_19)
+#df.tmp1_19 <- df.tmp1 %>% filter(melinda_id %in% melindas_19)
 
 # Reset the index to convert it into a single-index DataFrame
 row.names(df.tmp) <- NULL

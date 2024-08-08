@@ -7079,7 +7079,7 @@ polish_title_remainder <- function (x) {
 }
 
 
-polish_udk_m <- function(x) {
+polish_udk <- function(x) {
   # Pre-allocate memory for the result
   x0 <- x
   
@@ -7097,23 +7097,27 @@ polish_udk_m <- function(x) {
   x <- stri_replace_all_fixed(x, "9FENNI<KEEP>", "")
   
   x <- gsub("[a-zA-ZÅÄÖåäö]", "", x)
-  # Remove comma at the end of the string
+  # Remove symbol at the end of the string
   x <- gsub(",*$", "", x)
   x <- gsub("\\:", ";", x) 
   x <- gsub(";*$", "", x)
+  x <- gsub(",*$", "", x)
   x <- gsub(" ", "", x)
   
   
   # Convert to lowercase and remove duplicates within each element of x
   x <- sapply(strsplit(tolower(x), ";"), function(x) paste(unique(x), collapse = ";"))
   x <- gsub(" ", "", x)
+  x <- gsub("^\\s+|\\s+$", "", x, perl = TRUE)
+  x <- gsub(",*$", "", x)
+  x <- gsub("\\.*$", "", x)
   # Replace empty strings with NA
   x[x == ''] <- NA
   
   ############ CONVERSIONS #####################
   
   # Load udk names
-  udk <- read.csv("udk_monografia.csv", sep = ";", header = FALSE, encoding = "UTF-8")
+  udk <- read.csv("udk.csv", sep = ",", header = FALSE, encoding = "UTF-8")
   colnames(udk) <- c("synonyme", "name")
   
   # Function to match and concatenate names, including undetermined and handling NA
@@ -7140,6 +7144,7 @@ polish_udk_m <- function(x) {
   # Apply the function to each element of x to get df$converted
   df <- data.frame(original = x0, cleaned = x)
   df$converted <- sapply(x, match_and_concatenate) #undetermined appear several times in one row
+  df$converted <- as.character(df$converted)
   # Correctly calculate udk_count with adjustments for NA values
   df$udk_count <- ifelse(is.na(df$cleaned), 0, str_count(df$cleaned, ";") + 1)
   
@@ -7159,3 +7164,4 @@ polish_udk_m <- function(x) {
   
   return(list(df = df, undetermined = undetermined))
 }
+
