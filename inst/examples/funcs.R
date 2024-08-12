@@ -7083,36 +7083,14 @@ polish_udk <- function(x) {
   # Pre-allocate memory for the result
   x0 <- x
   
-  ######### CLEAN #########################################
-  x <- gsub("^\\s+|\\s+$", "", x, perl = TRUE) # Removes leading and trailing spaces
-  
   x <- gsub("\\|", ";", x) 
-  
-  # Remove all backslashes, forward slashes at the beginning and the end of the string,
-  # double quotes, opening parentheses at the beginning of x, occurrences of the letter c at the beginning of x,
-  # newline characters, and trailing whitespace at the end of x
-  x <- stri_replace_all_regex(x, "\\\\|/^|/$|\"|^\\(+|^c|\n|\\s+$", "")
-  
-  # Remove the exact string "9FENNI<KEEP>" from x
-  x <- stri_replace_all_fixed(x, "9FENNI<KEEP>", "")
-  
-  x <- gsub("[a-zA-ZÅÄÖåäö]", "", x)
-  # Remove symbol at the end of the string
-  x <- gsub(",*$", "", x)
   x <- gsub("\\:", ";", x) 
-  x <- gsub(";*$", "", x)
-  x <- gsub(",*$", "", x)
   x <- gsub(" ", "", x)
-  
-  
-  # Convert to lowercase and remove duplicates within each element of x
+  x <- gsub("[a-zA-ZÅÄÖåäö]", "", x)
+  x <- gsub(",", "", x)
   x <- sapply(strsplit(tolower(x), ";"), function(x) paste(unique(x), collapse = ";"))
-  x <- gsub(" ", "", x)
-  x <- gsub("^\\s+|\\s+$", "", x, perl = TRUE)
-  x <- gsub(",*$", "", x)
-  x <- gsub("\\.*$", "", x)
-  # Replace empty strings with NA
   x[x == ''] <- NA
+
   
   ############ CONVERSIONS #####################
   

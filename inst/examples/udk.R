@@ -26,7 +26,7 @@ file_accepted <- paste0(output.folder, field, "_accepted.csv")
 # Generate data summaries for the whole data set 
 
 message("UDK accepted")
-tab <- cbind(original = df.tmp$original, converted = df.tmp$converted)
+tab <- cbind(melinda_id = df.tmp$melinda_id, original = df.tmp$original, converted = df.tmp$converted)
 tmp <- write_xtable(tab, paste(output.folder, field, "_accepted.csv", sep = ""), 
                     count = TRUE,
                     add.percentages = TRUE)
@@ -38,13 +38,12 @@ tmp2 <- write_xtable(df.tmp1, file_discarded,
                      count = TRUE, 
                      add.percentages = TRUE)
 
-
-
-message("UDK discarded id")
-lo <- as.list(original.na)
-filtered_df <- df.orig[df.origl$UDK %in% lo, ]
-x <- filtered_df[, c("melinda_id", "UDK")]
-write.csv(x, "udk_discarded_id.csv", row.names=FALSE)
+# Define the pattern to match "Undetermined" repeated
+pattern <- "^Undetermined(;Undetermined)*$"
+# Filter rows where 'converted' column matches the pattern
+filtered_df <- df.tmp %>%
+  filter(grepl(pattern, converted))
+write.csv(filtered_df, "udk_discarded_id.csv", row.names=FALSE)
 
 # ------------------------------------------------------------
 
@@ -57,7 +56,7 @@ df <- readRDS(data.file)
 write.table(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE, sep = ";", row.names = FALSE, fileEncoding = "UTF-8")
 
 # ------------------------------------------------------------
-# #monographic for 19 
+
 #Run melindas_19.R to get melindas for 1809-1917
 source("melindas_19.R")
 df.tmp_19 <- df.tmp %>% filter(melinda_id %in% melindas_19)
@@ -78,26 +77,18 @@ file_accepted <- paste0(output.folder, field, "_accepted_19.csv")
 # Generate data summaries for the whole data set 
 
 message("UDK accepted")
-tab_19 <- cbind(original = df.tmp_19$original, converted = df.tmp_19$converted)
+tab_19 <- cbind(melinda_id = df.tmp_19$melinda_id, original = df.tmp_19$original, converted = df.tmp_19$converted)
 tmp_19 <- write_xtable(tab_19, paste(output.folder, field, "_accepted_19.csv", sep = ""), 
                     count = TRUE,
                     add.percentages = TRUE)
 
 
-message("UDK discarded")
-# Original entries that were converted into NA
-s <- unlist(strsplit(df_udk_19$UDK, ";"))
-original.na <- s[s %in% df.tmp1_19$udk]
-# .. ie. those are "discarded" cases; list them in a table
-tmp2_19 <- write_xtable(original.na, file_discarded, 
-                     count = TRUE, 
-                     add.percentages = TRUE)
-
-message("UDK discarded id")
-lo <- as.list(original.na)
-filtered_df <- df_udk_19[df_udk_19$UDK %in% lo, ]
-x_19 <- filtered_df[, c("melinda_id", "UDK")]
-write.csv(x_19, "udk_discarded_id_19.csv", row.names=FALSE)
+# Define the pattern to match "Undetermined" repeated
+pattern <- "^Undetermined(;Undetermined)*$"
+# Filter rows where 'converted' column matches the pattern
+filtered_df <- df.tmp_19 %>%
+  filter(grepl(pattern, converted))
+write.csv(filtered_df, "udk_discarded_id_19.csv", row.names=FALSE)
 
 
 # ------------------------------------------------------------

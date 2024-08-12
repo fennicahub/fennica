@@ -55,8 +55,6 @@ kable(head(tab, 20))
 
 `r sum(is.na(df_19$cleaned))` missing/NA entries (`r round(mean(is.na(df_19$cleaned)) * 100)`%)
 
-[Unrecognized UDC (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_discarded_19.csv): `r length(unique(df.tmp1_19$udk))`
-
 [Download UDC harmonized dataset (1809-1917)](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_19.csv)
 
 ### Top UDC for 1809-1917
