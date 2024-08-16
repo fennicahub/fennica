@@ -9,7 +9,7 @@ list$signum <- gsub(" ", "", list$signum)
 
 
 # Read Excel file
-velka_list <- read_excel("Kirjallisuuden ensipainokset.xlsx")
+velka_list <- read_excel("Kirjallisuuden ensipainokset2.xlsx")
 # Change the column name using colnames
 colnames(velka_list)[colnames(velka_list) == "MelindaID"] <- "melinda_id"
 colnames(velka_list)[colnames(velka_list) == "...5"] <- "title_remainder"
