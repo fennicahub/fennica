@@ -13,12 +13,14 @@ retry_error = int(os.environ.get('RETRY_ERROR', 60))
 retry_count = 0
 harvested = 0
 
+
 def main():
   harvester = sickle.Sickle(os.environ.get('URL', 'https://oai-pmh.api.melinda.kansalliskirjasto.fi/bib'))
 
   set = sys.argv[1] if len(sys.argv) >= 2 and len(sys.argv[1]) > 0 else None
   from_param = sys.argv[2] if len(sys.argv) >= 3 else None
   until = sys.argv[3] if len(sys.argv) >= 4 else None
+
 
   iterator = harvester.ListRecords(**{'metadataPrefix': 'melinda_marc', 'set': set, 'from': from_param, 'until': until})
 

@@ -1,31 +1,36 @@
-# Load necessary libraries
-library(stringi)
+
 
 polish_udk <- function(x) {
-  # Pre-allocate memory for the result
-  x0 <- x
+  # Optimized clean_string function for vectorized processing
+  clean_string <- function(input_strings, symbols = c(" ", "-", "[", "/", "|", "\\", "\"", ".")) {
+    
+    # Collapse symbols into a single string with proper escaping for regex
+    pattern <- paste0("\\", symbols, collapse = "")
+    
+    # Vectorized cleaning: remove symbols from edges and redundant spaces
+    cleaned_strings <- str_remove_all(input_strings, paste0("^[", pattern, "]+|[", pattern, "]+$"))
+    
+    return(cleaned_strings)
+  }
   
-  # Combine multiple gsub operations into fewer calls for efficiency
-  # Replace spaces, colons, pipe characters, and commas with semicolons
-  x <- gsub(" ", "", x)
-  x <- stri_replace_all_regex(x, "[:|,]", ";")
+  # Apply the clean_string function to the entire vector
+  x <- clean_string(x)
   
-  # Remove all backslashes, forward slashes at the beginning and the end of the string,
-  # double quotes, opening parentheses at the beginning of x, occurrences of the letter c at the beginning of x,
-  # newline characters, and trailing whitespace at the end of x
-  x <- stri_replace_all_regex(x, "\\\\|/^|/$|\"|^\\(+|^c|\n|\\s+$", "")
+  # Split, deduplicate, and rejoin in a vectorized manner
+  x_split <- strsplit(x, "\\|") # Split strings by "|"
   
-  # Remove the exact string "9FENNI<KEEP>" from x
-  x <- stri_replace_all_fixed(x, "9FENNI<KEEP>", "")
+  # Deduplicate within each component (vectorized using lapply and unique)
+  x_dedup <- sapply(x_split, function(components) paste(unique(components), collapse = "|"))
   
-  # Convert to lowercase and remove duplicates within each element of x
-  x <- sapply(strsplit(tolower(x), ";"), function(x) paste(unique(x), collapse = ";"))
+  # Remove remaining spaces and replace empty strings with NA
+  x_final[x_final == ""] <- NA
   
-  # Replace empty strings with NA
-  x[x == ''] <- NA
+  # Output the cleaned result
+  x <- x_final
+  x <- gsub("\\|", ";", x)
   
   # Load udk names
-  udk <- read.csv("udk_monografia.csv", sep = ";", header = FALSE, encoding = "UTF-8")
+  udk <- read.csv("udk.csv", sep = ";", header = FALSE, encoding = "UTF-8")
   colnames(udk) <- c("synonyme", "name")
   
   df <- data.frame(original = x0, cleaned = x)
@@ -52,7 +57,7 @@ polish_udk <- function(x) {
   }
   
   # Apply the function to each element of x to get df$converted
-
+  
   df$converted <- sapply(x, match_and_concatenate)
   
   # Split values for further processing

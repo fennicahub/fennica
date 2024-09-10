@@ -7079,42 +7079,40 @@ polish_title_remainder <- function (x) {
 }
 
 
-polish_udk_m <- function(x) {
-  # Pre-allocate memory for the result
-  x0 <- x
-  
-  ######### CLEAN #########################################
-  x <- gsub("^\\s+|\\s+$", "", x, perl = TRUE) # Removes leading and trailing spaces
-  
-  x <- gsub("\\|", ";", x) 
-  
-  # Remove all backslashes, forward slashes at the beginning and the end of the string,
-  # double quotes, opening parentheses at the beginning of x, occurrences of the letter c at the beginning of x,
-  # newline characters, and trailing whitespace at the end of x
-  x <- stri_replace_all_regex(x, "\\\\|/^|/$|\"|^\\(+|^c|\n|\\s+$", "")
-  
-  # Remove the exact string "9FENNI<KEEP>" from x
-  x <- stri_replace_all_fixed(x, "9FENNI<KEEP>", "")
-  
-  x <- gsub("[a-zA-ZÅÄÖåäö]", "", x)
-  # Remove comma at the end of the string
-  x <- gsub(",*$", "", x)
-  x <- gsub("\\:", ";", x) 
-  x <- gsub(";*$", "", x)
-  x <- gsub(" ", "", x)
-  
-  
-  # Convert to lowercase and remove duplicates within each element of x
-  x <- sapply(strsplit(tolower(x), ";"), function(x) paste(unique(x), collapse = ";"))
-  x <- gsub(" ", "", x)
-  # Replace empty strings with NA
-  x[x == ''] <- NA
-  
-  ############ CONVERSIONS #####################
+polish_udk <- function(x) {
+  # # Optimized clean_string function for vectorized processing
+  # clean_string <- function(input_strings, symbols = c(" ", "-", "(", "[", "/", "|", "\\", "\"", ".")) {
+  #   
+  #   # Collapse symbols into a single string with proper escaping for regex
+  #   pattern <- paste0("\\", symbols, collapse = "")
+  #   
+  #   # Vectorized cleaning: remove symbols from edges and redundant spaces
+  #   cleaned_strings <- str_remove_all(input_strings, paste0("^[", pattern, "]+|[", pattern, "]+$"))
+  #   
+  #   return(cleaned_strings)
+  # }
+  # 
+  # # Apply the clean_string function to the entire vector
+  # x <- clean_string(x)
+  # 
+  # # Split, deduplicate, and rejoin in a vectorized manner
+  # x_split <- strsplit(x, "\\|") # Split strings by "|"
+  # 
+  # # Deduplicate within each component (vectorized using lapply and unique)
+  # x_dedup <- sapply(x_split, function(components) paste(unique(components), collapse = "|"))
+  # 
+  # # Remove remaining spaces and replace empty strings with NA
+  # x_final[x_final == ""] <- NA
+  # 
+  # # Output the cleaned result
+  # x <- x_final
+  # x <- gsub("\\|", ";", x)
   
   # Load udk names
   udk <- read.csv("udk_monografia.csv", sep = ";", header = FALSE, encoding = "UTF-8")
   colnames(udk) <- c("synonyme", "name")
+  
+  df <- data.frame(original = x0, cleaned = x)
   
   # Function to match and concatenate names, including undetermined and handling NA
   match_and_concatenate <- function(value) {
@@ -7138,10 +7136,8 @@ polish_udk_m <- function(x) {
   }
   
   # Apply the function to each element of x to get df$converted
-  df <- data.frame(original = x0, cleaned = x)
-  df$converted <- sapply(x, match_and_concatenate) #undetermined appear several times in one row
-  # Correctly calculate udk_count with adjustments for NA values
-  df$udk_count <- ifelse(is.na(df$cleaned), 0, str_count(df$cleaned, ";") + 1)
+  
+  df$converted <- sapply(x, match_and_concatenate)
   
   # Split values for further processing
   split_values <- strsplit(df$cleaned, ";")
@@ -7156,6 +7152,8 @@ polish_udk_m <- function(x) {
   
   # Filter for undetermined and accepted values
   undetermined <- filter(f, f$explanation == "Undetermined")
+  accepted <- filter(f,f$explanation != "Undetermined")
   
-  return(list(df = df, undetermined = undetermined))
+  # Return the results
+  return(list(full = df, undetermined = undetermined, accepted = accepted))
 }

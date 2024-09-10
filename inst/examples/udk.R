@@ -4,7 +4,7 @@ field <- "UDK"
 
 # Harmonize the raw data
 out <- polish_udk(df.orig[[field]])
-df.tmp <- out$df
+df.tmp <- out$full
 df.tmp$melinda_id <- df.orig$melinda_id
 df.tmp <- select(df.tmp, melinda_id, everything())
 
