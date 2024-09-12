@@ -7080,15 +7080,17 @@ polish_title_remainder <- function (x) {
 
 
 polish_udk <- function(x) {
+  x0 <- x
+  
   # # Optimized clean_string function for vectorized processing
   # clean_string <- function(input_strings, symbols = c(" ", "-", "(", "[", "/", "|", "\\", "\"", ".")) {
-  #   
+  # 
   #   # Collapse symbols into a single string with proper escaping for regex
   #   pattern <- paste0("\\", symbols, collapse = "")
-  #   
+  # 
   #   # Vectorized cleaning: remove symbols from edges and redundant spaces
   #   cleaned_strings <- str_remove_all(input_strings, paste0("^[", pattern, "]+|[", pattern, "]+$"))
-  #   
+  # 
   #   return(cleaned_strings)
   # }
   # 
@@ -7106,7 +7108,7 @@ polish_udk <- function(x) {
   # 
   # # Output the cleaned result
   # x <- x_final
-  # x <- gsub("\\|", ";", x)
+  x <- gsub("\\|", ";", x)
   
   # Load udk names
   udk <- read.csv("udk_monografia.csv", sep = ";", header = FALSE, encoding = "UTF-8")
