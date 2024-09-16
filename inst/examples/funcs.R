@@ -7079,83 +7079,75 @@ polish_title_remainder <- function (x) {
 }
 
 
-polish_udk <- function(x) {
-  x0 <- x
+polish_udk <- function(x, udk_path = "udk.csv", patterns = c("929", "908", "92")) {
   
-  # # Optimized clean_string function for vectorized processing
-  # clean_string <- function(input_strings, symbols = c(" ", "-", "(", "[", "/", "|", "\\", "\"", ".")) {
-  # 
-  #   # Collapse symbols into a single string with proper escaping for regex
-  #   pattern <- paste0("\\", symbols, collapse = "")
-  # 
-  #   # Vectorized cleaning: remove symbols from edges and redundant spaces
-  #   cleaned_strings <- str_remove_all(input_strings, paste0("^[", pattern, "]+|[", pattern, "]+$"))
-  # 
-  #   return(cleaned_strings)
-  # }
-  # 
-  # # Apply the clean_string function to the entire vector
-  # x <- clean_string(x)
-  # 
-  # # Split, deduplicate, and rejoin in a vectorized manner
-  # x_split <- strsplit(x, "\\|") # Split strings by "|"
-  # 
-  # # Deduplicate within each component (vectorized using lapply and unique)
-  # x_dedup <- sapply(x_split, function(components) paste(unique(components), collapse = "|"))
-  # 
-  # # Remove remaining spaces and replace empty strings with NA
-  # x_final[x_final == ""] <- NA
-  # 
-  # # Output the cleaned result
-  # x <- x_final
+  x0 <- x  # Save the original input for later use
+  
+  # Replace '|' with ';' in the input
   x <- gsub("\\|", ";", x)
+  x <- gsub(" ", "", x)
+  x <- gsub(":", ";", x)
   
-  # Load udk names
-  udk <- read.csv("udk_monografia.csv", sep = ";", header = FALSE, encoding = "UTF-8")
+  # Function to replace elements that start with specific patterns (like "929" or "908")
+  replace_patterns <- function(x, patterns) {
+    x <- unlist(strsplit(x, ";"))  # Split the string by semicolons
+    x <- sapply(x, function(elem) {
+      # Replace with the first 3 characters if matching patterns
+      if (any(sapply(patterns, function(p) str_starts(elem, p)))) {
+        return(substr(elem, 1, 3))
+      } else {
+        return(elem)
+      }
+    })
+    return(paste(unique(x), collapse = ";"))  # Collapse and ensure uniqueness
+  }
+  
+  # Apply the pattern replacement to the input vector
+  x <- sapply(x, replace_patterns, patterns)
+  
+  # Replace any empty strings with NA
+  x[x == ""] <- NA
+  
+  ############################################################
+  
+  # Load UDK synonyms and names
+  udk <- read.csv(udk_path, sep = ";", header = FALSE, encoding = "UTF-8")
   colnames(udk) <- c("synonyme", "name")
   
-  df <- data.frame(original = x0, cleaned = x)
+  df <- data.frame(original = x0, cleaned = x, stringsAsFactors = FALSE)
   
-  # Function to match and concatenate names, including undetermined and handling NA
+  # Function to match UDK codes to names
   match_and_concatenate <- function(value) {
-    if (is.na(value)) {
-      return(NA)
-    }
+    if (is.na(value)) return(NA)
     
-    split_value <- strsplit(value, ";")[[1]]
-    converted_values <- c()
-    
-    for (val in split_value) {
+    split_value <- unlist(strsplit(value, ";"))
+    converted_values <- sapply(split_value, function(val) {
       match_index <- match(val, udk$synonyme)
       if (!is.na(match_index)) {
-        converted_values <- c(converted_values, udk$name[match_index])
+        return(udk$name[match_index])
       } else {
-        converted_values <- c(converted_values, "Undetermined")
+        return("Undetermined")
       }
-    }
+    })
     
     return(paste(converted_values, collapse = ";"))
   }
   
-  # Apply the function to each element of x to get df$converted
+  # Apply the matching function to the cleaned UDKs
+  df$converted <- sapply(df$cleaned, match_and_concatenate)
   
-  df$converted <- sapply(x, match_and_concatenate)
+  ############################################################
   
   # Split values for further processing
-  split_values <- strsplit(df$cleaned, ";")
+  split_cleaned <- unlist(strsplit(df$cleaned, ";"))
+  split_converted <- unlist(strsplit(df$converted, ";"))
   
-  # Create a data frame for further analysis
-  xu <- data.frame(unlist(split_values))
-  xu2 <- data.frame(unlist(strsplit(df$converted, ";")))
-  
-  f <- data.frame(c = xu, h = xu2)
-  colnames(f) <- c("udk", "explanation")
-  f$explanation <- as.character(f$explanation)
+  # Create a data frame for UDK and explanation
+  f <- data.frame(udk = split_cleaned, explanation = split_converted, stringsAsFactors = FALSE)
   
   # Filter for undetermined and accepted values
-  undetermined <- filter(f, f$explanation == "Undetermined")
-  accepted <- filter(f,f$explanation != "Undetermined")
+  undetermined <- filter(f, explanation == "Undetermined")
+  accepted <- filter(f, explanation != "Undetermined")
   
-  # Return the results
   return(list(full = df, undetermined = undetermined, accepted = accepted))
 }

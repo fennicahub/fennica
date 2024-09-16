@@ -1,6 +1,8 @@
 #080 - Universal Decimal Classification Number (R)
 
 field <- "UDK"
+field <- as.character(field)
+source("funcs.R")
 
 # Harmonize the raw data
 out <- polish_udk(df.orig[[field]])
@@ -38,22 +40,13 @@ tmp2 <- write_xtable(df.tmp1, file_discarded,
                      count = TRUE, 
                      add.percentages = TRUE)
 
-# Define the pattern to match "Undetermined" repeated
-pattern <- "^Undetermined(;Undetermined)*$"
-# Filter rows where 'converted' column matches the pattern
-filtered_df <- df.tmp %>%
-  filter(grepl(pattern, converted))
-write.csv(filtered_df, "udk_discarded_id.csv", row.names=FALSE)
-
-# ------------------------------------------------------------
-
 # Store the UDK field data
 data.file <- paste0(field, ".Rds")
 saveRDS(df.tmp, file = data.file)
 #Load the RDS file
 df <- readRDS(data.file)
 # Convert to CSV and store in the output.tables folder
-write.table(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE, sep = ";", row.names = FALSE, fileEncoding = "UTF-8")
+write.table(df, file = paste0(output.folder, field, ".csv"), quote = FALSE, sep = ";", row.names = FALSE, fileEncoding = "UTF-8")
 
 # ------------------------------------------------------------
 
@@ -82,13 +75,6 @@ tmp_19 <- write_xtable(tab_19, paste(output.folder, field, "_accepted_19.csv", s
                     count = TRUE,
                     add.percentages = TRUE)
 
-
-# Define the pattern to match "Undetermined" repeated
-pattern <- "^Undetermined(;Undetermined)*$"
-# Filter rows where 'converted' column matches the pattern
-filtered_df <- df.tmp_19 %>%
-  filter(grepl(pattern, converted))
-write.csv(filtered_df, "udk_discarded_id_19.csv", row.names=FALSE)
 
 
 # ------------------------------------------------------------
