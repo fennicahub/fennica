@@ -6965,7 +6965,7 @@ polish_languages <- function(x) {
     dff$language_primary <- dff$languages
   }
   
-  # Convert to factors
+  
   dff$languages <- as.factor(str_trim(dff$languages))
   dff$language_primary <- as.factor(str_trim(dff$language_primary))
   
@@ -7136,6 +7136,10 @@ polish_udk <- function(x, udk_path = "udk.csv", patterns = c("929", "908", "92")
   # Apply the matching function to the cleaned UDKs
   df$converted <- sapply(df$cleaned, match_and_concatenate)
   
+  len <- sapply(strsplit(x, ";"), length)
+  dff <- data.frame(udk_count = len)    
+  multi <- len > 1
+  df$multi_udk <- multi
   ############################################################
   
   # Split values for further processing
