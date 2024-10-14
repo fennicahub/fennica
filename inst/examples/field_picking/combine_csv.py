@@ -1,6 +1,5 @@
 #%%
-#Use the code to pick certain fields. 
-#Usually the field_code has a subfield_code. 
+
 #%%
 import pandas as pd
 import os
@@ -139,6 +138,6 @@ for i, _ in tqdm(enumerate(csv_filenames_chunks)):
     # concatenate with empty df to get its column names but keep the data
     df_temp = pd.concat([df_temp, df_fullindex])
     # save
-    df_temp.to_csv(f"../../pivoted_callnumbered_csvs/piv_callnum_chunk_{i}.csv", sep = '\t', index = False)
+    df_temp.to_csv(f"{path_csvs}/pivoted_callnumbered_csvs/piv_callnum_chunk_{i}.csv", sep = '\t', index = False)
 
 # %%

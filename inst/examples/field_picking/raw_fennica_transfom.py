@@ -5,7 +5,7 @@ from tqdm import tqdm
 #%%
 path_csvs = "/mnt/trial/csvs"
 #https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/full.csv
-full_path = f"{path_csvs}/full.csv"
+full_path = f"{path_csvs}/full_10.2024.csv"
 df = pd.read_csv(full_path, engine='c')
 
 #%%
@@ -13,12 +13,10 @@ df_small = pd.read_csv(full_path, engine='c', nrows = 10000)
 
 #%%
 #df_small = df_small.drop(columns=['field_number','subfield_number'])
-#%%
-
 # %%
 # print big table
-with pd.option_context('display.max_rows', None, 'display.max_columns', None):  # more options can be specified also
-    print(df.query("record_number == 400"))    
+# with pd.option_context('display.max_rows', None, 'display.max_columns', None):  # more options can be specified also
+#     print(df.query("record_number == 400"))    
 #%%
 # check if there are duplicate melinda codes (035a)
 df_small_035 = df_small.query("field_code == '035' and subfield_code == 'a'")
@@ -105,3 +103,4 @@ df_melinda_full = df_dropped.pivot_table(values = 'value', index = 'value', colu
 
 #%%
 df.head(50)
+# %%

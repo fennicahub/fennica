@@ -1,4 +1,6 @@
 #%%
+#Use the code to pick certain fields. 
+#Usually the field_code has a subfield_code. 
 import pandas as pd
 import os
 from tqdm import tqdm

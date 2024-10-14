@@ -24,3 +24,5 @@ inst/examples/the_list.csv
 inst/examples/aineistotyypit.csv
 *.quarto
 /.quarto/
+fennica_output.csv.gz
+full_10.24.csv

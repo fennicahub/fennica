@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from tqdm import tqdm
 #%%
-output_fname = "full_fennica.csv"
+output_fname = "full_10.24.csv"
 #%%
 chunkfiles = [f"/home/ubuntu/git/pivoted_callnumbered_csvs/piv_callnum_chunk_{n}.csv" for n in range(0,24)]
 chunkfiles
@@ -35,7 +35,7 @@ with open(f"/home/ubuntu/git/{output_fname}", "a", newline='\n') as outfile:
                         outfile.write(line)
                 i += 1
 #%%
-#pd.read_csv(f"/home/ubuntu/git/{output_fname}", engine = 'c', delimiter = '\t', on_bad_lines='warn')
+pd.read_csv(f"/home/ubuntu/git/fennica/{output_fname}", engine = 'c', delimiter = '\t', on_bad_lines='warn')
 
 
 # %%

@@ -1,0 +1,3 @@
+conda create -n fennica python=3.10
+conda activate fennica
+conda install -c conda-forge pandas tqdm sickle requests lxml more-itertools numpy pexpect
