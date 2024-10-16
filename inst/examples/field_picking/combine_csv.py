@@ -62,7 +62,7 @@ df_callnumbers_final = pd.DataFrame(df_callnumbers_grouped.reset_index().to_nump
 df_callnumbers_final
 
 #%%
-# df.merge(df_callnumbers_final, on=[("035","a")], how="left")
+df.merge(df_callnumbers_final, on=[("035","a")], how="left")
 #%%
 # Main loop:
 # load a couple of csvs from pivoted_csvs, 

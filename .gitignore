@@ -26,3 +26,4 @@ inst/examples/aineistotyypit.csv
 /.quarto/
 fennica_output.csv.gz
 full_10.24.csv
+inst/examples/priority_fields.zip

@@ -37,3 +37,4 @@ kungliga.Rds
 fennica.Rds
 *.quarto
 /.quarto/
+inst/examples/priority_fields.zip

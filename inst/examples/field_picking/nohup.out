@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/git/fennica/inst/examples/field_picking/raw_fennica_transfom.py", line 26, in <module>
+    df_small_035.drop(columns=['field_number', 'subfield_number', 'field_code', 'subfield_code', ], inplace=True)
+  File "/home/ubuntu/miniconda3/envs/fennica/lib/python3.10/site-packages/pandas/core/frame.py", line 5581, in drop
+    return super().drop(
+  File "/home/ubuntu/miniconda3/envs/fennica/lib/python3.10/site-packages/pandas/core/generic.py", line 4788, in drop
+    obj = obj._drop_axis(labels, axis, level=level, errors=errors)
+  File "/home/ubuntu/miniconda3/envs/fennica/lib/python3.10/site-packages/pandas/core/generic.py", line 4830, in _drop_axis
+    new_axis = axis.drop(labels, errors=errors)
+  File "/home/ubuntu/miniconda3/envs/fennica/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 7070, in drop
+    raise KeyError(f"{labels[mask].tolist()} not found in axis")
+KeyError: "['field_number', 'subfield_number'] not found in axis"
