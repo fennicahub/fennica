@@ -7,7 +7,7 @@ from tqdm import tqdm
 #%%
 path_csvs = "/mnt/trial/csvs"
 #%%
-columns_to_pick = [("035","a"),("leader", "-"),("008", "-"),("100","a"),("100","d"),
+columns_to_pick = [("035","a"),("leader", "nan"),("008", "nan"),("100","a"),("100","d"),
 ("041","a"),("041","h"),("042","a"),("240","a"),("245","a"),("245","b"),("250","a"), ("250","b"),("260","a"),("260","b"),
 ("300","c"),("300","a"),("310","a"),("362","a"),("callnumbers","a"),("080","a"),
 ("080","8"),("080","x"), ("245", "n"), ("655", "a"), ("650", "a")]
@@ -27,7 +27,7 @@ print(csv_filenames)
 # load specific columns and create a big dataframe
 dfs = []
 for filename in tqdm(csv_filenames):
-    df = pd.read_csv(f"{folder}/{filename}", sep='\t', header=[0,1])[columns_to_pick]
+    df = pd.read_csv(f"{folder}/{filename}", sep='\t', header=[0,1], low_memory = False)[columns_to_pick]
     dfs += df,
 
 #%%
