@@ -40,7 +40,7 @@ tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 # ------------------------------------------------------------
 
 # Run publication_time.R file to get the melindas needed for the 19th century slicing
-source("melindas_19.R")
+#source("melindas_19.R")
 
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
 field <- "author_name"
