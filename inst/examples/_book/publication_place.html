@@ -178,12 +178,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Types of record</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./udk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Universal Decimal Classification</span></span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
@@ -248,7 +242,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="complete-dataset-overview" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="complete-dataset-overview"><span class="header-section-number">6.1</span> Complete Dataset Overview</h2>
 <ul>
-<li><p>4947 <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_accepted.csv">unique publication places</a>; available for 956556 documents (81%).</p></li>
+<li><p>4425 <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_accepted.csv">unique publication places</a>; available for 914851 documents (76%).</p></li>
 <li><p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_ambiguous.csv">ambiguous publication places</a>; some of these can be possibly resolved by checking that the the <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/PublicationPlaceSynonymes.csv">synonyme list</a> does not contain multiple versions of the final name (case sensitive).</p></li>
 <li><p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_todo.csv">unknown place names</a> These terms do not map to any known place on the <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/PublicationPlaceSynonymes.csv">synonyme list</a>; either because they require further cleaning or have not yet been encountered in the analyses. Terms that are clearly not place names can be added to <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/stopwords_for_place.csv">stopwords</a>; borderline cases that are not accepted as place names can be added as NA on the <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/PublicationPlaceSynonymes.csv">synonyme list</a>.</p></li>
 <li><p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_discarded.csv">discarded place names</a> These terms are potential place names but with a closer check have been explicitly rejected on the <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/PublicationPlaceSynonymes.csv">synonyme list</a></p></li>
@@ -258,23 +252,23 @@ ul.task-list li input[type="checkbox"] {
 <section id="publication-countries" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="publication-countries"><span class="header-section-number">6.2</span> Publication countries</h2>
 <ul>
-<li>46 <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_country_accepted.csv">unique publication countries</a>; available for 889790 documents (75%).</li>
-<li>4239 <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_missingcountry.csv">places with unknown publication country</a> (85.7% of the unique places; can be added to <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/reg2country.csv">country mappings</a>)</li>
+<li>46 <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_country_accepted.csv">unique publication countries</a>; available for 850411 documents (71%).</li>
+<li>3723 <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_missingcountry.csv">places with unknown publication country</a> (84.2% of the unique places; can be added to <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/reg2country.csv">country mappings</a>)</li>
 <li><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_country_ambiguous.csv">potentially ambiguous region-country mappings</a> (these may occur in the data in various synonymes and the country is not always clear when multiple countries have a similar place name; the default country is listed first). NOTE: possible improvements should not be done in this output summary but instead in the <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/reg2country.csv">country mapping file</a>.</li>
 </ul>
 </section>
 <section id="geocoordinates" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="geocoordinates"><span class="header-section-number">6.3</span> Geocoordinates</h2>
 <ul>
-<li>74.6% of the documents were matched to geographic coordinates (based on COMHIS geomapping process).</li>
-<li>4299 unique places (86.9% of all unique places and 25.36% of all documents) are missing geocoordinates. See <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/absentgeocoordinates.csv">list of places missing geocoordinate information</a>.</li>
+<li>70.6% of the documents were matched to geographic coordinates (based on COMHIS geomapping process).</li>
+<li>3783 unique places (85.5% of all unique places and 29.41% of all documents) are missing geocoordinates. See <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/absentgeocoordinates.csv">list of places missing geocoordinate information</a>.</li>
 </ul>
 </section>
 <section id="subset-analysis-1809-1917" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="subset-analysis-1809-1917"><span class="header-section-number">6.4</span> Subset Analysis: 1809-1917</h2>
 <ul>
-<li><p>477 <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_accepted_19.csv">unique publication places</a>; available for 52733 documents (82%).</p></li>
-<li><p>Unique publication country for a period 1809-1917: 32; available for 51416 documents (80%).</p></li>
+<li><p>484 <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_accepted_19.csv">unique publication places</a>; available for 50175 documents (68%).</p></li>
+<li><p>Unique publication country for a period 1809-1917: 32; available for 48885 documents (67%).</p></li>
 <li><p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_discarded_19.csv">discarded place names</a></p></li>
 </ul>
 <p>Top-20 publication places are shown together with the number of documents.</p>
@@ -298,33 +292,33 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Finland</td>
-<td style="text-align: right;">46461</td>
-<td style="text-align: right;">72.0</td>
+<td style="text-align: right;">44320</td>
+<td style="text-align: right;">60.3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Sweden</td>
-<td style="text-align: right;">1447</td>
-<td style="text-align: right;">2.2</td>
+<td style="text-align: right;">1304</td>
+<td style="text-align: right;">1.8</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Russia</td>
-<td style="text-align: right;">1241</td>
-<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">1154</td>
+<td style="text-align: right;">1.6</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">USA</td>
-<td style="text-align: right;">930</td>
-<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">900</td>
+<td style="text-align: right;">1.2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Germany</td>
-<td style="text-align: right;">558</td>
-<td style="text-align: right;">0.9</td>
+<td style="text-align: right;">524</td>
+<td style="text-align: right;">0.7</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">England</td>
-<td style="text-align: right;">173</td>
-<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">140</td>
+<td style="text-align: right;">0.2</td>
 </tr>
 </tbody>
 </table>

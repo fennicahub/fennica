@@ -8,7 +8,7 @@
 # library(Cairo)
 # library(fennica) 
 # source("funcs.R")
-# source("melindas_19.R")
+source("melindas_19.R")
 
 
 # Parameters: 

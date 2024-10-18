@@ -29,7 +29,8 @@ df.orig <- df.orig %>%
                 "080-8" = 22, 
                 "080x" = 23, 
                 "245n" = 24, 
-                "655a" = 25)
+                "655a" = 25, 
+                "650a" = 26)
 
 df.orig$melinda_id <- gsub(" ", "", df.orig$melinda_id)
 df.orig$melinda_id <- gsub("\\(FI-MELINDA\\)", "", df.orig$melinda_id)

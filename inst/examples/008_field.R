@@ -77,11 +77,11 @@ df.orig$publication_time <- ifelse(
 # df.orig$publication_time <- ifelse(df.orig$publication_time == "    -", NA, df.orig$publication_time)
 
 
-#33 - genre for the BOOKs only 
+#33 - literary_genre for the BOOKs only 
 
-# Create the new column 'genre_book' based on the conditions
+# Create the new column 'literary_genre_book' based on the conditions
 df.orig <- df.orig %>%
-  mutate(genre_book = ifelse(
+  mutate(literary_genre_book = ifelse(
     type_of_record %in% c("Language material", "Manuscript language material") &
       bibliographic_level %in% c("Monographic component part", "Collection", "Subunit", "Monograph/Item"),
     substr(`008`, start =  34, stop =  34),# Extract the  34th character from the '008' column
@@ -90,18 +90,18 @@ df.orig <- df.orig %>%
 
 
 df.orig <- df.orig %>%
-  mutate(genre_book = case_when(
-    genre_book == "0" ~ "Tietokirjallisuus (ei tarkkaa määritelmää)",
-    genre_book == "1" ~ "Kaunokirjallisuus (ei tarkkaa määritelmää)",
-    genre_book == "d" ~ "Draama",
-    genre_book == "e" ~ "Esseet",
-    genre_book == "f" ~ "Romaanit",
-    genre_book == "h" ~ "Huumori, satiiri jne.",
-    genre_book == "i" ~ "Kirjeet", 
-    genre_book == "j" ~ "Novellit, kertomukset tai niiden kokoelmat", 
-    genre_book == "m" ~ "Yhdistelmä",
-    genre_book == "p" ~ "Runot", 
-    genre_book == "s" ~ "Puheet, esitelmät", 
-    genre_book == "u" ~ "Tuntematon", 
-    genre_book == "|" ~ "Ei koodattu", 
+  mutate(literary_genre_book = case_when(
+    literary_genre_book == "0" ~ "Tietokirjallisuus",
+    literary_genre_book == "1" ~ "Kaunokirjallisuus",
+    literary_genre_book == "d" ~ "Draama",
+    literary_genre_book == "e" ~ "Esseet",
+    literary_genre_book == "f" ~ "Romaanit",
+    literary_genre_book == "h" ~ "Huumori, satiiri jne.",
+    literary_genre_book == "i" ~ "Kirjeet", 
+    literary_genre_book == "j" ~ "Novellit, kertomukset tai niiden kokoelmat", 
+    literary_genre_book == "m" ~ "Yhdistelmä",
+    literary_genre_book == "p" ~ "Runot", 
+    literary_genre_book == "s" ~ "Puheet, esitelmät", 
+    literary_genre_book == "u" ~ "Tuntematon", 
+    literary_genre_book == "|" ~ "Ei koodattu", 
   ))

@@ -45,7 +45,7 @@ book:
   - title_remainder.qmd
   - title2.qmd
   - content_type.qmd
-  - udk.qmd
+  #- udk.qmd
   #- title_uniform.qmd
   ##- subject_topic.qmd
   #- successor.qmd

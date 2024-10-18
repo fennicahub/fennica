@@ -9,7 +9,7 @@ list$signum <- gsub(" ", "", list$signum)
 
 # Read Excel file
 velka_big <- read_excel("Kauno 1809-1917.xlsx")
-velka_big <- velka_big %>% slice(1:9211)
+velka_big <- velka_big %>% slice(1:9232)
 
 # Change the column name using colnames
 colnames(velka_big)[colnames(velka_big) == "MelindaID"] <- "melinda_id"
@@ -33,11 +33,27 @@ df.orig$signum <- gsub(" ", "", df.orig$signum)
 df.orig$melinda_id <- trimws(df.orig$melinda_id) # Trim whitespace
 velka_big$melinda_id <- trimws(velka_big$melinda_id) # Trim whitespace
 
+x <- velka_big$melinda_id[is.na(velka_big$melinda_id)]
+
 
 # Step 2: Count matching melinda_id values
-orig_and_big <- intersect(df.orig$melinda_id, velka_big$melinda_id)
-big_not_orig <- setdiff(velka_big$melinda_id, df.orig$melinda_id)
 
+velka_big_unique <- velka_big[!duplicated(velka_big$melinda_id), ]
+
+orig_and_big <- intersect(df.orig$melinda_id, velka_big_unique$melinda_id)
+
+big_not_orig <- setdiff(velka_big_unique$melinda_id, df.orig$melinda_id)
+print(big_not_orig)
+
+big_not_orig_df <- velka_big_unique %>%     
+  filter(melinda_id %in% big_not_orig)
+
+install.packages("openxlsx")
+library(openxlsx)
+write.xlsx(big_not_orig_df, "only_in_Satu_list.xlsx")
+
+
+write.table(big_not_orig_df, file = "only_in_Satu_list.csv", sep = ",", row.names = FALSE)
 
 
 # Assuming df.orig and velka_big are your data frames
