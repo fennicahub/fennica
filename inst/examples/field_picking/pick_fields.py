@@ -7,14 +7,16 @@ from tqdm import tqdm
 #%%
 path_csvs = "/mnt/trial/csvs"
 #%%
-columns_to_pick = [("035","a"),("leader", "nan"),("008", "nan"),("100","a"),("100","d"),
-("041","a"),("041","h"),("042","a"),("240","a"),("245","a"),("245","b"),("250","a"), ("250","b"),("260","a"),("260","b"),
-("300","c"),("300","a"),("310","a"),("362","a"),("callnumbers","a"),("080","a"),
-("080","8"),("080","x"), ("245", "n"), ("655", "a"), ("650", "a")]
+columns_to_pick =[("035","a")]
+#[("035","a"),("leader", "nan"),("008", "nan"),("100","a"),("100","d"),
+#("041","a"),("041","h"),("042","a"),("240","a"),("245","a"),("245","b"),("250","a"), ("250","b"),("260","a"),("260","b"),
+#("300","c"),("300","a"),("310","a"),("362","a"),("callnumbers","a"),("080","a"),
+#("080","8"),("080","x"), ("245", "n"), ("655", "a"), ("650", "a")]
 #%%
 output_folder = "fields_picked"
 #%%
 output_folder_priority = ".."
+
 #%%
 #filename = "full_fennica_1024.csv"
 folder = f"{path_csvs}/pivoted_callnumbered_csvs"
@@ -43,7 +45,6 @@ df = pd.concat(dfs, ignore_index=True)
 #%%
 #save priority_fields file in gzip in examples
 filename = 'priority_fields'
-compression_options = dict(method='zip', archive_name=f'{filename}.csv')
-df.to_csv(f"{output_folder_priority}/priority_fields.zip", sep = "\t", index=False, compression=compression_options)
+df.to_csv(f"{output_folder_priority}/{filename}.csv", sep="\t", index=False)
 
 # %%

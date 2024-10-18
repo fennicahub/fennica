@@ -1,5 +1,9 @@
 #the file need to be zipped, otherwise it's too big to be put on github
-unzip("priority_fields.zip",exdir=".")
+# Download the zip file
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/priority_fields.csv"
+download.file(url, destfile = "priority_fields.csv")
+
+#unzip("priority_fields.zip",exdir=".")
 # List the pre-processed data file and read the data
 df.orig <- read.csv(file = "priority_fields.csv", skip = 1, head = TRUE, sep="\t")
 
