@@ -8,7 +8,7 @@
 # library(Cairo)
 # library(fennica) 
 # source("funcs.R")
-source("melindas_19.R")
+#source("melindas_19.R")
 
 
 # Parameters: 
@@ -24,9 +24,10 @@ list$title <- paste(list$title,list$title_remainder, list$`245n`)
 list[list == ''] <- NA
 list$signum <- gsub(" ", "", list$signum)
 
-genres_to_keep <- c("Fiction (not further specified)","Dramas", "Essays", 
-                    "Novels","Short stories, stories or their collections",
-                    "Poems", "No attempt to code", "Combination of genres")
+genres_to_keep <- c("Kaunokirjallisuus","Dramaa", "Esseet", 
+                    "Romaanit","Novellit, kertomukset tai niiden kokoelmat",
+                    "Runot", "Ei koodattu", "Yhdistelmä", "Tuntematon")
+
 
 # 2) only language material
 
@@ -49,7 +50,7 @@ list <- list[is.na(list$language_original), ]
 
 # # genre
 
-list <- list %>% filter(genre_book %in% genres_to_keep)
+list <- list %>% filter(literary_genre_book %in% genres_to_keep)
 
 
 # Check if signum contains "Suom. kaunokirj." or "Ruots. kaunokirj."
@@ -72,9 +73,9 @@ result <- list %>%
   group_by(title) %>%
   filter(publication_time == min(publication_time)) %>%
 distinct(title,.keep_all = TRUE)
-
-
-# If you want to sort the result by publication_year (optional)
+# 
+# 
+# # If you want to sort the result by publication_year (optional)
 list <- result %>% arrange(publication_time)
 
 
