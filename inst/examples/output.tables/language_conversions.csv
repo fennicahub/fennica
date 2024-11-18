@@ -9,7 +9,7 @@ fin;eng	 2	TRUE	Finnish;English	Finnish	 12180	1.01
 lat	 1	FALSE	Latin	Latin	  8567	0.71
 fin;swe;eng	 3	TRUE	Finnish;Swedish;English	Finnish	  7085	0.59
 rus	 1	FALSE	Russian	Russian	  5399	0.45
-mul	 1	FALSE	Multiple languages	Multiple languages	  4382	0.37
+mul	 1	TRUE	Multiple languages	Multiple languages	  4382	0.37
 fre	 1	FALSE	French	French	  3528	0.29
 eng;fin	 2	TRUE	English;Finnish	English	  3074	0.26
 swe;fin	 2	TRUE	Swedish;Finnish	Swedish	  2530	0.21

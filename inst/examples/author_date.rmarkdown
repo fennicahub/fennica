@@ -1,0 +1,29 @@
+---
+title: "Author's lifetime"
+hide-description: false
+description: ""
+---
+
+```{r}
+#| include = FALSE
+source("init.R")
+source("author_date.R")
+```
+
+
+MARC: [100d](https://www.loc.gov/marc/bibliographic/bd100.html)
+
+The author's lifetime section furnishes concise summaries following an extensive cleaning process, delineating the accepted and discarded years pertaining to each author.The accepted years signify the refined and validated data, while insights into the discarded years offer valuable context, shedding light on the challenges encountered and decisions made during the cleaning procedure.
+
+## Complete Dataset Overview
+
+[Author date accepted for the complete Fennica](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_accepted.csv)
+
+[Author date discarded for the complete Fennica](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_discarded.csv)
+
+## Subset Analysis: 1809-1917
+
+[Author date accepted for 1809-1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_accepted_19.csv)
+
+[Author date discarded for 1809-1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_discarded_19.csv)
+

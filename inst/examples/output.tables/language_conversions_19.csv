@@ -11,7 +11,7 @@ French	 1	FALSE	French	French	  669	0.91
 Finnish;English	 2	TRUE	Finnish;English	Finnish	  299	0.41
 Swedish;Latin	 2	TRUE	Swedish;Latin	Swedish	  286	0.39
 Swedish;Finnish	 2	TRUE	Swedish;Finnish	Swedish	  204	0.28
-Multiple languages	 1	FALSE	Multiple languages	Multiple languages	  190	0.26
+Multiple languages	 1	TRUE	Multiple languages	Multiple languages	  190	0.26
 Finnish;Swedish;English	 3	TRUE	Finnish;Swedish;English	Finnish	  150	0.2
 Danish	 1	FALSE	Danish	Danish	  148	0.2
 Finnish;German	 2	TRUE	Finnish;German	Finnish	  140	0.19

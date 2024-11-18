@@ -47,12 +47,31 @@ tmp2 <- write_xtable(original.na, file_discarded,
                      count = TRUE, 
                      add.percentages = TRUE)
 
-# message("Language discarded id")
-# 
-# lo <- as.list(original.na)
-# filtered_df <- df.orig[df.orig$language %in% lo, ]
-# new_df <- filtered_df[, c("melinda_id", "language")]
-# write.csv(new_df, "language_discarded_id.csv", row.names=FALSE)
+message("Language discraded ID")
+language_checks <- sapply(strsplit(df.orig$language, ";"), function(lang) 
+  any(original.na %in% lang))
+# Find rows where any language matches a discarded variable
+matching_rows <- which(language_checks)
+
+# Get the corresponding melinda_ids
+result_melinda_ids <- df.orig$melinda_id[matching_rows]
+id <- data.frame(
+  Melinda_ID = result_melinda_ids,
+  Language = df.orig$language[matching_rows]
+)
+
+# Add a new column to `id` for discarded languages
+id$Discarded <- sapply(strsplit(id$Language, ";"), function(lang) {
+  # Find intersection between languages and discarded values
+  discarded_langs <- intersect(lang, original.na)
+  # Combine discarded languages as a semicolon-separated string
+  paste(discarded_langs, collapse = ";")
+})
+
+# Write the result to a CSV file without row numbers
+write.csv(id, file = file_discarded_id, row.names = FALSE, quote = FALSE)
+
+
 
 
 # ------------------------------------------------------------
@@ -63,7 +82,7 @@ saveRDS(df.tmp, file = data.file)
 #Load the RDS file
 df <- readRDS(data.file)
 # Convert to CSV and store in the output.tables folder
-write.table(df, file = paste0(output.folder, paste0(field, ".csv")))
+write.table(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE)
 
 # ------------------------------------------------------------
 
@@ -91,15 +110,6 @@ tab <- cbind(original = df_19$languages, df_19[, 1:4])
 tmp <- write_xtable(tab, paste(output.folder, field, "_conversions_19.csv", sep = ""), 
                     count = TRUE, 
                     add.percentages = TRUE)
-
-# Discarded
-# Original entries that were converted into NA
-s <- unlist(strsplit(df.orig$language, ";"))
-original.na <- s[s %in% out$unrecognized]
-tmp2 <- write_xtable(original.na, file_discarded_19, 
-                     count = TRUE, 
-                     add.percentages = TRUE)
-
 
 # ---------------------------------------------------
 

@@ -1,11 +1,22 @@
-melinda_id	language	Count
-(FI-MELINDA)005812608	mari	1
-(FI-MELINDA)018777350	fit	1
-(FI-MELINDA)018776404	fit	1
-(FI-MELINDA)018775080	fit	1
-(FI-MELINDA)018772064	fit	1
-(FI-MELINDA)018760020	fit	1
-(FI-MELINDA)018746607	fit	1
-(FI-MELINDA)018744732	fit	1
-(FI-MELINDA)005676016	engestfingerhunitalitlavnorpolrusswe	1
-(FI-MELINDA)006560549	kwn	1
+Melinda_ID,Language,Discarded
+000937148,swe;dan;isl;nor,isl
+000939572,swe;dan;isl;nor,isl
+005676016,engestfingerhunitalitlavnorpolrusswe,engestfingerhunitalitlavnorpolrusswe
+006560549,kwn,kwn
+006560838,fin;swe;eng;ger;fre;rus;spa;ita;jpa;chi,jpa
+005646021,fre;hut,hut
+005362252,fin;jap,jap
+009596871,fin;swe;fit;mul,fit
+019095132,fit,fit
+019096796,fit,fit
+019102230,fit,fit
+019119965,fit,fit
+019154173,fit,fit
+005041615,kur fin;kur,kur fin
+006026153,fin;swe;eng;ger;fre;rus;chi;est;jap,jap
+018796716,fit,fit
+018822174,fit,fit
+005812608,mari,mari
+000951890,fin;gar,gar
+000953129,eng;spa;n,n
+000953606,fin;swe;eng;ger;fla;por,fla
