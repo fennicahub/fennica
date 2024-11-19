@@ -24,14 +24,20 @@
     "href": "language.html#complete-dataset-overview",
     "title": "2  Language",
     "section": "2.2 Complete Dataset Overview",
-    "text": "2.2 Complete Dataset Overview\nUnique languages: 175\nUnique primary languages: 152\n1069663 single-language entries (93.23%)\n77676 multilingual entries , accounting for 6.77% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.\nThere are 906 single-language entries marked as only “Undetermined”, coded as “und” in the dataset, accounting for (0.08%) of the total.\nThere are 52922 missing values in the dataset,accounting for (4.41%) of the total.\nUnrecognized language provides details of languages that were discarded: 10 Additionally, the Error list contains ID numbers of entries associated with these discarded languages, intended for librarian review.\nConversions from raw to preprocessed language entries\nNew custom abbreviations can be added in this table.\nDownload language harmonized dataset"
+    "text": "2.2 Complete Dataset Overview\nUnique languages: 175\nUnique primary languages: 152\n1069663 single-language entries (93.23%)\n77676 multilingual entries , accounting for 6.77% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.\nThere are 906 single-language entries marked as only “Undetermined”, coded as “und” in the dataset, accounting for (0.08%) of the total.\nThere are 52922 missing values in the dataset,accounting for (4.41%) of the total.\nUnrecognized language provides details of languages that were discarded: 10 Additionally, the Error list contains ID numbers of entries associated with these discarded languages, intended for librarian review.\nConversions from raw to preprocessed language entries\nNew custom abbreviations can be added in this table.\nDownload language harmonized dataset",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Language</span>"
+    ]
   },
   {
     "objectID": "language.html#subset-analysis-1809-1917",
     "href": "language.html#subset-analysis-1809-1917",
     "title": "2  Language",
     "section": "2.3 Subset Analysis: 1809-1917",
-    "text": "2.3 Subset Analysis: 1809-1917\nUnique languages (1809-1917): 60\nUnique primary languages (1809-1917): 45\n67486 single-language entries (92.84%)\n5203 multilingual entries (7.16%).\nThere are 94 entries marked as “Undetermined”.\nThere are 790 missing values in the dataset,accounting for (1.08%) of the total.\nDiscarded languages: 0\nDownload language harmonized dataset (1809-1917)\n\n2.3.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages (1809-1917).\n\n\n\n\nLanguage\nEntries (n)\nFraction (%)\n\n\n\n\nFinnish\n36772\n3.1\n\n\nSwedish\n21176\n1.8\n\n\nGerman\n2504\n0.2\n\n\nFinnish;Swedish\n2397\n0.2\n\n\nLatin\n2386\n0.2\n\n\nRussian\n2082\n0.2\n\n\nEnglish\n1215\n0.1\n\n\nFrench\n669\n0.1\n\n\nFinnish;English\n299\n0\n\n\nSwedish;Latin\n286\n0\n\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):"
+    "text": "2.3 Subset Analysis: 1809-1917\nUnique languages (1809-1917): 60\nUnique primary languages (1809-1917): 45\n67486 single-language entries (92.84%)\n5203 multilingual entries (7.16%).\nThere are 94 entries marked as “Undetermined”.\nThere are 790 missing values in the dataset,accounting for (1.08%) of the total.\nDiscarded languages: 0\nDownload language harmonized dataset (1809-1917)\n\n2.3.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages (1809-1917).\n\n\n\nLanguage\nEntries (n)\nFraction (%)\n\n\n\n\nFinnish\n36772\n3.1\n\n\nSwedish\n21176\n1.8\n\n\nGerman\n2504\n0.2\n\n\nFinnish;Swedish\n2397\n0.2\n\n\nLatin\n2386\n0.2\n\n\nRussian\n2082\n0.2\n\n\nEnglish\n1215\n0.1\n\n\nFrench\n669\n0.1\n\n\nFinnish;English\n299\n0\n\n\nSwedish;Latin\n286\n0\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Language</span>"
+    ]
   },
   {
     "objectID": "publication_time.html",
@@ -84,12 +90,5 @@
       "Appendices",
       "Technical information"
     ]
-  },
-  {
-    "objectID": "language.html#description",
-    "href": "language.html#description",
-    "title": "2  Language",
-    "section": "2.1 Description",
-    "text": "2.1 Description\nThe polish_languages function is designed to standardize and harmonize language information in a dataset. The process starts by isolating unique language entries, ensuring that each distinct combination of languages is processed only once, which improves efficiency and avoids redundant computations. A MARC reference list of recognized language abbreviations and names is then used to map language codes to their standardized forms. Each language entry is analyzed to identify multiple languages and to detect any unrecognized terms.\nThe entries are standardized by converting them to their recognized forms while eliminating duplicates and filtering out unrecognized languages. Empty cells in the dataset are marked as NA to indicate missing information. Once standardized, all valid languages are aggregated to create a structured data frame. This data frame includes the total number of languages in each entry, a flag (TRUE/FALSE) indicating whether the entry contains multiple languages (including those that are originally coded as mul = Multiple language), the cleaned and harmonized list of languages, and the primary language, which is defined as the first listed language in each entry. The result is a cleaned and standardized dataset that facilitates accurate analysis of multilingual data.\nAdditionally, an error list is generated, consisting of unrecognized language information and the corresponding IDs. This error list helps librarians identify mistakes in the original data and provides context to either correct the errors or explain why certain entries were discarded by the function."
   }
 ]
