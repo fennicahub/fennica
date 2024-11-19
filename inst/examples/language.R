@@ -1,9 +1,6 @@
 # Define the field to harmonize
 field <- "language"
 
-df.orig$language <- gsub("\\|", ";", df.orig$language)
-
-
 # Harmonize the raw data
 out <- polish_languages(df.orig[[field]])
 df.tmp <- out$harmonized_full
@@ -34,7 +31,7 @@ for (myfield in c("languages", "language_primary")) {
 
 message("Language conversions")
 tab <- cbind(original = df.orig[[field]], df.tmp[, 1:4])
-tmp <- write_xtable(tab, paste(output.folder, field, "_conversions.csv", sep = ""), 
+tmp1 <- write_xtable(tab, paste(output.folder, field, "_conversions.csv", sep = ""), 
                     count = TRUE,
                     add.percentages = TRUE)
 

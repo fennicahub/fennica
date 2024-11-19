@@ -1,23 +1,23 @@
 Name	Count	Percentage
-Finnish	36772	50.04
-Swedish	21176	28.82
-German	 2504	 3.41
-Finnish;Swedish	 2397	 3.26
-Latin	 2386	 3.25
-Russian	 2082	 2.83
-English	 1215	 1.65
-Undetermined	  884	 1.20
-French	  669	 0.91
+Finnish	36772	50.59
+Swedish	21176	29.13
+German	 2504	 3.44
+Finnish;Swedish	 2397	 3.30
+Latin	 2386	 3.28
+Russian	 2082	 2.86
+English	 1215	 1.67
+French	  669	 0.92
 Finnish;English	  299	 0.41
 Swedish;Latin	  286	 0.39
 Swedish;Finnish	  204	 0.28
 Multiple languages	  190	 0.26
-Finnish;Swedish;English	  150	 0.20
+Finnish;Swedish;English	  150	 0.21
 Danish	  148	 0.20
 Finnish;German	  140	 0.19
 Finnish;Swedish;Multiple languages	  130	 0.18
 Finnish;Russian	  108	 0.15
 Estonian	  100	 0.14
+Undetermined	   94	 0.13
 Latin;Swedish	   87	 0.12
 Latin;Persian	   78	 0.11
 Finnish;French	   69	 0.09
@@ -27,8 +27,8 @@ Swedish;French	   59	 0.08
 Norwegian	   58	 0.08
 Finnish;Swedish;Russian	   51	 0.07
 Swedish;German	   43	 0.06
-Italian	   40	 0.05
-Russian;Finnish	   40	 0.05
+Italian	   40	 0.06
+Russian;Finnish	   40	 0.06
 Hungarian	   36	 0.05
 Afroasiatic (Other)	   35	 0.05
 Latin;Greek, Ancient (to 1453);Swedish	   35	 0.05
@@ -53,7 +53,7 @@ Esperanto	   12	 0.02
 Finnish;Swedish;German;French	   12	 0.02
 Latin;Arabic	   12	 0.02
 Sami	   12	 0.02
-Swedish;German;French	   11	 0.01
+Swedish;German;French	   11	 0.02
 Finnish;English;Russian	   10	 0.01
 Finnish;Estonian	    9	 0.01
 German;Estonian	    9	 0.01
