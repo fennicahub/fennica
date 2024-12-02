@@ -18,12 +18,8 @@ colnames(velka_list)[colnames(velka_list) == "Publication year"] <- "publication
 
 
 # change FCC to FI-MELINDA to match df.orig melindas 
-velka_list$melinda_id <- gsub(".*FCC", "FCC", velka_list$melinda_id)
-velka_list$melinda_id <- sub("FCC", "", velka_list$melinda_id)
-velka_list$melinda_id <- sub(" ", "", velka_list$melinda_id)
-velka_list$melinda_id <- sub("(FI-MELINDA)", "", velka_list$melinda_id)
+velka_list$melinda_id <- gsub(".*FCC", "(FI-MELINDA)", velka_list$melinda_id)
 
-velka_list$melinda_id <- substr(velka_list$melinda_id, start =  1, stop =  9)
 velka_list$signum <- gsub(" ", "", velka_list$Signum)
 df.orig$signum <- gsub(" ", "", df.orig$signum)
 

@@ -1,24 +1,24 @@
 Name	Count	Percentage
-Finnish	782647	68.21
-English	131240	11.44
-Swedish	111821	 9.75
-Finnish;Swedish	 27430	 2.39
-German	 14054	 1.22
-Finnish;English	 12182	 1.06
-Latin	  8567	 0.75
-Finnish;Swedish;English	  7086	 0.62
-Russian	  5401	 0.47
-Multiple languages	  4382	 0.38
-French	  3529	 0.31
-English;Finnish	  3075	 0.27
-Swedish;Finnish	  2530	 0.22
-Finnish;German	  1697	 0.15
+Finnish	782647	65.21
+English	131240	10.93
+Swedish	111821	 9.32
+Undetermined	 53828	 4.48
+Finnish;Swedish	 27430	 2.29
+German	 14054	 1.17
+Finnish;English	 12182	 1.01
+Latin	  8567	 0.71
+Finnish;Swedish;English	  7086	 0.59
+Russian	  5401	 0.45
+Multiple languages	  4382	 0.37
+French	  3529	 0.29
+English;Finnish	  3075	 0.26
+Swedish;Finnish	  2530	 0.21
+Finnish;German	  1697	 0.14
 Estonian	  1547	 0.13
-Danish	  1441	 0.13
+Danish	  1441	 0.12
 Norwegian	  1189	 0.10
 German;Finnish	  1181	 0.10
-Finnish;Swedish;English;German	  1136	 0.10
-Undetermined	   906	 0.08
+Finnish;Swedish;English;German	  1136	 0.09
 Spanish	   851	 0.07
 Finnish;Russian	   809	 0.07
 Italian	   728	 0.06
@@ -26,12 +26,12 @@ Latin;Swedish	   675	 0.06
 Hungarian	   604	 0.05
 Russian;Finnish	   544	 0.05
 Finnish;French	   542	 0.05
-Swedish;Latin	   537	 0.05
+Swedish;Latin	   537	 0.04
 Swedish;English	   505	 0.04
 Sami	   478	 0.04
 French;Finnish	   475	 0.04
 Dutch	   455	 0.04
-Finnish;Latin	   417	 0.04
+Finnish;Latin	   417	 0.03
 English;German	   398	 0.03
 Swedish;Danish;Norwegian	   384	 0.03
 Japanese	   373	 0.03
@@ -39,7 +39,7 @@ Polish	   365	 0.03
 Czech	   321	 0.03
 Spanish;Finnish	   314	 0.03
 Latin;Greek, Ancient (to 1453)	   310	 0.03
-Karelian	   300	 0.03
+Karelian	   300	 0.02
 English;Swedish	   279	 0.02
 Finnish;English;German	   275	 0.02
 Finnish;Swedish;English;German;Russian	   262	 0.02
@@ -102,10 +102,10 @@ Swedish;Danish	    63	 0.01
 Finnish;Arabic	    62	 0.01
 Finnish;Japanese	    62	 0.01
 Ukrainian	    61	 0.01
-Finnish;Esperanto	    60	 0.01
-Sami;Inari Sami	    60	 0.01
-Finnish;Swedish;English;Russian	    59	 0.01
-Greek, Modern (1453-)	    59	 0.01
+Finnish;Esperanto	    60	 0.00
+Sami;Inari Sami	    60	 0.00
+Finnish;Swedish;English;Russian	    59	 0.00
+Greek, Modern (1453-)	    59	 0.00
 English;Finnish;Swedish	    53	 0.00
 French;Swedish	    53	 0.00
 Croatian	    51	 0.00

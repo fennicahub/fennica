@@ -6887,22 +6887,23 @@ christian2numeric <- function (x) {
 #' @examples \dontrun{df <- mark_languages(c("fin;lat","eng"))}
 #' @keywords utilities
 polish_languages <- function(x) {
-  x0 <- x  # Original input
   
-  # Replace pipe delimiters with semicolons for uniformity
   x <- gsub("\\|", ";", x)
-  x[x == ""] <- NA  # Convert empty strings to NA
+  x0 <- x
   
-  # Unique entries for processing efficiency
+  # Unique entries only to speed up
   xorig <- x
   xuniq <- unique(xorig)
   x <- xuniq
   
-  # Load language abbreviation mappings
+  # Convert to polished language names as in
+  # http://www.loc.gov/marc/languages/language_code.html
+  # TODO: XML version available, read directly in R:
+  # see http://www.loc.gov/marc/languages/
   f <- system.file("extdata/language_abbreviations.csv", package = "fennica")
   abrv <- read.csv(f, sep = "\t", header = TRUE, encoding = "UTF-8")
   
-  # Identify unrecognized languages
+  # Unrecognized languages?
   unrec <- as.vector(na.omit(setdiff(
     unique(unlist(strsplit(as.character(unique(x)), ";"))),
     abrv$synonyme
@@ -6912,56 +6913,65 @@ polish_languages <- function(x) {
     warning(paste("Unidentified languages: ", paste(unrec, collapse = ";")))
   }
   
-  # Harmonize language entries
+  
+  # Vectorized approach
   x <- lapply(x, function(item) {
-    if (is.na(item)) return(NA)  # Preserve NA values
-    # Split and map abbreviations
+    # Split string into individual languages
     langs <- unlist(strsplit(item, ";"))
+    # Map abbreviations and remove unknowns
     mapped_langs <- sapply(langs, function(lang) {
       as.character(map(lang, abrv, remove.unknown = TRUE, mode = "exact.match"))
     })
-    # Remove NA and duplicates
+    # Remove NA values and duplicates
     clean_langs <- unique(na.omit(as.character(unname(mapped_langs))))
-    if (length(clean_langs) == 0) clean_langs <- NA  # If none recognized
-    paste(clean_langs, collapse = ";")  # Recombine into a single string
+    # If empty, set to NA
+    if (length(clean_langs) == 0) clean_langs <- NA
+    # Collapse back into a single string
+    paste(clean_langs, collapse = ";")
   })
   
-  # List all unique recognized languages
+  
+  # List all unique languages in the data
+  x[x %in% c("NA", "Undetermined", "und")] <- NA
   xu <- na.omit(unique(unname(unlist(strsplit(unlist(x), ";")))))
-  xu <- intersect(xu, abrv$name)  # Restrict to officially recognized languages
   
-  # Final harmonization
-  x <- sapply(strsplit(unlist(x), ";"), function(xi) {
-    paste(unique(intersect(xi, xu)), collapse = ";")
-  })
   
-  # Generate multilinguality information
+  # Only accept the official / custom abbreviations
+  # (more can be added on custom list if needed)
+  xu <- intersect(xu, abrv$name)
+  
+  # Now check just the unique and accepted ones, and collapse
+  # NOTE: the language count and multilingual fields should be fine however
+  # as they are defined above already
+  x <- sapply(strsplit(unlist(x), ";"), function (xi) {paste(unique(intersect(xi, xu)), collapse = ";")})
+  
+  # Multilinguality info
   len <- sapply(strsplit(unlist(x), ";"), length)
-  dff <- data.frame(language_count = len)
+  dff <- data.frame(language_count = len)    
   multilingual <- len > 1 | grepl("\\bMultiple languages\\b", x)
   dff$multilingual <- multilingual
   
-  # Add language columns
   dff$languages <- x
-  inds <- which(is.na(dff$languages) | dff$languages == "")
-  dff$languages[inds] <- NA  # Ensure empty or unrecognized entries are NA
+  inds <- which(dff$languages == "")
+  if (length(inds) > 0) {
+    dff$languages[inds] <- "Undetermined"
+  }
   
   # Add primary language
-  dff$language_primary <- sapply(strsplit(dff$languages, ";"),
-                                 function(x) if (length(x) > 0) x[[1]] else NA)
+  if (length(grep(";", dff$languages)) > 0) {
+    dff$language_primary <- sapply(strsplit(dff$languages, ";"),
+                                   function (x) {x[[1]]})
+  } else {
+    dff$language_primary <- dff$languages
+  }
   
-  # Convert to factors and handle trailing spaces
+  
   dff$languages <- as.factor(str_trim(dff$languages))
   dff$language_primary <- as.factor(str_trim(dff$language_primary))
   
-  # Preserve original NA rows
-  harmonized_full <- dff[match(xorig, xuniq),]
-  harmonized_full[is.na(xorig), ] <- NA
+  list(harmonized_full = dff[match(xorig, xuniq),], unrecognized = unrec)
   
-  list(harmonized_full = harmonized_full, unrecognized = unrec)
 }
-
-
 
 #' @title Polish Title
 #' @description Polish the title field.

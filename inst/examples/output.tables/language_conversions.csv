@@ -1,24 +1,25 @@
 original	language_count	multilingual	languages	language_primary	Count	Percentage
-fin	 1	FALSE	Finnish	Finnish	782592	68.21
-eng	 1	FALSE	English	English	131233	11.44
-swe	 1	FALSE	Swedish	Swedish	111813	9.75
-fin;swe	 2	TRUE	Finnish;Swedish	Finnish	 27430	2.39
-ger	 1	FALSE	German	German	 14053	1.22
-fin;eng	 2	TRUE	Finnish;English	Finnish	 12180	1.06
-lat	 1	FALSE	Latin	Latin	  8567	0.75
-fin;swe;eng	 3	TRUE	Finnish;Swedish;English	Finnish	  7085	0.62
-rus	 1	FALSE	Russian	Russian	  5399	0.47
-mul	 1	TRUE	Multiple languages	Multiple languages	  4382	0.38
-fre	 1	FALSE	French	French	  3528	0.31
-eng;fin	 2	TRUE	English;Finnish	English	  3074	0.27
-swe;fin	 2	TRUE	Swedish;Finnish	Swedish	  2530	0.22
-fin;ger	 2	TRUE	Finnish;German	Finnish	  1696	0.15
+fin	 1	FALSE	Finnish	Finnish	782592	65.2
+eng	 1	FALSE	English	English	131233	10.93
+swe	 1	FALSE	Swedish	Swedish	111813	9.32
+NA	 0	FALSE	Undetermined	Undetermined	 52912	4.41
+fin;swe	 2	TRUE	Finnish;Swedish	Finnish	 27430	2.29
+ger	 1	FALSE	German	German	 14053	1.17
+fin;eng	 2	TRUE	Finnish;English	Finnish	 12180	1.01
+lat	 1	FALSE	Latin	Latin	  8567	0.71
+fin;swe;eng	 3	TRUE	Finnish;Swedish;English	Finnish	  7085	0.59
+rus	 1	FALSE	Russian	Russian	  5399	0.45
+mul	 1	TRUE	Multiple languages	Multiple languages	  4382	0.37
+fre	 1	FALSE	French	French	  3528	0.29
+eng;fin	 2	TRUE	English;Finnish	English	  3074	0.26
+swe;fin	 2	TRUE	Swedish;Finnish	Swedish	  2530	0.21
+fin;ger	 2	TRUE	Finnish;German	Finnish	  1696	0.14
 est	 1	FALSE	Estonian	Estonian	  1547	0.13
-dan	 1	FALSE	Danish	Danish	  1441	0.13
+dan	 1	FALSE	Danish	Danish	  1441	0.12
 nor	 1	FALSE	Norwegian	Norwegian	  1189	0.1
 ger;fin	 2	TRUE	German;Finnish	German	  1181	0.1
-fin;swe;eng;ger	 4	TRUE	Finnish;Swedish;English;German	Finnish	  1136	0.1
-und	 1	FALSE	Undetermined	Undetermined	   906	0.08
+fin;swe;eng;ger	 4	TRUE	Finnish;Swedish;English;German	Finnish	  1136	0.09
+und	 0	FALSE	Undetermined	Undetermined	   906	0.08
 spa	 1	FALSE	Spanish	Spanish	   851	0.07
 fin;rus	 2	TRUE	Finnish;Russian	Finnish	   809	0.07
 ita	 1	FALSE	Italian	Italian	   728	0.06
@@ -26,12 +27,12 @@ lat;swe	 2	TRUE	Latin;Swedish	Latin	   675	0.06
 hun	 1	FALSE	Hungarian	Hungarian	   604	0.05
 rus;fin	 2	TRUE	Russian;Finnish	Russian	   544	0.05
 fin;fre	 2	TRUE	Finnish;French	Finnish	   542	0.05
-swe;lat	 2	TRUE	Swedish;Latin	Swedish	   537	0.05
+swe;lat	 2	TRUE	Swedish;Latin	Swedish	   537	0.04
 swe;eng	 2	TRUE	Swedish;English	Swedish	   505	0.04
 smi	 1	FALSE	Sami	Sami	   478	0.04
 fre;fin	 2	TRUE	French;Finnish	French	   475	0.04
 dut	 1	FALSE	Dutch	Dutch	   455	0.04
-fin;lat	 2	TRUE	Finnish;Latin	Finnish	   417	0.04
+fin;lat	 2	TRUE	Finnish;Latin	Finnish	   417	0.03
 eng;ger	 2	TRUE	English;German	English	   398	0.03
 swe;dan;nor	 3	TRUE	Swedish;Danish;Norwegian	Swedish	   382	0.03
 jpn	 1	FALSE	Japanese	Japanese	   373	0.03
@@ -39,7 +40,7 @@ pol	 1	FALSE	Polish	Polish	   365	0.03
 cze	 1	FALSE	Czech	Czech	   321	0.03
 spa;fin	 2	TRUE	Spanish;Finnish	Spanish	   314	0.03
 lat;grc	 2	TRUE	Latin;Greek, Ancient (to 1453)	Latin	   310	0.03
-krl	 1	FALSE	Karelian	Karelian	   300	0.03
+krl	 1	FALSE	Karelian	Karelian	   300	0.02
 eng;swe	 2	TRUE	English;Swedish	English	   279	0.02
 fin;eng;ger	 3	TRUE	Finnish;English;German	Finnish	   275	0.02
 fin;swe;eng;ger;rus	 5	TRUE	Finnish;Swedish;English;German;Russian	Finnish	   261	0.02
@@ -102,10 +103,10 @@ swe;dan	 2	TRUE	Swedish;Danish	Swedish	    63	0.01
 fin;jpn	 2	TRUE	Finnish;Japanese	Finnish	    62	0.01
 ukr	 1	FALSE	Ukrainian	Ukrainian	    61	0.01
 fin;ara	 2	TRUE	Finnish;Arabic	Finnish	    61	0.01
-fin;epo	 2	TRUE	Finnish;Esperanto	Finnish	    60	0.01
-smi;smn	 2	TRUE	Sami;Inari Sami	Sami	    60	0.01
-gre	 1	FALSE	Greek, Modern (1453-)	Greek, Modern (1453-)	    59	0.01
-fin;swe;eng;rus	 4	TRUE	Finnish;Swedish;English;Russian	Finnish	    59	0.01
+fin;epo	 2	TRUE	Finnish;Esperanto	Finnish	    60	0
+smi;smn	 2	TRUE	Sami;Inari Sami	Sami	    60	0
+gre	 1	FALSE	Greek, Modern (1453-)	Greek, Modern (1453-)	    59	0
+fin;swe;eng;rus	 4	TRUE	Finnish;Swedish;English;Russian	Finnish	    59	0
 eng;fin;swe	 3	TRUE	English;Finnish;Swedish	English	    53	0
 fin;fin	 1	FALSE	Finnish	Finnish	    53	0
 fre;swe	 2	TRUE	French;Swedish	French	    53	0
@@ -292,7 +293,7 @@ rus;fre	 2	TRUE	Russian;French	Russian	     8	0
 fiu;rus	 2	TRUE	Finno-Ugrian (Other);Russian	Finno-Ugrian (Other)	     8	0
 lat;dut	 2	TRUE	Latin;Dutch	Latin	     8	0
 fin;mul;eng	 3	TRUE	Finnish;Multiple languages;English	Finnish	     8	0
-fit	 0	FALSE	NA	NA	     7	0
+fit	 0	FALSE	Undetermined	Undetermined	     7	0
 fin;swe;epo	 3	TRUE	Finnish;Swedish;Esperanto	Finnish	     7	0
 eng;grc	 2	TRUE	English;Greek, Ancient (to 1453)	English	     7	0
 fin;eng;fre;ger	 4	TRUE	Finnish;English;French;German	Finnish	     7	0
@@ -934,7 +935,7 @@ eng;bur	 2	TRUE	English;Burmese	English	     1	0
 ger;eng;cze;pol	 4	TRUE	German;English;Czech;Polish	German	     1	0
 tuk	 1	FALSE	Turkmen	Turkmen	     1	0
 fin;fil;tgl	 3	TRUE	Finnish;Filipino;Tagalog	Finnish	     1	0
-mari	 0	FALSE	NA	NA	     1	0
+mari	 0	FALSE	Undetermined	Undetermined	     1	0
 por;umb	 2	TRUE	Portuguese;Umbundu	Portuguese	     1	0
 rus;tat	 2	TRUE	Russian;Tatar	Russian	     1	0
 eng;rus;tat	 3	TRUE	English;Russian;Tatar	English	     1	0
@@ -1311,7 +1312,7 @@ swe;fre;rus	 3	TRUE	Swedish;French;Russian	Swedish	     1	0
 ben	 1	FALSE	Bengali	Bengali	     1	0
 fin;ukr;eng	 3	TRUE	Finnish;Ukrainian;English	Finnish	     1	0
 fin;swe;eng;ger;fre;rus;spa;ita;jpa;chi	 9	TRUE	Finnish;Swedish;English;German;French;Russian;Spanish;Italian;Chinese	Finnish	     1	0
-kwn	 0	FALSE	NA	NA	     1	0
+kwn	 0	FALSE	Undetermined	Undetermined	     1	0
 fre;spa;ita;por	 4	TRUE	French;Spanish;Italian;Portuguese	French	     1	0
 fin;kar	 2	TRUE	Finnish;Karen languages	Finnish	     1	0
 eng;ita;spa;fre	 4	TRUE	English;Italian;Spanish;French	English	     1	0
@@ -1415,7 +1416,7 @@ fin;eng;ger;fre;swe	 5	TRUE	Finnish;English;German;French;Swedish	Finnish	     1
 eng;ger;sme	 3	TRUE	English;German;Northern Sami	English	     1	0
 fin;eng;ger;swe;mul	 5	TRUE	Finnish;English;German;Swedish;Multiple languages	Finnish	     1	0
 ger;slo	 2	TRUE	German;Slovak	German	     1	0
-engestfingerhunitalitlavnorpolrusswe	 0	FALSE	NA	NA	     1	0
+engestfingerhunitalitlavnorpolrusswe	 0	FALSE	Undetermined	Undetermined	     1	0
 swe;nor;dan;fin	 4	TRUE	Swedish;Norwegian;Danish;Finnish	Swedish	     1	0
 swe;ger;fin;eng	 4	TRUE	Swedish;German;Finnish;English	Swedish	     1	0
 ido;art;swe	 3	TRUE	Ido;Artificial (Other);Swedish	Ido	     1	0

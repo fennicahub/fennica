@@ -1,23 +1,23 @@
 original	language_count	multilingual	languages	language_primary	Count	Percentage
-Finnish	 1	FALSE	Finnish	Finnish	36772	50.59
-Swedish	 1	FALSE	Swedish	Swedish	21176	29.13
-German	 1	FALSE	German	German	 2504	3.44
-Finnish;Swedish	 2	TRUE	Finnish;Swedish	Finnish	 2397	3.3
-Latin	 1	FALSE	Latin	Latin	 2386	3.28
-Russian	 1	FALSE	Russian	Russian	 2082	2.86
-English	 1	FALSE	English	English	 1215	1.67
-French	 1	FALSE	French	French	  669	0.92
+Finnish	 1	FALSE	Finnish	Finnish	36772	50.04
+Swedish	 1	FALSE	Swedish	Swedish	21176	28.82
+German	 1	FALSE	German	German	 2504	3.41
+Finnish;Swedish	 2	TRUE	Finnish;Swedish	Finnish	 2397	3.26
+Latin	 1	FALSE	Latin	Latin	 2386	3.25
+Russian	 1	FALSE	Russian	Russian	 2082	2.83
+English	 1	FALSE	English	English	 1215	1.65
+Undetermined	 0	FALSE	Undetermined	Undetermined	  884	1.2
+French	 1	FALSE	French	French	  669	0.91
 Finnish;English	 2	TRUE	Finnish;English	Finnish	  299	0.41
 Swedish;Latin	 2	TRUE	Swedish;Latin	Swedish	  286	0.39
 Swedish;Finnish	 2	TRUE	Swedish;Finnish	Swedish	  204	0.28
 Multiple languages	 1	TRUE	Multiple languages	Multiple languages	  190	0.26
-Finnish;Swedish;English	 3	TRUE	Finnish;Swedish;English	Finnish	  150	0.21
+Finnish;Swedish;English	 3	TRUE	Finnish;Swedish;English	Finnish	  150	0.2
 Danish	 1	FALSE	Danish	Danish	  148	0.2
 Finnish;German	 2	TRUE	Finnish;German	Finnish	  140	0.19
 Finnish;Swedish;Multiple languages	 3	TRUE	Finnish;Swedish;Multiple languages	Finnish	  130	0.18
 Finnish;Russian	 2	TRUE	Finnish;Russian	Finnish	  108	0.15
 Estonian	 1	FALSE	Estonian	Estonian	  100	0.14
-Undetermined	 1	FALSE	Undetermined	Undetermined	   94	0.13
 Latin;Swedish	 2	TRUE	Latin;Swedish	Latin	   87	0.12
 Latin;Persian	 2	TRUE	Latin;Persian	Latin	   78	0.11
 Finnish;French	 2	TRUE	Finnish;French	Finnish	   69	0.09
@@ -27,8 +27,8 @@ Swedish;French	 2	TRUE	Swedish;French	Swedish	   59	0.08
 Norwegian	 1	FALSE	Norwegian	Norwegian	   58	0.08
 Finnish;Swedish;Russian	 3	TRUE	Finnish;Swedish;Russian	Finnish	   51	0.07
 Swedish;German	 2	TRUE	Swedish;German	Swedish	   43	0.06
-Russian;Finnish	 2	TRUE	Russian;Finnish	Russian	   40	0.06
-Italian	 1	FALSE	Italian	Italian	   40	0.06
+Russian;Finnish	 2	TRUE	Russian;Finnish	Russian	   40	0.05
+Italian	 1	FALSE	Italian	Italian	   40	0.05
 Hungarian	 1	FALSE	Hungarian	Hungarian	   36	0.05
 Latin;Greek, Ancient (to 1453);Swedish	 3	TRUE	Latin;Greek, Ancient (to 1453);Swedish	Latin	   35	0.05
 Afroasiatic (Other)	 1	FALSE	Afroasiatic (Other)	Afroasiatic (Other)	   35	0.05
@@ -53,7 +53,7 @@ Latin;Arabic	 2	TRUE	Latin;Arabic	Latin	   12	0.02
 Finnish;Swedish;German;French	 4	TRUE	Finnish;Swedish;German;French	Finnish	   12	0.02
 Sami	 1	FALSE	Sami	Sami	   12	0.02
 Esperanto	 1	FALSE	Esperanto	Esperanto	   12	0.02
-Swedish;German;French	 3	TRUE	Swedish;German;French	Swedish	   11	0.02
+Swedish;German;French	 3	TRUE	Swedish;German;French	Swedish	   11	0.01
 Finnish;English;Russian	 3	TRUE	Finnish;English;Russian	Finnish	   10	0.01
 German;Estonian	 2	TRUE	German;Estonian	German	    9	0.01
 Swedish;Persian	 2	TRUE	Swedish;Persian	Swedish	    9	0.01

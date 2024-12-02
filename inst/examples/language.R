@@ -66,9 +66,11 @@ id$Discarded <- sapply(strsplit(id$Language, ";"), function(lang) {
 })
 
 # Write the result to a CSV file without row numbers
-write.csv(id, file = file_discarded_id, row.names = FALSE, quote = FALSE)
+#write.csv(id, file = file_discarded_id, row.names = FALSE, quote = FALSE)
 
-
+tmp3 <- write_xtable(id, file_discarded_id, 
+                     count = TRUE, 
+                     add.percentages = FALSE)
 
 
 # ------------------------------------------------------------
