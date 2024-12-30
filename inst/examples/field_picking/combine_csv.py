@@ -38,7 +38,7 @@ df_callnumbers = pd.read_table('../../fen-callnumbers-20220902.tsv.gz', compress
 df_callnumbers.head(50)
 
 #%%
-# create new column where entries in f035 separated by space are combined into lists
+# create new column where entries in f001 separated by space are combined into lists
 df_callnumbers["f035a_list"] = df_callnumbers["f035a"].str.split(" ")
 #%%
 # explode lists of more than value into more than one row
@@ -48,7 +48,8 @@ df_callnumbers_exploded = df_callnumbers.explode("f035a_list", ignore_index=True
 df_callnumbers_exp_filtered = df_callnumbers_exploded[df_callnumbers_exploded["f035a_list"].str.startswith("FCC", na = False)]
 #%%
 # rename the FCC to (FI-MELINDA) 
-df_callnumbers_exp_filtered["melinda_id"] = df_callnumbers_exp_filtered["f035a_list"].replace("FCC", "(FI-MELINDA)", regex=True)
+# df_callnumbers_exp_filtered["melinda_id"] = df_callnumbers_exp_filtered["f035a_list"].replace("FCC", "(FI-MELINDA)", regex=True)
+df_callnumbers_exp_filtered["melinda_id"] = df_callnumbers_exp_filtered["f035a_list"].replace("FCC", "", regex=True)
 #%%
 # drop unnecessary columns
 df_callnumbers_exp_filtered.drop(columns=["biblionumber","holding_id","f035a","f035a_list"], inplace=True)
@@ -57,10 +58,10 @@ df_callnumbers_exp_filtered.drop(columns=["biblionumber","holding_id","f035a","f
 df_callnumbers_grouped = df_callnumbers_exp_filtered.groupby("melinda_id").agg(lambda x: '|'.join([str(y) for y in x]))
 #%%
 # make new callnumbers df with proper column names
-df_callnumbers_final = pd.DataFrame(df_callnumbers_grouped.reset_index().to_numpy(), columns=pd.MultiIndex.from_tuples([("035","a"),("callnumbers","a")]))
-#%%
+df_callnumbers_final = pd.DataFrame(df_callnumbers_grouped.reset_index().to_numpy(), 
+                                    columns=pd.MultiIndex.from_tuples([("001","-"),("callnumbers","a")]))
 df_callnumbers_final
-
+#%%
 #%%
 #df.merge(df_callnumbers_final, on=[("035","a")], how="left")
 #%%
@@ -81,7 +82,7 @@ for i, chunk in enumerate(csv_filenames_chunks):
     df_temps = []
     for filename in chunk:
         # load a pivoted csv
-        df_temp = pd.read_csv(f"{folder}/{filename}", sep='\t', header=[0,1,], index_col=0, low_memory=False)
+        df_temp = pd.read_csv(f"{folder}/{filename}", sep='\t', header=[0,1,], index_col=0, low_memory=False, dtype=str)
         # reset it's index to make record_number column again
         df_temp.reset_index(inplace=True)
         df_temps += df_temp, 
@@ -90,20 +91,20 @@ for i, chunk in enumerate(csv_filenames_chunks):
     df_temp = pd.concat(df_temps, ignore_index=True)
 
      # Split the '035' column by "|" into lists and add the new column using pd.concat()
-    new_col_035_list = df_temp[("035", "a")].str.split("|")
-    df_temp = pd.concat([df_temp, pd.DataFrame({("035_list", "a"): new_col_035_list})], axis=1)
+    new_col_035_list = df_temp[("001", "-")].str.split("|")
+    df_temp = pd.concat([df_temp, pd.DataFrame({("001_list", "-"): new_col_035_list})], axis=1)
 
     # Create a new column , which is a list instead of melinda ID's separated by |
     #df_temp[("035_list","a")] = df_temp[("035", "a")].str.split("|")
     # Explode each list into its own row
-    df_temp_exploded = df_temp.explode([("035_list", "a")], ignore_index=True)
+    df_temp_exploded = df_temp.explode([("001_list", "-")], ignore_index=True)
     # Drop original column with lists
-    df_temp_exploded.drop(columns=[("035","a")], inplace=True)
+    df_temp_exploded.drop(columns=[("001","-")], inplace=True)
     # Rename new exploded column into name of original field
-    df_temp_exploded.rename(columns={"035_list":"035"},inplace=True)
+    df_temp_exploded.rename(columns={"001_list":"001"},inplace=True)
 
-    # add callnumbers from another dataframe on the "035","a" column as index
-    df_temp_merged = df_temp_exploded.merge(df_callnumbers_final, on=[("035","a")], how="left")
+    # add callnumbers from another dataframe on the "001","-" column as index
+    df_temp_merged = df_temp_exploded.merge(df_callnumbers_final, on=[("001","-")], how="left")
 
     # save new dataframe as csv
     df_temp_merged.to_csv(f"{path_csvs}//pivoted_callnumbered_csvs/piv_callnum_chunk_{i}.csv", sep = '\t', index = False)
@@ -115,7 +116,7 @@ for i, chunk in enumerate(csv_filenames_chunks):
 dfs_cols = []
 for i, _ in enumerate(csv_filenames_chunks):
     # load a pivoted csv
-    df_temp = pd.read_csv(f"{path_csvs}/pivoted_callnumbered_csvs/piv_callnum_chunk_{i}.csv", sep='\t', header=[0,1,], index_col=0, nrows=30)
+    df_temp = pd.read_csv(f"{path_csvs}/pivoted_callnumbered_csvs/piv_callnum_chunk_{i}.csv", sep='\t', header=[0,1,], index_col=0, nrows=30, dtype=str)
     # reset it's index to make record_number column again
     df_temp.reset_index(inplace=True)
     # print the number of columns in the chunk
@@ -134,7 +135,7 @@ df_fullindex = pd.DataFrame(columns = full_index)
 
 for i, _ in tqdm(enumerate(csv_filenames_chunks)):
     # load a pivoted csv
-    df_temp = pd.read_csv(f"{path_csvs}/pivoted_callnumbered_csvs/piv_callnum_chunk_{i}.csv", sep='\t', header=[0,1,], index_col=0,low_memory=False)
+    df_temp = pd.read_csv(f"{path_csvs}/pivoted_callnumbered_csvs/piv_callnum_chunk_{i}.csv", sep='\t', header=[0,1,], index_col=0,low_memory=False, dtype=str)
 
     # reset it's index to make record_number column again
     df_temp.reset_index(inplace=True)
