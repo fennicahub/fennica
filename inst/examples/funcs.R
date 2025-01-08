@@ -6893,24 +6893,31 @@ polish_languages <- function(x) {
   # http://www.loc.gov/marc/languages/language_code.html
   f <- system.file("extdata/language_abbreviations.csv", package = "fennica")
   abrv <- read.csv(f, sep = "\t", header = TRUE, encoding = "UTF-8")
+  
+  # Preprocess input data: replace empty strings with NA
+  x[x == "" | x == " "] <- NA  # Replace empty strings with NA
+  
+  # Convert pipe '|' to semicolon ';'
   x <- gsub("\\|", ";", x)
   
   # Create a mapping of abbreviations to full language names using abrv
   # Use the match() function for mapping
   df.transformed <- data.frame(
     language_original = x,
+    
     language_count = sapply(x, function(lang) {
-      if (is.na(lang)) return(0)
-      length(unlist(strsplit(lang, "\\;")))  # Count the number of languages separated by '|'
+      if (is.na(lang)) return(NA)  # Return NA if the language is NA
+      length(unlist(strsplit(lang, "\\;")))  # Count the number of languages separated by ';'
     }),
     
     multiple = sapply(x, function(lang) {
+      if (is.na(lang)) return(NA)  # Return NA if the language is NA
       lang_count <- length(unlist(strsplit(lang, "\\;")))
       return(lang_count > 1)  # TRUE if multiple languages, FALSE otherwise
     }),
     
     full_language_name = sapply(x, function(lang) {
-      if (is.na(lang)) return(NA)
+      if (is.na(lang)) return(NA)  # Return NA if the language is NA
       full_langs <- unlist(strsplit(lang, "\\;"))
       
       # Map abbreviations to full names, and mark unrecognized abbreviations
@@ -6927,7 +6934,7 @@ polish_languages <- function(x) {
     }),
     
     language_primary = sapply(x, function(lang) {
-      if (is.na(lang)) return(NA)
+      if (is.na(lang)) return(NA)  # Return NA if the language is NA
       first_lang <- unlist(strsplit(lang, "\\;"))[1]
       match_idx <- match(first_lang, abrv$synonyme)  # Find the index of the abbreviation in abrv$synonyme
       if (!is.na(match_idx)) {
@@ -6940,7 +6947,6 @@ polish_languages <- function(x) {
   
   return(df.transformed)
 }
-
 
 #' @title Polish Title
 #' @description Polish the title field.

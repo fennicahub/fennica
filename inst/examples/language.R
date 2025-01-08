@@ -77,7 +77,7 @@ file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 file_accepted_19 <- paste0(output.folder, field, "_accepted_19.csv")
 
 #Run melindas_19.R to get melindas for 1809-1917
-source("melindas_19.R")
+#source("melindas_19.R")
 
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
 field <- "language"
