@@ -72,7 +72,7 @@ Number of titles assigned with each language (top-10). For a complete list, see 
 #| echo = FALSE,
 #| results = "asis"
 x <- top(df_19, "full_language_name")
-tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
+tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df_19)), 1))
 colnames(tab) <- c("Language", "Entries (n)", "Fraction (%)")
 kable(head(tab, 10))
 ```
