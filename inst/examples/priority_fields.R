@@ -1,8 +1,8 @@
 #the file need to be zipped, otherwise it's too big to be put on github
 # Download the zip file
-#url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/priority_fields.csv"
-#download.file(url, destfile = "priority_fields.csv")
-#unzip("priority_fields.zip",exdir=".")
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/priority_fields.csv"
+download.file(url, destfile = "priority_fields.csv")
+unzip("priority_fields.zip",exdir=".")
 
 # Read the CSV file, explicitly setting the first column to character
 # Count the number of columns in the file

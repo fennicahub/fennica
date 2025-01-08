@@ -6891,8 +6891,7 @@ polish_languages <- function(x) {
   
   # Convert to polished language names as in
   # http://www.loc.gov/marc/languages/language_code.html
-  f <- system.file("extdata/language_abbreviations.csv", package = "fennica")
-  abrv <- read.csv(f, sep = "\t", header = TRUE, encoding = "UTF-8")
+  abrv <- read.csv("language_abbreviations.csv", sep = "\t", header = TRUE, encoding = "UTF-8")
   
   # Preprocess input data: replace empty strings with NA
   x[x == "" | x == " "] <- NA  # Replace empty strings with NA
