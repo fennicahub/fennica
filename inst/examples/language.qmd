@@ -22,22 +22,23 @@ Additionally, an error list is generated, consisting of unrecognized language in
 
 ## Complete Dataset Overview
 
-[Unique languages](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/languages_accepted.csv):  `r length(unique(unlist(strsplit(as.character(df$languages), ";"))))-1` 
+[Unique languages](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/languages_accepted.csv):  `r length(unique(unlist(strsplit(as.character(df$language_original), ";"))))-1` 
 
 [Unique primary languages](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_primary_accepted.csv): `r length(unique(df$language_primary))-1` 
 
-`r sum(!df$multilingual & df$language_count > 0, na.rm = TRUE)` single-language entries (`r round(100 * mean(!df$multilingual & df$language_count > 0, na.rm = TRUE), 2)`%)
+`r sum(!df$multiple & df$full_language_name != "Multiple languages", na.rm = TRUE)` single-language entries (`r round(100 * mean(!df$multiple & df$full_language_name != "Multiple languages", na.rm = TRUE), 2)`%)
 
-`r sum(df$multilingual, na.rm = TRUE)` multilingual entries , accounting for `r round(100 * mean(df$multilingual, na.rm = TRUE), 2)`% of the total. This includes entries explicitly coded as "mul" (Multiple languages) as well as those with more than one language listed for a single book.
 
-There are `r sum(df$languages == "Undetermined",na.rm = TRUE)` single-language entries marked as only "Undetermined", coded as "und" in the dataset, accounting for (`r round(100*mean(df$languages == "Undetermined",na.rm = TRUE), 2)`%) of the total. 
+`r sum(df$multiple | df$full_language_name == "Multiple languages" , na.rm = TRUE)` multilingual entries , accounting for `r round(100 * mean(df$multiple | df$full_language_name == "Multiple languages", na.rm = TRUE), 2)`% of the total. This includes entries explicitly coded as "mul" (Multiple languages) as well as those with more than one language listed for a single book.
+
+There are `r sum(df$full_language_name == "Undetermined",na.rm = TRUE)` single-language entries marked as only "Undetermined", coded as "und", accounting for (`r round(100*mean(df$full_language_name == "Undetermined",na.rm = TRUE), 2)`%) of the total. 
  
-There are `r sum(is.na(df$languages))` missing values in the dataset,accounting for (`r round(100*mean(is.na(df$languages)), 2)`%) of the total. 
+There are `r sum(is.na(df$language_original))` missing values in the dataset,accounting for (`r round(100*mean(is.na(df$language_original)), 2)`%) of the total. 
 
-[Unrecognized language](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_discarded.csv) provides details of languages that were discarded: `r sum(df$language_count == 0, na.rm = TRUE)` 
+[Unrecognized languages](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_discarded.csv) provides details of languages that were discarded, in total: `r sum(!is.na(tmp_unrecognized$unrecognized_language))`. 
 Additionally, the [Error list](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_discarded_id.csv) contains ID numbers of entries associated with these discarded languages, intended for librarian review.
 
-[Conversions from raw to preprocessed language entries](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_conversions.csv)
+[Conversions from raw to preprocessed language entries](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/full_language_name_accepted.csv)
 
 New custom abbreviations can be added in [this table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_abbreviations.csv).
 
@@ -45,19 +46,19 @@ New custom abbreviations can be added in [this table](dataTable/data_table.html?
 
 ## Subset Analysis: 1809-1917
 
-[Unique languages (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/languages_accepted_19.csv): `r length(unique(unlist(strsplit(as.character(df_19$languages), ";"))))-1`
+[Unique languages (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/languages_accepted_19.csv): `r length(unique(unlist(strsplit(as.character(df_19$language_original), ";"))))-1`
 
 [Unique primary languages  (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_primary_accepted_19.csv): `r length(unique(df_19$language_primary))-1` 
 
-`r sum(!df_19$multilingual & df_19$language_count > 0, na.rm = TRUE)` single-language entries (`r round(100 * mean(!df_19$multilingual & df_19$language_count > 0, na.rm = TRUE), 2)`%)
+`r sum(!df_19$multiple & df_19$full_language_name != "Multiple languages", na.rm = TRUE)` single-language entries (`r round(100 * mean(!df_19$multiple & df_19$full_language_name != "Multiple languages", na.rm = TRUE), 2)`%)
 
-`r sum(df_19$multilingual, na.rm = TRUE)` multilingual entries (`r round(100 * mean(df_19$multilingual, na.rm = TRUE), 2)`%).
 
-There are `r sum(df_19$languages == "Undetermined", na.rm = TRUE)` entries marked as "Undetermined".
+`r sum(df_19$multiple | df_19$full_language_name == "Multiple languages" , na.rm = TRUE)` multilingual entries , accounting for `r round(100 * mean(df_19$multiple | df_19$full_language_name == "Multiple languages", na.rm = TRUE), 2)`% of the total. This includes entries explicitly coded as "mul" (Multiple languages) as well as those with more than one language listed for a single book.
 
-There are `r sum(is.na(df_19$languages))` missing values in the dataset,accounting for (`r round(100*mean(is.na(df_19$languages)), 2)`%) of the total. 
+There are `r sum(df_19$full_language_name == "Undetermined",na.rm = TRUE)` entries marked as "Undetermined".
 
-Discarded languages: `r sum(df_19$language_count == 0, na.rm = TRUE)` 
+There are `r sum(is.na(df_19$language_original))` missing values in the dataset,accounting for (`r round(100*mean(is.na(df_19$language_original)), 2)`%) of the total. 
+
 
 
 [Download language harmonized dataset (1809-1917)](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_19.csv)
@@ -70,7 +71,7 @@ Number of titles assigned with each language (top-10). For a complete list, see 
 #| label = "summarylang2",
 #| echo = FALSE,
 #| results = "asis"
-x <- top(df_19, "languages")
+x <- top(df_19, "full_language_name")
 tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
 colnames(tab) <- c("Language", "Entries (n)", "Fraction (%)")
 kable(head(tab, 10))
@@ -85,7 +86,7 @@ Title count per language (including multi-language documents; note the log10 sca
 #| warning = FALSE,
 #| fig.width = 9,
 #| fig.height = 7
-top_plot(df_19, "languages", ntop = ntop, log10 = TRUE) + labs(y = "Entries (n)")
+top_plot(df_19, "full_language_name", ntop = ntop, log10 = TRUE) + labs(y = "Entries (n)")
 ```
 
 

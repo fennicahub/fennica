@@ -6882,96 +6882,65 @@ christian2numeric <- function (x) {
 #' @param x language field (a vector)
 #' @return data.frame with separate fields for different languages
 #' @export
-#' @author Leo Lahti \email{leo.lahti@@iki.fi}
+#' @author Leo Lahti \email{leo.lahti@@iki.fi}, Julia  Matveeva \email{yulmat@utu.fi}
 #' @references See citation("fennica")
 #' @examples \dontrun{df <- mark_languages(c("fin;lat","eng"))}
 #' @keywords utilities
+
 polish_languages <- function(x) {
-  
-  x <- gsub("\\|", ";", x)
-  x0 <- x
-  
-  # Unique entries only to speed up
-  xorig <- x
-  xuniq <- unique(xorig)
-  x <- xuniq
   
   # Convert to polished language names as in
   # http://www.loc.gov/marc/languages/language_code.html
-  # TODO: XML version available, read directly in R:
-  # see http://www.loc.gov/marc/languages/
   f <- system.file("extdata/language_abbreviations.csv", package = "fennica")
   abrv <- read.csv(f, sep = "\t", header = TRUE, encoding = "UTF-8")
+  x <- gsub("\\|", ";", x)
   
-  # Unrecognized languages?
-  unrec <- as.vector(na.omit(setdiff(
-    unique(unlist(strsplit(as.character(unique(x)), ";"))),
-    abrv$synonyme
-  )))
-  
-  if (length(unrec) > 0) {
-    warning(paste("Unidentified languages: ", paste(unrec, collapse = ";")))
-  }
-  
-  
-  # Vectorized approach
-  x <- lapply(x, function(item) {
-    # Split string into individual languages
-    langs <- unlist(strsplit(item, ";"))
-    # Map abbreviations and remove unknowns
-    mapped_langs <- sapply(langs, function(lang) {
-      as.character(map(lang, abrv, remove.unknown = TRUE, mode = "exact.match"))
+  # Create a mapping of abbreviations to full language names using abrv
+  # Use the match() function for mapping
+  df.transformed <- data.frame(
+    language_original = x,
+    language_count = sapply(x, function(lang) {
+      if (is.na(lang)) return(0)
+      length(unlist(strsplit(lang, "\\;")))  # Count the number of languages separated by '|'
+    }),
+    
+    multiple = sapply(x, function(lang) {
+      lang_count <- length(unlist(strsplit(lang, "\\;")))
+      return(lang_count > 1)  # TRUE if multiple languages, FALSE otherwise
+    }),
+    
+    full_language_name = sapply(x, function(lang) {
+      if (is.na(lang)) return(NA)
+      full_langs <- unlist(strsplit(lang, "\\;"))
+      
+      # Map abbreviations to full names, and mark unrecognized abbreviations
+      full_names <- sapply(full_langs, function(l) {
+        match_idx <- match(l, abrv$synonyme)  # Find the index of the abbreviation in abrv$synonyme
+        if (!is.na(match_idx)) {
+          return(abrv$name[match_idx])  # Return the full name from abrv$name
+        } else {
+          return("Unrecognized")  # Mark as unrecognized if no match is found
+        }
+      })
+      
+      paste(full_names, collapse = ";")  # Use ";" to separate full names
+    }),
+    
+    language_primary = sapply(x, function(lang) {
+      if (is.na(lang)) return(NA)
+      first_lang <- unlist(strsplit(lang, "\\;"))[1]
+      match_idx <- match(first_lang, abrv$synonyme)  # Find the index of the abbreviation in abrv$synonyme
+      if (!is.na(match_idx)) {
+        return(abrv$name[match_idx])  # Return the full name of the primary language
+      } else {
+        return("Unrecognized")  # Mark as unrecognized if no match is found
+      }
     })
-    # Remove NA values and duplicates
-    clean_langs <- unique(na.omit(as.character(unname(mapped_langs))))
-    # If empty, set to NA
-    if (length(clean_langs) == 0) clean_langs <- NA
-    # Collapse back into a single string
-    paste(clean_langs, collapse = ";")
-  })
+  )
   
-  
-  # List all unique languages in the data
-  x[x %in% c("NA", "Undetermined", "und")] <- NA
-  xu <- na.omit(unique(unname(unlist(strsplit(unlist(x), ";")))))
-  
-  
-  # Only accept the official / custom abbreviations
-  # (more can be added on custom list if needed)
-  xu <- intersect(xu, abrv$name)
-  
-  # Now check just the unique and accepted ones, and collapse
-  # NOTE: the language count and multilingual fields should be fine however
-  # as they are defined above already
-  x <- sapply(strsplit(unlist(x), ";"), function (xi) {paste(unique(intersect(xi, xu)), collapse = ";")})
-  
-  # Multilinguality info
-  len <- sapply(strsplit(unlist(x), ";"), length)
-  dff <- data.frame(language_count = len)    
-  multilingual <- len > 1 | grepl("\\bMultiple languages\\b", x)
-  dff$multilingual <- multilingual
-  
-  dff$languages <- x
-  inds <- which(dff$languages == "")
-  if (length(inds) > 0) {
-    dff$languages[inds] <- "Undetermined"
-  }
-  
-  # Add primary language
-  if (length(grep(";", dff$languages)) > 0) {
-    dff$language_primary <- sapply(strsplit(dff$languages, ";"),
-                                   function (x) {x[[1]]})
-  } else {
-    dff$language_primary <- dff$languages
-  }
-  
-  
-  dff$languages <- as.factor(str_trim(dff$languages))
-  dff$language_primary <- as.factor(str_trim(dff$language_primary))
-  
-  list(harmonized_full = dff[match(xorig, xuniq),], unrecognized = unrec)
-  
+  return(df.transformed)
 }
+
 
 #' @title Polish Title
 #' @description Polish the title field.

@@ -82,7 +82,7 @@ df.orig$publication_time <- ifelse(
 # Create the new column 'literary_genre_book' based on the conditions
 df.orig <- df.orig %>%
   mutate(literary_genre_book = ifelse(
-    type_of_record %in% c("Language material") &
+    type_of_record %in% c("Language material") & #leader/06 = a
       bibliographic_level %in% c("Monograph/Item"),
     substr(`008`, start =  34, stop =  34),# Extract the  34th character from the '008' column
     "NA"

@@ -3,11 +3,9 @@ field <- "language"
 
 # Harmonize the raw data
 out <- polish_languages(df.orig[[field]])
-df.tmp <- out$harmonized_full
+df.tmp <- out
 # Reset the index to convert it into a single-index DataFrame
 row.names(df.tmp) <- NULL
-
-
 
 # Collect the results into a data.frame
 df.tmp$melinda_id <- df.orig$melinda_id
@@ -15,62 +13,51 @@ df.tmp$melinda_id <- df.orig$melinda_id
 
 # Define output files
 file_discarded <- paste0(output.folder, field, "_discarded.csv")
-file_accepted <- paste0(output.folder, field, "_accepted.csv")
 file_discarded_id <- paste0(output.folder, field, "_discarded_id.csv")
+file_accepted <- paste0(output.folder, field, "_accepted.csv")
 
 # ------------------------------------------------------------
 
 # Generate data summaries for the whole data set 
 
 message("Accepted languages")
-for (myfield in c("languages", "language_primary")) {
+for (myfield in c("full_language_name", "language_primary")) {
   tmp <- write_xtable(df.tmp[[myfield]], paste(output.folder, myfield, "_accepted.csv", sep = ""), 
                       count = TRUE, 
                       add.percentages = TRUE)
 }
 
-message("Language conversions")
-tab <- cbind(original = df.orig[[field]], df.tmp[, 1:4])
-tmp1 <- write_xtable(tab, paste(output.folder, field, "_conversions.csv", sep = ""), 
-                    count = TRUE,
-                    add.percentages = TRUE)
-
 message("Language discarded")
 # Original entries that were converted into NA
-s <- unlist(strsplit(df.orig$language, ";"))
-original.na <- s[s %in% out$unrecognized]
+
+tmp_unrecognized <- df.tmp %>%
+  filter(grepl("Unrecognized", full_language_name))
+
+tmp_unrecognized <- tmp_unrecognized %>% select(-c(language_count, multiple, language_primary))
+
+orig_split <- strsplit(as.character(tmp_unrecognized$language_original), ";")
+full_split <- strsplit(as.character(tmp_unrecognized$full_language_name), ";")
+
+# Extract the unrecognized abbreviation for each row
+tmp_unrecognized$unrecognized_language <- sapply(1:length(orig_split), function(i) {
+  # Find the index of "Unrecognized" in the full_language_name
+  unrecognized_index <- which(full_split[[i]] == "Unrecognized")
+  
+  # Use that index to extract the corresponding abbreviation from language_original
+  orig_split[[i]][unrecognized_index]
+})
+
+select(tmp_unrecognized, melinda_id, language_original, unrecognized_language, full_language_name)
+
+tmp1 <- write_xtable(tmp_unrecognized$unrecognized_language, file_discarded, 
+                     count = TRUE,
+                     add.percentages = FALSE)
+
 # .. ie. those are "discarded" cases; list them in a table
-tmp2 <- write_xtable(original.na, file_discarded, 
+tmp2 <- write_xtable(tmp_unrecognized, file_discarded_id, 
                      count = TRUE, 
                      add.percentages = TRUE)
 
-message("Language discraded ID")
-language_checks <- sapply(strsplit(df.orig$language, ";"), function(lang) 
-  any(original.na %in% lang))
-# Find rows where any language matches a discarded variable
-matching_rows <- which(language_checks)
-
-# Get the corresponding melinda_ids
-result_melinda_ids <- df.orig$melinda_id[matching_rows]
-id <- data.frame(
-  Melinda_ID = result_melinda_ids,
-  Language = df.orig$language[matching_rows]
-)
-
-# Add a new column to `id` for discarded languages
-id$Discarded <- sapply(strsplit(id$Language, ";"), function(lang) {
-  # Find intersection between languages and discarded values
-  discarded_langs <- intersect(lang, original.na)
-  # Combine discarded languages as a semicolon-separated string
-  paste(discarded_langs, collapse = ";")
-})
-
-# Write the result to a CSV file without row numbers
-#write.csv(id, file = file_discarded_id, row.names = FALSE, quote = FALSE)
-
-tmp3 <- write_xtable(id, file_discarded_id, 
-                     count = TRUE, 
-                     add.percentages = FALSE)
 
 
 # ------------------------------------------------------------
@@ -98,17 +85,11 @@ field <- "language"
 # Generate data summaries for the subset data set 
 
 message("Accepted languages 19th century")
-for (myfield in c("languages", "language_primary")) {
+for (myfield in c("full_language_name", "language_primary")) {
   tmp <- write_xtable(df_19[[myfield]], paste(output.folder, myfield, "_accepted_19.csv", sep = ""), 
                       count = TRUE, 
                       add.percentages = TRUE)
 }
-
-message("Language conversions for the 19th century")
-tab <- cbind(original = df_19$languages, df_19[, 1:4])
-tmp <- write_xtable(tab, paste(output.folder, field, "_conversions_19.csv", sep = ""), 
-                    count = TRUE, 
-                    add.percentages = TRUE)
 
 # ---------------------------------------------------
 

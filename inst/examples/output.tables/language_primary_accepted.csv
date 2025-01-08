@@ -1,53 +1,54 @@
 Name	Count	Percentage
-Finnish	839098	69.91
-English	136115	11.34
-Swedish	116907	 9.74
-Undetermined	 53833	 4.49
-German	 15675	 1.31
-Latin	 10392	 0.87
-Russian	  6113	 0.51
-Multiple languages	  4441	 0.37
-French	  4207	 0.35
-Estonian	  1686	 0.14
-Danish	  1683	 0.14
-Norwegian	  1302	 0.11
-Spanish	  1193	 0.10
-Italian	   867	 0.07
-Sami	   832	 0.07
-Hungarian	   665	 0.06
-Dutch	   479	 0.04
-Japanese	   418	 0.03
-Polish	   389	 0.03
-Karelian	   335	 0.03
-Czech	   329	 0.03
-Latvian	   214	 0.02
-Finno-Ugrian (Other)	   193	 0.02
-Afroasiatic (Other)	   167	 0.01
-Lithuanian	   167	 0.01
-Northern Sami	   167	 0.01
-Esperanto	   165	 0.01
-Portuguese	   150	 0.01
-Icelandic	   133	 0.01
-Chinese	   131	 0.01
-Turkish	   109	 0.01
+Finnish	858041	69.76
+English	141390	11.50
+Swedish	120051	 9.76
+Unrecognized	 54438	 4.43
+German	 15973	 1.30
+Latin	  9947	 0.81
+Russian	  6291	 0.51
+Multiple languages	  4564	 0.37
+French	  4331	 0.35
+Danish	  1750	 0.14
+Estonian	  1708	 0.14
+Norwegian	  1359	 0.11
+Spanish	  1242	 0.10
+Undetermined	   935	 0.08
+Italian	   907	 0.07
+Sami	   842	 0.07
+Hungarian	   686	 0.06
+Dutch	   494	 0.04
+Japanese	   422	 0.03
+Polish	   410	 0.03
+Czech	   354	 0.03
+Karelian	   340	 0.03
+Latvian	   225	 0.02
+Afroasiatic (Other)	   198	 0.02
+Finno-Ugrian (Other)	   196	 0.02
+Northern Sami	   175	 0.01
+Lithuanian	   174	 0.01
+Esperanto	   171	 0.01
+Portuguese	   157	 0.01
+Chinese	   138	 0.01
+Icelandic	   137	 0.01
+Turkish	   115	 0.01
 Tatar	   107	 0.01
-Arabic	   102	 0.01
-Bulgarian	   100	 0.01
-Romanian	    94	 0.01
-Slovenian	    85	 0.01
-Greek, Modern (1453-)	    77	 0.01
-Ukrainian	    74	 0.01
-Hebrew	    73	 0.01
-Slovak	    72	 0.01
+Bulgarian	   105	 0.01
+Arabic	   104	 0.01
+Romanian	   102	 0.01
+Slovenian	    89	 0.01
+Greek, Modern (1453-)	    80	 0.01
+Slovak	    78	 0.01
+Hebrew	    74	 0.01
+Ukrainian	    72	 0.01
 Greek, Ancient (to 1453)	    63	 0.01
-Somali	    57	 0.00
-Croatian	    55	 0.00
-Ndonga	    49	 0.00
-Albanian	    44	 0.00
-Serbian	    37	 0.00
-Afrikaans	    36	 0.00
-Persian	    36	 0.00
-Vietnamese	    36	 0.00
+Croatian	    62	 0.01
+Somali	    59	 0.00
+Ndonga	    54	 0.00
+Albanian	    46	 0.00
+Afrikaans	    41	 0.00
+Persian	    39	 0.00
+Vietnamese	    37	 0.00
+Serbian	    36	 0.00
 Mari	    35	 0.00
 Inari Sami	    30	 0.00
 Korean	    27	 0.00
@@ -56,8 +57,8 @@ Bantu (Other)	    21	 0.00
 Faroese	    21	 0.00
 Komi	    20	 0.00
 Catalan	    17	 0.00
-Kurdish	    17	 0.00
 Romani	    17	 0.00
+Kurdish	    16	 0.00
 Skolt Sami	    13	 0.00
 Udmurt	    13	 0.00
 Moksha	    12	 0.00
@@ -67,40 +68,41 @@ Armenian	     9	 0.00
 Galician	     9	 0.00
 Erzya	     8	 0.00
 Germanic (Other)	     8	 0.00
+Indonesian	     8	 0.00
 Indo-European (Other)	     7	 0.00
-Indonesian	     7	 0.00
 Lule Sami	     7	 0.00
 Norwegian (Bokmål)	     7	 0.00
 Hindi	     6	 0.00
 Welsh	     6	 0.00
+Indic (Other)	     5	 0.00
 Basque	     4	 0.00
 Bosnian	     4	 0.00
+Chuvash	     4	 0.00
 French, Old (ca. 842-1300)	     4	 0.00
 Georgian	     4	 0.00
-Indic (Other)	     4	 0.00
 Malay	     4	 0.00
+Sanskrit	     4	 0.00
 Southern Sami	     4	 0.00
 Votic	     4	 0.00
 Yiddish	     4	 0.00
 Amharic	     3	 0.00
-Chuvash	     3	 0.00
 Filipino	     3	 0.00
 Kalâtdlisut	     3	 0.00
 Khmer	     3	 0.00
 Kyrgyz	     3	 0.00
+Macedonian	     3	 0.00
 No linguistic content	     3	 0.00
 Papuan (Other)	     3	 0.00
-Sanskrit	     3	 0.00
 Swiss German	     3	 0.00
 Akan	     2	 0.00
 Aramaic	     2	 0.00
+Burmese	     2	 0.00
 Chechen	     2	 0.00
 English, Middle (1100-1500)	     2	 0.00
 Gujarati	     2	 0.00
 Iranian (Other)	     2	 0.00
 Kuanyama	     2	 0.00
 Luo (Kenya and Tanzania)	     2	 0.00
-Macedonian	     2	 0.00
 Malayalam	     2	 0.00
 Miscellaneous languages	     2	 0.00
 Mongolian	     2	 0.00
@@ -116,8 +118,8 @@ Artificial (Other)	     1	 0.00
 Austronesian (Other)	     1	 0.00
 Bengali	     1	 0.00
 Berber (Other)	     1	 0.00
-Burmese	     1	 0.00
 Chinook jargon	     1	 0.00
+Coptic	     1	 0.00
 Fula	     1	 0.00
 Ido	     1	 0.00
 Igbo	     1	 0.00
@@ -144,6 +146,7 @@ Tai (Other)	     1	 0.00
 Tamil	     1	 0.00
 Tibetan	     1	 0.00
 Tigré	     1	 0.00
+Tongan	     1	 0.00
 Turkmen	     1	 0.00
 Urdu	     1	 0.00
 Uzbek	     1	 0.00

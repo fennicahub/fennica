@@ -1,11 +1,25 @@
-Melinda_ID	Language	Discarded	Count
-(FI-MELINDA)005812608	mari	mari	1
-(FI-MELINDA)018822174	fit	fit	1
-(FI-MELINDA)018796716	fit	fit	1
-(FI-MELINDA)019154173	fit	fit	1
-(FI-MELINDA)019119965	fit	fit	1
-(FI-MELINDA)019102230	fit	fit	1
-(FI-MELINDA)019096796	fit	fit	1
-(FI-MELINDA)019095132	fit	fit	1
-(FI-MELINDA)006560549	kwn	kwn	1
-(FI-MELINDA)005676016	engestfingerhunitalitlavnorpolrusswe	engestfingerhunitalitlavnorpolrusswe	1
+language_original	full_language_name	melinda_id	unrecognized_language	Count	Percentage
+fin;swe;eng;ger;fla;por	Finnish;Swedish;English;German;Unrecognized;Portuguese	000953606	fla	1	4.17
+eng;spa;n	English;Spanish;Unrecognized	000953129	n	1	4.17
+fin;gar	Finnish;Unrecognized	000951890	gar	1	4.17
+fit	Unrecognized	019074575	fit	1	4.17
+fit	Unrecognized	019073236	fit	1	4.17
+fit	Unrecognized	019059792	fit	1	4.17
+mari	Unrecognized	005812608	mari	1	4.17
+fit	Unrecognized	018822174	fit	1	4.17
+fit	Unrecognized	018796716	fit	1	4.17
+fin;swe;eng;ger;fre;rus;chi;est;jap	Finnish;Swedish;English;German;French;Russian;Chinese;Estonian;Unrecognized	006026153	jap	1	4.17
+kur fin;kur	Unrecognized;Kurdish	005041615	kur fin	1	4.17
+fit	Unrecognized	019154173	fit	1	4.17
+fit	Unrecognized	019119965	fit	1	4.17
+fit	Unrecognized	019102230	fit	1	4.17
+fit	Unrecognized	019096796	fit	1	4.17
+fit	Unrecognized	019095132	fit	1	4.17
+fin;swe;fit;mul	Finnish;Swedish;Unrecognized;Multiple languages	009596871	fit	1	4.17
+fin;jap	Finnish;Unrecognized	005362252	jap	1	4.17
+fre;hut	French;Unrecognized	005646021	hut	1	4.17
+fin;swe;eng;ger;fre;rus;spa;ita;jpa;chi	Finnish;Swedish;English;German;French;Russian;Spanish;Italian;Unrecognized;Chinese	006560838	jpa	1	4.17
+kwn	Unrecognized	006560549	kwn	1	4.17
+engestfingerhunitalitlavnorpolrusswe	Unrecognized	005676016	engestfingerhunitalitlavnorpolrusswe	1	4.17
+swe;dan;isl;nor	Swedish;Danish;Unrecognized;Norwegian	000939572	isl	1	4.17
+swe;dan;isl;nor	Swedish;Danish;Unrecognized;Norwegian	000937148	isl	1	4.17
