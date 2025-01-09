@@ -2,18 +2,17 @@
 # Download the zip file
 url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/priority_fields.csv"
 download.file(url, destfile = "priority_fields.csv")
-unzip("priority_fields.zip",exdir=".")
+#unzip("priority_fields.zip",exdir=".")
 
 # Read the CSV file, explicitly setting the first column to character
 # Count the number of columns in the file
-column_count <- ncol(read.csv("output.tables/priority_fields.csv", nrows = 1, sep = "\t"))
-
+#column_count <- ncol(read.csv("priority_fields.csv", nrows = 1, sep = "\t"))
+#
 # Create colClasses with 'character' for the first column and 'default' for the rest
-col_classes <- c("character", rep(NA, column_count - 1))
+#col_classes <- c("character", rep(NA, column_count - 1))
 
 # Read the file with the specified colClasses
-df.orig <- read.csv(file = "output.tables/priority_fields.csv", skip = 1, header = TRUE, sep = "\t",
-                    colClasses = col_classes)
+df.orig <- read.csv(file = "priority_fields.csv", skip = 1, header = TRUE, sep = "\t")
 
 #set column names
 df.orig <- df.orig %>% 

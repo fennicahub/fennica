@@ -7461,7 +7461,7 @@ top_plot <- function (x, field = NULL, ntop = NULL, highlight = NULL, max.char =
 #' @examples \dontrun{p <- top(df, field, 10)}
 #' @keywords utilities
 top <- function (x, field = NULL, n = NULL, output = "vector", round = NULL, na.rm = FALSE, include.rank = FALSE) {
-  
+
   if (is.factor(x)) {
     x <- as.character(x)
   }
