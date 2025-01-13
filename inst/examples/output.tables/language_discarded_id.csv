@@ -1,25 +1,25 @@
-language_original	full_language_name	melinda_id	unrecognized_language	Count	Percentage
-fin;swe;eng;ger;fla;por	Finnish;Swedish;English;German;Unrecognized;Portuguese	  953606	fla	1	4.17
-eng;spa;n	English;Spanish;Unrecognized	  953129	n	1	4.17
-fin;gar	Finnish;Unrecognized	  951890	gar	1	4.17
-fit	Unrecognized	19074575	fit	1	4.17
-fit	Unrecognized	19073236	fit	1	4.17
-fit	Unrecognized	19059792	fit	1	4.17
-mari	Unrecognized	 5812608	mari	1	4.17
-fit	Unrecognized	18822174	fit	1	4.17
-fit	Unrecognized	18796716	fit	1	4.17
-fin;swe;eng;ger;fre;rus;chi;est;jap	Finnish;Swedish;English;German;French;Russian;Chinese;Estonian;Unrecognized	 6026153	jap	1	4.17
-kur fin;kur	Unrecognized;Kurdish	 5041615	kur fin	1	4.17
-fit	Unrecognized	19154173	fit	1	4.17
-fit	Unrecognized	19119965	fit	1	4.17
-fit	Unrecognized	19102230	fit	1	4.17
-fit	Unrecognized	19096796	fit	1	4.17
-fit	Unrecognized	19095132	fit	1	4.17
-fin;swe;fit;mul	Finnish;Swedish;Unrecognized;Multiple languages	 9596871	fit	1	4.17
-fin;jap	Finnish;Unrecognized	 5362252	jap	1	4.17
-fre;hut	French;Unrecognized	 5646021	hut	1	4.17
-fin;swe;eng;ger;fre;rus;spa;ita;jpa;chi	Finnish;Swedish;English;German;French;Russian;Spanish;Italian;Unrecognized;Chinese	 6560838	jpa	1	4.17
-kwn	Unrecognized	 6560549	kwn	1	4.17
-engestfingerhunitalitlavnorpolrusswe	Unrecognized	 5676016	engestfingerhunitalitlavnorpolrusswe	1	4.17
-swe;dan;isl;nor	Swedish;Danish;Unrecognized;Norwegian	  939572	isl	1	4.17
-swe;dan;isl;nor	Swedish;Danish;Unrecognized;Norwegian	  937148	isl	1	4.17
+language_original	full_language_name	melinda_id	unrecognized_language
+swe;dan;isl;nor	Swedish;Danish;Unrecognized;Norwegian	000937148	isl
+swe;dan;isl;nor	Swedish;Danish;Unrecognized;Norwegian	000939572	isl
+engestfingerhunitalitlavnorpolrusswe	Unrecognized	005676016	engestfingerhunitalitlavnorpolrusswe
+kwn	Unrecognized	006560549	kwn
+fin;swe;eng;ger;fre;rus;spa;ita;jpa;chi	Finnish;Swedish;English;German;French;Russian;Spanish;Italian;Unrecognized;Chinese	006560838	jpa
+fre;hut	French;Unrecognized	005646021	hut
+fin;jap	Finnish;Unrecognized	005362252	jap
+fin;swe;fit;mul	Finnish;Swedish;Unrecognized;Multiple languages	009596871	fit
+fit	Unrecognized	019095132	fit
+fit	Unrecognized	019096796	fit
+fit	Unrecognized	019102230	fit
+fit	Unrecognized	019119965	fit
+fit	Unrecognized	019154173	fit
+kur fin;kur	Unrecognized;Kurdish	005041615	kur fin
+fin;swe;eng;ger;fre;rus;chi;est;jap	Finnish;Swedish;English;German;French;Russian;Chinese;Estonian;Unrecognized	006026153	jap
+fit	Unrecognized	018796716	fit
+fit	Unrecognized	018822174	fit
+mari	Unrecognized	005812608	mari
+fit	Unrecognized	019059792	fit
+fit	Unrecognized	019073236	fit
+fit	Unrecognized	019074575	fit
+fin;gar	Finnish;Unrecognized	000951890	gar
+eng;spa;n	English;Spanish;Unrecognized	000953129	n
+fin;swe;eng;ger;fla;por	Finnish;Swedish;English;German;Unrecognized;Portuguese	000953606	fla

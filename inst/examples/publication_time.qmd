@@ -16,11 +16,19 @@ MARC field: [008/07-14](https://www.loc.gov/marc/bibliographic/bd008.html)
 
 The publication years section offers a comprehensive summary of the dataset's years of publication, providing an understanding of the temporal distribution of titles. The inclusion of links to uniquely accepted and discarded output tables adds a layer of transparency, allowing for detailed exploration of the refined and excluded data.
 
+Data harmonization was performed using the **polish_years** function, originally developed to clean and refine publication time data from the 362a field, which contained numerous symbols requiring conversion for readability and statistical analysis. Although publication years are now extracted from the much cleaner 008 field, the function performs effectively on this field as well, eliminating the need to develop a new one.
+
+The **polish_years** function processes and harmonizes temporal data, splitting it into columns such as **publication_year**, **publication_from**, **publication_till** (for serials), and **publication_decade** (for visualization). Links to the converted data are provided below. 
+
+The dataset includes information on missing values, represented as NA in the refined data. There are `r sum(is.na(df$original))` empty rows in the field 008. Discarded values, such as invalid entries coded as characters (e.g., "uuuu", "||||") or inconsistent data (e.g., years beyond the current year or mismatched date ranges), are excluded. This does not imply that the discarded values are incorrect; rather, they are excluded because they cannot be utilized for statistical analysis. 
+
+The summary also accounts for publication statuses (field [008/06](https://marc21.kansalliskirjasto.fi/bib/008.htm)). For accurate temporal distribution, these statuses and their implications must be carefully considered to ensure only valid dates are selected that represent the publication year and not something else.
+
 ## Complete Data Overview
 
 [Publication year conversions](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time_conversion.csv)
 
-[Publication year discarded](dataTable/data_table.html?path=.https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time_discarded.csv)
+[Publication year discarded](dataTable/data_table.html?path=.https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time_discarded.csv). `r sum(xx1$original == "")`records where the publication date is not coded or unknown. `r sum(xx1$original != "")` records contain ambiguous dates, such as non-numeric characters. 
 
 [Download publication time harmonized dataset](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time.csv)
 
@@ -34,7 +42,7 @@ current_year <- as.numeric(format(Sys.Date(), "%Y"))
 
 # Ensure max_year is not greater than the current year
 if (max_year > current_year) {
- max_year <- current_year
+ max_year <- current_year 
 }
 ```
 
@@ -48,17 +56,22 @@ Publication years is available for `r sum(!is.na(df_pub_time$publication_year))`
 #| message = FALSE,
 #| warning = FALSE,
 #| results = "asis",
-#| fig.width = 8,
+#| fig.width = 10,
 #| fig.height = 6
 
 df2 <- df_pub_time %>% 
   group_by(publication_decade) %>% 
   filter(publication_decade <= 2030) 
 p <- ggplot(df2, aes(publication_decade)) +
-  geom_bar() + scale_y_log10() +
+  geom_bar(width = 3.5) + scale_y_log10() +
   ggtitle("Title count timeline") +
-  xlim(1450, current_year)+
-  labs(x = "Publication decade", y = "Count (N)")
+  #xlim(1450, current_year)+
+  scale_x_continuous(
+    limits = c(1400, 2025),  # Set the range from 1450 to 2025
+    breaks = c(1400, 1500, 1600, 1700, 1800, 1900, 2000),  # Specific breaks at the years you want
+    labels = c("1400", "1500", "1600", "1700", "1800", "1900", "2000") # Custom labels
+  ) +
+  labs(x = "Publication decade", y = "Count (N)") 
 print(p)
 ```
 
@@ -97,7 +110,7 @@ A plot depicting title counts per decade from 1809 to 1917 enriches the analysis
 #| echo = FALSE,
 #| message = FALSE,
 #| warning = FALSE,
-#| fig.width = 8,
+#| fig.width = 10,
 #| fig.height = 6
 
 df2 <- df_pubtime19 %>% 
@@ -105,7 +118,7 @@ df2 <- df_pubtime19 %>%
  filter(publication_decade <= 1920) 
 
 p <- ggplot(df2, aes(publication_decade)) +
-     geom_bar() + scale_y_log10() +
+     geom_bar(width = 4) + scale_y_log10() +
      ggtitle("Title count timeline") +
      xlim(1809, 1917)+
      labs(x = "Publication decade", y = "Count(N)")

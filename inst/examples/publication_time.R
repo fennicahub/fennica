@@ -17,20 +17,6 @@ df.harmonized$publication_year <- df.harmonized$publication_year_from
 # Add publication_decade
 df.harmonized$publication_decade <- decade(df.harmonized$publication_year) 
 
-# ------------------------------------------------------------
-
-# Store the publication time field data
-data.file <- paste0(field, ".Rds")
-saveRDS(df.harmonized, file = data.file)
-# Generate markdown summary for the whole data
-df_pub_time <- readRDS(data.file)
-#Load the RDS file
-df <- readRDS(data.file)
-# Convert to CSV and store in the output.tables folder
-write.table(df, file = paste0(output.folder, paste0(field, ".csv")))
-
-
-
 
 # ---------------------------------------------------------------------
 #1M data conversions
@@ -43,7 +29,7 @@ xx <- data.frame(original = df.harmonized$original,
 xx <- xx %>% filter(!is.na(start_year)) %>% filter(!is.na(end_year)) %>% filter(!is.na(original))
 conversion.file <- paste0(output.folder, field, "_conversion.csv")
 tmp <- write_xtable(xx,
-                    file = conversion.file, 
+                    file = conversion.file,
                     count = TRUE, 
                     add.percentages = TRUE)
 
@@ -59,13 +45,31 @@ tmp <- write_xtable(o[inds],
                     add.percentages = TRUE)
 
 
-# #create a file for discarded with melindas
-# message("Discarded publication year with melinda ids")
-# xx1 <- data.frame(melinda_id = df.harmonized$melinda_id, original = df.harmonized$original,publication_year = df.harmonized$publication_year)
-# xx1 <- xx1 %>% filter(is.na(publication_year))%>% filter(!is.na(original))
-# write.csv(xx1, "publication_time_discarded_id.csv", row.names=FALSE)
+#create a file for discarded with melindas
+message("Discarded publication year with melinda ids")
+xx1 <- data.frame(melinda_id = df.harmonized$melinda_id, original = df.harmonized$original,publication_year = df.harmonized$publication_year)
+xx1 <- xx1 %>% filter(is.na(publication_year))%>% filter(!is.na(original))
+write.table(xx1,
+            "publication_time_discarded_id.csv",
+          sep = "\t",
+          row.names=FALSE, 
+          quote = FALSE)
 
+# ------------------------------------------------------------
 
+# Store the publication time field data
+data.file <- paste0(field, ".Rds")
+saveRDS(df.harmonized, file = data.file)
+# Generate markdown summary for the whole data
+df_pub_time <- readRDS(data.file)
+#Load the RDS file
+df <- readRDS(data.file)
+# Convert to CSV and store in the output.tables folder
+write.table(df, 
+            file = paste0(output.folder, paste0(field, ".csv")),
+            sep = "\t",
+            row.names=FALSE, 
+            quote = FALSE)
 
 # ------------------------------------------------------------
 

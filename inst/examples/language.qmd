@@ -87,7 +87,7 @@ Title count per language (including multi-language documents; note the log10 sca
 #| fig.width = 9,
 #| fig.height = 7
 
-p <- top_plot(df_19, "full_language_name", ntop = ntop, log10 = TRUE) + labs(y = "Entries (n)")
+top_plot(df_19, "full_language_name", ntop = ntop, log10 = TRUE) + labs(y = "Entries (n)")
 
 ```
 

@@ -6095,7 +6095,7 @@ sheet_area <- function (x = NULL, sheet.dimension.table = NULL, verbose = FALSE)
   
 }
 
-#' @title Polish Years
+#' @title Polish Years 
 #' FIXME: UNIT TESTS MISSING NOW!
 #' @description Pick and polish the year interval (start and end years) from a time field which is of the form 1800 or 1823-1845 etc.
 #' @param x year field (a vector) 

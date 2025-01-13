@@ -30,11 +30,23 @@ df.orig <- df.orig %>%
 
 #07-14. merge start and end years into one column 
 
-df.orig$publication_time <- paste(substr(df.orig$`008`, start =  8, stop =  11),  
-                                  substr(df.orig$`008`, start =  12, stop =  15),  
-                                  sep = "-")
+df.orig$`008` <- ifelse(trimws(df.orig$`008`) == "", NA, df.orig$`008`)
+
+
+df.orig$publication_time <- ifelse(
+  is.na(df.orig$`008`),  # Check if the value in df.orig$`008` is NA
+  NA,  # Assign NA if the value is NA
+  paste(
+    substr(df.orig$`008`, start = 8, stop = 11),  # Extract the first part
+    substr(df.orig$`008`, start = 12, stop = 15),  # Extract the second part
+    sep = " "  # Combine the two parts with a " "
+  )
+)
+
+
+
 #ignore b and | publication status types of publication time
-df.orig$publication_time <- ifelse(df.orig$publication_status %in% c("'No dates given; B.C. date involved'", "'No attempt to code'", "Dates unknown"), NA, df.orig$publication_time)
+df.orig$publication_time <- ifelse(df.orig$publication_status %in% c("'No dates given; B.C. date involved'", "'No attempt to code'", "Dates unknown"), "", df.orig$publication_time)
 
 #DATE1 
 df.orig$publication_time <- ifelse(
@@ -58,23 +70,6 @@ df.orig$publication_time <- ifelse(
 )
 
 
-#preferably had to be transfered to polish_years.R 
-
-# df.orig$publication_time <- ifelse(df.orig$publication_time == "    -", NA, df.orig$publication_time)
-# df.orig$publication_time <- ifelse(df.orig$publication_time == "    -    ", NA, df.orig$publication_time)
-# df.orig$publication_time <- ifelse(df.orig$publication_time == "-    ", NA, df.orig$publication_time)
-# df.orig$publication_time <- ifelse(df.orig$publication_time == "-", NA, df.orig$publication_time)
-# 
-# df.orig <- df.orig %>%
-#   mutate(publication_time = ifelse(grepl("^\\s+$", publication_time), NA, publication_time))
-# 
-# df.orig <- df.orig %>%
-#   mutate(publication_time = ifelse(grepl("0000", publication_time), NA, publication_time))
-# 
-# 
-# 
-# # Replace cells containing "    -" with NA
-# df.orig$publication_time <- ifelse(df.orig$publication_time == "    -", NA, df.orig$publication_time)
 
 
 #33 - literary_genre for the BOOKs only 

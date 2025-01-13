@@ -54,10 +54,11 @@ tmp1 <- write_xtable(tmp_unrecognized$unrecognized_language, file_discarded,
                      add.percentages = FALSE)
 
 # .. ie. those are "discarded" cases; list them in a table
-tmp2 <- write_xtable(tmp_unrecognized, file_discarded_id, 
-                     count = TRUE, 
-                     add.percentages = TRUE)
-
+write.table(tmp_unrecognized,
+            file = file_discarded_id,
+            sep = "\t",
+            row.names = FALSE, 
+            quote = FALSE)
 
 
 # ------------------------------------------------------------
