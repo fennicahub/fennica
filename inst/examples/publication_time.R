@@ -47,13 +47,10 @@ tmp <- write_xtable(o[inds],
 
 #create a file for discarded with melindas
 message("Discarded publication year with melinda ids")
+discard.file.id <- paste0(output.folder, field, "_discarded_id.csv")
 xx1 <- data.frame(melinda_id = df.harmonized$melinda_id, original = df.harmonized$original,publication_year = df.harmonized$publication_year)
 xx1 <- xx1 %>% filter(is.na(publication_year))%>% filter(!is.na(original))
-write.table(xx1,
-            "publication_time_discarded_id.csv",
-          sep = "\t",
-          row.names=FALSE, 
-          quote = FALSE)
+write.table(xx1,discard.file.id)
 
 # ------------------------------------------------------------
 
