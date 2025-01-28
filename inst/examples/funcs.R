@@ -7603,6 +7603,9 @@ polish_years_008 <- function(x) {
   # Save the original column as x0 for reference
   x0 <- x
   
+  # Get the current year
+  current_year <- as.numeric(format(Sys.Date(), "%Y"))
+  
   # Create publication_year_from and publication_year_till
   from <- ifelse(
     grepl(" ", x),  # Check if there are two dates
@@ -7615,6 +7618,20 @@ polish_years_008 <- function(x) {
     as.numeric(substr(x, start = 6, stop = nchar(x))),  # Extract second year
     NA  # If no second year, assign NA
   )
+  
+  # Apply the conditions
+  # 1. If 'from' > 'till', set both to NA
+  invalid_order <- !is.na(from) & !is.na(till) & (from > till)
+  from[invalid_order] <- NA
+  till[invalid_order] <- NA
+  
+  # 2. If 'from' > current_year, set it to NA
+  from_invalid <- !is.na(from) & from > current_year
+  from[from_invalid] <- NA
+  
+  # 3. If 'till' > current_year, set it to NA
+  till_invalid <- !is.na(till) & till > current_year
+  till[till_invalid] <- NA
   
   # Create publication_year (first date)
   publication_year <- from
@@ -7638,7 +7655,3 @@ polish_years_008 <- function(x) {
   # Return the resulting dataframe
   return(out)
 }
-
-
-
-
