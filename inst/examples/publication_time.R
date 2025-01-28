@@ -1,27 +1,21 @@
 field <- "publication_time"
 
 #polish full data
-tmp  <- polish_years(df.orig[[field]], check = TRUE)
-
+tmp  <- polish_years_008(df.orig[[field]])
 
 # Make data.frame
 # Make sure if it called df.harmonized for publication_time, other fields have df.tmp 
 # because publication_time field is sourced in other field processing files 
 df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
+                            original = tmp$original,
                             publication_year_from = tmp$from,
-                            publication_year_till = tmp$till)
-
-# Add publication_year as a separate column (same as "publication_year_from")
-df.harmonized$publication_year <- df.harmonized$publication_year_from
-
-# Add publication_decade
-df.harmonized$publication_decade <- decade(df.harmonized$publication_year) 
-
+                            publication_year_till = tmp$till, 
+                            publication_year = tmp$publication_year, 
+                            publication_decade = tmp$decade)
 
 # ---------------------------------------------------------------------
 #1M data conversions
 message("Write conversions: publication year")
-df.harmonized$original <- df.orig[[field]]
 
 xx <- data.frame(original = df.harmonized$original,
                  start_year = df.harmonized$publication_year_from,

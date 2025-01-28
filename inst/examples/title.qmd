@@ -32,7 +32,7 @@ Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nro
 #| label = "summary_title_table",
 #| echo = FALSE,
 #| results = "asis"
-x <- top(df, "title")
+x <- top(df$title, "title")
 tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
 colnames(tab) <- c("Title", "Entries (n)", "Fraction (%)")
 kable(head(tab, 15))
@@ -57,7 +57,7 @@ df_lang_material <- df.orig %>%
 df_language_mat <- df %>%
   filter(melinda_id %in% df_lang_material$melinda_id)
 
-x <- top(df_language_mat, "title")
+x <- top(df_language_mat$title, "title")
 tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
 colnames(tab) <- c("Title", "Entries (n)", "Fraction (%)")
 kable(head(tab, 15))

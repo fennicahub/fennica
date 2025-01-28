@@ -6954,48 +6954,62 @@ polish_languages <- function(x) {
 #' @export
 #' @details Remove ending commas, periods, spaces and parentheses, 
 #' 	    starting prepositions etc.
-#' @author Leo Lahti \email{leo.lahti@@iki.fi}
+#' @author Leo Lahti \email{leo.lahti@@iki.fi}, Julia Matveeva \email{yulmat@utu.fi}
 #' @references See citation("fennica")
 #' @examples \dontrun{x2 <- polish_title(x)}
 #' @keywords utilities
-polish_title <- function (x) {
+# Modified polish_title function
+polish_title <- function(x) {
+  # Save the original titles
+  title_original <- as.character(x)
   
+  # Perform the harmonization
   x0 <- x
   x <- as.character(x)
   x <- unique(x)
   xinds <- match(x0, x)
   
-  # Remove periods at the end
+  # Cleaning and formatting
   x <- gsub("\\.+$", "", as.character(x))
   x <- gsub("\\. $", "", as.character(x))
   x <- gsub("^\\.+", "", as.character(x))
-  
-  x <- gsub("\\,$", "", x) # Remove commas at the end
-  x <- gsub("[ ]+$", "", x) # Remove trailing spaces
+  x <- gsub("\\,$", "", x) 
+  x <- gsub("[ ]+$", "", x) 
   x <- gsub("\\(|\\)", "", x) 
-  x <- gsub("\\]$", "", x) # Remove closing square brackets at the end
-  x <- gsub("^\\[", "", x) # Remove opening square brackets at the start
-  x <- gsub("^\\(", "", x) # Remove opening parentheses at the start
-  x <- gsub("\\:+$", "", x) # Remove colon at the end
-  x <- gsub("^\\:", "", x) # Remove colon at the start
-  x <- gsub("\\;+$", "", x) # Remove semicolon at the end
+  x <- gsub("\\]$", "", x)
+  x <- gsub("^\\[", "", x)
+  x <- gsub("^\\(", "", x)
+  x <- gsub("\\:+$", "", x)
+  x <- gsub("^\\:", "", x)
+  x <- gsub("\\;+$", "", x)
   x <- gsub("/", "", x)
   x <- gsub("=", "", x)
-  x <- str_replace_all(x, "\\|", "") # Remove pipe characters
-  x <- str_replace_all(x, "\\/", "") # Remove slashes
+  x <- str_replace_all(x, "\\|", "")
+  x <- str_replace_all(x, "\\/", "")
   x <- gsub("\\s+$", "", x)
-  x <- gsub('"', "", x, fixed=TRUE) # Corrected line to remove double quotes
+  x <- gsub('"', "", x, fixed = TRUE) 
   
-  # Capitalize the first letter of words
+  # Capitalization adjustments
   x <- gsub("^a", "A", x)
   x <- gsub("^the", "The", x)
   
   x[x == ""] <- NA
   
-  # Map back to originals
-  x <- x[xinds]
+  # Map back to original indices
+  title_harmonized <- x[xinds]
   
-  x
+  # Calculate the length of harmonized titles
+  title_length <- nchar(title_harmonized)
+  
+  # Create the result dataframe
+  df <- data.frame(
+    title_original = title_original,
+    title_harmonized = title_harmonized,
+    title_length = title_length,
+    stringsAsFactors = FALSE
+  )
+  
+  return(df)
 }
 
 
@@ -7012,6 +7026,8 @@ polish_title <- function (x) {
 #' @examples \dontrun{x2 <- polish_title(x)}
 #' @keywords utilities
 polish_title_remainder <- function (x) {
+  
+  title_original <- as.character(x)
   
   x0 <- x
   x <- as.character(x)
@@ -7046,10 +7062,21 @@ polish_title_remainder <- function (x) {
   
   x[x == ""] <- NA
   
-  # Map back to originals
-  x <- x[xinds]
+  # Map back to original indices
+  title_harmonized <- x[xinds]
   
-  x
+  # Calculate the length of harmonized titles
+  title_length <- nchar(title_harmonized)
+  
+  # Create the result dataframe
+  df <- data.frame(
+    title_original = title_original,
+    title_harmonized = title_harmonized,
+    title_length = title_length,
+    stringsAsFactors = FALSE
+  )
+  
+  return(df)
 }
 
 
@@ -7515,5 +7542,103 @@ top <- function (x, field = NULL, n = NULL, output = "vector", round = NULL, na.
   s
   
 }
+
+#' @title Polish Genre Book 
+#' @description Polish genre field 008/33, see 008_field.R for "Language material" #https://marc21.kansalliskirjasto.fi/bib/008.htm#BK
+#' @param x Vector of genres
+#' @return Vector of titles polished
+#' @export
+#' @details Remove ending commas, periods, spaces and parentheses, 
+#' 	    starting prepositions etc.
+#' @author  Julia Matveeva \email{yulmat@utu.fi}
+#' @references See citation("fennica")
+#' @examples \dontrun{x2 <- polish_genre_book(x)}
+#' @keywords utilities
+#' 
+
+polish_genre_book <- function(x) {
+  x0 <- x
+  # Define the mapping
+  mapping <- c(
+    "0" = "Tietokirjallisuus",
+    "1" = "Kaunokirjallisuus",
+    "d" = "Draama",
+    "e" = "Esseet",
+    "f" = "Romaanit",
+    "h" = "Huumori, satiiri jne.",
+    "i" = "Kirjeet",
+    "j" = "Novellit, kertomukset tai niiden kokoelmat",
+    "m" = "Yhdistelmä",
+    "p" = "Runot",
+    "s" = "Puheet, esitelmät",
+    "u" = "Tuntematon",
+    "|" = "Ei koodattu"
+  )
+  
+  # Harmonize genres with conditions
+  genre_harmonized <- ifelse(
+    is.na(x), NA, # Keep NA as NA
+    ifelse(
+      x == "Not a book", "Not a book", # Keep "Not a book" as-is
+      ifelse(
+        x %in% names(mapping), mapping[x], "Undetermined" # Map or default to "Undetermined"
+      )
+    )
+  )
+  
+  # Return a data frame
+  df <- data.frame(
+    genre_original = x0,
+    genre_harmonized = genre_harmonized,
+    stringsAsFactors = FALSE
+  )
+  
+  return(df)
+}
+
+
+#polish publication times from field 008
+#author = Julia Matveeva 
+polish_years_008 <- function(x) {
+  # Save the original column as x0 for reference
+  x0 <- x
+  
+  # Create publication_year_from and publication_year_till
+  from <- ifelse(
+    grepl(" ", x),  # Check if there are two dates
+    as.numeric(substr(x, start = 1, stop = 4)),  # Extract first year
+    as.numeric(x)  # Use the single year if no space
+  )
+  
+  till <- ifelse(
+    grepl(" ", x),  # Check if there are two dates
+    as.numeric(substr(x, start = 6, stop = nchar(x))),  # Extract second year
+    NA  # If no second year, assign NA
+  )
+  
+  # Create publication_year (first date)
+  publication_year <- from
+  
+  # Create publication_decade_original (first year rounded down to nearest decade)
+  decade <- ifelse(
+    !is.na(publication_year),
+    floor(publication_year / 10) * 10,  # Round down to the nearest decade
+    NA
+  )
+  
+  # Combine all columns into the output dataframe
+  out <- data.frame(
+    original = x0,  # Original column
+    from = from,
+    till = till,
+    publication_year = publication_year,
+    decade = decade
+  )
+  
+  # Return the resulting dataframe
+  return(out)
+}
+
+
 
 

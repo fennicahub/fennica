@@ -17,11 +17,15 @@
 #publication_time field in df.orig
 
 
-list <- df.orig %>%
-  filter(melinda_id_035 %in% melindas_19) %>%
-  filter(publication_time >= 1809 & publication_time <= 1917)
+list <- df.orig %>%  filter(melinda_id %in% melindas_19) 
+# write.table(list,file = "julia_list.csv",
+#             sep = "\t",
+#             row.names = FALSE, 
+#             quote = FALSE)
 
-df_list <- list %>% select(melinda_id_035, author_name, publication_time,
+
+
+df_list <- list %>% select(melinda_id, author_name, publication_time,
                          title, title_remainder, `245n`, title_uniform, 
                            language, language_original,
                            signum, UDK,`080x`, `042a`, literary_genre_book, `655a`,`650a`)
@@ -46,11 +50,9 @@ list <- list[grepl("-1|-2|-3|-4", list$`080x`) | is.na(list$`080x`), ]
 #list <- list[is.na(list$language_original), ]
 
 # # genre
-genres_to_keep <- "Esseet"
-  
-#c("Kaunokirjallisuus","Dramaa", "Esseet", "Romaanit", "Huumori, satiiri jne.", "Novellit, kertomukset tai niiden kokoelmat","Runot", "Ei koodattu", "Yhdistelmä", "Tuntematon")
+genres_to_keep <- c("Kaunokirjallisuus","Dramaa", "Esseet", "Romaanit", "Huumori, satiiri jne.", "Novellit, kertomukset tai niiden kokoelmat","Runot", "Yhdistelmä", "Tuntematon")
 
-df_list <- df_list %>% filter(literary_genre_book %in% genres_to_keep)
+list <- list %>% filter(literary_genre_book %in% genres_to_keep)
 
 
 # Check if signum contains "Suom. kaunokirj." or "Ruots. kaunokirj."
@@ -60,7 +62,9 @@ Ruots\\.kaunokirj.6", list$signum)
 
 udk_rows <- grepl("839\\.79|894\\.541", list$UDK)
 
-list <- list %>% filter(kauno_rows | udk_rows)
+list <- list %>% filter(kauno_rows)
+
+#| udk_rows)
 
 #filter out lasten kirjallisuus
 list <- list %>% 

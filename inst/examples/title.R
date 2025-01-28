@@ -8,7 +8,9 @@ x <- polish_title(df.orig[[field]])
 
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
-		     title = x)
+                     original = x$title_original,
+		     title = x$title_harmonized,
+		     title_length = x$title_length)
 
 
 # Define output files

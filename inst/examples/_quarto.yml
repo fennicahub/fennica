@@ -41,8 +41,8 @@ book:
   - publication_time.qmd
   ##- publication_frequency.qmd
   #- signum.qmd
-  #- title.qmd #läpivyys mihin tiedot perustuu
-  #- title_remainder.qmd
+  - title.qmd #läpivyys mihin tiedot perustuu
+  - title_remainder.qmd
   #- title2.qmd
   #- content_type.qmd
   #- udk.qmd

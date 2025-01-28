@@ -16,9 +16,7 @@ MARC field: [008/07-14](https://www.loc.gov/marc/bibliographic/bd008.html)
 
 The publication years section offers a comprehensive summary of the dataset's years of publication, providing an understanding of the temporal distribution of titles. The inclusion of links to uniquely accepted and discarded output tables adds a layer of transparency, allowing for detailed exploration of the refined and excluded data.
 
-Data harmonization was performed using the **polish_years** function, originally developed to clean and refine publication time data from the 362a field, which contained numerous symbols requiring conversion for readability and statistical analysis. Although publication years are now extracted from the much cleaner 008 field, the function performs effectively on this field as well, eliminating the need to develop a new one.
-
-The **polish_years** function processes and harmonizes temporal data, splitting it into columns such as **publication_year**, **publication_from**, **publication_till** (for serials), and **publication_decade** (for visualization). Links to the converted data are provided below. 
+Data harmonization was performed using the **polish_years_008** function. It processes and harmonizes temporal data, splitting it into columns such as **publication_year**, **publication_from**, **publication_till** (for serials), and **publication_decade** (for visualization). Links to the converted data are provided below. 
 
 The dataset includes information on missing values, represented as NA in the refined data. There are `r sum(is.na(df$original))` empty rows in the field 008. Discarded values, such as invalid entries coded as characters (e.g., "uuuu", "||||") or inconsistent data (e.g., years beyond the current year or mismatched date ranges), are excluded. This does not imply that the discarded values are incorrect; rather, they are excluded because they cannot be utilized for statistical analysis. 
 
