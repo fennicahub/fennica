@@ -41,7 +41,7 @@ kable(head(tab, 15))
 
 ### Title Length Over Time (1488-2020)
 
-This plot visualizes the variation in title lengths across publication decades from 1488 to 2020. The title lengths range from  `r min(df$title_length)` to`r max(df$title_length)` , highlighting how the length of titles has evolved over time.N = `r nrow(df)`.
+This plot visualizes the variation in title lengths across publication decades from 1488 to 2020. The title lengths range from  `r min(df$title_length, na.rm = TRUE)` to`r max(df$title_length, na.rm = TRUE)` , highlighting how the length of titles has evolved over time.N = `r nrow(df)`.
 
 ```{r}
 #| label = "summary_title_length_pic",
@@ -71,7 +71,7 @@ ggplot(df2, aes(x = publication_decade, y = title_length)) +
 
 ### Top-`r ntop` titles for "Language material" content type 
 
-In the Fennica dataset, language material makes up the majority of the content, comprising 91.6% of the entire dataset. This includes written texts, documents, books, articles, and any other content primarily composed of language. The remaining 8.4% consists of non-language material, such as maps, music, computer files, and other types of content that do not primarily rely on language. For a more detailed breakdown of the different types of content within the dataset, you can refer to [summaries of type of records in Fennica](https://fennica-fennica.rahtiapp.fi/content_type.html).
+In the Fennica dataset, language material makes up the majority of the content, comprising 91.6% of the entire dataset. This includes written texts, documents, books, articles, and any other content primarily composed of language. The remaining 8.4% consists of non-language material, such as maps, music, computer files, and other types of content that do not primarily rely on language. For a more detailed breakdown of the different types of content within the dataset, you can refer to [summaries of type of records in Fennica].
 
 
 ```{r}
@@ -142,7 +142,7 @@ kable(head(tab, 15))
 
 
 ### Title Length Over Time (1809-1917)
-This plot visualizes the variation in title lengths across publication years from 1809 to 1917. The title lengths range from  `r min(df_19$title_length)` to`r max(df_19$title_length)`. N = `r nrow(df_19)`.
+This plot visualizes the variation in title lengths across publication years from 1809 to 1917. The title lengths range from  `r min(df_19$title_length, na.rm = TRUE)` to`r max(df_19$title_length, na.rm = TRUE)`. N = `r nrow(df_19)`.
 
 ```{r}
 #| label = "summary_title_length_pic1",
