@@ -70,53 +70,93 @@
     ]
   },
   {
+    "objectID": "signum.html",
+    "href": "signum.html",
+    "title": "4  Signum",
+    "section": "",
+    "text": "4.1 Complete Dataset Overview\nA signum data, also known as a call number, is a unique combination of numbers and letters employed to indicate the specific location of a book within a library. This data was verified and provided to us by the National Library of Finland.\nOriginal documents with titles: 928011 / 1229925 (NaN%)\nOriginal documents with missing (NA) titles 301914 / 1229925 documents (24.5%)\nSignum accepted for the whole Fennica\nSignum discarded for the whole Fennica",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Signum</span>"
+    ]
+  },
+  {
+    "objectID": "signum.html#complete-dataset-overview",
+    "href": "signum.html#complete-dataset-overview",
+    "title": "4  Signum",
+    "section": "",
+    "text": "4.1.1 Top-20 signum\n\n\n\nSignum\nEntries (n)\nFraction (%)\n\n\n\n\nEa2 1978-\n81351\n6.6\n\n\nEa3 1978-\n28278\n2.3\n\n\nDa2 1978-\n16679\n1.4\n\n\nCb 1973-\n8530\n0.7\n\n\nSuom. kaunokirj. 1 -1972\n7281\n0.6\n\n\nSuom. kaunokirj. 2 -1972\n7249\n0.6\n\n\nDa3 1978-\n7032\n0.6\n\n\nKa01\n6898\n0.6\n\n\nAa2\n5307\n0.4\n\n\nDoria\n5003\n0.4",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Signum</span>"
+    ]
+  },
+  {
+    "objectID": "signum.html#subset-analysis-1809-1917",
+    "href": "signum.html#subset-analysis-1809-1917",
+    "title": "4  Signum",
+    "section": "4.2 Subset Analysis: 1809-1917",
+    "text": "4.2 Subset Analysis: 1809-1917\nSignum accepted for 1809-1917\nSignum discarded for 1809-1917\n\n4.2.1 Top-20 signum for 1809-1917\n\n\n\n\n\n\n\n\nSignum\nEntries (n)\nFraction (%)\n\n\n\n\nDoria\n1871\n0.2\n\n\nDiss. HY\n1249\n0.1\n\n\nIV.1/49\n1209\n0.1\n\n\nHartauskirj. -1972;Käsifilmistö - filmikortit\n1121\n0.1\n\n\nSuom. kaunokirj. 3 -1972\n1073\n0.1\n\n\nSuom. kaunokirj. 2 -1972\n870\n0.1\n\n\nSuom. kaunokirj. 1 -1972\n685\n0.1\n\n\nSuom. kaunokirj. 4 -1972\n642\n0.1\n\n\nRuots. kaunokirj. 1 -1972\n498\n0\n\n\nK.Hartauskirj. -1972;Mf.\n487\n0",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Signum</span>"
+    ]
+  },
+  {
     "objectID": "title.html",
     "href": "title.html",
-    "title": "4  Title",
+    "title": "5  Title",
     "section": "",
-    "text": "4.1 Complete Dataset Overview\nMARC: 245a\nOriginal documents with titles: 1229884 / 1229925 (100%)\nOriginal documents with missing (NA) titles 41 / 1229925 documents (0%)\nUnique discarded entries in original data: 7\nDownload title field harmonized dataset",
+    "text": "5.1 Complete Dataset Overview\nMARC: 245a\nOriginal documents with titles: 1229884 / 1229925 (100%)\nOriginal documents with missing (NA) titles 41 / 1229925 documents (0%)\nUnique discarded entries in original data: 7\nDownload title field harmonized dataset",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Title</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Title</span>"
     ]
   },
   {
     "objectID": "title.html#complete-dataset-overview",
     "href": "title.html#complete-dataset-overview",
-    "title": "4  Title",
+    "title": "5  Title",
     "section": "",
-    "text": "4.1.1 Top-20 titles\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nPeruskartta 1:20000\n7175\n0.6\n\n\nMaastokartta\n3376\n0.3\n\n\nPitäjänkartta 1:20000\n2163\n0.2\n\n\nTopografičeskaâ karta 1:42000\n1325\n0.1\n\n\nPeruskartta 1:25000\n1273\n0.1\n\n\nTopografinen kartta 1:20000\n1211\n0.1\n\n\nMaastokartta 1:50000\n788\n0.1\n\n\nTienumerokartta\n616\n0.1\n\n\nPeruskartan pienennös 1:50000\n544\n0\n\n\nTopografinen kartta 1:50000\n536\n0\n\n\n\n\n\n4.1.2 Top-20 titles for “Language material” content type\nIn the Fennica dataset, language material makes up the majority of the content, comprising 91.6% of the entire dataset. This includes written texts, documents, books, articles, and any other content primarily composed of language. The remaining 8.4% consists of non-language material, such as maps, music, computer files, and other types of content that do not primarily rely on language. For a more detailed breakdown of the different types of content within the dataset, you can refer to [summaries of type of records in Fennica].\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nKootut teokset\n475\n0\n\n\nJäsentiedote\n392\n0\n\n\nValitut teokset\n357\n0\n\n\nJulkaisu\n349\n0\n\n\nKalevala\n338\n0\n\n\nKungörelse\n314\n0\n\n\nMatematiikka\n300\n0\n\n\nOpinto-opas\n293\n0\n\n\nVuosikirja\n280\n0\n\n\nTuhattaituri\n272\n0\n\n\n\n\n\n4.1.3 Title Length Over Time (1488-2020)\nThis plot visualizes the variation in title lengths across publication decades from 1488 to 2020. The title lengths range from 1 to1697 , highlighting how the length of titles has evolved over time.N = 1229925.\n\n\n\n\n\n\n\n\n\n\n\n4.1.4 Title Word Count Over Time (1488-2020)\nThis plot visualizes the variation in title word counts across publication decades from 1488 to 2020. The title lengths range from 1 to220 , highlighting how the length of titles has evolved over time.N = 1229925.",
+    "text": "5.1.1 Top-20 titles\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nPeruskartta 1:20000\n7175\n0.6\n\n\nMaastokartta\n3376\n0.3\n\n\nPitäjänkartta 1:20000\n2163\n0.2\n\n\nTopografičeskaâ karta 1:42000\n1325\n0.1\n\n\nPeruskartta 1:25000\n1273\n0.1\n\n\nTopografinen kartta 1:20000\n1211\n0.1\n\n\nMaastokartta 1:50000\n788\n0.1\n\n\nTienumerokartta\n616\n0.1\n\n\nPeruskartan pienennös 1:50000\n544\n0\n\n\nTopografinen kartta 1:50000\n536\n0\n\n\n\n\n\n5.1.2 Top-20 titles for “Language material” content type\nIn the Fennica dataset, language material makes up the majority of the content, comprising 91.6% of the entire dataset. This includes written texts, documents, books, articles, and any other content primarily composed of language. The remaining 8.4% consists of non-language material, such as maps, music, computer files, and other types of content that do not primarily rely on language. For a more detailed breakdown of the different types of content within the dataset, you can refer to [summaries of type of records in Fennica].\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nKootut teokset\n475\n0\n\n\nJäsentiedote\n392\n0\n\n\nValitut teokset\n357\n0\n\n\nJulkaisu\n349\n0\n\n\nKalevala\n338\n0\n\n\nKungörelse\n314\n0\n\n\nMatematiikka\n300\n0\n\n\nOpinto-opas\n293\n0\n\n\nVuosikirja\n280\n0\n\n\nTuhattaituri\n272\n0\n\n\n\n\n\n5.1.3 Title Length Over Time (1488-2020)\nThis plot visualizes the variation in title lengths across publication decades from 1488 to 2020. The title lengths range from 1 to1697 , highlighting how the length of titles has evolved over time.N = 1229925.\n\n\n\n\n\n\n\n\n\n\n\n5.1.4 Title Word Count Over Time (1488-2020)\nThis plot visualizes the variation in title word counts across publication decades from 1488 to 2020. The title lengths range from 1 to220 , highlighting how the length of titles has evolved over time.N = 1229925.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Title</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Title</span>"
     ]
   },
   {
     "objectID": "title.html#subset-analysis-1809-1917",
     "href": "title.html#subset-analysis-1809-1917",
-    "title": "4  Title",
-    "section": "4.2 Subset Analysis: 1809-1917",
-    "text": "4.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 48986\nOriginal documents with non-NA titles: 66890 / 66890 (100%)\nOriginal documents with missing (NA) titles 0 / 66890 documents (0%)\nDownload title field harmonized dataset(1809-1917)\n\n4.2.1 Top-20 titles for years 1809-1917\n\n\n\n\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nTopografičeskaâ karta 1:42000\n1323\n2\n\n\nTheses\n147\n0.2\n\n\nHomeri Odyssea svethice reddita\n113\n0.2\n\n\nKalmbergin kartasto\n87\n0.1\n\n\nDikter\n85\n0.1\n\n\nFänrik Ståls sägner\n77\n0.1\n\n\nHandlingar rörande Finlands historia kring medlet af 17:de århundradet\n64\n0.1\n\n\nDissertatio entomologica insecta Fennica enumerans\n64\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder\n63\n0.1\n\n\nLäsning för barn\n63\n0.1\n\n\n\n\n\n4.2.2 Top-20 titles for years 1809-1917 / “Language material” content type\n\n\n\n\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nTheses\n147\n0.2\n\n\nHomeri Odyssea svethice reddita\n113\n0.2\n\n\nDikter\n85\n0.1\n\n\nFänrik Ståls sägner\n77\n0.1\n\n\nHandlingar rörande Finlands historia kring medlet af 17:de århundradet\n64\n0.1\n\n\nDissertatio entomologica insecta Fennica enumerans\n64\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder\n63\n0.1\n\n\nLäsning för barn\n63\n0.1\n\n\nKertomuksia Suomen historiasta\n61\n0.1\n\n\nFältskärns berättelser\n59\n0.1\n\n\n\n\n\n4.2.3 Title Length Over Time (1809-1917)\nThis plot visualizes the variation in title lengths across publication years from 1809 to 1917. The title lengths range from 2 to1018. N = 66890.\n\n\n\n\n\n\n\n\n\n\n\n4.2.4 Title Word Count (1809-1917)\nThis plot visualizes the variation in title lengths across publication years from 1809 to 1917. The title lengths range from 1 to151. N = 66890.",
+    "title": "5  Title",
+    "section": "5.2 Subset Analysis: 1809-1917",
+    "text": "5.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 48986\nOriginal documents with non-NA titles: 66890 / 66890 (100%)\nOriginal documents with missing (NA) titles 0 / 66890 documents (0%)\nDownload title field harmonized dataset(1809-1917)\n\n5.2.1 Top-20 titles for years 1809-1917\n\n\n\n\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nTopografičeskaâ karta 1:42000\n1323\n2\n\n\nTheses\n147\n0.2\n\n\nHomeri Odyssea svethice reddita\n113\n0.2\n\n\nKalmbergin kartasto\n87\n0.1\n\n\nDikter\n85\n0.1\n\n\nFänrik Ståls sägner\n77\n0.1\n\n\nHandlingar rörande Finlands historia kring medlet af 17:de århundradet\n64\n0.1\n\n\nDissertatio entomologica insecta Fennica enumerans\n64\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder\n63\n0.1\n\n\nLäsning för barn\n63\n0.1\n\n\n\n\n\n5.2.2 Top-20 titles for years 1809-1917 / “Language material” content type\n\n\n\n\n\n\n\n\nTitle\nEntries (n)\nFraction (%)\n\n\n\n\nTheses\n147\n0.2\n\n\nHomeri Odyssea svethice reddita\n113\n0.2\n\n\nDikter\n85\n0.1\n\n\nFänrik Ståls sägner\n77\n0.1\n\n\nHandlingar rörande Finlands historia kring medlet af 17:de århundradet\n64\n0.1\n\n\nDissertatio entomologica insecta Fennica enumerans\n64\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder\n63\n0.1\n\n\nLäsning för barn\n63\n0.1\n\n\nKertomuksia Suomen historiasta\n61\n0.1\n\n\nFältskärns berättelser\n59\n0.1\n\n\n\n\n\n5.2.3 Title Length Over Time (1809-1917)\nThis plot visualizes the variation in title lengths across publication years from 1809 to 1917. The title lengths range from 2 to1018. N = 66890.\n\n\n\n\n\n\n\n\n\n\n\n5.2.4 Title Word Count (1809-1917)\nThis plot visualizes the variation in title lengths across publication years from 1809 to 1917. The title lengths range from 1 to151. N = 66890.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Title</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Title</span>"
     ]
   },
   {
     "objectID": "title_remainder.html",
     "href": "title_remainder.html",
-    "title": "5  Complete Dataset Overview",
+    "title": "6  Remainder of title",
     "section": "",
-    "text": "5.0.1 Top-20 title_remainders\nMARC: 245b\nOriginal documents with title_remainders: 477579 / 1229925 (38.8%)\nOriginal documents with missing (NA) title_remainders 752346 / 1229925 documents (61.2%)\nUnique discarded entries in original data: 0\nDownload title_remainder field harmonized dataset",
+    "text": "6.1 Complete Dataset Overview\nMARC: 245b\nOriginal documents with title_remainders: 477579 / 1229925 (38.8%)\nOriginal documents with missing (NA) title_remainders 752346 / 1229925 documents (61.2%)\nUnique discarded entries in original data: 0\nDownload title_remainder field harmonized dataset",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Complete Dataset Overview</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Remainder of title</span>"
+    ]
+  },
+  {
+    "objectID": "title_remainder.html#complete-dataset-overview",
+    "href": "title_remainder.html#complete-dataset-overview",
+    "title": "6  Remainder of title",
+    "section": "",
+    "text": "6.1.1 Top-20 title_remainders\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n7312\n0.6\n\n\nsuunnistuskartta\n3549\n0.3\n\n\nrunoja\n3284\n0.3\n\n\nperuskartta 1:20000 = grundkarta 1:20000\n2977\n0.2\n\n\nroman\n1678\n0.1\n\n\ngrundkarta 1:25000 = basic map 1:25000\n1272\n0.1\n\n\ngrundkarta 1:20000\n1241\n0.1\n\n\nerotisk novell\n1121\n0.1\n\n\njännitysromaani\n1082\n0.1\n\n\neroottinen novelli\n968\n0.1\n\n\n\n\n\n6.1.2 Top-20 remainders of title for “Language material” content type\nIn the Fennica dataset, language material makes up the majority of the content, comprising 91.6% of the entire dataset. This includes written texts, documents, books, articles, and any other content primarily composed of language. The remaining 8.4% consists of non-language material, such as maps, music, computer files, and other types of content that do not primarily rely on language. For a more detailed breakdown of the different types of content within the dataset.\n\n\n\nRemainder of Title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n7219\n0.6\n\n\nrunoja\n3253\n0.3\n\n\nroman\n1675\n0.1\n\n\njännitysromaani\n1050\n0.1\n\n\nloppuraportti\n909\n0.1\n\n\nkuunnelma\n743\n0.1\n\n\nsalapoliisiromaani\n648\n0.1\n\n\nerotisk novell\n579\n0\n\n\nnovelleja\n575\n0\n\n\neroottinen novelli\n487\n0\n\n\n\n\n\n6.1.3 Remainder of Title Length Over Time (1488-2020)\nThis plot visualizes the variation in title_remainder lengths across publication decades from 1488 to 2020. The title_remainder lengths range from 1 to859 , highlighting how the length of title_remainders has evolved over time.N = 1229925.\n\n\n\n\n\n\n\n\n\n\n\n6.1.4 Remainder of Title Word Count Over Time (1488-2020)\nThis plot visualizes the variation in title_remainder word counts across publication decades from 1488 to 2020. The title_remainder lengths range from 1 to137 , highlighting how the length of title_remainders has evolved over time.N = 1229925.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Remainder of title</span>"
     ]
   },
   {
     "objectID": "title_remainder.html#subset-analysis-1809-1917",
     "href": "title_remainder.html#subset-analysis-1809-1917",
-    "title": "5  Complete Dataset Overview",
-    "section": "5.1 Subset Analysis: 1809-1917",
-    "text": "5.1 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 16667\nOriginal documents with non-NA title_remainders: 23840 / 66890 (35.6%)\nOriginal documents with missing (NA) title_remainders 43050 / 66890 documents (64.4%)\nDownload title_remainder field harmonized dataset(1809-1917)\n\n5.1.1 Top-20 title_remainders for years 1809-1917\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n220\n0.3\n\n\nroman\n152\n0.2\n\n\nkertomus\n133\n0.2\n\n\nesitelmä\n89\n0.1\n\n\nberättelse\n88\n0.1\n\n\nyksinäytöksinen huvinäytelmä\n84\n0.1\n\n\nkansakouluja varten\n77\n0.1\n\n\nrunoja\n75\n0.1\n\n\n1810-1944\n68\n0.1\n\n\nen samling sånger\n65\n0.1\n\n\n\n\n\n5.1.2 Top-20 title_remainders for years 1809-1917 period / “Language material” content type\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n220\n0.3\n\n\nroman\n152\n0.2\n\n\nkertomus\n133\n0.2\n\n\nesitelmä\n89\n0.1\n\n\nberättelse\n88\n0.1\n\n\nyksinäytöksinen huvinäytelmä\n84\n0.1\n\n\nkansakouluja varten\n77\n0.1\n\n\nrunoja\n75\n0.1\n\n\nen samling sånger\n65\n0.1\n\n\nnovell\n60\n0.1\n\n\n\n\n\n5.1.3 title_remainder Length Over Time (1809-1917)\nThis plot visualizes the variation in title_remainder lengths across publication years from 1809 to 1917. The title_remainder lengths range from 1 to859. N = 66890.\n\n\n\n\n\n\n\n\n\n\n\n5.1.4 title_remainder Word Count (1809-1917)\nThis plot visualizes the variation in title_remainder lengths across publication years from 1809 to 1917. The title_remainder lengths range from 1 to135. N = 66890.",
+    "title": "6  Remainder of title",
+    "section": "6.2 Subset Analysis: 1809-1917",
+    "text": "6.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 16667\nOriginal documents with non-NA title_remainders: 23840 / 66890 (35.6%)\nOriginal documents with missing (NA) title_remainders 43050 / 66890 documents (64.4%)\nDownload title_remainder field harmonized dataset(1809-1917)\n\n6.2.1 Top-20 title_remainders for years 1809-1917\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n220\n0.3\n\n\nroman\n152\n0.2\n\n\nkertomus\n133\n0.2\n\n\nesitelmä\n89\n0.1\n\n\nberättelse\n88\n0.1\n\n\nyksinäytöksinen huvinäytelmä\n84\n0.1\n\n\nkansakouluja varten\n77\n0.1\n\n\nrunoja\n75\n0.1\n\n\n1810-1944\n68\n0.1\n\n\nen samling sånger\n65\n0.1\n\n\n\n\n\n6.2.2 Top-20 title_remainders for years 1809-1917 period / “Language material” content type\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n220\n0.3\n\n\nroman\n152\n0.2\n\n\nkertomus\n133\n0.2\n\n\nesitelmä\n89\n0.1\n\n\nberättelse\n88\n0.1\n\n\nyksinäytöksinen huvinäytelmä\n84\n0.1\n\n\nkansakouluja varten\n77\n0.1\n\n\nrunoja\n75\n0.1\n\n\nen samling sånger\n65\n0.1\n\n\nnovell\n60\n0.1\n\n\n\n\n\n6.2.3 title_remainder Length Over Time (1809-1917)\nThis plot visualizes the variation in title_remainder lengths across publication years from 1809 to 1917. The title_remainder lengths range from 1 to859. N = 66890.\n\n\n\n\n\n\n\n\n\n\n\n6.2.4 title_remainder Word Count (1809-1917)\nThis plot visualizes the variation in title_remainder lengths across publication years from 1809 to 1917. The title_remainder lengths range from 1 to135. N = 66890.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Complete Dataset Overview</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Remainder of title</span>"
     ]
   },
   {
