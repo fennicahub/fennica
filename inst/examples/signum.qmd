@@ -24,8 +24,35 @@ Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nro
 
 [Signum discarded for the whole Fennica](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/signum_discarded.csv)
 
+### Top-`r ntop` signum
+
+```{r}
+#| label = "summary_signum_table",
+#| echo = FALSE,
+#| warning = FALSE,
+#| results = "asis"
+x <- top(df$signum_harmonized, "signum_harmonized")
+tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
+colnames(tab) <- c("Signum", "Entries (n)", "Fraction (%)")
+kable(head(tab, 10))
+```
+
 ## Subset Analysis: 1809-1917
 
 [Signum accepted for 1809-1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/signum_accepted_19.csv)
 
 [Signum discarded for 1809-1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/signum_discarded_19.csv)
+
+### Top-`r ntop` signum for 1809-1917
+
+```{r}
+#| label = "summary_signum_table",
+#| echo = FALSE,
+#| warning = FALSE,
+#| results = "asis"
+x <- top(df_19$signum_harmonized, "signum_harmonized")
+tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
+colnames(tab) <- c("Signum", "Entries (n)", "Fraction (%)")
+kable(head(tab, 10))
+```
+

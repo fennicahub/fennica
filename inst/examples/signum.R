@@ -4,8 +4,8 @@ x <- polish_signum(df.orig[[field]])
 
 # Add melinda id info as first column
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
-                     signum_original = x$original, 
-                     signum_harmonized = x$harmonized)
+                     signum_original = x$x_original, 
+                     signum_harmonized = x$x_harmonized)
 rownames(df.tmp) <- NULL
 
 # Store the title field data

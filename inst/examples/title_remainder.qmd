@@ -182,8 +182,8 @@ ggplot(df2, aes(x = publication_year, y = title_remainder_length)) +
   geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), color = "black", se = FALSE) + 
   scale_x_continuous(
     limits = c(1810, 1920),  
-    breaks = seq(1810, 1920, by = 10),  
-    labels = as.character(seq(1810, 1920, by = 10))
+    breaks = seq(1810, 1920, by = 20),  
+    labels = as.character(seq(1810, 1920, by = 20))
   ) +
   labs(x = "Publication Year", y = "Remainder of Title Length") +
   theme_minimal()
@@ -209,8 +209,8 @@ ggplot(df2, aes(x = publication_year, y = title_remainder_word_count)) +
   geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), color = "black", se = FALSE) + 
   scale_x_continuous(
     limits = c(1810, 1920),  
-    breaks = seq(1810, 1920, by = 10),  
-    labels = as.character(seq(1810, 1920, by = 10))
+    breaks = seq(1810, 1920, by = 20),  
+    labels = as.character(seq(1810, 1920, by = 20))
   ) +
   labs(x = "Publication Year", y = "Remainder of Title Word Count") +
   theme_minimal()
