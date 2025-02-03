@@ -14,11 +14,11 @@ A signum data, also known as a call number, is a unique combination of numbers a
 
 ## Complete Dataset Overview
 
-[Unique accepted entries]: `r length(unique(df[[field]]))`
+[Unique accepted entries]: `r length(unique(df$signum_harmonized))`
 
-Original documents with titles: `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
+Original documents with titles: `r sum(!is.na(df$signum_harmonized))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
 
-Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
+Original documents with missing (NA) titles `r sum(is.na(df$signum_harmonized))` / `r nrow(df)` documents (`r round(100*mean(is.na(df$signum_harmonized)), 1)`%)
 
 [Signum accepted for the whole Fennica](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/output.tables/signum_accepted.csv)
 
@@ -46,7 +46,7 @@ kable(head(tab, 10))
 ### Top-`r ntop` signum for 1809-1917
 
 ```{r}
-#| label = "summary_signum_table",
+#| label = "summary_signum_table2",
 #| echo = FALSE,
 #| warning = FALSE,
 #| results = "asis"
