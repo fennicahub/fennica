@@ -83,9 +83,9 @@ ggplot(df2, aes(x = publication_decade, y = title_length)) +
   geom_point(alpha = 0.5, color = "#666666") +  # Scatter plot for individual points
   geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), color = "black", se = FALSE) + 
   scale_x_continuous(
-    limits = c(1500, 2020),  
-    breaks = seq(1500, 2020, by = 100),  
-    labels = as.character(seq(1500, 2020, by = 100))
+    limits = c(1500, 2000),  
+    breaks = seq(1500, 2000, by = 100),  
+    labels = as.character(seq(1500, 2000, by = 100))
   ) +
   labs(x = "Publication Decade", y = "Title Length") +
   theme_minimal()
@@ -111,9 +111,9 @@ ggplot(df2, aes(x = publication_decade, y = title_word_count)) +
   geom_point(alpha = 0.5, color = "#666666") +  # Scatter plot for individual points
   geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), color = "black", se = FALSE) +  
   scale_x_continuous(
-    limits = c(1500, 2020),  
-    breaks = seq(1500, 2020, by = 100),  
-    labels = as.character(seq(1500, 2020, by = 100))
+    limits = c(1500, 2000),  
+    breaks = seq(1500, 2000, by = 100),  
+    labels = as.character(seq(1500, 2000, by = 100))
   ) +
   labs(x = "Publication Decade", y = "Title Word Count") +
   theme_minimal()
@@ -186,9 +186,9 @@ ggplot(df2, aes(x = publication_year, y = title_length)) +
   geom_point(alpha = 0.5, color = "#555") +  # Scatter plot for individual points
   geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), color = "black", se = FALSE) + 
   scale_x_continuous(
-    limits = c(1809, 1920),  
-    breaks = seq(1809, 1920, by = 10),  
-    labels = as.character(seq(1809, 1920, by = 20))
+    limits = c(1810, 1920),  
+    breaks = seq(1810, 1920, by = 10),  
+    labels = as.character(seq(1810, 1920, by = 10))
   ) +
   labs(x = "Publication Year", y = "Title Length") +
   theme_minimal()
@@ -212,9 +212,9 @@ ggplot(df2, aes(x = publication_year, y = title_word_count)) +
   geom_point(alpha = 0.5, color = "#555") +  # Scatter plot for individual points
   geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), color = "black", se = FALSE) + 
   scale_x_continuous(
-    limits = c(1809, 1920),  
-    breaks = seq(1809, 1920, by = 10),  
-    labels = as.character(seq(1809, 1920, by = 20))
+    limits = c(1810, 1920),  
+    breaks = seq(1810, 1920, by = 10),  
+    labels = as.character(seq(1810, 1920, by = 10))
   ) +
   labs(x = "Publication Year", y = "Title Word Count") +
   theme_minimal()

@@ -6959,7 +6959,7 @@ polish_languages <- function(x) {
 #' @examples \dontrun{x2 <- polish_title(x)}
 #' @keywords utilities
 # Modified polish_title function
-library(stringr)
+
 
 polish_title <- function(x) {
   # Save the original titles
@@ -7003,11 +7003,8 @@ polish_title <- function(x) {
   # Calculate the length of harmonized titles
   title_length <- nchar(title_harmonized)
   
-  # Count the number of words in each title (words separated by spaces)
-  title_word_count <- sapply(strsplit(title_harmonized, "\\s+"), length)
+  title_word_count <- ifelse(is.na(title_harmonized), NA, sapply(strsplit(title_harmonized, "\\s+"), length))
   
-  # Convert back NAs if the title was NA
-  title_word_count[is.na(title_harmonized)] <- NA
   
   # Create the result dataframe
   df <- data.frame(
@@ -7052,7 +7049,6 @@ polish_title_remainder <- function (x) {
   x <- gsub("^\\:", "", x) # Remove colon at the start
   x <- gsub("\\;+$", "", x) # Remove semicolon at the end
   x <- gsub("/", "", x)
-  x <- gsub("=", "", x)
   x <- str_replace_all(x, "\\|", "") # Remove pipe characters
   x <- str_replace_all(x, "\\/", "") # Remove slashes
   x <- gsub("\\s+$", "", x)
@@ -7077,7 +7073,8 @@ polish_title_remainder <- function (x) {
   # Calculate the length of harmonized titles
   title_length <- nchar(title_harmonized)
   # Count the number of words in each title (words separated by spaces)
-  title_word_count <- sapply(strsplit(title_harmonized, "\\s+"), length)
+  title_word_count <- ifelse(is.na(title_harmonized), NA, sapply(strsplit(title_harmonized, "\\s+"), length))
+  
   
   # Create the result dataframe
   df <- data.frame(
