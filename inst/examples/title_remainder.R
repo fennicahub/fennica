@@ -7,7 +7,10 @@ x <- polish_title_remainder(df.orig[[field]])
 
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
-                     title_remainder = x)
+                     title_remainder_original = x$title_original,
+                     title_remainder = x$title_harmonized,
+                     title_remainder_length = x$title_length,
+                     title_word_count = x$title_word_count)
 
 
 # Define output files

@@ -2,15 +2,15 @@
 field <- "title"
 
 # Harmonize the raw data
-
 x <- polish_title(df.orig[[field]])
 
 
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      original = x$title_original,
-		     title = x$title_harmonized,
-		     title_length = x$title_length)
+                     title = x$title_harmonized,
+                     title_length = x$title_length,
+                     title_word_count = x$title_word_count)
 
 
 # Define output files

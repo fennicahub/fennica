@@ -36,39 +36,8 @@ Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nro
 x <- top(df$title, "title")
 tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
 colnames(tab) <- c("Title", "Entries (n)", "Fraction (%)")
-kable(head(tab, 15))
+kable(head(tab, 10))
 ```
-
-### Title Length Over Time (1488-2020)
-
-This plot visualizes the variation in title lengths across publication decades from 1488 to 2020. The title lengths range from  `r min(df$title_length, na.rm = TRUE)` to`r max(df$title_length, na.rm = TRUE)` , highlighting how the length of titles has evolved over time.N = `r nrow(df)`.
-
-```{r}
-#| label = "summary_title_length_pic",
-#| echo = FALSE,
-#| warning = FALSE,
-df$publication_decade <- df.harmonized$publication_decade
-
-df2 <- df %>% 
-  group_by(publication_decade) %>% 
-  filter(publication_decade <= 2030) 
-df2 <- df2 %>% 
-  filter(!is.na(publication_decade) & !is.na(title_length))  # Remove NA values
-
-ggplot(df2, aes(x = publication_decade, y = title_length)) +
-  geom_point(alpha = 0.5, color = "#666666") +  # Scatter plot for individual points
-  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), color = "black", se = FALSE) +  #
-  ggtitle("Title Length Over Time") +
-  scale_x_continuous(
-    limits = c(1500, 2020),  
-    breaks = seq(1500, 2020, by = 100),  
-    labels = as.character(seq(1500, 2020, by = 100))
-  ) +
-  labs(x = "Publication Decade", y = "Title Length") +
-  theme_minimal()
-```
-
-
 ### Top-`r ntop` titles for "Language material" content type 
 
 In the Fennica dataset, language material makes up the majority of the content, comprising 91.6% of the entire dataset. This includes written texts, documents, books, articles, and any other content primarily composed of language. The remaining 8.4% consists of non-language material, such as maps, music, computer files, and other types of content that do not primarily rely on language. For a more detailed breakdown of the different types of content within the dataset, you can refer to [summaries of type of records in Fennica].
@@ -91,8 +60,65 @@ df_language_mat <- df %>%
 x <- top(df_language_mat$title, "title")
 tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
 colnames(tab) <- c("Title", "Entries (n)", "Fraction (%)")
-kable(head(tab, 15))
+kable(head(tab, 10))
 ```
+
+### Title Length Over Time (1488-2020)
+
+This plot visualizes the variation in title lengths across publication decades from 1488 to 2020. The title lengths range from  `r min(df$title_length, na.rm = TRUE)` to`r max(df$title_length, na.rm = TRUE)` , highlighting how the length of titles has evolved over time.N = `r nrow(df)`.
+
+```{r}
+#| label = "summary_title_length_pic",
+#| echo = FALSE,
+#| warning = FALSE,
+df$publication_decade <- df.harmonized$publication_decade
+
+df2 <- df %>% 
+  group_by(publication_decade) %>% 
+  filter(publication_decade <= 2030) 
+df2 <- df2 %>% 
+  filter(!is.na(publication_decade) & !is.na(title_length))  # Remove NA values
+
+ggplot(df2, aes(x = publication_decade, y = title_length)) +
+  geom_point(alpha = 0.5, color = "#666666") +  # Scatter plot for individual points
+  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), color = "black", se = FALSE) + 
+  scale_x_continuous(
+    limits = c(1500, 2020),  
+    breaks = seq(1500, 2020, by = 100),  
+    labels = as.character(seq(1500, 2020, by = 100))
+  ) +
+  labs(x = "Publication Decade", y = "Title Length") +
+  theme_minimal()
+```
+
+### Title Word Count Over Time (1488-2020)
+
+This plot visualizes the variation in title word counts across publication decades from 1488 to 2020. The title lengths range from  `r min(df$title_word_count, na.rm = TRUE)` to`r max(df$title_word_count, na.rm = TRUE)` , highlighting how the length of titles has evolved over time.N = `r nrow(df)`.
+
+```{r}
+#| label = "summary_title_word_count_pic",
+#| echo = FALSE,
+#| warning = FALSE,
+df$publication_decade <- df.harmonized$publication_decade
+
+df2 <- df %>% 
+  group_by(publication_decade) %>% 
+  filter(publication_decade <= 2030) 
+df2 <- df2 %>% 
+  filter(!is.na(publication_decade) & !is.na(title_word_count))  # Remove NA values
+
+ggplot(df2, aes(x = publication_decade, y = title_word_count)) +
+  geom_point(alpha = 0.5, color = "#666666") +  # Scatter plot for individual points
+  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), color = "black", se = FALSE) +  
+  scale_x_continuous(
+    limits = c(1500, 2020),  
+    breaks = seq(1500, 2020, by = 100),  
+    labels = as.character(seq(1500, 2020, by = 100))
+  ) +
+  labs(x = "Publication Decade", y = "Title Word Count") +
+  theme_minimal()
+```
+
 
 ## Subset Analysis: 1809-1917
 
@@ -114,7 +140,7 @@ Original documents with missing (NA) titles `r sum(is.na(df_19[[field]]))` / `r 
 x <- top(df_19, "title")
 tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df_19)), 1))
 colnames(tab) <- c("Title", "Entries (n)", "Fraction (%)")
-kable(head(tab, 15))
+kable(head(tab, 10))
 ```
 
 
@@ -137,7 +163,7 @@ df_19_language_mat <- df_19 %>%
 x <- top(df_19_language_mat, "title")
 tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df_19)), 1))
 colnames(tab) <- c("Title", "Entries (n)", "Fraction (%)")
-kable(head(tab, 15))
+kable(head(tab, 10))
 ```
 
 
@@ -158,13 +184,38 @@ df2 <- df2 %>%
 
 ggplot(df2, aes(x = publication_year, y = title_length)) +
   geom_point(alpha = 0.5, color = "#555") +  # Scatter plot for individual points
-  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), color = "black", se = FALSE) +  #
-  ggtitle("Title Length (1809-1917)") +
+  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), color = "black", se = FALSE) + 
   scale_x_continuous(
     limits = c(1809, 1920),  
     breaks = seq(1809, 1920, by = 10),  
-    labels = as.character(seq(1809, 1920, by = 10))
+    labels = as.character(seq(1809, 1920, by = 20))
   ) +
   labs(x = "Publication Year", y = "Title Length") +
+  theme_minimal()
+```
+### Title Word Count (1809-1917)
+This plot visualizes the variation in title lengths across publication years from 1809 to 1917. The title lengths range from  `r min(df_19$title_word_count, na.rm = TRUE)` to`r max(df_19$title_word_count, na.rm = TRUE)`. N = `r nrow(df_19)`.
+
+```{r}
+#| label = "summary_title_word_count_pic1",
+#| echo = FALSE,
+#| warning = FALSE,
+df_19$publication_year <- df_pubtime19$publication_year
+
+df2 <- df_19 %>% 
+  group_by(publication_year) %>% 
+  filter(publication_year <= 1920) 
+df2 <- df2 %>% 
+  filter(!is.na(publication_year) & !is.na(title_word_count))  # Remove NA values
+
+ggplot(df2, aes(x = publication_year, y = title_word_count)) +
+  geom_point(alpha = 0.5, color = "#555") +  # Scatter plot for individual points
+  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), color = "black", se = FALSE) + 
+  scale_x_continuous(
+    limits = c(1809, 1920),  
+    breaks = seq(1809, 1920, by = 10),  
+    labels = as.character(seq(1809, 1920, by = 20))
+  ) +
+  labs(x = "Publication Year", y = "Title Word Count") +
   theme_minimal()
 ```
