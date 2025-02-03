@@ -14,6 +14,12 @@ A signum data, also known as a call number, is a unique combination of numbers a
 
 ## Complete Dataset Overview
 
+[Unique accepted entries]: `r length(unique(df[[field]]))`
+
+Original documents with titles: `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
+
+Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
+
 [Signum accepted for the whole Fennica](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/output.tables/signum_accepted.csv)
 
 [Signum discarded for the whole Fennica](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/signum_discarded.csv)

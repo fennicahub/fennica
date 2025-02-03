@@ -1,12 +1,11 @@
 field <- "signum"
 
-df.tmp <- as.data.frame(df.orig[[field]])
-df.tmp <- replace(df.tmp, df.tmp == "", NA)
+x <- polish_signum(df.orig[[field]])
 
 # Add melinda id info as first column
-df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
-                    signum = df.orig$signum, # add field column
-                    df.tmp)
+df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
+                     signum_original = x$original, 
+                     signum_harmonized = x$harmonized)
 rownames(df.tmp) <- NULL
 
 # Store the title field data
@@ -46,8 +45,7 @@ df <- readRDS(data.file)
 
 # ------------------------------------------------------------
 
-# Run publication_time.R file to get the melindas needed for the 19th century slicing
-source("publication_time.R")
+# get the melindas needed for the 19th century slicing
 
 df_19 <- as.data.frame(df.tmp[df.tmp$melinda_id %in% melindas_19,])
 
