@@ -14,13 +14,13 @@ MARC: [080a](https://www.loc.gov/marc/bibliographic/bd080.html)
 
 Polish_udk.R is a function designed to harmonize the 'Universal Decimal Classification' field. Currently, it only harmonizes entries categorized under the bibliography level of Monograph/Item.
 
-In total, there are `r length(df.orig$UDK)` entries in Fennica, with `r sum(is.na(df.orig$UDK) | df.orig$UDK == "")` missing UDC values in our dataset. 
+In total, there are `r length(df.orig$UDK)` entries in Fennica, with `r sum(is.na(df.orig$UDK) | df.orig$UDK == "")` missing UDC values in our dataset.
 
 ## Complete Dataset Overview
 
-[Unique accepted UDC](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_accepted.csv):  `r length(unique(unlist(strsplit(as.character(df$converted), ";"))))-1` 
+[Unique accepted UDC](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_accepted.csv): `r length(unique(unlist(strsplit(as.character(df$converted), ";"))))-1`
 
-UDC is available for `r sum(!is.na(df$cleaned))` documents  (`r round(100*mean(!is.na(df$cleaned)))`%). 
+UDC is available for `r sum(!is.na(df$cleaned))` documents (`r round(100*mean(!is.na(df$cleaned)))`%).
 
 `r sum((df$multi_udk == FALSE), na.rm = TRUE)` single UDC entries (`r round(100 * mean(df$multi_udk == FALSE, na.omit = TRUE), 2)`%)
 
@@ -30,7 +30,7 @@ UDC is available for `r sum(!is.na(df$cleaned))` documents  (`r round(100*mean(!
 
 There are `r sum(df$primary == "Undetermined", na.rm = TRUE)` entries where the primary UDK is "Undetermined" (`r round(mean(df$primary == "Undetermined", na.rm = TRUE) * 100)`%).
 
-[Unrecognized UDC](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_discarded.csv):  `r length(unique(df.tmp1$udk))`
+[Unrecognized UDC](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_discarded.csv): `r length(unique(df.tmp1$udk))`
 
 [Download UDC harmonized dataset](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK.csv)
 
@@ -46,7 +46,6 @@ colnames(tab) <- c("UDC", "Entries (n)", "Fraction (%)")
 kable(head(tab, 20))
 ```
 
-
 ## Subset Analysis: 1809-1917
 
 [Unique UDC (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_accepted_19.csv): `r length(unique(unlist(strsplit(as.character(df_19$converted), ";"))))-1`
@@ -57,7 +56,7 @@ kable(head(tab, 20))
 
 `r sum(is.na(df_19$cleaned))` missing/NA entries (`r round(mean(is.na(df_19$cleaned)) * 100)`%)
 
-There are `r sum(df_19$primary == "Undetermined", na.rm = TRUE)` entries where the primary UDK is "Undetermined" (`r round(mean(df_19$primary == "Undetermined", na.rm = TRUE) * 100)`%) 
+There are `r sum(df_19$primary == "Undetermined", na.rm = TRUE)` entries where the primary UDK is "Undetermined" (`r round(mean(df_19$primary == "Undetermined", na.rm = TRUE) * 100)`%)
 
 [Download UDC harmonized dataset (1809-1917)](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_19.csv)
 
@@ -74,4 +73,3 @@ tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
 colnames(tab) <- c("UDC", "Entries (n)", "Fraction (%)")
 kable(head(tab, 20))
 ```
-

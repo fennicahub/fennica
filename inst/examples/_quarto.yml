@@ -37,7 +37,7 @@ book:
   #- note_source.qmd
   #- publisher.qmd
   ##- publication_interval.qmd
-  ##- publication_place.qmd #enemmän läpivuuta onko suomi tai autonomia
+  ##- publication_place.qmd 
   - publication_time.qmd
   ##- publication_frequency.qmd
   - signum.qmd
@@ -50,7 +50,7 @@ book:
   ##- subject_topic.qmd
   #- successor.qmd
   #- uncontrolled.qmd
-  #- ai_sauna.qmd
+  - harmonized_fennica.qmd
   appendices :
     - acknowledgments.qmd
     - technical_information.qmd

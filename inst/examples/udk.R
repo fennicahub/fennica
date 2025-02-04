@@ -1,12 +1,14 @@
 #080 - Universal Decimal Classification Number (R)
 
 field <- "UDK"
+#out <- polish_udk(head(df.orig$UDK, 1000))
 
 # Harmonize the raw data
 out <- polish_udk(df.orig[[field]])
 df.tmp <- out$full
 df.tmp$melinda_id <- df.orig$melinda_id
 df.tmp <- select(df.tmp, melinda_id, everything())
+df.udk <- df.tmp
 
 df.tmp1 <- out$undetermined
 
@@ -69,7 +71,7 @@ file_accepted <- paste0(output.folder, field, "_accepted_19.csv")
 # Generate data summaries for the whole data set 
 
 message("UDK accepted")
-tab_19 <- cbind(melinda_id = df.tmp_19$melinda_id, original = df.tmp_19$original, converted = df.tmp_19$converted)
+tab_19 <- cbind(melinda_id = df.tmp_19$melinda_id, original = df.tmp_19$original, converted = df.tmp_19$converted, primary = df.tmp_19$primary)
 tmp_19 <- write_xtable(tab_19, paste(output.folder, field, "_accepted_19.csv", sep = ""), 
                     count = TRUE,
                     add.percentages = TRUE, 

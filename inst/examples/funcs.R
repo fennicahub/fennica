@@ -7089,7 +7089,7 @@ polish_title_remainder <- function (x) {
 }
 
 
-polish_udk <- function(x, udk_path = "udk.csv", patterns = c("929", "908", "92", "894.541", "839.79","839.7")) {
+polish_udk <- function(x, patterns = c("929", "908", "92", "894.541", "839.79","839.7")) {
   
   x0 <- x  # Save the original input for later use
   
@@ -7743,4 +7743,105 @@ polish_080x <- function(x) {
   
   return(df)
 }
+
+
+polish_udk <- function(x, patterns = c(as.character("929", "908", "92", "894.541", "839.79","839.7"))) {
+  
+  x0 <- x  # Save the original input for later use
+  
+  # Replace '|' with ';' in the input
+  x <- gsub("\\|", ";", x)
+  x <- gsub(" ", "", x)
+  x <- gsub(":", ";", x)
+  
+  # Function to replace elements that start with specific patterns (like "929" or "908")
+  replace_patterns <- function(x, patterns) {
+    x <- unlist(strsplit(x, ";"))  # Split the string by semicolons
+    x <- sapply(x, function(elem) {
+      # Replace with the first 3 characters if matching patterns
+      if (any(sapply(patterns, function(p) str_starts(elem, p)))) {
+        return(substr(elem, 1, 3))
+      } else {
+        return(elem)
+      }
+    })
+    return(paste(unique(x), collapse = ";"))  # Collapse and ensure uniqueness
+  }
+  
+  # Apply the pattern replacement to the input vector
+  x <- sapply(x, replace_patterns, patterns)
+  
+  # Replace any empty strings with NA
+  x[x == ""] <- NA
+  
+  ############################################################
+  
+  # Load UDK synonyms and names
+  url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk.csv"
+  udk <- read.csv(url, sep = ";", header = FALSE, encoding = "UTF-8")
+  colnames(udk) <- c("synonyme", "name")
+  
+  df <- data.frame(original = x0, cleaned = x, stringsAsFactors = FALSE)
+  
+  # Function to match UDK codes to names
+  match_and_concatenate <- function(value) {
+    if (is.na(value)) return(NA)
+    
+    split_value <- unlist(strsplit(value, ";"))
+    converted_values <- sapply(split_value, function(val) {
+      match_index <- match(val, udk$synonyme)
+      if (!is.na(match_index)) {
+        return(udk$name[match_index])
+      } else {
+        return("Undetermined")
+      }
+    })
+    
+    return(paste(converted_values, collapse = ";"))
+  }
+  
+  # Apply the matching function to the cleaned UDKs
+  df$converted <- sapply(df$cleaned, match_and_concatenate)
+  
+  # Function to find the first UDK that is not "Undetermined"
+  find_primary_udk <- function(value) {
+    if (is.na(value)) return(NA)
+    
+    split_value <- unlist(strsplit(value, ";"))  # Split into separate UDKs
+    
+    # Find the first non-"Undetermined" UDK
+    primary <- split_value[split_value != "Undetermined"]
+    
+    # If there are no non-"Undetermined" UDKs, return "Undetermined"
+    if (length(primary) == 0) {
+      return("Undetermined")
+    } else {
+      return(primary[1])  # Return the first valid UDK
+    }
+  }
+  
+  # Apply the function to determine the primary UDK
+  df$primary <- sapply(df$converted, find_primary_udk)
+  
+  len <- sapply(strsplit(x, ";"), length)
+  dff <- data.frame(udk_count = len)    
+  multi <- len > 1
+  df$multi_udk <- multi
+  
+  ############################################################
+  
+  # Split values for further processing
+  split_cleaned <- unlist(strsplit(df$cleaned, ";"))
+  split_converted <- unlist(strsplit(df$converted, ";"))
+  
+  # Create a data frame for UDK and explanation
+  f <- data.frame(udk = split_cleaned, explanation = split_converted, stringsAsFactors = FALSE)
+  
+  # Filter for undetermined and accepted values
+  undetermined <- filter(f, explanation == "Undetermined")
+  accepted <- filter(f, explanation != "Undetermined")
+  
+  return(list(full = df, undetermined = undetermined, accepted = accepted))
+}
+
 

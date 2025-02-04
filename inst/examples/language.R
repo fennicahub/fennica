@@ -10,6 +10,8 @@ row.names(df.tmp) <- NULL
 # Collect the results into a data.frame
 df.tmp$melinda_id <- df.orig$melinda_id
 
+df.language <- df.tmp
+
 
 # Define output files
 file_discarded <- paste0(output.folder, field, "_discarded.csv")

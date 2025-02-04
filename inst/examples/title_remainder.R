@@ -11,7 +11,7 @@ df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      title_remainder = x$title_harmonized,
                      title_remainder_length = x$title_length,
                      title_remainder_word_count = x$title_word_count)
-
+df.title_remainder <- df.tmp
 
 # Define output files
 file_accepted  <- paste0(output.folder, field, "_accepted.csv")

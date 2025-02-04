@@ -11,6 +11,7 @@ df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      title = x$title_harmonized,
                      title_length = x$title_length,
                      title_word_count = x$title_word_count)
+df.title <- df.tmp
 
 
 # Define output files

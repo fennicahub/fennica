@@ -32,8 +32,8 @@ The summary also accounts for publication statuses (field [008/06](https://marc2
 
 ```{r}
 #| include = FALSE
-min_year <- min(na.omit(as.numeric(df_pub_time$publication_year)), na.rm = TRUE)
-max_year <- max(na.omit(as.numeric(df_pub_time$publication_year)), na.rm = TRUE)
+min_year <- min(na.omit(as.numeric(df_pubtime$publication_year)), na.rm = TRUE)
+max_year <- max(na.omit(as.numeric(df_pubtime$publication_year)), na.rm = TRUE)
 
 # Get the current year
 current_year <- as.numeric(format(Sys.Date(), "%Y"))
