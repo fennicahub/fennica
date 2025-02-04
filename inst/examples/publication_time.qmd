@@ -44,7 +44,7 @@ if (max_year > current_year) {
 }
 ```
 
-Publication years is available for `r sum(!is.na(df_pub_time$publication_year))` documents (`r round(100*mean(!is.na(df_pub_time$publication_year)))`%). The publication years span is `r paste(min_year, max_year, sep = "-")`.
+Publication years is available for `r sum(!is.na(df_pubtime$publication_year))` documents (`r round(100*mean(!is.na(df_pubtime$publication_year)))`%). The publication years span is `r paste(min_year, max_year, sep = "-")`.
 
 ### Title count per decade (log values)
 
@@ -57,7 +57,7 @@ Publication years is available for `r sum(!is.na(df_pub_time$publication_year))`
 #| fig.width = 10,
 #| fig.height = 6
 
-df2 <- df_pub_time %>% 
+df2 <- df_pubtime %>% 
   group_by(publication_decade) %>% 
   filter(publication_decade <= 2030) 
 p <- ggplot(df2, aes(publication_decade)) +

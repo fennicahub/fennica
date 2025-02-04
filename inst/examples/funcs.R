@@ -7752,7 +7752,7 @@ polish_udk <- function(x, patterns = c(as.character("929", "908", "92", "894.541
   # Replace '|' with ';' in the input
   x <- gsub("\\|", ";", x)
   x <- gsub(" ", "", x)
-  x <- gsub(":", ";", x)
+  x <- trimws(x)
   
   # Function to replace elements that start with specific patterns (like "929" or "908")
   replace_patterns <- function(x, patterns) {
@@ -7780,6 +7780,8 @@ polish_udk <- function(x, patterns = c(as.character("929", "908", "92", "894.541
   url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk.csv"
   udk <- read.csv(url, sep = ";", header = FALSE, encoding = "UTF-8")
   colnames(udk) <- c("synonyme", "name")
+  udk$synonyme <- trimws(udk$synonyme)
+  udk$name <- trimws(udk$name)
   
   df <- data.frame(original = x0, cleaned = x, stringsAsFactors = FALSE)
   
@@ -7826,7 +7828,7 @@ polish_udk <- function(x, patterns = c(as.character("929", "908", "92", "894.541
   len <- sapply(strsplit(x, ";"), length)
   dff <- data.frame(udk_count = len)    
   multi <- len > 1
-  df$multi_udk <- multi
+  df$multi_udk <- ifelse(is.na(df$converted), NA, multi)
   
   ############################################################
   

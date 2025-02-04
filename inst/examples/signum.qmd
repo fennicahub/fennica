@@ -16,7 +16,7 @@ A signum data, also known as a call number, is a unique combination of numbers a
 
 [Unique accepted entries]: `r length(unique(df$signum_harmonized))`
 
-Original documents with titles: `r sum(!is.na(df$signum_harmonized))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
+Original documents with titles: `r sum(!is.na(df$signum_harmonized))` / `r nrow(df)` (`r round(100*mean(!is.na(df$signum_harmonized)), 1)`%)
 
 Original documents with missing (NA) titles `r sum(is.na(df$signum_harmonized))` / `r nrow(df)` documents (`r round(100*mean(is.na(df$signum_harmonized)), 1)`%)
 
