@@ -7089,7 +7089,7 @@ polish_title_remainder <- function (x) {
 }
 
 
-polish_udk <- function(x, udk_path = "udk.csv", patterns = c("929", "908", "92")) {
+polish_udk <- function(x, udk_path = "udk.csv", patterns = c("929", "908", "92", "894.541", "839.79","839.7")) {
   
   x0 <- x  # Save the original input for later use
   
@@ -7121,7 +7121,8 @@ polish_udk <- function(x, udk_path = "udk.csv", patterns = c("929", "908", "92")
   ############################################################
   
   # Load UDK synonyms and names
-  udk <- read.csv(udk_path, sep = ";", header = FALSE, encoding = "UTF-8")
+  url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk.csv"
+  udk <- read.csv(url, sep = ";", header = FALSE, encoding = "UTF-8")
   colnames(udk) <- c("synonyme", "name")
   
   df <- data.frame(original = x0, cleaned = x, stringsAsFactors = FALSE)
@@ -7723,3 +7724,23 @@ polish_signum <- function(x) {
   
   return(df)
 }
+
+polish_080x <- function(x) {
+  x0 <- x
+  
+  # Function to remove duplicates and rejoin the values
+  remove_duplicates <- function(x) {
+    if (is.na(x) || x == "") return(NA)  # Convert empty values to NA
+    unique_values <- unique(strsplit(x, "\\|")[[1]])  # Split by '|' and remove duplicates
+    paste(unique_values, collapse = "|")  # Rejoin with '|'
+  }
+  
+  # Apply the function to the input
+  harmonized <- sapply(x0, remove_duplicates)
+  
+  # Create the resulting dataframe
+  df <- data.frame(original = x0, harmonized = harmonized, stringsAsFactors = FALSE)
+  
+  return(df)
+}
+

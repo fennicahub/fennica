@@ -25,15 +25,25 @@ list <- df.orig %>%  filter(melinda_id %in% melindas_19)
 
 
 
-df_list <- list %>% select(melinda_id, author_name, publication_time,
+list <- list %>% select(melinda_id, author_name, publication_time, type_of_record,
                          title, title_remainder, `245n`, title_uniform, 
                            language, language_original,
-                           signum, UDK,`080x`, `042a`, literary_genre_book, `655a`,`650a`)
+                           signum, UDK,`080x`, `042a`, genre_book, `655a`,`650a`)
 
 #2) only language material
 
 list <- list %>%
   filter(type_of_record == "Language material")
+
+# Check if signum contains "Suom. kaunokirj." or "Ruots. kaunokirj."
+kauno_rows <- grepl("Suom\\.kaunokirj.1|Suom\\.kaunokirj.3|Suom\\.kaunokirj.4|Suom\\.kaunokirj.5|
+Suom\\.kaunokirj.6|K\\.Suom.kaunokirj.|K\\.Suom.kaunokirj.1|K\\.Suomal.kaunokirj.|K\\.Suom.kaunok.|K\\.Ruots.kaunok.|K\\.Ruots.kaunokirj.|Ruots\\.kaunokirj.1|Ruots\\.kaunokirj.3|Ruots\\.kaunokirj.4|Ruots\\.kaunokirj.5|
+Ruots\\.kaunokirj.6", list$signum)
+list <- list %>% filter(kauno_rows)
+
+udk_rows <- grepl("839\\.79|894\\.541", list$UDK)
+
+list <- list %>% filter(kauno_rows)
 
 # 3) 041 h (tyhjä) - kieli
 list$language_original[list$language_original == ""] <- NA
@@ -52,7 +62,7 @@ list <- list[grepl("-1|-2|-3|-4", list$`080x`) | is.na(list$`080x`), ]
 # # genre
 genres_to_keep <- c("Kaunokirjallisuus","Dramaa", "Esseet", "Romaanit", "Huumori, satiiri jne.", "Novellit, kertomukset tai niiden kokoelmat","Runot", "Yhdistelmä", "Tuntematon")
 
-list <- list %>% filter(literary_genre_book %in% genres_to_keep)
+list <- list %>% filter(genre_book %in% genres_to_keep)
 
 
 # Check if signum contains "Suom. kaunokirj." or "Ruots. kaunokirj."
