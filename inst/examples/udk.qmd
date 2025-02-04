@@ -28,6 +28,8 @@ UDC is available for `r sum(!is.na(df$cleaned))` documents  (`r round(100*mean(!
 
 `r sum(is.na(df$cleaned))` missing/NA entries (`r round(mean(is.na(df$cleaned)) * 100)`%)
 
+There are `r sum(df$primary == "Undetermined", na.rm = TRUE)` entries where the primary UDK is "Undetermined" (`r round(mean(df$primary == "Undetermined", na.rm = TRUE) * 100)`%).
+
 [Unrecognized UDC](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_discarded.csv):  `r length(unique(df.tmp1$udk))`
 
 [Download UDC harmonized dataset](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK.csv)
@@ -38,7 +40,7 @@ UDC codes are from [The National Library of Finland](https://www.kiwi.fi/display
 #| label = "summaryudk1",
 #| echo = FALSE,
 #| results = "asis"
-x <- top(df.tmp, "converted")
+x <- top(df, "primary")
 tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
 colnames(tab) <- c("UDC", "Entries (n)", "Fraction (%)")
 kable(head(tab, 20))
@@ -55,6 +57,8 @@ kable(head(tab, 20))
 
 `r sum(is.na(df_19$cleaned))` missing/NA entries (`r round(mean(is.na(df_19$cleaned)) * 100)`%)
 
+There are `r sum(df_19$primary == "Undetermined", na.rm = TRUE)` entries where the primary UDK is "Undetermined" (`r round(mean(df_19$primary == "Undetermined", na.rm = TRUE) * 100)`%) 
+
 [Download UDC harmonized dataset (1809-1917)](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_19.csv)
 
 ### Top UDC for 1809-1917
@@ -65,7 +69,7 @@ Number of titles assigned with each UDC (top-10). For a complete list, see [acce
 #| label = "summaryudk3",
 #| echo = FALSE,
 #| results = "asis"
-x <- top(df.tmp_19, "converted")
+x <- top(df_19, "primary")
 tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
 colnames(tab) <- c("UDC", "Entries (n)", "Fraction (%)")
 kable(head(tab, 20))

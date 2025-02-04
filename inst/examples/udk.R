@@ -2,7 +2,6 @@
 
 field <- "UDK"
 
-
 # Harmonize the raw data
 out <- polish_udk(df.orig[[field]])
 df.tmp <- out$full
@@ -27,7 +26,10 @@ file_accepted <- paste0(output.folder, field, "_accepted.csv")
 # Generate data summaries for the whole data set 
 
 message("UDK accepted")
-tab <- cbind(melinda_id = df.tmp$melinda_id, original = df.tmp$original, converted = df.tmp$converted)
+tab <- cbind(melinda_id = df.tmp$melinda_id, 
+             original = df.tmp$original, 
+             converted = df.tmp$converted, 
+             primary = df.tmp$primary)
 tmp <- write_xtable(tab, paste(output.folder, field, "_accepted.csv", sep = ""), 
                     count = TRUE,
                     add.percentages = TRUE)
@@ -50,7 +52,7 @@ write.table(df, file = paste0(output.folder, field, ".csv"), quote = FALSE, sep 
 # ------------------------------------------------------------
 
 #Run melindas_19.R to get melindas for 1809-1917
-source("melindas_19.R")
+#source("melindas_19.R")
 df.tmp_19 <- df.tmp %>% filter(melinda_id %in% melindas_19)
 
 

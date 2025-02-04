@@ -7146,10 +7146,31 @@ polish_udk <- function(x, udk_path = "udk.csv", patterns = c("929", "908", "92")
   # Apply the matching function to the cleaned UDKs
   df$converted <- sapply(df$cleaned, match_and_concatenate)
   
+  # Function to find the first UDK that is not "Undetermined"
+  find_primary_udk <- function(value) {
+    if (is.na(value)) return(NA)
+    
+    split_value <- unlist(strsplit(value, ";"))  # Split into separate UDKs
+    
+    # Find the first non-"Undetermined" UDK
+    primary <- split_value[split_value != "Undetermined"]
+    
+    # If there are no non-"Undetermined" UDKs, return "Undetermined"
+    if (length(primary) == 0) {
+      return("Undetermined")
+    } else {
+      return(primary[1])  # Return the first valid UDK
+    }
+  }
+  
+  # Apply the function to determine the primary UDK
+  df$primary <- sapply(df$converted, find_primary_udk)
+  
   len <- sapply(strsplit(x, ";"), length)
   dff <- data.frame(udk_count = len)    
   multi <- len > 1
   df$multi_udk <- multi
+  
   ############################################################
   
   # Split values for further processing
@@ -7165,6 +7186,7 @@ polish_udk <- function(x, udk_path = "udk.csv", patterns = c("929", "908", "92")
   
   return(list(full = df, undetermined = undetermined, accepted = accepted))
 }
+
 
 #' @title Polish Place
 #' @description Polish place names.
