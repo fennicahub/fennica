@@ -7745,65 +7745,57 @@ polish_080x <- function(x) {
 }
 
 
-polish_udk <- function(x, patterns = c(as.character("929", "908", "92", "894.541", "839.79","839.7"))) {
-  
+polish_udk <- function(x, chunk_size = 10000) {
   x0 <- x  # Save the original input for later use
-  
   # Replace '|' with ';' in the input
   x <- gsub("\\|", ";", x)
-  x <- gsub(" ", "", x)
-  x <- trimws(x)
-  
-  # Function to replace elements that start with specific patterns (like "929" or "908")
-  replace_patterns <- function(x, patterns) {
-    x <- unlist(strsplit(x, ";"))  # Split the string by semicolons
-    x <- sapply(x, function(elem) {
-      # Replace with the first 3 characters if matching patterns
-      if (any(sapply(patterns, function(p) str_starts(elem, p)))) {
-        return(substr(elem, 1, 3))
-      } else {
-        return(elem)
-      }
-    })
-    return(paste(unique(x), collapse = ";"))  # Collapse and ensure uniqueness
-  }
-  
-  # Apply the pattern replacement to the input vector
-  x <- sapply(x, replace_patterns, patterns)
-  
-  # Replace any empty strings with NA
-  x[x == ""] <- NA
-  
-  ############################################################
   
   # Load UDK synonyms and names
   url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk.csv"
-  udk <- read.csv(url, sep = ";", header = FALSE, encoding = "UTF-8")
-  colnames(udk) <- c("synonyme", "name")
-  udk$synonyme <- trimws(udk$synonyme)
-  udk$name <- trimws(udk$name)
+  udk <- read.csv(url, sep = ";", header = FALSE, encoding = "UTF-8", stringsAsFactors = FALSE)
+  colnames(udk) <- c("synonyme", "name")  # Rename columns correctly
   
-  df <- data.frame(original = x0, cleaned = x, stringsAsFactors = FALSE)
+  # Create a named vector for mapping
+  mapping <- setNames(udk$name, udk$synonyme)
   
-  # Function to match UDK codes to names
-  match_and_concatenate <- function(value) {
-    if (is.na(value)) return(NA)
-    
-    split_value <- unlist(strsplit(value, ";"))
-    converted_values <- sapply(split_value, function(val) {
-      match_index <- match(val, udk$synonyme)
-      if (!is.na(match_index)) {
-        return(udk$name[match_index])
-      } else {
-        return("Undetermined")
+  # Function to map values with fallback truncation
+  map_with_fallback <- function(value) {
+    if (value == "" | is.na(value)) return(NA)  # Handle empty values
+    while (nchar(value) > 0) {
+      if (!is.na(mapping[value])) {
+        return(mapping[value])  # Return the matched name
       }
-    })
-    
-    return(paste(converted_values, collapse = ";"))
+      value <- substr(value, 1, nchar(value) - 1)  # Remove last character
+    }
+    return("Undetermined")  # If no match found, return "Undetermined"
   }
   
-  # Apply the matching function to the cleaned UDKs
-  df$converted <- sapply(df$cleaned, match_and_concatenate)
+  # Function to process a chunk of data
+  process_chunk <- function(chunk, chunk_index) {
+    cleaned_values <- lapply(seq_along(chunk), function(i) {
+      row <- chunk[i]
+      if (is.na(row) | row == "") return(c(original = NA, cleaned = NA, converted = NA))  # Handle empty rows
+      split_values <- unique(unlist(strsplit(row, ";")))  # Split and remove duplicates
+      cleaned_str <- paste(split_values, collapse = ";")    # Recombine cleaned values with ;
+      converted_values <- sapply(split_values, map_with_fallback)  # Convert values
+      converted_str <- paste(converted_values, collapse = ";")  # Recombine converted values with ;
+      return(c(original = x0[(chunk_index - 1) * chunk_size + i], cleaned = cleaned_str, converted = converted_str))
+    })
+    return(do.call(rbind, cleaned_values))  # Return processed chunk as a dataframe
+  }
+  
+  # Split data into chunks
+  num_chunks <- ceiling(length(x) / chunk_size)
+  chunks <- split(x, ceiling(seq_along(x) / chunk_size))
+  
+  # Process chunks in parallel
+  result_chunks <- mclapply(seq_along(chunks), function(i) process_chunk(chunks[[i]], i), mc.cores = detectCores() - 1)
+  
+  # Combine results into a final dataframe
+  result_df <- do.call(rbind, result_chunks)
+  
+  # Convert to data frame
+  result_df <- as.data.frame(result_df, stringsAsFactors = FALSE)
   
   # Function to find the first UDK that is not "Undetermined"
   find_primary_udk <- function(value) {
@@ -7823,27 +7815,29 @@ polish_udk <- function(x, patterns = c(as.character("929", "908", "92", "894.541
   }
   
   # Apply the function to determine the primary UDK
-  df$primary <- sapply(df$converted, find_primary_udk)
+  result_df$primary <- sapply(result_df$converted, find_primary_udk)
   
-  len <- sapply(strsplit(x, ";"), length)
-  dff <- data.frame(udk_count = len)    
-  multi <- len > 1
-  df$multi_udk <- ifelse(is.na(df$converted), NA, multi)
+  # Count UDKs
+  len <- sapply(strsplit(result_df$cleaned, ";"), length)
   
-  ############################################################
+  # Ensure udk_count is NA if converted is NA
+  result_df$udk_count <- ifelse(is.na(result_df$converted), NA, len)
   
+  # Identify multiple UDKs
+  result_df$multi_udk <- ifelse(is.na(result_df$converted), NA, len > 1)
+  
+  ####################################################################
   # Split values for further processing
-  split_cleaned <- unlist(strsplit(df$cleaned, ";"))
-  split_converted <- unlist(strsplit(df$converted, ";"))
+  split_cleaned <- unlist(strsplit(result_df$cleaned, ";"))
+  split_converted <- unlist(strsplit(result_df$converted, ";"))
   
   # Create a data frame for UDK and explanation
   f <- data.frame(udk = split_cleaned, explanation = split_converted, stringsAsFactors = FALSE)
   
   # Filter for undetermined and accepted values
-  undetermined <- filter(f, explanation == "Undetermined")
-  accepted <- filter(f, explanation != "Undetermined")
+  undetermined <- subset(f, explanation == "Undetermined")
+  accepted <- subset(f, explanation != "Undetermined")
   
-  return(list(full = df, undetermined = undetermined, accepted = accepted))
+  
+  return(list(full = result_df, undetermined = undetermined, accepted = accepted))
 }
-
-

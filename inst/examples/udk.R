@@ -1,10 +1,9 @@
 #080 - Universal Decimal Classification Number (R)
 
 field <- "UDK"
-#out <- polish_udk(head(df.orig$UDK, 1000))
 
 # Harmonize the raw data
-out <- polish_udk(df.orig[[field]])
+out <- polish_udk(df.orig[[field]], chunk_size = 1000)
 df.tmp <- out$full
 df.tmp$melinda_id <- df.orig$melinda_id
 df.tmp <- select(df.tmp, melinda_id, everything())

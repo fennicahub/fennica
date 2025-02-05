@@ -8,6 +8,7 @@ library(ggplot2)
 library(Cairo)
 library(purrr)
 library(stringi)
+library(parallel)
 
 # Install latest version from Github
 # install_github("fennicahub/fennica") # or
