@@ -1,5 +1,4 @@
 update.fields <- c(
-
       "publication_interval", # Some overlap with time.. TODO JM: qmd works
       "publication_frequency", 
       "physical_extent",       
@@ -14,7 +13,6 @@ df.orig <- df.orig[, update.fields]
 # TODO: recognize the necessary languages automatically ?
 catalog <- "fennica" 
 languages <- c("finnish", "latin", "swedish")
-
 
 ## PUBLICATION FREQUENCY ENRICH
 message("Enrich publication frequency")

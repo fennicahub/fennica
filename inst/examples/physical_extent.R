@@ -1,18 +1,16 @@
 
 field <- "physical_extent"
 
-#TODO physical_extent_help function does not work 
-df.tmp <- polish_physical_extent(df.orig[[field]], verbose = TRUE)
+# Nyt toimii
+df.tmp <- bibliographica::polish_physical_extent(df.orig[[field]], verbose = TRUE)
 
-# Vol number and count fields could not be extracted from physical_extent field in Fennica - remove
-df.tmp$volcount <- NULL
+# Vol number could not be extracted from physical_extent field in Fennica - remove
 df.tmp$volnumber <- NULL
 
 # Add melinda id info as first column
 df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
                     physical_extent = df.orig$physical_extent, # add field column
                     df.tmp)
-
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV

@@ -5895,10 +5895,6 @@ polish_physical_extent <- function (x, verbose = FALSE, rm.dim.file = NULL) {
   if (verbose) {message("Remove commonly used volume formats")}
   f <- read.csv("remove_dimension.csv", sep = ";", row.names=NULL)
   
-  #if (verbose) {
-    #message(paste("Reading", f, "in polish_physical_extent.R"))
-  #}
-  
   li <- f [,1]
   terms <- as.character(li)
   s <- remove_dimension(s, terms)
