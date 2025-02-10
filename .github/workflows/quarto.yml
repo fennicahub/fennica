@@ -49,6 +49,9 @@ jobs:
         
       - name: Install remotes package
         run: Rscript -e "install.packages('remotes')"
+        
+      - name: Install parallel package
+        run: Rscript -e "install.packages('parallel')"
 
       - name: Install comhis package from GitHub
         run: Rscript -e 'remotes::install_github("comhis/comhis")'
