@@ -1,4 +1,5 @@
-field <- "author_name"
+
+field <- "author_name_700"
 
 # Full author name (Last, First) 
 author <- polish_author(df.orig[[field]], verbose = TRUE)
@@ -43,7 +44,7 @@ tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 #source("melindas_19.R")
 
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
-field <- "author_name"
+field <- "author_name_700"
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV
