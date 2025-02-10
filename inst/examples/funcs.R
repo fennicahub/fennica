@@ -7837,3 +7837,67 @@ polish_udk <- function(x, chunk_size = 10000) {
   
   return(list(full = result_df, undetermined = undetermined, accepted = accepted))
 }
+
+polish_genre_655 <- function(x, chunk_size = 1000) {
+  x0 <- x
+  x <- gsub("\\.", "", as.character(x))  # Ensure x is treated as a character and remove dots
+  
+  # Load the genre-language mapping
+  genre_lang_df <- read.csv("genre_655.csv", sep = ";", stringsAsFactors = FALSE)
+  
+  # Function to remove duplicates, capitalize first letter, and rejoin the values
+  remove_duplicates <- function(x) {
+    if (is.na(x) || x == "") return(NA)  # Convert empty values to NA
+    unique_values <- unique(strsplit(x, "\\|")[[1]])  # Split by '|', remove duplicates
+    unique_values <- sapply(unique_values, function(val) {
+      val <- trimws(val)  # Remove leading/trailing spaces
+      paste0(toupper(substring(val, 1, 1)), substring(val, 2))  # Capitalize the first letter
+    })
+    paste(unique_values, collapse = "; ")  # Rejoin with '; '
+  }
+  
+  # Function to determine languages
+  assign_languages <- function(genre_list) {
+    if (is.na(genre_list)) return(c(NA, NA, NA))  # If NA, return NA for all languages
+    genres <- unlist(strsplit(genre_list, "; "))  # Split by '; ' to get individual genres
+    
+    # Check which languages exist for each genre
+    finnish <- swedish <- english <- NA
+    for (genre in genres) {
+      lang <- genre_lang_df$language[match(genre, genre_lang_df$genre)]
+      if (!is.na(lang)) {
+        if (lang == "Finnish") finnish <- ifelse(is.na(finnish), genre, paste(finnish, genre, sep = "; "))
+        if (lang == "Swedish") swedish <- ifelse(is.na(swedish), genre, paste(swedish, genre, sep = "; "))
+        if (lang == "English") english <- ifelse(is.na(english), genre, paste(english, genre, sep = "; "))
+      }
+    }
+    return(c(finnish, swedish, english))
+  }
+  
+  # Function to process a single chunk
+  process_chunk <- function(x_chunk) {
+    harmonized_chunk <- sapply(x_chunk, remove_duplicates)
+    lang_matrix_chunk <- t(sapply(harmonized_chunk, assign_languages))
+    
+    data.frame(
+      original = x_chunk,
+      harmonized = harmonized_chunk,
+      finnish = lang_matrix_chunk[, 1],
+      swedish = lang_matrix_chunk[, 2],
+      english = lang_matrix_chunk[, 3],
+      stringsAsFactors = FALSE
+    )
+  }
+  
+  # Split data into chunks
+  num_chunks <- ceiling(length(x) / chunk_size)
+  chunks <- split(x, ceiling(seq_along(x) / chunk_size))
+  
+  # Process chunks in parallel
+  result_chunks <- mclapply(chunks, process_chunk, mc.cores = detectCores() - 1)
+  
+  # Combine results into a single dataframe
+  results <- do.call(rbind, result_chunks)
+  
+  return(results)
+}

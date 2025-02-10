@@ -6,10 +6,15 @@ field <- "UDK"
 out <- polish_udk(df.orig[[field]], chunk_size = 1000)
 df.tmp <- out$full
 df.tmp$melinda_id <- df.orig$melinda_id
+df.tmp$udk_aux <- polish_udk_aux(df.orig$UDK_aux)
 df.tmp <- select(df.tmp, melinda_id, everything())
 df.udk <- df.tmp
 
+#polish 080x 
+
 df.tmp1 <- out$undetermined
+
+
 
 # Reset the index to convert it into a single-index DataFrame
 row.names(df.tmp) <- NULL

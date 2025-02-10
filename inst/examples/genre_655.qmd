@@ -1,0 +1,58 @@
+---
+title: "Genre/form 655"
+hide-description: false
+description: ""
+---
+
+```{r}
+#| include = FALSE
+source("init.R")
+source("genre_655.R")
+```
+
+MARC: [655,a](https://www.loc.gov/marc/bibliographic/bd655.html)
+
+## Description
+
+## Complete Dataset Overview
+
+[Unique genre/form](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_655_accepted.csv):  `r length(unique(unlist(strsplit(as.character(df$harmonized), ";"))))-1` 
+
+
+There are `r sum(is.na(df$harmonized))` missing values in the dataset,accounting for (`r round(100*mean(is.na(df$harmonized)), 2)`%) of the total. 
+
+[Unrecognized genre_655s](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_655_discarded.csv) provides details of Genre/Form that were discarded, in total: `r sum(!is.na(tmp))`. 
+
+```{r}
+#| label = "genre655",
+#| echo = FALSE,
+#| results = "asis"
+x <- top(df, "genre_655")
+tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df_19)), 1))
+colnames(tab) <- c("Genre/Form", "Entries (n)", "Fraction (%)")
+kable(head(tab, 10))
+```
+
+[Download genre_655 harmonized dataset](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_655.csv)
+
+## Subset Analysis: 1809-1917
+
+[Unique genre_655s (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_655s_accepted_19.csv): `r length(unique(unlist(strsplit(as.character(df_19$harmonized), ";"))))-1`
+
+There are `r sum(is.na(df_19$harmonized))` missing values in the dataset,accounting for (`r round(100*mean(is.na(df_19$harmonized)), 2)`%) of the total. 
+
+[Download genre_655 harmonized dataset (1809-1917)](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_655_19.csv)
+
+### Top Genre/Form for 1809-1917
+
+[Accepted Genre/Form (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_655_accepted_19.csv).
+
+```{r}
+#| label = "genre655_19",
+#| echo = FALSE,
+#| results = "asis"
+x <- top(df_19, "genre_655")
+tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df_19)), 1))
+colnames(tab) <- c("Genre/Form", "Entries (n)", "Fraction (%)")
+kable(head(tab, 10))
+```

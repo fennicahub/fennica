@@ -28,6 +28,7 @@ book:
   #- author_name.qmd
   #- author_date.qmd
   #- corporate.qmd
+  - genre_655.qmd
   - language.qmd
   #- physical_dimensions.qmd
   #- physical_extent.qmd

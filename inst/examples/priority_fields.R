@@ -38,9 +38,9 @@ df.orig <- df.orig %>%
     "signum" = 21,  # ("callnumbers","a")
     "UDK" = 22,  # (080a)
     "080-8" = 23, 
-    "080x" = 24, 
+    "UDK_aux" = 24,# 080x
     "245n" = 25,  # Numerointitieto (T)
-    "655a" = 26,  # Lajityyppiä/muotoa kuvaava termi tai fokustermi (ET)
+    "genre_655" = 26,  # 655aLajityyppiä/muotoa kuvaava termi tai fokustermi (ET)
     "650a" = 27,  # Aihetta ilmaiseva termi tai maantieteellinen nimi (ET)
     "700a" = 28, 
     "264a" = 29  # Correct final index

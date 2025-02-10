@@ -220,5 +220,26 @@
       "Appendices",
       "Technical information"
     ]
+  },
+  {
+    "objectID": "genre_655.html#description",
+    "href": "genre_655.html#description",
+    "title": "2  Genre/form 655",
+    "section": "2.1 Description",
+    "text": "2.1 Description"
+  },
+  {
+    "objectID": "genre_655.html#complete-dataset-overview",
+    "href": "genre_655.html#complete-dataset-overview",
+    "title": "2  Genre/form 655",
+    "section": "2.2 Complete Dataset Overview",
+    "text": "2.2 Complete Dataset Overview\nUnique genre/form: 3497\nThere are 787535 missing values in the dataset,accounting for (64.03%) of the total.\nUnrecognized genre_655s provides details of Genre/Form that were discarded, in total: 166.\n\n\n\n\nGenre/Form\nEntries (n)\nFraction (%)\n\n\n\n\nVäitöskirjat\n82091\n122.7\n\n\nKäännökset\n34952\n52.3\n\n\nÄänikirjat\n27343\n40.9\n\n\nMuistelmat\n11686\n17.5\n\n\nKartat\n9059\n13.5\n\n\nKaunokirjallisuus; Runot\n7386\n11\n\n\nKaunokirjallisuus; Käännökset\n7312\n10.9\n\n\nKausijulkaisut\n6804\n10.2\n\n\nElämäkerrat\n5522\n8.3\n\n\nOppikirjat\n5263\n7.9\n\n\n\n\nDownload genre_655 harmonized dataset"
+  },
+  {
+    "objectID": "genre_655.html#subset-analysis-1809-1917",
+    "href": "genre_655.html#subset-analysis-1809-1917",
+    "title": "2  Genre/form 655",
+    "section": "2.3 Subset Analysis: 1809-1917",
+    "text": "2.3 Subset Analysis: 1809-1917\nUnique genre_655s (1809-1917): 874\nThere are 44537 missing values in the dataset,accounting for (66.58%) of the total.\nDownload genre_655 harmonized dataset (1809-1917)\n\n2.3.1 Top Genre/Form for 1809-1917\nAccepted Genre/Form (1809-1917).\n\n\n\n\nGenre/Form\nEntries (n)\nFraction (%)\n\n\n\n\nVäitöskirjat\n4330\n6.5\n\n\nKäännökset\n3670\n5.5\n\n\nKartat\n1770\n2.6\n\n\nLuettelot\n761\n1.1\n\n\nEsitteet\n743\n1.1\n\n\nKaunokirjallisuus; Käännökset\n452\n0.7\n\n\nVirret; Arkkiveisut\n396\n0.6\n\n\nArkkiveisut\n306\n0.5\n\n\nKokousjulkaisut\n302\n0.5\n\n\nOppikirjat\n291\n0.4"
   }
 ]

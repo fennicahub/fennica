@@ -1,4 +1,15 @@
 #all polished fields in one df 
+source("init.R")
+source("author_name.R")
+source("author_date.R")
+source("title.R")
+source("title_remainder.R")
+source("language.R")
+source("publication_time.R")
+source("publication_place.R")
+source("signum.R")
+source("udk.R")
+source("genre_655.R")
 
 #add publicatiom time fields
 df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
@@ -24,11 +35,14 @@ df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
                             publucation_longitude = df.publication_place$longitude, 
                             publication_latitude = df.publication_place$latitude,
                             signum = df.signum$signum_harmonized, 
+                            udk_orig = df.orig$UDK, 
+                            udk_aux = df.udk$udk_aux,
                             udk = df.udk$converted, 
                             udk_primary = df.udk$primary, 
                             udk_multi = df.udk$multi_udk,
                             data_element = df.orig$data_element_008,
-                            genre = df.orig$converted_008_33, 
+                            genre_008 = df.orig$converted_008_33, 
+                            genre_655 = df.genre_655$harmonized,
                             record_type = df.orig$type_of_record, 
                             biblio_level = df.orig$bibliographic_level, 
                             publication_status = df.orig$publication_status) 
