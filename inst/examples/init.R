@@ -38,7 +38,10 @@ source("008_field.R")
 #for subset analysis
 source("melindas_19.R")
 
-
+#update harmonized_fennica.csv
+#source("harmonized_fennica.R")
+#load to allas, make 
+#source("allas.R")
 ntop <- 20
 book_author <- "Turku Data Science Group"
 
