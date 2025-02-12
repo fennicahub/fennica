@@ -5,14 +5,27 @@ author <- polish_author(df.orig[[field]], verbose = TRUE)
 
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id, author_name = author)
-df.author <- df.tmp
+
+#add harmonized fields to df
+df.harmonized <- cbind(df.harmonized, author_name = df.tmp$author_name)
+
+################################################################
 
 # Store the title field data
-# FIXME: convert to feather or plain CSV
 data.file <- paste0(field, ".Rds")
 saveRDS(df.tmp, file = data.file)
 # Generate markdown summary
 df <- readRDS(data.file)
+# Convert to CSV and store in the output.tables folder
+write.table(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE)
+
+#add harmonized fields to df
+df.harmonized <- data.frame(author_name = df.author$author_name,
+                            author_birth = df.author_date$author_birth, 
+                            author_death = df.author_date$author_death,
+                            author_age = df.author_date$author_age)
+
+##################################################################
 
 # Define output files for the whole dataset
 file_accepted  <- paste0(output.folder, field, "_accepted.csv")

@@ -14,7 +14,14 @@ df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
                     author_date = df.orig$author_date, # add field column
                     df.tmp)
 rownames(df.tmp) <- NULL
-df.author_date <- df.tmp
+
+#add harmonized fields to df
+df.harmonized <- cbind(df.harmonized, 
+                       author_birth = df.tmp$author_birth,
+                       author_death = df.tmp$author_death,
+                       author_age = df.tmp$author_age)
+
+
 # ------------------------------------------------------------
 # Store the title field data
 # FIXME: convert to feather or plain CSV

@@ -11,9 +11,13 @@ df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      title = x$title_harmonized,
                      title_length = x$title_length,
                      title_word_count = x$title_word_count)
-df.title <- df.tmp
+#####################################################################
+#add publicatiom time fields
+df.harmonized <- data.frame(title = df.title$title, 
+                            title_length = df.title$title_length,
+                            title_word = df.title$title_word_count)
 
-
+#####################################################################
 # Define output files
 file_accepted  <- paste0(output.folder, field, "_accepted.csv")
 file_discarded <- paste0(output.folder, field, "_discarded.csv")
