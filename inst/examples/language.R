@@ -10,8 +10,11 @@ row.names(df.tmp) <- NULL
 # Collect the results into a data.frame
 df.tmp$melinda_id <- df.orig$melinda_id
 
-df.language <- df.tmp
-
+#add harmonized fields to df
+df.harmonized <- cbind(df.harmonized,
+                       language = df.tmp$full_language_name, 
+                       language_primary = df.tmp$language_primary,
+                       language_multi = df.tmp$multiple)
 
 # Define output files
 file_discarded <- paste0(output.folder, field, "_discarded.csv")

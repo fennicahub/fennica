@@ -11,7 +11,11 @@ df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      title_remainder = x$title_harmonized,
                      title_remainder_length = x$title_length,
                      title_remainder_word_count = x$title_word_count)
-df.title_remainder <- df.tmp
+#add harmonized fields to df
+df.harmonized <- cbind(df.harmonized,
+                       title_remainder = df.tmp$title_remainder, 
+                       title_remainder_length = df.tmp$title_remainder_length,
+                       title_remainder_word = df.tmp$title_remainder_word_count)
 
 # Define output files
 file_accepted  <- paste0(output.folder, field, "_accepted.csv")

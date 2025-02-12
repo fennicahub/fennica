@@ -8,7 +8,10 @@ df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      signum_harmonized = x$x_harmonized)
 rownames(df.tmp) <- NULL
 
-df.signum <- df.tmp
+#add harmonized fields to df
+df.harmonized <- cbind(df.harmonized,
+                       signum = df.tmp$signum_harmonized)
+####################################################################################
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV

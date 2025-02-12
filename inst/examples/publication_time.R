@@ -13,6 +13,14 @@ df_pubtime <- data.frame(melinda_id = df.orig$melinda_id,
                             publication_year = tmp$publication_year, 
                             publication_decade = tmp$decade)
 
+#add harmonized fields to df
+df.harmonized <- cbind(df.harmonized, 
+                       publication_year_from = df_pubtime$publication_year_from, 
+                       publication_year_till = df_pubtime$publication_year_till, 
+                       publication_year = df_pubtime$publication_year,
+                       publication_decade = df_pubtime$publication_decade)
+
+
 # ---------------------------------------------------------------------
 #1M data conversions
 message("Write conversions: publication year")

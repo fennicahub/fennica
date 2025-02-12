@@ -1,5 +1,14 @@
 
 field <- "physical_extent"
+library(devtools)
+install.packages("remotes")
+library(remotes)
+remotes::install_deps("bibliographica", dependencies = TRUE)
+
+remotes::install_github("ropengov/bibliographica")
+library(bibliographica)
+library(knitr)
+Sys.setlocale(locale="UTF-8") 
 
 # Nyt toimii
 df.tmp <- bibliographica::polish_physical_extent(df.orig[[field]], verbose = TRUE)

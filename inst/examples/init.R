@@ -38,9 +38,20 @@ source("008_field.R")
 #for subset analysis
 source("melindas_19.R")
 
-#update harmonized_fennica.csv
+#initialize df.harmonized 
+df.harmonized <- data.frame(melinda_id = df.orig$melinda_id, 
+                            data_element = df.orig$data_element_008,
+                            genre_008 = df.orig$converted_008_33,
+                            record_type = df.orig$type_of_record, 
+                            biblio_level = df.orig$bibliographic_level, 
+                            publication_status = df.orig$publication_status,
+                            author_2 = df.orig$`700a`)
+
+#add harmonized data from each field R file
+
+##create csv and save to output_tables
 #source("harmonized_fennica.R")
-#load to allas, make 
+#load all cavs to allas  
 #source("allas.R")
 ntop <- 20
 book_author <- "Turku Data Science Group"

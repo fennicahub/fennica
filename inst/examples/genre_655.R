@@ -11,14 +11,15 @@ df.tmp <- df.tmp %>%
                        ifelse(!is.na(swedish), swedish,
                               english)))
 
-
 # Ensure the column is character
 df.tmp$harmonized <- as.character(df.tmp$harmonized)
 
-df.genre_655 <- df.tmp
-
 # Reset the index to convert it into a single-index DataFrame
 row.names(df.tmp) <- NULL
+
+#add harmonized fields to df
+df.harmonized <- cbind(df.harmonized,
+                       genre_655 = df.tmp$harmonized)
 
 
 ###############################################################

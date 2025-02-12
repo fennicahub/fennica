@@ -11,11 +11,13 @@ df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      title = x$title_harmonized,
                      title_length = x$title_length,
                      title_word_count = x$title_word_count)
+
 #####################################################################
-#add publicatiom time fields
-df.harmonized <- data.frame(title = df.title$title, 
-                            title_length = df.title$title_length,
-                            title_word = df.title$title_word_count)
+#add harmonized fields to df
+df.harmonized <- cbind(df.harmonized,
+                       title = df.tmp$title, 
+                       title_length = df.tmp$title_length,
+                       title_word = df.tmp$title_word_count)
 
 #####################################################################
 # Define output files
