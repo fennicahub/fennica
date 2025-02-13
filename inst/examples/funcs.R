@@ -3926,212 +3926,6 @@ remove_volume_info <- function (x) {
 }
 
 
-estimate_pages <- function (x) {
-
-  # Initialize	       
-  pagecount.info <- c(multiplier = 1, squarebracket = 0, plate = 0, arabic = 0, roman = 0, sheet = 0)
-  library(stringr)
-  # 
-  # if (all(is.na(x))) {
-  #   return(pagecount.info)
-  # } else if (!is.na(suppressWarnings(as.numeric(x)))) {
-  #   pagecount.info$sheet <- as.numeric(x)
-  #   return(pagecount.info)           
-  # } else if (str_detect(x, "^[IVXLCDM]+$")) {
-  #   pagecount.info$roman <- suppressWarnings(as.numeric(as.roman(x)))
-  #   return(pagecount.info)               
-  # } else if (str_detect(x, "^\\[[0-9]+ {0,1}[p|s]{0,1}\\]$")) {
-  #   pagecount.info$squarebracket <- suppressWarnings(as.numeric(str_trim(gsub("\\[", "", gsub("\\]", "", gsub(" [p|s]", "", x))))))
-  #   return(pagecount.info)                  
-  # } else if (str_detect(x, "^[0-9]+ sheets$")) {
-  #   pagecount.info$sheet <- 2 * as.numeric(as.roman(str_trim(unlist(strsplit(x, "sheet"), use.names = FALSE)[[1]])))
-  #   return(pagecount.info)                      
-  # } else if (str_detect(x, "\\[{0,1}[0-9]* \\]{0,1} leaves")) {
-  #   pagecount.info$squarebracket <- str_trim(gsub("\\[", "", gsub("\\]", "", x)))
-  #   return(pagecount.info)                          
-  # } else if (str_detect(x, "[0-9]+ \\+ [0-9]+")) {
-  #   pagecount.info$sheet <- sum(as.numeric(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))
-  #   return(pagecount.info)                              
-  # } else if (!is.na(sum(as.numeric(roman2arabic(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))))) {
-  #   x <- gsub("\\+", ",", x)
-  # } else if (str_detect(x, "^p") && !str_detect(x, "-")) {
-  #   if (is.numeric(str_trim(gsub("^p", "", x)))) {
-  #     pagecount.info$sheet <- 1
-  #     return(pagecount.info)                              
-  #   } else if (str_detect(x, "^p") && str_detect(x, "-")) {
-  #     x <- gsub("^p", "", x)
-  #   }   
-  # } else if (str_detect(x, "^1 sheet \\[*[0-9+]\\]*")) {
-  #   x <- gsub("1 sheet", "", x)
-  #   x <- gsub("\\[1\\]", "2", x)
-  # } else if (str_detect(x, "^[0-9]+ sheets* [0-9]+ pages*$")) {
-  #   x <- gsub("^s", "", unlist(strsplit(x, "sheet"), use.names = FALSE)[[2]])
-  # }
-  
-  
-  if (all(is.na(x))) {
-    # "NA"
-    return(pagecount.info)
-  } else if (!is.na(suppressWarnings(as.numeric(x)))) {
-    # "3"
-    pagecount.info$sheet <- as.numeric(x)
-    return(pagecount.info)            
-  } else if ((is.roman(x) && length(unlist(strsplit(x, ","), use.names = FALSE)) == 1 && length(grep("-", x)) == 0)) {
-    # "III" but not "ccclxxiii-ccclxxiv"
-    pagecount.info$roman <- suppressWarnings(as.numeric(as.roman(x)))
-    return(pagecount.info)                
-  } else if (length(grep("^\\[[0-9]+ {0,1}[p|s]{0,1}\\]$", x)>0)) {
-    # "[3]" or [3 p]
-    pagecount.info$squarebracket <- suppressWarnings(as.numeric(str_trim(gsub("\\[", "", gsub("\\]", "", gsub(" [p|s]", "", x))))))
-    return(pagecount.info)                    
-  } else if (length(grep("^[0-9]+ sheets$", x)) == 1) {
-    # "1 sheet is 2 pages"
-    pagecount.info$sheet <- 2 * as.numeric(as.roman(str_trim(unlist(strsplit(x, "sheet"), use.names = FALSE)[[1]])))
-    return(pagecount.info)                        
-  } else if (length(grep("\\[{0,1}[0-9]* \\]{0,1} leaves", x)) > 0) {
-    # "[50 ] leaves"    
-    pagecount.info$squarebracket <- str_trim(gsub("\\[", "", gsub("\\]", "", x)))
-    return(pagecount.info)                            
-  } else if (length(grep("[0-9]+ \\+ [0-9]+", x))>0) {
-    # 9 + 15
-    pagecount.info$sheet <- sum(as.numeric(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))
-    return(pagecount.info)                                
-  } else if (!is.na(sum(as.numeric(roman2arabic(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))))) {
-    # IX + 313
-    x <- gsub("\\+", ",", x)
-    #sum(as.numeric(roman2arabic(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE)))))
-    #return(pagecount.info)                                    
-  } else if (length(grep("^p", x)) > 0 && length(grep("-", x)) == 0) {
-    # p66 -> 1
-    if (is.numeric(str_trim(gsub("^p", "", x)))) {
-      pagecount.info$sheet <- 1
-      return(pagecount.info)                                
-    } else if (length(grep("^p", x)) > 0 && length(grep("-", x)) > 0) {
-      # p5-8 -> 5-8
-      x <- gsub("^p", "", x)
-    }    
-  } else if (length(grep("^1 sheet \\[*[0-9+]\\]*", x))>0) {
-    # "1 sheet [166]"
-    x <- gsub("1 sheet", "", x)
-    # 1 sheet ([1+] p.)
-    x <- gsub("\\[1\\]", "2", x)
-  } else if (length(grep("^[0-9]+ sheets* [0-9]+ pages*$", x))>0) {
-    # 3 sheets 3 pages
-    x <- gsub("^s", "", unlist(strsplit(x, "sheet"), use.names = FALSE)[[2]])
-  }
-  
-  # --------------------------------------------
-  
-  # Then proceeding to the more complex cases...
-  # Harmonize the items within commas
-
-  # Remove plus now
-  x <- gsub("\\+", "", x)
-  x <- gsub("pages*$", "", x)  
-
-  # "[52] plates between [58] blank sheets"
-  x <- gsub("plates between ", "plates, ", x)
-  # 6 sheets + 2 sheets
-  x <- gsub("sheets", "sheets,", x)
-
-  # Handle comma-separated elements separately
-  spl <- condense_spaces(unlist(strsplit(x, ","), use.names = FALSE))
-
-  # 13 [1] -> 13, [1]
-  if (length(grep("^[0-9]+ \\[[0-9]+\\]$", spl))>0) {
-    spl <- gsub(" ", ", ", spl)
-  }  
-  spl <- condense_spaces(unlist(strsplit(spl, ","), use.names = FALSE))
-
-  # Harmonize pages within each comma
-  x <- sapply(spl, function (x) { harmonize_pages_by_comma(x) }, USE.NAMES = FALSE)
-
-  # Remove empty items
-  x <- as.vector(na.omit(x))
-  if (length(x) == 0) {x <- ""}
-
-  if (length(grep("^ff", x[[1]]))==1) {
-    # Document is folios - double the page count!
-    pagecount.info$multiplier <- 2
-  }
-
-  # Fix romans
-  x[x == "vj"] <- "vi"
-
-  # Identify (potentially overlapping) attribute positions for
-  # "arabic", "roman", "squarebracket", "dash", "sheet", "plate"
-  # attributes x positions table 0/1
-  # NOTE this has to come after harmonize_per_comma function ! 
-  pagecount.attributes <- attribute_table(x)
-
-  # If dashes are associated with square brackets, 
-  # consider and convert them to arabic. Otherwise not.
-  # ie. [3]-5 becomes 3-5 
-  dash <- pagecount.attributes["dash", ]
-  sqb  <- pagecount.attributes["squarebracket", ]
-  inds <- which(dash & sqb)
-  pagecount.attributes["arabic", inds] <- TRUE
-  pagecount.attributes["squarebracket", inds] <- FALSE
-
-  # Page count can't be roman and arabic at the same time.
-  # or pages will double
-  pagecount.attributes["roman", pagecount.attributes["arabic", ]] <- FALSE
-
-  # Remove square brackets
-  x <- gsub("\\[", "", x)
-  x <- gsub("\\]", "", x)
-
-  # Convert romans to arabics (entries separated by spaces possibly)
-  # also 3-iv -> 3-4
-  inds <- pagecount.attributes["roman", ] | pagecount.attributes["arabic", ]
-  if (any(inds)) {
-    x[inds] <- roman2arabic(x[inds])
-  }
-
-  # Convert plates to arabics
-  inds <- pagecount.attributes["plate", ]
-  if (any(inds)) {  
-    x[inds] <- as.numeric(str_trim(gsub("pages calculated from plates", "", x[inds])))
-  }
-
-  # ----------------------------------------------
-
-  # Start page counting
-
-  # Sum square brackets: note the sum rule does not concern roman numerals
-  inds <- pagecount.attributes["squarebracket",] & !pagecount.attributes["roman",]
-  pagecount.info$squarebracket <- sumrule(x[inds])
-
-  # Sum plates 
-  # FIXME: at the moment these all go to sheets already
-  inds <- pagecount.attributes["plate",]
-  pagecount.info$plate <- sum(na.omit(suppressWarnings(as.numeric(x[inds]))))
-
-  # Count pages according to the type
-  for (type in c("arabic", "roman")) {
-    pagecount.info[[type]] <- count_pages(x[pagecount.attributes[type,]])
-  }
-
-  # Sum sheets 
-  inds <- pagecount.attributes["sheet",]
-  xx <- NA
-  xinds <- x[inds]
-  xinds <- gsub("^sheets*$", "1 sheet", xinds)
-
-  if (length(grep("sheet", xinds))>0) {
-    # 1 sheet = 2 pages
-    xinds <- sapply(xinds, function (xi) {str_trim(unlist(strsplit(xi, "sheet"), use.names = FALSE)[[1]])}, USE.NAMES = FALSE)
-    xx <- suppressWarnings(2 * as.numeric(as.roman(xinds)))
-  } 
-  pagecount.info$sheet <- sumrule(xx) 
-
-  # Return pagecount components
-  pagecount.info
-
-}
-
-
-
 # A single instance of pages within commas
 harmonize_pages_by_comma <- function (s) {
 
@@ -6108,7 +5902,6 @@ sheet_area <- function (x = NULL, sheet.dimension.table = NULL, verbose = FALSE)
 #' @keywords utilities
 polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TRUE, check = FALSE, min.year = -3000, max.year = as.numeric(format(Sys.time(), "%Y")) + 50) {
 
-  
   # Delete suspiciously long strings
   inds <- which(nchar(x) > 200 & grepl("\t", x))
   if (length(inds) > 0) {
@@ -8117,4 +7910,291 @@ get_pseudonymes <- function (...) {
   
 }
 
+estimate_pages <- function (x) {
+  
+  # Initialize	       
+  pagecount.info <- list(page.info = 0, multiplier = 1, squarebracket = 0, plate = 0, arabic = 0, roman = 0, sheet = 0, volcount = 0)
+  
+  if (all(is.na(x))) {
+    return(pagecount.info)
+  } else if (!is.na(suppressWarnings(as.numeric(x)))) {
+    pagecount.info$sheet <- as.numeric(x)
+    return(pagecount.info)
+  } else if (str_detect(x, "^[IVXLCDM]+$")) {
+    pagecount.info$roman <- suppressWarnings(as.numeric(as.roman(x)))
+    return(pagecount.info)
+  } else if (str_detect(x, "^\\[[0-9]+ {0,1}[p|s]{0,1}\\]$")) {
+    pagecount.info$squarebracket <- suppressWarnings(as.numeric(str_trim(gsub("\\[", "", gsub("\\]", "", gsub(" [p|s]", "", x))))))
+    return(pagecount.info)
+  } else if (str_detect(x, "^[0-9]+ sheets$")) {
+    pagecount.info$sheet <- 2 * as.numeric(as.roman(str_trim(unlist(strsplit(x, "sheet"), use.names = FALSE)[[1]])))
+    return(pagecount.info)
+  } else if (str_detect(x, "\\[{0,1}[0-9]* \\]{0,1} leaves")) {
+    pagecount.info$squarebracket <- str_trim(gsub("\\[", "", gsub("\\]", "", x)))
+    return(pagecount.info)
+  } else if (str_detect(x, "[0-9]+ \\+ [0-9]+")) {
+    pagecount.info$sheet <- sum(as.numeric(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))
+    return(pagecount.info)
+  } else if (!is.na(sum(as.numeric(roman2arabic(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))))) {
+    x <- gsub("\\+", ",", x)
+  } else if (str_detect(x, "^p") && !str_detect(x, "-")) {
+    if (is.numeric(str_trim(gsub("^p", "", x)))) {
+      pagecount.info$sheet <- 1
+      return(pagecount.info)
+    } else if (str_detect(x, "^p") && str_detect(x, "-")) {
+      x <- gsub("^p", "", x)
+    }
+  } else if (str_detect(x, "^1 sheet \\[*[0-9+]\\]*")) {
+    x <- gsub("1 sheet", "", x)
+    x <- gsub("\\[1\\]", "2", x)
+  } else if (str_detect(x, "^[0-9]+ sheets* [0-9]+ pages*$")) {
+    x <- gsub("^s", "", unlist(strsplit(x, "sheet"), use.names = FALSE)[[2]])
+  }
+  
+  
+  if (all(is.na(x))) {
+    # "NA"
+    return(pagecount.info)
+  } else if (!is.na(suppressWarnings(as.numeric(x)))) {
+    # "3"
+    pagecount.info$sheet <- as.numeric(x)
+    return(pagecount.info)            
+  } else if ((is.roman(x) && length(unlist(strsplit(x, ","), use.names = FALSE)) == 1 && length(grep("-", x)) == 0)) {
+    # "III" but not "ccclxxiii-ccclxxiv"
+    pagecount.info$roman <- suppressWarnings(as.numeric(as.roman(x)))
+    return(pagecount.info)                
+  } else if (length(grep("^\\[[0-9]+ {0,1}[p|s]{0,1}\\]$", x)>0)) {
+    # "[3]" or [3 p]
+    pagecount.info$squarebracket <- suppressWarnings(as.numeric(str_trim(gsub("\\[", "", gsub("\\]", "", gsub(" [p|s]", "", x))))))
+    return(pagecount.info)                    
+  } else if (length(grep("^[0-9]+ sheets$", x)) == 1) {
+    # "1 sheet is 2 pages"
+    pagecount.info$sheet <- 2 * as.numeric(as.roman(str_trim(unlist(strsplit(x, "sheet"), use.names = FALSE)[[1]])))
+    return(pagecount.info)                        
+  } else if (length(grep("\\[{0,1}[0-9]* \\]{0,1} leaves", x)) > 0) {
+    # "[50 ] leaves"    
+    pagecount.info$squarebracket <- str_trim(gsub("\\[", "", gsub("\\]", "", x)))
+    return(pagecount.info)                            
+  } else if (length(grep("[0-9]+ \\+ [0-9]+", x))>0) {
+    # 9 + 15
+    pagecount.info$sheet <- sum(as.numeric(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))
+    return(pagecount.info)                                
+  } else if (!is.na(sum(as.numeric(roman2arabic(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))))) {
+    # IX + 313
+    x <- gsub("\\+", ",", x)
+    sum(as.numeric(roman2arabic(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE)))))
+    return(pagecount.info)                                    
+  } else if (length(grep("^p", x)) > 0 && length(grep("-", x)) == 0) {
+    # p66 -> 1
+    if (is.numeric(str_trim(gsub("^p", "", x)))) {
+      pagecount.info$sheet <- 1
+      return(pagecount.info)                                
+    } else if (length(grep("^p", x)) > 0 && length(grep("-", x)) > 0) {
+      # p5-8 -> 5-8
+      x <- gsub("^p", "", x)
+    }    
+  } else if (length(grep("^1 sheet \\[*[0-9+]\\]*", x))>0) {
+    # "1 sheet [166]"
+    x <- gsub("1 sheet", "", x)
+    # 1 sheet ([1+] p.)
+    x <- gsub("\\[1\\]", "2", x)
+  } else if (length(grep("^[0-9]+ sheets* [0-9]+ pages*$", x))>0) {
+    # 3 sheets 3 pages
+    x <- gsub("^s", "", unlist(strsplit(x, "sheet"), use.names = FALSE)[[2]])
+  }
+  
+  # --------------------------------------------
+  
+  # Then proceeding to the more complex cases...
+  # Harmonize the items within commas
+  
+  # Remove plus now
+  x <- gsub("\\+", "", x)
+  x <- gsub("pages*$", "", x)  
+  
+  # "[52] plates between [58] blank sheets"
+  x <- gsub("plates between ", "plates, ", x)
+  # 6 sheets + 2 sheets
+  x <- gsub("sheets", "sheets,", x)
+  
+  # Handle comma-separated elements separately
+  spl <- condense_spaces(unlist(strsplit(x, ","), use.names = FALSE))
+  
+  # 13 [1] -> 13, [1]
+  if (length(grep("^[0-9]+ \\[[0-9]+\\]$", spl))>0) {
+    spl <- gsub(" ", ", ", spl)
+  }  
+  spl <- condense_spaces(unlist(strsplit(spl, ","), use.names = FALSE))
+  
+  # Harmonize pages within each comma
+  x <- sapply(spl, function (x) { harmonize_pages_by_comma(x) }, USE.NAMES = FALSE)
+  
+  # Remove empty items
+  x <- as.vector(na.omit(x))
+  if (length(x) == 0) {x <- ""}
+  
+  if (length(grep("^ff", x[[1]]))==1) {
+    # Document is folios - double the page count!
+    pagecount.info$multiplier <- 2
+  }
+  
+  # Fix romans
+  x[x == "vj"] <- "vi"
+  
+  # Identify (potentially overlapping) attribute positions for
+  # "arabic", "roman", "squarebracket", "dash", "sheet", "plate"
+  # attributes x positions table 0/1
+  # NOTE this has to come after harmonize_per_comma function ! 
+  pagecount.attributes <- attribute_table(x)
+  
+  # If dashes are associated with square brackets, 
+  # consider and convert them to arabic. Otherwise not.
+  # ie. [3]-5 becomes 3-5 
+  dash <- pagecount.attributes["dash", ]
+  sqb  <- pagecount.attributes["squarebracket", ]
+  inds <- which(dash & sqb)
+  pagecount.attributes["arabic", inds] <- TRUE
+  pagecount.attributes["squarebracket", inds] <- FALSE
+  
+  # Page count can't be roman and arabic at the same time.
+  # or pages will double
+  pagecount.attributes["roman", pagecount.attributes["arabic", ]] <- FALSE
+  
+  # Remove square brackets
+  x <- gsub("\\[", "", x)
+  x <- gsub("\\]", "", x)
+  
+  # Convert romans to arabics (entries separated by spaces possibly)
+  # also 3-iv -> 3-4
+  inds <- pagecount.attributes["roman", ] | pagecount.attributes["arabic", ]
+  if (any(inds)) {
+    x[inds] <- roman2arabic(x[inds])
+  }
+  
+  # Convert plates to arabics
+  inds <- pagecount.attributes["plate", ]
+  if (any(inds)) {  
+    x[inds] <- as.numeric(str_trim(gsub("pages calculated from plates", "", x[inds])))
+  }
+  
+  # ----------------------------------------------
+  
+  # Start page counting
+  
+  # Sum square brackets: note the sum rule does not concern roman numerals
+  inds <- pagecount.attributes["squarebracket",] & !pagecount.attributes["roman",]
+  pagecount.info$squarebracket <- sumrule(x[inds])
+  
+  # Sum plates 
+  # FIXME: at the moment these all go to sheets already
+  inds <- pagecount.attributes["plate",]
+  pagecount.info$plate <- sum(na.omit(suppressWarnings(as.numeric(x[inds]))))
+  
+  # Count pages according to the type
+  for (type in c("arabic", "roman")) {
+    pagecount.info[[type]] <- count_pages(x[pagecount.attributes[type,]])
+  }
+  
+  # Sum sheets 
+  inds <- pagecount.attributes["sheet",]
+  xx <- NA
+  xinds <- x[inds]
+  xinds <- gsub("^sheets*$", "1 sheet", xinds)
+  
+  if (length(grep("sheet", xinds))>0) {
+    # 1 sheet = 2 pages
+    xinds <- sapply(xinds, function (xi) {str_trim(unlist(strsplit(xi, "sheet"), use.names = FALSE)[[1]])}, USE.NAMES = FALSE)
+    xx <- suppressWarnings(2 * as.numeric(as.roman(xinds)))
+  } 
+  pagecount.info$sheet <- sumrule(xx) 
+  
+  # Return pagecount components
+  pagecount.info
+  
+}
+
+
+polish_physext_help <- function (s, page.harmonize) {
+  
+  # Return NA if conversion fails
+  if (length(s) == 1 && is.na(s)) {
+    #return(rep(NA, 11))
+    s <- ""
+  } 
+  
+  # 141-174. [2] -> "141-174, [2]"
+  if (grepl("[0-9]+\\.", s)) {
+    s <- gsub("\\.", ",", s)
+  }
+  
+  # Shortcut for easy cases: "24p."
+  if (length(grep("^[0-9]+ *p\\.*$",s))>0) {
+    #return(c(as.numeric(str_trim(gsub(" {0,1}p\\.{0,1}$", "", s))), rep(NA, 9)))
+    s <- as.numeric(str_trim(gsub(" {0,1}p\\.{0,1}$", "", s)))
+  }
+  
+  # Pick volume number
+  voln <- pick_volume(s) 
+  
+  # Volume count FIX needed
+  vols <- unname(pick_multivolume(s))
+  
+  # Parts count
+  parts <- pick_parts(s)
+  
+  # "2 pts (96, 110 s.)" = 96 + 110s
+  if (length(grep("[0-9]+ pts (*)", s)) > 0 && length(grep(";", s)) == 0) {
+    s <- gsub(",", ";", s)
+  }
+  
+  # Now remove volume info
+  s <- suppressWarnings(remove_volume_info(s))
+  
+  # Cleanup
+  s <- gsub("^;*\\(", "", s)
+  s <- gsub(" s\\.*$", "", s)
+  s <- condense_spaces(s)
+  
+  # If number of volumes is the same than number of comma-separated units
+  # and there are no semicolons, then consider the comma-separated units as
+  # individual volumes and mark this by replacing commas by semicolons
+  # ie. 2v(130, 115) -> 130;115
+  if (!is.na(s) && !is.na(vols) && length(unlist(strsplit(s, ","), use.names = FALSE)) == vols && !grepl(";", s)) {
+    s <- gsub(",", ";", s)  
+  }
+  
+  # Estimate pages for each document separately via a for loop
+  # Vectorization would be faster but we prefer simplicity and modularity here
+  
+  if (length(grep(";", s)) > 0) {
+    spl <- unlist(strsplit(s, ";"), use.names = FALSE)
+    page.info <- sapply(spl, function (x) {polish_physext_help2(x, page.harmonize)})
+    page.info <- apply(page.info, 1, function (x) {sum(as.numeric(x), na.rm = TRUE)})
+    page.info[[1]] <- 1 # Not used anymore after summing up  
+  } else {
+    page.info <- polish_physext_help2(s, page.harmonize)
+  }
+  
+  s <- page.info[["pagecount"]]
+  page.info <- page.info[-7]
+  s[s == ""] <- NA
+  s[s == "NA"] <- NA  
+  s <- as.numeric(s)
+  s[is.infinite(s)] = NA
+  
+  # Return
+  names(page.info) <- paste0("pagecount.", names(page.info))
+  # Add fields to page.info
+  vols <- vols[1:length(pagecount.info[["volcount"]])]
+  page.info[["pagecount"]] <- as.vector(s)
+  page.info[["volnumber"]] <- as.vector(voln)
+  #FIX below
+  vols <- vols[1:length(pagecount.info[["volcount"]])]
+  page.info[["volcount"]] <- as.vector(vols)
+  page.info[["parts"]] <- as.vector(parts)
+  page.info <- unlist(page.info)
+  
+  page.info
+  
+}
 
