@@ -1,5 +1,7 @@
 #polish publication times from field 008
 #author = Julia Matveeva 
+
+x <- head(df.orig$)
 polish_years_008 <- function(x) {
   # Save the original column as x0 for reference
   x0 <- x

@@ -9,6 +9,8 @@ library(Cairo)
 library(purrr)
 library(stringi)
 library(parallel)
+library(qdapRegex)
+library(readxl)
 
 # Install latest version from Github
 # install_github("fennicahub/fennica") # or

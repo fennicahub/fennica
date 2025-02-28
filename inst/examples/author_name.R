@@ -19,12 +19,6 @@ df <- readRDS(data.file)
 # Convert to CSV and store in the output.tables folder
 write.table(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE)
 
-#add harmonized fields to df
-df.harmonized <- data.frame(author_name = df.author$author_name,
-                            author_birth = df.author_date$author_birth, 
-                            author_death = df.author_date$author_death,
-                            author_age = df.author_date$author_age)
-
 ##################################################################
 
 # Define output files for the whole dataset
@@ -53,7 +47,6 @@ tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 # ------------------------------------------------------------
 
 # Run publication_time.R file to get the melindas needed for the 19th century slicing
-#source("melindas_19.R")
 
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
 field <- "author_name"

@@ -42,7 +42,7 @@ df.orig <- df.orig %>%
     `264a` = 28  # ("264", "a")
   )
 
-
+df.orig <- df.orig %>% distinct()
 
 
 

@@ -75,6 +75,8 @@ saveRDS(df_19, file = data.file)
 
 # Generate markdown summary 
 df_19 <- readRDS(data.file)
+# Convert to CSV and store in the output.tables folder
+write.table(df_19, file = paste0(output.folder, paste0(field, "_19.csv")), quote = FALSE)
 
 
 # Define output files for the 1807-1917 subset

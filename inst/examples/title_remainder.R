@@ -57,7 +57,6 @@ write.table(df, file = paste0(output.folder, paste0(field, ".csv")))
 
 
 #Run melindas_19.R to get melindas for 1809-1917
-#source("melindas_19.R")
 
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,] # publication time has df.harmonized instead of df.tmp 
 field <- "title_remainder"

@@ -1,25 +1,46 @@
 
 field <- "physical_extent"
-library(devtools)
-install.packages("remotes")
-library(remotes)
-remotes::install_deps("bibliographica", dependencies = TRUE)
 
-remotes::install_github("ropengov/bibliographica")
-library(bibliographica)
-library(knitr)
-Sys.setlocale(locale="UTF-8") 
+ 
+#df.tmp <- polish_physical_extent(df.orig[[field]], verbose = TRUE)
 
-# Nyt toimii
-df.tmp <- bibliographica::polish_physical_extent(df.orig[[field]], verbose = TRUE)
+x <- df.orig[df.orig$melinda_id %in% melindas_early,]
 
-# Vol number could not be extracted from physical_extent field in Fennica - remove
-df.tmp$volnumber <- NULL
+
+x <- x %>%
+  mutate(physical_extent = case_when(
+    physical_extent == "" ~ NA_character_,
+    TRUE ~ str_replace_all(physical_extent, c(
+      "sivua" = "s", 
+      "sivu" = "s", 
+      "numeroimatonta" = "", 
+      "numeroimaton" = "", 
+      "[?] s." = "", 
+      "1 verkkoaineisto" = "", 
+      "verkkoaineisto" = "", 
+      "(puutteellinen)" = "", 
+      "Kollaatio avoin" = "",
+      "(verso tyhjä)" = ""
+    ))
+  )) %>%
+  mutate(physical_extent = str_trim(str_replace(physical_extent, "[:;]+$", "")))
+
+df.tmp <- polish_physical_extent(x$physical_extent, verbose = TRUE)
 
 # Add melinda id info as first column
-df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
-                    physical_extent = df.orig$physical_extent, # add field column
+df.tmp <- bind_cols(melinda_id = x$melinda_id,
+                    physical_extent = x$physical_extent, # add field column
                     df.tmp)
+
+df.tmp <- df.tmp %>%
+  mutate(pagecount = ifelse(is.na(physical_extent), NA, pagecount))
+df.tmp$pagecount <- ifelse(!is.na(df.tmp$pagecount), df.tmp$pagecount - 1, df.tmp$pagecount)
+df.tmp$pagecount <- gsub("-", "", df.tmp$pagecount)
+
+
+df.harmonized_14_17 <- cbind(df.harmonized_14_17,
+                       pagecount = df.tmp$pagecount, 
+                       pagecount_orig = x$physical_extent)
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV
