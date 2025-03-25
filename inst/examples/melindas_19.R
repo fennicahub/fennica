@@ -1,8 +1,6 @@
 #this file is created to get the melindas for subset analyses for all other
 #fields exept publication_time
 #see publication_time.R for data conversions and discarded
-library(readr)
-months <- read_csv("inst/examples/months.csv")
 
 field <- "publication_time"
 

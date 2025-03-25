@@ -18,7 +18,7 @@ library(readxl)
 library(fennica)
 
 # Load misc functions needed for harmonization
-source("~/Documents/fennica/inst/examples/funcs.R")
+source("funcs.R")
 
 
 # Define create the output folder
@@ -28,17 +28,17 @@ if (!file.exists(output.folder)) {
 }
 
 #load the data
-source("~/Documents/fennica/inst/examples/priority_fields.R")
+source("priority_fields.R")
 
 #extract from leader-> type_of_record and bibliographic_level and add to data
-source("~/Documents/fennica/inst/examples/leader.R")
+source("leader.R")
 
 #extract from 008 -> date_entered, publication_status, publication_time,
 #genre_book and add to data
-source("~/Documents/fennica/inst/examples/008_field.R")
+source("008_field.R")
 
 #for subset analysis
-#source("~/Documents/fennica/inst/examples/melindas_19.R")
+source("melindas_19.R")
 
 # #initialize df.harmonized
 df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
