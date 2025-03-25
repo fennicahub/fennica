@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,12 +37,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cf304ed0194e4892cb5ce7c6784b1405.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-3f82554774ee983cdbe54b7c1ba5be2e.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-77939ec77d76416631e2f789ec714999.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-04a9f643655d7f7bbaba97df66d41e65.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -233,24 +233,19 @@ ul.task-list li input[type="checkbox"] {
 
 <p>MARC: <a href="https://www.loc.gov/marc/bibliographic/bd080.html">080a</a></p>
 <p>Polish_udk.R is a function designed to harmonize the ‘Universal Decimal Classification’ field. Currently, it only harmonizes entries categorized under the bibliography level of Monograph/Item.</p>
-<p>In total, there are 1229925 entries in Fennica, with 348659 missing UDC values in our dataset.</p>
+<p>In total, there are 1229782 entries in Fennica, with 1227631 missing UDC values in our dataset.</p>
 <section id="complete-dataset-overview" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="complete-dataset-overview"><span class="header-section-number">8.1</span> Complete Dataset Overview</h2>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_accepted.csv">Unique accepted UDC</a>: 1583</p>
-<p>UDC is available for 881266 documents (72%).</p>
-<p>397776 single UDC entries (45.14%)</p>
-<p>483490 multiple UDC entries (54.86%)</p>
-<p>348659 missing/NA entries (28%)</p>
-<p>There are 49 entries where the primary UDK is “Undetermined” (0%).</p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_discarded.csv">Unrecognized UDC</a>: 611</p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_accepted.csv">Unique accepted UDC</a>: 1</p>
+<p>UDC is available for 2151 documents (0%).</p>
+<p>1965 single UDC entries (91.35%)</p>
+<p>186 multiple UDC entries (8.65%)</p>
+<p>1227631 missing/NA entries (100%)</p>
+<p>There are 2151 entries where the primary UDK is “Undetermined” (100%).</p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_discarded.csv">Unrecognized UDC</a>: 348</p>
 <p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK.csv">Download UDC harmonized dataset</a></p>
 <p>UDC codes are from <a href="https://www.kiwi.fi/display/Kansallisbibliografiapalvelut/Monografia-aineiston+UDK-luokituskaavio">The National Library of Finland</a>; new custom abbreviations can be added in <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk_monografia.csv">this table</a>.</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 83%">
-<col style="width: 7%">
-<col style="width: 8%">
-</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">UDC</th>
@@ -260,125 +255,25 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Suomenkielinen kirjallisuus</td>
-<td style="text-align: left;">87313</td>
-<td style="text-align: left;">7.1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Englanninkielinen kirjallisuus</td>
-<td style="text-align: left;">48823</td>
-<td style="text-align: left;">4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Henkilöhistoria. Elämäkerrat. Muistelmat. Matrikkelit</td>
-<td style="text-align: left;">22905</td>
-<td style="text-align: left;">1.9</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Suomenruotsalainen kirjallisuus</td>
-<td style="text-align: left;">14530</td>
-<td style="text-align: left;">1.2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Sosiaaliturva. Sosiaalihuolto. Sosiaalityö. Sosiaalipalvelut. Sosiaaliavustukset. Kansanterveys. Sairaalat</td>
-<td style="text-align: left;">13504</td>
-<td style="text-align: left;">1.1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Matematiikka</td>
-<td style="text-align: left;">12180</td>
-<td style="text-align: left;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Patologia. Tautioppi</td>
-<td style="text-align: left;">11977</td>
-<td style="text-align: left;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Kristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset</td>
-<td style="text-align: left;">10065</td>
-<td style="text-align: left;">0.8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Sarjakuvat</td>
-<td style="text-align: left;">9979</td>
-<td style="text-align: left;">0.8</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Ruotsinkielinen kirjallisuus</td>
-<td style="text-align: left;">9730</td>
-<td style="text-align: left;">0.8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Paikallishistoriat. Kotiseutu</td>
-<td style="text-align: left;">9650</td>
-<td style="text-align: left;">0.8</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Luonto. Luonnonsuojelu. Ympäristönsuojelu. Ympäristötieteet. Ympäristön tila</td>
-<td style="text-align: left;">9388</td>
-<td style="text-align: left;">0.8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Fysiikka</td>
-<td style="text-align: left;">9078</td>
-<td style="text-align: left;">0.7</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Tietotekniikka. Tietojenkäsittely. Atk</td>
-<td style="text-align: left;">8227</td>
-<td style="text-align: left;">0.7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Liikunta. Urheilu. Voimistelu. Liikuntavälineet. Urheiluvälineet. Retkeily</td>
-<td style="text-align: left;">8170</td>
-<td style="text-align: left;">0.7</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Biologiset tieteet. Biologia</td>
-<td style="text-align: left;">8094</td>
-<td style="text-align: left;">0.7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Sotataito. Sotatiede. Maanpuolustus</td>
-<td style="text-align: left;">8036</td>
-<td style="text-align: left;">0.7</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Liiketalous</td>
-<td style="text-align: left;">7513</td>
-<td style="text-align: left;">0.6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Liikenne. Liikenneturvallisuus. Liikenneonnettomuudet. Postilaitos</td>
-<td style="text-align: left;">6598</td>
-<td style="text-align: left;">0.5</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Aluesuunnittelu. Seutusuunnittelu. Maaseudun suunnittelu. Kaupunkisuunnittelu. Yhdyskuntasuunnittelu. Aluetutkimus. Kaavoitus</td>
-<td style="text-align: left;">6407</td>
-<td style="text-align: left;">0.5</td>
+<td style="text-align: left;">Undetermined</td>
+<td style="text-align: left;">2151</td>
+<td style="text-align: left;">0.2</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="subset-analysis-1809-1917" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="subset-analysis-1809-1917"><span class="header-section-number">8.2</span> Subset Analysis: 1809-1917</h2>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_accepted_19.csv">Unique UDC (1809-1917)</a>: 828</p>
-<p>21027 single UDC entries (68.9%)</p>
-<p>9490 multiple UDC entries (31.1%)</p>
-<p>36373 missing/NA entries (54%)</p>
-<p>There are 3 entries where the primary UDK is “Undetermined” (0%)</p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_accepted_19.csv">Unique UDC (1809-1917)</a>: 1</p>
+<p>50 single UDC entries (92.59%)</p>
+<p>4 multiple UDC entries (7.41%)</p>
+<p>66835 missing/NA entries (100%)</p>
+<p>There are 54 entries where the primary UDK is “Undetermined” (100%)</p>
 <p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_19.csv">Download UDC harmonized dataset (1809-1917)</a></p>
 <section id="top-udc-for-1809-1917" class="level3" data-number="8.2.1">
 <h3 data-number="8.2.1" class="anchored" data-anchor-id="top-udc-for-1809-1917"><span class="header-section-number">8.2.1</span> Top UDC for 1809-1917</h3>
 <p>Number of titles assigned with each UDC (top-10). For a complete list, see <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_accepted_19.csv">accepted UDC (1809-1917)</a>.</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 81%">
-<col style="width: 9%">
-<col style="width: 9%">
-</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">UDC</th>
@@ -388,103 +283,8 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Suomenkielinen kirjallisuus</td>
-<td style="text-align: left;">4178</td>
-<td style="text-align: left;">0.3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Suomenruotsalainen kirjallisuus</td>
-<td style="text-align: left;">2448</td>
-<td style="text-align: left;">0.2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Kristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset</td>
-<td style="text-align: left;">980</td>
-<td style="text-align: left;">0.1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Englanninkielinen kirjallisuus</td>
-<td style="text-align: left;">915</td>
-<td style="text-align: left;">0.1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Yliopistot</td>
-<td style="text-align: left;">805</td>
-<td style="text-align: left;">0.1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Saksankielinen kirjallisuus. Jiddišinkielinen kirjallisuus</td>
-<td style="text-align: left;">797</td>
-<td style="text-align: left;">0.1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Bibliografiat. Julkaisuluettelot</td>
-<td style="text-align: left;">763</td>
-<td style="text-align: left;">0.1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Suomen historia</td>
-<td style="text-align: left;">756</td>
-<td style="text-align: left;">0.1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Ruotsinkielinen kirjallisuus</td>
-<td style="text-align: left;">725</td>
-<td style="text-align: left;">0.1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Lehdistö. Journalismi. Sanomalehdet</td>
-<td style="text-align: left;">601</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Antiikin kirjallisuus. Latinankielinen kirjallisuus. Kreikankielinen kirjallisuus</td>
-<td style="text-align: left;">532</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Henkilöhistoria. Elämäkerrat. Muistelmat. Matrikkelit</td>
-<td style="text-align: left;">504</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Perinnetieteet. Etnologia. Kansatiede. Kansanrunous. Folkloristiikka</td>
-<td style="text-align: left;">447</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Ranskankielinen kirjallisuus</td>
-<td style="text-align: left;">438</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Kansanperinne tiukasti määriteltynä</td>
-<td style="text-align: left;">424</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Raamattu</td>
-<td style="text-align: left;">364</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Venäjänkielinen kirjallisuus</td>
-<td style="text-align: left;">361</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Virkistys. Viihde. Pelit. Urheilu</td>
-<td style="text-align: left;">360</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Patologia. Tautioppi</td>
-<td style="text-align: left;">320</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Suomen kieli</td>
-<td style="text-align: left;">309</td>
+<td style="text-align: left;">Undetermined</td>
+<td style="text-align: left;">54</td>
 <td style="text-align: left;">0</td>
 </tr>
 </tbody>
