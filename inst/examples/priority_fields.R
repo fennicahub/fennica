@@ -10,7 +10,7 @@ col_classes <- c("character", rep(NA, column_count - 1))
 # Read the file with the specified colClasses
 df.orig <- read.csv(url, skip = 1, header = TRUE, sep = "\t", colClasses = col_classes)
 
-df.orig <- df.orig %>% 
+df.orig <- df.orig %>%
   dplyr::rename(
     melinda_id = 1,  # ("001", "-")
     leader = 2,  # ("leader", "-")
@@ -42,7 +42,21 @@ df.orig <- df.orig %>%
     `264a` = 28  # ("264", "a")
   )
 
+# Combine author_id and 264a into one column called author_ID
+df.orig <- df.orig %>%
+  mutate(
+    author_ID = case_when(
+      author_id != "" & `264a` != "" ~ paste(author_id, `264a`, sep = " | "),
+      author_id != "" ~ author_id,
+      `264a` != "" ~ `264a`,
+      TRUE ~ ""
+    )
+  ) %>%
+  # Reorder: place author_ID right after author_date
+  relocate(author_ID, .after = author_date) %>%
+  # Remove the original columns
+  select(-author_id, -`264a`)
+
+# Remove duplicate rows
 df.orig <- df.orig %>% distinct()
-
-
 
