@@ -1,7 +1,7 @@
 project:
   type: book
 
-format: 
+format:
   html:
     theme:
       light: flatly
@@ -22,11 +22,11 @@ book:
         href: https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ffennica-fennica.rahtiapp.fi%2Findex.html
 
 
-  # files with '##' are the one that need to be corrected 
+  # files with '##' are the one that need to be corrected
   chapters:
-  - index.qmd 
-  #- author_name.qmd
-  #- author_date.qmd
+  - index.qmd
+  - author_name.qmd
+  - author_date.qmd
   #- corporate.qmd
   - genre_655.qmd
   - language.qmd
@@ -38,11 +38,11 @@ book:
   #- note_source.qmd
   #- publisher.qmd
   ##- publication_interval.qmd
-  ##- publication_place.qmd 
+  ##- publication_place.qmd
   - publication_time.qmd
   ##- publication_frequency.qmd
   - signum.qmd
-  - title.qmd 
+  - title.qmd
   - title_remainder.qmd
   #- title2.qmd
   #- content_type.qmd

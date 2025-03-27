@@ -9,8 +9,9 @@ description: ""
 source("init.R")
 source("author_name.R")
 source("author_name_kanto.R")
-source("author_profession_kanto.R")
 ```
+
+
 
 MARC: [100a](https://www.loc.gov/marc/bibliographic/bd100.html)
 
@@ -48,6 +49,8 @@ Top-`r ntop` titles and their title counts for period 1809-1917.
 
 The accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.
 
+
+
 ```{r}
 #| label = "summarytitle-author-name",
 #| echo = FALSE,
@@ -63,5 +66,4 @@ p <- top_plot(df_19, "author_name", ntop = ntop, log10 = TRUE)+
   labs(y = "Entries (n)", title = "Top titles")
 print(p)
 ```
-
 
