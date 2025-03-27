@@ -59,6 +59,9 @@ jobs:
       - name: Install comhis package from GitHub
         run: Rscript -e 'remotes::install_github("comhis/comhis")'
 
+      - name: Install finto package from GitHub
+        run: Rscript -e 'remotes::install_github("fennicahub/finto")'
+
       - uses: quarto-dev/quarto-actions/setup@v2
 
       - uses: r-lib/actions/setup-r-dependencies@v2
