@@ -8,8 +8,6 @@ description: ""
 #| include = FALSE
 source("init.R")
 source("author_name.R")
-source("author_name_kanto.R")
-source("author_profession_kanto.R")
 ```
 
 MARC: [100a](https://www.loc.gov/marc/bibliographic/bd100.html)
