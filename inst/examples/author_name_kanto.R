@@ -1,48 +1,85 @@
-authors_df <- finto::get_kanto(df.orig) %>%
-  rename(author_name = prefLabel)
-field <- "author_name"
-# Step 1: Remove duplicates by author_ID
-df.orig <- authors_df %>%
-  distinct(author_ID, .keep_all = TRUE) %>%
-  select(author_ID = author_ID, author_name)
+field <- "author_name_kanto"
 
-# Step 2: Polish author names
-field <- "author_name"
+# Full author name (Last, First)
 author <- polish_author(df.orig[[field]], verbose = TRUE)
 
-# Step 3: Create harmonized data frame
-df.tmp <- data.frame(
-  author_ID = df.orig$author_ID,
-  author_name = author,
-  stringsAsFactors = FALSE
-)
+# Collect the results into a data.frame
+df.tmp <- data.frame(melinda_id = df.orig$melinda_id, author_name_kanto = author)
 
-# Step 4: Add to harmonized master
-df.harmonized <- cbind(df.orig, author_name_harmonized = df.tmp$author_name)
+#add harmonized fields to df
+df.harmonized <- cbind(df.harmonized, author_name_kanto = df.tmp$author_name_kanto)
 
-# -------------------------------
-# Save and summarize
+################################################################
 
-output.folder <- "output.tables/"
-if (!dir.exists(output.folder)) dir.create(output.folder)
-
-# Save as RDS
+# Store the title field data
 data.file <- paste0(field, ".Rds")
 saveRDS(df.tmp, file = data.file)
+# Generate markdown summary
+df <- readRDS(data.file)
+# Convert to CSV and store in the output.tables folder
+write.table(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE)
 
-# Save as CSV
-write.table(df.tmp, file = file.path(output.folder, paste0(field, "_kanto.csv")),
-            quote = FALSE, row.names = FALSE)
+##################################################################
 
-# -------------------------------
-# Summary of results
-file_accepted  <- file.path(output.folder, paste0(field, "_kanto_accepted.csv"))
-file_discarded <- file.path(output.folder, paste0(field, "_kanto_discarded.csv"))
+# Define output files for the whole dataset
+file_accepted  <- paste0(output.folder, field, "_kanto_accepted.csv")
+file_discarded <- paste0(output.folder, field, "_kanto_discarded.csv")
+
+# ------------------------------------------------------------
+
+# Generate data summaries for the whole data set
 
 message("Accepted entries in the preprocessed data")
-write_xtable(df.tmp[[field]], file_accepted, count = TRUE)
+s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE)
 
 message("Discarded entries in the original data")
+
+# NA values in the final harmonized data
 inds <- which(is.na(df.tmp[[field]]))
-original.na <- df.orig[match(df.tmp$author_ID[inds], df.orig$author_ID), field]
-write_xtable(original.na, file_discarded, count = TRUE)
+
+# Original entries that were converted into NA
+original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
+
+# .. ie. those are "discarded" cases; list them in a table
+tmp <- write_xtable(original.na, file_discarded, count = TRUE)
+
+
+# ------------------------------------------------------------
+
+# Run publication_time.R file to get the melindas needed for the 19th century slicing
+
+df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
+field <- "author_name_kanto"
+
+# Store the title field data
+# FIXME: convert to feather or plain CSV
+data.file <- paste0(field, ".Rds")
+saveRDS(df_19, file = data.file)
+
+# Generate markdown summary
+df_19 <- readRDS(data.file)
+
+
+# Define output files for the 1807-1917 subset
+file_accepted_19  <- paste0(output.folder, field, "_kanto_accepted_19.csv")
+file_discarded_19 <- paste0(output.folder, field, "_kanto_discarded_19.csv")
+
+# ------------------------------------------------------------
+
+# Generate data summaries for 1809-1917
+message("Accepted entries in the preprocessed data for 1809-1917")
+s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
+
+message("Discarded entries for 1809-1917")
+
+# NA values in the final harmonized data
+inds <- which(is.na(df_19[[field]]))
+
+# Original entries that were converted into NA
+original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
+
+# .. ie. those are "discarded" cases; list them in a table
+tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
+
+
+

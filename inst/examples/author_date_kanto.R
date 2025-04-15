@@ -1,30 +1,41 @@
+field_birthDate <- "birthDate"
+field_deathDate <- "deathDate"
 
-# -------------------------------
-# Step 0: Get author metadata with birth/death info
-authors_df <- finto::get_kanto(df.orig) %>%
-  distinct(author_ID, .keep_all = TRUE) %>%
-  rename(
-    author_name = prefLabel,
-    author_birth = birthDate,
-    author_death = deathDate
-  ) %>%
+df.tmp_b <- polish_years(df.orig[[field_birthDate]], check = TRUE, verbose = TRUE)
+df.tmp_d <- polish_years(df.orig[[field_deathDate]], check = TRUE, verbose = TRUE)
+
+df.tmp <- bind_cols(
+  df.tmp_b %>% rename(birth_from = from, birth_till = till),
+  df.tmp_d %>% rename(death_from = from, death_till = till)
+)
+
+df.tmp <- df.tmp %>%
   mutate(
-    melinda_id = author_ID,
-    author_birth = as.numeric(author_birth),
-    author_death = as.numeric(author_death),
-    author_age = author_death - author_birth,
+    birthDate = birth_from,
+    deathDate = death_from,
+    author_age = deathDate - birthDate,
     author_age = na_if(author_age, 0)
-  ) %>%
-  select(melinda_id, author_name, author_birth, author_death, author_age)
+  )
 
-# -------------------------------
-# Step 1: Store harmonized author info
-df.tmp <- authors_df
-df.harmonized <- df.tmp
+# Add melinda id info as first column
+df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
+                    author_date = df.orig$author_date, # add field column
+                    birthDate_kanto = df.orig$birthDate,
+                    deathDate_kanto = df.orig$deathDate,
+                    df.tmp)
+rownames(df.tmp) <- NULL
+
+#add harmonized fields to df
+df.harmonized <- cbind(df.harmonized,
+                       author_birth = df.tmp$birthDate,
+                       author_death = df.tmp$deathDate,
+                       author_age = df.tmp$author_age)
 
 # -------------------------------
 # Step 2: Save to RDS + CSV
-field <- "author_date"
+field_birthDate <- "birthDate"
+field_deathDate <- "deathDate"
+field <- paste(field_birthDate, field_deathDate, sep = "_")
 output.folder <- "output.tables/"
 if (!dir.exists(output.folder)) dir.create(output.folder)
 
@@ -36,24 +47,30 @@ write.table(df.tmp, file = file.path(output.folder, paste0(field, "_kanto.csv"))
 
 # -------------------------------
 # Step 3: Summarize accepted/discarded entries
-x <- df.tmp$author_birth
-y <- df.tmp$author_death
-o <- df.tmp$author_name
+o <- paste(df.orig[["birthDate"]], df.orig[["deathDate"]], sep = "-")
+x <- as.character(df.tmp[["birthDate_kanto"]])
+y <- as.character(df.tmp[["deathDate_kanto"]])
 
-# Accepted entries
 message("Accepted entries in the preprocessed data")
 inds <- !is.na(x) & !is.na(y)
-accept.file <- file.path(output.folder, paste0(field, "_kanto_accepted.csv"))
-tab <- as.data.frame(rev(sort(table(o[inds]))))
-tab$Frequency <- round(100 * tab$Freq / sum(tab$Freq), 1)
-colnames(tab) <- c("Term", "Count", "Frequency")
-write.table(tab, file = accept.file, quote = FALSE, row.names = FALSE, sep = "\t")
+accept.file <- paste0(output.folder, field, "_kanto_accepted.csv")
+tmp <- write_xtable(o[inds],file = accept.file,count = TRUE)
 
-# Discarded entries
+
+n <- rev(sort(table(o[inds])))
+tab <- as.data.frame(n);
+tab$Frequency <- round(100 * tab$Freq/sum(tab$Freq), 1)
+colnames(tab) <- c("Term", "Count", "Frequency")
+write.table(tab, file = accept.file, quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t")
+
+
 message("Discarded entries in the original data")
 inds1 <- is.na(x) & is.na(y)
-discard.file <- file.path(output.folder, paste0(field, "_kanto_discarded.csv"))
-tab <- as.data.frame(rev(sort(table(o[inds1]))))
-tab$Frequency <- round(100 * tab$Freq / sum(tab$Freq), 1)
+discard.file <- paste0(output.folder, field, "_kanto_discarded.csv")
+tmp <- write_xtable(o[inds1],file = discard.file,count = TRUE)
+
+n <- rev(sort(table(o[inds1])))
+tab <- as.data.frame(tmp);
+tab$Frequency <- round(100 * tab$Count/sum(tab$Count), 1)
 colnames(tab) <- c("Term", "Count", "Frequency")
-write.table(tab, file = discard.file, quote = FALSE, row.names = FALSE, sep = "\t")
+write.table(tab, file = discard.file, quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t")
