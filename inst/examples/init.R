@@ -11,6 +11,7 @@ library(stringi)
 library(parallel)
 library(qdapRegex)
 library(readxl)
+library(arrow)
 
 # Install latest version from Github
 # install_github("fennicahub/fennica") # or
@@ -28,8 +29,10 @@ if (!file.exists(output.folder)) {
 }
 
 #load the data
-source("priority_fields.R")
+#source("priority_fields.R")
 
+#load the enriched data
+source("priority_fields_kanto.R")
 #extract from leader-> type_of_record and bibliographic_level and add to data
 source("leader.R")
 

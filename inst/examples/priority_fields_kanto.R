@@ -1,5 +1,4 @@
 
-library(arrow)
 url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/fennica_kanto_enriched.parquet"
 
 df.orig <- read_parquet(url)
