@@ -35,6 +35,9 @@ jobs:
       - name: Install aws.s3 package
         run: Rscript -e "install.packages('aws.s3')"
 
+      - name: Install arrow package
+        run: Rscript -e "install.packages('arrow')"
+
       - name: Install tidyverse package
         run: Rscript -e "install.packages('tidyverse')"
 
