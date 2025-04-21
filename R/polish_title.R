@@ -51,7 +51,7 @@ polish_title <- function (x) {
   # Map back to originals
   x <- x[xinds]
 
-  #  x
+#  x
   # Prepare output
   result <- list(
     title_original = title_original,
