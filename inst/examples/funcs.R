@@ -3,7 +3,7 @@
 #' @description Remove special characters.
 #' @param x Character vector
 #' @param chars Characters to be removed
-#' @param niter Number of iterations 
+#' @param niter Number of iterations
 #' @return Polished vector
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
@@ -12,8 +12,8 @@
 remove_special_chars <- function (x, chars = c(",", ";", ":", "\\(", "\\)", "\\?", "--", "\\&"), niter = 5) {
 
   for (n in 1:niter) {
-  
-    x <- str_trim(x)
+
+    x <- stringr::str_trim(x)
 
     for (char in chars) {
       x <- gsub(paste(char, "$", sep = ""), " ", x)
@@ -29,7 +29,7 @@ remove_special_chars <- function (x, chars = c(",", ";", ":", "\\(", "\\)", "\\?
   }
 
   x <- condense_spaces(x)
-   
+
   x[x == ""] <- NA
 
   x
@@ -71,7 +71,7 @@ polish_dimensions <- function (x, fill = TRUE, dimtab = NULL, verbose = FALSE, s
   if (is.null(synonyms)) {
     f <- "harmonize_dimensions.csv"
     synonyms <- read_mapping(f, sep = "\t", mode = "table",encoding = "UTF-8")
-  } 
+  }
 
 
   if (verbose) { message("Initial harmonization..") }
@@ -80,49 +80,49 @@ polish_dimensions <- function (x, fill = TRUE, dimtab = NULL, verbose = FALSE, s
   sorig <- s
   s <- suniq <- unique(s)
 
-  # 75,9 -> 75.9  
+  # 75,9 -> 75.9
   s <- gsub(",", ".", s)
-  s <- gsub("lon.", "long ", s)   
+  s <- gsub("lon.", "long ", s)
   s <- gsub(" /", "/", s)
 
   # Harmonize the terms
   s <- map(s, synonyms, mode = "recursive")
 
   # Remove brackets
-  s <- gsub("\\(", " ", gsub("\\)", " ", s)) 
+  s <- gsub("\\(", " ", gsub("\\)", " ", s))
   s <- gsub("\\[", " ", gsub("\\]", " ", s))
   # Add spaces
-  s <- gsub("cm\\. {0,1}", " cm ", s)  
+  s <- gsub("cm\\. {0,1}", " cm ", s)
   s <- gsub("x", " x ", s)
   s <- gsub("oblong", "obl ", s)
-  s <- gsub("obl\\.{0,1}", "obl ", s)  
+  s <- gsub("obl\\.{0,1}", "obl ", s)
   # Remove extra spaces
   s <- gsub(" /", "/", s)
   s <- condense_spaces(s)
 
   # "16mo in 8's."
-  inds <- grep("[0-9]+.o in [0-9]+.o", s)  
+  inds <- grep("[0-9]+.o in [0-9]+.o", s)
   s[inds] <- gsub(" in [0-9]+.o", "", s[inds])
 
   # "12 mo
-  inds <- grep("[0-9]+ .o", s)  
+  inds <- grep("[0-9]+ .o", s)
   for (id in c("mo", "to", "vo", "fo")) {
     s[inds] <- gsub(paste(" ", id, sep = ""), id, s[inds])
   }
 
-  s <- harmonize_dimension(s, synonyms) 
-  s <- map(s, synonyms, mode = "recursive")  
+  s <- harmonize_dimension(s, synonyms)
+  s <- map(s, synonyms, mode = "recursive")
 
   # Make it unique here: after the initial harmonization
-  # This helps to further reduce the number of unique cases 
+  # This helps to further reduce the number of unique cases
   # Speed up by only handling unique cases
   # Temporarily map to original indices to keep it clear
-  s <- s[match(sorig, suniq)]  
+  s <- s[match(sorig, suniq)]
   sorig <- s
   s <- suniq <- unique(sorig)
 
   if (verbose) {
-    message(paste("Estimating dimensions:", length(suniq), "unique cases"))    
+    message(paste("Estimating dimensions:", length(suniq), "unique cases"))
   }
 
   # --------------------------------------
@@ -134,7 +134,7 @@ polish_dimensions <- function (x, fill = TRUE, dimtab = NULL, verbose = FALSE, s
   tab <- data.frame(tab)
 
   if (verbose) {
-    message("Convert to desired format")    
+    message("Convert to desired format")
   }
   tab$original <- as.character(tab$original)
   tab$gatherings <- order_gatherings(unlist(tab$gatherings))
@@ -142,7 +142,7 @@ polish_dimensions <- function (x, fill = TRUE, dimtab = NULL, verbose = FALSE, s
   tab$height <- suppressWarnings(as.numeric(as.character(tab$height)))
   tab$gatherings <- order_gatherings(tab$gatherings)
   tab$obl <- unlist(tab$obl, use.names = FALSE)
-  tab.original <- tab  
+  tab.original <- tab
 
   tab.final <- tab.original
   colnames(tab.final) <- paste0(colnames(tab.original), ".original")
@@ -158,7 +158,7 @@ polish_dimensions <- function (x, fill = TRUE, dimtab = NULL, verbose = FALSE, s
 
   }
 
-  tab.final$original.original <- NULL  
+  tab.final$original.original <- NULL
 
   tab.final <- tab.final[match(sorig, suniq),]
 
@@ -192,31 +192,31 @@ get_country <- function (x, map = NULL) {
 
   # Speed up by handling unique cases only
   xorig <- as.character(x)
-  xorig.unique <- unique(xorig)  
+  xorig.unique <- unique(xorig)
   x <- xorig.unique
 
   if (is.null(map)) {
     f <- "reg2country.csv"
     message(paste("Reading region-country mappings from file ", f))
-    map <- read_mapping(f, mode = "table", sep = ";", sort = TRUE, self.match = FALSE, include.lowercase = FALSE, ignore.empty = FALSE, remove.ambiguous = TRUE, lowercase.only = FALSE, from = "region", to = "country") 
+    map <- read_mapping(f, mode = "table", sep = ";", sort = TRUE, self.match = FALSE, include.lowercase = FALSE, ignore.empty = FALSE, remove.ambiguous = TRUE, lowercase.only = FALSE, from = "region", to = "country")
   }
-  
+
   message("Map each region in x to a country")
   # use lowercase
   # country <- map$country[match(tolower(x), tolower(map$region))]
-  spl <- split(tolower(map$country), tolower(map$region)) 
+  spl <- split(tolower(map$country), tolower(map$region))
   spl <- spl[tolower(x)]
-  
+
   # If mapping is ambiguous, then name the country as ambiguous
   spl <- lapply(spl, unique)
   spl[which(sapply(spl, function (x) {length(unique(x)) > 1}, USE.NAMES = FALSE))] <- "ambiguous"
-  spl[which(sapply(spl, function (x) {length(x) == 0}, USE.NAMES = FALSE))] <- NA  
+  spl[which(sapply(spl, function (x) {length(x) == 0}, USE.NAMES = FALSE))] <- NA
   spl <- unlist(as.vector(spl))
   country <- spl
 
   # If multiple possible countries listed and separated by |;
   # use the first one (most likely)
-  country <- str_trim(sapply(strsplit(as.character(country), "\\|"), function (x) {ifelse(length(x) > 0, x[[1]], NA)}, USE.NAMES = FALSE))
+  country <- stringr::str_trim(sapply(strsplit(as.character(country), "\\|"), function (x) {ifelse(length(x) > 0, x[[1]], NA)}, USE.NAMES = FALSE))
 
   # Use the final country names
   country <- map$country[match(tolower(country), tolower(map$country))]
@@ -230,7 +230,7 @@ get_country <- function (x, map = NULL) {
 
 
 #' @title Enrich Data
-#' @description Enrich data. 
+#' @description Enrich data.
 #' @param data.validated Validated data.frame
 #' @param df.orig Original data.frame
 #' @return Augmented data.frame
@@ -255,7 +255,7 @@ enrich_preprocessed_data <- function(df.preprocessed, df.orig) {
   # This is fast.
   if (any(c("author_name", "author_date") %in% update.fields)) {
     # this seems to take long even with only
-    # 100 entries in df.preprocessed? -vv 
+    # 100 entries in df.preprocessed? -vv
     df.preprocessed <- enrich_author(df.preprocessed)
   }
 
@@ -281,7 +281,7 @@ enrich_preprocessed_data <- function(df.preprocessed, df.orig) {
     df.preprocessed <- enrich_pagecount(df.preprocessed)
 
     message("Add estimated paper consumption")
-    # Estimated print run size for paper consumption estimates    
+    # Estimated print run size for paper consumption estimates
     # Paper consumption in sheets
     # (divide document area by standard sheet area
     sheet.area <- subset(sheet_sizes(), format == "sheet")$area
@@ -299,7 +299,7 @@ enrich_preprocessed_data <- function(df.preprocessed, df.orig) {
 
   message("Custom gender information for Fennica")
   # For author names, use primarily the Finnish names database
-  # hence use it to replace the genders assigned earlier 
+  # hence use it to replace the genders assigned earlier
   library(fennica)
   firstname <- pick_firstname(df.preprocessed$author_name, format = "last, first")
 
@@ -382,7 +382,7 @@ validate_preprocessed_data <- function(df, max.pagecount = 5000) {
     if (length(inds) > 0) {
        df[inds, "author_death"] <- NA
     }
-    
+
     # Death must be after birth
     # If this is not the case, set the life years to NA
     inds <- which(df$author_death < df$author_birth)
@@ -393,7 +393,7 @@ validate_preprocessed_data <- function(df, max.pagecount = 5000) {
 
     # Author life - make sure this is in numeric format
     df$author_birth <- as.numeric(as.character(df$author_birth))
-    df$author_death <- as.numeric(as.character(df$author_death))  
+    df$author_death <- as.numeric(as.character(df$author_death))
 
     # Publication year must be after birth
     # FIXME: should we let these through to the final summaries
@@ -403,7 +403,7 @@ validate_preprocessed_data <- function(df, max.pagecount = 5000) {
       df[inds, "author_birth"] <- NA
       df[inds, "author_death"] <- NA
       df[inds, "publication_year_from"] <- NA
-      df[inds, "publication_year_till"] <- NA      
+      df[inds, "publication_year_till"] <- NA
     }
 
   }
@@ -456,18 +456,18 @@ publication_frequency_text <- function (x, peryear) {
 
 #' @title Polish Publication Frequency
 #' @description Harmonize publication frequencies.
-#' @param x publication frequency field (a vector) 
+#' @param x publication frequency field (a vector)
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
 #' @examples \dontrun{df <- polish_publication_frequency("Kerran vuodessa")}
 #' @keywords utilities
 polish_publication_frequency <- function(x) {
 
-  # Remove periods  
+  # Remove periods
   x <- condense_spaces(tolower(gsub("\\.$", "", x)))
   x <- gsub("^ca ", "", x)
   x <- gsub("\\?", " ", x)
-  x <- gsub("'", " ", x)    
+  x <- gsub("'", " ", x)
   x <- gsub(" */ *", "/", x)
   x <- gsub("^[0-9]+ s$", "", x)
   x <- condense_spaces(x)
@@ -479,7 +479,7 @@ polish_publication_frequency <- function(x) {
   xorig <- x
   x <- xuniq <- unique(xorig)
   df <- do.call("rbind", lapply(x, polish_publication_frequencies))
-  
+
   # Match to original inds and return
   df[match(xorig, xuniq),]
 
@@ -493,19 +493,19 @@ polish_publication_frequencies <- function (x) {
   # not an optimal hack but works for the time being..
   tmps <- list()
   # tmps[["English"]] <- suppressWarnings(polish_publication_frequency_english(x))
-  tmps[["Swedish"]] <- suppressWarnings(polish_publication_frequency_swedish(x))  
+  tmps[["Swedish"]] <- suppressWarnings(polish_publication_frequency_swedish(x))
   tmps[["Finnish"]] <- suppressWarnings(polish_publication_frequency_finnish(x))
   lang <- names(which.min(sapply(tmps, function (tmp) {sum(is.na(tmp))})))
   tmp <- tmps[[lang]]
 
   # Convert all units to years
   unityears <- tmp$unit
-  unityears <- gsub("year", "1", unityears)  
-  unityears <- gsub("month", as.character(1/12), unityears)  
-  unityears <- gsub("week", as.character(1/52), unityears)  
-  unityears <- gsub("day", as.character(1/365), unityears)  
+  unityears <- gsub("year", "1", unityears)
+  unityears <- gsub("month", as.character(1/12), unityears)
+  unityears <- gsub("week", as.character(1/52), unityears)
+  unityears <- gsub("day", as.character(1/365), unityears)
   unityears <- gsub("Irregular", NA, unityears)
-  unityears <- gsub("Single", NA, unityears)    
+  unityears <- gsub("Single", NA, unityears)
 
   suppressWarnings(
     annual <- as.numeric(as.character(tmp$freq)) / as.numeric(unityears)
@@ -524,65 +524,65 @@ polish_publication_frequencies <- function (x) {
 
 #' @title Polish Publication Frequency English
 #' @description Harmonize publication frequencies for English data.
-#' @param x publication frequency field (a vector) 
+#' @param x publication frequency field (a vector)
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
 #' @examples \dontrun{df <- polish_publication_frequency_english("weekly")}
 #' @keywords utilities
 polish_publication_frequency_english <- function(x) {
 
-  # TODO add to CSV list rather than mixed in the code here				     
+  # TODO add to CSV list rather than mixed in the code here
   x <- gsub("issued several times a week, frequency of issue varies", "3 per week", x)
-  x <- gsub("during the law terms", NA, x)  
+  x <- gsub("during the law terms", NA, x)
   x <- gsub("suday", "sunday", x)
   x <- gsub("colleced", "collected", x)
-  x <- gsub(" and index$", "", x)    
+  x <- gsub(" and index$", "", x)
   x <- gsub(", when parliament is in session", "", x)
   x <- gsub("\\(when parliament is in session\\)", "", x)
   x <- gsub("\\(when parliament is sitting\\)", "", x)
-  x <- gsub("\\(while parliament is sitting\\)", "", x)  
+  x <- gsub("\\(while parliament is sitting\\)", "", x)
   x <- gsub("\\(published according to sitting dates of parliament\\)", "", x)
   x <- gsub("\\(during the sitting dates of parliament\\)", "", x)
-  x <- gsub("\\(during the sitting of parliament\\)", "", x)      
-  x <- gsub(", with irregular special issues", "", x)  
+  x <- gsub("\\(during the sitting of parliament\\)", "", x)
+  x <- gsub(", with irregular special issues", "", x)
   x <- gsub(" \\(collected [a-z]+\\)", "", x)
   x <- gsub(" \\(during the racing season\\)", "", x)
   x <- gsub(" \\(collected issues for [0-9]+\\)", "", x)
-  x <- gsub(" \\(collected annually, [0-9]+-[0-9]+\\)", "", x)  
+  x <- gsub(" \\(collected annually, [0-9]+-[0-9]+\\)", "", x)
   x <- gsub(" \\(collected [0-9]+ times a [a-z]+\\)", "", x)
   x <- gsub(" \\(collected [a-z]+ [a-z]+\\)", "", x)
   x <- gsub(" \\(collected [a-z]+ [0-9]+ issues\\)", "", x)
   x <- gsub(" \\(compiled issues\\)", "", x)
-  x <- gsub(" \\(compilation\\)", "", x)      
-  x <- gsub(" \\(collected [a-z]+\\)", "", x)    
+  x <- gsub(" \\(compilation\\)", "", x)
+  x <- gsub(" \\(collected [a-z]+\\)", "", x)
   x <- gsub(" \\(cumulati*ve\\)", "", x)
   x <- gsub(" \\(cumulated\\)", "", x)
-  x <- gsub(" \\(with general title page\\)", "", x)  
+  x <- gsub(" \\(with general title page\\)", "", x)
   x <- gsub(" \\(cumulates monthly issues\\)", "", x)
-  x <- gsub(" \\(cumulated every [a-z]+ numbers\\)", "", x)  
+  x <- gsub(" \\(cumulated every [a-z]+ numbers\\)", "", x)
   x <- gsub(" \\(with [a-z]+ cumulation\\)", "", x)
   x <- gsub(", with annual or semiannual cumulation", "", x)
-  x <- gsub(", with annual cumulation and indexes", "", x)  
+  x <- gsub(", with annual cumulation and indexes", "", x)
   x <- gsub(", with [0-9]+-* *[a-z]+ cumulations*", "", x)
-  x <- gsub(", with [a-z]+ cumulations*", "", x)  
-  x <- gsub(", with cumulation in [0-9]+ volumes*", "", x)  
-  x <- gsub(", with [a-z]+ [a-z]+ cumulations*", "", x)  
-  x <- gsub(" \\(with [a-z]+ cumulations*\\)", "", x)  
+  x <- gsub(", with [a-z]+ cumulations*", "", x)
+  x <- gsub(", with cumulation in [0-9]+ volumes*", "", x)
+  x <- gsub(", with [a-z]+ [a-z]+ cumulations*", "", x)
+  x <- gsub(" \\(with [a-z]+ cumulations*\\)", "", x)
   x <- gsub(" \\(cumulation\\)", "", x)
   x <- gsub(" \\(on mondays\\)", "", x)
-  x <- gsub(" \\(on tuesdays\\)", "", x)    
+  x <- gsub(" \\(on tuesdays\\)", "", x)
   x <- gsub(" \\(on wednesdays\\)", "", x)
   x <- gsub(" \\(on thursdays\\)", "", x)
   x <- gsub(" \\(on fridays\\)", "", x)
-  x <- gsub(" \\(on saturdays\\)", "", x)          
+  x <- gsub(" \\(on saturdays\\)", "", x)
   x <- gsub(" \\(on sundays\\)", "", x)
   x <- gsub(" \\(mondays\\)", "", x)
   x <- gsub(" \\(tuesdays\\)", "", x)
-  x <- gsub(" \\(tues\\)", "", x)      
+  x <- gsub(" \\(tues\\)", "", x)
   x <- gsub(" \\(wednesdays\\)", "", x)
   x <- gsub(" \\(thursdays\\)", "", x)
-  x <- gsub(" \\(thurs\\.*\\)", "", x)  
+  x <- gsub(" \\(thurs\\.*\\)", "", x)
   x <- gsub(" \\(fridays\\)", "", x)
-  x <- gsub(" \\(saturdays\\)", "", x)          
+  x <- gsub(" \\(saturdays\\)", "", x)
   x <- gsub(" \\(sundays\\)", "", x)
   x <- gsub(" \\(w?th some variation\\)", "", x)
   x <- gsub(", with occasional supplements", "", x)
@@ -591,9 +591,9 @@ polish_publication_frequency_english <- function(x) {
   x <- gsub("annually", "annual", x)
   x <- gsub(" \\[[0-9]+\\]", "", x)
   x <- condense_spaces(x)
-  
+
   freq <- rep(NA, length = length(x))
-  unit <- rep(NA, length = length(x))  
+  unit <- rep(NA, length = length(x))
 
   # English
   f <- system.file("extdata/numbers_english.csv", package = "comhis")
@@ -617,7 +617,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     x[inds] <- gsub("ly$", "", x[inds])
     x[inds] <- gsub(" times ", " per ", x[inds])
-    x[inds] <- gsub(" dai$", " day", x[inds])    
+    x[inds] <- gsub(" dai$", " day", x[inds])
   }
 
   # daily, except sunday -> 6/week
@@ -625,7 +625,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 6
     unit[inds] <- "week"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # daily (except weekends)
@@ -633,7 +633,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 5
     unit[inds] <- "week"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # daily except sunday
@@ -641,7 +641,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 6
     unit[inds] <- "week"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # daily (except sun.)
@@ -649,7 +649,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 6
     unit[inds] <- "week"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # daily except weekends
@@ -657,7 +657,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 5
     unit[inds] <- "week"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # daily
@@ -673,7 +673,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- unlist(strsplit(x[inds], " "), use.names = F)[[1]]
     unit[inds] <- "day"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # every other day
@@ -681,7 +681,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 1/2
     unit[inds] <- "day"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # weekly
@@ -689,7 +689,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 1
     unit[inds] <- "week"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # semiweekly
@@ -697,15 +697,15 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 2
     unit[inds] <- "week"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
-  # semiweekly (tuesday and friday) 
+  # semiweekly (tuesday and friday)
   inds <- grep("^semiweekly \\([a-z]+ and [a-z]+\\)$", x)
   if (length(inds)>0) {
     freq[inds] <- 2
     unit[inds] <- "week"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # biweekly
@@ -713,7 +713,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 2
     unit[inds] <- "week"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # triweekly
@@ -721,7 +721,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 3
     unit[inds] <- "week"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # monthly
@@ -729,7 +729,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 1
     unit[inds] <- "month"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # bimonthly
@@ -737,7 +737,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 1/2
     unit[inds] <- "month"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # semimonthly
@@ -745,7 +745,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 1/2
     unit[inds] <- "month"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # quarterly
@@ -753,7 +753,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 4
     unit[inds] <- "year"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # annual
@@ -761,7 +761,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 1
     unit[inds] <- "year"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # semiannual
@@ -769,7 +769,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 2
     unit[inds] <- "year"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # biennial
@@ -777,7 +777,7 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 1/2
     unit[inds] <- "year"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # two or three times a year
@@ -786,7 +786,7 @@ polish_publication_frequency_english <- function(x) {
     spl <- strsplit(x[inds], " ")
     freq[inds] <- mean(as.numeric(sapply(spl, function (xi) {xi[[1]]})), as.numeric(sapply(spl, function (xi) {xi[[3]]})))
     unit[inds] <- sapply(spl, function (xi) {xi[[6]]})
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # two or three times a year
@@ -795,7 +795,7 @@ polish_publication_frequency_english <- function(x) {
     spl <- strsplit(x[inds], " ")
     freq[inds] <- mean(as.numeric(sapply(spl, function (xi) {xi[[1]]})), as.numeric(sapply(spl, function (xi) {xi[[3]]})))
     unit[inds] <- sapply(spl, function (xi) {xi[[6]]})
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # three times a year
@@ -805,7 +805,7 @@ polish_publication_frequency_english <- function(x) {
     spl <- strsplit(x[inds], " ")
     freq[inds] <- as.numeric(sapply(spl, function (xi) {xi[[1]]}))
     unit[inds] <- sapply(spl, function (xi) {xi[[2]]})
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # three times weekly
@@ -814,7 +814,7 @@ polish_publication_frequency_english <- function(x) {
     spl <- strsplit(x[inds], " ")
     freq[inds] <- as.numeric(sapply(spl, function (xi) {xi[[1]]}))
     unit[inds] <- sapply(spl, function (xi) {xi[[3]]})
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # three per year
@@ -823,7 +823,7 @@ polish_publication_frequency_english <- function(x) {
     spl <- strsplit(x[inds], " ")
     freq[inds] <- as.numeric(sapply(spl, function (xi) {xi[[1]]}))
     unit[inds] <- sapply(spl, function (xi) {xi[[3]]})
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # three times per year
@@ -833,7 +833,7 @@ polish_publication_frequency_english <- function(x) {
     spl <- strsplit(x[inds], " ")
     freq[inds] <- as.numeric(sapply(spl, function (xi) {xi[[1]]}))
     unit[inds] <- sapply(spl, function (xi) {xi[[2]]})
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # 4 issues in 6 months
@@ -845,7 +845,7 @@ polish_publication_frequency_english <- function(x) {
     u <- sapply(spl, function (xi) {xi[[5]]})
     freq[inds] <- n1/n2
     unit[inds] <- u
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # 4 in 6 months
@@ -857,7 +857,7 @@ polish_publication_frequency_english <- function(x) {
     u <- sapply(spl, function (xi) {xi[[4]]})
     freq[inds] <- n1/n2
     unit[inds] <- u
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # 1 during a 6teen-month period
@@ -870,7 +870,7 @@ polish_publication_frequency_english <- function(x) {
     u <- sapply(spl, function (xi) {xi[[5]]})
     freq[inds] <- n1/n2
     unit[inds] <- u
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # every five days
@@ -880,7 +880,7 @@ polish_publication_frequency_english <- function(x) {
     spl <- strsplit(x[inds], " ")
     freq[inds] <- 1/as.numeric(sapply(spl, function (xi) {xi[[1]]}))
     unit[inds] <- sapply(spl, function (xi) {xi[[2]]})
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # twice every three weeks
@@ -890,7 +890,7 @@ polish_publication_frequency_english <- function(x) {
 
     freq[inds] <- as.numeric(sapply(spl, function (xi) {xi[[1]]}))/as.numeric(sapply(spl, function (xi) {xi[[3]]}))
     unit[inds] <- sapply(spl, function (xi) {xi[[4]]})
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # semiannual
@@ -898,21 +898,21 @@ polish_publication_frequency_english <- function(x) {
   if (length(inds)>0) {
     freq[inds] <- 2
     unit[inds] <- "year"
-    x[inds] <- NA # handled    
+    x[inds] <- NA # handled
   }
 
   # irregular
   inds <- c(
     which(x == "irregular"),
     which(x == "unknown"),
-    which(x == "frequency unknown"),        
+    which(x == "frequency unknown"),
     which(x == "frequency irregular"),
     which(x == "no determinable frequency")
   )
   if (length(inds)>0) {
     freq[inds] <- NA
     unit[inds] <- "Irregular"
-    x[inds] <- NA # handled        
+    x[inds] <- NA # handled
   }
 
   x <- condense_spaces(x)
@@ -923,7 +923,7 @@ polish_publication_frequency_english <- function(x) {
   # Translate units (weeks -> week; years -> year etc)
   unit <- gsub("s$", "", unit)
 
-  # orig = x, 
+  # orig = x,
   data.frame(unit = unit, freq = as.numeric(as.character(freq)))
 
 }
@@ -932,7 +932,7 @@ polish_publication_frequency_english <- function(x) {
 
 #' @title Polish Publication Frequency Swedish
 #' @description Harmonize publication frequencies for Swedish data.
-#' @param x publication frequency field (a vector) 
+#' @param x publication frequency field (a vector)
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
 #' @references See citation("fennica")
 #' @examples \dontrun{df <- polish_publication_frequency_swedish("1 nr/ar")}
@@ -944,15 +944,15 @@ polish_publication_frequency_swedish <- function(x) {
   x <- gsub(" pl\\.*/", " nr/", x)
   x <- gsub(" s. l.nge kryssningarna varar", " ", x)
   x <- condense_spaces(x)
-  
+
   freq <- rep(NA, length = length(x))
-  unit <- rep(NA, length = length(x))  
+  unit <- rep(NA, length = length(x))
 
   # Swedish
   f <- system.file("extdata/numbers_swedish.csv", package = "fennica")
   char2num <- read_mapping(f, sep = ",", mode = "table", from = "character", to = "numeric")
   x <- map(x, synonymes = char2num, from = "character", to = "numeric", mode = "match")
-  
+
   # 6 nr/ar / 6-8 nr/ar
   inds <- grep("^[0-9]+-*[0-9]* nr/ar$", x)
   if (length(inds) > 0) {
@@ -964,7 +964,7 @@ polish_publication_frequency_swedish <- function(x) {
   # 6-8 nr/manad OR 6-8 nr/manaden OR 6-8 nr/man
   inds <- c(
           grep("^[0-9]+-*[0-9]* nr/man *[:lower:| ]*", x),
-          grep("^[0-9]+-*[0-9]* nr/manad *[:lower:| ]*", x),	  
+          grep("^[0-9]+-*[0-9]* nr/manad *[:lower:| ]*", x),
           grep("^[0-9]+-*[0-9]* nr/manaden *[:lower:| ]*", x))
   if (length(inds) > 0) {
     s <- gsub("[[:lower:]]", "", x[inds])
@@ -1012,14 +1012,14 @@ polish_publication_frequency_swedish <- function(x) {
     unit[inds] <- "year"
   }
 
-  # 1 nr/varannan manad	
+  # 1 nr/varannan manad
   inds <- c(grep("^[0-9]+ nr/vartannat [[:lower:]]+$", x), grep("^[0-9]+ nr/varannan [[:lower:]]+$", x))
   if (length(inds)>0) {
     spl <- strsplit(x[inds], " ")
     freq[inds] <- as.numeric(sapply(spl, function (xi) {xi[[1]]}))/2
     unit[inds] <- sapply(strsplit(x[inds], " "), function (xi) {xi[[length(xi)]]})
   }
-  
+
   # varannan/vartannat ar/manad/vecka
   inds <- c(grep("^vartannat [[:lower:]]+$", x), grep("^varannan [[:lower:]]+$", x))
   if (length(inds)>0) {
@@ -1028,7 +1028,7 @@ polish_publication_frequency_swedish <- function(x) {
   }
 
   # Vartannat eller vart trejde ar
-  # Vartannat till vart tredje ar 
+  # Vartannat till vart tredje ar
   inds <- c(grep("^vartannat [[:lower:]]+ vart 3 [[:lower:]]+$", x),
             grep("^varannan [[:lower:]]+ vart 3 [[:lower:]]+$", x)
        )
@@ -1082,13 +1082,13 @@ polish_publication_frequency_swedish <- function(x) {
   if (is.null(x) || is.na(x)) {
     # skip
   } else if (x == "vart 3 till vart 4 ar") {
-    freq <- 1/3.5    
+    freq <- 1/3.5
     unit <- "year"
   } else if (x == "1 nr/vecka med sommaruppehall, dvs ca 42 nr/ar") {
     freq <- 42
     unit <- "year"
   } else if (x == "1 nr/vecka (april-sept.), 2 nr/m.nad (okt.-mars)") {
-    freq <- 26 + 12 
+    freq <- 26 + 12
     unit <- "year"
   } else if (x == "1 nr/vecka (april-sept.)") {
     freq <- 26
@@ -1113,12 +1113,12 @@ polish_publication_frequency_swedish <- function(x) {
   # Translate units in English
   unit <- gsub("^ar$", "year", unit)
   unit <- gsub("manaden", "month", unit)
-  unit <- gsub("manad", "month", unit)  
-  unit <- gsub("man", "month", unit)  
+  unit <- gsub("manad", "month", unit)
+  unit <- gsub("man", "month", unit)
   unit <- gsub("veckor", "week", unit)
-  unit <- gsub("vecka", "week", unit)  
+  unit <- gsub("vecka", "week", unit)
   unit <- gsub("dagar", "day", unit)
-  unit <- gsub("dag", "day", unit)    
+  unit <- gsub("dag", "day", unit)
 
   data.frame(unit = unit, freq = freq)
 
@@ -1139,7 +1139,7 @@ polish_publication_frequency_swedish <- function(x) {
 polish_publication_frequency_finnish <- function(x) {
 
   freq <- rep(NA, length = length(x))
-  unit <- rep(NA, length = length(x))  
+  unit <- rep(NA, length = length(x))
 
   # Finnish
   f <- system.file("extdata/numbers_finnish.csv", package = "fennica")
@@ -1167,7 +1167,7 @@ polish_publication_frequency_finnish <- function(x) {
   # kaksi kertaa vuodessa
   inds <- unique(c(
             grep("^[[:lower:]]+ kerta+ [[:lower:]]+$", x),
-            grep("^[0-9]+ kerta+ [[:lower:]]+$", x)	    
+            grep("^[0-9]+ kerta+ [[:lower:]]+$", x)
 	    ))
   if (length(inds)>0) {
     x[inds] <- condense_spaces(gsub("kerta+", "", x[inds]))
@@ -1196,7 +1196,7 @@ polish_publication_frequency_finnish <- function(x) {
   # kaksi numeroa/numeroa vuodessa
   inds <- unique(c(
             grep("^[[:lower:]]+ numero[a]* [[:lower:]]+$", x),
-            grep("^[0-9]+ numero[a]* [[:lower:]]+$", x)	    
+            grep("^[0-9]+ numero[a]* [[:lower:]]+$", x)
 	    ))
   if (length(inds)>0) {
     x[inds] <- condense_spaces(gsub("numero[a]*", "", x[inds]))
@@ -1217,7 +1217,7 @@ polish_publication_frequency_finnish <- function(x) {
   # kaksi vuodessa
   inds <- unique(c(
             grep("^[[:lower:]]+ [[:lower:]]+$", x),
-            grep("^[0-9]+ [[:lower:]]+$", x)	    
+            grep("^[0-9]+ [[:lower:]]+$", x)
 	    ))
   if (length(inds)>0) {
     n <- sapply(strsplit(x[inds], " "), function (x) {x[[1]]})
@@ -1262,7 +1262,7 @@ polish_publication_frequency_finnish <- function(x) {
   }
 
   # joka x vuosi
-  inds <- grep("^joka [0-9]+ [[:lower:]]+$", x)  
+  inds <- grep("^joka [0-9]+ [[:lower:]]+$", x)
   if (length(inds)>0) {
     x <- gsub("^joka ", "", x)
     n <- sapply(strsplit(x[inds], " "), function (x) {x[[1]]})
@@ -1277,48 +1277,48 @@ polish_publication_frequency_finnish <- function(x) {
     x <- gsub("^kerran ", "", x)
     n <- sapply(strsplit(x[inds], " "), function (x) {x[[1]]})
     freq[inds] <- 1/as.numeric(n)
-    unit[inds] <- sapply(strsplit(x[inds], " "), function (x) {x[[2]]}) 
+    unit[inds] <- sapply(strsplit(x[inds], " "), function (x) {x[[2]]})
   }
 
   # Single publication
   inds <- unique(c(
        	    grep("^ilmestynyt vain", x),
        	    grep("^ilmestynyt kerran$", x),
-       	    grep("^ilmestynyt 1$", x),	    
-       	    grep("^kertajulkaisu$", x)	    	    	    
+       	    grep("^ilmestynyt 1$", x),
+       	    grep("^kertajulkaisu$", x)
 	  ))
   if (length(inds)>0) {
     freq[inds] <- 1
     unit[inds] <- "Single"
-    #x[inds] <- "Single"        
+    #x[inds] <- "Single"
   }
 
   # Misc
   inds <- unique(c(
        	    grep("^ep.s..nn.llinen$", x),
-       	    grep("^ep.s..nn.llisesti$", x),	    
+       	    grep("^ep.s..nn.llisesti$", x),
        	    grep("^ilmestymistiheys vaihtelee$", x),
        	    grep("^vaihtelee$", x),
        	    grep("^vaihdellut$", x),
 	    # This could be combined with interval to
 	    # calculated frequency
-       	    grep("^[[:lower:]]+ numeroa$", x)	    
+       	    grep("^[[:lower:]]+ numeroa$", x)
 	  ))
   if (length(inds) > 0) {
     freq[inds] <- NA
     unit[inds] <- "Irregular"
-    #x[inds] <- "Irregular"    
+    #x[inds] <- "Irregular"
   }
-  
+
   # Translate units in English
   unit <- gsub("vuodessa", "year", unit)
   unit <- gsub("vuosi", "year", unit)
   unit <- gsub("kuukaudessa", "month", unit)
-  unit <- gsub("kuussa", "month", unit)  
+  unit <- gsub("kuussa", "month", unit)
   unit <- gsub("kuukausi", "month", unit)
   unit <- gsub("viikossa", "week", unit)
   unit <- gsub("viikko", "week", unit)
-  unit <- gsub("paivittain", "day", unit)  
+  unit <- gsub("paivittain", "day", unit)
   unit <- gsub("paivassa", "day", unit)
   unit <- gsub("paiva", "day", unit)
 
@@ -1337,14 +1337,14 @@ geobox <- function (region) {
   if (length(region) == 1 && region == "Europe.main") {
     bbox <- c(-12, 35, 25, 60) # Main Europe with UK
   } else if (length(region) == 1 && region == "Europe.north") {
-    bbox <- c(-1, 1, 38, 125) # Northern Europe    
+    bbox <- c(-1, 1, 38, 125) # Northern Europe
   } else if (length(region) == 1 && region == "Europe") {
     bbox <- c(-15, 35, 30.5, 70) # Europe
   } else if (length(region) == 1 && region == "UK") {
     #bbox <- c(-10.5, 49.5, 2.5, 59) # UK
-    bbox <- c(-10.7, 49.7, 2.3, 59) # UK      
+    bbox <- c(-10.7, 49.7, 2.3, 59) # UK
   } else if (length(region) == 1 && region == "West") {
-    bbox <- c(-120, 25, 30.5, 70) # West  
+    bbox <- c(-120, 25, 30.5, 70) # West
   } else if (length(region) == 1 && region == "World") {
     bbox <- c(-150, -70, 150, 70) # World
   } else {
@@ -1378,9 +1378,9 @@ read_bibliographic_metadata <- function (file, verbose = FALSE, sep = "|") {
       if (verbose) {message(f)}
       dfs[[f]] <- read_bibliographic_metadata(f)
     }
-    if (verbose) {message("Combining the batches..")}    
+    if (verbose) {message("Combining the batches..")}
     df.all <- bind_rows(dfs)
-    if (verbose) {message("OK")}    
+    if (verbose) {message("OK")}
 
     # Replace individual identifier columns
     df.all$original_row <- 1:nrow(df.all)
@@ -1388,7 +1388,7 @@ read_bibliographic_metadata <- function (file, verbose = FALSE, sep = "|") {
     return(df.all)
 
   } else {
-  
+
     # Read data
     tab <- read.csv(file, sep = sep, strip.white = TRUE,
     	   		  stringsAsFactors = FALSE, encoding = "UTF-8")
@@ -1396,12 +1396,12 @@ read_bibliographic_metadata <- function (file, verbose = FALSE, sep = "|") {
     # Removes additional whitespace and some special characters from
     # beginning and end of strings
     tab <- apply(tab,1:2,function(x){
-      x <- gsub("^[[:space:],:;]+","",gsub("[[:space:],:;]+$","",x)) 
+      x <- gsub("^[[:space:],:;]+","",gsub("[[:space:],:;]+$","",x))
     })
 
     # Convert empty cells to NAs
     tab <- apply(tab, 2, function (x) {y <- x; y[x %in% c(" ", "")] <- NA; y})
-  
+
     # Form data frame
     df <- as.data.frame(tab, stringsAsFactors = FALSE)
 
@@ -1433,24 +1433,24 @@ read_bibliographic_metadata <- function (file, verbose = FALSE, sep = "|") {
 #' @examples \dontrun{pick_multivolume("v.1-3, 293")}
 #' @keywords utilities
 pick_multivolume <- function (x) {
-  
+
   vols <- NA
-  
+
   if (!is.na(x) && grepl("^[0-9]+ pts in [0-9]+v\\.", x)) {
     x <- gsub("^[0-9]+ pts in ", "", x)
   }
-  
+
   if (!is.na(x) && grepl("^[0-9]+ pts \\([0-9]+ *v\\.*\\)", x)) {
     x <- gsub("^[0-9]+ pts \\(", "", x)
-    x <- gsub("\\)", "", x)  
+    x <- gsub("\\)", "", x)
   }
-  
+
   if (!is.na(x) && x == "v.") {
-    vols <- 1  
-  } else if (!is.na(x) && grepl("^[0-9]* {0,1}v\\.{0,1}$", x)) { 
-    vols <- as.numeric(str_trim(gsub("v\\.{0,1}", "", x)))
+    vols <- 1
+  } else if (!is.na(x) && grepl("^[0-9]* {0,1}v\\.{0,1}$", x)) {
+    vols <- as.numeric(stringr::str_trim(gsub("v\\.{0,1}", "", x)))
   } else if (!is.na(x) && grepl("^v\\.", x)) {
-    vols <- check_volumes(x)$n  
+    vols <- check_volumes(x)$n
   } else if (!is.na(x) && grepl("v\\.", x)) {
     vols <- sapply(x, function (xx) {
       s2 <- gsub("v\\.", "SPLITMEHERE", xx)
@@ -1462,11 +1462,11 @@ pick_multivolume <- function (x) {
       vols <- length(strsplit(x, ";")[[1]])
     }
   }
-  
+
   if (length(vols) == 0) {vols <- NA}
-  
+
   vols
-  
+
 }
 
 
@@ -1486,11 +1486,11 @@ pick_parts <- function (x) {
     # 73 parts -> 73
     parts <- as.numeric(unlist(strsplit(x, " "))[[1]])
   }
-  
+
   if (length(parts) == 0) {parts <- NA}
 
   parts
-  
+
 }
 
 
@@ -1500,7 +1500,7 @@ pick_parts <- function (x) {
 #' @description Pick volume
 #' @param s Page number field. Vector or factor of strings.
 #' @return Volume
-#' @details A single document, but check which volume 
+#' @details A single document, but check which volume
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
 #' @examples \dontrun{pick_volume("v.4")}
 #' @keywords utilities
@@ -1540,7 +1540,7 @@ remove_persons <- function (x, who = NULL) {
   # Get printing terms from a table
   # TODO later add names from the complete name list as well ?
   if (is.null(who)) {
-    f <- system.file("extdata/persons.csv", package = "fennica") 
+    f <- system.file("extdata/persons.csv", package = "fennica")
     terms <- as.character(read.csv(f)[,1])
   }
 
@@ -1559,12 +1559,12 @@ remove_persons <- function (x, who = NULL) {
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
 #' @examples \dontrun{x2 <- remove_trailing_periods(x)}
 #' @keywords utilities
-remove_trailing_periods <- function (x){ 
+remove_trailing_periods <- function (x){
 
   if (all(is.na(x))) {return(x)}
   x <- gsub("\\.+$", "", x)
   x <- gsub("^\\.+", "", x)
-    
+
   x
 }
 
@@ -1580,7 +1580,7 @@ remove_trailing_periods <- function (x){
 #' @param polish polish the entries after removing the terms (remove trailing spaces and periods)
 #' @param recursive Apply the changes recursively along the list ?
 #' @return Vector with terms removed
-#' @details After removing the numerics, beginning, double and ending 
+#' @details After removing the numerics, beginning, double and ending
 #'          spaces are also removed from the strings.
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
@@ -1589,7 +1589,7 @@ remove_trailing_periods <- function (x){
 remove_terms <- function (x, terms, where = "all", include.lowercase = FALSE, polish = TRUE, recursive = FALSE) {
 
   # If removal is recursive, then go through the list as is in the given order
-  # otherwise, optionally include lowercase, remove unique terms and sort by length 
+  # otherwise, optionally include lowercase, remove unique terms and sort by length
   if (!recursive) {
 
     # Add lowercase versions
@@ -1602,9 +1602,9 @@ remove_terms <- function (x, terms, where = "all", include.lowercase = FALSE, po
 
     # Go from longest to shortest term to avoid nested effects
     terms <- terms[rev(order(sapply(terms, nchar, USE.NAMES = FALSE)))]
-    
+
   }
-  
+
   tmp <- matrix(sapply(terms, function (term) grepl(term, x), USE.NAMES = FALSE),
                   ncol = length(terms))
 
@@ -1613,13 +1613,13 @@ remove_terms <- function (x, terms, where = "all", include.lowercase = FALSE, po
       x[tmp[, i]] <- remove_terms_help(x[tmp[, i]], terms[[i]], where)
     }
   }
-  
+
   if (polish) {
     x <- condense_spaces(x)
     x <- remove_trailing_periods(x)
   }
-  
-  x 
+
+  x
 
 }
 
@@ -1627,12 +1627,12 @@ remove_terms <- function (x, terms, where = "all", include.lowercase = FALSE, po
 
 remove_terms_help <- function (x, term, where) {
 
-    # remove elements that are identical with the term		   
+    # remove elements that are identical with the term
     x[x == term] = ""
 
     # Speedup: return if all handled already
     if (all(x == "")) {return(x)}
-    
+
     # Here no spaces around the term needed, elsewhere yes
     if ("all" %in% where) {
 
@@ -1649,20 +1649,20 @@ remove_terms_help <- function (x, term, where) {
     }
 
     if ("full" %in% where) {
-    
+
       x <- gsub(term, " ", x)
 
     }
 
     if ("begin" %in% where) {
-    
+
       rms <- paste("^", term, "[ |\\.|\\,]", sep = "")
       x <- gsub(rms, " ", x)
 
     }
 
     if ("middle" %in% where) {
-    
+
       x <- gsub(paste(" ", term, "[ |\\.|\\,]", sep = ""), " ", x)
 
     }
@@ -1673,9 +1673,9 @@ remove_terms_help <- function (x, term, where) {
       x <- gsub(rms, " ", x)
 
     }
-    
+
     x
-    
+
 }
 
 
@@ -1687,19 +1687,19 @@ remove_terms_help <- function (x, term, where) {
 #' @title Condense Spaces
 #' @description Trim and remove double spaces from the input strings.
 #' @param x A vector
-#' @importFrom stringr str_trim
+#' @importFrom stringr stringr::str_trim
 #' @return A vector with extra spaces removed
 #' @details Beginning, double and ending spaces are also removed from the strings.
-#' @export 
+#' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
 #' @examples x2 <- condense_spaces(" a  b cd ") # "a b cd"
 #' @keywords utilities
 condense_spaces <- function (x) {
 
-  x <- str_trim(x, "both")
+  x <- stringr::str_trim(x, "both")
   x <- gsub(" +", " ", x)
   x[x == ""] <- NA
-   
+
   x
 
 }
@@ -1710,7 +1710,7 @@ condense_spaces <- function (x) {
 #' @description Remove brackets surrounding letters.
 #' @param x A vector
 #' @param myletters Letters to remove
-#' @return A polished vector 
+#' @return A polished vector
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
 #' @examples x2 <- remove_brackets_from_letters("[p]")
@@ -1723,7 +1723,7 @@ remove_brackets_from_letters <- function (x, myletters = NULL) {
   for (l in myletters) {
     x <- gsub(paste("\\[", l, "\\]", sep = ""), l, x)
     x <- gsub(paste("\\(", l, "\\)", sep = ""), l, x)
-  }   
+  }
   x
 
 }
@@ -1748,16 +1748,16 @@ harmonize_ie <- function (x, separator = "i.e") {
 
   x <- gsub("\\[oik[\\.]*", "[i.e ", x)
   x <- gsub("p\\.o\\.", " i.e ", x) # Finnish: pitaisi olla
-  x <- gsub("p\\.o ", " i.e ", x) # Finnish: pitaisi olla  
-  x <- gsub("\\[po[\\.]*", " i.e ", x) # Finnish: pitaisi olla  
-  
-  x <- gsub(" ie ", " i.e ", x)  
+  x <- gsub("p\\.o ", " i.e ", x) # Finnish: pitaisi olla
+  x <- gsub("\\[po[\\.]*", " i.e ", x) # Finnish: pitaisi olla
+
+  x <- gsub(" ie ", " i.e ", x)
   x <- gsub("\\[ie ", "[i.e ", x)
   x <- gsub("\\[i\\. *e\\.* ", "[i.e ", x)
   x <- gsub("\\[i *e\\.* ", "[i.e ", x)
-  x <- gsub("\\[i\\.e\\.* ", "[i.e ", x)      
+  x <- gsub("\\[i\\.e\\.* ", "[i.e ", x)
   x <- gsub("^ie ", "i.e ", x)
-  x <- gsub("i\\.e\\.*, ", "i.e ", x)      
+  x <- gsub("i\\.e\\.*, ", "i.e ", x)
 
   x <- gsub("\\,* +i\\.* *e+ *[\\.|\\,]*", h, x)
 
@@ -1767,7 +1767,7 @@ harmonize_ie <- function (x, separator = "i.e") {
 
   x <- gsub(" +i\\.* *e+ *[\\.|\\,]*", h, x)
 
-  x <- gsub("p\\. i\\.* *e+ *[\\.|\\,]*", h, x) 
+  x <- gsub("p\\. i\\.* *e+ *[\\.|\\,]*", h, x)
   x <- gsub("^p\\. i\\.* *e+ *[\\.|\\,]*", h, x)
   x <- gsub("\\[ *", "\\[", x)
   x <- gsub("^\\. *", "", x)
@@ -1782,7 +1782,7 @@ harmonize_ie <- function (x, separator = "i.e") {
 
 
 #' @title Pick Last Name
-#' @description Pick last name from full name, assuming the format is known 
+#' @description Pick last name from full name, assuming the format is known
 #' @param x a vector of full names
 #' @param format name format
 #' @param keep.single If the name is without comma ('Shakespeare,
@@ -1799,7 +1799,7 @@ pick_lastname <- function (x, format = "last, first", keep.single = TRUE) {
   x <- as.character(x)
 
   if (format == "last, first") {
-    last <- sapply(x, function (x) {y <- unlist(strsplit(x, ", "), use.names = FALSE); if (length(y)>=1) y[[1]] else NA}, USE.NAMES = FALSE) 
+    last <- sapply(x, function (x) {y <- unlist(strsplit(x, ", "), use.names = FALSE); if (length(y)>=1) y[[1]] else NA}, USE.NAMES = FALSE)
   } else if (format == "first last") {
     last <- sapply(x, function (x) {y <- unlist(strsplit(x, " "), use.names = FALSE); y[[length(y)]]}, USE.NAMES = FALSE)
   } else {
@@ -1835,7 +1835,7 @@ remove_time_info <- function (x, verbose = FALSE, months = NULL) {
     months <- months[rev(order(nchar(months)))]
   }
 
-  # 17th century 
+  # 17th century
   x <- condense_spaces(gsub("[0-9]*th century", " ", x))
 
   # July 8
@@ -1844,43 +1844,43 @@ remove_time_info <- function (x, verbose = FALSE, months = NULL) {
     # "march-1777"
     s <- paste0(month, "-")
     if (verbose) { message(paste("Removing", s)) }
-    x <- gsub(s, " ", x)    
+    x <- gsub(s, " ", x)
 
     # "17 or 18 February"
     s <- paste("[0-9]{1,2} or [0-9]{1,2} ", month, sep = "")
-    if (verbose) {message(paste("Removing", s))}    
-    x <- gsub(s, " ", x)    
+    if (verbose) {message(paste("Removing", s))}
+    x <- gsub(s, " ", x)
 
     # " 17 February"
     s <- paste(" [0-9]{1,2} ", month, sep = "")
-    if (verbose) {message(paste("Removing", s))}    
+    if (verbose) {message(paste("Removing", s))}
     x <- gsub(s, " ", x)
 
     # "[17 February"
     s <- paste("\\[[0-9]{1,2} ", month, sep = "")
-    if (verbose) {message(paste("Removing", s))}    
+    if (verbose) {message(paste("Removing", s))}
     x <- gsub(s, " ", x)
 
     # "^17 February"
     s <- paste("^[0-9]{1,2} ", month, sep = "")
-    if (verbose) {message(paste("Removing", s))}    
+    if (verbose) {message(paste("Removing", s))}
     x <- gsub(s, " ", x)
 
     s <- paste(month, " [0-9]{1,2} ", sep = "")
-    s2 <- paste(month, " [0-9]{1,2}\\]", sep = "")    
+    s2 <- paste(month, " [0-9]{1,2}\\]", sep = "")
     s3 <- paste(month, " [0-9]{1,2}$", sep = "")
     s4 <- paste(month, " [0-9]{1,2}\\,", sep = "")
-    s5 <- paste(month, "\\, [0-9]{1,2}", sep = "")            
+    s5 <- paste(month, "\\, [0-9]{1,2}", sep = "")
     if (verbose) {message(paste("Removing", s))}
     x <- gsub(s, " ", x)
-    if (verbose) {message(paste("Removing", s2))}    
+    if (verbose) {message(paste("Removing", s2))}
     x <- gsub(s2, " ", x)
-    if (verbose) {message(paste("Removing", s3))}    
+    if (verbose) {message(paste("Removing", s3))}
     x <- gsub(s3, " ", x)
-    if (verbose) {message(paste("Removing", s4))}    
+    if (verbose) {message(paste("Removing", s4))}
     x <- gsub(s4, " ", x)
-    if (verbose) {message(paste("Removing", s5))}    
-    x <- gsub(s5, " ", x)                
+    if (verbose) {message(paste("Removing", s5))}
+    x <- gsub(s5, " ", x)
 
   }
 
@@ -1931,17 +1931,17 @@ remove_dimension <- function (x, terms) {
       x[inds] <- gsub(rms, " ", x[inds])
 
     }
-    
+
   }
 
   x <- condense_spaces(x)
   inds <- which(!x == "v.") # Exclude ^v.$ as a special case
-  if (length(inds) > 0) { 
+  if (length(inds) > 0) {
     x[inds] <- remove_trailing_periods(x[inds])
   }
 
   x[x == ""] <- NA
-  
+
   x
 
 }
@@ -1966,13 +1966,13 @@ harmonize_volume <- function (x, verbose = FALSE, vol.synonyms = NULL) {
     if (f == "") {
       f <- system.file("inst/extdata/harmonize_volume.csv", package = "fennica")
     }
-    vol.synonyms <- read_mapping(f, sep = ";", mode = "table")  
+    vol.synonyms <- read_mapping(f, sep = ";", mode = "table")
   }
 
   if (verbose) {message("Initial harmonization")}
   s <- condense_spaces(x)
-  s[grep("^v {0,1}[:|;]$", s)] <- "v"  
-  s[s %in% c("v\\. ;", "v\\.:bill\\. ;")] <- NA  
+  s[grep("^v {0,1}[:|;]$", s)] <- "v"
+  s[s %in% c("v\\. ;", "v\\.:bill\\. ;")] <- NA
 
   # FIXME can we put this in synonymes
   s <- gsub("vols*\\.", "v.", s)
@@ -1990,7 +1990,7 @@ harmonize_volume <- function (x, verbose = FALSE, vol.synonyms = NULL) {
   s <- gsub("\ *vol\\.{0,1} {0,1}$", " v. ", s)
   s <- gsub("\ *vol\\.", "v. ", s)
   s <- gsub(" vol\\.* *;*", "v. ", s)
-  s <- gsub(" vol;", "v. ", s)      
+  s <- gsub(" vol;", "v. ", s)
   s <- gsub("^v\\.\\(", "(", s)
   s <- gsub(" v {0,1}$", "v. ", s)
   s <- condense_spaces(s)
@@ -2041,9 +2041,9 @@ vol_helper <- function (s) {
      spl[[1]] <- gsub("v", "v.", spl[[1]])
 
      s <- spl
-     
-     if (length(spl) > 1) {     
-       s <- paste(spl[1:2], collapse = "")   
+
+     if (length(spl) > 1) {
+       s <- paste(spl[1:2], collapse = "")
      }
 
      if (length(spl) > 2) {
@@ -2057,14 +2057,14 @@ vol_helper <- function (s) {
 
 vol_helper3 <- function (s) {
 
-  # TODO could be combined with vol_helper to speed up	    
+  # TODO could be combined with vol_helper to speed up
 
      spl <- unlist(strsplit(s, " "), use.names = FALSE)
 
      s <- spl
-     
-     if (length(spl) > 1) {     
-       s <- paste(spl[1:2], collapse = "")   
+
+     if (length(spl) > 1) {
+       s <- paste(spl[1:2], collapse = "")
      }
 
      if (length(spl) > 2) {
@@ -2105,9 +2105,9 @@ polish_signature_statements <- function (x) {
 
     require(stringr)
 
-    x <- str_trim(x)
-    
-    x <- str_trim(gsub("\\([a-z|0-9|,| |\\?]*\\)", "", x))
+    x <- stringr::str_trim(x)
+
+    x <- stringr::str_trim(gsub("\\([a-z|0-9|,| |\\?]*\\)", "", x))
 
     x <- unlist(stringr::str_split(x, " "))
 
@@ -2127,7 +2127,7 @@ polish_signature_statement <- function (s) {
     pages <- NA
 
     if (hit) {
-      item <- str_extract(s, "^[a-z|0-9|-]*")     
+      item <- str_extract(s, "^[a-z|0-9|-]*")
       pages <- str_extract(s, "[0-9]+")
       pages <- as.numeric(pages)
       names(pages) <- item
@@ -2146,7 +2146,7 @@ polish_signature_statement <- function (s) {
 	}
       }
     }
-    
+
     pages
 
 }
@@ -2158,21 +2158,21 @@ polish_signature_statement <- function (s) {
 
 harmonize_christian <- function (x) {
 
-  x <- str_trim(as.character(x))
-  
+  x <- stringr::str_trim(as.character(x))
+
   x <- gsub("anno dom\\.", " ", x)
-  x <- gsub("an\\. dom\\.", " ", x)  
-  x <- gsub("anno domini", " ", x)    
+  x <- gsub("an\\. dom\\.", " ", x)
+  x <- gsub("anno domini", " ", x)
   x <- gsub("a\\.d\\.", " ", x)
-  x <- gsub("ad", " ", x)  
+  x <- gsub("ad", " ", x)
   x <- gsub("A\\.D", " ", x) # redundant
   x <- gsub("anno d⁻ni", " ", x)
   x <- gsub("anno dñi", " ", x)
-  x <- gsub("domini", " ", x)   
+  x <- gsub("domini", " ", x)
 
   x <- gsub("bc", "B.C", x)
-  x <- gsub("b\\.c\\.", "B.C", x)  
-  x <- gsub("b\\.c\\.", "before christian era", x)  
+  x <- gsub("b\\.c\\.", "B.C", x)
+  x <- gsub("b\\.c\\.", "before christian era", x)
   x <- gsub("before christian era", "B.C", x)
 
   # Remove space
@@ -2195,8 +2195,8 @@ harmonize_christian <- function (x) {
 #' @keywords utilities
 handle_ie <- function (x, harmonize = TRUE, separator = "i.e") {
 
-  # 183 i.e 297 -> 297	  
-  # 183-285 i.e 297 -> 183-297	  
+  # 183 i.e 297 -> 297
+  # 183-285 i.e 297 -> 183-297
   # 183-285 [i.e 297] -> 183-297
   # 183-285 i.e 297-299 -> 297-299
 
@@ -2222,14 +2222,14 @@ handle_ie <- function (x, harmonize = TRUE, separator = "i.e") {
     x <- gsub("^[0-9|a-z]*\\.* \\[i\\.e", "", x)
 
     x <- gsub("\\]$", "", x)
-    
+
   }
 
 
   # "[1-3] 4-43 [44-45] 45-51 [i.e 46-52]"
   # keep the first part and just remove "45-51 ie"
   if (length(grep("[0-9]+-[0-9]+ i\\.e [0-9]+-[0-9]+", x)) == 1) {
-    spl <- unlist(strsplit(x, " "), use.names = FALSE)    
+    spl <- unlist(strsplit(x, " "), use.names = FALSE)
     rmind <- which(spl == "i.e")
     rmind <- (rmind-1):rmind
     x <- paste(spl[-rmind], collapse = " ")
@@ -2250,64 +2250,64 @@ handle_ie <- function (x, harmonize = TRUE, separator = "i.e") {
       # 1-3 ie 2-4 -> 2-4
       x <- spl[[2]]
     } else {
-    
+
       # [1658]-1659 [i.e. 1660] -> 1658-1660
       spl <- unlist(strsplit(x, "-"), use.names = FALSE)
       u <- sapply(spl, function (s) {handle_ie(s)}, USE.NAMES = FALSE)
       x <- paste(u, collapse = "-")
     }
-    
+
   } else if (length(grep("\\[[0-9|a-z]* *i\\.e [0-9|a-z]*\\]", x))>0) {
-  
-    # z [x i.e y] -> z [y]  
+
+    # z [x i.e y] -> z [y]
     x <- unlist(strsplit(x, "\\["), use.names = FALSE)
     inds <- grep("i\\.e", x)
     u <- unlist(strsplit(x[inds], "i\\.e"), use.names = FALSE)
     x[inds] <- u[[min(2, length(u))]]
     x <- paste(x, collapse = "[")
-    
+
   } else if (length(grep(" i\\.e ", x))>0) {
-  
+
     # x i.e y -> y
     x <- unlist(strsplit(x, "i\\.e"), use.names = FALSE)
     x <- x[[min(2, length(x))]]
-    
+
   } else if (length(grep("\\[i\\.e", x))>0) {
-  
+
     # x [i.e y] -> y
     x <- unlist(strsplit(x, "\\[i\\.e"), use.names = FALSE)
     x <- x[[min(2, length(x))]]
     x <- gsub("\\]*$", "", x)
-    
+
   } else if (length(grep("\\[[0-9|a-z]* i\\.e [0-9|a-z]*\\]", x))>0) {
     # "mdcxli [1641 i.e 1642]" -> mdcxli [1642]
     x <- unlist(strsplit(x, "\\["), use.names = FALSE)
-    inds <- grep("i\\.e", x)    
+    inds <- grep("i\\.e", x)
     x[inds] <- handle_ie(x[inds])
     x <- paste(x, collapse = "[")
-    
+
   }
 
   x <- gsub("\\[ ", "[", x)
-  x <- gsub("^\\.*", "", x)  
-  x <- str_trim(x)
+  x <- gsub("^\\.*", "", x)
+  x <- stringr::str_trim(x)
 
   x
 }
 
 
 christian2numeric <- function (x) {
-  
+
   inds <- grep("a.d", x)
   if (length(inds) > 0) {
-    x[inds] <- as.numeric(str_trim(gsub("a.d", "", x[inds])))
+    x[inds] <- as.numeric(stringr::str_trim(gsub("a.d", "", x[inds])))
   }
-  
+
   inds <- grep("b.c", x)
   if (length(inds) > 0) {
-    x[inds] <- -as.numeric(str_trim(gsub("b.c", "", x[inds])))
+    x[inds] <- -as.numeric(stringr::str_trim(gsub("b.c", "", x[inds])))
   }
-  
+
   return(x)
 }
 
@@ -2315,7 +2315,7 @@ christian2numeric <- function (x) {
 
 
 #' @title Pick First Name
-#' @description Pick first name from full name, assuming the format is known 
+#' @description Pick first name from full name, assuming the format is known
 #' @param x a vector of full names
 #' @param format name format
 #' @param keep.single If the name is without comma ('Shakespeare,
@@ -2364,14 +2364,14 @@ is.roman <- function (x) {
     xs <- unlist(strsplit(x, "-"), use.names = FALSE)
     isr <- c()
 
-    for (i in 1:length(xs)) {  
+    for (i in 1:length(xs)) {
       x <- xs[[i]]
       tmp <- suppressWarnings(as.numeric(x))
       tmp2 <- suppressWarnings(as.numeric(as.roman(x)))
       not.numeric <- length(na.omit(tmp)) > 0
       roman.numeric <- is.numeric(tmp2)
 
-      isr[[i]] <- !(not.numeric && roman.numeric) && !is.na(tmp2) 
+      isr[[i]] <- !(not.numeric && roman.numeric) && !is.na(tmp2)
     }
     # iii-7 TRUE; iii-iv TRUE; 4-7 FALSE
     any(isr)
@@ -2396,7 +2396,7 @@ roman2arabic <- function (x) {
     if (grepl("^[0-9]+$", xi)) {
       xr <- xi
     } else if (length(grep("-", xi)) > 0) {
-      x2 <- str_trim(unlist(strsplit(xi, "-"), use.names = FALSE))
+      x2 <- stringr::str_trim(unlist(strsplit(xi, "-"), use.names = FALSE))
       n <- suppressWarnings(as.numeric(as.roman(x2)))
       n[is.na(n)] <- x2[is.na(n)] # vii-160
       xr <- paste(n, collapse = "-")
@@ -2432,7 +2432,7 @@ splitpick <- function (x, sep, which) {
   }
 
   x
-  
+
 }
 
 
@@ -2451,22 +2451,22 @@ remove_print_statements <- function (x) {
   x <- xuniq
 
   terms.single = c()
-  terms.multi = c()  
+  terms.multi = c()
 
   ### Get printing terms from tables in various languages
   for (lang in c("finnish", "french", "german", "swedish", "english")) {
 
     f <- system.file(paste0("extdata/printstop_", lang, ".csv"), package = "fennica")
-    terms <- unique(str_trim(tolower(read.csv(f, stringsAsFactors = FALSE)[,1])))
+    terms <- unique(stringr::str_trim(tolower(read.csv(f, stringsAsFactors = FALSE)[,1])))
 
-    # Harmonize the terms 
+    # Harmonize the terms
     terms.multi <- c(terms.multi, terms[nchar(terms) > 1])
     terms.single <- c(terms.single, terms[nchar(terms) == 1])
 
   }
 
   terms.multi = unique(terms.multi)
-  terms.single = unique(terms.single)  
+  terms.single = unique(terms.single)
 
   x <- remove_terms(x, terms.multi, where = "all", polish = FALSE, include.lowercase = FALSE)
   x <- condense_spaces(x)
@@ -2494,7 +2494,7 @@ remove_print_statements <- function (x) {
   x <- xuniq <- unique(xorig)
 
   # remove sine loco
-  f <- system.file("extdata/sl.csv", package = "fennica") 
+  f <- system.file("extdata/sl.csv", package = "fennica")
   sineloco <- as.character(read.csv(f)[,1])
   x <- remove_terms(x, sineloco, include.lowercase = TRUE)
 
@@ -2512,7 +2512,7 @@ remove_print_statements <- function (x) {
   x[x==""] <- NA
 
   x = x[match(xorig, xuniq)]
-  
+
   x
 }
 
@@ -2520,7 +2520,7 @@ remove_print_statements <- function (x) {
 
 
 harmonize_sheets <- function (s, harm) {
-  
+
   if (length(grep("[0-9]leaf", s))>0) {
     s <- gsub("leaf", " leaf", s)
   }
@@ -2534,7 +2534,7 @@ harmonize_sheets <- function (s, harm) {
 
   # Move into sheet synonyme table (had some problems hence here for now) ?
   s <- gsub("leaf", "sheet", s)
-  s <- gsub("leave", "sheet", s)     
+  s <- gsub("leave", "sheet", s)
   s <- gsub("^1 sheets$", "1 sheet", s)
   s <- gsub("^sheet$", "1 sheet", s)
   s <- gsub("^sheets$", "2 sheets", s)
@@ -2542,7 +2542,7 @@ harmonize_sheets <- function (s, harm) {
 
   s <- condense_spaces(s)
 
-  s 
+  s
 
 }
 
@@ -2556,13 +2556,13 @@ harmonize_sheets_help <- function (s) {
 
     #if (length(grep("^[0-9] sheet", spl[[i]])) > 0) {
     #  xxx <- unlist(strsplit(spl[[i]], "sheet"), use.names = FALSE)
-    #  n <- as.numeric(str_trim(xxx[[1]]))
+    #  n <- as.numeric(stringr::str_trim(xxx[[1]]))
     #  spl[[i]] <- paste(n, "sheets", sep = " ")
     #}
 
     if (length(grep("\\[^[0-9]|[a-z]\\] sheets", spl[[i]])) > 0) {
       xxx <- unlist(strsplit(spl[[i]], "sheet"), use.names = FALSE)
-      n <- as.numeric(as.roman(str_trim(gsub("\\[", "", gsub("\\]", "", xxx[[1]])))))
+      n <- as.numeric(as.roman(stringr::str_trim(gsub("\\[", "", gsub("\\]", "", xxx[[1]])))))
       spl[[i]] <- paste(n, "sheets", sep = " ")
     }
 
@@ -2575,7 +2575,7 @@ harmonize_sheets_help <- function (s) {
 }
 
 #' @title Remove s.l etc. clauses
-#' @description Remove s.l etc. clauses 
+#' @description Remove s.l etc. clauses
 #' @param x A character vector
 #' @param terms Terms to be removed (a character vector). Optional
 #' @return Polished vector
@@ -2589,7 +2589,7 @@ remove_sl <- function (x, terms = NULL) {
 
   # Get printing terms from a table
   if (is.null(terms)) {
-    f <- system.file("extdata/sl.csv", package = "fennica") 
+    f <- system.file("extdata/sl.csv", package = "fennica")
     terms <- as.character(read.csv(f)[,1])
   }
 
@@ -2597,9 +2597,9 @@ remove_sl <- function (x, terms = NULL) {
 
   x <- gsub("\\[s.n.\\?\\]", NA, x)
   x <- gsub("\\[s.n.\\]", NA, x)
-  x <- gsub("\\[s. n.\\]", NA, x)    
+  x <- gsub("\\[s. n.\\]", NA, x)
   x <- gsub("s. a", NA, x)
-  x <- gsub("s i", NA, x)    
+  x <- gsub("s i", NA, x)
 
   x
 
@@ -2640,11 +2640,11 @@ validate_names <- function(df.preprocessed) {
 
 #v <- validate_names(df.preprocessed$author_name, "full")
 #discard.inds <- !v$valid
-  
+
 ## Save discarded names for later analysis
 #discarded.author.table <- rev(sort(table(as.character(df.preprocessed$author[discard.inds]))))
 #discarded.author.firstnames <- v$invalid.first
-#discarded.author.lastnames <- v$invalid.last  
+#discarded.author.lastnames <- v$invalid.last
 
 ## Remove discarded names from the list
 # df.preprocessed$author_name[discard.inds] <- NA
@@ -2670,7 +2670,7 @@ enrich_author <- function(df) {
     # Custom table to harmonize multiple author name variants
     f <- system.file("extdata/ambiguous-authors.csv", package = "fennica")
     ambiguous.authors <- read_mapping(f, mode = "list", sep = ";", self.match = FALSE, include.lowercase = FALSE, fast = TRUE)
-    
+
     # Combine synonymous authors; augment author life years where missing etc.
     aa <- augment_author(df, life.info, ambiguous.authors)
 
@@ -2694,7 +2694,7 @@ enrich_author <- function(df) {
   df$author_gender <- get_gender(first.names, gendermap)
 
   message("Custom name-gender mappings to resolve ambiguous cases")
-  # Consider the custom table as primary  
+  # Consider the custom table as primary
   # ie override other matchings with it
   custom <- gender_custom()
   g <- get_gender(first.names, custom)
@@ -2709,7 +2709,7 @@ enrich_author <- function(df) {
 
   # Author life - make sure this is in numeric format
   df$author_birth <- as.numeric(as.character(df$author_birth))
-  df$author_death <- as.numeric(as.character(df$author_death))  
+  df$author_death <- as.numeric(as.character(df$author_death))
 
   message("Author age on the publication year, when both info are available")
   inds <- which(df$publication_year_from < df$author_death & !is.na(df$author_birth))
@@ -2737,7 +2737,7 @@ enrich_author <- function(df) {
 augment_author <- function (df, life_info = NULL, ambiguous_authors = NULL) {
 
   author <- starts_with <- NULL
-  
+
   # Consider only unique entries to speed up
   dfa <- df %>% select(starts_with("author"))
   dfa.uniq <- unique(as_data_frame(dfa))
@@ -2745,21 +2745,21 @@ augment_author <- function (df, life_info = NULL, ambiguous_authors = NULL) {
 
   message("..entry IDs for unique entries")
   dfa$id <- apply(dfa, 1, function (x) {paste(as.character(x), collapse = "")})
-  dfa.uniq$id <- apply(dfa.uniq, 1, function (x) {paste(as.character(x), collapse = "")})  
+  dfa.uniq$id <- apply(dfa.uniq, 1, function (x) {paste(as.character(x), collapse = "")})
   # Form match indices and remove unnecessary vars to speed up
   match.inds <- match(dfa$id, dfa.uniq$id)
   rm(dfa); dfa.uniq$id <- NULL
 
-  message("Augment author life years")	       
+  message("Augment author life years")
   # For authors with a unique birth, use this birth year also when
   # birth year not given in the raw data
   dfa.uniq$author_birth <- guess_missing_entries(id = dfa.uniq$author_name, values = dfa.uniq$author_birth)$values
   dfa.uniq$author_death <- guess_missing_entries(id = dfa.uniq$author_name, values = dfa.uniq$author_death)$values
 
   # print("Add missing author life years from the predefined table")
-  if (!is.null(life_info)) {  
+  if (!is.null(life_info)) {
     dfa.uniq$author_birth <- add_missing_entries(dfa.uniq, life_info, id = "author_name", field = "author_birth")
-    dfa.uniq$author_death <- add_missing_entries(dfa.uniq, life_info, id = "author_name", field = "author_death") 
+    dfa.uniq$author_death <- add_missing_entries(dfa.uniq, life_info, id = "author_name", field = "author_death")
   }
 
   message("Add pseudonyme field")
@@ -2769,7 +2769,7 @@ augment_author <- function (df, life_info = NULL, ambiguous_authors = NULL) {
   pse <- dfa.uniq$author_name[dfa.uniq$author_pseudonyme]
   pse <- gsub("\\,+", " ", pse)
   pse <- gsub("\\.+", "", pse)
-  pse <- gsub("\\-+", " ", pse)    
+  pse <- gsub("\\-+", " ", pse)
   pse <- condense_spaces(pse)
   dfa.uniq$author_name[dfa.uniq$author_pseudonyme] <- pse
 
@@ -2779,12 +2779,12 @@ augment_author <- function (df, life_info = NULL, ambiguous_authors = NULL) {
   author[which(!dfa.uniq$author_pseudonyme)] <- author_unique(dfa.uniq[which(!dfa.uniq$author_pseudonyme),], initialize.first = FALSE)
   dfa.uniq$author <- author
   rm(author)
-  
+
   message("Harmonize ambiguous authors, including pseudonymes")
-  if (!is.null(ambiguous_authors)) {	  	    
+  if (!is.null(ambiguous_authors)) {
     dfa.uniq$author <- map(dfa.uniq$author, ambiguous_authors)
   }
-  dfa.uniq$author[grep("^NA, NA", dfa.uniq$author)] <- NA  
+  dfa.uniq$author[grep("^NA, NA", dfa.uniq$author)] <- NA
 
   message("Fix author life years using the ones from the final harmonized version")
   message(".. retrieving the years ..")
@@ -2795,7 +2795,7 @@ augment_author <- function (df, life_info = NULL, ambiguous_authors = NULL) {
   a[which(len == 2)] <- sapply(a[which(len == 2)], function (x) {x[[2]]}, USE.NAMES = FALSE)
   years <- gsub("\\)", "", a)
   rm(len);rm(a)
-  
+
   message(".. splitting the years ..")
   years2 <- polish_years(years)
   spl <- strsplit(years, "-")
@@ -2846,7 +2846,7 @@ augment_author <- function (df, life_info = NULL, ambiguous_authors = NULL) {
 guess_missing_entries <- function (id, values) {
 
   id <- as.character(id)
-  values <- as.character(values)		        
+  values <- as.character(values)
   tab <- cbind(id = id, values = values)
 
   # Unique entries
@@ -2862,7 +2862,7 @@ guess_missing_entries <- function (id, values) {
   }
 
   quickdf(list(id = id, values = values))
-  
+
 }
 
 
@@ -2870,9 +2870,9 @@ guess_missing_entries <- function (id, values) {
 #' @description Speedups in data.frame creation.
 #' @param x named list of equal length vectors
 #' @return data.frame
-#' @details This is 20x faster than as.data.frame. 
-#' @export 
-#' @references Idea borrowed from \url{http://adv-r.had.co.nz/Profiling.html}. 
+#' @details This is 20x faster than as.data.frame.
+#' @export
+#' @references Idea borrowed from \url{http://adv-r.had.co.nz/Profiling.html}.
 #' @author HW/LL
 #' @examples  \dontrun{quickdf(x)}
 #' @keywords utilities
@@ -2921,7 +2921,7 @@ author_unique <- function (df, format = "last, first", initialize.first = FALSE)
   id.orig <- apply(dfa.orig, 1, function (x) {paste(as.character(x), collapse = "")})
   id.uniq <- apply(dfa.uniq, 1, function (x) {paste(as.character(x), collapse = "")})
   match.inds <- match(id.orig, id.uniq)
-  rm(id.orig)  
+  rm(id.orig)
 
   author_unique <- rep(NA, nrow(dfa.uniq))
   first <- pick_firstname(dfa.uniq$author_name, format = format, keep.single = FALSE)
@@ -2929,7 +2929,7 @@ author_unique <- function (df, format = "last, first", initialize.first = FALSE)
 
   last  <- pick_lastname(dfa.uniq$author_name, format = format, keep.single = TRUE)
 
-  author_unique <- apply(cbind(last, first, dfa.uniq$author_birth, dfa.uniq$author_death), 1, function (x) {paste(x[[1]], ", ", x[[2]], " (", x[[3]], "-", x[[4]], ")", sep = "")})  
+  author_unique <- apply(cbind(last, first, dfa.uniq$author_birth, dfa.uniq$author_death), 1, function (x) {paste(x[[1]], ", ", x[[2]], " (", x[[3]], "-", x[[4]], ")", sep = "")})
   author_unique[is.na(dfa.uniq$author_name)] <- NA
   author_unique <- gsub(" \\(NA-NA\\)", "", author_unique)
   author_unique <- gsub("NA \\(NA-NA\\)", NA, author_unique)
@@ -2963,7 +2963,7 @@ get_gender <- function (x, gendermap) {
   first.names.orig <- x
   first.names.uniq <- unique(na.omit(first.names.orig))
   first.names <- first.names.uniq
-  gendermap$name <- tolower(gendermap$name)  
+  gendermap$name <- tolower(gendermap$name)
 
   # Only keep the names that are in our present data. Speeding up
   mynames <- unique(c(first.names, unlist(strsplit(first.names, " "))))
@@ -3002,7 +3002,7 @@ get_gender <- function (x, gendermap) {
 
   # Project unique names back to the original domain
   gender[match(first.names.orig, first.names.uniq)]
-  
+
 }
 
 
@@ -3046,7 +3046,7 @@ gender_custom <- function (...) {
 #' @keywords utilities
 is_first_edition <- function (df) {
 
-  # Author-title combo		 
+  # Author-title combo
   id <- apply(df[, c("author", "title")], 1, function (x) {paste(x, collapse = "|")});
 
   # Split years and indices
@@ -3059,7 +3059,7 @@ is_first_edition <- function (df) {
   # Identify row indices that correspond to minimum publication years
   # in unique author-title combos
   first <- c()
-  later <- c()  
+  later <- c()
   for (ind in inds) {
     i <- !is.na(spl1[[ind]])
     mininds <- which(spl1[[ind]][i] == min(spl1[[ind]][i]))
@@ -3072,7 +3072,7 @@ is_first_edition <- function (df) {
   fed <- rep(NA, nrow(df))
   fed[df$original_row %in% unlist(first, use.names = FALSE)] <- TRUE
   fed[df$original_row %in% unlist(later, use.names = FALSE)] <- FALSE
-  
+
   fed
 
 }
@@ -3115,7 +3115,7 @@ self_published <- function (df) {
     yess <- nainds[df[nainds, "publisher"] %in% df[which(selfpub), "publisher"]]
     selfpub[yess] <- TRUE
   }
-  
+
   # Mark remaining self-published NAs to FALSE by default
   # selfpub[is.na(selfpub)] <- FALSE
 
@@ -3138,31 +3138,31 @@ self_published <- function (df) {
 #' @keywords utilities
 is.issue <- function (df) {
 
-  # Gatherings 1to-4to (any number of vols) 
+  # Gatherings 1to-4to (any number of vols)
   # selected.gatherings <- c("1to", "bs", "2small", "2fo", "2long", "4small", "4to", "4long")
-  # inds1 <- (df$gatherings %in% selected.gatherings) 
-  
+  # inds1 <- (df$gatherings %in% selected.gatherings)
+
   # All docs with >30 vols
   if ("volcount" %in% names(df)) {
-    inds2 <- df$volcount > 30 
+    inds2 <- df$volcount > 30
   } else {
     inds2 <- rep(FALSE, nrow(df))
   }
 
   # All documents that have (non-NA) publication frequency
-  inds3 <- rep(FALSE, nrow(df))  
-  if ("publication_frequency" %in% names(df)) {    
+  inds3 <- rep(FALSE, nrow(df))
+  if ("publication_frequency" %in% names(df)) {
     inds3 <- !is.na(df$publication_frequency)
   }
 
   # TODO: how to consider publication_interval which is sometimes available?
-  
+
   # The use of till - from did not work - 90% of these were multivolumes in ESTC
   # and not issues
   # All multivols (>=2) that have publication period of >= 3 years
-  #inds4 <- (df$publication_year_till - df$publication_year_from) >= 3  
+  #inds4 <- (df$publication_year_till - df$publication_year_from) >= 3
   #if ("volcount" %in% names(df)) {
-  #  inds4 <- inds4 & (df$volcount >= 2) 
+  #  inds4 <- inds4 & (df$volcount >= 2)
   #}
 
   # Large gatherings and docs with many volumes are considered issues
@@ -3171,7 +3171,7 @@ is.issue <- function (df) {
   inds[is.na(inds)] <- FALSE
 
   inds
-  
+
 }
 
 
@@ -3187,7 +3187,7 @@ is.issue <- function (df) {
 #' @keywords utilities
 generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "output.tables") {
 
-  # Circumvent build warnings			
+  # Circumvent build warnings
   df <- author <- author_name <- author_birth <- author_death <- author_pseudonyme <- author_gender <- name <- NULL
   mean_pagecounts_multivol <- mean_pagecounts_singlevol <- mean_pagecounts_issue <- NULL
   obl <- NULL
@@ -3211,23 +3211,23 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
   width <- NULL
   height <- NULL
 
-  # Ensure compatibility			
+  # Ensure compatibility
   df.orig <- df.orig[match(df.preprocessed$original_row, df.orig$original_row),]
 
   message("Write summaries of field entries and count stats for all fields")
   for (field in setdiff(names(df.preprocessed),
-    c(names(df.preprocessed)[grep("language", names(df.preprocessed))] , 
+    c(names(df.preprocessed)[grep("language", names(df.preprocessed))] ,
     "row.index", "paper", "publication_decade",
     "publication_year", "publication_year_from", "publication_year_till",
     "publication_interval",
     "publication_interval_from",
-    "publication_interval_till",        
-    "subject_topic", 
+    "publication_interval_till",
+    "subject_topic",
     "pagecount", "obl", "obl.original", "original_row", "dissertation",
     "synodal", "language", "original", "unity", "author_birth", "author_death",
     "gatherings.original", "width.original", "height.original",
     "longitude", "latitude", "page", "item", "publisher.printedfor",
-    "publisher", "author_pseudonyme", 
+    "publisher", "author_pseudonyme",
     "control_number", "system_control_number",
     "author_name", "author", "area", "width", "height", "gender"))) {
 
@@ -3257,7 +3257,7 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
       x <- tab %>% group_by(original, polished) %>%
                    tally() %>%
 		   arrange(desc(n))
-      
+
       tmp <- write.table(x, file = paste(output.folder, field, "_conversion_nontrivial.csv", sep = ""),
                             quote = FALSE,
 			    row.names = FALSE
@@ -3292,7 +3292,7 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
          tally() %>%
 	 arrange(desc(n))
 
-  write.table(x, 
+  write.table(x,
       file = paste(output.folder, paste("author_conversion_nontrivial.csv", sep = "_"), sep = ""),
       quote = FALSE,
       row.names = FALSE
@@ -3320,22 +3320,22 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
      polished <- as.character(df.preprocessed[[field]][inds])
      tab <- cbind(original = original, polished = polished)
      # Exclude trivial cases (original == polished exluding cases)
-     tab <- tab[!tolower(tab[, "original"]) == tolower(tab[, "polished"]), ] 
+     tab <- tab[!tolower(tab[, "original"]) == tolower(tab[, "polished"]), ]
      tmp <- write_xtable(tab, paste(output.folder, field, "_conversion_nontrivial.csv", sep = ""), count = TRUE)
    }
-  
+
   # -----------------------------------------------------
 
   message("Author")
   # Separate tables for real names and pseudonymes
   tab <- df.preprocessed %>% filter(!author_pseudonyme) %>%
       	 		     select(author, author_gender)
-			     
+
   tmp <- write_xtable(tab,
       paste(output.folder, paste("author_accepted.csv", sep = "_"), sep = ""),
       count = FALSE, sort.by = "author")
 
-  # -------------------------------------------------      
+  # -------------------------------------------------
 
   message("Pseudonyme")
   tab <- df.preprocessed %>% filter(author_pseudonyme) %>% select(author)
@@ -3362,14 +3362,14 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
   message("Discarded gender")
   inds <- which(is.na(df.preprocessed[["author_gender"]]))
   dg <- condense_spaces(gsub("\\.", " ", tolower(as.vector(na.omit(as.character(df.preprocessed$author[inds]))))))
-  inds <- grep("^[a-z] [a-z]-[a-z]$", dg)  
+  inds <- grep("^[a-z] [a-z]-[a-z]$", dg)
   if (length(inds)>0) {
     dg <- dg[-inds]
   }
   tmp <- write_xtable(dg,
         paste(output.folder, "author_gender_discarded.csv", sep = ""),
 	count = TRUE)
- 
+
   message("Author gender tables realized in the final data")
   tab <- data.frame(list(name = pick_firstname(df.preprocessed$author_name),
                          gender = df.preprocessed$author_gender))
@@ -3397,8 +3397,8 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
   inds <- c(which(nchar(tmp) == 1),
             grep("^[a-z]{1,2} [a-z]{1,2}$", tmp),
             grep("^[a-z]{1,2} [a-z]{1,2} von$", tmp),
-	    grep("^von$", tmp),	    
-            grep("^[a-z] von$", tmp),	    
+	    grep("^von$", tmp),
+            grep("^[a-z] von$", tmp),
        	    grep("^[a-z] [a-z] [a-z]$", tmp))
   if (length(inds) > 0) { tmp <- tmp[-inds] }
   tmpg <- write_xtable(tmp, paste(output.folder, "gender_ambiguous.csv", sep = ""))
@@ -3416,7 +3416,7 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
           group_by(publisher, self_published) %>%
 	  tally() %>%
 	  arrange(desc(n))
-   
+
    s <- write.table(x,
      	  file = paste(output.folder, field, "_accepted.csv", sep = ""),
 	  quote = FALSE, row.names = FALSE
@@ -3429,8 +3429,8 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
       # Remove trivial cases to simplify output
       inds <- c(grep("^\\[*s\\.*n\\.*\\]*[0-9]*\\.*$", tolower(original)),
       	        grep("^\\[*s\\.*n\\.*\\[*[0-9]*$", tolower(original)))
-		
-      if (length(inds) > 0) {		
+
+      if (length(inds) > 0) {
         original <- original[-inds]
       }
       tmp <- write_xtable(original, paste(output.folder, field, "_discarded.csv", sep = ""), count = TRUE)
@@ -3444,7 +3444,7 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
       	 		      polished = x[inds]),
       paste(output.folder, paste(field, "conversion_nontrivial.csv", sep = "_"),
       sep = ""), count = TRUE)
-    
+
   # --------------------------------------------
 
 
@@ -3468,8 +3468,8 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
       # Remove trivial cases to simplify output
       inds <- c(grep("^\\[*s\\.*n\\.*\\]*[0-9]*\\.*$", tolower(original)),
       	        grep("^\\[*s\\.*n\\.*\\[*[0-9]*$", tolower(original)))
-		
-      if (length(inds) > 0) {		
+
+      if (length(inds) > 0) {
         original <- original[-inds]
       }
       tmp <- write_xtable(original, paste(output.folder, field, "_discarded.csv", sep = ""), count = TRUE)
@@ -3484,7 +3484,7 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
       	 		      polished = x[inds]),
       paste(output.folder, paste(nam, "conversion_nontrivial.csv", sep = "_"),
       sep = ""), count = TRUE)
-      
+
   # ----------------------------
 
   message("Pagecount  conversions")
@@ -3498,16 +3498,16 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
   # x2[is.na(df.preprocessed[["pagecount.orig"]])] <- "estimate"
   inds <- which(!is.na(x) & !(tolower(o) == tolower(x)) &
                 !is.na(df.preprocessed[["pagecount.orig"]]))
-		
+
   tmp <- cbind(gatherings = g[inds],
-      	                    original_extent = o[inds],  
+      	                    original_extent = o[inds],
       	 		    final_pagecount = x[inds]
 			    )
   xx <- as.data.frame(tmp) %>% group_by(gatherings, original_extent, final_pagecount) %>%
                               tally() %>%
 			      arrange(desc(n))
 
-  write.table(xx, 
+  write.table(xx,
     file = paste(output.folder, "pagecount_conversions.csv", sep = ""),
        quote = FALSE,
        row.names = FALSE)
@@ -3518,7 +3518,7 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
   inds <- which(is.na(df.preprocessed$pagecount.orig))
 
   tmp <- cbind(
-      	   gatherings = g[inds],	   
+      	   gatherings = g[inds],
 	   physical_extent = o[inds],
 	   estimated_pagecount = x[inds]
 	   )
@@ -3537,11 +3537,11 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
   tab <- cbind(original = o, x)
   tab <- tab[!is.na(tab$publication_year),]
   xx <- as.data.frame(tab) %>% group_by(original, publication_year) %>% tally() %>% arrange(desc(n))
-  
+
   tmp <- write.table(xx,
       file = paste(output.folder, "publication_year_conversion.csv",
       sep = ""), quote = FALSE, row.names = FALSE)
-  
+
   message("Discarded publication year")
   o <- as.character(df.orig[["publication_time"]])
   x <- as.character(df.preprocessed[["publication_year"]])
@@ -3559,25 +3559,25 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
 
      dfp <- df.preprocessed[, c("publication_frequency_text",
 			        "publication_frequency_annual")]
-     # Remove NA			 
+     # Remove NA
      inds <- is.na(dfp$publication_frequency_text) &
      	     is.na(dfp$publication_frequency_annual)
      dfp <- dfp[!inds,]
      xx <- dfp %>% group_by(publication_frequency_text, publication_frequency_annual) %>%
                    tally() %>%
 		   arrange(desc(publication_frequency_annual))
-     
+
     tmp <- write.table(xx,
       file = paste(output.folder, "publication_frequency_accepted.csv", sep = ""),
       quote = FALSE, row.names = FALSE
       )
-  
+
     message("Conversion: publication frequency")
     o <- cbind(original_frequency = condense_spaces(tolower(gsub("\\.$", "", as.character(df.orig[["publication_frequency"]])))),
                original_interval = condense_spaces(tolower(gsub("\\.$", "", as.character(df.orig[["publication_interval"]])))),
                original_time = condense_spaces(tolower(gsub("\\.$", "", as.character(df.orig[["publication_time"]]))))
        )
-       
+
     x <- df.preprocessed[, c("publication_frequency_text", "publication_frequency_annual")]
     tab <- cbind(x, o)
     tab$publication_frequency_annual <- round(tab$publication_frequency_annual, 2)
@@ -3590,23 +3590,23 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
     tmp <- write.table(xx,
       file = paste(output.folder, "publication_frequency_conversion.csv",
       sep = ""), quote = FALSE, row.names = FALSE)
-  
+
     message("Discarded publication frequency")
     o <- as.character(df.orig[["publication_frequency"]])
     x1 <- as.character(df.preprocessed[["publication_frequency_annual"]])
-    x2 <- as.character(df.preprocessed[["publication_frequency_text"]])    
+    x2 <- as.character(df.preprocessed[["publication_frequency_text"]])
     inds <- which(is.na(x1) & is.na(x2))
     tmp <- write_xtable(o[inds],
       paste(output.folder, "publication_frequency_discarded.csv", sep = ""),
       count = TRUE)
-      
+
   }
 
   # --------------------------------------------
 
   message("Conversion: publication interval")
   if ("publication_interval_from" %in% names(df.preprocessed)) {
-  
+
     # Publication interval
     o <- tolower(gsub("\\.$", "", as.character(df.orig[["publication_interval"]])))
     x <- df.preprocessed[, c("publication_interval_from", "publication_interval_till")]
@@ -3616,7 +3616,7 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
     tmp <- write.table(xx,
       paste(output.folder, "publication_interval_conversion_nontrivial.csv",
       sep = ""), quote = FALSE, row.names = FALSE)
-  
+
     message("Discarded publication interval")
     o <- df.orig[, c("publication_interval", "publication_time", "publication_frequency")]
     o$publication_time <- gsub("^\\[", "", gsub("\\]$", "", gsub("\\.$", "", o$publication_time)))
@@ -3638,7 +3638,7 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
     xx <- x[inds,] %>% group_by(publication_interval_from, publication_interval_till) %>% tally() %>% arrange(desc(n))
     tmp <- write.table(xx,
       file = paste(output.folder, "publication_interval_accepted.csv", sep = ""),
-      quote = FALSE, row.names = FALSE      
+      quote = FALSE, row.names = FALSE
       )
 
   }
@@ -3648,7 +3648,7 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
   message("Authors with missing life years")
   tab <- df.preprocessed %>% filter(!is.na(author_name) & (is.na(author_birth) | is.na(author_death))) %>% select(author_name, author_birth, author_death)
   tmp <- write.table(tab, file = paste(output.folder, "authors_missing_lifeyears.csv", sep = ""), quote = F, row.names = F)
- 
+
   message("Ambiguous authors with many birth years")
   births <- split(df.preprocessed$author_birth, df.preprocessed$author_name)
   births <- births[sapply(births, length, USE.NAMES = FALSE) > 0]
@@ -3733,9 +3733,9 @@ write_xtable <- function (x, filename = NULL, count = FALSE, sort.by = "Count", 
     }
   }
 
-  #if (length(x) == 0) {  
+  #if (length(x) == 0) {
   #  message("The input to write_table is empty.")
-  #  write("The input list is empty.", file = filename)    
+  #  write("The input list is empty.", file = filename)
   #  return(NULL)
   #}
 
@@ -3754,29 +3754,29 @@ write_xtable <- function (x, filename = NULL, count = FALSE, sort.by = "Count", 
       counts <- rev(sort(table(x)))
       tab <- data.frame(list(Name = names(counts), Count = as.vector(counts)))
     }
-    
+
     if (is.null(filename)) {return(tab)}
 
   } else if (is.matrix(x) || is.data.frame(x)) {
 
     # Original number of entries (before removing NAs)
     ntotal <- nrow(x)
-    
+
     if (is.null(colnames(x))) {
       colnames(x) <- paste("X", 1:ncol(x), sep = "")
     }
-    
+
     # Proceed
     id <- apply(x, 1, function (x) { paste(x, collapse = "-") })
     ido <- rev(sort(table(id)))
-    
+
     tab <- as.data.frame(x)
 
-    if (count) { 
+    if (count) {
       idn <- ido[match(id, names(ido))]
       tab[, "Count"] <- idn
     }
-    
+
     tab <- tab[!duplicated(tab),]
 
     if (is.null(filename) & count) {
@@ -3795,9 +3795,9 @@ write_xtable <- function (x, filename = NULL, count = FALSE, sort.by = "Count", 
       rownames(tab) <- NULL
     } else {
       tab <- NULL
-      
-      
-    }    
+
+
+    }
   }
 
   # Arrange
@@ -3827,13 +3827,13 @@ write_xtable <- function (x, filename = NULL, count = FALSE, sort.by = "Count", 
     if (is.null(dim(tab)) && !is.null(tab)) {
       tab <- t(as.matrix(tab, nrow = 1))
     }
-    
+
     if (!is.null(tab) && nrow(tab) > 1) {
       tab <- apply(tab, 2, as.character)
     }
 
     #n <- sum(as.numeric(tab[, "Count"]), na.rm = TRUE)
-    #ntxt <- n    
+    #ntxt <- n
     #if (is.matrix(tab)) {
     #  suppressWarnings(tab <- rbind(rep("", ncol(tab)), tab))
     #  tab[1, 1] <- paste("Total count (na.rm ", na.rm, "): ", sep = "")
@@ -3844,7 +3844,7 @@ write_xtable <- function (x, filename = NULL, count = FALSE, sort.by = "Count", 
     #} else {
     #  tab <- c(paste("Total count:", ntxt), tab)
     #}
-    
+
   }
 
   if (!is.null(filename)) {
@@ -3871,16 +3871,16 @@ write_xtable <- function (x, filename = NULL, count = FALSE, sort.by = "Count", 
 #' @keywords utilities
 remove_volume_info <- function (x) {
 
-  x <- gsub("^[0-9]+ {0,1}v\\.", "", x)		   
+  x <- gsub("^[0-9]+ {0,1}v\\.", "", x)
 
   # Remove parts
   # "27 pts" -> " "
-  s <- gsub("in [0-9]* {0,1}pts", " ", x)  
+  s <- gsub("in [0-9]* {0,1}pts", " ", x)
   s <- gsub("[0-9]* pts in", " ", s)
   s <- gsub("[0-9]* pts", " ", s)
-  s <- condense_spaces(s)    
+  s <- condense_spaces(s)
   s <- gsub("^\\(", "", s)
-  s <- gsub("\\)$", "", s)  
+  s <- gsub("\\)$", "", s)
   s <- gsub("^[0-9]+ {0,1}v\\.", "", s)
 
   # Cases 'v.1-3,7-8' etc
@@ -3894,13 +3894,13 @@ remove_volume_info <- function (x) {
     gsub(check_volumes(si)$text, "", si)
   })
 
-  # special cases 
+  # special cases
   s <- gsub("v\\.[0-9]-[0-9]\\, [0-9] ;", "", s)
   s <- gsub("v\\.[0-9]\\,[0-9]-[0-9] ;", "", s)
   s <- gsub("v\\.[0-9]-[0-9]\\,[0-9]-[0-9]*", "", s)
   s <- gsub("Vols\\.[0-9]-[0-9]\\,[0-9]-[0-9]*\\,plates :", "plates", s)
 
-  # Remove the volume information 
+  # Remove the volume information
   s <- gsub("^[0-9]{1,4}v\\.", "", s)
 
   # Cases 'v.1' etc.
@@ -3946,7 +3946,7 @@ harmonize_pages_by_comma <- function (s) {
   s <- condense_spaces(s)
 
   if (length(grep("plates", s)) == 0 && !is.na(s) && length(s) > 0 && length(grep("^sheets*", s))==0) {
-    s <- gsub("^[p|s]", "", s)    
+    s <- gsub("^[p|s]", "", s)
     s <- gsub("^[p|s]\\.\\)", " ", s)
     s <- gsub("[p|s] *$", " ", s)
     s <- gsub("^[p|s] ", "", s)
@@ -3965,7 +3965,7 @@ harmonize_pages_by_comma <- function (s) {
 
 plates2pages <- function (s) {
 
-  plate.multiplier <- 2	     
+  plate.multiplier <- 2
 
   # If not plate number given, consider it as a single plate
   # Convert plates to pages: 1 plate = 2 pages
@@ -3982,29 +3982,29 @@ plates2pages <- function (s) {
       plate.multiplier <- 1
     } else if (length(grep("plates*", s) > 0) && length(grep("lea", s)) == 0) {
       # "plates" instances without "leaf" or "leaves"
-      xi <- str_trim(gsub("plates*", "", s))
+      xi <- stringr::str_trim(gsub("plates*", "", s))
       xi <- gsub("\\]", "", gsub("\\[", "", xi))
       # When no plate number is given, use plates = 2 plates
       xi[xi == ""] <- 2
       s <- suppressWarnings(as.numeric(as.roman(xi)))
     } else if (length(grep("plate", s) > 0) && length(grep("lea", s)) == 0) {
       # "plate" instances without "leaf" or "leaves"
-      xi <- str_trim(gsub("plate", "", s))
+      xi <- stringr::str_trim(gsub("plate", "", s))
       xi <- gsub("\\]", "", gsub("\\[", "", xi))
       # When no plate number is given, use 1 (plate = 1 page)
       xi[xi == ""] <- 1
       s <- as.numeric(xi)
     } else if (length(grep("leaf", s)) > 0) {
-      # "leaf" instances 
-      xi <- str_trim(gsub("leaf", "", s))
+      # "leaf" instances
+      xi <- stringr::str_trim(gsub("leaf", "", s))
       xi <- gsub("\\]", "", gsub("\\[", "", xi))
       xi[xi == ""] <- 1
       # When no leaf number is given, use 1 (1 leaf)
       # and multiply the numbers by 2 (1 leaf = 2 pages)
       s <- 2 * as.numeric(xi)
     } else if (length(grep("leaves{0,1}", s)) > 0) {
-      # "leaves" instances 
-      xi <- str_trim(gsub("leaves{0,1}", "", s))   
+      # "leaves" instances
+      xi <- stringr::str_trim(gsub("leaves{0,1}", "", s))
       xi <- gsub("\\]", "", gsub("\\[", "", xi))
       # When no leaf number is given, use 2 (2 leaves)
       xi[xi == ""] <- 2
@@ -4050,11 +4050,11 @@ attribute_table <- function (x) {
   # SHEET POSITIONS
   pagecount.attributes["sheet", ] <- position_sheets(x)
 
-  # PLATE POSITIONS  
-  # Estimate pages for plates 
+  # PLATE POSITIONS
+  # Estimate pages for plates
   # and indicate their positions along the page count sequence
-  # Example: "127,[1]p.,plates" 
-  pagecount.attributes["plate", ] <- position_plates(x) 
+  # Example: "127,[1]p.,plates"
+  pagecount.attributes["plate", ] <- position_plates(x)
 
   pagecount.attributes
 
@@ -4146,7 +4146,7 @@ seqtype <- function (z) {
     sequence.type <- "empty"
   } else {
 
-    # Determine page count categories 
+    # Determine page count categories
     # increasing / series / etc.
     sequence.type <- NA
 
@@ -4156,12 +4156,12 @@ seqtype <- function (z) {
       # Use if to avoid unnecessary calculations.
       # Increasing series cannot be decreasing at the same time.
       decreasing <- FALSE
-    } else {      
-      decreasing <- is.decreasing(z)    
+    } else {
+      decreasing <- is.decreasing(z)
     }
-    
+
     # Recognize series (ie. two-number sequences with dashes)
-    series <- length(grep("^[0-9]+-[0-9]+$", z))>0 
+    series <- length(grep("^[0-9]+-[0-9]+$", z))>0
 
     # Recognize single number
     single.number <- length(z) == 1 && is.numeric(suppressWarnings(as.numeric(z[[1]])) )
@@ -4169,13 +4169,13 @@ seqtype <- function (z) {
     # sequence has numbers without dashes
     if (!series && !increasing) { sequence.type <- "sequence" }
     if (!series && increasing)  { sequence.type <- "increasing.sequence" }
-    if (!series && decreasing)  { sequence.type <- "decreasing.sequence" }    
+    if (!series && decreasing)  { sequence.type <- "decreasing.sequence" }
     if (single.number) { sequence.type <- "sequence"}
 
     # series has dashes
-    if (series && !increasing) { sequence.type <- "series" } 
+    if (series && !increasing) { sequence.type <- "series" }
     if (series && increasing) { sequence.type <- "increasing.series" }
-    if (series && decreasing) { sequence.type <- "decreasing.series" }    
+    if (series && decreasing) { sequence.type <- "decreasing.series" }
 
     # If there are several arabic elements and at least one dash among them, then use maximum
     multiple <- length(z) > 1
@@ -4206,12 +4206,12 @@ is.increasing <- function (x) {
 maxrule <- function (x) {
 
   xx <- as.numeric(x)
-  if (any(is.na(xx))) {	
+  if (any(is.na(xx))) {
     xx <- na.omit(suppressWarnings(as.numeric(unlist(strsplit(unlist(strsplit(x, "-"), use.names = FALSE), " "), use.names = FALSE))))
   }
 
   max(xx)
-  
+
 }
 
 
@@ -4223,7 +4223,7 @@ intervalrule <- function (x, revert = FALSE) {
   if (revert) {
     xx <- rev(xx)
   }
-  
+
   max(xx) - min(xx) + 1
 
 }
@@ -4247,7 +4247,7 @@ is.decreasing <- function (x) {
 
 
 #' @title Harmonize dimension
-#' @description Harmonize dimension information 
+#' @description Harmonize dimension information
 #' @param x A character vector that may contain dimension information
 #' @param synonyms Synonyme table
 #' @return The character vector with dimension information harmonized
@@ -4293,7 +4293,7 @@ harmonize_dimension <- function (x, synonyms = NULL) {
 
   # 4to and 8vo -> 4to-8vo
   inds <- grep("[0-9]+.o and [0-9]+.o", s)
-  s[inds] <- gsub(" and ", "-", s[inds])  
+  s[inds] <- gsub(" and ", "-", s[inds])
 
   #4to.;4to
   inds <- grep("^[0-9]+.o[\\.|\\,|;| ]+[0-9]+.o$", s)
@@ -4310,7 +4310,7 @@ harmonize_dimension <- function (x, synonyms = NULL) {
 #' @description Polish dimension field of a single document
 #' @param x A dimension note (a single string of one document)
 #' @param synonyms synonyms
-#' @return Polished dimension information with the original string 
+#' @return Polished dimension information with the original string
 #' 	   and gatherings and cm information collected from it
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
 #' @examples # polish_dimension("4")
@@ -4347,7 +4347,7 @@ polish_dimension <- function (x, synonyms) {
   s <- condense_spaces(s)
 
   # No units given. Assume the number refers to the gatherings (not cm)
-  x <- unique(str_trim(unlist(strsplit(s, " "), use.names = FALSE)))
+  x <- unique(stringr::str_trim(unlist(strsplit(s, " "), use.names = FALSE)))
   x[x == "NA"]   <- NA
   x[x == "NAto"] <- NA
 
@@ -4357,7 +4357,7 @@ polish_dimension <- function (x, synonyms) {
     }
   } else {
     # Pick gatherings measures separately
-    x <- str_trim(unlist(strsplit(s, " "), use.names = FALSE))
+    x <- stringr::str_trim(unlist(strsplit(s, " "), use.names = FALSE))
   }
 
   hits <- unique(c(grep("[0-9]+[a-z]o", x), grep("bs", x)))
@@ -4392,7 +4392,7 @@ polish_dimension <- function (x, synonyms) {
   if ( length(unique(gatherings)) > 1 ) { gatherings <- NA }
 
   # 4to-4to / 4to-2fo
-  inds <- c(grep("^[0-9]+.o-[0-9]+.o$", gatherings), 
+  inds <- c(grep("^[0-9]+.o-[0-9]+.o$", gatherings),
             grep("^[0-9]+.o-[0-9]+.o-[0-9]+.o$", gatherings))
 
   if (length(inds) > 0) {
@@ -4410,7 +4410,7 @@ polish_dimension <- function (x, synonyms) {
   gatherings[inds] <- gsub("\\.;", "-", gatherings[inds])
 
   # Ambiguous CM information
-  x <- unique(str_trim(unlist(strsplit(s, " "), use.names = FALSE)))
+  x <- unique(stringr::str_trim(unlist(strsplit(s, " "), use.names = FALSE)))
   if (length(grep("x", x)) > 1) {
     width <- height <- NA
   }
@@ -4419,20 +4419,20 @@ polish_dimension <- function (x, synonyms) {
   if (length(grep("cm", x)) > 0 && length(grep("x", x)) == 1) {
       # Then pick the dimensions
       x <- unlist(strsplit(x, "cm"), use.names = FALSE)
-      x <- str_trim(unlist(strsplit(x, " "), use.names = FALSE))
+      x <- stringr::str_trim(unlist(strsplit(x, " "), use.names = FALSE))
       i <- which(x == "x")
-      if (is.numeric(str_trim(x[i+1])) && is.numeric(str_trim(x[i-1]))) {
-        height <- as.numeric(str_trim(x[i+1]))
-        width <- as.numeric(str_trim(x[i-1]))
+      if (is.numeric(stringr::str_trim(x[i+1])) && is.numeric(stringr::str_trim(x[i-1]))) {
+        height <- as.numeric(stringr::str_trim(x[i+1]))
+        width <- as.numeric(stringr::str_trim(x[i-1]))
       }
   } else if (length(grep("cm", x)) > 0 && length(grep("x", x)) == 0) {
       # Pick CM format (single value) separately when it is unambiguous
       # Then pick the dimensions
-      x <- str_trim(unlist(strsplit(x, " "), use.names = FALSE))
+      x <- stringr::str_trim(unlist(strsplit(x, " "), use.names = FALSE))
       i <- which(x == "cm")
-      height <- as.numeric(str_trim(x[i-1]))
+      height <- as.numeric(stringr::str_trim(x[i-1]))
       width <- NA
-  } 
+  }
 
   # Obl: height < width
   if (!is.na(width) && !is.na(height)) {
@@ -4486,7 +4486,7 @@ augment_dimension_table <- function (dim.tab, dim.info = NULL, sheet.dim.tab = N
   }
 
   # Entry IDs
-  if (verbose) {message("Unique dimension IDs.")}  
+  if (verbose) {message("Unique dimension IDs.")}
   id.orig <- apply(dim.tab, 1, function (x) {paste(as.character(x), collapse = "")})
   dim.tab.uniq <- unique(dim.tab)
   id.uniq <- apply(dim.tab.uniq, 1, function (x) {paste(as.character(x), collapse = "")})
@@ -4498,7 +4498,7 @@ augment_dimension_table <- function (dim.tab, dim.info = NULL, sheet.dim.tab = N
   # Only consider unique entries to speed up
   tmp <- NULL
   for (i in 1:nrow(dim.tab.uniq)) {
-    if (verbose) {message(paste(i, "/", nrow(dim.tab.uniq)))}  
+    if (verbose) {message(paste(i, "/", nrow(dim.tab.uniq)))}
     tmp <- rbind(tmp, fill_dimensions(dim.tab.uniq[i, ], dim.info, sheet.dim.tab))
   }
 
@@ -4522,7 +4522,7 @@ augment_dimension_table <- function (dim.tab, dim.info = NULL, sheet.dim.tab = N
 
 #' @title Fill Missing Dimensions
 #' @description Estimate missing entries in dimension vector where possible.
-#' @param x dimension string 
+#' @param x dimension string
 #' @param dimension.table Given mappings between document dimensions
 #' @param sheet.dimension.table Given mappings for sheet dimensions
 #' @return Augmented dimension vector
@@ -4530,7 +4530,7 @@ augment_dimension_table <- function (dim.tab, dim.info = NULL, sheet.dim.tab = N
 #' @export
 #' @seealso augment_dimension_table
 #' @examples \dontrun{
-#'   dimension.table <- dimension_table(); 
+#'   dimension.table <- dimension_table();
 #'   fill_dimensions(c(original = NA, gatherings = NA, width = 30, height = 48), dimension.table)
 #' }
 #' @keywords utilities
@@ -4551,7 +4551,7 @@ fill_dimensions <- function (x, dimension.table = NULL, sheet.dimension.table = 
     o <- x[["original"]]
 
     if (!any("obl" == names(x))) {x[["obl"]] <- NA}
-    obl <- x[["obl"]] 
+    obl <- x[["obl"]]
 
     e <- estimate_document_dimensions(gatherings = g, height = h, width = w, obl = obl, dimension.table, sheet.dimension.table)
 
@@ -4570,9 +4570,9 @@ fill_dimensions <- function (x, dimension.table = NULL, sheet.dimension.table = 
 #' @param gatherings Available gatherings information
 #' @param height Available height information
 #' @param width Available width information
-#' @param obl Indicates height smaller than width 
+#' @param obl Indicates height smaller than width
 #' @param dimension.table Document dimension table (from dimension_table())
-#' @param sheet.dimension.table Table to estimate sheet area. 
+#' @param sheet.dimension.table Table to estimate sheet area.
 #' 	  If not given, the table given by sheet_sizes() is used by default.
 #' @return Augmented dimension information
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
@@ -4584,7 +4584,7 @@ estimate_document_dimensions <- function (gatherings = NA, height = NA, width = 
   if (is.null(height) || length(height) == 0) { height <- NA }
   if (is.null(width) || length(width) == 0)  { width <- NA }
 
-  # Ensure the inputs are of right format		     
+  # Ensure the inputs are of right format
   gatherings <- as.character(gatherings)
   width <- as.numeric(as.character(width))
   height <- as.numeric(as.character(height))
@@ -4656,13 +4656,13 @@ estimate_document_dimensions <- function (gatherings = NA, height = NA, width = 
     width <- mean(width, na.rm = TRUE)
 
     # Estimate gatherings
-    gatherings <- estimate_document_dimensions(gatherings = NA, height = round(height), width = round(width), dimension.table = dimension.table, sheet.dimension.table = sheet.dimension.table)$gatherings    
+    gatherings <- estimate_document_dimensions(gatherings = NA, height = round(height), width = round(width), dimension.table = dimension.table, sheet.dimension.table = sheet.dimension.table)$gatherings
 
   } else if (is.na(width) && is.na(height) && !is.na(gatherings)) {
 
     # Only gatherings given
     ind <- which(as.character(sheet.dimension.table$gatherings) == gatherings)
-      
+
     width <- sheet.dimension.table[ind, "width"]
     height <- sheet.dimension.table[ind, "height"]
 
@@ -4695,7 +4695,7 @@ estimate_document_dimensions <- function (gatherings = NA, height = NA, width = 
   } else if (!is.na(width) && is.na(height) && is.na(gatherings)) {
     # Only width given
     height <- as.numeric(dimension.table[which.min(abs(as.numeric(dimension.table[, "NA"]) - as.numeric(width))), "NA"])
-    
+
     # If multiple heights match, then use average
     height <- mean(height, na.rm = TRUE)
 
@@ -4733,7 +4733,7 @@ estimate_document_dimensions <- function (gatherings = NA, height = NA, width = 
       }
     }
     height <- hw[, "height"]
-    width <- hw[, "width"]     
+    width <- hw[, "width"]
   }
 
   list(gatherings = unname(gatherings),
@@ -4761,7 +4761,7 @@ enrich_geo <- function(x) {
   # Use some manually fetched data
   load(system.file("extdata/geonames.RData", package = "fennica"))
   load(system.file("extdata/places.geonames.RData", package = "fennica"))
-  
+
   geoc <- get_geocoordinates(df$place,
             geonames, places.geonames)
 
@@ -4769,10 +4769,10 @@ enrich_geo <- function(x) {
 
   message("Add publication country")
   df$country <- get_country(df$place)
-  message(".. publication country added")  
+  message(".. publication country added")
 
   return (df)
-  
+
 }
 
 #' @title Compare Title Count and Paper Consumption
@@ -4802,19 +4802,19 @@ compare_title_paper <- function (x, field, selected = NULL, plot.mode = "text") 
 
   x <- x %>% filter(!is.na(field)) %>%
             filter(field %in% selected) %>%
-	    group_by(field) %>%	    
+	    group_by(field) %>%
             summarize(titles = n(),
                       paper = sum(paper, na.rm = T))
 
 
   # Prepare the plot
   p <- ggplot(x, aes(x = titles, y = paper)) +
-    xlab("Title count") + ylab("Standard sheets") + 
+    xlab("Title count") + ylab("Standard sheets") +
     ggtitle(paste("Title count versus paper (", field, ")")) +
-    scale_x_log10() + scale_y_log10() 
+    scale_x_log10() + scale_y_log10()
 
   if (plot.mode == "text") {
-    p <- p + geom_text(aes(label = field), size = 5) 
+    p <- p + geom_text(aes(label = field), size = 5)
   } else if (plot.mode == "point") {
     p <- p + geom_point(size = 2)
   }
@@ -4866,7 +4866,7 @@ get_geocoordinates <- function (x, geonames, places.geonames) {
   geocoordinates[place,] <- f
 
   place <- "Dublin"
-  f <- filter(geonames, asciiname == place & country.code == "IE")	
+  f <- filter(geonames, asciiname == place & country.code == "IE")
   geocoordinates[place,] <- f
 
   place <- "Philadelphia Pa"
@@ -4941,11 +4941,11 @@ get_geocoordinates <- function (x, geonames, places.geonames) {
   f <- filter(geonames, asciiname == "Watertown" & admin1 == "MA")
   geocoordinates[place,] <- f
 
-  place <- "Paris"	 
+  place <- "Paris"
   f <- filter(geonames, asciiname == place & country.code == "FR")
   geocoordinates[place,] <- f
 
-  place <- "Baltimore Md" 
+  place <- "Baltimore Md"
   f <- filter(geonames, asciiname == "Baltimore")
   geocoordinates[place,] <- f
 
@@ -4988,7 +4988,7 @@ get_geocoordinates <- function (x, geonames, places.geonames) {
   }
 
   message("Places with no hit whatsoever in geonames")
-  absent <- NULL 
+  absent <- NULL
   if (length(hits) > 0) {
     absent <- names(which(sapply(hits, function (x) {nrow(x) == 0})))
   }
@@ -5002,7 +5002,7 @@ get_geocoordinates <- function (x, geonames, places.geonames) {
   missing.geoc <- pubplace.uniq[nainds]
 
   f2 <- system.file("extdata/geoc_Kungliga.Rds", package = "fennica")
-  f3 <- system.file("extdata/geoc_Finland.Rds", package = "fennica")    
+  f3 <- system.file("extdata/geoc_Finland.Rds", package = "fennica")
   f2r <- readRDS(f2)
   f3r <- readRDS(f2)
   gctmp <- unique(bind_rows(f2r, f3r))
@@ -5024,22 +5024,22 @@ get_geocoordinates <- function (x, geonames, places.geonames) {
 #' @examples dimension_table()
 #' @keywords utilities
 dimension_table <- function (...) {
-  
+
   f <- system.file("extdata/documentdimensions.csv", package = "bibliographica")
   dd <- read.csv(f, header = TRUE, sep = ",")# [-1,]
   colnames(dd) <- gsub("^X", "", colnames(dd))
   colnames(dd)[[1]] <- "height"
   colnames(dd) <- gsub("NA.", "NA", colnames(dd))
   dd <- dd[-1,]
-  
+
   dd <- apply(dd, 2, as.character)
-  
+
   # Add 1to
   ss <- sheet_sizes()
-  
+
   dd <- cbind(dd, "1to" = rep("x", nrow(dd)))
   row1 <- rep("x", ncol(dd))
-  dd <- rbind(row1, dd)  
+  dd <- rbind(row1, dd)
   dd[, "height"] <- as.character(dd[, "height"])
   dd[,"NA"] <- as.character(dd[,"NA"])
   dd[,"1to"] <- as.character(dd[,"1to"])
@@ -5047,14 +5047,14 @@ dimension_table <- function (...) {
   dd[1, "height"] <- ss[inds, "height"]
   dd[1, "NA"] <- ss[inds, "width"]
   dd[1, "1to"] <- ss[inds, "width"]
-  
+
   # Reorder columns
   rownames(dd) <- NULL
-  
+
   dd <- as.data.frame(dd, stringsAsFactors = FALSE)
-  
+
   dd
-  
+
 }
 
 
@@ -5068,22 +5068,22 @@ dimension_table <- function (...) {
 #' @examples dimension_table()
 #' @keywords utilities
 dimension_table <- function (...) {
-  
+
   #f <- system.file("extdata/documentdimensions.csv", package = "bibliographica")
   dd <- read.csv("documentdimensions.csv", header = TRUE, sep = ",")# [-1,]
   colnames(dd) <- gsub("^X", "", colnames(dd))
   colnames(dd)[[1]] <- "height"
   colnames(dd) <- gsub("NA.", "NA", colnames(dd))
   dd <- dd[-1,]
-  
+
   dd <- apply(dd, 2, as.character)
-  
+
   # Add 1to
   ss <- sheet_sizes()
-  
+
   dd <- cbind(dd, "1to" = rep("x", nrow(dd)))
   row1 <- rep("x", ncol(dd))
-  dd <- rbind(row1, dd)  
+  dd <- rbind(row1, dd)
   dd[, "height"] <- as.character(dd[, "height"])
   dd[,"NA"] <- as.character(dd[,"NA"])
   dd[,"1to"] <- as.character(dd[,"1to"])
@@ -5091,55 +5091,55 @@ dimension_table <- function (...) {
   dd[1, "height"] <- ss[inds, "height"]
   dd[1, "NA"] <- ss[inds, "width"]
   dd[1, "1to"] <- ss[inds, "width"]
-  
+
   # Reorder columns
   rownames(dd) <- NULL
-  
+
   dd <- as.data.frame(dd, stringsAsFactors = FALSE)
-  
+
   dd
-  
+
 }
 
 
 #' @title Sheet Area
 #' @description Sheet area in cm2.
-#' @param x Sheet size 
-#' @param sheet.dimension.table Table to estimate sheet area. 
+#' @param x Sheet size
+#' @param sheet.dimension.table Table to estimate sheet area.
 #' 	  If not given, the table given by sheet_sizes() is used by default.
 #' @param verbose Verbose
 #' @return Sheet area (cm2)
 #' @export
-#' @details Sheet size is calculated according to the table given as output 
+#' @details Sheet size is calculated according to the table given as output
 #'          from call sheet_area()
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
 #' @references See citation("bibliographica")
 #' @examples sheet_area("2to")
 #' @keywords utilities
 sheet_area <- function (x = NULL, sheet.dimension.table = NULL, verbose = FALSE) {
-  
+
   if (is.null(sheet.dimension.table)) {
-    
+
     if (verbose) {message("sheet.dimension.table not given, using sheet_sizes() mapping table by default")}
     tab <- sheet_sizes()
   } else {
     tab <- sheet.dimension.table
   }
-  
+
   # Ensure correct formatting
-  tab$format <- str_trim(as.character(tab$format))
-  tab$gatherings <- str_trim(as.character(tab$gatherings))
+  tab$format <- stringr::str_trim(as.character(tab$format))
+  tab$gatherings <- stringr::str_trim(as.character(tab$gatherings))
   for (i in c("width", "height", "area")) {
-    tab[,i] <- as.numeric(str_trim(as.character(tab[,i])))
+    tab[,i] <- as.numeric(stringr::str_trim(as.character(tab[,i])))
   }
-  
+
   if (!is.null(x)) {
     x <- as.character(x)
     ind <- which((tab$format %in% x) | (tab$gatherings %in% x))
-    
+
     if (length(ind) > 0) {
       area <- tab[ind, "area"]
-      
+
       if (verbose) {
         message(paste("The input", x, "corresponds to", tab[ind, "sheet"], "paper with", tab[ind, "width"], "cm width and", tab[ind, "height"], "cm height and an area of", tab[ind, "area"], "cm2"))
       }
@@ -5150,9 +5150,9 @@ sheet_area <- function (x = NULL, sheet.dimension.table = NULL, verbose = FALSE)
   } else {
     return(tab)
   }
-  
+
   area
-  
+
 }
 
 
@@ -5165,20 +5165,20 @@ sheet_area <- function (x = NULL, sheet.dimension.table = NULL, verbose = FALSE)
 #' @references See citation("bibliographica")
 #' @examples sheetsizes <- sheet_sizes()
 #' @keywords utilities
-sheet_sizes <- function (...) {  
-  
+sheet_sizes <- function (...) {
+
   # Read the mapping table
   #f <- system.file("extdata/sheetsizes.csv", package = "bibliographica")
   tab <- as.data.frame(read.csv("sheetsizes.csv", sep = ","))
-  tab$format <- str_trim(as.character(tab$format))
-  tab$gatherings <- str_trim(as.character(tab$gatherings)) 
+  tab$format <- stringr::str_trim(as.character(tab$format))
+  tab$gatherings <- stringr::str_trim(as.character(tab$gatherings))
   tab$gatherings <- order_gatherings(tab$gatherings)
-  
-  tab  
+
+  tab
 }
 
 #' @title order_gatherings
-#' @description Sort gatherings levels 
+#' @description Sort gatherings levels
 #' @param x A vector or factor of gathering data
 #' @return A factor with ordered gatherings levels
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
@@ -5187,31 +5187,31 @@ sheet_sizes <- function (...) {
 #' @export
 #' @keywords utilities
 order_gatherings <- function (x) {
-  
+
   # Remove unrecognized formats
   x <- polish_gatherings(x)
-  
+
   # Recognize gatherings format (2fo or folio)
   format <- gatherings_format(x)
-  
-  # Denote the ordering directly in the table		 
+
+  # Denote the ordering directly in the table
   glevels <- tolower(unique(gatherings_table()[[format]]))
-  
+
   # Capitalize
   x <- str_to_title(x)
   glevels <- str_to_title(glevels)
-  
+
   # Exception
   x <- gsub("Bs", "bs", x)
-  glevels <- gsub("Bs", "bs", glevels)  
-  
+  glevels <- gsub("Bs", "bs", glevels)
+
   x <- as.character(x)
   x[is.na(x)] <- "NA"
   fails <- unlist(setdiff(unique(x), glevels), use.names = FALSE)
   x[x %in% fails] <- "NA"
   inds <- which(glevels %in% x)
   glevels <- glevels[inds]
-  
+
   # Order the levels
   factor(x, levels = glevels)
 }
@@ -5227,26 +5227,26 @@ order_gatherings <- function (x) {
 #' @export
 #' @keywords utilities
 polish_gatherings <- function (x) {
-  
+
   gtab <- gatherings_table()
-  
-  # Denote the polishing directly in the table		 
+
+  # Denote the polishing directly in the table
   glevels <- unique(c(gtab$Standard,
                       gtab$Name,
                       gtab$Alternate,
                       gtab$Symbol))
-  
+
   glevels <- unique(c(glevels, tolower(glevels)))
-  
+
   # Remove unrecognized formats
   inds <- which(!tolower(x) %in% glevels)
   if (length(inds) > 0) {
     warning(paste("Removing the following unrecognized gatherings:", paste(sort(unique(x[inds])), collapse = ", ")))
     x[inds] <- NA
   }
-  
+
   tolower(x)
-  
+
 }
 
 #' @title Gatherings Table
@@ -5259,25 +5259,25 @@ polish_gatherings <- function (x) {
 #' @examples gatherings_table()
 #' @keywords utilities
 gatherings_table <- function (...) {
-  
+
   #f <- system.file("extdata/document_size_abbreviations.csv", package = "bibliographica")
   dd <- read.csv("document_size_abbreviations.csv", header = TRUE, sep = ";")
   dd <- apply(dd, 2, as.character)
   dd[dd == ""] <- NA
   dd <- as.data.frame(dd, stringsAsFactors = FALSE)
-  
+
   dd
-  
+
 }
 
 # Recognize gatherings format
 gatherings_format <- function (x) {
-  
+
   gtab <- gatherings_table()
-  
+
   # Majority vote
   names(which.max(apply(gtab, 2, function (i) {sum(x %in% i)})))
-  
+
 }
 
 
@@ -5291,84 +5291,84 @@ gatherings_format <- function (x) {
 #' @references See citation("bibliographica")
 #' @keywords internal
 polish_physext_help <- function (s, page.harmonize) {
-  
+
   # Return NA if conversion fails
   if (length(s) == 1 && is.na(s)) {
     #return(rep(NA, 11))
     s <- ""
-  } 
-  
+  }
+
   # 141-174. [2] -> "141-174, [2]"
   if (grepl("[0-9]+\\.", s)) {
     s <- gsub("\\.", ",", s)
   }
-  
+
   # Shortcut for easy cases: "24p."
   if (length(grep("^[0-9]+ *p\\.*$",s))>0) {
-    #return(c(as.numeric(str_trim(gsub(" {0,1}p\\.{0,1}$", "", s))), rep(NA, 9)))
-    s <- as.numeric(str_trim(gsub(" {0,1}p\\.{0,1}$", "", s)))
+    #return(c(as.numeric(stringr::str_trim(gsub(" {0,1}p\\.{0,1}$", "", s))), rep(NA, 9)))
+    s <- as.numeric(stringr::str_trim(gsub(" {0,1}p\\.{0,1}$", "", s)))
   }
-  
+
   # Pick volume number
-  voln <- pick_volume(s) 
-  
+  voln <- pick_volume(s)
+
   # Volume count
   vols <- unname(pick_multivolume(s))
-  
+
   # Parts count
   parts <- pick_parts(s)
-  
+
   # "2 pts (96, 110 s.)" = 96 + 110s
   if (length(grep("[0-9]+ pts (*)", s)) > 0 && length(grep(";", s)) == 0) {
     s <- gsub(",", ";", s)
   }
-  
+
   # Now remove volume info
   s <- suppressWarnings(remove_volume_info(s))
-  
+
   # Cleanup
   s <- gsub("^;*\\(", "", s)
   s <- gsub(" s\\.*$", "", s)
   s <- condense_spaces(s)
-  
+
   # If number of volumes is the same than number of comma-separated units
   # and there are no semicolons, then consider the comma-separated units as
   # individual volumes and mark this by replacing commas by semicolons
   # ie. 2v(130, 115) -> 130;115
   if (!is.na(s) && !is.na(vols) && length(unlist(strsplit(s, ","), use.names = FALSE)) == vols && !grepl(";", s)) {
-    s <- gsub(",", ";", s)  
+    s <- gsub(",", ";", s)
   }
-  
+
   # Estimate pages for each document separately via a for loop
   # Vectorization would be faster but we prefer simplicity and modularity here
-  
+
   if (length(grep(";", s)) > 0) {
     spl <- unlist(strsplit(s, ";"), use.names = FALSE)
     page.info <- sapply(spl, function (x) {polish_physext_help2(x, page.harmonize)})
     page.info <- apply(page.info, 1, function (x) {sum(as.numeric(x), na.rm = TRUE)})
-    page.info[[1]] <- 1 # Not used anymore after summing up  
+    page.info[[1]] <- 1 # Not used anymore after summing up
   } else {
     page.info <- polish_physext_help2(s, page.harmonize)
   }
-  
+
   s <- page.info[["pagecount"]]
   page.info <- page.info[-7]
   s[s == ""] <- NA
-  s[s == "NA"] <- NA  
+  s[s == "NA"] <- NA
   s <- as.numeric(s)
   s[is.infinite(s)] = NA
-  
+
   # Return
   names(page.info) <- paste0("pagecount.", names(page.info))
-  # Add fields to page.info  		   
+  # Add fields to page.info
   page.info[["pagecount"]] <- as.vector(s)
   page.info[["volnumber"]] <- as.vector(voln)
   page.info[["volcount"]] <- as.vector(vols)
   page.info[["parts"]] <- as.vector(parts)
   page.info <- unlist(page.info)
-  
+
   page.info
-  
+
 }
 
 
@@ -5388,9 +5388,9 @@ replace_pattern <- function(x, pattern, replacement) {
 
 # Use `case_when` to replace multiple `if` conditions
 polish_physext_help2 <- function (x, page.harmonize) {
-  
+
   x <- as.character(map(x, page.harmonize, mode = "recursive"))
-  
+
   x <- case_when(
     any(grepl("i\\.e", x)) ~ replace_pattern(x, ",", " "),
     any(grepl("\\[[0-9]+\\] p \\(p \\[[0-9]+\\] blank\\)", x)) ~ replace_pattern(x, " \\(p \\[[0-9]+\\] blank\\)", ""),
@@ -5409,27 +5409,27 @@ polish_physext_help2 <- function (x, page.harmonize) {
     any(grepl("[0-9]+p",x)) ~ replace_pattern(x, "p", " p"),
     TRUE ~ x
   )
-  
+
   # Continue with the rest of your function...
-  
+
   # Remove endings
   x <- gsub("[ |\\.|\\,|\\;|\\:]+$", "", x)
-  
+
   # Remove spaces around dashes
   x <- gsub(" {0,1}- {0,1}", "-", x)
-  x <- condense_spaces(x) 
-  
+  x <- condense_spaces(x)
+
   # Remove parentheses
   x <- gsub("\\(", " ", x)
   x <- gsub("\\)", " ", x)
-  x <- condense_spaces(x) 
+  x <- condense_spaces(x)
   x <- condense_spaces(gsub(" p p ", " p ", x))
-  
+
   # 2 p [1] = 2, [1]
   if (any(grepl("^[0-9]+ p \\[[0-9]+\\]$", x))) {
     x <- condense_spaces(gsub("\\[", ",[", gsub("p", "", x)))
   }
-  
+
   # [4] p [4] = [4], [4]
   if (any(grepl("^\\[[0-9]+\\] p \\[[0-9]+\\]$", x))) {
     split_result <- strsplit(x, "p")
@@ -5439,45 +5439,45 @@ polish_physext_help2 <- function (x, page.harmonize) {
       x
     }
   }
-  
+
   # "[2] 4" -> "[2], 4"
   if (any(grepl("\\[[0-9]+\\] [0-9]+", x))) {
     x <- gsub(" ", ",", x)
   }
-  
+
   # "4 [2]" -> 4, [2]
   if (any(grepl("^[0-9]+ \\[[0-9]+\\]", x))) {
-    x <- gsub("\\[", ",[", x)  
+    x <- gsub("\\[", ",[", x)
   }
-  
+
   if (any(grepl("[0-9]+p",x))) {
     x <- condense_spaces(gsub("p", " p", x))
   }
-  
+
   x <- gsub("p\\.*$", "", x)
   # [4] p 2:o -> 4
   x <- gsub("[0-9]:o$", "", x)
   x <- gsub("=$", "", x)
   x <- gsub("^[c|n]\\.", "", x)
   x <- gsub("p \\[", "p, [", x)
-  x <- gsub(": b", ",", x) 
+  x <- gsub(": b", ",", x)
   x <- condense_spaces(x)
   x <- gsub(" ,", ",", x)
-  x <- gsub("^,", "", x)  
-  
+  x <- gsub("^,", "", x)
+
   x <- condense_spaces(x)
-  
+
   page.info <- estimate_pages(x)
-  
+
   # Take into account multiplier
   # (for instance when page string starts with Ff the document is folios
   # and page count will be multiplied by two - in most cases multiplier is 1)
   # Total page count; assuming the multiplier is index 1
   s <- unlist(page.info[-1], use.names = FALSE)
   page.info[["pagecount"]] <- page.info[["multiplier"]] * sum(s, na.rm = TRUE)
-  
+
   page.info
-  
+
 }
 
 
@@ -5490,20 +5490,20 @@ polish_physext_help2 <- function (x, page.harmonize) {
 #' @references See citation("bibliographica") and explanations of signature statements in \url{https://collation.folger.edu/2016/05/signature-statements/} and \url{https://manual.stcv.be/p/Inputting_Collation_Data_in_Brocade}.
 #' @keywords internal
 polish_signature_statement_pagecount <- function (s) {
-  
+
   inds <- which(grepl("sup", s))
   ss <- rep(NA, length(s))
-  
+
   if (length(inds)>0) {
     pages <- sapply(s[inds], function (xx) {sum(polish_signature_statements(xx))})
     ss[inds] <- pages
-    
+
   }
-  
+
   names(ss) <- s
-  
+
   ss
-  
+
 }
 
 #' @title Polish signature statements
@@ -5514,35 +5514,35 @@ polish_signature_statement_pagecount <- function (s) {
 #' @references See citation("bibliographica") and explanations of signature statements in \url{https://collation.folger.edu/2016/05/signature-statements/} and \url{https://manual.stcv.be/p/Inputting_Collation_Data_in_Brocade}.
 #' @keywords internal
 polish_signature_statements <- function (x) {
-  
-  x <- str_trim(x)
-  
-  x <- str_trim(gsub("\\([a-z|0-9|,| |\\?]*\\)", "", x))
-  
+
+  x <- stringr::str_trim(x)
+
+  x <- stringr::str_trim(gsub("\\([a-z|0-9|,| |\\?]*\\)", "", x))
+
   x <- unlist(str_split(x, " "))
-  
+
   # Pages for all items
   pages <- unlist(sapply(x, function (xx) {polish_signature_statement(xx)}))
-  
+
   pages
-  
+
 }
 
 
 polish_signature_statement <- function (s) {
-  
+
   hit <- any(grepl("[a-z]*?sup?[0-9]*?[a-z]*?", s))
   pages <- NA
-  
+
   if (hit) {
-    item <- str_extract(s, "^[a-z|0-9|-]*")     
+    item <- str_extract(s, "^[a-z|0-9|-]*")
     pages <- str_extract(s, "[0-9]+")
     pages <- as.numeric(pages)
     names(pages) <- item
-    
+
     if (str_detect(item, "-")) {
       items <- unlist(str_split(item, "-"))
-      
+
       ind1 <- match(items[[1]], letters)
       ind2 <- match(items[[2]], letters)
       if (!is.na(ind1) & !is.na(ind2)) {
@@ -5554,9 +5554,9 @@ polish_signature_statement <- function (s) {
       }
     }
   }
-  
+
   pages
-  
+
 }
 
 
@@ -5568,73 +5568,73 @@ polish_signature_statement <- function (s) {
 #' @references See citation("bibliographica")
 #' @keywords internal
 polish_physext_help <- function (s, page.harmonize) {
-  
+
   # Return NA if conversion fails
   if (length(s) == 1 && is.na(s)) {
     #return(rep(NA, 11))
     s <- ""
-  } 
-  
+  }
+
   # 141-174. [2] -> "141-174, [2]"
   if (grepl("[0-9]+\\.", s)) {
     s <- gsub("\\.", ",", s)
   }
-  
+
   # Shortcut for easy cases: "24p."
   if (length(grep("^[0-9]+ *p\\.*$",s))>0) {
-    #return(c(as.numeric(str_trim(gsub(" {0,1}p\\.{0,1}$", "", s))), rep(NA, 9)))
-    s <- as.numeric(str_trim(gsub(" {0,1}p\\.{0,1}$", "", s)))
+    #return(c(as.numeric(stringr::str_trim(gsub(" {0,1}p\\.{0,1}$", "", s))), rep(NA, 9)))
+    s <- as.numeric(stringr::str_trim(gsub(" {0,1}p\\.{0,1}$", "", s)))
   }
-  
+
   # Pick volume number
-  voln <- pick_volume(s) 
-  
+  voln <- pick_volume(s)
+
   # Volume count FIX needed
   vols <- unname(pick_multivolume(s))
-  
+
   # Parts count
   parts <- pick_parts(s)
-  
+
   # "2 pts (96, 110 s.)" = 96 + 110s
   if (length(grep("[0-9]+ pts (*)", s)) > 0 && length(grep(";", s)) == 0) {
     s <- gsub(",", ";", s)
   }
-  
+
   # Now remove volume info
   s <- suppressWarnings(remove_volume_info(s))
-  
+
   # Cleanup
   s <- gsub("^;*\\(", "", s)
   s <- gsub(" s\\.*$", "", s)
   s <- condense_spaces(s)
-  
+
   # If number of volumes is the same than number of comma-separated units
   # and there are no semicolons, then consider the comma-separated units as
   # individual volumes and mark this by replacing commas by semicolons
   # ie. 2v(130, 115) -> 130;115
   if (!is.na(s) && !is.na(vols) && length(unlist(strsplit(s, ","), use.names = FALSE)) == vols && !grepl(";", s)) {
-    s <- gsub(",", ";", s)  
+    s <- gsub(",", ";", s)
   }
-  
+
   # Estimate pages for each document separately via a for loop
   # Vectorization would be faster but we prefer simplicity and modularity here
-  
+
   if (length(grep(";", s)) > 0) {
     spl <- unlist(strsplit(s, ";"), use.names = FALSE)
     page.info <- sapply(spl, function (x) {polish_physext_help2(x, page.harmonize)})
     page.info <- apply(page.info, 1, function (x) {sum(as.numeric(x), na.rm = TRUE)})
-    page.info[[1]] <- 1 # Not used anymore after summing up  
+    page.info[[1]] <- 1 # Not used anymore after summing up
   } else {
     page.info <- polish_physext_help2(s, page.harmonize)
   }
-  
+
   s <- page.info[["pagecount"]]
   page.info <- page.info[-7]
   s[s == ""] <- NA
-  s[s == "NA"] <- NA  
+  s[s == "NA"] <- NA
   s <- as.numeric(s)
   s[is.infinite(s)] = NA
-  
+
   # Return
   names(page.info) <- paste0("pagecount.", names(page.info))
   # Add fields to page.info
@@ -5646,9 +5646,9 @@ polish_physext_help <- function (s, page.harmonize) {
   page.info[["volcount"]] <- as.vector(vols)
   page.info[["parts"]] <- as.vector(parts)
   page.info <- unlist(page.info)
-  
+
   page.info
-  
+
 }
 
 
@@ -5659,25 +5659,25 @@ polish_physext_help <- function (s, page.harmonize) {
 #' @return Raw and estimated pages per document part
 #' @details Document parts are separated by semicolons
 #' @export
-#' @details A summary of page counting rules that this function aims to (approximately) implement are provided in 
+#' @details A summary of page counting rules that this function aims to (approximately) implement are provided in
 #' \url{https://www.libraries.psu.edu/psul/cataloging/training/bpcr/300.html}
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
 #' @references See citation("bibliographica")
 #' @examples tab <- polish_physical_extent("4p.", verbose = TRUE)
 #' @keywords utilities
 polish_physical_extent <- function (x, verbose = FALSE, rm.dim.file = NULL) {
-  
+
   # Summary of abbreviations
   # http://ac.bslw.com/community/wiki/index.php5/RDA_4.5
   sorig <- tolower(as.character(x))
   suniq <- unique(sorig)
-  
+
   if (verbose) {
     message(paste("Polishing physical extent field:",
                   length(suniq),
                   "unique cases"))
   }
-  
+
   s <- suniq
   if (verbose) {message("Signature statements")}
   inds <- grep("sup", s)
@@ -5685,191 +5685,191 @@ polish_physical_extent <- function (x, verbose = FALSE, rm.dim.file = NULL) {
     pc <- polish_signature_statement_pagecount(s[inds])
     s[inds] <- unname(pc)
   }
-  
+
   if (verbose) {message("Remove commonly used volume formats")}
   f <- read.csv("remove_dimension.csv", sep = ";", row.names=NULL)
-  
+
   li <- f [,1]
   terms <- as.character(li)
   s <- remove_dimension(s, terms)
   s <- gsub("^na ", "", s)
   s <- gsub("\\.s$", " s", s)
-  s <- gsub("\\. s", " s", s)    
+  s <- gsub("\\. s", " s", s)
   s <- gsub("&", ",", s)
   s <- gsub("\\*", " ", s)
   s <- gsub("\\{", "[", s)
   s <- gsub("\\}", "]", s)
-  s[grep("^[ |;|:|!|?]*$", s)] <- NA 
-  
+  s[grep("^[ |;|:|!|?]*$", s)] <- NA
+
   if (verbose) {
     message("Remove dimension info")
   }
-  s <- gsub("^[0-9]+.o ", "", s) 
-  
+  s <- gsub("^[0-9]+.o ", "", s)
+
   if (verbose) {
     message("In Finnish texts s. is used instead of p.")
   }
-  
+
   # Broken
   f <- read.csv("translation_fi_en_pages.csv", sep = ";", row.names=NULL)
   if (verbose) {
     message(paste("Reading", f))
   }
-  
+
   #page.synonyms <- read_mapping(file = f, sep = ";", mode = "table", fast = TRUE)
   s <- map(s, f, mode="match")
   #rm(page.synonyms)
-  
+
   if (verbose) {
     message("numbers_finnish")
   }
-  
+
   f <- read.csv("numbers_finnish.csv", sep = ",")
   #char2num <- read_mapping(f, sep = ",", mode = "table", from = "character", to = "numeric")
   s <- map(s, synonymes = f, from = "character", to = "numeric", mode = "match")
 
-  
+
   if (verbose) {message("Harmonize volume info")}
   inds <- setdiff(1:length(s), grep("^v\\.$", s))
   if (length(inds)>0) {
     s[inds] <- remove_trailing_periods(s[inds])
   }
-  
+
   # Harmonize volume info
   s <- unname(harmonize_volume(s))
-  
-  # Back to original indices and new unique reduction 
+
+  # Back to original indices and new unique reduction
   sorig <- s[match(sorig, suniq)]
   s <- suniq <- unique(sorig)
-  
+
   if (verbose) {message("Harmonize ie")}
   s <- harmonize_ie(s)
-  
+
   s[s == ""] <- NA
-  
-  if (verbose) {message("Read the mapping table for sheets")}  
-  f <- read.csv("harmonize_sheets.csv", sep = ";")  
-  
+
+  if (verbose) {message("Read the mapping table for sheets")}
+  f <- read.csv("harmonize_sheets.csv", sep = ";")
+
   #sheet.harmonize <- read_mapping(f, sep = ";", mode = "table", fast = TRUE)
   s <- harmonize_sheets(s, f)
   #rm(sheet.harmonize)
-  
+
   # Just read page harmonization here to be used later
   if (verbose) {message("Read the mapping table for pages")}
-  page.harmonize <- read.csv("harmonize_pages.csv", sep = "\t")    
+  page.harmonize <- read.csv("harmonize_pages.csv", sep = "\t")
   #page.harmonize <- read_mapping(f, sep = "\t", mode = "table", fast = FALSE)
-  
-  # Back to original indices and new unique reduction 
+
+  # Back to original indices and new unique reduction
   s <- s[match(sorig, suniq)]
   sorig <- s
   suniq <- unique(sorig)
   s <- suniq
-  
-  if (verbose) {message("Read the mapping table for romans")}  
-  f <- read.csv("harmonize_romans.csv", sep = "\t")    
+
+  if (verbose) {message("Read the mapping table for romans")}
+  f <- read.csv("harmonize_romans.csv", sep = "\t")
   #romans.harm <- read_mapping(f, sep = "\t", mode = "table", fast = TRUE)
   s <- map(s, f, mode = "recursive")
-  
-  if (verbose) {message("Page harmonization part 2")}  
-  f <- read.csv("harmonize_pages2.csv", sep = "|")      
+
+  if (verbose) {message("Page harmonization part 2")}
+  f <- read.csv("harmonize_pages2.csv", sep = "|")
   #harm2 <- read_mapping(f, sep = "|", mode = "table", fast = TRUE)
   s <- map(s, f, mode = "recursive")
   #rm(harm2)
-  
+
   # Trimming
   # p3 -> p 3
   inds <- grep("p[0-9]+", s)
   if (length(inds)>0) {
     s[inds] <- gsub("p", "p ", s[inds])
-  }  
+  }
   s <- condense_spaces(s)
   s[s == "s"] <- NA
-  
-  # 1 score (144 p.) -> 144 pages 
+
+  # 1 score (144 p.) -> 144 pages
   if (length(grep("[0-9]* *scores* \\([0-9]+ p\\.*\\)", s))>0) {
     s <- gsub("[0-9]* *scores*", " ", s)
   }
   s <- condense_spaces(s)
-  
-  if (verbose) {message("Polish unique pages separately for each volume")}  
-  
-  # Back to original indices and new unique reduction 
+
+  if (verbose) {message("Polish unique pages separately for each volume")}
+
+  # Back to original indices and new unique reduction
   sorig <- s[match(sorig, suniq)]
   s <- suniq <- unique(sorig)
-  
+
   # English
-  f <- read.csv("numbers_english.csv", sep = ",")        
+  f <- read.csv("numbers_english.csv", sep = ",")
   #char2num <- read_mapping(f, sep = ",", mode = "table", from = "character", to = "numeric")
   s <- map(s, synonymes = f, from = "character", to = "numeric", mode = "match")
-  
-  if (verbose) {message(paste("Polishing physical extent field 3:", 
+
+  if (verbose) {message(paste("Polishing physical extent field 3:",
                                length(suniq), "unique cases"))}
   ret <- lapply(s, function (s) {
      a <- try(polish_physext_help(s, page.harmonize));
      if (class(a) == "try-error") {
        message(paste("Error in polish_physext_help:", s)); return(NA)} else {return(a)}
    })
-   
+
   nainds <- which(is.na(ret))
    for (i in nainds) {
      message(paste("Before polish_physext_help:", i, s[[i]]))
      # NA vector of same length than the other entries
-     ret[[i]] <- rep(NA, length(ret[[1]])) 
+     ret[[i]] <- rep(NA, length(ret[[1]]))
    }
-   
+
    if (verbose) {message("Make data frame")}
    ret <- as.data.frame(t(sapply(ret, identity)))
-   
+
    if (verbose) {message("Set zero page counts to NA")}
-   ret$pagecount <- as.numeric(ret$pagecount)  
+   ret$pagecount <- as.numeric(ret$pagecount)
    ret$pagecount[ret$pagecount == 0] <- NA
-   
+
    if (verbose) { message("Project to original list: indices") }
    inds <- match(sorig, suniq)
-   
-   if (verbose) { message("Project to original list: mapping") }  
+
+   if (verbose) { message("Project to original list: mapping") }
    ret[inds, ]
-  
+
 }
 
 #' @title Sheet Area
 #' @description Sheet area in cm2.
-#' @param x Sheet size 
-#' @param sheet.dimension.table Table to estimate sheet area. 
+#' @param x Sheet size
+#' @param sheet.dimension.table Table to estimate sheet area.
 #' 	  If not given, the table given by sheet_sizes() is used by default.
 #' @param verbose Verbose
 #' @return Sheet area (cm2)
 #' @export
-#' @details Sheet size is calculated according to the table given as output 
+#' @details Sheet size is calculated according to the table given as output
 #'          from call sheet_area()
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
 #' @references See citation("bibliographica")
 #' @examples sheet_area("2to")
 #' @keywords utilities
 sheet_area <- function (x = NULL, sheet.dimension.table = NULL, verbose = FALSE) {
-  
+
   if (is.null(sheet.dimension.table)) {
-    
+
     if (verbose) {message("sheet.dimension.table not given, using sheet_sizes() mapping table by default")}
     tab <- sheet_sizes()
   } else {
     tab <- sheet.dimension.table
   }
-  
+
   # Ensure correct formatting
-  tab$format <- str_trim(as.character(tab$format))
-  tab$gatherings <- str_trim(as.character(tab$gatherings))
+  tab$format <- stringr::str_trim(as.character(tab$format))
+  tab$gatherings <- stringr::str_trim(as.character(tab$gatherings))
   for (i in c("width", "height", "area")) {
-    tab[,i] <- as.numeric(str_trim(as.character(tab[,i])))
+    tab[,i] <- as.numeric(stringr::str_trim(as.character(tab[,i])))
   }
-  
+
   if (!is.null(x)) {
     x <- as.character(x)
     ind <- which((tab$format %in% x) | (tab$gatherings %in% x))
-    
+
     if (length(ind) > 0) {
       area <- tab[ind, "area"]
-      
+
       if (verbose) {
         message(paste("The input", x, "corresponds to", tab[ind, "sheet"], "paper with", tab[ind, "width"], "cm width and", tab[ind, "height"], "cm height and an area of", tab[ind, "area"], "cm2"))
       }
@@ -5880,15 +5880,15 @@ sheet_area <- function (x = NULL, sheet.dimension.table = NULL, verbose = FALSE)
   } else {
     return(tab)
   }
-  
+
   area
-  
+
 }
 
-#' @title Polish Years 
+#' @title Polish Years
 #' FIXME: UNIT TESTS MISSING NOW!
 #' @description Pick and polish the year interval (start and end years) from a time field which is of the form 1800 or 1823-1845 etc.
-#' @param x year field (a vector) 
+#' @param x year field (a vector)
 #' @param start_synonyms Synonyme table for start year
 #' @param end_synonyms Synonyme table for end year
 #' @param verbose verbose
@@ -5908,10 +5908,10 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
     x[inds] <- NA
     warning(paste("Removed ", length(inds), "publication year entries that are suspiciously long (over 200 characters) and include tabs"))
   }
-  
+
   x <- gsub("\\.$", "", x)
   x <- gsub("\\[blank\\]", "?", x)
-  x <- gsub("\\[sic\\.\\]", "", x)    
+  x <- gsub("\\[sic\\.\\]", "", x)
   x <- gsub("^&lt;", "", x)
   x <- gsub("&gt;$", "", x)
   x <- gsub("&gt;-$", "", x)
@@ -5925,40 +5925,40 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
   x <- gsub("[\\^]", "", x)
   x <- gsub("[\\|]", "", x)
   x <- gsub("[u]", "", x)
-  
+
   inds <- grep("\\[*[M,C,D,X,L,\\.]*\\]*", x)
   if (length(inds) > 0) {
     x[inds] <- sapply(x[inds], function (x) {gsub("\\.", "", x)})
   }
-  
+
   inds <- intersect(grep("^--", x), grep("--$", x))
   x[inds] <- gsub("--$", "", gsub("^--", "", x[inds]))
-  
+
   inds <- grep("^\\[*l[0-9]{3}\\.*\\]*$", x)
   if (length(inds) > 0) {
     x[inds] <- sapply(x[inds], function (x) {gsub("l", "1", x)})
   }
-  
+
   f <- "months.csv"
   months <- as.character(read.csv(f, header = TRUE)[,1])
   months <- unique(c(months, tolower(months)))
   # Handle from longest to shortest to avoid problems
   months <- months[rev(order(nchar(months)))]
-  
+
   # These seem unnecessary assignments.
   xorig <- tolower(as.character(x))
   xuniq <- unique(xorig)
   x <- xuniq
-  
+
   if (verbose) {
     message(paste("Polishing years:", length(xuniq), "unique cases"))
   }
-  
+
   # "[1.12.1584 jalkeen]" -> 1584 jalkeen
   inds <- grep("[0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{4}", x)
   x[inds] <- gsub("[0-9]{1,2}\\.[0-9]{1,2}\\.", "", x[inds])
   x <- gsub(",", ".", x)
-  
+
   # 23.1967 -> 1967 excluding 1.5.6.7
   if (length(grep("[0-9]\\.[0-9]\\.[0-9]\\.[0-9]", x)) == 0) {
     x <- gsub(" [0-9]{1,2}\\.", "", x)
@@ -5966,44 +5966,44 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
   } else {
     x <- gsub("\\.", "", x)
   }
-  
+
   # "Printed in the Yeare,;1648."
   inds <- grep(";", x)
   x[inds] <- unlist(sapply(x[inds], function (x) {x <- unlist(strsplit(x, ";")); paste(x[grep("[0-9]", x)], collapse = ", ")}), use.names = FALSE)
   x <- gsub("\\.", " ", x)
-  x <- gsub(" or later", " ", x)  
+  x <- gsub(" or later", " ", x)
   x <- gsub("0[0-9]*;m[a-z]*terio [a-z]*\\.* pauli", " ", x)
-  
+
   # 18th century (remove separately before removing other letters)
-  x <- gsub("[0-9]{1,4}th", "", x)  
-  
+  x <- gsub("[0-9]{1,4}th", "", x)
+
   # Map back to original indices and make unique again. To speedup further.
   xorig <- x[match(xorig, xuniq)]
-  
+
   x <- xuniq <- unique(xorig)
   x <- harmonize_ie(x)
-  
+
   x <- gsub("-a", "- a", x) # -approximately
   x <- remove_print_statements(x)
-  
+
   # Map back to original indices and make unique again. To speedup further.
   xorig <- x[match(xorig, xuniq)]
   x <- xuniq <- unique(xorig)
-  
+
   x <- sapply(x, function (xi) {handle_ie(xi, harmonize = FALSE)}, USE.NAMES = FALSE)
   x <- condense_spaces(gsub("\\.", " ", x))
-  
+
   x <- remove_time_info(x, verbose = F, months)
-  
+
   # Map back to original indices and make unique again. To speedup further.
   xorig <- x[match(xorig, xuniq)]
   x <- xuniq <- unique(xorig)
-  
+
   # 1642 [1643] -> 1643
   if (length(grep("^[0-9]* \\[[0-9]*\\]$", x)) > 0) {
     inds <- grep("^[0-9]* \\[[0-9]*\\]$", x)
     for (i in inds) {
-      spl <- unlist(strsplit(x[[i]], " "))      
+      spl <- unlist(strsplit(x[[i]], " "))
       if (length(spl) > 1) {
         x[[i]] <- spl[[2]]
       } else {
@@ -6011,9 +6011,9 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
       }
     }
   }
-  
-  
-  
+
+
+
   # 1642[1643] -> 1643
   if (length(grep("^[0-9]{4}\\[[0-9]{4}\\]$", x)) > 0) {
     inds <- grep("^[0-9]{4}\\[[0-9]{4}\\]$", x)
@@ -6021,7 +6021,7 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
       x[[i]] <- substr(x[[i]], 6, 9)
     }
   }
-  
+
   # 1642[1643]-45 -> 1643-1645
   if (length(grep("^[0-9]{4}\\[[0-9]{4}\\]-[0-9]{2}$", x)) > 0) {
     inds <- grep("^[0-9]{4}\\[[0-9]{4}\\]-[0-9]{2}$", x)
@@ -6032,114 +6032,114 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
       x[[i]] <- paste(start, end, sep = "-")
     }
   }
-  
+
   # 1642[3] -> 1643
   inds <- grep("^[0-9]{4}\\[[0-9]{1}\\]$", x)
   if (length(inds) > 0) {
     for (i in inds) {
       x[[i]] <- paste0(substr(x[[i]], 1, 3), substr(x[[i]], 6, 6))
-    }  
+    }
   }
-  
+
   clean2 <- function (x) {
-    
+
     x <- strsplit(x, "\\]-\\[")[[1]]
-    
+
     start <- polish_year(x[[1]])[[1]]
-    
+
     end <- NA
     if (length(x) > 1) {
       end <- polish_year(x[[2]])
       if (length(end) > 0) {end <- end[[1]]}
     }
-    
+
     if (!is.na(start) & !is.na(end) & end < start) {
       end <- ""
     }
-    
-    x <- paste(start, end, "-")          
-    
-  } 
-  
-  
+
+    x <- paste(start, end, "-")
+
+  }
+
+
   # "[1900?]-[190-?]"
   inds <- grep("\\]-\\[", x)
   if (length(inds) > 0) {
     x[inds] <- sapply(x[inds], function (xx) {clean2(xx)})
   }
-  
+
   # "[1900?]-190-?"
   clean1 <- function (x) {
     x <- strsplit(x, "\\]-")[[1]]
-    
+
     start <- polish_year(x[[1]])
-    
+
     end <- ""
     if (length(x) > 1) {
       end <- polish_year(x[[2]])
     }
-    
-    x <- paste(start, end, "-")    
+
+    x <- paste(start, end, "-")
   }
-  
+
   inds <- grep("\\]-[?]*", x)
   if (length(inds) > 0) {
     x[inds] <- sapply(x[inds], function (xx) {clean1(xx)})
   }
-  
+
   # 1966 [=1971]  -> 1971
   x <- gsub("[0-9]{4}  ?[[][=]([0-9]{4})[]]", "\\1", x)
-  
+
   # Remove some other info
   x <- gsub("price [0-9] d", "", x)
   x <- gsub("-[0-9]{2,3}\\?{1,2}$", "", x)
   x <- gsub("\\?", "", x)
-  x <- gsub("\\!", " ", x)  
+  x <- gsub("\\!", " ", x)
   x <- gsub("^& ", "", x)
-  
+
   x <- condense_spaces(gsub("\\[\\]", " ", x))
   x <- gsub(" -", "-", gsub("- ", "-", x))
   x <- gsub("-+", "-", x)
   x <- gsub("1\u0302", "1", x) #1\u0302 = 1 with circumflex
-  
+
   x <- gsub("\\[[a-z| ]*\\]", "", x)
-  
+
   x <- gsub("[[]", "", x)
   x <- gsub("[]]", "", x)
   x <- harmonize_christian(x)
-  
+
   inds <- grep(" or ", x)
   if (length(inds)>0) {
     x[inds] <- sapply(x[inds], function (x) unlist(strsplit(x, " or "), use.names = FALSE)[[2]])
   }
-  x[inds] <- str_trim(x[inds])
-  
+  x[inds] <- stringr::str_trim(x[inds])
+
   # Convert romans
   x <- gsub("m\\.d", "md", x)
   x <- gsub("m\\.d\\.", "md", x)
   x <- gsub("m d", "md", x)
-  x <- gsub("m d ", "md", x)  
+  x <- gsub("m d ", "md", x)
   x <- gsub("m\\,d", "md", x)
   x <- gsub("m\\,d\\,", "md", x)
   x <- gsub("md x", "mdx", x)
-  x <- gsub("md l", "mdl", x)  
+  x <- gsub("md l", "mdl", x)
   x <- gsub("ij$", "ii", x)
-  
+
   num <- suppressWarnings(as.numeric(as.roman(gsub(" ", "", x))))
   inds <- which(!is.na(num))
   if (length(inds) > 0) {
     x[inds] <- num[inds]
   }
-  
+
   # Map back to original indices and make unique again. To speedup further.
   xorig <- x[match(xorig, xuniq)]
   xuniq <- unique(xorig)
   x <- xuniq
-  
+
   if (length(grep("[0-9]{4}\\[[0-9]", x))>1) {
     x <- substr(x, 1, 4)
   }
-  
+
   res <- suppressWarnings(
     lapply(x,
            function (xi) {
@@ -6149,7 +6149,7 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
                                   months,
                                   verbose)
              )
-             
+
              if (inherits(a, "try-error")) {
                return(c(NA, NA))
              } else {
@@ -6158,34 +6158,34 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
            }
     )
   )
-  
+
   res <- do.call("rbind", res)
   start_year <- res[,1]
   end_year   <- res[,2]
-  
+
   if (check) {
     inds <- which(start_year > end_year)
     if (length(inds) > 0) {
       start_year[inds] <- NA
-      end_year[inds] <- NA      
+      end_year[inds] <- NA
     }
   }
-  
+
   start_year[is.infinite(start_year)] <- NA
-  end_year[is.infinite(end_year)] <- NA  
-  
+  end_year[is.infinite(end_year)] <- NA
+
   # Do not accept years below and above these values
   print(min.year)
   print(max.year)
-  
+
   start_year[start_year < min.year | start_year > max.year] <- NA
-  end_year[end_year < min.year | end_year > max.year] <- NA  
-  
-  
-  
+  end_year[end_year < min.year | end_year > max.year] <- NA
+
+
+
   df <- data.frame(from = as.numeric(as.character(start_year)),
                    till = as.numeric(as.character(end_year)))
-  
+
   message(paste("Checking that the years are within the accepted range:", min.year, "-", max.year))
   # Manually checked for Fennica - 3 publications before 1400;
   # FIXME make more explicit in the final reports; maybe with a separate enrich function as earlier
@@ -6194,17 +6194,17 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
   df$from[which(df$from < min.year)] <- NA
   df$till[which(df$till > max.year)] <- NA
   df$till[which(df$year < min.year)] <- NA
-  
+
   # Not yet incorporated in main function so that it would work
   # df<-polish_years_helper(df)
   # Match the unique cases to the original indices
   # before returning the df
-  
-  
-  #print(max(match(xorig, xuniq))) 
+
+
+  #print(max(match(xorig, xuniq)))
   #print(nrow(df))
   return(df[match(xorig, xuniq), c("from", "till")])
-  
+
 }
 
 
@@ -6224,55 +6224,55 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
 #' @examples \dontrun{df <- polish_year(c("1746"))}
 #' @keywords utilities
 polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, verbose = FALSE, min.year = -3000, max.year = 2100) {
-  
-  
+
+
   x <- gsub("^\\[", "", x)
   x <- gsub("\\]$", "", x)
   x <- gsub("\\?$", "", x)
-  
+
   # x <- gsub("[0-9]{1,2} [a-z+]", "", x)
   if (length(grep("^[a-z|=]*-*[a-z|=]+[0-9]*", x)) > 0) {
     x <- gsub("^[a-z|-|=]*-*[a-z|-|=]+", "", x)
     x <- gsub("[a-z|=]+", "", x)
-    x <- gsub("- +", "", x)     
+    x <- gsub("- +", "", x)
   }
-  
+
   # Some quick returns for simple cases to speed up
   if (length(grep("^[0-9]{4}$", x)) > 0) {
-    
+
     # 1900
     start <- x # gsub("^([0-9]+)$", "\\1", x)
     end <- NA
     return (c(from=as.numeric(start), till=end))
   } else if (length(grep("^[0-9]{3}-$", x)) > 0) {
-    
+
     # 190-
     start <- gsub("-", "0", x)
     end <- NA
-    return (c(from=as.numeric(start), till=end))    
-    
+    return (c(from=as.numeric(start), till=end))
+
   } else if (length(grep("^[0-9]{4}\\?$", x)) > 0) {
-    
+
     # 1900?
     start <- gsub("\\?", "", x)
     end <- NA
     return (c(from=as.numeric(start), till=end))
-    
+
   } else if (length(grep("^[0-9]{3}-\\?$", x)) > 0) {
-    
+
     # 190-?
     start <- gsub("-\\?", "0", x)
-    
+
     end <- NA
     return (c(from=as.numeric(start), till=end))
-    
+
   } else if (length(grep("^[0-9]{2}-$", x)) > 0) {
-    
+
     # 19-
     start <- paste0(substr(x, 1, 2), "00")
     end <- NA
     return (c(from=as.numeric(start), till=end))
-    
+
   } else if (is.na(x)) {
     return(c(NA, NA))
   } else if (length(grep("^[0-9]{1,3}[.]?$", x)) >  0) {
@@ -6308,10 +6308,10 @@ polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, v
   } else if (length(grep("^[0-9]{4}$", gsub("\\]", "", gsub("\\[", "", x)))) > 0) {
     # 190[1]] / 19[83]
     x <- gsub("\\[", "", x)
-    x <- gsub("\\]", "", x)    
+    x <- gsub("\\]", "", x)
     start <- x
     end <- NA
-    return (c(from=as.numeric(start), till=end))    
+    return (c(from=as.numeric(start), till=end))
   } else if (length(grep("^\\[*[0-9]{4}\\]*[-]\\[*[0-9]{4}\\]*$", x)) > 0) {
     # 1900-1910 / [1929]-[1930]
     start <- gsub("^\\[*([0-9]{4}).*\\]*", "\\1", x)
@@ -6322,14 +6322,14 @@ polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, v
     start <- gsub("^\\[*([0-9]{4}).*", "\\1", x)
     end <- gsub(".*([0-9]{4})$", "\\1", x)
     return (c(from=as.numeric(start), till=as.numeric(end)))
-    
+
   } else if (length(grep("^[0-9]{4}-[0-9]{4}", gsub("\\]", "", gsub("\\[", "", x)))) > 0) {
     # "18[35-18]42"
     x <- gsub("\\]", "", gsub("\\[", "", x))
     spl <- unlist(strsplit(x, "-"), use.names = FALSE)
     start <- spl[[1]]
     end <- spl[[2]]
-    
+
     return (c(from=as.numeric(start), till=as.numeric(end)))
   } else if (length(grep("^[0-9]{1,4}B\\.C-[0-9]{1,4}B\\.C$", x)) > 0) {
     # 30bc-26bc
@@ -6342,23 +6342,23 @@ polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, v
     tmp <- as.numeric(gsub("B\\.C", "", unlist(strsplit(x, "-"))))
     start <- -tmp[[1]]
     end <- tmp[[2]]
-    return (c(from=as.numeric(start), till=as.numeric(end)))        
+    return (c(from=as.numeric(start), till=as.numeric(end)))
   } else if (length(grep("^[0-9]{1,4}B\\.C$", x)) > 0) {
     start <- -as.numeric(gsub("B\\.C", "", x))
     end <- NA
-    return (c(from=as.numeric(start), till=as.numeric(end)))    
+    return (c(from=as.numeric(start), till=as.numeric(end)))
   } else if (length(grep("^[0-9| ]+$", x))>0) {
     n <- as.numeric(unlist(strsplit(condense_spaces(x), " ")))
     start <- min(n)
     end <- max(n)
-    return (c(from=as.numeric(start), till=end))    
+    return (c(from=as.numeric(start), till=end))
   } else if (length(grep("^(NA)?[-][0-9]{4}$", x)) > 0) {
     # NA-1910; -1910
     start <- NA
     end <- gsub("(NA)?[-](.*)", "\\2", x)
-    return (c(from=as.numeric(start), till=as.numeric(end)))    
+    return (c(from=as.numeric(start), till=as.numeric(end)))
   }
-  
+
   # More complex cases..
   # "mdccx-mdccxi [1710-1711]" -> [1710-1711]
   if (length(grep("[[:lower:]]*-[[:lower:]]* \\[[0-9]*-[0-9]*\\]", x))>0) {
@@ -6376,29 +6376,29 @@ polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, v
   } else if (length(grep("^[0-9]{4}, [0-9]\\:o$", x))>0) {
     # "1731, 4:o" -> 1731
     x <- substr(x, 1, 4)
-  }  
-  
+  }
+
   # Now Remove some special chars
-  x <- gsub("\\(\\)", "", x)  
+  x <- gsub("\\(\\)", "", x)
   x <- gsub("-+", "-", x)
   x <- gsub("^[<|>]*", "", x)
-  x <- gsub("[<*|>]", "", x)  
+  x <- gsub("[<*|>]", "", x)
   x <- condense_spaces(x)
   x <- gsub("[\\{|\\}]", " ", x)
   x <- gsub("\\\\>", " ", x)
   x <- gsub("\\[=", "[", x)
-  x <- gsub("\\[\\]", "-", x)    
+  x <- gsub("\\[\\]", "-", x)
   x <- gsub("[[:lower:]]", "", x)
   x <- condense_spaces(x)
-  
+
   if (length(grep("^[0-9]{2}\\[[0-9]{2}\\]$", x))>0) {
     # 19[99]
     x <- gsub("\\[", "", x)
-    x <- gsub("\\]", "", x)    
+    x <- gsub("\\]", "", x)
   } else if (length(grep("^[0-9]{3}\\[[0-9]{1}\\]$", x))>0) {
     # 199[9]
     x <- gsub("\\[", "", x)
-    x <- gsub("\\]", "", x)    
+    x <- gsub("\\]", "", x)
   } else if (length(grep("^[0-9]{4}/[0-9] \\[[0-9]{4}\\]$", x))>0) {
     # 1695/6 [1696]
     x <- gsub("\\]", "", unlist(strsplit(x, "\\["), use.names = FALSE)[[2]])
@@ -6412,7 +6412,7 @@ polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, v
     x <- gsub("\\[", " ", x)
     x <- gsub("\\]", " ", x)
     x <- gsub("\\(", " ", x)
-    x <- gsub("\\)", " ", x)    
+    x <- gsub("\\)", " ", x)
     x <- gsub("-", " ", x)
     x <- gsub(";", " ", x)
     x <- gsub(",", " ", x)
@@ -6422,8 +6422,8 @@ polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, v
     x <- x[x >= 100] # ignore years below 100
     x <- paste(min(x), max(x), sep = "-")
   }
-  
-  x <- gsub("\\[[0-9]{2,3}-*\\]", "", x)  
+
+  x <- gsub("\\[[0-9]{2,3}-*\\]", "", x)
   x <- gsub("-\\]-", "-", x)
   x <- gsub("\\[[0-9]{2}-\\]", "NA", x)
   x <- gsub("\\[[0-9]{2,3}-\\?", "NA", x)
@@ -6432,33 +6432,33 @@ polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, v
   x <- gsub("-[0-9]{2}-\\?", "-NA", x)
   x <- gsub("-[0-9]{2}\\?+", "-NA", x)
   x <- gsub("\\[", " ", x)
-  x <- gsub("\\]", " ", x)      
+  x <- gsub("\\]", " ", x)
   x <- gsub("^\\(", "", gsub("\\)$", "", x))
-  x <- gsub(" -", "-", gsub("- ", "-", x))  
+  x <- gsub(" -", "-", gsub("- ", "-", x))
   x <- gsub("^-", "NA-", gsub("-$", "-NA", x))
   x <- gsub("[[:lower:]]", "", x)
   x <- condense_spaces(x)
   x <- gsub("^[\\:|\\=]", "", x)
-  
+
   if (length(x) == 1 && (x == "" || is.na(x))) {
     x <- "NA"
   }
   if (length(x) > 1) {
     x <- na.omit(x)
   }
-  
+
   x <- gsub(" *-+ *","-",x)
-  
+
   if (length(grep("\\([0-9]+ */*[0-9]+\\)-[0-9]+ *\\([0-9]{4}/*[0-9]+", x))>0) {
     # "1(1861/1865)-8(1896/1900"
     x <- gsub("\\(", " ", x)
     x <- gsub("\\)", " ", x)
     x <- gsub("/", " ", x)
-    x <- gsub("-", " ", x)            
+    x <- gsub("-", " ", x)
     x <- unlist(strsplit(x, " "), use.names = FALSE)
     x <- na.omit(as.numeric(x))
     x <- x[x >= 100] # ignore years below 100
-    x <- paste(min(x), max(x), sep = "-")  
+    x <- paste(min(x), max(x), sep = "-")
   } else if (length(grep("^[0-9]{4}/[0-9]{4}-[0-9]{4}/[0-9]{4}$", x))>0) {
     # "1885/1886- 1894/1895"
     x <- na.omit(as.numeric(unlist(strsplit(unlist(strsplit(x, "-"), use.names = FALSE), "/"), use.names = FALSE)))
@@ -6472,15 +6472,15 @@ polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, v
   } else if (length(grep("[0-9]{4}-[0-9]{1,2}$", x))>0) {
     spl <- unlist(strsplit(x, "-"), use.names = FALSE)
     x <- paste(spl[[1]], paste(substr(spl[[1]], 1, 4-nchar(spl[[2]])), spl[[2]], sep = ""), sep = "-")
-  } else if (length(grep("^[0-9]{4}/[0-9]*$", x))>0) {  
+  } else if (length(grep("^[0-9]{4}/[0-9]*$", x))>0) {
     x <- substr(x, 1, 4)
   } else if (length(grep("[0-9]{4} [0-9]*$", x))>0) {
     # 1780 1800 > 1780-1800
     x <- gsub(" ", "-", x)
   }
-  
+
   #x <- unlist(strsplit("3: 1-26 ( 1904/1905 ) , 1: : 1-54 (1905/1906", ""))
-  #x <- unlist(strsplit(x, ""))  
+  #x <- unlist(strsplit(x, ""))
   #x <- as.numeric(x)
   #x[is.na(x)] <- "-"
   #x <- condense_spaces(paste(x, collapse = ""))
@@ -6488,23 +6488,23 @@ polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, v
   #x <- na.omit(as.numeric(x))
   #x <- x[x >= 100] # ignore less than 100
   #x <- paste(min(x), max(x), sep = "-")
-  
+
   # "( ) 25 1643"
   spl <- unlist(strsplit(x, " "), use.names = FALSE)
   spl <- unique(spl[grep("[0-9]{4}", spl)])
-  
+
   if (length(spl) == 1) {
     x <- spl
   }
-  
+
   # 1690, 1690 -> 1690
-  if (length(grep("[0-9]{4}, [0-9]{4}$", x))>0) {  
+  if (length(grep("[0-9]{4}, [0-9]{4}$", x))>0) {
     x <- as.character(min(as.numeric(unique(unlist(strsplit(x, ","), use.names = FALSE)))))
   }
-  
+
   # "1885/1886--1889/1890-1885-1885-2"
   x <- gsub("'", " ", x)
-  x <- gsub(",", " ", x)    
+  x <- gsub(",", " ", x)
   x <- gsub("\\(", " ", x)
   x <- gsub("\\)", " ", x)
   x <- gsub(" -+", "-", x)
@@ -6515,17 +6515,17 @@ polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, v
   x <- gsub(" ", "-", x)
   x <- gsub("-+", "-", x)
 
-  
-  
+
+
   if (length(grep("^[0-9|/|-]+$", x))>0) {
     n <- unlist(strsplit(unlist(strsplit(x, "-"), use.names = F), "/"), use.names = F)
     n <- na.omit(as.numeric(n))
     n <- n[n>=500] # do not accept years below this one in this special case
-    
+
     # there shouldn't be any of these as they've already been gsubbed to " " above
     # n <- unlist(strsplit(unlist(strsplit(as.character(n), "\\("), use.names = F), "\\)"), use.names = F)
     # n <- na.omit(as.numeric(n))
-    
+
     start <- NA
     if (length(n) > 0) {
       start <- min(n)
@@ -6534,9 +6534,9 @@ polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, v
     if (length(n) > 1) {
       end <- max(n)
     }
-    return (c(from=as.numeric(start), till=as.numeric(end)))  
+    return (c(from=as.numeric(start), till=as.numeric(end)))
   }
-  
+
   if (length(grep("^[0-9]{4}$", x)) > 0) {
     # 1900
     start <- gsub("^([0-9]+)$", "\\1", x)
@@ -6548,8 +6548,8 @@ polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, v
     end <- gsub(".*([0-9]{4})$", "\\1", x)
     return (c(from=as.numeric(start), till=as.numeric(end)))
   }
-  
-  
+
+
   # Proceed to more complex cases
   if (!is.null(start_synonyms)) {
     start <- map(x, start_synonyms)
@@ -6557,11 +6557,11 @@ polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, v
   } else {
     start <- x
   }
-  
+
   if (length(grep("-", x))>0) {
     spl <- unlist(strsplit(as.character(start), "-+"), use.names = FALSE)
     spl <- as.numeric(spl)
-    
+
     # HR 20190225: Do not make this assumption. It's harmful.
     #if (sum(is.na(spl))>1) {
     #  # NA, 3, NA -> 3, NA (assume the year is start year if it is not clear)
@@ -6577,28 +6577,28 @@ polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, v
     }
     #x <- paste(x, collapse = "-")
   }
-  
+
   if (length(grep("^(NA)?[-][0-9]{4}$", x)) > 0) {
     # NA-1910; -1910
     start <- NA
     end <- gsub("NA-", "", x)
-    return (c(from=as.numeric(start), till=as.numeric(end)))    
-    
+    return (c(from=as.numeric(start), till=as.numeric(end)))
+
   } else if (length(grep("^[0-9]{4}[-]NA$", x)) > 0) {
     # 1900-NA
     start <- gsub("-NA", "", x)
     end <- NA
-    return (c(from=as.numeric(start), till=as.numeric(end)))        
+    return (c(from=as.numeric(start), till=as.numeric(end)))
   } else if (length(grep("\\[[0-9]*\\]", x)) > 0) {
-    # MDCCLXVIII. [1768]  
+    # MDCCLXVIII. [1768]
     spl <- unlist(strsplit(x, " "), use.names = FALSE)
     if (length(spl) > 1) {
       spl <- spl[[2]]} else {spl <- spl[[1]]
       }
     start <- gsub("\\[", "", gsub("\\]", "", spl))
-    end <- NA    
+    end <- NA
   } else if (length(grep("^[0-9]*\\.", x)) > 0) {
-    # "1798. (price one dollar)"  
+    # "1798. (price one dollar)"
     start <- unlist(strsplit(x, "\\."), use.names = FALSE)[[1]]
     end <- NA
   } else if (length(grep("[0-9]+", x)) > 0) {
@@ -6621,14 +6621,14 @@ polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, v
   } else if (x == "NA") {
     end <- NA
   }
-  
-  
+
+
   start[start == ""] <- NA
-  start[start == " "] <- NA  
-  
-  start <- christian2numeric(start) 
+  start[start == " "] <- NA
+
+  start <- christian2numeric(start)
   start_year <- as.numeric(start)
-  
+
   # FIXME "cannot coerce type 'closure' to vector of type 'character'" error here.
   # There are cases where end has not yet been assigned at this point. Therefore
   # function below catches to a function base R called end() and hilarity ensues.
@@ -6636,35 +6636,35 @@ polish_year <- function(x, start_synonyms = NULL, end_synonyms = NULL, months, v
   if (!(exists("end", mode = "character") || exists("end", mode = "numeric"))) {
     end <- NA
   }
-  
+
   if (!is.null(end_synonyms)) {
     end <- map(end, end_synonyms)
     end <- as.character(end)
   }
-  end <- christian2numeric(end)   
+  end <- christian2numeric(end)
   end_year <- as.numeric(end)
-  
+
   if (length(start_year) == 0) {start_year <- NA}
-  if (length(end_year) == 0) {end_year <- NA}  
+  if (length(end_year) == 0) {end_year <- NA}
   if (length(start_year) > 1) {start_year <- NA}
   if (length(end_year) > 1) {end_year <- NA}
-  
+
   return(c(start_year, end_year))
 }
 
 
 christian2numeric <- function (x) {
-  
+
   inds <- grep("a.d", x)
   if (length(inds) > 0) {
-    x[inds] <- as.numeric(str_trim(gsub("a.d", "", x[inds])))
+    x[inds] <- as.numeric(stringr::str_trim(gsub("a.d", "", x[inds])))
   }
-  
+
   inds <- grep("b.c", x)
   if (length(inds) > 0) {
-    x[inds] <- -as.numeric(str_trim(gsub("b.c", "", x[inds])))
+    x[inds] <- -as.numeric(stringr::str_trim(gsub("b.c", "", x[inds])))
   }
-  
+
   return(x)
 }
 
@@ -6677,37 +6677,37 @@ christian2numeric <- function (x) {
 #' @keywords utilities
 
 polish_languages <- function(x) {
-  
+
   # Convert to polished language names as in
   # http://www.loc.gov/marc/languages/language_code.html
   abrv <- read.csv("language_abbreviations.csv", sep = "\t", header = TRUE, encoding = "UTF-8")
-  
+
   # Preprocess input data: replace empty strings with NA
   x[x == "" | x == " "] <- NA  # Replace empty strings with NA
-  
+
   # Convert pipe '|' to semicolon ';'
   x <- gsub("\\|", ";", x)
-  
+
   # Create a mapping of abbreviations to full language names using abrv
   # Use the match() function for mapping
   df.transformed <- data.frame(
     language_original = x,
-    
+
     language_count = sapply(x, function(lang) {
       if (is.na(lang)) return(NA)  # Return NA if the language is NA
       length(unlist(strsplit(lang, "\\;")))  # Count the number of languages separated by ';'
     }),
-    
+
     multiple = sapply(x, function(lang) {
       if (is.na(lang)) return(NA)  # Return NA if the language is NA
       lang_count <- length(unlist(strsplit(lang, "\\;")))
       return(lang_count > 1)  # TRUE if multiple languages, FALSE otherwise
     }),
-    
+
     full_language_name = sapply(x, function(lang) {
       if (is.na(lang)) return(NA)  # Return NA if the language is NA
       full_langs <- unlist(strsplit(lang, "\\;"))
-      
+
       # Map abbreviations to full names, and mark unrecognized abbreviations
       full_names <- sapply(full_langs, function(l) {
         match_idx <- match(l, abrv$synonyme)  # Find the index of the abbreviation in abrv$synonyme
@@ -6717,10 +6717,10 @@ polish_languages <- function(x) {
           return("Unrecognized")  # Mark as unrecognized if no match is found
         }
       })
-      
+
       paste(full_names, collapse = ";")  # Use ";" to separate full names
     }),
-    
+
     language_primary = sapply(x, function(lang) {
       if (is.na(lang)) return(NA)  # Return NA if the language is NA
       first_lang <- unlist(strsplit(lang, "\\;"))[1]
@@ -6732,7 +6732,7 @@ polish_languages <- function(x) {
       }
     })
   )
-  
+
   return(df.transformed)
 }
 
@@ -6741,7 +6741,7 @@ polish_languages <- function(x) {
 #' @param x Vector of titles
 #' @return Vector of titles polished
 #' @export
-#' @details Remove ending commas, periods, spaces and parentheses, 
+#' @details Remove ending commas, periods, spaces and parentheses,
 #' 	    starting prepositions etc.
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}, Julia Matveeva \email{yulmat@utu.fi}
 #' @references See citation("fennica")
@@ -6753,20 +6753,20 @@ polish_languages <- function(x) {
 polish_title <- function(x) {
   # Save the original titles
   title_original <- as.character(x)
-  
+
   # Perform the harmonization
   x0 <- x
   x <- as.character(x)
   x <- unique(x)
   xinds <- match(x0, x)
-  
+
   # Cleaning and formatting
   x <- gsub("\\.+$", "", x)
   x <- gsub("\\. $", "", x)
   x <- gsub("^\\.+", "", x)
-  x <- gsub("\\,$", "", x) 
-  x <- gsub("[ ]+$", "", x) 
-  x <- gsub("\\(|\\)", "", x) 
+  x <- gsub("\\,$", "", x)
+  x <- gsub("[ ]+$", "", x)
+  x <- gsub("\\(|\\)", "", x)
   x <- gsub("\\]$", "", x)
   x <- gsub("^\\[", "", x)
   x <- gsub("^\\(", "", x)
@@ -6778,23 +6778,23 @@ polish_title <- function(x) {
   x <- str_replace_all(x, "\\|", "")
   x <- str_replace_all(x, "\\/", "")
   x <- gsub("\\s+$", "", x)
-  x <- gsub('"', "", x, fixed = TRUE) 
-  
+  x <- gsub('"', "", x, fixed = TRUE)
+
   # Capitalization adjustments
   x <- gsub("^a", "A", x)
   x <- gsub("^the", "The", x)
-  
+
   x[x == ""] <- NA
-  
+
   # Map back to original indices
   title_harmonized <- x[xinds]
-  
+
   # Calculate the length of harmonized titles
   title_length <- nchar(title_harmonized)
-  
+
   title_word_count <- ifelse(is.na(title_harmonized), NA, sapply(strsplit(title_harmonized, "\\s+"), length))
-  
-  
+
+
   # Create the result dataframe
   df <- data.frame(
     title_original = title_original,
@@ -6803,7 +6803,7 @@ polish_title <- function(x) {
     title_word_count = title_word_count,
     stringsAsFactors = FALSE
   )
-  
+
   return(df)
 }
 
@@ -6814,26 +6814,26 @@ polish_title <- function(x) {
 #' @param x Vector of titles
 #' @return Vector of titles polished
 #' @export
-#' @details Remove ending commas, periods, spaces and parentheses, 
+#' @details Remove ending commas, periods, spaces and parentheses,
 #' 	    starting prepositions etc.
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}, Julia Matveeva \email yulmat@utu.fi
 #' @references See citation("fennica")
 #' @examples \dontrun{x2 <- polish_title(x)}
 #' @keywords utilities
 polish_title_remainder <- function (x) {
-  
+
   title_original <- as.character(x)
-  
+
   x0 <- x
   x <- as.character(x)
   x <- unique(x)
   xinds <- match(x0, x)
-  
+
   x <- gsub("\\,$", "", x) # Remove commas at the end
   x <- gsub("[ ]+$", "", x) # Remove trailing spaces
   x <- gsub("\\]$", "", x) # Remove closing square brackets at the end
   x <- gsub("^\\[", "", x) # Remove opening square brackets at the start
-  x <- gsub("\\(|\\)", "", x) 
+  x <- gsub("\\(|\\)", "", x)
   x <- gsub("\\:+$", "", x) # Remove colon at the end
   x <- gsub("^\\:", "", x) # Remove colon at the start
   x <- gsub("\\;+$", "", x) # Remove semicolon at the end
@@ -6843,28 +6843,28 @@ polish_title_remainder <- function (x) {
   x <- gsub("\\s+$", "", x)
   x <- gsub("^\\s+", "", x)
   x <- gsub('"', "", x, fixed=TRUE) # Corrected line to remove double quotes
-  
+
   x <- tolower(x) #decapitalize
-  
-  
-  # Remove periods 
+
+
+  # Remove periods
   x <- gsub("\\.+$", "", as.character(x))
   x <- gsub("\\. $", "", as.character(x))
   x <- gsub("^\\.+", "", as.character(x))
   x <- gsub("^\\.+", "", as.character(x))
-  
-  
+
+
   x[x == ""] <- NA
-  
+
   # Map back to original indices
   title_harmonized <- x[xinds]
-  
+
   # Calculate the length of harmonized titles
   title_length <- nchar(title_harmonized)
   # Count the number of words in each title (words separated by spaces)
   title_word_count <- ifelse(is.na(title_harmonized), NA, sapply(strsplit(title_harmonized, "\\s+"), length))
-  
-  
+
+
   # Create the result dataframe
   df <- data.frame(
     title_original = title_original,
@@ -6873,20 +6873,20 @@ polish_title_remainder <- function (x) {
     title_word_count = title_word_count,
     stringsAsFactors = FALSE
   )
-  
+
   return(df)
 }
 
 
 polish_udk <- function(x, patterns = c("929", "908", "92", "894.541", "839.79","839.7")) {
-  
+
   x0 <- x  # Save the original input for later use
-  
+
   # Replace '|' with ';' in the input
   x <- gsub("\\|", ";", x)
   x <- gsub(" ", "", x)
   x <- gsub(":", ";", x)
-  
+
   # Function to replace elements that start with specific patterns (like "929" or "908")
   replace_patterns <- function(x, patterns) {
     x <- unlist(strsplit(x, ";"))  # Split the string by semicolons
@@ -6900,26 +6900,26 @@ polish_udk <- function(x, patterns = c("929", "908", "92", "894.541", "839.79","
     })
     return(paste(unique(x), collapse = ";"))  # Collapse and ensure uniqueness
   }
-  
+
   # Apply the pattern replacement to the input vector
   x <- sapply(x, replace_patterns, patterns)
-  
+
   # Replace any empty strings with NA
   x[x == ""] <- NA
-  
+
   ############################################################
-  
+
   # Load UDK synonyms and names
   url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk.csv"
   udk <- read.csv(url, sep = ";", header = FALSE, encoding = "UTF-8")
   colnames(udk) <- c("synonyme", "name")
-  
+
   df <- data.frame(original = x0, cleaned = x, stringsAsFactors = FALSE)
-  
+
   # Function to match UDK codes to names
   match_and_concatenate <- function(value) {
     if (is.na(value)) return(NA)
-    
+
     split_value <- unlist(strsplit(value, ";"))
     converted_values <- sapply(split_value, function(val) {
       match_index <- match(val, udk$synonyme)
@@ -6929,22 +6929,22 @@ polish_udk <- function(x, patterns = c("929", "908", "92", "894.541", "839.79","
         return("Undetermined")
       }
     })
-    
+
     return(paste(converted_values, collapse = ";"))
   }
-  
+
   # Apply the matching function to the cleaned UDKs
   df$converted <- sapply(df$cleaned, match_and_concatenate)
-  
+
   # Function to find the first UDK that is not "Undetermined"
   find_primary_udk <- function(value) {
     if (is.na(value)) return(NA)
-    
+
     split_value <- unlist(strsplit(value, ";"))  # Split into separate UDKs
-    
+
     # Find the first non-"Undetermined" UDK
     primary <- split_value[split_value != "Undetermined"]
-    
+
     # If there are no non-"Undetermined" UDKs, return "Undetermined"
     if (length(primary) == 0) {
       return("Undetermined")
@@ -6952,28 +6952,28 @@ polish_udk <- function(x, patterns = c("929", "908", "92", "894.541", "839.79","
       return(primary[1])  # Return the first valid UDK
     }
   }
-  
+
   # Apply the function to determine the primary UDK
   df$primary <- sapply(df$converted, find_primary_udk)
-  
+
   len <- sapply(strsplit(x, ";"), length)
-  dff <- data.frame(udk_count = len)    
+  dff <- data.frame(udk_count = len)
   multi <- len > 1
   df$multi_udk <- multi
-  
+
   ############################################################
-  
+
   # Split values for further processing
   split_cleaned <- unlist(strsplit(df$cleaned, ";"))
   split_converted <- unlist(strsplit(df$converted, ";"))
-  
+
   # Create a data frame for UDK and explanation
   f <- data.frame(udk = split_cleaned, explanation = split_converted, stringsAsFactors = FALSE)
-  
+
   # Filter for undetermined and accepted values
   undetermined <- filter(f, explanation == "Undetermined")
   accepted <- filter(f, explanation != "Undetermined")
-  
+
   return(list(full = df, undetermined = undetermined, accepted = accepted))
 }
 
@@ -6992,85 +6992,85 @@ polish_udk <- function(x, patterns = c("929", "908", "92", "894.541", "839.79","
 #' @examples # x2 <- polish_place(c("London", "Paris"))
 #' @keywords utilities
 polish_place <- function (x, synonymes = NULL, remove.unknown = FALSE, verbose = FALSE, harmonize = TRUE) {
-  
+
   if (all(is.na(x))) {return(x)}
-  
+
   if (is.null(synonymes)) {
     # Harmonize places with synonyme table
     f <- system.file("extdata/PublicationPlaceSynonymes.csv", package = "fennica")
     synonymes <- suppressWarnings(read_mapping(f, include.lowercase = T, self.match = T, ignore.empty = FALSE, mode = "table", trim = TRUE))
-    
+
     if (verbose) { message(paste("Reading special char table", f)) }
     # Harmonize places with synonyme table
     f <- system.file("extdata/replace_special_chars.csv",
                      package = "fennica")
     spechars <- suppressWarnings(read_mapping(f, sep = ";", mode = "table", include.lowercase = TRUE))
-    
+
     if (verbose) { message(paste("Reading publication place synonyme table", f)) }
     f <- system.file("extdata/harmonize_place.csv", package = "fennica")
     synonymes.spec <- suppressWarnings(read_mapping(f, sep = ";", mode = "table", include.lowercase = TRUE))
     if (verbose) { message(paste("Reading publication place synonyme table", f)) }
-    
+
   }
-  
+
   # Prepare
   if (verbose) { message("Convert to lowercase character and make unique list") }
   x0 <- x
   xorig <- tolower(as.character(x))
   x <- xuniq <- unique(xorig)
-  
+
   if (verbose) { message("Replace special characters") }
   x <- as.character(map(x, spechars, mode = "recursive", verbose = verbose))
-  
+
   if (verbose) { message("Remove brackets") }
-  # Lo[n]don -> London  
+  # Lo[n]don -> London
   x <- remove_brackets_from_letters(x)
-  
+
   # Some trivial trimming to speed up
   # TODO should go to synonyme list?
   # Remove numerics
-  x <- gsub("[0-9]", " ", x) 
+  x <- gsub("[0-9]", " ", x)
   x <- remove_special_chars(x, chars = c("\\(", "\\)", "\\[", "\\]", "\\{", "\\}", "\\="), niter = 1)
   x <- gsub("[_|:|;|,|\\?|\\&|\\.|/|>|<|\"| ]+", " ", x)
   x <- gsub("-+", " ", x)
-  x <- gsub("'", " ", x)  
+  x <- gsub("'", " ", x)
   x <- condense_spaces(x)
   x <- gsub(" sic ", " ", x)
   x <- gsub("^and ", "", x)
-  x <- gsub("^from ", "", x)            
+  x <- gsub("^from ", "", x)
   x <- gsub("^re ", "", x)
   x <- gsub("^[a-z] +[a-z]$", " ", x)
   x <- gsub("^[a-z]\\. [a-z]$", " ", x)
-  x[nchar(gsub(" ", "", x)) <= 2] = NA  
+  x[nchar(gsub(" ", "", x)) <= 2] = NA
   x <- condense_spaces(x)
-  
+
   # Back to original indices, then unique again;
   # reduces number of unique cases further
   xorig <- x[match(xorig, xuniq)]
   x <- xuniq <- unique(xorig)
-  
+
   if (verbose) {message(paste("Polishing ", length(xuniq), " unique place names", sep = ""))}
   x <- remove_persons(x)
-  
+
   if (verbose) {message("Remove print statements")}
   x <- remove_print_statements(x)
   x <- condense_spaces(x)
-  
+
   # Back to original indices, then unique again;
   # reduces number of unique cases further
   xorig <- x[match(xorig, xuniq)]
   x <- xuniq <- unique(xorig)
-  
+
   if (verbose) {message("Remove stopwords")}
   f <- system.file("extdata/stopwords_for_place.csv", package = "fennica")
   message(paste("Reading stopwords from file ", f))
-  stopwords <- unique(tolower(str_trim(as.character(read.csv(f)[,1]))))
+  stopwords <- unique(tolower(stringr::str_trim(as.character(read.csv(f)[,1]))))
   x <- suppressWarnings(remove_terms(x, stopwords, c("begin", "middle", "end"), recursive = TRUE))
-  
+
   if (verbose) {message("Harmonize ie")}
   x <- harmonize_ie(x)
   if (length(x) == 0) {return(rep(NA, length(xorig)))}
-  
+
   # Back to original indices, then unique again;
   # reduces number of unique cases further
   if (verbose) {message("Match to original")}
@@ -7078,34 +7078,34 @@ polish_place <- function (x, synonymes = NULL, remove.unknown = FALSE, verbose =
   # reduces number of unique cases further
   xorig <- x[match(xorig, xuniq)]
   x <- xuniq <- unique(xorig)
-  
+
   if (verbose) {message("Detailed polishing")}
-  
+
   x <- suppressWarnings(unname(sapply(x, function (x) {polish_place_help(unlist(x, use.names = FALSE), synonymes$synonyme, verbose = verbose)}, USE.NAMES = FALSE)))
   if (length(x) == 0) { return(rep(NA, length(xorig))) }
-  
+
   # Back to original indices, then unique again; reduces
   # number of unique cases further
   if (verbose) {message("Match to original")}
   xorig <- x[match(xorig, xuniq)]
   x <- xuniq <- unique(xorig)
   if (length(x) == 0) {return(rep(NA, length(xorig)))}
-  
+
   if (verbose) { message("Harmonize the synonymous names") }
   x <- suppressWarnings(as.character(map(x, synonymes.spec, mode = "recursive")))
-  
+
   # Once more remove stopwords
   # Warning: the names discarded here wont be visible in
   # summary lists of discarded names !
   # For validation purposes might be good to comment this out
   # for initial runs.
   x <- suppressWarnings(remove_terms(x, stopwords, c("begin", "middle", "end"), recursive = TRUE))
-  
+
   # Remove roman numerals
   x <- sapply(strsplit(x, " "), function (xi) {paste(xi[!is.roman(suppressWarnings(as.roman(xi)))], collapse = " ")}, USE.NAMES = FALSE)
-  
+
   if (harmonize) {
-    
+
     # If the term is not on synonyme or name list but
     # all subterms are, select the first subterm
     ss <- unique(tolower(c(synonymes$synonyme, synonymes$name)))
@@ -7117,74 +7117,74 @@ polish_place <- function (x, synonymes = NULL, remove.unknown = FALSE, verbose =
         x[inds[inds2]] = sapply(spl[inds2], function (xi) {xi[[1]]}, USE.NAMES = FALSE)
       }
     }
-    
+
     # abo abo abo = abo
     x <- sapply(strsplit(x, " "), function (xi) {paste(unique(xi), collapse = " ")})
-    
-    # Then match place names to synonymes		
+
+    # Then match place names to synonymes
     x <- as.character(map(x, synonymes,
                           remove.unknown = remove.unknown,
                           mode = "exact.match"))
-    
+
   }
-  
-  # Remove too short names 
+
+  # Remove too short names
   x[nchar(gsub(" ", "", x)) <= 2] = NA
   x <- gsub("^[a-z] [a-z]$", " ", x)
-  x <- gsub("^[a-z]\\.[a-z]$", " ", x)  
-  
+  x <- gsub("^[a-z]\\.[a-z]$", " ", x)
+
   if (length(x) == 0) {return(rep(NA, length(xorig)))}
-  
+
   if (verbose) {message("Replace special cases")}
   x[x %in% c("", " ", "na")] <- NA
-  
-  if (verbose) {message("Capitalize all names")}    
+
+  if (verbose) {message("Capitalize all names")}
   x <- capitalize(x)
-  
+
   if (verbose) {message("Convert back to original indices and return")}
   x[match(xorig, xuniq)]
-  
+
 }
 
 
 polish_place_help <- function (x, s, verbose = FALSE) {
-  
+
   # London i.e. The Hague ->  The Hague
   # In the Yorke at London -> London
   # TODO use handle_ie function here or make an improved version
   x <- splitpick(x, " i.e ", 2)
-  x <- splitpick(x, " at ", 2)  
-  
+  x <- splitpick(x, " at ", 2)
+
   # NOTE: this step may loose info on original country
   # london re/now edinburgh -> london
   x <- splitpick(x, " re ", 1)
-  
+
   # New York N Y -> New York NY
   if (length(grep(" [a-z] [a-z]$", x))>0) {
     n <- nchar(x)
     x <- paste(substr(x, 1, n-2), substr(x, n, n), sep = "")
   }
-  
+
   # Remove - may loose considerable information ?
   # However looks very useful in practice
   # If the term is not on synonyme list but all its subterms are,
   # then select the first term
-  # ie "zurich cologne" becomes "zurich"  
+  # ie "zurich cologne" becomes "zurich"
   if (!is.na(x) && any(!is.na(s)) && !(x %in% na.omit(s))) {
     spl <- unlist(strsplit(x, " "), use.names = FALSE)
     inds <- which(!is.na(match(spl, c(s, "new"))))
-    
+
     if (length(inds) > 0) {
       # Keep only those terms that are on synonyme list
       # and exception terms "new"
       x <- paste(unique(spl[inds]), collapse = " ")
     }
   }
-  
-  
-  
+
+
+
   return(x)
-  
+
 }
 
 
@@ -7206,53 +7206,53 @@ polish_place_help <- function (x, s, verbose = FALSE) {
 #' @examples \dontrun{p <- top_plot(x, field, 50)}
 #' @keywords utilities
 top_plot <- function (x, field = NULL, ntop = NULL, highlight = NULL, max.char = Inf, show.rest = FALSE, show.percentage = FALSE, log10 = FALSE) {
-  
+
   # Circumvent warnings in build
   color <- percentage <- NULL
-  
+
   if (is.data.frame(x)) {
     x <- x[[field]]
   }
-  
+
   if (is.factor(x) || is.character(x) || is.numeric(x)) {
     x <- droplevels(as.factor(x))
   }
-  
+
   if (length(x) == 0) {
     return(ggplot())
   }
-  
+
   tab <- rev(sort(table(x)))
   tab <- tab[tab > 0]
-  
+
   dfs <- data.frame(names = names(tab), count = as.numeric(tab))
-  
+
   # Show all cases if ntop not specified
   if (is.null(ntop)) {
     ntop <- nrow(dfs)
   }
   ntop <- min(ntop, nrow(dfs))
-  
+
   dfs <- dfs[1:ntop,] # Pick top-n items
   topp <- sum(dfs$count)/sum(tab)
-  
+
   if (show.rest & ntop < length(tab)) {
     dfs2 <- data.frame(list(names = "Other", count = sum(tab) - sum(dfs$count)))
     dfs <- bind_rows(dfs, dfs2)
   }
-  
+
   # Limit length of names in the printout
   if (is.infinite(max.char)) {
     max.char <- max(nchar(as.character(dfs$names)))
   }
-  
+
   levels1 <- length(unique(dfs$names))
   dfs$names <- substr(as.character(dfs$names), 1, max.char)
   levels2 <- length(unique(dfs$names))
   if (!levels1 == levels2) {
     warning("Truncating the names is mixing up some of the variable names.")
   }
-  
+
   # Arrange levels; leave the leaveout category as the last one
   levs <- rev(unique(dfs$names))
   if ("Other" %in% levs) {
@@ -7260,42 +7260,42 @@ top_plot <- function (x, field = NULL, ntop = NULL, highlight = NULL, max.char =
   }
   dfs$names <- droplevels(factor(dfs$names, levels = levs))
   dfs$percentage <- round(100 * dfs$count/sum(dfs$count), 1)
-  
+
   dfs$color <- rep("black", nrow(dfs))
   if (!is.null(highlight)) {
     dfs$color <- rep("darkgray", nrow(dfs))
     dfs$color[dfs$names %in% highlight] <- "red"
-    p <- ggplot(dfs, aes(x = names, y = count, fill = color))    
+    p <- ggplot(dfs, aes(x = names, y = count, fill = color))
   } else {
     p <- ggplot(dfs, aes(x = names, y = count))
   }
-  
+
   p <- p + geom_bar(stat = "identity", color = "black", fill = "white")
   p <- p + coord_flip()
   p <- p + xlab("") + ylab(paste(field, "(N)"))
-  
+
   s <- paste("Total N=", sum(tab), " / Top-", ntop, ": ", round(100 * topp, 1), "%", sep = "")
-  
+
   p <- p + labs(title = s)
-  
+
   if (show.percentage) {
     p <- p + geom_text(aes(x = names, y = 30,
                            label = paste(percentage, "%", sep = "")))
   }
-  
-  
+
+
   if (log10) {
     p <- p + scale_y_log10() + labs(y = paste(field, "(N)"))
   }
-  
+
   p
-  
-} 
+
+}
 
 
 #' @title Identify Top Entries
 #' @description Identify the top entries in a vector or for a given field in a data frame.
-#' @param x data.frame, matrix, or vector 
+#' @param x data.frame, matrix, or vector
 #' @param field Field or column to check for a data.frame or matrix
 #' @param n Number of top entries to show
 #' @param output Output format: vector or data.frame
@@ -7313,7 +7313,7 @@ top <- function (x, field = NULL, n = NULL, output = "vector", round = NULL, na.
   if (is.factor(x)) {
     x <- as.character(x)
   }
-  
+
   if (is.vector(x)) {
     if (na.rm) {
       inds <- which(x == "NA")
@@ -7330,7 +7330,7 @@ top <- function (x, field = NULL, n = NULL, output = "vector", round = NULL, na.
       #warning("Indicate the selected field for the top function.")
       return(NULL)
     }
-    
+
     x <- x[, field]
     if (na.rm) {
       inds <- which(x == "NA")
@@ -7343,11 +7343,11 @@ top <- function (x, field = NULL, n = NULL, output = "vector", round = NULL, na.
     N <- length(x)
     s <- rev(sort(table(x)))
   }
-  
+
   if (!is.null(n)) {
     s <- s[1:min(n, length(s))]
   }
-  
+
   if (output == "data.frame") {
     s <- data_frame(name = names(s), n = unname(s), fraction = 100*unname(s)/N)
     if (is.null(field)) {field <- "Field"}
@@ -7357,25 +7357,25 @@ top <- function (x, field = NULL, n = NULL, output = "vector", round = NULL, na.
     }
     if (include.rank) {
       s <- cbind(Rank = 1:nrow(s), s)
-    } 
+    }
   }
-  
+
   s
-  
+
 }
 
-#' @title Polish Genre Book 
+#' @title Polish Genre Book
 #' @description Polish genre field 008/33, see 008_field.R for "Language material" #https://marc21.kansalliskirjasto.fi/bib/008.htm#BK
 #' @param x Vector of genres
 #' @return Vector of titles polished
 #' @export
-#' @details Remove ending commas, periods, spaces and parentheses, 
+#' @details Remove ending commas, periods, spaces and parentheses,
 #' 	    starting prepositions etc.
 #' @author  Julia Matveeva \email{yulmat@utu.fi}
 #' @references See citation("fennica")
 #' @examples \dontrun{x2 <- polish_genre_book(x)}
 #' @keywords utilities
-#' 
+#'
 
 polish_genre_book <- function(x) {
   x0 <- x
@@ -7395,7 +7395,7 @@ polish_genre_book <- function(x) {
     "u" = "Tuntematon",
     "|" = "Ei koodattu"
   )
-  
+
   # Harmonize genres with conditions
   genre_harmonized <- ifelse(
     is.na(x), NA, # Keep NA as NA
@@ -7406,64 +7406,64 @@ polish_genre_book <- function(x) {
       )
     )
   )
-  
+
   # Return a data frame
   df <- data.frame(
     genre_original = x0,
     genre_harmonized = genre_harmonized,
     stringsAsFactors = FALSE
   )
-  
+
   return(df)
 }
 
 
 #polish publication times from field 008
-#author = Julia Matveeva 
+#author = Julia Matveeva
 polish_years_008 <- function(x) {
   # Save the original column as x0 for reference
   x0 <- x
-  
+
   # Get the current year
   current_year <- as.numeric(format(Sys.Date(), "%Y"))
-  
+
   # Create publication_year_from and publication_year_till
   from <- ifelse(
     grepl(" ", x),  # Check if there are two dates
     as.numeric(substr(x, start = 1, stop = 4)),  # Extract first year
     as.numeric(x)  # Use the single year if no space
   )
-  
+
   till <- ifelse(
     grepl(" ", x),  # Check if there are two dates
     as.numeric(substr(x, start = 6, stop = nchar(x))),  # Extract second year
     NA  # If no second year, assign NA
   )
-  
+
   # Apply the conditions
   # 1. If 'from' > 'till', set both to NA
   invalid_order <- !is.na(from) & !is.na(till) & (from > till)
   from[invalid_order] <- NA
   till[invalid_order] <- NA
-  
+
   # 2. If 'from' > current_year, set it to NA
   from_invalid <- !is.na(from) & from > current_year
   from[from_invalid] <- NA
-  
+
   # 3. If 'till' > current_year, set it to NA
   till_invalid <- !is.na(till) & till > current_year
   till[till_invalid] <- NA
-  
+
   # Create publication_year (first date)
   publication_year <- from
-  
+
   # Create publication_decade_original (first year rounded down to nearest decade)
   decade <- ifelse(
     !is.na(publication_year),
     floor(publication_year / 10) * 10,  # Round down to the nearest decade
     NA
   )
-  
+
   # Combine all columns into the output dataframe
   out <- data.frame(
     original = x0,  # Original column
@@ -7472,7 +7472,7 @@ polish_years_008 <- function(x) {
     publication_year = publication_year,
     decade = decade
   )
-  
+
   # Return the resulting dataframe
   return(out)
 }
@@ -7483,53 +7483,53 @@ polish_years_008 <- function(x) {
 polish_signum <- function(x) {
   # Convert input to character
   x_original <- as.character(x)
-  
+
   # Replace '|' with ';'
   x_harmonized <- gsub("\\|", ";", x_original)
-  
+
   # Process each row safely
   x_harmonized <- lapply(strsplit(x_harmonized, ";"), function(vals) {
     if (is.null(vals) || length(vals) == 0 || all(is.na(vals)) || all(vals == "")) {
       return(NA)  # Convert empty or NA rows to NA
     }
-    
+
     vals <- unique(trimws(vals))  # Keep only unique values and trim whitespace
     vals <- vals[vals != ""]  # Remove empty strings
-    
+
     if (length(vals) == 0) return(NA)  # Convert completely empty cases to NA
-    
+
     paste(vals, collapse = ";")  # Reconstruct the cleaned string
   })
-  
+
   # Convert list back to a character vector
   x_harmonized <- unlist(x_harmonized)
-  
+
   # Create a data frame with original and harmonized values
   df <- data.frame(
     x_original = x_original,
     x_harmonized = x_harmonized,
     stringsAsFactors = FALSE
   )
-  
+
   return(df)
 }
 
 polish_080x <- function(x) {
   x0 <- x
-  
+
   # Function to remove duplicates and rejoin the values
   remove_duplicates <- function(x) {
     if (is.na(x) || x == "") return(NA)  # Convert empty values to NA
     unique_values <- unique(strsplit(x, "\\|")[[1]])  # Split by '|' and remove duplicates
     paste(unique_values, collapse = "|")  # Rejoin with '|'
   }
-  
+
   # Apply the function to the input
   harmonized <- sapply(x0, remove_duplicates)
-  
+
   # Create the resulting dataframe
   df <- data.frame(original = x0, harmonized = harmonized, stringsAsFactors = FALSE)
-  
+
   return(df)
 }
 
@@ -7538,15 +7538,15 @@ polish_udk <- function(x, chunk_size = 10000) {
   x0 <- x  # Save the original input for later use
   # Replace '|' with ';' in the input
   x <- gsub("\\|", ";", x)
-  
+
   # Load UDK synonyms and names
   url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk.csv"
   udk <- read.csv(url, sep = ";", header = FALSE, encoding = "UTF-8", stringsAsFactors = FALSE)
   colnames(udk) <- c("synonyme", "name")  # Rename columns correctly
-  
+
   # Create a named vector for mapping
   mapping <- setNames(udk$name, udk$synonyme)
-  
+
   # Function to map values with fallback truncation
   map_with_fallback <- function(value) {
     if (value == "" | is.na(value)) return(NA)  # Handle empty values
@@ -7558,7 +7558,7 @@ polish_udk <- function(x, chunk_size = 10000) {
     }
     return("Undetermined")  # If no match found, return "Undetermined"
   }
-  
+
   # Function to process a chunk of data
   process_chunk <- function(chunk, chunk_index) {
     cleaned_values <- lapply(seq_along(chunk), function(i) {
@@ -7572,29 +7572,29 @@ polish_udk <- function(x, chunk_size = 10000) {
     })
     return(do.call(rbind, cleaned_values))  # Return processed chunk as a dataframe
   }
-  
+
   # Split data into chunks
   num_chunks <- ceiling(length(x) / chunk_size)
   chunks <- split(x, ceiling(seq_along(x) / chunk_size))
-  
+
   # Process chunks in parallel
   result_chunks <- mclapply(seq_along(chunks), function(i) process_chunk(chunks[[i]], i), mc.cores = detectCores() - 1)
-  
+
   # Combine results into a final dataframe
   result_df <- do.call(rbind, result_chunks)
-  
+
   # Convert to data frame
   result_df <- as.data.frame(result_df, stringsAsFactors = FALSE)
-  
+
   # Function to find the first UDK that is not "Undetermined"
   find_primary_udk <- function(value) {
     if (is.na(value)) return(NA)
-    
+
     split_value <- unlist(strsplit(value, ";"))  # Split into separate UDKs
-    
+
     # Find the first non-"Undetermined" UDK
     primary <- split_value[split_value != "Undetermined"]
-    
+
     # If there are no non-"Undetermined" UDKs, return "Undetermined"
     if (length(primary) == 0) {
       return("Undetermined")
@@ -7602,32 +7602,32 @@ polish_udk <- function(x, chunk_size = 10000) {
       return(primary[1])  # Return the first valid UDK
     }
   }
-  
+
   # Apply the function to determine the primary UDK
   result_df$primary <- sapply(result_df$converted, find_primary_udk)
-  
+
   # Count UDKs
   len <- sapply(strsplit(result_df$cleaned, ";"), length)
-  
+
   # Ensure udk_count is NA if converted is NA
   result_df$udk_count <- ifelse(is.na(result_df$converted), NA, len)
-  
+
   # Identify multiple UDKs
   result_df$multi_udk <- ifelse(is.na(result_df$converted), NA, len > 1)
-  
+
   ####################################################################
   # Split values for further processing
   split_cleaned <- unlist(strsplit(result_df$cleaned, ";"))
   split_converted <- unlist(strsplit(result_df$converted, ";"))
-  
+
   # Create a data frame for UDK and explanation
   f <- data.frame(udk = split_cleaned, explanation = split_converted, stringsAsFactors = FALSE)
-  
+
   # Filter for undetermined and accepted values
   undetermined <- subset(f, explanation == "Undetermined")
   accepted <- subset(f, explanation != "Undetermined")
-  
-  
+
+
   return(list(full = result_df, undetermined = undetermined, accepted = accepted))
 }
 
@@ -7636,10 +7636,10 @@ polish_udk <- function(x, chunk_size = 10000) {
 polish_genre_655 <- function(x, chunk_size = 1000) {
   x0 <- x
   x <- gsub("\\.", "", as.character(x))  # Ensure x is treated as a character and remove dots
-  
+
   # Load the genre-language mapping
   genre_lang_df <- read.csv("genre_655.csv", sep = ";", stringsAsFactors = FALSE)
-  
+
   # Function to remove duplicates, capitalize first letter, and rejoin the values
   remove_duplicates <- function(x) {
     if (is.na(x) || x == "") return(NA)  # Convert empty values to NA
@@ -7650,12 +7650,12 @@ polish_genre_655 <- function(x, chunk_size = 1000) {
     })
     paste(unique_values, collapse = "; ")  # Rejoin with '; '
   }
-  
+
   # Function to determine languages
   assign_languages <- function(genre_list) {
     if (is.na(genre_list)) return(c(NA, NA, NA))  # If NA, return NA for all languages
     genres <- unlist(strsplit(genre_list, "; "))  # Split by '; ' to get individual genres
-    
+
     # Check which languages exist for each genre
     finnish <- swedish <- english <- NA
     for (genre in genres) {
@@ -7668,12 +7668,12 @@ polish_genre_655 <- function(x, chunk_size = 1000) {
     }
     return(c(finnish, swedish, english))
   }
-  
+
   # Function to process a single chunk
   process_chunk <- function(x_chunk) {
     harmonized_chunk <- sapply(x_chunk, remove_duplicates)
     lang_matrix_chunk <- t(sapply(harmonized_chunk, assign_languages))
-    
+
     data.frame(
       original = x_chunk,
       harmonized = harmonized_chunk,
@@ -7683,17 +7683,17 @@ polish_genre_655 <- function(x, chunk_size = 1000) {
       stringsAsFactors = FALSE
     )
   }
-  
+
   # Split data into chunks
   num_chunks <- ceiling(length(x) / chunk_size)
   chunks <- split(x, ceiling(seq_along(x) / chunk_size))
-  
+
   # Process chunks in parallel
   result_chunks <- mclapply(chunks, process_chunk, mc.cores = detectCores() - 1)
-  
+
   # Combine results into a single dataframe
   results <- do.call(rbind, result_chunks)
-  
+
   return(results)
 }
 
@@ -7702,7 +7702,7 @@ polish_genre_655 <- function(x, chunk_size = 1000) {
 #' @description Polish author.
 #' @param s Vector of author names
 #' @param stopwords Stopwords
-#' @param verbose verbose 
+#' @param verbose verbose
 #' @return Polished vector
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
@@ -7710,62 +7710,62 @@ polish_genre_655 <- function(x, chunk_size = 1000) {
 #' @examples # s2 <- polish_author("Smith, William")
 #' @keywords utilities
 polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
-  
+
   if (is.null(stopwords)) {
     message("No stopwords provided for authors. Using ready-made stopword lists")
-    
+
     # TODO Use instead the notnames function here ?
-    
+
     f <- system.file("extdata/stopwords.csv", package = "fennica")
     stopwords.general <- as.character(read.csv(f, sep = "\t")[,1])
     stopwords.general <- c(stopwords.general, stopwords(kind = "en"))
-    
+
     f <- system.file("extdata/stopwords_for_names.csv", package = "fennica")
     stopwords.names <- as.character(read.csv(f, sep = "\t")[,1])
-    
+
     f <- system.file("extdata/organizations.csv", package = "fennica")
     stopwords.organizations <- as.character(read.csv(f, sep = "\t")[,1])
-    
+
     f <- system.file("extdata/stopwords_titles.csv", package = "fennica")
     stopwords.titles <- as.character(read.csv(f, sep = "\t")[,1])
     stopwords <- unique(c(stopwords.general, stopwords.organizations, stopwords.names, stopwords.titles))
   }
-  
+
   # Accept some names that may be on the stopword lists
   # TODO add here all known names
   f <- system.file("extdata/author_accepted.csv", package = "fennica")
   author.accepted <- as.character(read.csv(f, sep = "\t")[,1])
-  
+
   pseudo <- get_pseudonymes()
-  
+
   accept.names <- unique(c(pseudo, author.accepted))
-  
+
   # Also add individual terms in these names on the list
   accept.names <- c(accept.names, unique(unlist(strsplit(accept.names, " "))))
   # Remove special chars and make lowercase to harmonize
   accept.names <- unique(condense_spaces(gsub("\\,", " ", gsub("\\.", "", tolower(accept.names)))))
-  
-  
+
+
   # Then remove those in stopwords (ie accept these in names)
   # Exclude some names and pseudonyms from assumed stopwords
   stopwords <- setdiff(stopwords, accept.names)
-  
+
   # -------------------------------------------------------------
-  
+
   s <- tolower(as.character(s))
-  
+
   # Only handle unique entries, in the end map back to original indices
   sorig <- s
   suniq <- unique(s)
   s <- suniq
-  
+
   if (verbose) {
     message(paste("Polishing author field: ", length(suniq), "unique entries"))
   }
-  
+
   # Remove numerics
-  s <- gsub("[0-9]", " ", s) 
-  
+  s <- gsub("[0-9]", " ", s)
+
   # Remove brackets and ending commas / periods
   # Cannot be merged into one regexp ?
   s <- gsub("\\[", " ", s)
@@ -7773,16 +7773,16 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
   s <- gsub("\\(", " ", s)
   s <- gsub("\\)", " ", s)
   s <- gsub("\\?", " ", s)
-  s <- gsub("-+", "-", s)      
-  s <- str_trim(s)
+  s <- gsub("-+", "-", s)
+  s <- stringr::str_trim(s)
   s <- gsub("[\\.|\\,]+$", "", s)
-  
+
   # Map back to original indices, then make unique again. Helps to further reduce cases.
   sorig <- s[match(sorig, suniq)]
   s <- suniq <- unique(sorig)
-  
+
   # ----------------------------------------------------------------
-  
+
   if (verbose) {
     message("Separating names")
   }
@@ -7791,17 +7791,17 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
   # pseudonymes are taken as such
   # convert to character type
   first <- last <- as.character(rep(NA, length(s)))
-  
+
   pseudo.inds <- which(s %in% pseudo)
-  
+
   inds <- inds1 <- setdiff(grep(",", s), pseudo.inds)
   if (length(inds) > 0) {
     first[inds] <- pick_firstname(s[inds], format = "last, first")
     last[inds]  <-  pick_lastname(s[inds], format = "last, first")
   }
-  
-  
-  
+
+
+
   inds <- inds2 <- setdiff(setdiff(grep(" ", s), inds1), pseudo.inds)
   if (length(inds) > 0) {
     first[inds] <- pick_firstname(s[inds], format = "first last")
@@ -7817,104 +7817,104 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
   inds <- inds4 <- pseudo.inds
   if (length(pseudo.inds) > 0) {
     first[inds] <- as.character(s[inds])
-  }  
-  
+  }
+
   # ------------------------------------------------------------
-  
+
   if (verbose) { message("Formatting names") }
   # Some additional formatting
   # eg. "Wellesley, Richard Wellesley" -> "Wellesley, Richard"
   inds <- which(!is.na(first) | !is.na(last))
   for (i in inds) {
-    
+
     fi <- first[[i]]
     if (!is.na(fi)) {
       fi <- unlist(strsplit(fi, " "), use.names = FALSE)
     }
-    
-    la <- last[[i]]    
-    if (!is.na(la)) {    
+
+    la <- last[[i]]
+    if (!is.na(la)) {
       la <- unlist(strsplit(la, " "), use.names = FALSE)
     }
-    
+
     if (length(fi) == 0) {fi <- NA}
-    if (length(la) == 0) {la <- NA}    
+    if (length(la) == 0) {la <- NA}
     if (all(!is.na(fi)) && all(!is.na(la))) {
       if (la[[1]] == fi[[length(fi)]]) {
         fi <- fi[-length(fi)]
       }
     }
     first[[i]] <- paste(fi, collapse = " ")
-    last[[i]] <- paste(la, collapse = " ")    
+    last[[i]] <- paste(la, collapse = " ")
   }
-  
+
   message("Name table")
   nametab <- data.frame(last = unname(last),
                         first = unname(first),
                         stringsAsFactors = FALSE
   )
   rownames(nametab) <- NULL
-  
+
   message("Remove single letter last names")
-  nametab$last[nchar(as.character(nametab$last)) == 1] <- NA   
-  
+  nametab$last[nchar(as.character(nametab$last)) == 1] <- NA
+
   if (verbose) { message("Capitalize names")}
   nametab$last  <- capitalize(nametab$last, "all.words")
   nametab$first <- capitalize(nametab$first, "all.words")
-  
+
   message("Remove periods")
   nametab$first <- condense_spaces(gsub("\\.", " ", nametab$first))
-  nametab$last  <- condense_spaces(gsub("\\.", " ", nametab$last))  
-  
+  nametab$last  <- condense_spaces(gsub("\\.", " ", nametab$last))
+
   if (verbose) { message("Collapse accepted names to the form: Last, First") }
   full.name <- apply(nametab, 1, function (x) { paste(x, collapse = ", ") })
   full.name <- unname(full.name)
   full.name[full.name == "NA, NA"] <- NA
   full.name <- gsub("\\, NA$", "", full.name) # "Tolonen, NA" -> "Tolonen"
   full.name <- gsub("^NA, ", "", full.name) # "NA, Mikael" -> "Mikael"
-  
+
   if (verbose) { message("Map to the original indices") }
-  full.name[match(sorig, suniq)]   
-  
+  full.name[match(sorig, suniq)]
+
 }
 
 polish_udk_aux <- function(x) {
   x0 <- x
-  
+
   # Function to remove duplicates and rejoin the values
   remove_duplicates <- function(x) {
     if (is.na(x) || x == "") return(NA)  # Convert empty values to NA
     unique_values <- unique(strsplit(x, "\\|")[[1]])  # Split by '|' and remove duplicates
     paste(unique_values, collapse = "|")  # Rejoin with '|'
   }
-  
+
   # Apply the function to the input
   harmonized <- sapply(x0, remove_duplicates)
-  
+
   return(harmonized)
 }
 
 get_pseudonymes <- function (...) {
   pseudo <- as.character(read.csv(system.file("extdata/names/pseudonymes/custom_pseudonymes.csv", package = "fennica"), sep = "\t")[,1])
-  
+
   # Remove extra spaces
   pseudo <- condense_spaces(pseudo)
-  pseudo <- tolower(pseudo)  
-  
+  pseudo <- tolower(pseudo)
+
   # Also consider removing periods, commas, dashes etc ?
-  
+
   # Organize
   pseudo <- sort(unique(pseudo))
-  
+
   pseudo
-  
+
 }
 
 estimate_pages <- function (x) {
-  
-  # Initialize	       
+
+  # Initialize
   pagecount.info <- list(page.info = 0, multiplier = 1, squarebracket = 0, plate = 0, arabic = 0, roman = 0, sheet = 0, volcount = 0)
-  
+
   if (all(is.na(x))) {
     return(pagecount.info)
   } else if (!is.na(suppressWarnings(as.numeric(x)))) {
@@ -7924,21 +7924,21 @@ estimate_pages <- function (x) {
     pagecount.info$roman <- suppressWarnings(as.numeric(as.roman(x)))
     return(pagecount.info)
   } else if (str_detect(x, "^\\[[0-9]+ {0,1}[p|s]{0,1}\\]$")) {
-    pagecount.info$squarebracket <- suppressWarnings(as.numeric(str_trim(gsub("\\[", "", gsub("\\]", "", gsub(" [p|s]", "", x))))))
+    pagecount.info$squarebracket <- suppressWarnings(as.numeric(stringr::str_trim(gsub("\\[", "", gsub("\\]", "", gsub(" [p|s]", "", x))))))
     return(pagecount.info)
   } else if (str_detect(x, "^[0-9]+ sheets$")) {
-    pagecount.info$sheet <- 2 * as.numeric(as.roman(str_trim(unlist(strsplit(x, "sheet"), use.names = FALSE)[[1]])))
+    pagecount.info$sheet <- 2 * as.numeric(as.roman(stringr::str_trim(unlist(strsplit(x, "sheet"), use.names = FALSE)[[1]])))
     return(pagecount.info)
   } else if (str_detect(x, "\\[{0,1}[0-9]* \\]{0,1} leaves")) {
-    pagecount.info$squarebracket <- str_trim(gsub("\\[", "", gsub("\\]", "", x)))
+    pagecount.info$squarebracket <- stringr::str_trim(gsub("\\[", "", gsub("\\]", "", x)))
     return(pagecount.info)
   } else if (str_detect(x, "[0-9]+ \\+ [0-9]+")) {
-    pagecount.info$sheet <- sum(as.numeric(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))
+    pagecount.info$sheet <- sum(as.numeric(stringr::str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))
     return(pagecount.info)
-  } else if (!is.na(sum(as.numeric(roman2arabic(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))))) {
+  } else if (!is.na(sum(as.numeric(roman2arabic(stringr::str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))))) {
     x <- gsub("\\+", ",", x)
   } else if (str_detect(x, "^p") && !str_detect(x, "-")) {
-    if (is.numeric(str_trim(gsub("^p", "", x)))) {
+    if (is.numeric(stringr::str_trim(gsub("^p", "", x)))) {
       pagecount.info$sheet <- 1
       return(pagecount.info)
     } else if (str_detect(x, "^p") && str_detect(x, "-")) {
@@ -7950,49 +7950,49 @@ estimate_pages <- function (x) {
   } else if (str_detect(x, "^[0-9]+ sheets* [0-9]+ pages*$")) {
     x <- gsub("^s", "", unlist(strsplit(x, "sheet"), use.names = FALSE)[[2]])
   }
-  
-  
+
+
   if (all(is.na(x))) {
     # "NA"
     return(pagecount.info)
   } else if (!is.na(suppressWarnings(as.numeric(x)))) {
     # "3"
     pagecount.info$sheet <- as.numeric(x)
-    return(pagecount.info)            
+    return(pagecount.info)
   } else if ((is.roman(x) && length(unlist(strsplit(x, ","), use.names = FALSE)) == 1 && length(grep("-", x)) == 0)) {
     # "III" but not "ccclxxiii-ccclxxiv"
     pagecount.info$roman <- suppressWarnings(as.numeric(as.roman(x)))
-    return(pagecount.info)                
+    return(pagecount.info)
   } else if (length(grep("^\\[[0-9]+ {0,1}[p|s]{0,1}\\]$", x)>0)) {
     # "[3]" or [3 p]
-    pagecount.info$squarebracket <- suppressWarnings(as.numeric(str_trim(gsub("\\[", "", gsub("\\]", "", gsub(" [p|s]", "", x))))))
-    return(pagecount.info)                    
+    pagecount.info$squarebracket <- suppressWarnings(as.numeric(stringr::str_trim(gsub("\\[", "", gsub("\\]", "", gsub(" [p|s]", "", x))))))
+    return(pagecount.info)
   } else if (length(grep("^[0-9]+ sheets$", x)) == 1) {
     # "1 sheet is 2 pages"
-    pagecount.info$sheet <- 2 * as.numeric(as.roman(str_trim(unlist(strsplit(x, "sheet"), use.names = FALSE)[[1]])))
-    return(pagecount.info)                        
+    pagecount.info$sheet <- 2 * as.numeric(as.roman(stringr::str_trim(unlist(strsplit(x, "sheet"), use.names = FALSE)[[1]])))
+    return(pagecount.info)
   } else if (length(grep("\\[{0,1}[0-9]* \\]{0,1} leaves", x)) > 0) {
-    # "[50 ] leaves"    
-    pagecount.info$squarebracket <- str_trim(gsub("\\[", "", gsub("\\]", "", x)))
-    return(pagecount.info)                            
+    # "[50 ] leaves"
+    pagecount.info$squarebracket <- stringr::str_trim(gsub("\\[", "", gsub("\\]", "", x)))
+    return(pagecount.info)
   } else if (length(grep("[0-9]+ \\+ [0-9]+", x))>0) {
     # 9 + 15
-    pagecount.info$sheet <- sum(as.numeric(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))
-    return(pagecount.info)                                
-  } else if (!is.na(sum(as.numeric(roman2arabic(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))))) {
+    pagecount.info$sheet <- sum(as.numeric(stringr::str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))
+    return(pagecount.info)
+  } else if (!is.na(sum(as.numeric(roman2arabic(stringr::str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))))) {
     # IX + 313
     x <- gsub("\\+", ",", x)
-    sum(as.numeric(roman2arabic(str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE)))))
-    return(pagecount.info)                                    
+    sum(as.numeric(roman2arabic(stringr::str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE)))))
+    return(pagecount.info)
   } else if (length(grep("^p", x)) > 0 && length(grep("-", x)) == 0) {
     # p66 -> 1
-    if (is.numeric(str_trim(gsub("^p", "", x)))) {
+    if (is.numeric(stringr::str_trim(gsub("^p", "", x)))) {
       pagecount.info$sheet <- 1
-      return(pagecount.info)                                
+      return(pagecount.info)
     } else if (length(grep("^p", x)) > 0 && length(grep("-", x)) > 0) {
       # p5-8 -> 5-8
       x <- gsub("^p", "", x)
-    }    
+    }
   } else if (length(grep("^1 sheet \\[*[0-9+]\\]*", x))>0) {
     # "1 sheet [166]"
     x <- gsub("1 sheet", "", x)
@@ -8002,186 +8002,186 @@ estimate_pages <- function (x) {
     # 3 sheets 3 pages
     x <- gsub("^s", "", unlist(strsplit(x, "sheet"), use.names = FALSE)[[2]])
   }
-  
+
   # --------------------------------------------
-  
+
   # Then proceeding to the more complex cases...
   # Harmonize the items within commas
-  
+
   # Remove plus now
   x <- gsub("\\+", "", x)
-  x <- gsub("pages*$", "", x)  
-  
+  x <- gsub("pages*$", "", x)
+
   # "[52] plates between [58] blank sheets"
   x <- gsub("plates between ", "plates, ", x)
   # 6 sheets + 2 sheets
   x <- gsub("sheets", "sheets,", x)
-  
+
   # Handle comma-separated elements separately
   spl <- condense_spaces(unlist(strsplit(x, ","), use.names = FALSE))
-  
+
   # 13 [1] -> 13, [1]
   if (length(grep("^[0-9]+ \\[[0-9]+\\]$", spl))>0) {
     spl <- gsub(" ", ", ", spl)
-  }  
+  }
   spl <- condense_spaces(unlist(strsplit(spl, ","), use.names = FALSE))
-  
+
   # Harmonize pages within each comma
   x <- sapply(spl, function (x) { harmonize_pages_by_comma(x) }, USE.NAMES = FALSE)
-  
+
   # Remove empty items
   x <- as.vector(na.omit(x))
   if (length(x) == 0) {x <- ""}
-  
+
   if (length(grep("^ff", x[[1]]))==1) {
     # Document is folios - double the page count!
     pagecount.info$multiplier <- 2
   }
-  
+
   # Fix romans
   x[x == "vj"] <- "vi"
-  
+
   # Identify (potentially overlapping) attribute positions for
   # "arabic", "roman", "squarebracket", "dash", "sheet", "plate"
   # attributes x positions table 0/1
-  # NOTE this has to come after harmonize_per_comma function ! 
+  # NOTE this has to come after harmonize_per_comma function !
   pagecount.attributes <- attribute_table(x)
-  
-  # If dashes are associated with square brackets, 
+
+  # If dashes are associated with square brackets,
   # consider and convert them to arabic. Otherwise not.
-  # ie. [3]-5 becomes 3-5 
+  # ie. [3]-5 becomes 3-5
   dash <- pagecount.attributes["dash", ]
   sqb  <- pagecount.attributes["squarebracket", ]
   inds <- which(dash & sqb)
   pagecount.attributes["arabic", inds] <- TRUE
   pagecount.attributes["squarebracket", inds] <- FALSE
-  
+
   # Page count can't be roman and arabic at the same time.
   # or pages will double
   pagecount.attributes["roman", pagecount.attributes["arabic", ]] <- FALSE
-  
+
   # Remove square brackets
   x <- gsub("\\[", "", x)
   x <- gsub("\\]", "", x)
-  
+
   # Convert romans to arabics (entries separated by spaces possibly)
   # also 3-iv -> 3-4
   inds <- pagecount.attributes["roman", ] | pagecount.attributes["arabic", ]
   if (any(inds)) {
     x[inds] <- roman2arabic(x[inds])
   }
-  
+
   # Convert plates to arabics
   inds <- pagecount.attributes["plate", ]
-  if (any(inds)) {  
-    x[inds] <- as.numeric(str_trim(gsub("pages calculated from plates", "", x[inds])))
+  if (any(inds)) {
+    x[inds] <- as.numeric(stringr::str_trim(gsub("pages calculated from plates", "", x[inds])))
   }
-  
+
   # ----------------------------------------------
-  
+
   # Start page counting
-  
+
   # Sum square brackets: note the sum rule does not concern roman numerals
   inds <- pagecount.attributes["squarebracket",] & !pagecount.attributes["roman",]
   pagecount.info$squarebracket <- sumrule(x[inds])
-  
-  # Sum plates 
+
+  # Sum plates
   # FIXME: at the moment these all go to sheets already
   inds <- pagecount.attributes["plate",]
   pagecount.info$plate <- sum(na.omit(suppressWarnings(as.numeric(x[inds]))))
-  
+
   # Count pages according to the type
   for (type in c("arabic", "roman")) {
     pagecount.info[[type]] <- count_pages(x[pagecount.attributes[type,]])
   }
-  
-  # Sum sheets 
+
+  # Sum sheets
   inds <- pagecount.attributes["sheet",]
   xx <- NA
   xinds <- x[inds]
   xinds <- gsub("^sheets*$", "1 sheet", xinds)
-  
+
   if (length(grep("sheet", xinds))>0) {
     # 1 sheet = 2 pages
-    xinds <- sapply(xinds, function (xi) {str_trim(unlist(strsplit(xi, "sheet"), use.names = FALSE)[[1]])}, USE.NAMES = FALSE)
+    xinds <- sapply(xinds, function (xi) {stringr::str_trim(unlist(strsplit(xi, "sheet"), use.names = FALSE)[[1]])}, USE.NAMES = FALSE)
     xx <- suppressWarnings(2 * as.numeric(as.roman(xinds)))
-  } 
-  pagecount.info$sheet <- sumrule(xx) 
-  
+  }
+  pagecount.info$sheet <- sumrule(xx)
+
   # Return pagecount components
   pagecount.info
-  
+
 }
 
 
 polish_physext_help <- function (s, page.harmonize) {
-  
+
   # Return NA if conversion fails
   if (length(s) == 1 && is.na(s)) {
     #return(rep(NA, 11))
     s <- ""
-  } 
-  
+  }
+
   # 141-174. [2] -> "141-174, [2]"
   if (grepl("[0-9]+\\.", s)) {
     s <- gsub("\\.", ",", s)
   }
-  
+
   # Shortcut for easy cases: "24p."
   if (length(grep("^[0-9]+ *p\\.*$",s))>0) {
-    #return(c(as.numeric(str_trim(gsub(" {0,1}p\\.{0,1}$", "", s))), rep(NA, 9)))
-    s <- as.numeric(str_trim(gsub(" {0,1}p\\.{0,1}$", "", s)))
+    #return(c(as.numeric(stringr::str_trim(gsub(" {0,1}p\\.{0,1}$", "", s))), rep(NA, 9)))
+    s <- as.numeric(stringr::str_trim(gsub(" {0,1}p\\.{0,1}$", "", s)))
   }
-  
+
   # Pick volume number
-  voln <- pick_volume(s) 
-  
+  voln <- pick_volume(s)
+
   # Volume count FIX needed
   vols <- unname(pick_multivolume(s))
-  
+
   # Parts count
   parts <- pick_parts(s)
-  
+
   # "2 pts (96, 110 s.)" = 96 + 110s
   if (length(grep("[0-9]+ pts (*)", s)) > 0 && length(grep(";", s)) == 0) {
     s <- gsub(",", ";", s)
   }
-  
+
   # Now remove volume info
   s <- suppressWarnings(remove_volume_info(s))
-  
+
   # Cleanup
   s <- gsub("^;*\\(", "", s)
   s <- gsub(" s\\.*$", "", s)
   s <- condense_spaces(s)
-  
+
   # If number of volumes is the same than number of comma-separated units
   # and there are no semicolons, then consider the comma-separated units as
   # individual volumes and mark this by replacing commas by semicolons
   # ie. 2v(130, 115) -> 130;115
   if (!is.na(s) && !is.na(vols) && length(unlist(strsplit(s, ","), use.names = FALSE)) == vols && !grepl(";", s)) {
-    s <- gsub(",", ";", s)  
+    s <- gsub(",", ";", s)
   }
-  
+
   # Estimate pages for each document separately via a for loop
   # Vectorization would be faster but we prefer simplicity and modularity here
-  
+
   if (length(grep(";", s)) > 0) {
     spl <- unlist(strsplit(s, ";"), use.names = FALSE)
     page.info <- sapply(spl, function (x) {polish_physext_help2(x, page.harmonize)})
     page.info <- apply(page.info, 1, function (x) {sum(as.numeric(x), na.rm = TRUE)})
-    page.info[[1]] <- 1 # Not used anymore after summing up  
+    page.info[[1]] <- 1 # Not used anymore after summing up
   } else {
     page.info <- polish_physext_help2(s, page.harmonize)
   }
-  
+
   s <- page.info[["pagecount"]]
   page.info <- page.info[-7]
   s[s == ""] <- NA
-  s[s == "NA"] <- NA  
+  s[s == "NA"] <- NA
   s <- as.numeric(s)
   s[is.infinite(s)] = NA
-  
+
   # Return
   names(page.info) <- paste0("pagecount.", names(page.info))
   # Add fields to page.info
@@ -8193,8 +8193,8 @@ polish_physext_help <- function (s, page.harmonize) {
   page.info[["volcount"]] <- as.vector(vols)
   page.info[["parts"]] <- as.vector(parts)
   page.info <- unlist(page.info)
-  
+
   page.info
-  
+
 }
 
