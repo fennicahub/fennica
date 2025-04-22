@@ -219,7 +219,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#author-name" id="toc-author-name" class="nav-link active" data-scroll-target="#author-name"><span class="header-section-number">5</span> Author name</a></li>
+  <li><a href="#author-info" id="toc-author-info" class="nav-link active" data-scroll-target="#author-info"><span class="header-section-number">4.1</span> Author info</a>
+  <ul class="collapse">
+  <li><a href="#author-name" id="toc-author-name" class="nav-link" data-scroll-target="#author-name"><span class="header-section-number">4.1.1</span> Author name</a></li>
+  <li><a href="#author-date" id="toc-author-date" class="nav-link" data-scroll-target="#author-date"><span class="header-section-number">4.1.2</span> Author Date</a></li>
+  <li><a href="#author-profession" id="toc-author-profession" class="nav-link" data-scroll-target="#author-profession"><span class="header-section-number">4.1.3</span> Author profession</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/fennicahub/fennica/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -245,10 +250,34 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="author-name" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Author name</h1>
+<section id="author-info" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="author-info"><span class="header-section-number">4.1</span> Author info</h2>
+<p>The author information is enriched using the finto R package. It includes extra missing values of author name, author dates and author profession.</p>
+<section id="author-name" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="author-name"><span class="header-section-number">4.1.1</span> Author name</h3>
+<ul>
+<li><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_kanto.csv">Kanto author names</a></li>
+<li><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_kanto_accepted.csv">Unique accepted entries in kanto</a>: 817</li>
+<li><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_kanto_discarded.csv">Unique discarded entries in kantoa</a> (excluding NA cases): 0</li>
+<li>Original documents with non-NA titles 332388 / 1229782 (27%)</li>
+<li>Original documents with missing (NA) titles 897394 / 1229782 documents (73%)</li>
+</ul>
+</section>
+<section id="author-date" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="author-date"><span class="header-section-number">4.1.2</span> Author Date</h3>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/birthDate_deathDate_kanto.csv">Author date kanto</a> <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/birthDate_deathDate_kanto_accepted.csv">Author date accepted for the kanto</a></p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/birthDate_deathDate_kanto_discarded.csv">Author date discarded for the kanto</a></p>
+</section>
+<section id="author-profession" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="author-profession"><span class="header-section-number">4.1.3</span> Author profession</h3>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/profession_metadata_profession_prefLabel_en.csv">Author profession</a></p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/profession_metadata_profession_prefLabel_en_accepted.csv">Author profession accepted for the kanto</a></p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/profession_metadata_profession_prefLabel_en_discarded.csv">Author profession discarded for the kanto</a></p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/profession_metadata_profession_prefLabel_en_kanto_accepted_19.csv">Author profession accepted for the kanto 19th century</a></p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/profession_metadata_profession_prefLabel_en_kanto_discarded_19.csv">Author profession discarded for the kanto 19th century</a></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
