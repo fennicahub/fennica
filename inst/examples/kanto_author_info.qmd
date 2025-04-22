@@ -12,5 +12,36 @@ source("author_date_kanto.R")
 source("author_profession_kanto.R")
 ```
 
-# Author name
+## Author info
 
+The author information is enriched using the finto R package. It includes extra missing values of author name, author dates and author profession.
+
+### Author name
+
+-   [Kanto author names](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_kanto.csv)
+-   [Unique accepted entries in kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_kanto_accepted.csv): `r length(unique(df[[field]]))`
+-   [Unique discarded entries in kantoa](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_kanto_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
+-   Original documents with non-NA titles `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
+-   Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
+
+
+
+### Author Date
+
+[Author date kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/birthDate_deathDate_kanto.csv)
+[Author date accepted for the kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/birthDate_deathDate_kanto_accepted.csv)
+
+[Author date discarded for the kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/birthDate_deathDate_kanto_discarded.csv)
+
+### Author profession
+
+
+[Author profession](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/profession_metadata_profession_prefLabel_en.csv)
+
+[Author profession accepted for the kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/profession_metadata_profession_prefLabel_en_accepted.csv)
+
+[Author profession discarded for the kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/profession_metadata_profession_prefLabel_en_discarded.csv)
+
+[Author profession accepted for the kanto 19th century](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/profession_metadata_profession_prefLabel_en_kanto_accepted_19.csv)
+
+[Author profession discarded for the kanto 19th century](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/profession_metadata_profession_prefLabel_en_kanto_discarded_19.csv)
