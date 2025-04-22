@@ -57,7 +57,7 @@ df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
 ##create csv and save to output_tables
 #source("harmonized_fennica.R")
 #load all cavs to allas
-#source("allas.R")
+source("allas.R")
 ntop <- 20
 book_author <- "Turku Data Science Group"
 

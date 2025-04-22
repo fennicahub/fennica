@@ -1,0 +1,16 @@
+---
+title: "Kanto Author info"
+hide-description: false
+description: ""
+---
+
+```{r}
+#| include = FALSE
+source("init.R")
+source("author_name_kanto.R")
+source("author_date_kanto.R")
+source("author_profession_kanto.R")
+```
+
+# Author name
+

@@ -27,6 +27,7 @@ book:
   - index.qmd
   - author_name.qmd
   - author_date.qmd
+  - kanto_author_info.qmd
   #- corporate.qmd
   - genre_655.qmd
   - language.qmd
