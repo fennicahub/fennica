@@ -24,7 +24,7 @@
     "href": "author_info.html#author-name-fennica",
     "title": "2  Author’s info",
     "section": "",
-    "text": "2.1.1 Complete Dataset Overview\n\nUnique accepted entries in original data: 817\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles 332388 / 1229782 (27%)\nOriginal documents with missing (NA) titles 897394 / 1229782 documents (73%)\n\n\n2.1.1.1 Authors\n\n0 unique authors These final names capture all name variants from the custom author synonyme table, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the author synonyme table.\n0 documents have unambiguous author information (NaN%).\nAuthor name conversions Non-trivial conversions from the original raw data to final names.\n\n\n\n2.1.1.2 Auxiliary files\n\nAuthor synonyme table\nStopwords for names\nStopwords for titles\nCustom pseudonyme lists\n\n\n\n\n2.1.2 Subset Analysis: 1809-1917\n\nUnique accepted entries for for 1809-1917 years: 235\nUnique discarded entries in original data (excluding NA cases): 0\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.",
+    "text": "2.1.1 Complete Dataset Overview\n\nUnique accepted entries in original data: 202872\nUnique discarded entries in original data (excluding NA cases): 29\nOriginal documents with non-NA titles 776971 / 1229782 (63.2%)\nOriginal documents with missing (NA) titles 452811 / 1229782 documents (36.8%)\n\n\n2.1.1.1 Authors\n\n202872 unique authors These final names capture all name variants from the custom author synonyme table, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the author synonyme table.\n776971 documents have unambiguous author information (63%).\nAuthor name conversions Non-trivial conversions from the original raw data to final names.\n\n\n\n2.1.1.2 Auxiliary files\n\nAuthor synonyme table\nStopwords for names\nStopwords for titles\nCustom pseudonyme lists\n\n\n\n\n2.1.2 Subset Analysis: 1809-1917\n\nUnique accepted entries for for 1809-1917 years: 10561\nUnique discarded entries in original data (excluding NA cases): 17\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info</span>"
     ]
@@ -34,7 +34,7 @@
     "href": "author_info.html#author-name-kanto",
     "title": "2  Author’s info",
     "section": "2.2 Author name Kanto",
-    "text": "2.2 Author name Kanto\nThe author information is enriched using the finto R package. It includes extra missing values of author name, author dates and author profession.\n\nKanto author names\nUnique accepted entries in kanto: 817\nUnique discarded entries in kantoa (excluding NA cases): 0\nOriginal documents with non-NA titles 332388 / 1229782 (27%)\nOriginal documents with missing (NA) titles 897394 / 1229782 documents (73%)",
+    "text": "2.2 Author name Kanto\nThe author information is enriched using the finto R package. It includes extra missing values of author name, author dates and author profession.\n\nKanto author names\nUnique accepted entries in kanto: 111281\nUnique discarded entries in kantoa (excluding NA cases): 3\nOriginal documents with non-NA titles 696612 / 1229782 (56.6%)\nOriginal documents with missing (NA) titles 533170 / 1229782 documents (43.4%)",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info</span>"
     ]
@@ -50,11 +50,11 @@
     ]
   },
   {
-    "objectID": "author_info.html#author-datelifetime",
-    "href": "author_info.html#author-datelifetime",
+    "objectID": "author_info.html#author-datelifetime-fennica",
+    "href": "author_info.html#author-datelifetime-fennica",
     "title": "2  Author’s info",
-    "section": "2.4 Author Date/Lifetime",
-    "text": "2.4 Author Date/Lifetime\nMARC: 100d\nThe author’s lifetime section furnishes concise summaries following an extensive cleaning process, delineating the accepted and discarded years pertaining to each author.The accepted years signify the refined and validated data, while insights into the discarded years offer valuable context, shedding light on the challenges encountered and decisions made during the cleaning procedure.\n\n2.4.1 Complete Dataset Overview\nAuthor date accepted for the complete Fennica\nAuthor date discarded for the complete Fennica\n\n\n2.4.2 Subset Analysis: 1809-1917\nAuthor date accepted for 1809-1917\nAuthor date discarded for 1809-1917",
+    "section": "2.4 Author Date/Lifetime Fennica",
+    "text": "2.4 Author Date/Lifetime Fennica\nMARC: 100d\nThe author’s lifetime section furnishes concise summaries following an extensive cleaning process, delineating the accepted and discarded years pertaining to each author.The accepted years signify the refined and validated data, while insights into the discarded years offer valuable context, shedding light on the challenges encountered and decisions made during the cleaning procedure.\n\n2.4.1 Complete Dataset Overview\nAuthor date accepted for the complete Fennica\nAuthor date discarded for the complete Fennica\n\n\n2.4.2 Subset Analysis: 1809-1917\nAuthor date accepted for 1809-1917\nAuthor date discarded for 1809-1917",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info</span>"
     ]
