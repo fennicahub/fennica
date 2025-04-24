@@ -1,5 +1,6 @@
 library(devtools)
 library(dplyr)
+library(tidyr)
 library(tm)
 library(stringr)
 library(knitr)
