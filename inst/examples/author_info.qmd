@@ -1,0 +1,136 @@
+---
+title: "Author's info"
+hide-description: false
+description: ""
+---
+
+```{r}
+#| include = FALSE
+source("init.R")
+source("author_name.R")
+source("author_date.R")
+source("author_name_kanto.R")
+source("author_date_kanto.R")
+source("author_profession_kanto.R")
+```
+
+## Author name Fennica
+
+MARC: [100a](https://www.loc.gov/marc/bibliographic/bd100.html)
+
+Author's name section's summary tables offer insights into the dataset's integrity, illustrating the accepted and discarded author names. An examination of missing values in the original dataset provides transparency regarding data completeness. The inclusion of information on name variants and pseudonyms enriches the analysis, addressing nuances in authorship representation. This comprehensive approach ensures a thorough understanding of the dataset's composition and the intricacies associated with author identification.
+
+### Complete Dataset Overview
+
+-   [Unique accepted entries in original data](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_accepted.csv): `r length(unique(df[[field]]))`
+-   [Unique discarded entries in original data](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
+-   Original documents with non-NA titles `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
+-   Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
+
+#### Authors
+
+-   `r length(unique(df$author_name))` [unique authors](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_accepted.csv) These final names capture all name variants from the custom [author synonyme table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/ambiguous-authors.csv), and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the [author synonyme table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/ambiguous-authors.csv).
+
+-   `r sum(!is.na(df$author_name))` documents have unambiguous author information (`r round(100*mean(!is.na(df$author_name)))`%).
+
+-   [Author name conversions](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_conversion_nontrivial.csv) Non-trivial conversions from the original raw data to final names.
+
+#### Auxiliary files
+
+-   [Author synonyme table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/ambiguous-authors.csv)
+-   [Stopwords for names](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/stopwords_for_names.csv)
+-   [Stopwords for titles](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/stopwords_titles.csv)
+-   [Custom pseudonyme lists](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/custom_pseudonymes.csv)
+
+### Subset Analysis: 1809-1917
+
+-   [Unique accepted entries for for 1809-1917 years](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_accepted_19.csv): `r length(unique(df_19[[field]]))`
+
+-   [Unique discarded entries in original data](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_discarded_19.csv) (excluding NA cases): `r as.vector(countLines(file_discarded_19) - 1)`
+
+Top-`r ntop` titles and their title counts for period 1809-1917.
+
+The accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.
+
+```{r}
+#| label = "summarytitle-author-name",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
+library(ggplot2)
+library(comhis)
+
+theme_set(theme_bw(base_size = 12))
+p <- top_plot(df_19, "author_name", ntop = ntop, log10 = TRUE)+
+  labs(y = "Entries (n)", title = "Top titles")
+print(p)
+```
+
+## Author name Kanto
+
+The author information is enriched using the finto R package. It includes extra missing values of author name, author dates and author profession.
+
+
+-   [Kanto author names](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_kanto.csv)
+-   [Unique accepted entries in kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_kanto_accepted.csv): `r length(unique(df[[field]]))`
+-   [Unique discarded entries in kantoa](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_kanto_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
+-   Original documents with non-NA titles `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
+-   Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
+
+## Author name combined 
+
+This is the combination of Fennica and Kanto author names.
+
+
+
+## Author Date/Lifetime
+
+
+MARC: [100d](https://www.loc.gov/marc/bibliographic/bd100.html)
+
+The author's lifetime section furnishes concise summaries following an extensive cleaning process, delineating the accepted and discarded years pertaining to each author.The accepted years signify the refined and validated data, while insights into the discarded years offer valuable context, shedding light on the challenges encountered and decisions made during the cleaning procedure.
+
+### Complete Dataset Overview
+
+[Author date accepted for the complete Fennica](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_accepted.csv)
+
+[Author date discarded for the complete Fennica](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_discarded.csv)
+
+### Subset Analysis: 1809-1917
+
+[Author date accepted for 1809-1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_accepted_19.csv)
+
+[Author date discarded for 1809-1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_discarded_19.csv)
+
+
+## Author Date/Lifetime Kanto
+
+[Author date kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/birthDate_deathDate_kanto.csv)
+[Author date accepted for the kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/birthDate_deathDate_kanto_accepted.csv)
+
+[Author date discarded for the kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/birthDate_deathDate_kanto_discarded.csv)
+
+
+## Author Date/Lifetime combined
+
+This is the combination of both Fennica and Kanto dates.
+
+
+## Author Profession
+
+The profession of the author is only available via Kanto.
+
+
+[Author profession](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/profession_metadata_profession_prefLabel_en.csv)
+
+[Author profession accepted for the kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/profession_metadata_profession_prefLabel_en_accepted.csv)
+
+[Author profession discarded for the kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/profession_metadata_profession_prefLabel_en_discarded.csv)
+
+[Author profession accepted for the kanto 19th century](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/profession_metadata_profession_prefLabel_en_kanto_accepted_19.csv)
+
+[Author profession discarded for the kanto 19th century](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/profession_metadata_profession_prefLabel_en_kanto_discarded_19.csv)
+
+
