@@ -8,10 +8,6 @@ description: ""
 #| include = FALSE
 source("init.R")
 source("author_name.R")
-source("author_date.R")
-source("author_name_kanto.R")
-source("author_date_kanto.R")
-source("author_profession_kanto.R")
 ```
 
 ## Author name Fennica
@@ -68,6 +64,13 @@ p <- top_plot(df_19, "author_name", ntop = ntop, log10 = TRUE)+
 print(p)
 ```
 
+
+```{r}
+#| include = FALSE
+source("init.R")
+source("author_name_kanto.R")
+```
+
 ## Author name Kanto
 
 The author information is enriched using the finto R package. It includes extra missing values of author name, author dates and author profession.
@@ -84,8 +87,12 @@ The author information is enriched using the finto R package. It includes extra 
 This is the combination of Fennica and Kanto author names.
 
 
-
-## Author Date/Lifetime
+```{r}
+#| include = FALSE
+source("init.R")
+source("author_date.R")
+```
+## Author Date/Lifetime Fennica
 
 
 MARC: [100d](https://www.loc.gov/marc/bibliographic/bd100.html)
@@ -105,6 +112,11 @@ The author's lifetime section furnishes concise summaries following an extensive
 [Author date discarded for 1809-1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_discarded_19.csv)
 
 
+```{r}
+#| include = FALSE
+source("init.R")
+source("author_date_kanto.R")
+```
 ## Author Date/Lifetime Kanto
 
 [Author date kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/birthDate_deathDate_kanto.csv)
@@ -117,6 +129,11 @@ The author's lifetime section furnishes concise summaries following an extensive
 
 This is the combination of both Fennica and Kanto dates.
 
+```{r}
+#| include = FALSE
+source("init.R")
+source("author_profession_kanto.R")
+```
 
 ## Author Profession
 
