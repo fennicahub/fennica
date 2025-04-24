@@ -1,4 +1,4 @@
-field <- "profession_metadata_profession_prefLabel_en"
+field <- "profession_metadata_profession_prefLabel_fi"
 
 profession <- df.orig[[field]]
 
