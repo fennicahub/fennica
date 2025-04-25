@@ -48,3 +48,14 @@ author_date_combined <- author_date_combined %>%
 # Step 7: Save or inspect
 write.csv(author_date_combined, "output.tables/author_date_combined.csv", row.names = FALSE)
 
+# Filter to subset of interest
+df_combined <- author_name_combined[author_name_combined$melinda_id %in% melindas_id, ]
+
+# Set field name
+field <- "author_name"
+
+# Save as .Rds with the field name
+data.file <- paste0(field, ".Rds")
+saveRDS(df_combined, file = data.file)
+
+
