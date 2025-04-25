@@ -17,7 +17,7 @@ saveRDS(df.tmp, file = data.file)
 # Generate markdown summary
 df <- readRDS(data.file)
 # Convert to CSV and store in the output.tables folder
-write.table(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE)
+write.table(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE, sep = ";", row.names = FALSE)
 
 ##################################################################
 

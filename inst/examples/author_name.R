@@ -1,6 +1,6 @@
 field <- "author_name"
 
-# Full author name (Last, First) 
+# Full author name (Last, First)
 author <- polish_author(df.orig[[field]], verbose = TRUE)
 
 # Collect the results into a data.frame
@@ -17,7 +17,7 @@ saveRDS(df.tmp, file = data.file)
 # Generate markdown summary
 df <- readRDS(data.file)
 # Convert to CSV and store in the output.tables folder
-write.table(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE)
+write.table(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE, sep = ";", row.names = FALSE)
 
 ##################################################################
 
@@ -56,7 +56,7 @@ field <- "author_name"
 data.file <- paste0(field, ".Rds")
 saveRDS(df_19, file = data.file)
 
-# Generate markdown summary 
+# Generate markdown summary
 df_19 <- readRDS(data.file)
 
 
