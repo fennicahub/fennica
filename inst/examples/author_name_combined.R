@@ -34,6 +34,7 @@ author_name_combined <- full_join(
 # Save result
 write.csv(author_name_combined, "output.tables/author_name_combined.csv", row.names = FALSE)
 
+#############################
 ###########################
 
 
@@ -89,4 +90,3 @@ message("Discarded entries for 1809-1917")
 inds <- which(is.na(df_combined_19[[field]]))
 original.na <- df.orig[match(df_combined_19$melinda_id[inds], df.orig$melinda_id), field]
 tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
-
