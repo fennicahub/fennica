@@ -11,6 +11,13 @@ source("signum.R")
 source("udk.R")
 source("genre_655.R")
 
+df.harmonized$title_2 <- ifelse(is.na(df.harmonized$title), df.harmonized$title_remainder, 
+                                ifelse(is.na(df.harmonized$title_remainder), df.harmonized$title, 
+                                       paste(df.harmonized$title, df.harmonized$title_remainder, sep = " ")))
+
+df.harmonized$title_2 <- ifelse(is.na(df.orig$`245n`), df.harmonized$title_2, 
+                                paste(df.harmonized$title_2, df.orig$`245n`, sep = " "))
+
 df.processed <- df.harmonized
 
 # Store the data

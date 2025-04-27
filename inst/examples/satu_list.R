@@ -23,3 +23,4 @@ df.orig$melinda_id <- gsub(" ", "",df.orig$melinda_id)
 satu_not_full_ids <- setdiff(satu_list$MelindaID, df.orig$melinda_id) #not in df.orig
 
 
+length(unique(unmatched_julia$melinda_id))
