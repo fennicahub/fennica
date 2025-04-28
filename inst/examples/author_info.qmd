@@ -127,6 +127,7 @@ print(p)
 
 ```{r}
 #| include = FALSE
+source("init.R")
 source("author_date.R")
 ```
 ## Author Date/Lifetime Fennica
