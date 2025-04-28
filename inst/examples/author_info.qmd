@@ -91,10 +91,10 @@ source("author_name_combined.R")
 
 This is the combination of Fennica and Kanto author names.
 
-[Author name combined](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_combined.csv)
+-   [Author name combined](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/combined_author_name.csv)
 
--   [Unique accepted entries in combined](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_combined_accepted.csv): `r length(unique(df[[field]]))`
--   [Unique discarded entries in combined](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_combined_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
+-   [Unique accepted entries in combined](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/combined_author_name_accepted.csv): `r length(unique(df[[field]]))`
+-   [Unique discarded entries in combined](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/combined_author_name_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
 -   Original documents with non-NA titles `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
 -   Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
 
@@ -113,15 +113,17 @@ library(comhis)
 theme_set(theme_bw(base_size = 12))
 
 # Load saved data
-df_combined_19 <- readRDS("author_name.Rds")
+df_19 <- readRDS("combined_author_name.Rds")
 
 # Plot top authors
-p <- top_plot(df_combined_19, "author_name", ntop = ntop, log10 = TRUE) +
+p <- top_plot(df_19, "combined_author_name", ntop = ntop, log10 = TRUE) +
   labs(y = "Entries (n)", title = "Top authors")
 
 print(p)
 
 ```
+
+
 
 ```{r}
 #| include = FALSE

@@ -34,10 +34,19 @@ author_name_combined <- full_join(
 # Save result
 write.table(author_name_combined, "output.tables/author_name_combined.csv", sep = ",", row.names = FALSE, quote = FALSE)
 
-#--------------------
+##################################################################
 
 
 field <- "author_name"
+author <- polish_author(df.orig[[field]], verbose = TRUE)
+
+# Collect the results into a data.frame
+df.tmp <- data.frame(melinda_id = df.orig$melinda_id, author_name = author)
+
+#add harmonized fields to df
+df.harmonized <- cbind(df.harmonized, author_name = df.tmp$author_name)
+
+##################################################################
 
 # Store the title field data
 data.file <- paste0(field, ".Rds")
