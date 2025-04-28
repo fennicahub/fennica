@@ -44,7 +44,7 @@
     "href": "author_info.html#author-name-combined",
     "title": "2  Author’s info",
     "section": "2.3 Author name combined",
-    "text": "2.3 Author name combined\nThis is the combination of Fennica and Kanto author names.\nAuthor name combined\n\nUnique accepted entries in combined: 0\nUnique discarded entries in combined (excluding NA cases): 0\nOriginal documents with non-NA titles 0 / 1229782 (NaN%)\nOriginal documents with missing (NA) titles 0 / 1229782 documents (NaN%)",
+    "text": "2.3 Author name combined\nThis is the combination of Fennica and Kanto author names.\n\nAuthor name combined\nUnique accepted entries in combined: 183087\nUnique discarded entries in combined (excluding NA cases): 0\nOriginal documents with non-NA titles 1125999 / 1914199 (58.8%)\nOriginal documents with missing (NA) titles 788200 / 1914199 documents (41.2%)",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info</span>"
     ]
