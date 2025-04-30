@@ -46,7 +46,7 @@ author_date_combined <- author_date_combined %>%
   select(-name_count)
 
 # Step 7: Save or inspect
-write.table(author_date_combined, "output.tables/author_date_combined.csv", row.names = FALSE)
+write.table(author_date_combined, "output.tables/author_date_combined.csv", sep = ",", row.names = FALSE, quote = FALSE)
 
 # Filter to subset of interest
 df_combined <- author_name_combined[author_name_combined$melinda_id %in% melindas_19, ]

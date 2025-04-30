@@ -193,3 +193,28 @@ The profession of the author is only available via Kanto.
 [Author profession discarded for the kanto 19th century](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/profession_metadata_profession_prefLabel_fi_kanto_discarded_19.csv)
 
 
+```{r}
+#| label = "combined-author-name",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
+
+library(ggplot2)
+library(comhis)
+
+# Set ggplot theme
+theme_set(theme_bw(base_size = 12))
+
+# Load saved data
+df <- readRDS("profession_metadata_profession_prefLabel_fi.Rds")
+
+# Plot top authors
+p <- top_plot(df, "profession_metadata_profession_prefLabel_fi", ntop = ntop, log10 = TRUE) +
+  labs(y = "Entries (n)", title = "Top authors profession")
+
+print(p)
+
+```
+
