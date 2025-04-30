@@ -194,7 +194,7 @@ The profession of the author is only available via Kanto.
 
 
 ```{r}
-#| label = "combined-author-name",
+#| label = "author-profession",
 #| echo = FALSE,
 #| message = FALSE,
 #| warning = FALSE,
