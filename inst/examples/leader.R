@@ -1,4 +1,5 @@
-#unpack leader 
+#unpack leader
+df.orig <- df.kanto
 
 # 06 - Type of record
 df.orig$type_of_record <- substr(df.orig$leader, start =  7, stop =  7)

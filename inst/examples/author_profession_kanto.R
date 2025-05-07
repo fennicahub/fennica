@@ -1,12 +1,12 @@
-field <- "profession_metadata_profession_prefLabel_fi"
+field <- "author_profession_kanto_fi"
 
 profession <- df.orig[[field]]
 
 # Collect the results into a data.frame
-df.tmp <- data.frame(melinda_id = df.orig$melinda_id, profession_metadata_profession_prefLabel_en = profession)
+df.tmp <- data.frame(melinda_id = df.orig$melinda_id, author_profession_kanto_fi = profession)
 
 #add harmonized fields to df
-df.harmonized <- cbind(df.harmonized, profession_metadata_profession_prefLabel_en = df.tmp$profession_metadata_profession_prefLabel_en)
+df.harmonized <- cbind(df.harmonized, author_profession_kanto_fi = df.tmp$author_profession_kanto_fi)
 
 ################################################################
 
@@ -64,7 +64,7 @@ tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 # Run publication_time.R file to get the melindas needed for the 19th century slicing
 
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
-field <- "profession_metadata_profession_prefLabel_en"
+field <- "author_profession_kanto_fi"
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV

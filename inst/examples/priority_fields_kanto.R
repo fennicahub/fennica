@@ -1,17 +1,38 @@
 
+# Load parquet file
 url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/fennica_kanto_enriched.parquet"
+df.kanto <- read_parquet(url)
 
-df.orig <- read_parquet(url)
+# Prepare df.kanto
+df.kanto <- df.kanto %>%
+  mutate(
+    author_profession_kanto_fi = profession_metadata_profession_prefLabel_fi,
+    author_date_kanto = case_when(
+      !is.na(birthDate) & !is.na(deathDate) ~ paste0(birthDate, "-", deathDate),
+      !is.na(birthDate) ~ as.character(birthDate),
+      !is.na(deathDate) ~ as.character(deathDate),
+      TRUE ~ NA_character_
+    ),
+    author_name_kanto = case_when(
+      !is.na(prefLabel) & !is.na(altLabel) ~ paste(prefLabel, altLabel, sep = ", "),
+      !is.na(prefLabel) ~ prefLabel,
+      !is.na(altLabel) ~ altLabel,
+      TRUE ~ NA_character_
+    )
+  )
 
-# Step 2: Rename & reformat
-df.orig <- df.orig %>%
-  mutate(author_name_kanto = case_when(
-    !is.na(prefLabel) & !is.na(altLabel) ~ paste(prefLabel, altLabel, sep = ", "),
-    !is.na(prefLabel) ~ prefLabel,
-    !is.na(altLabel) ~ altLabel,
-    TRUE ~ NA_character_
-  ))
-df.orig <- df.orig %>% distinct()
+# Columns to keep
+columns_to_keep <- c(
+  "melinda_id", "leader", "008", "author_name", "author_date", "author_ID",
+  "language", "language_original", "title_uniform", "title", "title_remainder",
+  "publication_place", "publisher", "physical_dimensions", "physical_extent",
+  "publication_frequency", "publication_interval", "signum", "location_852",
+  "UDK", "UDK_aux", "245n", "genre_655", "650a", "general_note", "700a",
+  "700_0", "author_name_kanto", "author_date_kanto", "author_profession_kanto_fi"
+)
+
+# Filter to required columns
+df.kanto <- df.kanto %>% select(all_of(columns_to_keep)) %>% distinct()
 
 
 
