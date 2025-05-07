@@ -6,7 +6,7 @@ author_date_fennica <- read.csv(
 )
 
 author_date_kanto <- read.csv(
-  "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/birthDate_deathDate_kanto_accepted.csv",
+  "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_kanto_accepted.csv",
   row.names = NULL,
   check.names = TRUE
 )
