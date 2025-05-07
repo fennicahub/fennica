@@ -208,10 +208,10 @@ library(comhis)
 theme_set(theme_bw(base_size = 12))
 
 # Load saved data
-df <- readRDS("profession_metadata_profession_prefLabel_fi.Rds")
+df <- readRDS("author_profession_kanto_fi.Rds")
 
 # Plot top authors
-p <- top_plot(df, "profession_metadata_profession_prefLabel_fi", ntop = ntop, log10 = TRUE) +
+p <- top_plot(df, "author_profession_kanto_fi", ntop = ntop, log10 = TRUE) +
   labs(y = "Entries (n)", title = "Top authors profession")
 
 print(p)
