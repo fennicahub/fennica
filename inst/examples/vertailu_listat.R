@@ -17,17 +17,32 @@ list$title_3 <- str_to_lower(stri_trans_general(list$title_3, "Latin-ASCII"))
 list$author_name <- str_to_lower(stri_trans_general(list$author_name, "Latin-ASCII"))
 list$title_remainder <- str_to_lower(stri_trans_general(list$title_remainder, "Latin-ASCII"))
 
+#first match by Melinda id 
+
+melinda_match <- match(
+  paste(velkka_list$melinda_id),
+  paste(list$melinda_id)
+)
+
+matched_records_melinda <- velkka_list[!is.na(melinda_match), ]
+matched_records_melinda <- velkka_list[!is.na(melinda_match), ] %>%
+  left_join(list, by = "melinda_id")
+
+# Find unmatched records
+unmatched_records_melinda <- velkka_list[is.na(melinda_match), ]
+
+
 # **Match by title_2**
 match_index_2 <- match(
-  paste(velkka_list$author_harmonized, velkka_list$publication_time, velkka_list$title_harmonized),
+  paste(unmatched_records_melinda$author_harmonized, unmatched_records_melinda$publication_time, unmatched_records_melinda$title_harmonized),
   paste(list$author_name, list$publication_year, list$title_2)
 )
 
-matched_records_title_2 <- velkka_list[!is.na(match_index_2), ]
+matched_records_title_2 <- unmatched_records_melinda[!is.na(match_index_2), ]
 matched_records_title_2 <- cbind(matched_records_title_2, list[match_index_2[!is.na(match_index_2)], ])
 
 # Find unmatched records
-unmatched_records_title_2 <- velkka_list[is.na(match_index_2), ]
+unmatched_records_title_2 <- unmatched_records_melinda[is.na(match_index_2), ]
 
 # **Match by title**
 match_index_title <- match(
@@ -74,7 +89,7 @@ matched_year_title <- unmatched_final[!is.na(match_index_year_title), ]
 matched_year_title <- cbind(matched_year_title, list[match_index_year_title[!is.na(match_index_year_title)], ])
 
 # **Final matched records**
-matched_records <- bind_rows(matched_records_title_2, matched_records_title, matched_records_title_3, matched_year_title,matched_records_title_rem)
+matched_records <- bind_rows(matched_records_melinda, matched_records_title_2, matched_records_title, matched_records_title_3, matched_year_title,matched_records_title_rem)
 
 # Find remaining unmatched records
 unmatched_final1 <- unmatched_final[is.na(match_index_year_title), ]
@@ -86,10 +101,7 @@ unmatched_julia <- anti_join(list, matched_records, by = c("melinda_id" = "melin
 
 nrow(unique(unmatched_julia$melinda_id))
 
-melinda_match <- intersect(unmatched_final1$melinda_id, list$melinda_id)
-#ADD THOSE TO MATCHED
-#melinda_match add those rows from here that match velkka_list to matched 
-matched_records1 <- bind_rows(matched_records, filter(list, melinda_id %in% melinda_match))
+
 
 #############################################################################################################################
 

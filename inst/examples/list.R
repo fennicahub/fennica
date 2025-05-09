@@ -104,31 +104,6 @@ list <- list %>%
   distinct(title_2, author_name, .keep_all = TRUE) %>%
   arrange(publication_year)
 
-
-
-# Create the data frame with ordered factors
-data <- data.frame(
-  Category = factor(c("Primary", "Primary", "Exclusion", "Exclusion", "Enrichment", "Enrichment"),
-                    levels = c("Primary", "Exclusion", "Enrichment")),  # Ensures correct order
-  ListType = factor(c("Manual", "Automated", "Manual", "Automated", "Manual", "Automated"), 
-                    levels = c("Manual", "Automated")),  # Ensures "Manual" appears first
-  Count = c(9211, 5278, 4468, 3652, 2788, 4868)
-)
-
-# Create the grouped bar chart
-pl <- ggplot(data, aes(x = Category, y = Count, fill = ListType)) +
-  geom_bar(stat = "identity", position = "dodge", color = "black") +  # Black outline for clarity
-  geom_text(aes(label = Count), position = position_dodge(width = 0.9), vjust = -0.3, size = 5) +  # Labels on bars
-  scale_fill_manual(values = c("darkgray", "lightgray"), name = "") +  # Dark gray for manual, light gray for automated & no legend title
-  labs(title = "",
-       x = "Type of Criteria",
-       y = "Number of Entries") +
-  theme_minimal() +
-  theme(legend.position = "top")  # Moves legend to the top
-
-pl
-
-
 # Count how many signums are empty
 empty_signums <- is.na(list$signum) | list$signum == ""
 
@@ -148,4 +123,38 @@ num_non_matching_kauno_rows <- sum(!kauno_rows1)
 
 list1 <- list %>%
     filter(kauno_rows1)
+
+
+##################################################################################################
+
+library(ggplot2)
+
+# Create the data frame with ordered factors
+data <- data.frame(
+  Category = factor(c("Primary", "Primary", "Exclusion", "Exclusion", "Enrichment", "Enrichment"),
+                    levels = c("Primary", "Exclusion", "Enrichment")),
+  ListType = factor(c("Manual", "Automated", "Manual", "Automated", "Manual", "Automated"), 
+                    levels = c("Manual", "Automated")),
+  Count = c(9211, 5278, 4468, 3652, 2788, 4868)
+)
+
+# Create the horizontal grouped bar chart
+pl <- ggplot(data, aes(x = Category, y = Count, fill = ListType)) +
+  geom_bar(stat = "identity", position = position_dodge(width = 0.6), color = "black", width = 0.5) +
+  geom_text(aes(label = Count), 
+            position = position_dodge(width = 0.6), 
+            hjust = 1.1, 
+            size = 5.5) +
+  scale_fill_manual(values = c("darkgray", "lightgray"), name = "") +
+  labs(title = "",
+       x = "Type of Criteria",
+       y = "Number of Entries") +
+  coord_flip() +  # Flips to horizontal bars
+  theme_minimal(base_size = 15) +
+  theme(legend.position = "right",
+        axis.text = element_text(size = 14),
+        axis.title = element_text(size = 16)) +
+  expand_limits(y = max(data$Count) * 1.1)  # Room for text outside bars
+
+pl
 

@@ -119,9 +119,9 @@ subset_group <- final_matched_harmonized[final_matched_harmonized$exclusion_grou
 head(subset_group)
 
 library(ggplot2)
-library(tidyr)
+library(svglite)
 
-# Create the dataset
+# Data
 data <- data.frame(
   Category = c("genre_008", "language", "genre_655_translations", 
                "genre_655_child", "UDC_child", 
@@ -129,21 +129,31 @@ data <- data.frame(
                "UDC_child, callnumber_child"),
   Count = c(30, 1, 13, 1, 16, 3, 5)
 )
-
-# Plot the data
-ggplot(data, aes(x = reorder(Category, -Count), y = Count, fill = Category)) +
-  geom_bar(stat = "identity", show.legend = FALSE) +   # Create a bar chart
-  geom_text(aes(label = Count), vjust = -0.5, size = 3.5) +  # Add count labels above bars
-  labs(title = "", x = "Category (MARC21 fields)", y = "Count of Excluded Records") +
-  theme_minimal(base_size = 14) +
+# Set a cutoff for placing labels inside vs outside
+label_cutoff <- 2
+p <- ggplot(data, aes(x = reorder(Category, Count), y = Count)) +
+  geom_col(width = 0.8, fill = "gray", color = "black") +  # cleaner bars
+  geom_text(aes(label = Count,
+                vjust = ifelse(Count > label_cutoff, 1.5, -0.5)),  # inside for tall bars
+            color = "black", size = 3.5) +
+  labs(x = "Category (MARC21 fields)", y = "Count of Excluded Records") +
+  theme_minimal(base_size = 13) +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),   # Rotate the x-axis labels
-    panel.grid.major.y = element_blank(),  # Remove vertical grid lines
-    panel.grid.minor.y = element_blank()   # Remove minor vertical grid lines
+    axis.text.x = element_text(size = 10, angle = 30, hjust = 1),
+    axis.text.y = element_text(size = 10),
+    axis.title = element_text(size = 12, face = "bold"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.margin = margin(10, 10, 10, 10)
   ) +
-  scale_fill_manual(values = rep("darkgrey", 7))  # Use grey color for all bars
+  scale_y_continuous(
+    limits = c(0, max(data$Count) + 5),
+    breaks = c(0, 5, 10, 15, 20, 25, 30)
+  )
 
 
+p
+ggsave("figure3_vertailu.svg", p, width = 7, height = 4, dpi = 600)
+browseURL("figure3_vertailu.svg")
 
-                                             
-                                              
+

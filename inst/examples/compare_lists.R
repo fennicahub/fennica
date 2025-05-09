@@ -184,7 +184,7 @@ library(ggplot2)
 # Create the dataset
 data_detailed <- data.frame(
   Category = rep(c("Matched", "Only in manual", "In data dump", "Not in data dump", "Only in automated"), 2),
-  Type = rep(c("Melinda ID", "With metadata"), each = 5),
+  Type = rep(c("Melinda ID", "Melinda ID + metadata"), each = 5),
   Count = c(2493, 295, 119, 176, 2375, 2663, 145, 88, 57, 2375)
 )
 
@@ -196,26 +196,31 @@ data_detailed$Category <- factor(
 
 # Set custom black-and-white colors
 colors <- c("Melinda ID" = "darkgrey",       # Light grey
-            "With metadata" = "lightgrey")    # Black
+            "Melinda ID + metadata" = "darkgrey")    # Black
 
-# Plot
-ggplot(data_detailed, aes(x = Category, y = Count, fill = Type)) +
-  geom_bar(stat = "identity", position = position_dodge(width = 0.8), width = 0.7) +
+
+# Conditional label positioning (inside vs outside the bars)
+o <- ggplot(data_detailed, aes(x = Count, y = Category, fill = Type)) +
+  geom_col(width = 0.6, color = "black") +
+  geom_text(aes(label = Count,
+                hjust = ifelse(Count > 500, 1.2, -0.2)),  # Inside for >500, outside for <=500
+            size = 3.5, color = "black") +
   scale_fill_manual(values = colors) +
-  geom_text(aes(label = Count), 
-            position = position_dodge(width = 0.8), 
-            vjust = -0.4, size = 3.5, color = "black") +
-  labs(
-    title = "",
-    x = NULL, y = "Count", fill = "Comparison Type"
+  facet_wrap(~ Type, ncol = 1) +
+  scale_x_continuous(
+    limits = c(0, max(data_detailed$Count) + 500),  # Set the limits manually, no negative values
+    breaks = c(0, 500, 1000, 1500, 2000, 2500)  # Explicit breaks for clarity
   ) +
   theme_minimal(base_size = 13) +
+  labs(x = "Count", y = NULL) +
   theme(
-    axis.text.x = element_text(angle = 30, hjust = 1),
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor.x = element_blank()
-  )
+    panel.grid.major.y = element_blank(),
+    legend.position = "none"
+  ) +
+  expand_limits(x = max(data_detailed$Count) + 200)
 
+y
+o
 
 library(biblioverlap) #loading package
 
