@@ -1,4 +1,3 @@
-
 field <- "publisher"
 
 # Generic cleanup for the publisher field
@@ -8,11 +7,19 @@ tab <- polish_publisher(df.orig[[field]])
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      publisher = tab)
+df.tmp$publisher <- gsub(",$", "", df.tmp$publisher)
+#add harmonized fields to df
+df.harmonized <- cbind(df.harmonized, publisher = df.tmp$publisher)
+
 
 # Store the title field data
-# FIXME: convert to feather or plain CSV
 data.file <- paste0(field, ".Rds")
 saveRDS(df.tmp, file = data.file)
+# Generate markdown summary
+df <- readRDS(data.file)
+# Convert to CSV and store in the output.tables folder
+write.csv(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE, row.names = FALSE)
+
 
 # Define output files
 file_accepted  <- paste0(output.folder, field, "_accepted.csv")
@@ -38,16 +45,10 @@ tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 
 # ------------------------------------------------------------
 
-# Generate markdown summary in note_source.md
-df <- readRDS(data.file)
-# tmp <- knit(input = paste(field, ".Rmd", sep = ""), 
-#             output = paste(field, ".md", sep = ""))
-
 
 # ------------------------------------------------------------
 
-# Run publication_time.R file to get the melindas needed for the 19th century slicing
-source("melindas_19.R")
+#the 19th century slicing
 
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
 field <- "publisher"
@@ -82,7 +83,5 @@ tmp <- write_xtable(original.na, file_discarded_19, count = TRUE)
 
 # ------------------------------------------------------------
 
-# Generate markdown summary in note_source.md
-df_19 <- readRDS(data.file)
-# tmp <- knit(input = paste(field, ".Rmd", sep = ""), 
-# 
+# Convert to CSV and store in the output.tables folder
+write.csv(df_19, file = paste0(output.folder, paste0(field, "_19", ".csv")),, quote = FALSE, row.names = FALSE)

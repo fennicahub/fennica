@@ -1,7 +1,5 @@
 field <- "author_name_kanto"
 
-df.orig <- df.kanto
-
 # Full author name (Last, First)
 author <- polish_author(df.orig[[field]], verbose = TRUE)
 

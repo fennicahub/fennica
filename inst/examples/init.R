@@ -30,10 +30,11 @@ if (!file.exists(output.folder)) {
 }
 
 #load the data
-#source("priority_fields.R")
+source("priority_fields.R")
 
 #load the enriched data
-source("priority_fields_kanto.R")
+#source("priority_fields_kanto.R")
+
 #extract from leader-> type_of_record and bibliographic_level and add to data
 source("leader.R")
 
@@ -50,8 +51,7 @@ df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
                             genre_008 = df.orig$converted_008_33,
                             record_type = df.orig$type_of_record,
                             biblio_level = df.orig$bibliographic_level,
-                            publication_status = df.orig$publication_status,
-                            author_2 = df.orig$`700a`)
+                            publication_status = df.orig$publication_status)
 
 #add harmonized data from each field R file
 

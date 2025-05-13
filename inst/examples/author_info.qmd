@@ -56,7 +56,7 @@ The accompanying plot visually underscores the prominence of these authors, emph
 #| fig.width = 8,
 #| fig.height = 6
 library(ggplot2)
-library(comhis)
+#library(comhis)
 
 theme_set(theme_bw(base_size = 12))
 p <- top_plot(df_19, "author_name", ntop = ntop, log10 = TRUE)+
@@ -84,7 +84,7 @@ The author information is enriched using the finto R package. It includes extra 
 
 ```{r}
 #| include = FALSE
-source("author_name_combined.R")
+#source("author_name_combined.R")
 ```
 
 ## Author name combined 
@@ -98,36 +98,35 @@ This is the combination of Fennica and Kanto author names.
 -   Original documents with non-NA titles `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
 -   Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
 
-```{r}
-#| label = "combined-author-name",
-#| echo = FALSE,
-#| message = FALSE,
-#| warning = FALSE,
-#| fig.width = 8,
-#| fig.height = 6
+<!-- !```{r} -->
+<!-- #| label = "combined-author-name", -->
+<!-- #| echo = FALSE, -->
+<!-- #| message = FALSE, -->
+<!-- #| warning = FALSE, -->
+<!-- #| fig.width = 8, -->
+<!-- #| fig.height = 6 -->
 
-library(ggplot2)
-library(comhis)
+<!-- library(ggplot2) -->
+<!-- library(comhis) -->
 
-# Set ggplot theme
-theme_set(theme_bw(base_size = 12))
+<!-- # Set ggplot theme -->
+<!-- theme_set(theme_bw(base_size = 12)) -->
 
-# Load saved data
-df_19 <- readRDS("combined_author_name.Rds")
+<!-- # Load saved data -->
+<!-- df_19 <- readRDS("combined_author_name.Rds") -->
 
-# Plot top authors
-p <- top_plot(df_19, "combined_author_name", ntop = ntop, log10 = TRUE) +
-  labs(y = "Entries (n)", title = "Top authors")
+<!-- # Plot top authors -->
+<!-- p <- top_plot(df_19, "combined_author_name", ntop = ntop, log10 = TRUE) + -->
+<!--   labs(y = "Entries (n)", title = "Top authors") -->
 
-print(p)
+<!-- print(p) -->
 
-```
+<!-- ```! -->
 
 
 
 ```{r}
 #| include = FALSE
-source("init.R")
 source("author_date.R")
 ```
 ## Author Date/Lifetime Fennica
@@ -150,10 +149,10 @@ The author's lifetime section furnishes concise summaries following an extensive
 [Author date discarded for 1809-1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_discarded_19.csv)
 
 
-```{r}
-#| include = FALSE
-source("author_date_kanto.R")
-```
+<!-- <!```{r} -->
+<!-- #| include = FALSE -->
+<!-- source("author_date_kanto.R") -->
+<!-- ```!> -->
 ## Author Date/Lifetime Kanto
 
 [Author date kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_kanto.csv)
@@ -161,10 +160,10 @@ source("author_date_kanto.R")
 
 [Author date discarded for the kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_kanto_discarded.csv)
 
-```{r}
-#| include = FALSE
-source("author_date_combined.R")
-```
+<!-- !```{r} -->
+<!-- #| include = FALSE -->
+<!-- source("author_date_combined.R") -->
+<!-- ```! -->
 
 ## Author Date/Lifetime combined
 
@@ -172,10 +171,10 @@ This is the combination of both Fennica and Kanto dates.
 
 [author date/Lifetime combined](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_combined.csv)
 
-```{r}
-#| include = FALSE
-source("author_profession_kanto.R")
-```
+<!-- !```{r} -->
+<!-- #| include = FALSE -->
+<!-- source("author_profession_kanto.R") -->
+<!-- ```! -->
 
 ## Author Profession
 
@@ -202,7 +201,7 @@ The profession of the author is only available via Kanto.
 #| fig.height = 6
 
 library(ggplot2)
-library(comhis)
+#library(comhis)
 
 # Set ggplot theme
 theme_set(theme_bw(base_size = 12))

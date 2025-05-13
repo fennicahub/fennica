@@ -1,8 +1,17 @@
 field <- "publication_place"
 field_2 <- "melinda_id"
 
+#enrich 260a with 264a 
+df.orig_p <- df.orig %>%
+  mutate(publication_place = ifelse(
+    (is.na(publication_place) | publication_place == "") & 
+      !(is.na(df.orig$`264a`) | df.orig$`264a` == ""),
+    df.orig$`264a`,
+    publication_place
+  ))
+
 # Harmonize the raw data
-tab <- polish_place(df.orig[[field]], remove.unknown = FALSE)
+tab <- polish_place(df.orig_p[[field]], remove.unknown = FALSE)
 
 # Attach country
 tab_country <- get_country(tab)
@@ -52,7 +61,6 @@ df <- readRDS(data.file)
 # ------------------------------------------------------------
 
 # Run publication_time.R file to get the melindas needed for the 19th century slicing
-#source("melindas_19.R")
 
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
 field <- "publication_place"

@@ -22,17 +22,10 @@ df.kanto <- df.kanto %>%
   )
 
 # Columns to keep
-columns_to_keep <- c(
-  "melinda_id", "leader", "008", "author_name", "author_date", "author_ID",
-  "language", "language_original", "title_uniform", "title", "title_remainder",
-  "publication_place", "publisher", "physical_dimensions", "physical_extent",
-  "publication_frequency", "publication_interval", "signum", "location_852",
-  "UDK", "UDK_aux", "245n", "genre_655", "650a", "general_note", "700a",
-  "700_0", "author_name_kanto", "author_date_kanto", "author_profession_kanto_fi"
-)
+columns_to_keep <- c("melinda_id","author_name_kanto", "author_date_kanto", "author_profession_kanto_fi")
 
 # Filter to required columns
-df.kanto <- df.kanto %>% select(all_of(columns_to_keep)) %>% distinct()
+df.kanto <- df.kanto %>% select(all_of(columns_to_keep)) #%>% distinct()
 
 
 

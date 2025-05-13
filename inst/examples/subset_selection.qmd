@@ -1,0 +1,97 @@
+---
+title: ""
+author: "Julia Matveeva (University of Turku)"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    code-tools: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+```{r , echo=FALSE}
+library(readr)
+column_count <- ncol(read.csv(url, nrows = 1, sep = "\t"))
+#Create colClasses with 'character' for the first column and 'default' for the rest
+col_classes <- c("character", rep(NA, column_count - 1))
+```
+
+# Introduction
+
+This document outlines the automated procedure for generating a harmonized and filtered list of fictional works published between 1809 and 1917. The process includes metadata cleaning, field standardization, filtering by language and genre, and final selection of unique records.
+
+#Automated list 
+## Load a harmonized dataset 
+```{r, message=FALSE}
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/for_subset_selection.csv"
+# Read the file with the specified colClasses
+df <- read.csv(url, skip = 1, header = TRUE, sep = ",", colClasses = col_classes)
+```
+
+## Apply criteria 
+```{r}
+#1. 1809-1917
+list <-  df.harmonized %>% filter(publication_year >= 1809 & publication_year <= 1917)
+#2. Books
+# Start with filtering for "Language material"
+list <- list %>%
+  filter(record_type == "Language material")
+list <- list %>%
+  filter(language_original == "")
+
+#3. Finnish/Swedish
+# Keep only rows where `language` contains "fin" or "swe", or is NA
+list <- list[grepl("Finnish|Swedish", list$language) | is.na(list$language), ]
+
+
+# Convert the signum column to lowercase for case-insensitive matching
+kauno_rows <- grepl(
+  "suom\\.\\s*kaunokirj\\.\\s*1|suom\\.\\s*kaunokirj\\.\\s*3|suom\\.\\s*kaunokirj\\.\\s*4|k\\.\\s*suom\\.\\s*kaunokirj\\.|k\\.\\s*suom\\.\\s*kaunokirj\\.\\s*1|k\\.\\s*suomal\\.\\s*kaunokirj\\.|\
+k\\.\\s*suom\\.\\s*kaunok\\.|k\\.\\s*ruots\\.\\s*kaunok\\.|k\\.\\s*ruots\\.\\s*kaunokirj\\.|ruots\\.\\s*kaunokirj\\.\\s*1|\
+ruots\\.\\s*kaunokirj\\.\\s*3|ruots\\.\\s*kaunokirj\\.\\s*4",
+  tolower(list$signum)
+)
+#  Identify rows where `udk` matches specific classification codes
+udk_rows <- grepl("839\\.79|894\\.541", list$udk_orig)
+
+# Identify rows where `udk` matches the values "Suomenkielinen kirjallisuus" or "Suomenruotsalainen kirjallisuus"
+udk_value_rows <- grepl("Suomenkielinen kirjallisuus|Suomenruotsalainen kirjallisuus", list$udk)
+
+# Apply fiction filtering, include rows that match kauno_rows, udk_rows, or the specific udk values
+list <- list %>% 
+  filter(
+    (kauno_rows | udk_rows | udk_value_rows)  # Include kauno_rows, udk_rows, or udk_value_rows match
+  )
+
+genres_to_keep <- c("Kaunokirjallisuus", "Draama", "Esseet", "Romaanit", "Huumori, satiiri", 
+                    "Novellit, kertomukset", "Runot", "Yhdistelmä", "Tuntematon", "Ei koodattu")
+
+list <- list %>%
+  filter(genre_008 %in% genres_to_keep | is.na(genre_008))
+
+#5. Exclude children's literature and translations
+
+list <- list %>%
+  filter(
+    !grepl("lasten|barn", signum, ignore.case = TRUE) &  
+      !grepl("lasten|barn", udk, ignore.case = TRUE) &    
+      !grepl("\\(024\\.7\\)", udk, ignore.case = TRUE) &  
+      !grepl("\\(024\\.7\\)", udk_aux, ignore.case = TRUE) &  
+      (!grepl("käännö", genre_655, ignore.case = TRUE) | is.na(genre_655)) &  # Keep NA values
+      (!grepl("lasten|barn|child", genre_655, ignore.case = TRUE) | is.na(genre_655)) # Keep NA values
+  )
+
+
+list[list == ""] <- NA
+
+# 6. Keep unique titles with the earliest publication_time
+list <- list %>%
+  group_by(title_2, author_name) %>%
+  filter(publication_year == min(publication_year)) %>%
+  distinct(title_2, author_name, .keep_all = TRUE) %>%
+  arrange(publication_year)
+```

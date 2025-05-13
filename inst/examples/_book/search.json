@@ -10,143 +10,93 @@
     ]
   },
   {
-    "objectID": "author_info.html",
-    "href": "author_info.html",
-    "title": "2  Author’s info",
-    "section": "",
-    "text": "2.1 Author name Fennica\nMARC: 100a\nAuthor’s name section’s summary tables offer insights into the dataset’s integrity, illustrating the accepted and discarded author names. An examination of missing values in the original dataset provides transparency regarding data completeness. The inclusion of information on name variants and pseudonyms enriches the analysis, addressing nuances in authorship representation. This comprehensive approach ensures a thorough understanding of the dataset’s composition and the intricacies associated with author identification.",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info</span>"
-    ]
-  },
-  {
-    "objectID": "author_info.html#author-name-fennica",
-    "href": "author_info.html#author-name-fennica",
-    "title": "2  Author’s info",
-    "section": "",
-    "text": "2.1.1 Complete Dataset Overview\n\nUnique accepted entries in original data: 202872\nUnique discarded entries in original data (excluding NA cases): 29\nOriginal documents with non-NA titles 776971 / 1229782 (63.2%)\nOriginal documents with missing (NA) titles 452811 / 1229782 documents (36.8%)\n\n\n2.1.1.1 Authors\n\n202872 unique authors These final names capture all name variants from the custom author synonyme table, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the author synonyme table.\n776971 documents have unambiguous author information (63%).\nAuthor name conversions Non-trivial conversions from the original raw data to final names.\n\n\n\n2.1.1.2 Auxiliary files\n\nAuthor synonyme table\nStopwords for names\nStopwords for titles\nCustom pseudonyme lists\n\n\n\n\n2.1.2 Subset Analysis: 1809-1917\n\nUnique accepted entries for for 1809-1917 years: 10561\nUnique discarded entries in original data (excluding NA cases): 17\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info</span>"
-    ]
-  },
-  {
-    "objectID": "author_info.html#author-name-kanto",
-    "href": "author_info.html#author-name-kanto",
-    "title": "2  Author’s info",
-    "section": "2.2 Author name Kanto",
-    "text": "2.2 Author name Kanto\nThe author information is enriched using the finto R package. It includes extra missing values of author name, author dates and author profession.\n\nKanto author names\nUnique accepted entries in kanto: 111281\nUnique discarded entries in kantoa (excluding NA cases): 3\nOriginal documents with non-NA titles 696612 / 1229782 (56.6%)\nOriginal documents with missing (NA) titles 533170 / 1229782 documents (43.4%)",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info</span>"
-    ]
-  },
-  {
-    "objectID": "author_info.html#author-name-combined",
-    "href": "author_info.html#author-name-combined",
-    "title": "2  Author’s info",
-    "section": "2.3 Author name combined",
-    "text": "2.3 Author name combined\nThis is the combination of Fennica and Kanto author names.\n\nAuthor name combined\nUnique accepted entries in combined: 183087\nUnique discarded entries in combined (excluding NA cases): 0\nOriginal documents with non-NA titles 1125999 / 1914199 (58.8%)\nOriginal documents with missing (NA) titles 788200 / 1914199 documents (41.2%)",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info</span>"
-    ]
-  },
-  {
-    "objectID": "author_info.html#author-datelifetime-fennica",
-    "href": "author_info.html#author-datelifetime-fennica",
-    "title": "2  Author’s info",
-    "section": "2.4 Author Date/Lifetime Fennica",
-    "text": "2.4 Author Date/Lifetime Fennica\nMARC: 100d\nThe author’s lifetime section furnishes concise summaries following an extensive cleaning process, delineating the accepted and discarded years pertaining to each author.The accepted years signify the refined and validated data, while insights into the discarded years offer valuable context, shedding light on the challenges encountered and decisions made during the cleaning procedure.\n\n2.4.1 Complete Dataset Overview\nAuthor date accepted for the complete Fennica\nAuthor date discarded for the complete Fennica\n\n\n2.4.2 Subset Analysis: 1809-1917\nAuthor date accepted for 1809-1917\nAuthor date discarded for 1809-1917",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info</span>"
-    ]
-  },
-  {
-    "objectID": "author_info.html#author-datelifetime-kanto",
-    "href": "author_info.html#author-datelifetime-kanto",
-    "title": "2  Author’s info",
-    "section": "2.5 Author Date/Lifetime Kanto",
-    "text": "2.5 Author Date/Lifetime Kanto\nAuthor date kanto Author date accepted for the kanto\nAuthor date discarded for the kanto",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info</span>"
-    ]
-  },
-  {
-    "objectID": "author_info.html#author-datelifetime-combined",
-    "href": "author_info.html#author-datelifetime-combined",
-    "title": "2  Author’s info",
-    "section": "2.6 Author Date/Lifetime combined",
-    "text": "2.6 Author Date/Lifetime combined\nThis is the combination of both Fennica and Kanto dates.\nauthor date/Lifetime combined",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info</span>"
-    ]
-  },
-  {
-    "objectID": "author_info.html#author-profession",
-    "href": "author_info.html#author-profession",
-    "title": "2  Author’s info",
-    "section": "2.7 Author Profession",
-    "text": "2.7 Author Profession\nThe profession of the author is only available via Kanto.\nAuthor profession\nAuthor profession accepted for the kanto\nAuthor profession discarded for the kanto\nAuthor profession accepted for the kanto 19th century\nAuthor profession discarded for the kanto 19th century",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info</span>"
-    ]
-  },
-  {
     "objectID": "genre_655.html",
     "href": "genre_655.html",
-    "title": "3  Genre/form 655",
+    "title": "2  Genre/form 655",
     "section": "",
-    "text": "3.1 Description\nMARC: 655,a",
+    "text": "2.1 Description",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Genre/form 655</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Genre/form 655</span>"
     ]
   },
   {
     "objectID": "genre_655.html#complete-dataset-overview",
     "href": "genre_655.html#complete-dataset-overview",
-    "title": "3  Genre/form 655",
-    "section": "3.2 Complete Dataset Overview",
-    "text": "3.2 Complete Dataset Overview\nUnique genre/form: 2.35^{4}\nThere are 1121333 missing values in the dataset,accounting for (91.18%) of the total.\nUnrecognized genre_655s provides details of Genre/Form that were discarded, in total: 46752.\n\n\n\nGenre/Form\nEntries (n)\nFraction (%)\n\n\n\n\nFinland\n1\n0\n\n\n\nDownload genre_655 harmonized dataset",
+    "title": "2  Genre/form 655",
+    "section": "2.2 Complete Dataset Overview",
+    "text": "2.2 Complete Dataset Overview\nUnique genre/form: 3497\nThere are 787404 missing values in the dataset,accounting for (64.03%) of the total.\nUnrecognized genre_655s provides details of Genre/Form that were discarded, in total: 166.\n\n\n\nGenre/Form\nEntries (n)\nFraction (%)\n\n\n\n\nVäitöskirjat\n82084\n122.7\n\n\nKäännökset\n34949\n52.2\n\n\nÄänikirjat\n27343\n40.9\n\n\nMuistelmat\n11686\n17.5\n\n\nKartat\n9059\n13.5\n\n\nKaunokirjallisuus; Runot\n7386\n11\n\n\nKaunokirjallisuus; Käännökset\n7312\n10.9\n\n\nKausijulkaisut\n6804\n10.2\n\n\nElämäkerrat\n5522\n8.3\n\n\nOppikirjat\n5263\n7.9\n\n\n\nDownload genre_655 harmonized dataset",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Genre/form 655</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Genre/form 655</span>"
     ]
   },
   {
     "objectID": "genre_655.html#subset-analysis-1809-1917",
     "href": "genre_655.html#subset-analysis-1809-1917",
-    "title": "3  Genre/form 655",
-    "section": "3.3 Subset Analysis: 1809-1917",
-    "text": "3.3 Subset Analysis: 1809-1917\nUnique genre_655s (1809-1917): 2572\nThere are 57229 missing values in the dataset,accounting for (85.56%) of the total.\nDownload genre_655 harmonized dataset (1809-1917)\n\n3.3.1 Top Genre/Form for 1809-1917\nAccepted Genre/Form (1809-1917).\n\n\n\nGenre/Form\nEntries (n)\nFraction (%)",
+    "title": "2  Genre/form 655",
+    "section": "2.3 Subset Analysis: 1809-1917",
+    "text": "2.3 Subset Analysis: 1809-1917\nUnique genre_655s (1809-1917): 874\nThere are 44536 missing values in the dataset,accounting for (66.58%) of the total.\nDownload genre_655 harmonized dataset (1809-1917)\n\n2.3.1 Top Genre/Form for 1809-1917\nAccepted Genre/Form (1809-1917).\n\n\n\nGenre/Form\nEntries (n)\nFraction (%)\n\n\n\n\nVäitöskirjat\n4330\n6.5\n\n\nKäännökset\n3670\n5.5\n\n\nKartat\n1770\n2.6\n\n\nLuettelot\n761\n1.1\n\n\nEsitteet\n743\n1.1\n\n\nKaunokirjallisuus; Käännökset\n452\n0.7\n\n\nVirret; Arkkiveisut\n396\n0.6\n\n\nArkkiveisut\n306\n0.5\n\n\nKokousjulkaisut\n302\n0.5\n\n\nOppikirjat\n291\n0.4",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Genre/form 655</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Genre/form 655</span>"
     ]
   },
   {
     "objectID": "language.html",
     "href": "language.html",
-    "title": "4  Language",
+    "title": "3  Language",
     "section": "",
-    "text": "4.1 Description\nMARC: 041,a\nThe polish_languages function is designed to standardize and harmonize language information in a dataset. The process starts by isolating unique language entries, ensuring that each distinct combination of languages is processed only once, which improves efficiency and avoids redundant computations. A MARC reference list of recognized language abbreviations and names is then used to map language codes to their standardized forms. Each language entry is analyzed to identify multiple languages and to detect any unrecognized terms.\nThe entries are standardized by converting them to their recognized forms while eliminating duplicates and filtering out unrecognized languages. Empty cells in the dataset are marked as NA to indicate missing information. Once standardized, all valid languages are aggregated to create a structured data frame. This data frame includes the total number of languages in each entry, a flag (TRUE/FALSE) indicating whether the entry contains multiple languages (including those that are originally coded as mul = Multiple language), the cleaned and harmonized list of languages, and the primary language, which is defined as the first listed language in each entry. The result is a cleaned and standardized dataset that facilitates accurate analysis of multilingual data.\nAdditionally, an error list is generated, consisting of unrecognized language information and the corresponding IDs. This error list helps librarians identify mistakes in the original data and provides context to either correct the errors or explain why certain entries were discarded by the function.",
+    "text": "3.1 Description\nThe polish_languages function is designed to standardize and harmonize language information in a dataset. The process starts by isolating unique language entries, ensuring that each distinct combination of languages is processed only once, which improves efficiency and avoids redundant computations. A MARC reference list of recognized language abbreviations and names is then used to map language codes to their standardized forms. Each language entry is analyzed to identify multiple languages and to detect any unrecognized terms.\nThe entries are standardized by converting them to their recognized forms while eliminating duplicates and filtering out unrecognized languages. Empty cells in the dataset are marked as NA to indicate missing information. Once standardized, all valid languages are aggregated to create a structured data frame. This data frame includes the total number of languages in each entry, a flag (TRUE/FALSE) indicating whether the entry contains multiple languages (including those that are originally coded as mul = Multiple language), the cleaned and harmonized list of languages, and the primary language, which is defined as the first listed language in each entry. The result is a cleaned and standardized dataset that facilitates accurate analysis of multilingual data.\nAdditionally, an error list is generated, consisting of unrecognized language information and the corresponding IDs. This error list helps librarians identify mistakes in the original data and provides context to either correct the errors or explain why certain entries were discarded by the function.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Language</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Language</span>"
     ]
   },
   {
     "objectID": "language.html#complete-dataset-overview",
     "href": "language.html#complete-dataset-overview",
-    "title": "4  Language",
-    "section": "4.2 Complete Dataset Overview",
-    "text": "4.2 Complete Dataset Overview\nUnique languages: 189\nUnique primary languages: 155\n1096222 single-language entries (93.27%)\n79136 multilingual entries , accounting for 6.73% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.\nThere are 930 single-language entries marked as only “Undetermined”, coded as “und”, accounting for (0.08%) of the total.\nThere are 54424 missing values in the dataset,accounting for (4.43%) of the total.\nUnrecognized languages provides details of languages that were discarded, in total: 24. Additionally, the Error list contains ID numbers of entries associated with these discarded languages, intended for librarian review.\nConversions from raw to preprocessed language entries\nNew custom abbreviations can be added in this table.\nDownload language harmonized dataset",
+    "title": "3  Language",
+    "section": "3.2 Complete Dataset Overview",
+    "text": "3.2 Complete Dataset Overview\nUnique languages: 189\nUnique primary languages: 155\n1096222 single-language entries (93.27%)\n79136 multilingual entries , accounting for 6.73% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.\nThere are 930 single-language entries marked as only “Undetermined”, coded as “und”, accounting for (0.08%) of the total.\nThere are 54424 missing values in the dataset,accounting for (4.43%) of the total.\nUnrecognized languages provides details of languages that were discarded, in total: 24. Additionally, the Error list contains ID numbers of entries associated with these discarded languages, intended for librarian review.\nConversions from raw to preprocessed language entries\nNew custom abbreviations can be added in this table.\nDownload language harmonized dataset",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Language</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Language</span>"
     ]
   },
   {
     "objectID": "language.html#subset-analysis-1809-1917",
     "href": "language.html#subset-analysis-1809-1917",
-    "title": "4  Language",
-    "section": "4.3 Subset Analysis: 1809-1917",
-    "text": "4.3 Subset Analysis: 1809-1917\nUnique languages (1809-1917): 56\nUnique primary languages (1809-1917): 40\n61914 single-language entries (93.65%)\n4197 multilingual entries , accounting for 6.35% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.\nThere are 93 entries marked as “Undetermined”.\nThere are 778 missing values in the dataset,accounting for (1.16%) of the total.\nDownload language harmonized dataset (1809-1917)\n\n4.3.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages (1809-1917).\n\n\n\nLanguage\nEntries (n)\nFraction (%)\n\n\n\n\nFinnish\n33986\n50.8\n\n\nSwedish\n19996\n29.9\n\n\nGerman\n2212\n3.3\n\n\nRussian\n2123\n3.2\n\n\nFinnish;Swedish\n2072\n3.1\n\n\nLatin\n1879\n2.8\n\n\nFrench\n653\n1\n\n\nEnglish\n417\n0.6\n\n\nSwedish;Latin\n200\n0.3\n\n\nSwedish;Finnish\n187\n0.3\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
+    "title": "3  Language",
+    "section": "3.3 Subset Analysis: 1809-1917",
+    "text": "3.3 Subset Analysis: 1809-1917\nUnique languages (1809-1917): 56\nUnique primary languages (1809-1917): 40\n61914 single-language entries (93.65%)\n4197 multilingual entries , accounting for 6.35% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.\nThere are 93 entries marked as “Undetermined”.\nThere are 778 missing values in the dataset,accounting for (1.16%) of the total.\nDownload language harmonized dataset (1809-1917)\n\n3.3.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages (1809-1917).\n\n\n\nLanguage\nEntries (n)\nFraction (%)\n\n\n\n\nFinnish\n33986\n50.8\n\n\nSwedish\n19996\n29.9\n\n\nGerman\n2212\n3.3\n\n\nRussian\n2123\n3.2\n\n\nFinnish;Swedish\n2072\n3.1\n\n\nLatin\n1879\n2.8\n\n\nFrench\n653\n1\n\n\nEnglish\n417\n0.6\n\n\nSwedish;Latin\n200\n0.3\n\n\nSwedish;Finnish\n187\n0.3\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Language</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Language</span>"
+    ]
+  },
+  {
+    "objectID": "publisher.html",
+    "href": "publisher.html",
+    "title": "4  Publisher",
+    "section": "",
+    "text": "4.1 Complete Dataset Overview",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Publisher</span>"
+    ]
+  },
+  {
+    "objectID": "publisher.html#complete-dataset-overview",
+    "href": "publisher.html#complete-dataset-overview",
+    "title": "4  Publisher",
+    "section": "",
+    "text": "154873 unique publishers\n937782 documents have unambiguous publisher information (76.3%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\nConversions from original to final names (only non-trivial conversions shown)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Publisher</span>"
+    ]
+  },
+  {
+    "objectID": "publisher.html#subset-analysis-1809-1917",
+    "href": "publisher.html#subset-analysis-1809-1917",
+    "title": "4  Publisher",
+    "section": "4.2 Subset Analysis: 1809-1917",
+    "text": "4.2 Subset Analysis: 1809-1917\n\n10123 unique publishers\n50660 documents have unambiguous publisher information (75.7%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\n\nThe 20 most common publishers from 1809 to 1917 are shown with the number of documents.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Publisher</span>"
     ]
   },
   {
@@ -154,7 +104,7 @@
     "href": "publication_time.html",
     "title": "5  Publication time",
     "section": "",
-    "text": "5.1 Complete Data Overview\nMARC field: 008/07-14\nThe publication years section offers a comprehensive summary of the dataset’s years of publication, providing an understanding of the temporal distribution of titles. The inclusion of links to uniquely accepted and discarded output tables adds a layer of transparency, allowing for detailed exploration of the refined and excluded data.\nData harmonization was performed using the polish_years_008 function. It processes and harmonizes temporal data, splitting it into columns such as publication_year, publication_from, publication_till (for serials), and publication_decade (for visualization). Links to the converted data are provided below.\nThe dataset includes information on missing values, represented as NA in the refined data. There are 69522 empty rows in the field 008. Discarded values, such as invalid entries coded as characters (e.g., “uuuu”, “||||”) or inconsistent data (e.g., years beyond the current year or mismatched date ranges), are excluded. This does not imply that the discarded values are incorrect; rather, they are excluded because they cannot be utilized for statistical analysis.\nThe summary also accounts for publication statuses (field 008/06). For accurate temporal distribution, these statuses and their implications must be carefully considered to ensure only valid dates are selected that represent the publication year and not something else.\nPublication year conversions\nPublication year discarded. 483 records are discarded where the publication date is not coded or unknown or contain ambiguous dates, such as non-numeric characters. Error list is for librarians’ use.\nDownload publication time harmonized dataset\nPublication years is available for 1159777 documents (94%). The publication years span is 1300-2025.",
+    "text": "5.1 Complete Data Overview\nPublication year conversions\nPublication year discarded. 483 records are discarded where the publication date is not coded or unknown or contain ambiguous dates, such as non-numeric characters. Error list is for librarians’ use.\nDownload publication time harmonized dataset\nPublication years is available for 1159777 documents (94%). The publication years span is 1300-2025.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Publication time</span>"
     ]
@@ -184,7 +134,7 @@
     "href": "signum.html",
     "title": "6  Signum",
     "section": "",
-    "text": "6.1 Complete Dataset Overview\nA signum data, also known as a call number, is a unique combination of numbers and letters employed to indicate the specific location of a book within a library. This data was verified and provided to us by the National Library of Finland.\nOriginal documents with titles: 65452 / 1229782 (5.3%)\nOriginal documents with missing (NA) titles 1164330 / 1229782 documents (94.7%)\nSignum accepted for the whole Fennica\nSignum discarded for the whole Fennica",
+    "text": "6.1 Complete Dataset Overview\nOriginal documents with titles: 927870 / 1229782 (75.4%)\nOriginal documents with missing (NA) titles 301912 / 1229782 documents (24.6%)\nSignum accepted for the whole Fennica\nSignum discarded for the whole Fennica",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Signum</span>"
     ]
@@ -194,7 +144,7 @@
     "href": "signum.html#complete-dataset-overview",
     "title": "6  Signum",
     "section": "",
-    "text": "6.1.1 Top-20 signum\n\n\n\nSignum\nEntries (n)\nFraction (%)\n\n\n\n\n1-\n1937\n0.2\n\n\n1.\n448\n0\n\n\n1-2.\n320\n0\n\n\n1-3.\n231\n0\n\n\nN:o 1-\n200\n0\n\n\n1-4.\n200\n0\n\n\n2010, 1-\n199\n0\n\n\n[1]-\n178\n0\n\n\n2004, 1-\n169\n0\n\n\n2005, 1-\n164\n0",
+    "text": "6.1.1 Top-20 signum\n\n\n\nSignum\nEntries (n)\nFraction (%)\n\n\n\n\nEa2 1978-\n81229\n6.6\n\n\nEa3 1978-\n28274\n2.3\n\n\nDa2 1978-\n16674\n1.4\n\n\nCb 1973-\n8530\n0.7\n\n\nSuom. kaunokirj. 1 -1972\n7281\n0.6\n\n\nSuom. kaunokirj. 2 -1972\n7249\n0.6\n\n\nDa3 1978-\n7032\n0.6\n\n\nKa01\n6898\n0.6\n\n\nAa2\n5307\n0.4\n\n\nDoria\n5003\n0.4",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Signum</span>"
     ]
@@ -204,7 +154,7 @@
     "href": "signum.html#subset-analysis-1809-1917",
     "title": "6  Signum",
     "section": "6.2 Subset Analysis: 1809-1917",
-    "text": "6.2 Subset Analysis: 1809-1917\nOriginal documents with titles: 5334 / 1229782 (8%)\nOriginal documents with missing (NA) titles 61555 / 1229782 documents (94.7%)\nSignum accepted for 1809-1917\nSignum discarded for 1809-1917\n\n6.2.1 Top-20 signum for 1809-1917\n\n\n\nSignum\nEntries (n)\nFraction (%)\n\n\n\n\n1-2.\n74\n0\n\n\n1.\n72\n0\n\n\nN:o 1.\n52\n0\n\n\n1-3.\n38\n0\n\n\n1-4.\n32\n0\n\n\nN:o 1-n:o 2.\n27\n0\n\n\n1910.\n26\n0\n\n\n1902.\n26\n0\n\n\n1-5.\n25\n0\n\n\n1901.\n22\n0",
+    "text": "6.2 Subset Analysis: 1809-1917\nOriginal documents with titles: 45661 / 1229782 (68.3%)\nOriginal documents with missing (NA) titles 21228 / 1229782 documents (24.6%)\nSignum accepted for 1809-1917\nSignum discarded for 1809-1917\n\n6.2.1 Top-20 signum for 1809-1917\n\n\n\n\n\n\n\n\nSignum\nEntries (n)\nFraction (%)\n\n\n\n\nDoria\n1871\n0.2\n\n\nDiss. HY\n1249\n0.1\n\n\nIV.1/49\n1209\n0.1\n\n\nHartauskirj. -1972;Käsifilmistö - filmikortit\n1121\n0.1\n\n\nSuom. kaunokirj. 3 -1972\n1073\n0.1\n\n\nSuom. kaunokirj. 2 -1972\n870\n0.1\n\n\nSuom. kaunokirj. 1 -1972\n685\n0.1\n\n\nSuom. kaunokirj. 4 -1972\n642\n0.1\n\n\nRuots. kaunokirj. 1 -1972\n498\n0\n\n\nK.Hartauskirj. -1972;Mf.\n487\n0",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Signum</span>"
     ]
@@ -214,7 +164,7 @@
     "href": "title.html",
     "title": "7  Title",
     "section": "",
-    "text": "7.1 Complete Dataset Overview\nMARC: 245a\nOriginal documents with titles: 1229741 / 1229782 (100%)\nOriginal documents with missing (NA) titles 41 / 1229782 documents (0%)\nUnique discarded entries in original data: 6\nDownload title field harmonized dataset",
+    "text": "7.1 Complete Dataset Overview\nOriginal documents with titles: 1229741 / 1229782 (100%)\nOriginal documents with missing (NA) titles 41 / 1229782 documents (0%)\nUnique discarded entries in original data: 7\nDownload title field harmonized dataset",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Title</span>"
     ]
@@ -244,7 +194,7 @@
     "href": "title_remainder.html",
     "title": "8  Remainder of title",
     "section": "",
-    "text": "8.1 Complete Dataset Overview\nMARC: 245b\nOriginal documents with title_remainders: 477533 / 1229782 (38.8%)\nOriginal documents with missing (NA) title_remainders 752249 / 1229782 documents (61.2%)\nUnique discarded entries in original data: 0\nDownload title_remainder field harmonized dataset",
+    "text": "8.1 Complete Dataset Overview\nOriginal documents with title_remainders: 477533 / 1229782 (38.8%)\nOriginal documents with missing (NA) title_remainders 752249 / 1229782 documents (61.2%)\nUnique discarded entries in original data: 0\nDownload title_remainder field harmonized dataset",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Remainder of title</span>"
     ]
@@ -270,43 +220,73 @@
     ]
   },
   {
+    "objectID": "content_type.html",
+    "href": "content_type.html",
+    "title": "9  Types of record",
+    "section": "",
+    "text": "9.1 Types of record\nTitle count per type of record (note the log10 scale):",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Types of record</span>"
+    ]
+  },
+  {
+    "objectID": "content_type.html#types-of-record",
+    "href": "content_type.html#types-of-record",
+    "title": "9  Types of record",
+    "section": "",
+    "text": "Type of Record\nDocuments (n)\nFraction (%)\n\n\n\n\nLanguage material\n1119833\n91.1\n\n\nCartographic material\n61100\n5\n\n\nNonmusical sound recording\n42476\n3.5\n\n\nKit\n1896\n0.2\n\n\nComputer file\n1244\n0.1\n\n\nNotated music\n1081\n0.1\n\n\nThree-dimensional artifact or naturally occurring object\n914\n0.1\n\n\nTwo-dimensional nonprojectable graphic\n440\n0\n\n\nMusical sound recording\n305\n0\n\n\nProjected medium\n290\n0\n\n\nMixed materials\n176\n0\n\n\nManuscript language material\n5\n0\n\n\nManuscript cartographic material\n5\n0",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Types of record</span>"
+    ]
+  },
+  {
+    "objectID": "content_type.html#bibliographic-level",
+    "href": "content_type.html#bibliographic-level",
+    "title": "9  Types of record",
+    "section": "9.2 Bibliographic level",
+    "text": "9.2 Bibliographic level\n\n\n\nBibliographic level\nDocuments (n)\nFraction (%)\n\n\n\n\nMonograph/Item\n1145830\n93.2\n\n\nSerial\n71711\n5.8\n\n\nSubunit\n6550\n0.5\n\n\nSerial component part\n4593\n0.4\n\n\nCollection\n440\n0\n\n\nIntegrating resource\n366\n0\n\n\nMonographic component part\n275\n0",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Types of record</span>"
+    ]
+  },
+  {
     "objectID": "udk.html",
     "href": "udk.html",
-    "title": "9  Universal Decimal Classification",
+    "title": "10  Universal Decimal Classification",
     "section": "",
-    "text": "9.1 Complete Dataset Overview\nMARC: 080a\nPolish_udk.R is a function designed to harmonize the ‘Universal Decimal Classification’ field. Currently, it only harmonizes entries categorized under the bibliography level of Monograph/Item.\nIn total, there are 1229782 entries in Fennica, with 1227631 missing UDC values in our dataset.\nUnique accepted UDC: 1\nUDC is available for 2151 documents (0%).\n1965 single UDC entries (91.35%)\n186 multiple UDC entries (8.65%)\n1227631 missing/NA entries (100%)\nThere are 2151 entries where the primary UDK is “Undetermined” (100%).\nUnrecognized UDC: 348\nDownload UDC harmonized dataset\nUDC codes are from The National Library of Finland; new custom abbreviations can be added in this table.",
+    "text": "10.1 Complete Dataset Overview\nUnique accepted UDC: 1583\nUDC is available for 881123 documents (72%).\n397745 single UDC entries (45.14%)\n483378 multiple UDC entries (54.86%)\n348659 missing/NA entries (28%)\nThere are 49 entries where the primary UDK is “Undetermined” (0%).\nUnrecognized UDC: 611\nDownload UDC harmonized dataset\nUDC codes are from The National Library of Finland; new custom abbreviations can be added in this table.",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Universal Decimal Classification</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Universal Decimal Classification</span>"
     ]
   },
   {
     "objectID": "udk.html#complete-dataset-overview",
     "href": "udk.html#complete-dataset-overview",
-    "title": "9  Universal Decimal Classification",
+    "title": "10  Universal Decimal Classification",
     "section": "",
-    "text": "UDC\nEntries (n)\nFraction (%)\n\n\n\n\nUndetermined\n2151\n0.2",
+    "text": "UDC\nEntries (n)\nFraction (%)\n\n\n\n\nSuomenkielinen kirjallisuus\n87311\n7.1\n\n\nEnglanninkielinen kirjallisuus\n48822\n4\n\n\nHenkilöhistoria. Elämäkerrat. Muistelmat. Matrikkelit\n22897\n1.9\n\n\nSuomenruotsalainen kirjallisuus\n14529\n1.2\n\n\nSosiaaliturva. Sosiaalihuolto. Sosiaalityö. Sosiaalipalvelut. Sosiaaliavustukset. Kansanterveys. Sairaalat\n13504\n1.1\n\n\nMatematiikka\n12179\n1\n\n\nPatologia. Tautioppi\n11975\n1\n\n\nKristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset\n10063\n0.8\n\n\nSarjakuvat\n9979\n0.8\n\n\nRuotsinkielinen kirjallisuus\n9730\n0.8\n\n\nPaikallishistoriat. Kotiseutu\n9646\n0.8\n\n\nLuonto. Luonnonsuojelu. Ympäristönsuojelu. Ympäristötieteet. Ympäristön tila\n9388\n0.8\n\n\nFysiikka\n9077\n0.7\n\n\nTietotekniikka. Tietojenkäsittely. Atk\n8227\n0.7\n\n\nLiikunta. Urheilu. Voimistelu. Liikuntavälineet. Urheiluvälineet. Retkeily\n8160\n0.7\n\n\nBiologiset tieteet. Biologia\n8094\n0.7\n\n\nSotataito. Sotatiede. Maanpuolustus\n8035\n0.7\n\n\nLiiketalous\n7511\n0.6\n\n\nLiikenne. Liikenneturvallisuus. Liikenneonnettomuudet. Postilaitos\n6598\n0.5\n\n\nAluesuunnittelu. Seutusuunnittelu. Maaseudun suunnittelu. Kaupunkisuunnittelu. Yhdyskuntasuunnittelu. Aluetutkimus. Kaavoitus\n6407\n0.5",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Universal Decimal Classification</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Universal Decimal Classification</span>"
     ]
   },
   {
     "objectID": "udk.html#subset-analysis-1809-1917",
     "href": "udk.html#subset-analysis-1809-1917",
-    "title": "9  Universal Decimal Classification",
-    "section": "9.2 Subset Analysis: 1809-1917",
-    "text": "9.2 Subset Analysis: 1809-1917\nUnique UDC (1809-1917): 1\n50 single UDC entries (92.59%)\n4 multiple UDC entries (7.41%)\n66835 missing/NA entries (100%)\nThere are 54 entries where the primary UDK is “Undetermined” (100%)\nDownload UDC harmonized dataset (1809-1917)\n\n9.2.1 Top UDC for 1809-1917\nNumber of titles assigned with each UDC (top-10). For a complete list, see accepted UDC (1809-1917).\n\n\n\nUDC\nEntries (n)\nFraction (%)\n\n\n\n\nUndetermined\n54\n0",
+    "title": "10  Universal Decimal Classification",
+    "section": "10.2 Subset Analysis: 1809-1917",
+    "text": "10.2 Subset Analysis: 1809-1917\nUnique UDC (1809-1917): 828\n21027 single UDC entries (68.9%)\n9489 multiple UDC entries (31.1%)\n36373 missing/NA entries (54%)\nThere are 3 entries where the primary UDK is “Undetermined” (0%)\nDownload UDC harmonized dataset (1809-1917)\n\n10.2.1 Top UDC for 1809-1917\nNumber of titles assigned with each UDC (top-10). For a complete list, see accepted UDC (1809-1917).\n\n\n\n\n\n\n\n\nUDC\nEntries (n)\nFraction (%)\n\n\n\n\nSuomenkielinen kirjallisuus\n4178\n0.3\n\n\nSuomenruotsalainen kirjallisuus\n2448\n0.2\n\n\nKristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset\n980\n0.1\n\n\nEnglanninkielinen kirjallisuus\n915\n0.1\n\n\nYliopistot\n805\n0.1\n\n\nSaksankielinen kirjallisuus. Jiddišinkielinen kirjallisuus\n797\n0.1\n\n\nBibliografiat. Julkaisuluettelot\n763\n0.1\n\n\nSuomen historia\n756\n0.1\n\n\nRuotsinkielinen kirjallisuus\n725\n0.1\n\n\nLehdistö. Journalismi. Sanomalehdet\n601\n0\n\n\nAntiikin kirjallisuus. Latinankielinen kirjallisuus. Kreikankielinen kirjallisuus\n532\n0\n\n\nHenkilöhistoria. Elämäkerrat. Muistelmat. Matrikkelit\n504\n0\n\n\nPerinnetieteet. Etnologia. Kansatiede. Kansanrunous. Folkloristiikka\n447\n0\n\n\nRanskankielinen kirjallisuus\n438\n0\n\n\nKansanperinne tiukasti määriteltynä\n424\n0\n\n\nRaamattu\n364\n0\n\n\nVenäjänkielinen kirjallisuus\n361\n0\n\n\nVirkistys. Viihde. Pelit. Urheilu\n360\n0\n\n\nPatologia. Tautioppi\n320\n0\n\n\nSuomen kieli\n308\n0",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Universal Decimal Classification</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Universal Decimal Classification</span>"
     ]
   },
   {
     "objectID": "harmonized_fennica.html",
     "href": "harmonized_fennica.html",
-    "title": "10  Harmonized Fennica Dataset",
+    "title": "11  Harmonized Fennica Dataset",
     "section": "",
     "text": "The choice of fields to harmonize is guided by the needs of the Digital History for Literature in Finland (2022-2026) project funded by the Research Council of Finland. The project aims to use digital collections and methods to significantly expand the prevailing understanding of Finnish literature history.\nTo access a harmonized Fennica dataset, simply download the harmonized_fennica.csv file from the provided link. This dataset includes bibliographic details such as Melinda ID numbers, author name and date information, titles, languages, publication years, publication locations, publishers, content types, bibliographic levels, signum, UDC numbers, genre.\nDownload harmonized_fennica.csv.\nHarmonized data is also available for a subset of years 1809-1917:\nDownload harmonized_fennica19.csv.\nFor more information contact Julia Matveeva (yulmat@utu.fi).",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Harmonized Fennica Dataset</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Harmonized Fennica Dataset</span>"
     ]
   },
   {
@@ -325,7 +305,7 @@
     "href": "technical_information.html",
     "title": "Technical information",
     "section": "",
-    "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.5.0 (2025-04-11)\nPlatform: x86_64-pc-linux-gnu\nRunning under: Ubuntu 24.04.2 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\ntime zone: UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] parallel  stats     graphics  grDevices utils     datasets  methods  \n[8] base     \n\nother attached packages:\n [1] fennica_0.2.9     arrow_19.0.1.1    readxl_1.4.5      qdapRegex_0.7.10 \n [5] stringi_1.8.7     purrr_1.0.4       Cairo_1.6-2       ggplot2_3.5.2    \n [9] R.utils_2.13.0    R.oo_1.27.1       R.methodsS3_1.8.2 knitr_1.50       \n[13] stringr_1.5.1     tm_0.7-16         NLP_0.3-2         tidyr_1.3.1      \n[17] dplyr_1.1.4       devtools_2.4.5    usethis_3.1.0    \n\nloaded via a namespace (and not attached):\n [1] stringdist_0.9.15  gtable_0.3.6       xfun_0.52          htmlwidgets_1.6.4 \n [5] remotes_2.5.0      vctrs_0.6.5        tools_4.5.0        generics_0.1.3    \n [9] tibble_3.2.1       pkgconfig_2.0.3    data.table_1.17.0  RColorBrewer_1.1-3\n[13] assertthat_0.2.1   lifecycle_1.0.4    compiler_4.5.0     farver_2.1.2      \n[17] httpuv_1.6.16      htmltools_0.5.8.1  later_1.4.2        pillar_1.10.2     \n[21] urlchecker_1.0.1   ellipsis_0.3.2     cachem_1.1.0       sessioninfo_1.2.3 \n[25] mime_0.13          tidyselect_1.2.1   digest_0.6.37      slam_0.1-55       \n[29] fastmap_1.2.0      grid_4.5.0         cli_3.6.5          magrittr_2.0.3    \n[33] XML_3.99-0.18      pkgbuild_1.4.7     withr_3.0.2        scales_1.4.0      \n[37] promises_1.3.2     bit64_4.6.0-1      rmarkdown_2.29     bit_4.6.0         \n[41] cellranger_1.1.0   memoise_2.0.1      shiny_1.10.0       evaluate_1.0.3    \n[45] miniUI_0.1.2       profvis_0.4.0      rlang_1.1.6        Rcpp_1.0.14       \n[49] xtable_1.8-4       glue_1.8.0         xml2_1.3.8         pkgload_1.4.0     \n[53] jsonlite_2.0.0     R6_2.6.1           fs_1.6.6",
+    "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.5.0 (2025-04-11)\nPlatform: x86_64-pc-linux-gnu\nRunning under: Ubuntu 22.04.5 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0 \nLAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\ntime zone: Etc/UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] parallel  stats     graphics  grDevices utils     datasets  methods  \n[8] base     \n\nother attached packages:\n [1] fennica_0.2.9     arrow_19.0.1.1    readxl_1.4.5      qdapRegex_0.7.10 \n [5] stringi_1.8.7     purrr_1.0.4       Cairo_1.5-14      ggplot2_3.5.2    \n [9] R.utils_2.13.0    R.oo_1.27.0       R.methodsS3_1.8.2 knitr_1.50       \n[13] stringr_1.5.1     tm_0.7-16         NLP_0.3-2         tidyr_1.3.1      \n[17] dplyr_1.1.4       devtools_2.4.3    usethis_2.1.5    \n\nloaded via a namespace (and not attached):\n [1] stringdist_0.9.15  gtable_0.3.6       xfun_0.52          htmlwidgets_1.5.4 \n [5] remotes_2.5.0      processx_3.8.6     callr_3.7.6        vctrs_0.6.5       \n [9] tools_4.5.0        ps_1.9.1           generics_0.1.3     tibble_3.2.1      \n[13] pkgconfig_2.0.3    data.table_1.17.0  RColorBrewer_1.1-3 assertthat_0.2.1  \n[17] lifecycle_1.0.4    compiler_4.5.0     farver_2.1.2       htmltools_0.5.8.1 \n[21] pillar_1.10.2      crayon_1.5.0       ellipsis_0.3.2     cachem_1.0.6      \n[25] sessioninfo_1.2.2  tidyselect_1.2.1   digest_0.6.37      slam_0.1-55       \n[29] fastmap_1.2.0      grid_4.5.0         cli_3.6.5          magrittr_2.0.3    \n[33] XML_3.99-0.18      pkgbuild_1.3.1     withr_3.0.2        prettyunits_1.1.1 \n[37] scales_1.4.0       bit64_4.0.5        rmarkdown_2.29     bit_4.0.4         \n[41] cellranger_1.1.0   memoise_2.0.1      evaluate_1.0.3     rlang_1.1.6       \n[45] Rcpp_1.0.14        glue_1.8.0         xml2_1.3.8         pkgload_1.4.0     \n[49] rstudioapi_0.17.1  jsonlite_2.0.0     R6_2.6.1           fs_1.5.2",
     "crumbs": [
       "Appendices",
       "Technical information"
