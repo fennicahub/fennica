@@ -6,6 +6,7 @@ library(httr)
 
 Sys.setenv("AWS_S3_ENDPOINT" = "a3s.fi")
 
+
 all_files_in_bucket <- get_bucket_df("fennica-container",region='', drop = FALSE, verbose = TRUE)
 
 
@@ -21,7 +22,7 @@ all_files_in_folder <- get_bucket_df(bucket_name, prefix = s3_folder_path, regio
 # # Delete files if any are found in the folder
 # if(nrow(all_files_in_folder) > 0) {
 #     s3_paths <- all_files_in_folder$Key
-# 
+#
 #     # Delete each file found in the folder
 #     lapply(s3_paths, function(path) {
 #         delete_object(object = path, bucket = bucket_name, region = "", verbose = TRUE)
@@ -36,7 +37,7 @@ upload_file_to_s3 <- function(file_path, bucket, s3_folder) {
     if (file.exists(file_path)) {
         file_name <- basename(file_path)
         object_key <- paste0(s3_folder, file_name)
-        
+
         # Use tryCatch to handle potential errors during upload
         tryCatch({
             put_object(file = file_path, object = object_key, bucket = bucket, region="",drop = FALSE,verbose = TRUE)
