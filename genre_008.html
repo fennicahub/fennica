@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Language</title>
+<title>3&nbsp; Genre 008/33</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./publisher.html" rel="next">
-<link href="./genre_008.html" rel="prev">
+<link href="./language.html" rel="next">
+<link href="./genre_655.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -248,7 +248,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./language.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Language</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./genre_008.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Genre 008/33</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -293,13 +293,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./genre_008.html" class="sidebar-item-text sidebar-link">
+  <a href="./genre_008.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Genre 008/33</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./language.html" class="sidebar-item-text sidebar-link active">
+  <a href="./language.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Language</span></span></a>
   </div>
 </li>
@@ -384,12 +384,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description"><span class="header-section-number">4.1</span> Description</a></li>
-  <li><a href="#complete-dataset-overview" id="toc-complete-dataset-overview" class="nav-link" data-scroll-target="#complete-dataset-overview"><span class="header-section-number">4.2</span> Complete Dataset Overview</a></li>
-  <li><a href="#subset-analysis-1809-1917" id="toc-subset-analysis-1809-1917" class="nav-link" data-scroll-target="#subset-analysis-1809-1917"><span class="header-section-number">4.3</span> Subset Analysis: 1809-1917</a>
-  <ul class="collapse">
-  <li><a href="#top-languages-for-1809-1917" id="toc-top-languages-for-1809-1917" class="nav-link" data-scroll-target="#top-languages-for-1809-1917"><span class="header-section-number">4.3.1</span> Top languages for 1809-1917</a></li>
-  </ul></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description"><span class="header-section-number">3.1</span> Description</a></li>
+  <li><a href="#complete-dataset-overview" id="toc-complete-dataset-overview" class="nav-link" data-scroll-target="#complete-dataset-overview"><span class="header-section-number">3.2</span> Complete Dataset Overview</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/fennicahub/fennica/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -399,7 +395,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Language</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Genre 008/33</span></h1>
 </div>
 
 
@@ -416,112 +412,80 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>MARC: <a href="https://www.loc.gov/marc/bibliographic/bd041.html">041,a</a></p>
-<section id="description" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="description"><span class="header-section-number">4.1</span> Description</h2>
-<p>The <strong>polish_languages</strong> function is designed to standardize and harmonize language information in a dataset. The process starts by isolating unique language entries, ensuring that each distinct combination of languages is processed only once, which improves efficiency and avoids redundant computations. A <a href="https://www.loc.gov/marc/languages/language_code.html">MARC reference list</a> of recognized language abbreviations and names is then used to map language codes to their standardized forms. Each language entry is analyzed to identify multiple languages and to detect any unrecognized terms.</p>
-<p>The entries are standardized by converting them to their recognized forms while eliminating duplicates and filtering out unrecognized languages. Empty cells in the dataset are marked as <strong>NA</strong> to indicate missing information. Once standardized, all valid languages are aggregated to create a structured data frame. This data frame includes the total number of languages in each entry, a flag <strong>(TRUE/FALSE)</strong> indicating whether the entry contains multiple languages (including those that are originally coded as mul = Multiple language), the cleaned and harmonized list of languages, and the primary language, which is defined as the first listed language in each entry. The result is a cleaned and standardized dataset that facilitates accurate analysis of multilingual data.</p>
-<p>Additionally, an error list is generated, consisting of unrecognized language information and the corresponding IDs. This error list helps librarians identify mistakes in the original data and provides context to either correct the errors or explain why certain entries were discarded by the function.</p>
+<p>MARC: <a href="https://www.loc.gov/marc/bibliographic/bd008.html">008</a></p>
+<section id="description" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="description"><span class="header-section-number">3.1</span> Description</h2>
+<p>MARC21 field 008 contains fixed-length data elements that encode various bibliographic details. In this context, we focus specifically on books—that is, records where the Type of Record is language material. From this field, we extract and interpret the genre information as encoded in position 33 of the 008 field.</p>
+<p>This analysis is based on 1043567 book records in the Fennica database.</p>
 </section>
-<section id="complete-dataset-overview" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="complete-dataset-overview"><span class="header-section-number">4.2</span> Complete Dataset Overview</h2>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/languages_accepted.csv">Unique languages</a>: 189</p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_primary_accepted.csv">Unique primary languages</a>: 155</p>
-<p>1096222 single-language entries (93.27%)</p>
-<p>79136 multilingual entries , accounting for 6.73% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.</p>
-<p>There are 930 single-language entries marked as only “Undetermined”, coded as “und”, accounting for (0.08%) of the total.</p>
-<p>There are 54424 missing values in the dataset,accounting for (4.43%) of the total.</p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_discarded.csv">Unrecognized languages</a> provides details of languages that were discarded, in total: 24. Additionally, the <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_discarded_id.csv">Error list</a> contains ID numbers of entries associated with these discarded languages, intended for librarian review.</p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/full_language_name_accepted.csv">Conversions from raw to preprocessed language entries</a></p>
-<p>New custom abbreviations can be added in <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_abbreviations.csv">this table</a>.</p>
-<p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language.csv">Download language harmonized dataset</a></p>
-</section>
-<section id="subset-analysis-1809-1917" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="subset-analysis-1809-1917"><span class="header-section-number">4.3</span> Subset Analysis: 1809-1917</h2>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/languages_accepted_19.csv">Unique languages (1809-1917)</a>: 56</p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_primary_accepted_19.csv">Unique primary languages (1809-1917)</a>: 40</p>
-<p>61914 single-language entries (93.65%)</p>
-<p>4197 multilingual entries , accounting for 6.35% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.</p>
-<p>There are 93 entries marked as “Undetermined”.</p>
-<p>There are 778 missing values in the dataset,accounting for (1.16%) of the total.</p>
-<p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_19.csv">Download language harmonized dataset (1809-1917)</a></p>
-<section id="top-languages-for-1809-1917" class="level3" data-number="4.3.1">
-<h3 data-number="4.3.1" class="anchored" data-anchor-id="top-languages-for-1809-1917"><span class="header-section-number">4.3.1</span> Top languages for 1809-1917</h3>
-<p>Number of titles assigned with each language (top-10). For a complete list, see <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/languages_accepted_19.csv">accepted languages (1809-1917)</a>.</p>
+<section id="complete-dataset-overview" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="complete-dataset-overview"><span class="header-section-number">3.2</span> Complete Dataset Overview</h2>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_008_accepted.csv">Unique genre 008</a>: 13</p>
+<p>There are 52 missing values in the dataset, accounting for (0%) of the total. Also, there 402097 “Not coded” genres in the field 008/33, accounting for (38.53%) of the total.</p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_008_discarded.csv">Unrecognized genre 088</a> provides details of Genre 008 that were discarded, in total: 0.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: left;">Language</th>
+<th style="text-align: left;">Genre for Books</th>
 <th style="text-align: left;">Entries (n)</th>
 <th style="text-align: left;">Fraction (%)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Finnish</td>
-<td style="text-align: left;">33986</td>
-<td style="text-align: left;">50.8</td>
+<td style="text-align: left;">Tietokirjallisuus</td>
+<td style="text-align: left;">413280</td>
+<td style="text-align: left;">39.6</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Swedish</td>
-<td style="text-align: left;">19996</td>
-<td style="text-align: left;">29.9</td>
+<td style="text-align: left;">Romaanit</td>
+<td style="text-align: left;">132454</td>
+<td style="text-align: left;">12.7</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">German</td>
-<td style="text-align: left;">2212</td>
-<td style="text-align: left;">3.3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Russian</td>
-<td style="text-align: left;">2123</td>
+<td style="text-align: left;">Kaunokirjallisuus</td>
+<td style="text-align: left;">33805</td>
 <td style="text-align: left;">3.2</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Finnish;Swedish</td>
-<td style="text-align: left;">2072</td>
-<td style="text-align: left;">3.1</td>
-</tr>
 <tr class="even">
-<td style="text-align: left;">Latin</td>
-<td style="text-align: left;">1879</td>
+<td style="text-align: left;">Runot</td>
+<td style="text-align: left;">29636</td>
 <td style="text-align: left;">2.8</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">French</td>
-<td style="text-align: left;">653</td>
-<td style="text-align: left;">1</td>
+<td style="text-align: left;">Novellit, kertomukset</td>
+<td style="text-align: left;">13301</td>
+<td style="text-align: left;">1.3</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">English</td>
-<td style="text-align: left;">417</td>
-<td style="text-align: left;">0.6</td>
+<td style="text-align: left;">Draama</td>
+<td style="text-align: left;">8255</td>
+<td style="text-align: left;">0.8</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Swedish;Latin</td>
-<td style="text-align: left;">200</td>
-<td style="text-align: left;">0.3</td>
+<td style="text-align: left;">Yhdistelmä</td>
+<td style="text-align: left;">6252</td>
+<td style="text-align: left;">0.6</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Swedish;Finnish</td>
-<td style="text-align: left;">187</td>
-<td style="text-align: left;">0.3</td>
+<td style="text-align: left;">Puheet, esitelmät</td>
+<td style="text-align: left;">2156</td>
+<td style="text-align: left;">0.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Esseet</td>
+<td style="text-align: left;">1271</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kirjeet</td>
+<td style="text-align: left;">767</td>
+<td style="text-align: left;">0.1</td>
 </tr>
 </tbody>
 </table>
-<p>Title count per language (including multi-language documents; note the log10 scale):</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="language_files/figure-html/summarylang-1.png" class="img-fluid figure-img" width="864"></p>
-</figure>
-</div>
-</div>
-</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -939,13 +903,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./genre_008.html" class="pagination-link" aria-label="Genre 008/33">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Genre 008/33</span></span>
+      <a href="./genre_655.html" class="pagination-link" aria-label="Genre/form 655">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Genre/form 655</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./publisher.html" class="pagination-link" aria-label="Publisher">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Publisher</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./language.html" class="pagination-link" aria-label="Language">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Language</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
