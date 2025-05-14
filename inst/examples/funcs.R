@@ -8198,3 +8198,39 @@ polish_physext_help <- function (s, page.harmonize) {
 
 }
 
+#' @title Polish Publisher Generic
+#' @description Generic cleanup of the publisher field.
+#' @param x Character vector of publisher names
+#' @return Data frame with orig, mod
+#' @export
+#' @author Leo Lahti \email{leo.lahti@@iki.fi}, Julia Matveeva yulmat@utu.fi
+#' @references See citation("fennica")
+#' @keywords utilities
+polish_publisher <- function (x) {
+  
+  # Remove leading/trailing periods
+  x <- gsub("^\\.*", "", x)
+  x <- gsub("\\.*$", "", x)
+  
+  # Remove leading/trailing commas
+  x <- gsub("^,+", "", x)
+  x <- gsub(",+$", "", x)
+  
+  # Remove square brackets
+  x <- gsub("\\[|\\]", "", x)
+  
+  # Remove quotation marks
+  x <- gsub('"', "", x)
+  
+  x <- gsub(":\\|", ";", x)
+  
+  
+  f <- system.file("extdata/sl.csv", package = "fennica") 
+  terms <- as.character(read.csv(f)[,1])
+  x <- remove_sl(x, terms)
+  
+  x <- condense_spaces(x)
+  
+  x
+}
+

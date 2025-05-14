@@ -7,7 +7,7 @@ tab <- polish_publisher(df.orig[[field]])
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      publisher = tab)
-df.tmp$publisher <- gsub(",$", "", df.tmp$publisher)
+
 #add harmonized fields to df
 df.harmonized <- cbind(df.harmonized, publisher = df.tmp$publisher)
 

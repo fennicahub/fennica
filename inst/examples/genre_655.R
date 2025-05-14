@@ -18,8 +18,7 @@ df.tmp$harmonized <- as.character(df.tmp$harmonized)
 row.names(df.tmp) <- NULL
 
 #add harmonized fields to df
-df.harmonized <- cbind(df.harmonized,
-                       genre_655 = df.tmp$harmonized)
+df.harmonized <- cbind(df.harmonized, genre_655 = df.tmp$harmonized)
 
 
 ###############################################################

@@ -30,6 +30,7 @@ book:
   #- kanto_author_info.qmd
   #- corporate.qmd
   - genre_655.qmd
+  - genre_008.qmd
   - language.qmd
   #- physical_dimensions.qmd
   #- physical_extent.qmd

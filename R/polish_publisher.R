@@ -24,6 +24,6 @@ polish_publisher <- function (x) {
   x <- remove_sl(x, terms)
 
   x <- condense_spaces(x)
-  
+  x[x == ""] <- NA
   x
 }

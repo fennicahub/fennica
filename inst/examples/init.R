@@ -30,10 +30,7 @@ if (!file.exists(output.folder)) {
 }
 
 #load the data
-source("priority_fields.R")
-
-#load the enriched data
-#source("priority_fields_kanto.R")
+source("priority_fields.R") #includes kanto files
 
 #extract from leader-> type_of_record and bibliographic_level and add to data
 source("leader.R")

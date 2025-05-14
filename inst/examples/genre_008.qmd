@@ -1,0 +1,40 @@
+---
+title: "Genre 008/33"
+hide-description: false
+description: ""
+---
+
+```{r}
+#| include = FALSE
+source("init.R")
+source("008_33.R")
+```
+
+MARC: [008](https://www.loc.gov/marc/bibliographic/bd008.html)
+
+## Description
+MARC21 field 008 contains fixed-length data elements that encode various bibliographic details. In this context, we focus specifically on books—that is, records where the Type of Record is language material. From this field, we extract and interpret the genre information as encoded in position 33 of the 008 field.
+
+This analysis is based on `r sum(nrow(df))` book records in the Fennica database.
+
+## Complete Dataset Overview
+
+[Unique genre 008](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_008_accepted.csv):  `r length(unique(unlist(strsplit(as.character(df$converted_008_33), ";"))))-1` 
+
+There are `r sum(is.na(df$converted_008_33))` missing values in the dataset, accounting for (`r round(100*mean(is.na(df$converted_008_33)), 2)`%) of the total. Also, there `r sum(df$converted_008_33 == "Ei koodattu", na.rm = TRUE)` "Not coded" genres in the field 008/33, accounting for (`r round(100*mean(df$converted_008_33 == "Ei koodattu", na.rm = TRUE), 2)`%) of the total.
+
+[Unrecognized genre 088](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_008_discarded.csv) provides details of Genre 008 that were discarded, in total: `r sum(!is.na(tmp))`. 
+
+```{r}
+#| label = "genre008",
+#| echo = FALSE,
+#| results = "asis"
+
+# Remove "Ei koodattu" before tabulation
+df_filtered <- df[df$converted_008_33 != "Ei koodattu", ]
+
+x <- top(df_filtered, "converted_008_33")
+tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
+colnames(tab) <- c("Genre for Books", "Entries (n)", "Fraction (%)")
+kable(head(tab, 10))
+```
