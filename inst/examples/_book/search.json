@@ -14,7 +14,7 @@
     "href": "genre_655.html",
     "title": "2  Genre/form 655",
     "section": "",
-    "text": "2.1 Description",
+    "text": "2.1 Description\nMARC: 655,a",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Genre/form 655</span>"
     ]
@@ -44,7 +44,7 @@
     "href": "genre_008.html",
     "title": "3  Genre 008/33",
     "section": "",
-    "text": "3.1 Description\nMARC21 field 008 contains fixed-length data elements that encode various bibliographic details. In this context, we focus specifically on books—that is, records where the Type of Record is language material. From this field, we extract and interpret the genre information as encoded in position 33 of the 008 field.\nThis analysis is based on 1043567 book records in the Fennica database.",
+    "text": "3.1 Description\nMARC: 008\nMARC21 field 008 contains fixed-length data elements that encode various bibliographic details. In this context, we focus specifically on books—that is, records where the Type of Record is language material. From this field, we extract and interpret the genre information as encoded in position 33 of the 008 field.\nThis analysis is based on 1043567 book records in the Fennica database.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Genre 008/33</span>"
     ]
@@ -74,7 +74,7 @@
     "href": "language.html",
     "title": "4  Language",
     "section": "",
-    "text": "4.1 Description\nThe polish_languages function is designed to standardize and harmonize language information in a dataset. The process starts by isolating unique language entries, ensuring that each distinct combination of languages is processed only once, which improves efficiency and avoids redundant computations. A MARC reference list of recognized language abbreviations and names is then used to map language codes to their standardized forms. Each language entry is analyzed to identify multiple languages and to detect any unrecognized terms.\nThe entries are standardized by converting them to their recognized forms while eliminating duplicates and filtering out unrecognized languages. Empty cells in the dataset are marked as NA to indicate missing information. Once standardized, all valid languages are aggregated to create a structured data frame. This data frame includes the total number of languages in each entry, a flag (TRUE/FALSE) indicating whether the entry contains multiple languages (including those that are originally coded as mul = Multiple language), the cleaned and harmonized list of languages, and the primary language, which is defined as the first listed language in each entry. The result is a cleaned and standardized dataset that facilitates accurate analysis of multilingual data.\nAdditionally, an error list is generated, consisting of unrecognized language information and the corresponding IDs. This error list helps librarians identify mistakes in the original data and provides context to either correct the errors or explain why certain entries were discarded by the function.",
+    "text": "4.1 Description\nMARC: 041,a\nThe polish_languages function is designed to standardize and harmonize language information in a dataset. The process starts by isolating unique language entries, ensuring that each distinct combination of languages is processed only once, which improves efficiency and avoids redundant computations. A MARC reference list of recognized language abbreviations and names is then used to map language codes to their standardized forms. Each language entry is analyzed to identify multiple languages and to detect any unrecognized terms.\nThe entries are standardized by converting them to their recognized forms while eliminating duplicates and filtering out unrecognized languages. Empty cells in the dataset are marked as NA to indicate missing information. Once standardized, all valid languages are aggregated to create a structured data frame. This data frame includes the total number of languages in each entry, a flag (TRUE/FALSE) indicating whether the entry contains multiple languages (including those that are originally coded as mul = Multiple language), the cleaned and harmonized list of languages, and the primary language, which is defined as the first listed language in each entry. The result is a cleaned and standardized dataset that facilitates accurate analysis of multilingual data.\nAdditionally, an error list is generated, consisting of unrecognized language information and the corresponding IDs. This error list helps librarians identify mistakes in the original data and provides context to either correct the errors or explain why certain entries were discarded by the function.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Language</span>"
     ]
@@ -104,7 +104,7 @@
     "href": "publisher.html",
     "title": "5  Publisher",
     "section": "",
-    "text": "5.1 Complete Dataset Overview",
+    "text": "5.1 Complete Dataset Overview\nMARC: 260b",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Publisher</span>"
     ]
@@ -134,7 +134,7 @@
     "href": "publication_time.html",
     "title": "6  Publication time",
     "section": "",
-    "text": "6.1 Complete Data Overview\nPublication year conversions\nPublication year discarded. 483 records are discarded where the publication date is not coded or unknown or contain ambiguous dates, such as non-numeric characters. Error list is for librarians’ use.\nDownload publication time harmonized dataset\nPublication years is available for 1159777 documents (94%). The publication years span is 1300-2025.",
+    "text": "6.1 Complete Data Overview\nMARC field: 008/07-14\nThe publication years section offers a comprehensive summary of the dataset’s years of publication, providing an understanding of the temporal distribution of titles. The inclusion of links to uniquely accepted and discarded output tables adds a layer of transparency, allowing for detailed exploration of the refined and excluded data.\nData harmonization was performed using the polish_years_008 function. It processes and harmonizes temporal data, splitting it into columns such as publication_year, publication_from, publication_till (for serials), and publication_decade (for visualization). Links to the converted data are provided below.\nThe dataset includes information on missing values, represented as NA in the refined data. There are 69522 empty rows in the field 008. Discarded values, such as invalid entries coded as characters (e.g., “uuuu”, “||||”) or inconsistent data (e.g., years beyond the current year or mismatched date ranges), are excluded. This does not imply that the discarded values are incorrect; rather, they are excluded because they cannot be utilized for statistical analysis.\nThe summary also accounts for publication statuses (field 008/06). For accurate temporal distribution, these statuses and their implications must be carefully considered to ensure only valid dates are selected that represent the publication year and not something else.\nPublication year conversions\nPublication year discarded. 483 records are discarded where the publication date is not coded or unknown or contain ambiguous dates, such as non-numeric characters. Error list is for librarians’ use.\nDownload publication time harmonized dataset\nPublication years is available for 1159777 documents (94%). The publication years span is 1300-2025.",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Publication time</span>"
     ]
@@ -164,7 +164,7 @@
     "href": "signum.html",
     "title": "7  Signum",
     "section": "",
-    "text": "7.1 Complete Dataset Overview\nOriginal documents with titles: 927870 / 1229782 (75.4%)\nOriginal documents with missing (NA) titles 301912 / 1229782 documents (24.6%)\nSignum accepted for the whole Fennica\nSignum discarded for the whole Fennica",
+    "text": "7.1 Complete Dataset Overview\nA signum data, also known as a call number, is a unique combination of numbers and letters employed to indicate the specific location of a book within a library. This data was verified and provided to us by the National Library of Finland.\nOriginal documents with titles: 927870 / 1229782 (75.4%)\nOriginal documents with missing (NA) titles 301912 / 1229782 documents (24.6%)\nSignum accepted for the whole Fennica\nSignum discarded for the whole Fennica",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Signum</span>"
     ]
@@ -194,7 +194,7 @@
     "href": "title.html",
     "title": "8  Title",
     "section": "",
-    "text": "8.1 Complete Dataset Overview\nOriginal documents with titles: 1229741 / 1229782 (100%)\nOriginal documents with missing (NA) titles 41 / 1229782 documents (0%)\nUnique discarded entries in original data: 7\nDownload title field harmonized dataset",
+    "text": "8.1 Complete Dataset Overview\nMARC: 245a\nOriginal documents with titles: 1229741 / 1229782 (100%)\nOriginal documents with missing (NA) titles 41 / 1229782 documents (0%)\nUnique discarded entries in original data: 7\nDownload title field harmonized dataset",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Title</span>"
     ]
@@ -224,7 +224,7 @@
     "href": "title_remainder.html",
     "title": "9  Remainder of title",
     "section": "",
-    "text": "9.1 Complete Dataset Overview\nOriginal documents with title_remainders: 477533 / 1229782 (38.8%)\nOriginal documents with missing (NA) title_remainders 752249 / 1229782 documents (61.2%)\nUnique discarded entries in original data: 0\nDownload title_remainder field harmonized dataset",
+    "text": "9.1 Complete Dataset Overview\nMARC: 245b\nOriginal documents with title_remainders: 477533 / 1229782 (38.8%)\nOriginal documents with missing (NA) title_remainders 752249 / 1229782 documents (61.2%)\nUnique discarded entries in original data: 0\nDownload title_remainder field harmonized dataset",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Remainder of title</span>"
     ]
@@ -254,7 +254,7 @@
     "href": "content_type.html",
     "title": "10  Types of record",
     "section": "",
-    "text": "10.1 Types of record\nTitle count per type of record (note the log10 scale):",
+    "text": "10.1 Types of record\nMARC: leader/06\nTitle count per type of record (note the log10 scale):",
     "crumbs": [
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Types of record</span>"
     ]
@@ -284,7 +284,7 @@
     "href": "udk.html",
     "title": "11  Universal Decimal Classification",
     "section": "",
-    "text": "11.1 Complete Dataset Overview\nUnique accepted UDC: 1583\nUDC is available for 881123 documents (72%).\n397745 single UDC entries (45.14%)\n483378 multiple UDC entries (54.86%)\n348659 missing/NA entries (28%)\nThere are 49 entries where the primary UDK is “Undetermined” (0%).\nUnrecognized UDC: 611\nDownload UDC harmonized dataset\nUDC codes are from The National Library of Finland; new custom abbreviations can be added in this table.",
+    "text": "11.1 Complete Dataset Overview\nMARC: 080a\nPolish_udk.R is a function designed to harmonize the ‘Universal Decimal Classification’ field. Currently, it only harmonizes entries categorized under the bibliography level of Monograph/Item.\nIn total, there are 1229782 entries in Fennica, with 348659 missing UDC values in our dataset.\nUnique accepted UDC: 1583\nUDC is available for 881123 documents (72%).\n397745 single UDC entries (45.14%)\n483378 multiple UDC entries (54.86%)\n348659 missing/NA entries (28%)\nThere are 49 entries where the primary UDK is “Undetermined” (0%).\nUnrecognized UDC: 611\nDownload UDC harmonized dataset\nUDC codes are from The National Library of Finland; new custom abbreviations can be added in this table.",
     "crumbs": [
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Universal Decimal Classification</span>"
     ]
@@ -335,7 +335,7 @@
     "href": "technical_information.html",
     "title": "Technical information",
     "section": "",
-    "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.5.0 (2025-04-11)\nPlatform: x86_64-pc-linux-gnu\nRunning under: Ubuntu 22.04.5 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0 \nLAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\ntime zone: Etc/UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] parallel  stats     graphics  grDevices utils     datasets  methods  \n[8] base     \n\nother attached packages:\n [1] fennica_0.2.9     arrow_19.0.1.1    readxl_1.4.5      qdapRegex_0.7.10 \n [5] stringi_1.8.7     purrr_1.0.4       Cairo_1.5-14      ggplot2_3.5.2    \n [9] R.utils_2.13.0    R.oo_1.27.0       R.methodsS3_1.8.2 knitr_1.50       \n[13] stringr_1.5.1     tm_0.7-16         NLP_0.3-2         tidyr_1.3.1      \n[17] dplyr_1.1.4       devtools_2.4.3    usethis_2.1.5    \n\nloaded via a namespace (and not attached):\n [1] stringdist_0.9.15  gtable_0.3.6       xfun_0.52          htmlwidgets_1.5.4 \n [5] remotes_2.5.0      processx_3.8.6     callr_3.7.6        vctrs_0.6.5       \n [9] tools_4.5.0        ps_1.9.1           generics_0.1.3     tibble_3.2.1      \n[13] pkgconfig_2.0.3    data.table_1.17.0  RColorBrewer_1.1-3 assertthat_0.2.1  \n[17] lifecycle_1.0.4    compiler_4.5.0     farver_2.1.2       htmltools_0.5.8.1 \n[21] pillar_1.10.2      crayon_1.5.0       ellipsis_0.3.2     cachem_1.0.6      \n[25] sessioninfo_1.2.2  tidyselect_1.2.1   digest_0.6.37      slam_0.1-55       \n[29] fastmap_1.2.0      grid_4.5.0         cli_3.6.5          magrittr_2.0.3    \n[33] XML_3.99-0.18      pkgbuild_1.3.1     withr_3.0.2        prettyunits_1.1.1 \n[37] scales_1.4.0       bit64_4.0.5        rmarkdown_2.29     bit_4.0.4         \n[41] cellranger_1.1.0   memoise_2.0.1      evaluate_1.0.3     rlang_1.1.6       \n[45] Rcpp_1.0.14        glue_1.8.0         xml2_1.3.8         pkgload_1.4.0     \n[49] rstudioapi_0.17.1  jsonlite_2.0.0     R6_2.6.1           fs_1.5.2",
+    "text": "This document was generated with the following packages:\n\nsessionInfo()\n\nR version 4.5.0 (2025-04-11)\nPlatform: x86_64-pc-linux-gnu\nRunning under: Ubuntu 24.04.2 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\ntime zone: UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] parallel  stats     graphics  grDevices utils     datasets  methods  \n[8] base     \n\nother attached packages:\n [1] fennica_0.2.9     arrow_19.0.1.1    readxl_1.4.5      qdapRegex_0.7.10 \n [5] stringi_1.8.7     purrr_1.0.4       Cairo_1.6-2       ggplot2_3.5.2    \n [9] R.utils_2.13.0    R.oo_1.27.1       R.methodsS3_1.8.2 knitr_1.50       \n[13] stringr_1.5.1     tm_0.7-16         NLP_0.3-2         tidyr_1.3.1      \n[17] dplyr_1.1.4       devtools_2.4.5    usethis_3.1.0    \n\nloaded via a namespace (and not attached):\n [1] stringdist_0.9.15  gtable_0.3.6       xfun_0.52          htmlwidgets_1.6.4 \n [5] remotes_2.5.0      vctrs_0.6.5        tools_4.5.0        generics_0.1.4    \n [9] tibble_3.2.1       pkgconfig_2.0.3    data.table_1.17.2  RColorBrewer_1.1-3\n[13] assertthat_0.2.1   lifecycle_1.0.4    compiler_4.5.0     farver_2.1.2      \n[17] httpuv_1.6.16      htmltools_0.5.8.1  later_1.4.2        pillar_1.10.2     \n[21] urlchecker_1.0.1   ellipsis_0.3.2     cachem_1.1.0       sessioninfo_1.2.3 \n[25] mime_0.13          tidyselect_1.2.1   digest_0.6.37      slam_0.1-55       \n[29] fastmap_1.2.0      grid_4.5.0         cli_3.6.5          magrittr_2.0.3    \n[33] XML_3.99-0.18      pkgbuild_1.4.7     withr_3.0.2        scales_1.4.0      \n[37] promises_1.3.2     bit64_4.6.0-1      rmarkdown_2.29     bit_4.6.0         \n[41] cellranger_1.1.0   memoise_2.0.1      shiny_1.10.0       evaluate_1.0.3    \n[45] miniUI_0.1.2       profvis_0.4.0      rlang_1.1.6        Rcpp_1.0.14       \n[49] xtable_1.8-4       glue_1.8.0         xml2_1.3.8         pkgload_1.4.0     \n[53] jsonlite_2.0.0     R6_2.6.1           fs_1.6.6",
     "crumbs": [
       "Appendices",
       "Technical information"
