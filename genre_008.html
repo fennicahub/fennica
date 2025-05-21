@@ -43,9 +43,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-bc5a79beeaac6a054ec9625a91fcbfbe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-797932dd3d3f01eb76f07ff4fd1309f5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-bc5a79beeaac6a054ec9625a91fcbfbe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-201ea9cdc710f8898362519ae96ba322.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-66bc87a40b471cfdee8f104ec0fcb3a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-201ea9cdc710f8898362519ae96ba322.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -385,7 +385,16 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description"><span class="header-section-number">3.1</span> Description</a></li>
-  <li><a href="#complete-dataset-overview" id="toc-complete-dataset-overview" class="nav-link" data-scroll-target="#complete-dataset-overview"><span class="header-section-number">3.2</span> Complete Dataset Overview</a></li>
+  <li><a href="#complete-dataset-overview" id="toc-complete-dataset-overview" class="nav-link" data-scroll-target="#complete-dataset-overview"><span class="header-section-number">3.2</span> Complete Dataset Overview</a>
+  <ul class="collapse">
+  <li><a href="#top-20-genre-count-in-fennica" id="toc-top-20-genre-count-in-fennica" class="nav-link" data-scroll-target="#top-20-genre-count-in-fennica"><span class="header-section-number">3.2.1</span> Top 20 Genre Count in Fennica</a></li>
+  <li><a href="#fiction-vs-non-fiction-over-time-log10" id="toc-fiction-vs-non-fiction-over-time-log10" class="nav-link" data-scroll-target="#fiction-vs-non-fiction-over-time-log10"><span class="header-section-number">3.2.2</span> Fiction VS Non-Fiction over Time (log10)</a></li>
+  </ul></li>
+  <li><a href="#subset-analysis-1809-1917" id="toc-subset-analysis-1809-1917" class="nav-link" data-scroll-target="#subset-analysis-1809-1917"><span class="header-section-number">3.3</span> Subset Analysis: 1809-1917</a>
+  <ul class="collapse">
+  <li><a href="#top-15-genre-count-in-fennica-1809-1917" id="toc-top-15-genre-count-in-fennica-1809-1917" class="nav-link" data-scroll-target="#top-15-genre-count-in-fennica-1809-1917"><span class="header-section-number">3.3.1</span> Top 15 Genre Count in Fennica (1809-1917)</a></li>
+  <li><a href="#certain-genres-over-time" id="toc-certain-genres-over-time" class="nav-link" data-scroll-target="#certain-genres-over-time"><span class="header-section-number">3.3.2</span> Certain Genres over Time</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/fennicahub/fennica/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -420,9 +429,11 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="complete-dataset-overview" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="complete-dataset-overview"><span class="header-section-number">3.2</span> Complete Dataset Overview</h2>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_008_accepted.csv">Unique genre 008</a>: 13</p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_008_accepted.csv">Unique genre 008</a>: 13.</p>
 <p>There are 52 missing values in the dataset, accounting for (0%) of the total. Also, there 402097 “Not coded” genres in the field 008/33, accounting for (38.53%) of the total.</p>
 <p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_008_discarded.csv">Unrecognized genre 088</a> provides details of Genre 008 that were discarded, in total: 0.</p>
+<section id="top-20-genre-count-in-fennica" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="top-20-genre-count-in-fennica"><span class="header-section-number">3.2.1</span> Top 20 Genre Count in Fennica</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -482,10 +493,119 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;">767</td>
 <td style="text-align: left;">0.1</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">Huumori, satiiri</td>
+<td style="text-align: left;">223</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tuntematon</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">0</td>
+</tr>
 </tbody>
 </table>
+</section>
+<section id="fiction-vs-non-fiction-over-time-log10" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="fiction-vs-non-fiction-over-time-log10"><span class="header-section-number">3.2.2</span> Fiction VS Non-Fiction over Time (log10)</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="genre_008_files/figure-html/summary_title_remainder_word_count_pic-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="subset-analysis-1809-1917" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="subset-analysis-1809-1917"><span class="header-section-number">3.3</span> Subset Analysis: 1809-1917</h2>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_008_accepted_19.csv">Unique genre 008</a>: 12.</p>
+<p>There are 1 missing values in the dataset, accounting for (0%) of the total. Also, there 30951 “Not coded” genres in the field 008/33, accounting for (53.01%) of the total.</p>
+<section id="top-15-genre-count-in-fennica-1809-1917" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="top-15-genre-count-in-fennica-1809-1917"><span class="header-section-number">3.3.1</span> Top 15 Genre Count in Fennica (1809-1917)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Genre for Books (1809-1917)</th>
+<th style="text-align: left;">Entries (n)</th>
+<th style="text-align: left;">Fraction (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Tietokirjallisuus</td>
+<td style="text-align: left;">14653</td>
+<td style="text-align: left;">1.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Romaanit</td>
+<td style="text-align: left;">5336</td>
+<td style="text-align: left;">0.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Runot</td>
+<td style="text-align: left;">3002</td>
+<td style="text-align: left;">0.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Novellit, kertomukset</td>
+<td style="text-align: left;">1908</td>
+<td style="text-align: left;">0.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Draama</td>
+<td style="text-align: left;">1715</td>
+<td style="text-align: left;">0.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Yhdistelmä</td>
+<td style="text-align: left;">276</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kaunokirjallisuus</td>
+<td style="text-align: left;">263</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Puheet, esitelmät</td>
+<td style="text-align: left;">229</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Esseet</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kirjeet</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Huumori, satiiri</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">0</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="certain-genres-over-time" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="certain-genres-over-time"><span class="header-section-number">3.3.2</span> Certain Genres over Time</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="genre_008_files/figure-html/summary_title_remainder_word_count_pic1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
