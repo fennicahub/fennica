@@ -7,6 +7,7 @@ description: ""
 ```{r}
 #| include = FALSE
 source("init.R")
+source("publication_time.R")
 source("008_33.R")
 ```
 
@@ -19,14 +20,15 @@ This analysis is based on `r sum(nrow(df))` book records in the Fennica database
 
 ## Complete Dataset Overview
 
-[Unique genre 008](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_008_accepted.csv):  `r length(unique(unlist(strsplit(as.character(df$converted_008_33), ";"))))-1` 
+[Unique genre 008](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_008_accepted.csv):  `r length(unique(unlist(strsplit(as.character(df$converted_008_33), ";"))))-1`.
 
 There are `r sum(is.na(df$converted_008_33))` missing values in the dataset, accounting for (`r round(100*mean(is.na(df$converted_008_33)), 2)`%) of the total. Also, there `r sum(df$converted_008_33 == "Ei koodattu", na.rm = TRUE)` "Not coded" genres in the field 008/33, accounting for (`r round(100*mean(df$converted_008_33 == "Ei koodattu", na.rm = TRUE), 2)`%) of the total.
 
 [Unrecognized genre 088](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_008_discarded.csv) provides details of Genre 008 that were discarded, in total: `r sum(!is.na(tmp))`. 
 
+### Top `r ntop` Genre Count in Fennica 
 ```{r}
-#| label = "genre008",
+#| label = "genre008_full",
 #| echo = FALSE,
 #| results = "asis"
 
@@ -36,5 +38,98 @@ df_filtered <- df[df$converted_008_33 != "Ei koodattu", ]
 x <- top(df_filtered, "converted_008_33")
 tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
 colnames(tab) <- c("Genre for Books", "Entries (n)", "Fraction (%)")
-kable(head(tab, 10))
+ntop <- 15
+kable(head(tab, ntop))
+```
+
+### Fiction VS Non-Fiction over Time (log10)
+```{r}
+#| label = "summary_title_remainder_word_count_pic",
+#| echo = FALSE,
+#| warning = FALSE,
+# Join publication_decade from df_pubtime to df by melinda_id
+df$publication_decade <- df_pubtime$publication_decade[match(df$melinda_id, df_pubtime$melinda_id)]
+
+# Define the genres you're interested in
+selected_genres <- c("Tietokirjallisuus", "Kaunokirjallisuus", "Draama", "Runot", "Romaanit",
+  "Novellit, kertomukset", "Puheet, esitelmät", "Kirjeet", "Esseet", "Huumori, satiiri")
+
+fiction_genres <- c(
+  "Kaunokirjallisuus", "Draama", "Runot", "Romaanit",
+  "Novellit, kertomukset", "Puheet, esitelmät", "Kirjeet", "Esseet", "Huumori, satiiri"
+)
+
+df_selected <- df %>%
+  filter(converted_008_33 %in% c(fiction_genres, "Tietokirjallisuus")) %>%
+  mutate(
+    genre_group = ifelse(converted_008_33 == "Tietokirjallisuus", 
+                         "Non-Fiction", 
+                         "Fiction")
+  )
+
+
+# Plot
+ggplot(df_selected, aes(x = publication_decade, fill = genre_group)) +
+  geom_bar(position = "stack", width = 8) +
+   scale_y_log10() +
+  labs(x = "Publication Decade", y = "Number of Books (log10)", fill = "Genre Group") +
+  scale_fill_manual(values = c("Fiction" = "darkgrey", "Non-Fiction" = "lightgrey")) +  # Optional: custom colors
+  scale_x_continuous(breaks = seq(1500, 2030, by = 100)) +
+  theme_minimal()
+
+```
+
+## Subset Analysis: 1809-1917
+
+[Unique genre 008](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/genre_008_accepted_19.csv):  `r length(unique(unlist(strsplit(as.character(df_19$converted_008_33), ";"))))-1`.
+
+There are `r sum(is.na(df_19$converted_008_33))` missing values in the dataset, accounting for (`r round(100*mean(is.na(df_19$converted_008_33)), 2)`%) of the total. Also, there `r sum(df_19$converted_008_33 == "Ei koodattu", na.rm = TRUE)` "Not coded" genres in the field 008/33, accounting for (`r round(100*mean(df_19$converted_008_33 == "Ei koodattu", na.rm = TRUE), 2)`%) of the total.
+
+
+### Top `r ntop` Genre Count in Fennica (1809-1917) 
+```{r}
+#| label = "genre008_19",
+#| echo = FALSE,
+#| results = "asis"
+
+# Remove "Ei koodattu" before tabulation
+df_filtered1 <- df_19[df_19$converted_008_33 != "Ei koodattu", ]
+
+x <- top(df_filtered1, "converted_008_33")
+tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
+colnames(tab) <- c("Genre for Books (1809-1917)", "Entries (n)", "Fraction (%)")
+ntop <- 15
+kable(head(tab, ntop))
+```
+
+### Certain Genres over Time
+```{r}
+#| label = "summary_title_remainder_word_count_pic1",
+#| echo = FALSE,
+#| warning = FALSE,
+# Join publication_decade from df_pubtime to df by melinda_id
+df_19$publication_decade <- df_pubtime19$publication_decade[match(df_19$melinda_id, df_pubtime19$melinda_id)]
+
+# Define the genres you're interested in
+selected_genres <- c("Draama", "Runot", "Romaanit", "Novellit, kertomukset", "Puheet, esitelmät", "Kirjeet", "Esseet", "Huumori, satiiri")
+
+# Filter your data to only include those genres
+df_selected <- df_19 %>%
+  filter(!is.na(publication_decade), 
+         !is.na(converted_008_33),
+         publication_decade <= 1920,
+         converted_008_33 %in% selected_genres)
+
+# Summarize counts by decade and genre
+df_summary <- df_selected %>%
+  group_by(publication_decade, converted_008_33) %>%
+  summarise(n = n(), .groups = "drop")
+
+ggplot(df_summary, aes(x = publication_decade,y = n, fill = converted_008_33)) +
+  geom_col(position = "stack", width = 8) +  # width makes bars a bit narrower
+  labs(x = "Publication Decade", y = "Number of Books", fill = "Genre") +
+  scale_fill_brewer(palette = "Set2") +
+  scale_x_continuous(limits = c(1790, 1930),breaks = seq(1800, 1920, by = 10)) +
+  theme_minimal()
+
 ```

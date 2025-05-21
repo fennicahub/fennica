@@ -8,6 +8,7 @@ description: ""
 #| label = "source-index",
 #| include = FALSE
 source("init.R")
+source("publication_time.R")
 source("title.R")
 ```
 
@@ -67,7 +68,7 @@ kable(head(tab, 10))
 
 This plot visualizes the variation in title lengths across publication decades from 1488 to 2020. The title lengths range from  `r min(df$title_length, na.rm = TRUE)` to`r max(df$title_length, na.rm = TRUE)` , highlighting how the length of titles has evolved over time.N = `r nrow(df)`.
 
-<!--```{r}
+```{r}
 #| label = "summary_title_length_pic",
 #| echo = FALSE,
 #| warning = FALSE,
@@ -89,13 +90,13 @@ ggplot(df2, aes(x = publication_decade, y = title_length)) +
   ) +
   labs(x = "Publication Decade", y = "Title Length") +
   theme_minimal()
-```-->
+```
 
 ### Title Word Count Over Time (1488-2020)
 
 This plot visualizes the variation in title word counts across publication decades from 1488 to 2020. The title lengths range from  `r min(df$title_word_count, na.rm = TRUE)` to`r max(df$title_word_count, na.rm = TRUE)` , highlighting how the length of titles has evolved over time.N = `r nrow(df)`.
 
-<!--```{r}
+```{r}
 #| label = "summary_title_word_count_pic",
 #| echo = FALSE,
 #| warning = FALSE,
@@ -117,7 +118,7 @@ ggplot(df2, aes(x = publication_decade, y = title_word_count)) +
   ) +
   labs(x = "Publication Decade", y = "Title Word Count") +
   theme_minimal()
-```-->
+```
 
 
 ## Subset Analysis: 1809-1917
@@ -170,7 +171,7 @@ kable(head(tab, 10))
 ### Title Length Over Time (1809-1917)
 This plot visualizes the variation in title lengths across publication years from 1809 to 1917. The title lengths range from  `r min(df_19$title_length, na.rm = TRUE)` to`r max(df_19$title_length, na.rm = TRUE)`. N = `r nrow(df_19)`.
 
-<!--```{r}
+```{r}
 #| label = "summary_title_length_pic1",
 #| echo = FALSE,
 #| warning = FALSE,
@@ -192,11 +193,11 @@ ggplot(df2, aes(x = publication_year, y = title_length)) +
   ) +
   labs(x = "Publication Year", y = "Title Length") +
   theme_minimal()
-```-->
+```
 ### Title Word Count (1809-1917)
 This plot visualizes the variation in title lengths across publication years from 1809 to 1917. The title lengths range from  `r min(df_19$title_word_count, na.rm = TRUE)` to`r max(df_19$title_word_count, na.rm = TRUE)`. N = `r nrow(df_19)`.
 
-<!--```{r}
+```{r}
 #| label = "summary_title_word_count_pic1",
 #| echo = FALSE,
 #| warning = FALSE,
@@ -218,4 +219,4 @@ ggplot(df2, aes(x = publication_year, y = title_word_count)) +
   ) +
   labs(x = "Publication Year", y = "Title Word Count") +
   theme_minimal()
-```-->
+```

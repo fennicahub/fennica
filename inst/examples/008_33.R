@@ -75,29 +75,3 @@ original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
 # .. ie. those are "discarded" cases; list them in a table
 tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
 
-library(dplyr)
-library(ggplot2)
-
-top10 <- df_19 %>%
-  count(converted_008_33, sort = TRUE) %>%
-  slice_max(n, n = 10) %>%
-  mutate(
-    label_inside = converted_008_33 %in% c("Ei koodattu"),
-    label_pos = ifelse(label_inside, n, n + max(n) * 0.02)
-  )
-
-ggplot(top10, aes(x = reorder(converted_008_33, n), y = n)) +
-  geom_bar(stat = "identity", fill = "lightgrey") +
-  geom_text(aes(y = label_pos, label = n, color = label_inside),
-            hjust = ifelse(top10$label_inside, 1, 0),  # align to right or left of text
-            vjust = 0.5,
-            show.legend = FALSE) +
-  labs(title = "Top-10 Genres for Books (1809-1917)",
-       x = "Genre", y = "Count (N)") +
-  theme_minimal() +
-  coord_flip() +
-  scale_color_manual(values = c("TRUE" = "black", "FALSE" = "black"))
-
-
-
-
