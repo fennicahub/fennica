@@ -118,42 +118,81 @@ print(group_counts)
 subset_group <- final_matched_harmonized[final_matched_harmonized$exclusion_group == "excluded_genre_008, genre_655_lasten_barn_child", ]
 head(subset_group)
 
+# Group by exclusion_group and sample 5 rows per group
+examples_by_group <- final_matched_harmonized %>%
+  filter(exclusion_group != "") %>%
+  group_by(exclusion_group) %>%
+  slice_head(n = 100)  # or use slice_sample(n = 5) for random examples
+
+# View the examples
+View(examples_by_group)
+
+#########################################################################
 library(ggplot2)
 library(svglite)
 
 # Data
 data <- data.frame(
-  Category = c("genre_008", "language", "genre_655_translations", 
-               "genre_655_child", "UDC_child", 
-               "UDC_child, genre_655_child", 
-               "UDC_child, callnumber_child"),
-  Count = c(30, 1, 13, 1, 16, 3, 5)
+  Category = c("genre/008", "language/041", "translations/655", 
+               "literature for children/655, 080, callnumber"),
+  Count = c(30, 1, 13, 25)
 )
 # Set a cutoff for placing labels inside vs outside
-label_cutoff <- 2
-p <- ggplot(data, aes(x = reorder(Category, Count), y = Count)) +
-  geom_col(width = 0.8, fill = "gray", color = "black") +  # cleaner bars
-  geom_text(aes(label = Count,
-                vjust = ifelse(Count > label_cutoff, 1.5, -0.5)),  # inside for tall bars
-            color = "black", size = 3.5) +
-  labs(x = "Category (MARC21 fields)", y = "Count of Excluded Records") +
-  theme_minimal(base_size = 13) +
+label_cutoff <- 0.5
+p <- ggplot(data, aes(x = Count, y = reorder(Category, Count))) +
+  geom_col(width = 0.3, fill = "gray", color = "black") +
+  labs(x = "Excluded records (N)", y = "Category/MARC21 field") +
+  theme_minimal(base_size = 8) +
   theme(
-    axis.text.x = element_text(size = 10, angle = 30, hjust = 1),
+    axis.text.x = element_text(size = 10, hjust = 1),
     axis.text.y = element_text(size = 10),
     axis.title = element_text(size = 12, face = "bold"),
     panel.grid.major.x = element_blank(),
     panel.grid.minor = element_blank(),
-    plot.margin = margin(10, 10, 10, 10)
+    plot.margin = margin(8, 8, 8, 8)
   ) +
-  scale_y_continuous(
-    limits = c(0, max(data$Count) + 5),
-    breaks = c(0, 5, 10, 15, 20, 25, 30)
+  scale_x_continuous(
+    limits = c(0, max(data$Count) + 2), 
+    breaks = c(0,5,10,15,20,25,30)
   )
 
-
 p
-ggsave("figure3_vertailu.svg", p, width = 7, height = 4, dpi = 600)
-browseURL("figure3_vertailu.svg")
+
+library(ggplot2)
+
+# Data
+data <- data.frame(
+  Category = c("genre/008", "language/041", "translations/655", 
+               "literature for children\n/655,080,callnumber"),
+  Count = c(30, 1, 13, 25)
+)
+
+# Plot
+p <- ggplot(data, aes(x = Count, y = reorder(Category, Count))) +
+  geom_col(width = 0.4, fill = "gray", color = "black") +
+  geom_text(aes(label = Count), 
+            hjust = -0.3, 
+            size = 3) +  # Adjust text size if needed
+  labs(x = "Excluded records (N)", y = "Categories / MARC21 field") +  # remove default y-axis label
+  theme_minimal(base_size = 8) +
+  theme(
+    axis.text.x = element_text(size = 10),
+    axis.text.y = element_text(size = 10),
+    axis.title = element_text(size = 10),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.margin = margin(10, 32, 10, 10)
+  ) +
+  scale_x_continuous(
+    limits = c(0, max(data$Count) + 5), 
+    breaks = seq(0, 30, by = 5)
+  )
+
+# Display plot
+p
+
+
+ggsave("figure3_subset.png", p, width = 6, height = 3, units = "in", dpi = 300)
+
 
 

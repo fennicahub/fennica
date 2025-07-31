@@ -1,0 +1,402 @@
+---
+title: "Comparison of Manual and Automated First Edition Lists"
+author: "Anonymous Submission"
+format: html
+editor: visual
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## 1. Introduction
+
+This study aims to identify and validate a list of first literary editions published in Finland between 1809–1917. Two sources are compared:
+
+-   A **manually curated list** (`manual_list`)
+-   An **automatically generated list** (`automated_list`) based on Fennica metadata and selection criteria
+
+We seek to: - Evaluate the accuracy and completeness of the automated method - Identify omissions and additions - Recommend improvements for bibliographic metadata analysis
+
+------------------------------------------------------------------------
+```{r}
+###########################################################################
+# # Download the csv file
+library(dplyr)
+library(readr)
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/harmonized_fennica_subsets.csv"
+
+df <- read_delim(url, delim = "\t", quote = "", show_col_types = FALSE)
+head(df,10)
+
+
+# Clean the corresponding columns in the other dataframe (df)
+df$signum <- gsub("\\s+", "", df$signum)  # Remove all spaces
+df$melinda_id <- as.character(df$melinda_id)  # Convert to character
+df$signum <- gsub("1972", "", df$signum)
+df$signum <- gsub("[[:space:];-]", "",df$signum)
+df$signum <- tolower(df$signum)
+df$signum <- gsub(" ", "", df$signum) 
+df$udk <- trimws(as.character(df$udk)) 
+df$title_2 <- gsub("/", "",df$title_2)
+df$title_2 <- trimws(as.character(df$title_2))
+df <- df %>%
+  mutate(
+    title_3 = case_when(
+      !is.na(title) & !is.na(title_remainder) ~ str_trim(paste(title, title_remainder)),
+      !is.na(title) ~ str_trim(title),
+      !is.na(title_remainder) ~ str_trim(title_remainder),
+      TRUE ~ NA_character_
+    )
+  )
+df$title_3 <- gsub("/", "",df$title_3)
+df$title_3 <- trimws(as.character(df$title_3))
+
+# Clean column names by removing leading/trailing whitespaces
+colnames(df) <- trimws(colnames(df))
+
+df <- df %>%
+  mutate(
+    title_remainder = replace_na(title_remainder, ""),
+    title_2 = replace_na(title_2, ""),
+    title = replace_na(title, ""),
+    title_3 = replace_na(title_3, "")
+  )
+
+```
+
+## 2. Load and prepare the data
+```{r}
+library(readxl)
+
+# URL of the Excel file
+url2 <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/manual_list_orig.xlsx"
+
+# Temporary file to download to
+temp_file <- tempfile(fileext = ".xlsx")
+
+# Download the file
+download.file(url2, destfile = temp_file, mode = "wb")
+
+# Read it using read_excel
+colnames_preview <- names(read_excel(temp_file, n_max = 0))
+# Create col_types: text for all, numeric for "publication_time"
+col_types_vec <- ifelse(colnames_preview == "publication_year", "numeric", "text")
+manual_list <- read_excel(temp_file, col_types = col_types_vec)
+
+colnames(manual_list) <- gsub("^\\s+|\\s+$", "", colnames(manual_list))  # Remove leading/trailing spaces
+
+
+# 4. Function to split titles into 'title' and 'title_remainder' based on ":"
+manual_list$title <- gsub(";", "", manual_list$title)
+manual_list$title <- gsub("\\s+:", "", manual_list$title)
+manual_list$title <- gsub('"', '', manual_list$title)
+manual_list$title <- gsub("'", "", manual_list$title)
+manual_list$title <- gsub("/", "", manual_list$title)
+
+
+
+# 6. Clean the 'melinda_id' and 'signum' columns to remove unnecessary spaces and characters
+manual_list$melinda_id <- gsub(" ", "", manual_list$melinda_id)  # Remove spaces
+manual_list$melinda_id <- gsub("FCC", "", manual_list$melinda_id)  # Remove "FCC"
+manual_list$melinda_id <- as.character(manual_list$melinda_id)  # Convert to character
+# Remove the exact pattern "1972" from manual_list$signum
+manual_list$signum <- gsub("1972", "", manual_list$signum)
+# Remove extra spaces, semicolons, hyphens, and other unwanted characters from manual_list$signum
+manual_list$signum <- gsub("[[:space:];-]", "", manual_list$signum)
+# Convert to lowercase to make the matching case-insensitive (optional)
+manual_list$signum <- tolower(manual_list$signum)
+manual_list$signum <- gsub("\\s+", "", as.character(manual_list$signum))  # Remove all spaces from 'Signum'
+
+
+# 7. Polish titles by applying custom function (if applicable)
+title_pol <- polish_title(manual_list$title)
+manual_list$title_harmonized <- title_pol$title_harmonized
+manual_list$author_harmonized <- polish_author(manual_list$author)
+manual_list$title_harmonized <- gsub("\\.{2,}", "", manual_list$title_harmonized)
+manual_list$title_harmonized <- gsub("\\.{1,}", "", manual_list$title_harmonized)
+manual_list$title_harmonized <- gsub("-","", manual_list$title_harmonized)
+manual_list$title_harmonized <- gsub("å","a", manual_list$title_harmonized)
+manual_list$title_harmonized <- gsub("ä","a", manual_list$title_harmonized)
+manual_list$title_harmonized <- gsub("ö","o", manual_list$title_harmonized)
+manual_list$title_harmonized <- gsub("Å","A", manual_list$title_harmonized)
+manual_list$title_harmonized <- gsub("Ä","A", manual_list$title_harmonized)
+manual_list$title_harmonized <- gsub("Ö","O", manual_list$title_harmonized)
+manual_list$title_harmonized <- gsub("\\s+", " ", manual_list$title_harmonized)
+manual_list$title_harmonized <- gsub("=","", manual_list$title_harmonized)
+manual_list$title_harmonized <- trimws(manual_list$title_harmonized)
+
+```
+```{r}
+n_total_auto <- nrow(manual_list)
+n_unique_auto_ids <- length(unique(manual_list$melinda_id))
+
+cat("Manual List Summary:\n")
+cat("Total entries:", n_total_auto, "\n")
+cat("Unique Melinda IDs:", n_unique_auto_ids, "\n")
+
+#we keep only unique values for further analysis
+manual_list <- manual_list %>%
+  distinct(melinda_id, .keep_all = TRUE)
+```
+
+
+### 3.1 Apply Selection Criteria
+
+```{r}
+#Apply criteria 
+#1. 1809-1917
+automated_list <- df %>% filter(publication_year >= 1809 & publication_year <= 1917)
+#2. Books
+# Start with filtering for "Language material"
+automated_list <- automated_list %>%
+  filter(record_type == "Language material")
+automated_list <- automated_list %>%
+  filter(biblio_level == "Monograph/Item")
+#3. Finnish/Swedish
+# Keep only rows where `language` contains "fin" or "swe", or is NA
+automated_list <- automated_list[grepl("Finnish|Swedish", automated_list$language) | is.na(automated_list$language), ]
+
+automated_list <- automated_list %>%
+  filter(is.na(language_original))
+
+#4. Genre
+
+# Convert the signum column to lowercase for case-insensitive matching
+kauno_rows <- grepl(
+  "suom\\.\\s*kaunokirj\\.\\s*1|suom\\.\\s*kaunokirj\\.\\s*3|suom\\.\\s*kaunokirj\\.\\s*4|k\\.\\s*suom\\.\\s*kaunokirj\\.|k\\.\\s*suom\\.\\s*kaunokirj\\.\\s*1|k\\.\\s*suomal\\.\\s*kaunokirj\\.|\
+k\\.\\s*suom\\.\\s*kaunok\\.|k\\.\\s*ruots\\.\\s*kaunok\\.|k\\.\\s*ruots\\.\\s*kaunokirj\\.|ruots\\.\\s*kaunokirj\\.\\s*1|\
+ruots\\.\\s*kaunokirj\\.\\s*3|ruots\\.\\s*kaunokirj\\.\\s*4",
+  tolower(automated_list$signum)
+)
+
+# Identify rows where `udk` matches specific classification codes
+udk_rows <- grepl("839\\.79|894\\.541", automated_list$udk_orig)
+
+# Identify rows where `udk` matches the values "Suomenkielinen kirjallisuus" or "Suomenruotsalainen kirjallisuus"
+udk_value_rows <- grepl("Suomenkielinen kirjallisuus|Suomenruotsalainen kirjallisuus", automated_list$udk)
+
+# Apply fiction filtering, include rows that match kauno_rows, udk_rows, or the specific udk values
+automated_list <- automated_list %>% filter(kauno_rows | udk_rows | udk_value_rows) #Include kauno_rows, udk_rows, or udk_value_rows match)
+
+genres_to_keep <- c("Kaunokirjallisuus", "Draama", "Esseet", "Romaanit", "Huumori,satiiri", "Novellit, kertomukset", "Runot", "Yhdistelmä", "Tuntematon", "Ei koodattu")
+
+automated_list <- automated_list %>%
+  filter(genre_008 %in% genres_to_keep | is.na(genre_008))
+
+#5. Exclude childeren's literature and translations
+
+automated_list <- automated_list %>%
+  filter(
+    !grepl("lasten|barn", signum, ignore.case = TRUE) &  
+      !grepl("lasten|barn", udk, ignore.case = TRUE) &    
+      !grepl("\\(024\\.7\\)", udk, ignore.case = TRUE) &  
+      !grepl("\\(024\\.7\\)", udk_aux, ignore.case = TRUE) &  
+      (!grepl("käännö", genre_655, ignore.case = TRUE) | is.na(genre_655)) &  # Keep NA values
+      (!grepl("lasten|barn|child", genre_655, ignore.case = TRUE) | is.na(genre_655))) # Keep NA values)
+
+automated_list[automated_list == ""] <- NA
+
+# 6. Keep unique titles with the earliest publication_time
+
+automated_list <- automated_list %>%
+  group_by(title_2, author_name) %>%
+  filter(publication_year == min(publication_year)) %>%
+  distinct(title_2, author_name, .keep_all = TRUE) %>%
+  arrange(publication_year)
+
+```
+
+### 3.2 Summary Statistics
+
+```{r}
+n_total_auto <- nrow(automated_list)
+n_unique_auto_ids <- length(unique(automated_list$melinda_id))
+
+cat("Automated List Summary:\n")
+cat("Total entries:", n_total_auto, "\n")
+cat("Unique Melinda IDs:", n_unique_auto_ids, "\n")
+```
+
+## 4. Harmonization
+
+Before comparisons we need to
+
+```{r}
+# --- Utility Functions ---
+
+clean_text <- function(text) {
+  text <- as.character(text)
+  text <- trimws(text)
+  text <- gsub("\\.{2,}", " ", text)
+  text <- gsub("[^a-zA-ZäöåÄÖÅ0-9 ]", "", text)
+  text <- tolower(text)
+  text <- gsub('["]', '', text)
+  text <- gsub("\\s+", " ", text)
+  text <- gsub("-", "", text)
+  return(text)
+}
+
+
+# 1. Clean both title and title_remainder columns in manual_list and list
+automated_list$title <- sapply(automated_list$title, clean_text)
+automated_list$title_2 <- sapply(automated_list$title_2, clean_text)
+automated_list$title_3 <- sapply(automated_list$title_3, clean_text)
+automated_list$title_remainder <- sapply(automated_list$title_3, clean_text)
+manual_list$title_harmonized <- sapply(manual_list$title_harmonized, clean_text)
+
+# Normalize text columns
+normalize_text <- function(x) str_to_lower(stri_trans_general(x, "Latin-ASCII"))
+
+manual_list <- manual_list %>%
+  mutate(
+    author_harmonized = normalize_text(author_harmonized),
+    title_harmonized = normalize_text(title_harmonized)
+  )
+
+automated_list <- automated_list %>%
+  mutate(
+    title = normalize_text(title),
+    title_2 = normalize_text(title_2),
+    title_3 = normalize_text(title_3),
+    author_name = normalize_text(author_name),
+    title_remainder = normalize_text(title_remainder)
+  )
+
+```
+
+------------------------------------------------------------------------
+
+## 4. Compare the Lists
+
+We now compare the automated list with the manual list to assess their overlap. Two comparison methods are used:
+
+-   **Melinda ID matching**
+-   **Melinda ID + selected metadata (e.g., title or author)**
+
+### 4.1 Comparison by Melinda ID
+
+```{r}
+common_ids <- intersect(manual_list$melinda_id, automated_list$melinda_id)
+only_manual_ids <- setdiff(manual_list$melinda_id, automated_list$melinda_id)
+only_automated_ids <- setdiff(automated_list$melinda_id, manual_list$melinda_id)
+
+cat("Melinda ID Comparison:\n")
+cat("Shared IDs:", length(common_ids), "\n")
+cat("Only in manual list:", length(only_manual_ids), "\n")
+cat("Only in automated list:", length(only_automated_ids), "\n")
+```
+
+
+```{r}
+# 3. Filter actual data rows based on match
+
+# Matched records from velkka_list
+matched_records_melinda <- velkka_list %>%
+  filter(melinda_id %in% matched_ids) #2498
+print(length(unique(matched_records_melinda$melinda_id)))
+matched_records_melinda <- list %>% 
+  filter(melinda_id %in% matched_ids) #2493
+print(length(unique(matched_records_melinda$melinda_id)))
+
+# Unmatched from velkka_list
+unmatched_records_melinda_ve <- velkka_list %>%
+  filter(!melinda_id %in% matched_ids) #295
+print(length(unique(unmatched_records_melinda_ve$melinda_id)))
+
+# Unmatched from list
+unmatched_records_melinda_list <- list %>%
+  filter(!melinda_id %in% matched_ids) #2375
+print(length(unique(unmatched_records_melinda_list$melinda_id)))
+```
+
+```{r}
+# 2. Match by author + year + title_2
+
+# From velkka_list unmatched
+unmatched_records_melinda_ve <- unmatched_records_melinda_ve %>%
+  filter(!is.na(author_harmonized), 
+         !is.na(publication_time), 
+         !is.na(title_harmonized)) %>%
+  mutate(match_key = paste(author_harmonized, publication_time, title_harmonized, sep = "_"))
+
+# From list
+list_1 <- list %>%
+  filter(!is.na(author_name), 
+         !is.na(publication_year), 
+         !is.na(title_2)) %>%
+  mutate(match_key = paste(author_name, publication_year, title_2, sep = "_"))
+
+# Vector of keys
+keys_ve <- unmatched_records_melinda_ve$match_key
+keys_list <- list_1$match_key
+
+# Intersecting keys (matches)
+matched_keys <- intersect(keys_ve, keys_list)
+```
+
+```{r}
+# 3. Match by title
+matched_records_title <- unmatched_records_title_2 %>%
+  inner_join(list, by = c("author_harmonized" = "author_name",
+                          "publication_time" = "publication_year",
+                          "title_harmonized" = "title"))
+
+unmatched_records1 <- unmatched_records_title_2 %>%
+  anti_join(matched_records_title, by = c("author_harmonized", "publication_time", "title_harmonized"))
+```
+
+```{r}
+
+# 4. Match by title_3
+matched_records_title_3 <- unmatched_records1 %>%
+  inner_join(list, by = c("author_harmonized" = "author_name",
+                          "publication_time" = "publication_year",
+                          "title_harmonized" = "title_3"))
+
+unmatched_final <- unmatched_records1 %>%
+  anti_join(matched_records_title_3, by = c("author_harmonized", "publication_time", "title_harmonized"))
+
+# 5. Match by title_remainder
+matched_records_title_rem <- unmatched_final %>%
+  inner_join(list, by = c("publication_time" = "publication_year",
+                          "title_harmonized" = "title_remainder"))
+
+unmatched_still <- unmatched_final %>%
+  anti_join(matched_records_title_rem, by = c("publication_time", "title_harmonized"))
+
+# 6. Match by title + year again (as fallback)
+matched_year_title <- unmatched_still %>%
+  inner_join(list, by = c("publication_time" = "publication_year",
+                          "title_harmonized" = "title"))
+
+unmatched_final1 <- unmatched_still %>%
+  anti_join(matched_year_title, by = c("publication_time", "title_harmonized"))
+
+# Combine all matched records
+matched_records <- bind_rows(
+  matched_records_melinda,
+  matched_records_title_2,
+  matched_records_title,
+  matched_records_title_3,
+  matched_records_title_rem,
+  matched_year_title
+)
+
+length(unique(matched_records$melinda_id))
+# Find unmatched rows from `list` (Julia’s list not matched by Melinda IDs)
+unmatched_julia <- anti_join(list, matched_records, by = "melinda_id")
+```
+
+```{r}
+# Print diagnostics
+cat("manual_list:", nrow(manual_list), "\n")
+cat("automated_list:", nrow(automated_list), "\n")
+cat("matched_records:", nrow(matched_records), "\n")
+cat("unmatched_velkka:", nrow(unmatched_final1), "\n")
+cat("unmatched_julia:", nrow(unmatched_julia), "\n")
+cat("not_in_harm19:", nrow(not_in_harm19), "\n")
+cat("final_matched_harmonized:", nrow(final_matched_harmonized), "\n")
+
+```
+

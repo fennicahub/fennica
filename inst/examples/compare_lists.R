@@ -9,7 +9,6 @@ colnames(list) <- trimws(colnames(list))
 # Alternatively, you can use make.names() to ensure valid column names
 colnames(list) <- make.names(colnames(list), unique = TRUE)
 
-
 list <- list %>%
   mutate(
     title_remainder = replace_na(title_remainder, ""),
@@ -17,8 +16,6 @@ list <- list %>%
     title = replace_na(title, ""),
     title_3 = replace_na(title_3, "")
   )
-
-
 
 # Normalize text columns
 normalize_text <- function(x) str_to_lower(stri_trans_general(x, "Latin-ASCII"))
@@ -39,20 +36,59 @@ list <- list %>%
   )
 
 # 1. Match by melinda_id
-matched_records_melinda <- velkka_list %>%
-  inner_join(list, by = "melinda_id")
 
-unmatched_records_melinda <- velkka_list %>%
-  anti_join(matched_records_melinda, by = "melinda_id")
+# 1. Extract just melinda_id columns (if needed)
+melinda_ids_velkka <- velkka_list$melinda_id
+melinda_ids_list <- list$melinda_id
+
+# 2. Find matched melinda_ids
+matched_ids <- intersect(melinda_ids_velkka, melinda_ids_list) #2493
+print(length(unique(matched_ids)))
+
+# 3. Filter actual data rows based on match
+
+# Matched records from velkka_list
+matched_records_melinda <- velkka_list %>%
+  filter(melinda_id %in% matched_ids) #2498
+print(length(unique(matched_records_melinda$melinda_id)))
+matched_records_melinda <- list %>% 
+  filter(melinda_id %in% matched_ids) #2493
+print(length(unique(matched_records_melinda$melinda_id)))
+
+# Unmatched from velkka_list
+unmatched_records_melinda_ve <- velkka_list %>%
+  filter(!melinda_id %in% matched_ids) #295
+print(length(unique(unmatched_records_melinda_ve$melinda_id)))
+
+# Unmatched from list
+unmatched_records_melinda_list <- list %>%
+  filter(!melinda_id %in% matched_ids) #2375
+print(length(unique(unmatched_records_melinda_list$melinda_id)))
+
 
 # 2. Match by author + year + title_2
-matched_records_title_2 <- unmatched_records_melinda %>%
-  inner_join(list, by = c("author_harmonized" = "author_name",
-                          "publication_time" = "publication_year",
-                          "title_harmonized" = "title_2"))
 
-unmatched_records_title_2 <- unmatched_records_melinda %>%
-  anti_join(matched_records_title_2, by = c("author_harmonized", "publication_time", "title_harmonized"))
+# From velkka_list unmatched
+unmatched_records_melinda_ve <- unmatched_records_melinda_ve %>%
+  filter(!is.na(author_harmonized), 
+         !is.na(publication_time), 
+         !is.na(title_harmonized)) %>%
+  mutate(match_key = paste(author_harmonized, publication_time, title_harmonized, sep = "_"))
+
+# From list
+list_1 <- list %>%
+  filter(!is.na(author_name), 
+         !is.na(publication_year), 
+         !is.na(title_2)) %>%
+  mutate(match_key = paste(author_name, publication_year, title_2, sep = "_"))
+
+# Vector of keys
+keys_ve <- unmatched_records_melinda_ve$match_key
+keys_list <- list_1$match_key
+
+# Intersecting keys (matches)
+matched_keys <- intersect(keys_ve, keys_list)
+
 
 # 3. Match by title
 matched_records_title <- unmatched_records_title_2 %>%
@@ -98,6 +134,7 @@ matched_records <- bind_rows(
   matched_year_title
 )
 
+length(unique(matched_records$melinda_id))
 # Find unmatched rows from `list` (Julia’s list not matched by Melinda IDs)
 unmatched_julia <- anti_join(list, matched_records, by = "melinda_id")
 
@@ -222,47 +259,76 @@ o <- ggplot(data_detailed, aes(x = Count, y = Category, fill = Type)) +
 y
 o
 
-library(biblioverlap) #loading package
+# library(biblioverlap) #loading package
+# 
+# #Input 1: Named list of bibliographic dataframes
+# sapply(list, velkka_list, class) #ufrj_bio_0122 is an example dataset provided by the package
+# #> Biochemistry     Genetics Microbiology      Zoology 
+# #> "data.frame" "data.frame" "data.frame" "data.frame"
+# 
+# #Input 2: Namded list of columns for document matching 
+# matching_cols <- list(DI = 'melinda_id',
+#                       TI = 'title',
+#                       PY = 'publication_year',
+#                       AU = 'author_name')
+# 
+# #Running document-level matching procedure
+# biblioverlap_results <- biblioverlap(ufrj_bio_0122, matching_fields = matching_cols)
+# #> Matching by DOI for pair Biochemistry_Genetics
+# #> Matching by SCORE for pair Biochemistry_Genetics
+# #> Updating matched documents in db2
+# #> Matching by DOI for pair Biochemistry_Microbiology
+# #> Matching by SCORE for pair Biochemistry_Microbiology
+# #> Updating matched documents in db2
+# #> Matching by DOI for pair Biochemistry_Zoology
+# #> Matching by SCORE for pair Biochemistry_Zoology
+# #> Updating matched documents in db2
+# #> Matching by DOI for pair Genetics_Microbiology
+# #> Matching by SCORE for pair Genetics_Microbiology
+# #> Updating matched documents in db2
+# #> Matching by DOI for pair Genetics_Zoology
+# #> Matching by SCORE for pair Genetics_Zoology
+# #> Updating matched documents in db2
+# #> Matching by DOI for pair Microbiology_Zoology
+# #> Matching by SCORE for pair Microbiology_Zoology
+# #> Updating matched documents in db2
+# 
+# #The results of the matching returns a list containing:
+# #(i) a copy of the original data + UUID column (db_list)
+# #(ii) a summary of the matching results (summary)
+# sapply(biblioverlap_results, class)
+# #> $db_list
+# #> [1] "list"
+# #> 
+# #> $summary
+# #> [1] "grouped_df" "tbl_df"     "tbl"        "data.frame"
 
-#Input 1: Named list of bibliographic dataframes
-sapply(ufrj_bio_0122, class) #ufrj_bio_0122 is an example dataset provided by the package
-#> Biochemistry     Genetics Microbiology      Zoology 
-#> "data.frame" "data.frame" "data.frame" "data.frame"
 
-#Input 2: Namded list of columns for document matching 
-matching_cols <- list(DI = 'DOI',
-                      TI = 'Title',
-                      PY = 'Publication Year',
-                      AU = 'Author/s',
-                      SO = 'Source Title')
 
-#Running document-level matching procedure
-biblioverlap_results <- biblioverlap(ufrj_bio_0122, matching_fields = matching_cols)
-#> Matching by DOI for pair Biochemistry_Genetics
-#> Matching by SCORE for pair Biochemistry_Genetics
-#> Updating matched documents in db2
-#> Matching by DOI for pair Biochemistry_Microbiology
-#> Matching by SCORE for pair Biochemistry_Microbiology
-#> Updating matched documents in db2
-#> Matching by DOI for pair Biochemistry_Zoology
-#> Matching by SCORE for pair Biochemistry_Zoology
-#> Updating matched documents in db2
-#> Matching by DOI for pair Genetics_Microbiology
-#> Matching by SCORE for pair Genetics_Microbiology
-#> Updating matched documents in db2
-#> Matching by DOI for pair Genetics_Zoology
-#> Matching by SCORE for pair Genetics_Zoology
-#> Updating matched documents in db2
-#> Matching by DOI for pair Microbiology_Zoology
-#> Matching by SCORE for pair Microbiology_Zoology
-#> Updating matched documents in db2
 
-#The results of the matching returns a list containing:
-#(i) a copy of the original data + UUID column (db_list)
-#(ii) a summary of the matching results (summary)
-sapply(biblioverlap_results, class)
-#> $db_list
-#> [1] "list"
-#> 
-#> $summary
-#> [1] "grouped_df" "tbl_df"     "tbl"        "data.frame"
+
+
+
+
+
+
+
+
+
+
+empty_signums <- unmatched_julia %>%
+  filter(is.na(signum) | signum == "")
+
+cat("Empty signums:", nrow(empty_signums), "\n")
+
+kauno_rows1 <- grepl(
+  "suom\\.\\s*kaunokirj\\.\\s*1|suom\\.\\s*kaunokirj\\.\\s*3|suom\\.\\s*kaunokirj\\.\\s*4|k\\.\\s*suom\\.\\s*kaunokirj\\.|k\\.\\s*suom\\.\\s*kaunokirj\\.\\s*1|k\\.\\s*suomal\\.\\s*kaunokirj\\.|k\\.\\s*suom\\.\\s*kaunok\\.|k\\.\\s*ruots\\.\\s*kaunok\\.|k\\.\\s*ruots\\.\\s*kaunokirj\\.|ruots\\.\\s*kaunokirj\\.\\s*1|ruots\\.\\s*kaunokirj\\.\\s*3|ruots\\.\\s*kaunokirj\\.\\s*4",
+  unmatched_julia$signum
+)
+
+sapply(unmatched_julia[, c("melinda_id", "title", "author_name", "publication_year", "language", "signum")], function(x) sum(is.na(x)))
+
+
+cat("Signums matching kaunokirj pattern:", sum(kauno_rows1, na.rm = TRUE), "\n")
+
+table(list$genre_008, useNA = "always")

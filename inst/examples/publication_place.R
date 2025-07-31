@@ -99,3 +99,57 @@ df_19 <- readRDS(data.file)
 # tmp <- knit(input = paste(field, ".Rmd", sep = ""), 
 # 
 
+#############################################
+library(dplyr)
+
+country_counts <- df.tmp %>%
+  count(publication_country, name = "n")
+
+library(ggplot2)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(sf)
+
+# Load map data
+world <- ne_countries(scale = "medium", returnclass = "sf")
+# Join your counts to the world map
+map_data <- left_join(world, country_counts, by = c("name" = "publication_country"))
+
+map_data$log10_n <- log10(map_data$n + 1)  # avoid log(0) with +1
+
+ggplot(map_data) +
+  geom_sf(aes(fill = log10_n)) +
+  scale_fill_viridis_c(option = "plasma", na.value = "grey90") +
+  theme_minimal() +
+  labs(title = "Publications by Country (Fennica)",
+       fill = "Log10(Number of Publications)")
+
+
+library(ggplot2)
+library(scales)
+
+# Assume you already have: map_data$log10_n <- log10(map_data$n + 1)
+
+library(ggplot2)
+library(scales)
+
+ggplot(map_data) +
+  geom_sf(aes(fill = log10_n)) +
+  scale_fill_viridis_c(
+    option = "plasma",
+    na.value = "grey90",
+    breaks = 0:6,  # log10 scale: 10^0 to 10^6
+    labels = label_math(10^.x)
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "top"
+  ) +
+  guides(
+    fill = guide_colorbar(direction = "horizontal", title.position = "left")
+  ) +
+  labs(
+    title = "Publications by Country (Fennica)",
+    fill = expression("Number of Publications (log"[10]*")")
+  )
+

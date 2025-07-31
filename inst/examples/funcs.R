@@ -7865,6 +7865,12 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
   message("Remove periods")
   nametab$first <- condense_spaces(gsub("\\.", " ", nametab$first))
   nametab$last  <- condense_spaces(gsub("\\.", " ", nametab$last))
+  
+  first <- nametab$first
+  last <- nametab$last
+  
+  first[first == "NA"] <- NA
+  last[last == "NA"] <- NA
 
   if (verbose) { message("Collapse accepted names to the form: Last, First") }
   full.name <- apply(nametab, 1, function (x) { paste(x, collapse = ", ") })
@@ -7874,7 +7880,19 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
   full.name <- gsub("^NA, ", "", full.name) # "NA, Mikael" -> "Mikael"
 
   if (verbose) { message("Map to the original indices") }
-  full.name[match(sorig, suniq)]
+  
+  # Map full_name, first and last name back to original order
+  final_first <- first[match(sorig, suniq)]
+  final_last <- last[match(sorig, suniq)]
+  final_full <- full.name[match(sorig, suniq)]
+  
+  # Return all components in a data frame
+  return(data.frame(
+    first = final_first,
+    last = final_last,
+    full_name = final_full,
+    stringsAsFactors = FALSE
+  ))
 
 }
 

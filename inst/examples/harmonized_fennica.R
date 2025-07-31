@@ -1,7 +1,25 @@
 # #all polished fields in one df 
 source("init.R")
+
+
+# #initialize df.harmonized
+df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
+                            data_element = df.orig$data_element_008,
+                            genre_008 = df.orig$converted_008_33,
+                            record_type = df.orig$type_of_record,
+                            biblio_level = df.orig$bibliographic_level,
+                            publication_status = df.orig$publication_status)
+
 source("author_name.R")
+source("author_name_kanto.R")
+
+# #initialize df.harmonized
+df.harmonized <- data.frame(gender = df.orig$gender)
+
 source("author_date.R")
+source("author_date_kanto.R")
+df.harmonized <- data.frame(author_profession = df.orig$author_profession)
+
 source("title.R")
 source("title_remainder.R")
 source("language.R")

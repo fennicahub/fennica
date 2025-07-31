@@ -17,9 +17,9 @@ rownames(df.tmp) <- NULL
 
 #add harmonized fields to df
 df.harmonized <- cbind(df.harmonized,
-                       author_birth = df.tmp$author_birth,
-                       author_death = df.tmp$author_death,
-                       author_age = df.tmp$author_age)
+                       author_birth_kanto = df.tmp$author_birth,
+                       author_death_kanto = df.tmp$author_death,
+                       author_age_kanto = df.tmp$author_age)
 
 
 # ------------------------------------------------------------

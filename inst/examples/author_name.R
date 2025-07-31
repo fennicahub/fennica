@@ -83,3 +83,11 @@ tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
 
 
 
+df_missing_asteri <- df_author %>%
+  filter(is.na(asteri) | asteri == "")%>%
+  distinct(author_name, .keep_all = TRUE)
+write.table(df_missing_asteri, 
+            file = "missing_unique_asteri.csv", 
+            sep = "\t",         # Correct escape for tab, not "/t"
+            quote = FALSE,      # Prevent adding quotes
+            row.names = FALSE)

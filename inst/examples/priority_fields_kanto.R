@@ -14,7 +14,7 @@ df.kanto <- df.kanto %>%
       TRUE ~ NA_character_
     ),
     author_name_kanto = case_when(
-      !is.na(prefLabel) & !is.na(altLabel) ~ paste(prefLabel, altLabel, sep = ", "),
+      !is.na(prefLabel) & !is.na(altLabel) ~ paste(prefLabel, altLabel, sep = "|"),
       !is.na(prefLabel) ~ prefLabel,
       !is.na(altLabel) ~ altLabel,
       TRUE ~ NA_character_
@@ -22,7 +22,7 @@ df.kanto <- df.kanto %>%
   )
 
 # Columns to keep
-columns_to_keep <- c("melinda_id","author_name_kanto", "author_date_kanto", "author_profession_kanto_fi")
+columns_to_keep <- c("melinda_id", "prefLabel", "altLabel","author_date_kanto", "author_profession_kanto_fi")
 
 # Filter to required columns
 df.kanto <- df.kanto %>% select(all_of(columns_to_keep)) #%>% distinct()

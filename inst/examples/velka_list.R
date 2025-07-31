@@ -81,9 +81,36 @@ list$title_remainder <- sapply(list$title_3, clean_text)
 velkka_list$title_harmonized <- sapply(velkka_list$title_harmonized, clean_text)
 
 
-df.harmonized19 <- df.harmonized[df.harmonized$melinda_id %in% melindas_19,]
+
 df.harmonized19$title_harmonized <- sapply(df.harmonized19$title, clean_text)
 df.harmonized19$title_2 <- sapply(df.harmonized19$title_2, clean_text)
 df.harmonized19$title_3 <- sapply(df.harmonized19$title_3, clean_text)
 
+# Count unique vs total
+cat("Unique melinda_id:", length(unique(velkka_list$melinda_id)), "\n")
+cat("Total rows:", nrow(velkka_list), "\n")
+
+# Extract duplicated rows
+dupes_melinda <- velkka_list %>%
+  group_by(melinda_id) %>%
+  filter(n() > 1) %>%
+  arrange(melinda_id)
+
+# Number of duplicated melinda_ids
+cat("Duplicated melinda_ids:", length(unique(dupes_melinda$melinda_id)), "\n")
+print(dupes_melinda)
+
+# Count unique vs total
+cat("Unique FikkaID:", length(unique(velkka_list$FikkaID)), "\n")
+cat("Total rows:", nrow(velkka_list), "\n")
+
+# Extract duplicated rows
+dupes_fikka <- velkka_list %>%
+  group_by(FikkaID) %>%
+  filter(n() > 1) %>%
+  arrange(FikkaID)
+
+# Number of duplicated FikkaIDs
+cat("Duplicated FikkaIDs:", length(unique(dupes_fikka$FikkaID)), "\n")
+print(dupes_fikka)
 

@@ -1,6 +1,15 @@
 ###########################################################################
-df.processed$language_original <- df.orig$language_original
+#source("harmonized_fennica.R")
 df.harmonized <- df.processed
+
+df.harmonized$title_2 <- ifelse(is.na(df.harmonized$title), df.harmonized$title_remainder, 
+                                ifelse(is.na(df.harmonized$title_remainder), df.harmonized$title, 
+                                       paste(df.harmonized$title, df.harmonized$title_remainder, sep = " ")))
+
+df.harmonized$title_2 <- ifelse(is.na(df.orig$`245n`), df.harmonized$title_2, 
+                                paste(df.harmonized$title_2, df.orig$`245n`, sep = " "))
+df.harmonized$language_original <- df.orig$language_original
+
 
 # Clean the corresponding columns in the other dataframe (df.harmonized)
 df.harmonized$signum <- gsub("\\s+", "", df.harmonized$signum)  # Remove all spaces
@@ -24,16 +33,30 @@ df.harmonized <- df.harmonized %>%
 df.harmonized$title_3 <- gsub("/", "",df.harmonized$title_3)
 df.harmonized$title_3 <- trimws(as.character(df.harmonized$title_3))
 
+df.harmonized19 <- df.harmonized[df.harmonized$melinda_id %in% melindas_19,]
 
-
+# Store the data
+data.file <- paste0(field, ".Rds")
+saveRDS(df.harmonized, file = data.file)
+#Load the RDS file
+df.harmonized <- readRDS(data.file)
+# Convert to CSV and store in the output.tables folder
+write.csv(df.harmonized,
+           file = "for_automated_subset_selection.csv",
+           row.names=FALSE,
+           quote = FALSE,
+       fileEncoding = "UTF-8")
 ##########################
 #Apply criteria 
 #1. 1809-1917
-list <-  df.harmonized[df.harmonized$melinda_id %in% melindas_19,]
+list <- df.harmonized %>% filter(publication_year >= 1809 & publication_year <= 1917)
 #2. Books
 # Start with filtering for "Language material"
 list <- list %>%
   filter(record_type == "Language material")
+
+list <- list %>%
+  filter(biblio_level == "Monograph/Item")
 
 #3. Finnish/Swedish
 # Keep only rows where `language` contains "fin" or "swe", or is NA
@@ -41,8 +64,6 @@ list <- list[grepl("Finnish|Swedish", list$language) | is.na(list$language), ]
 
 list <- list %>%
   filter(language_original == "")
-
-
 
 #4. Genre
 
@@ -90,10 +111,6 @@ list <- list %>%
 
 list[list == ""] <- NA
 
-length(unique(list$melinda_id))
-length(unique(list$title))
-length(unique(list$title_2))
-duplicates <- list[duplicated(list$title_2) | duplicated(list$title_2, fromLast = TRUE), ]
 
 # 6. Keep unique titles with the earliest publication_time
 
@@ -121,8 +138,6 @@ ruots\\.\\s*kaunokirj\\.\\s*3|ruots\\.\\s*kaunokirj\\.\\s*4",
 
 num_non_matching_kauno_rows <- sum(!kauno_rows1)
 
-list1 <- list %>%
-    filter(kauno_rows1)
 
 
 ##################################################################################################

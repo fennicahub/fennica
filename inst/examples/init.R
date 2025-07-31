@@ -39,18 +39,11 @@ source("leader.R")
 #genre_book and add to data
 source("008_field.R")
 
+#add gender colum
+source("asteri_gender.R")
+
 #for subset analysis
 source("melindas_19.R")
-
-# #initialize df.harmonized
-df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
-                            data_element = df.orig$data_element_008,
-                            genre_008 = df.orig$converted_008_33,
-                            record_type = df.orig$type_of_record,
-                            biblio_level = df.orig$bibliographic_level,
-                            publication_status = df.orig$publication_status)
-
-#add harmonized data from each field R file
 
 ##create csv and save to output_tables
 #source("harmonized_fennica.R")

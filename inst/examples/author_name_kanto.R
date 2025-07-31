@@ -1,13 +1,24 @@
-field <- "author_name_kanto"
-
+field1 <- "author_name_kanto1"
+field2 <- "author_name_kanto2"
 # Full author name (Last, First)
-author <- polish_author(df.orig[[field]], verbose = TRUE)
+author1 <- polish_author(df.orig[[field1]], verbose = TRUE)
+author2 <- polish_author(df.orig[[field2]], verbose = TRUE)
 
 # Collect the results into a data.frame
-df.tmp <- data.frame(melinda_id = df.orig$melinda_id, author_name_kanto = author)
+df.tmp <- data.frame(melinda_id = df.orig$melinda_id, 
+                     author_name_kanto1 = author1$full_name,
+                     last_kanto1 = author1$last,
+                     first_kanto1 = author1$first,
+                     author_name_kanto2 = author2$full_name,
+                     last_kanto2 = author2$last,
+                     first_kanto2 = author2$first)
 
 #add harmonized fields to df
-df.harmonized <- cbind(df.harmonized, author_name_kanto = df.tmp$author_name_kanto)
+df.harmonized <- cbind(df.harmonized,
+                       last_kanto1 = df.tmp$last_kanto1 ,
+                       first_kanto1 = df.tmp$first_kanto1,
+                       last_kanto2 = df.tmp$last_kanto1,
+                       first_kanto2= df.tmp$first_kanto2)
 
 ################################################################
 
