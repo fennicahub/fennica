@@ -22,7 +22,7 @@ df.kanto <- df.kanto %>%
   )
 
 # Columns to keep
-columns_to_keep <- c("melinda_id", "prefLabel", "altLabel","author_date_kanto", "author_profession_kanto_fi")
+columns_to_keep <- c("melinda_id", "prefLabel", "altLabel", "variantName", "hiddenLabel", "authorizedAccessPoint", "note","author_date_kanto", "author_profession_kanto_fi")
 
 # Filter to required columns
 df.kanto <- df.kanto %>% select(all_of(columns_to_keep)) #%>% distinct()

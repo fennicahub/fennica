@@ -51,6 +51,11 @@ df.orig <- df.orig %>% distinct()
 source("priority_fields_kanto.R")
 df.orig$author_name_kanto1 <- df.kanto$prefLabel
 df.orig$author_name_kanto2 <- df.kanto$altLabel
+df.orig$author_name_kantoVAR <- df.kanto$variantName
+df.orig$hidden_kanto <- df.kanto$hiddenLabel
+df.orig$access_kanto <- df.kanto$authorizedAccessPoint
+df.orig$note_kanto <- df.kanto$note
+
 df.orig$author_date_kanto <- df.kanto$author_date_kanto
 df.orig$author_profession <- df.kanto$author_profession_kanto_fi
 df.orig <- df.orig %>%

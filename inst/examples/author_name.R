@@ -1,13 +1,22 @@
 field <- "author_name"
 
+
 # Full author name (Last, First)
 author <- polish_author(df.orig[[field]], verbose = TRUE)
 
+
 # Collect the results into a data.frame
-df.tmp <- data.frame(melinda_id = df.orig$melinda_id, author_name = author)
+df.tmp <- data.frame(melinda_id = df.orig$melinda_id, 
+                     author_name = author$full_name, 
+                     last_name = author$last, 
+                     first_name = author$first)
+
 
 #add harmonized fields to df
-df.harmonized <- cbind(df.harmonized, author_name = df.tmp$author_name)
+df.harmonized <- cbind(df.harmonized, 
+                       author_name = df.tmp$author_name,
+                       last_name = df.tmp$last_name, 
+                       first_name = df.tmp$first_name)
 
 ################################################################
 
@@ -35,6 +44,7 @@ s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE)
 message("Discarded entries in the original data")
 
 # NA values in the final harmonized data
+#add other fields as well
 inds <- which(is.na(df.tmp[[field]]))
 
 # Original entries that were converted into NA
@@ -81,13 +91,3 @@ original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
 # .. ie. those are "discarded" cases; list them in a table
 tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
 
-
-
-df_missing_asteri <- df_author %>%
-  filter(is.na(asteri) | asteri == "")%>%
-  distinct(author_name, .keep_all = TRUE)
-write.table(df_missing_asteri, 
-            file = "missing_unique_asteri.csv", 
-            sep = "\t",         # Correct escape for tab, not "/t"
-            quote = FALSE,      # Prevent adding quotes
-            row.names = FALSE)

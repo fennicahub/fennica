@@ -13,6 +13,9 @@ library(parallel)
 library(qdapRegex)
 library(readxl)
 library(arrow)
+library(textutils)
+library(data.table)
+
 
 # Install latest version from Github
 # install_github("fennicahub/fennica") # or
@@ -41,6 +44,7 @@ source("008_field.R")
 
 #add gender colum
 source("asteri_gender.R")
+df.orig$gender <- as.character(df.orig$gender)
 
 #for subset analysis
 source("melindas_19.R")

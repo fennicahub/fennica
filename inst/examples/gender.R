@@ -1,154 +1,62 @@
-#add more columns from df.orig
-df.processed$author_kanto <- df.orig$author_name_kanto
-df.processed$author_700 <- df.orig$author_700a
-author_name$full_name[trimws(author_name$author_700) == ""] <- NA
-author_name$full_name[trimws(author_name$kanto) == ""] <- NA
 
-# only 1809-1917
-df <- df.processed[df.processed$melinda_id %in% melindas_19,] 
-
-author_name <- data.frame(
-  melinda_id = df$melinda_id,
-  full_name = df$author_name,
-  gender = df$gender,
-  author_700 = df$author_700,
-  kanto = df$author_kanto,
-  stringsAsFactors = FALSE
-)
-
-author_name <- author_name %>%
-  mutate(full_name = case_when(
-    is.na(full_name) & !is.na(kanto) & str_trim(kanto) != "" ~ kanto,
-    is.na(full_name) & !is.na(author_700) & str_trim(author_700) != "" ~ author_700,
-    TRUE ~ full_name
-  ))
-author_name$full_name <- str_to_title(author_name$full_name)
-author_name$kanto   <- str_to_title(author_name$kanto)
-author_name$author_700   <- str_to_title(author_name$author_700)
-# Step 1: Clean empty cells
-author_name$full_name[trimws(author_name$full_name) == ""] <- NA
-
-# Step 2: Define the splitting function
-split_name <- function(name) {
-  if (is.na(name)) {
-    return(c(NA, NA))
-  }
-  parts <- unlist(strsplit(name, ",\\s*"))
-  if (length(parts) == 2) {
-    return(parts)
-  } else if (length(parts) == 1) {
-    return(c(NA, parts[1]))  # Only firstname
-  } else {
-    return(c(NA, NA))
-  }
+get_gender_from_names <- function(x, lookup = gender_lookup) {
+  if (length(x) == 0 || all(is.na(x))) return(NA_character_)
+  x <- tolower(as.character(x))
+  m <- match(x, names(lookup))    # first position of each x in lookup names (or NA)
+  i <- m[!is.na(m)][1]            # first hit
+  if (is.na(i)) NA_character_ else unname(lookup[[i]])
 }
+# Case-insensitive lookup table
+gender_lookup <- setNames(all_gender1$gender, tolower(all_gender1$name))
+# Clean name column (just in case) and look up
+name_vec <- tolower(trimws(as.character(fennica_genders$names)))
 
-# Step 3: Apply and bind
-name_parts <- t(sapply(author_name$full_name, split_name))
-colnames(name_parts) <- c("surname", "firstname")
+sum(is.na(fennica_genders))
+fennica_genders$gender <- unname(gender_lookup[name_vec])
+sum(is.na(fennica_genders))
 
-author_name$surname <- name_parts[, "surname"]
-author_name$firstname <- name_parts[, "firstname"]
+mis_gen <- fennica_genders[is.na(fennica_genders$gender), ]
 
-#clean kanto names
-author_name$kanto_h <- author_name$kanto
-
-author_name$kanto_h <- gsub("[0-9.\\-]", "", author_name$kanto_h)
-author_name$kanto_h <- gsub(", ,", ",", author_name$kanto_h)
-
-# Step 1: Remove all dots
-author_name$kanto_h <- gsub("\\.", "", author_name$kanto_h)
-
-# Step 2: Collapse multiple spaces into a single space
-author_name$kanto_h <- gsub("\\s+", " ", author_name$kanto_h)
-
-author_name$kanto_h <- gsub("^[,\\s]+|[,\\s]+$", "", author_name$kanto_h)
-author_name$kanto_h <- gsub(",\\s*$", "", author_name$kanto_h)
-
-author_name$kanto_h <- sapply(author_name$kanto_h, function(x) {
-  if (is.na(x)) return(NA)
+#############read.csv()#######################################################
+# Function to extract gender from first matched sub-name
+gender_lookup <- setNames(all_gender1$gender, tolower(all_gender1$name))
+get_gender_from_names <- function(name_str) {
+  if (is.na(name_str) || name_str == "") return(NA)
   
-  parts <- unlist(strsplit(x, ","))
-  parts <- trimws(parts)
+  # Step 1: split on ';' to separate multiple names
+  name_parts <- unlist(strsplit(name_str, ";"))
+  name_parts <- trimws(name_parts)
   
-  if (length(parts) > 2) {
-    # Keep parts with more than 3 characters
-    parts <- parts[nchar(parts) > 3]
-  }
+  # Step 2: for each name part, split on space to get individual given names
+  subnames <- unlist(strsplit(name_parts, " "))
+  subnames <- trimws(subnames)
   
-  # Recombine
-  paste(parts, collapse = ", ")
-})
-
-author_name$kanto_h <- sapply(author_name$kanto_h, function(x) {
-  if (is.na(x)) return(NA)  # Preserve NA values
-  parts <- unlist(strsplit(x, ","))
-  parts <- trimws(parts)
-  parts <- unique(parts[parts != ""])  # Remove empty strings
-  paste(parts, collapse = ", ")
-})
-
-
-# Ensure the new columns exist and are initialized
-author_name$sur_w_k <- NA
-author_name$first_w_k <- NA
-
-# Apply row-wise logic
-for (i in seq_along(author_name$kanto_h)) {
-  entry <- author_name$kanto_h[i]
-  
-  if (!is.na(entry)) {
-    parts <- strsplit(entry, ",")[[1]]
-    parts <- trimws(parts)
-    
-    if (length(parts) == 2) {
-      author_name$sur_w_k[i] <- parts[1]
-      author_name$first_w_k[i] <- parts[2]
+  # Step 3: search for first match
+  for (n in subnames) {
+    if (n %in% names(gender_lookup)) {
+      return(gender_lookup[n])
     }
   }
+  return(NA)
 }
+df.harmonized$first_name_merged <- df_all_names$first_name_merged
+df <- df.harmonized[df.harmonized$melinda_id %in% melindas_19,]
+df$first_name_merged[df$first_name_merged == ""] <- NA
 
-author_name <- author_name %>%
-  rowwise() %>%
-  mutate(
-    # Clean both surname values
-    surname_clean = str_trim(surname),
-    sur_w_k_clean = str_trim(sur_w_k),
-    
-    firstname_clean = str_trim(firstname),
-    first_w_k_clean = str_trim(first_w_k),
-    
-    final_surname = case_when(
-      is.na(surname_clean) ~ sur_w_k_clean,
-      is.na(sur_w_k_clean) ~ surname_clean,
-      surname_clean == sur_w_k_clean ~ surname_clean,
-      TRUE ~ surname_clean
-    ),
-    
-    final_firstname = case_when(
-      is.na(surname_clean) ~ first_w_k_clean,
-      is.na(sur_w_k_clean) ~ firstname_clean,
-      surname_clean == sur_w_k_clean ~ paste(
-        unique(na.omit(c(firstname_clean, first_w_k_clean))), collapse = ", "
-      ),
-      TRUE ~ firstname_clean
-    )
-  ) %>%
-  ungroup() %>%
-  select(-surname_clean, -sur_w_k_clean, -firstname_clean, -first_w_k_clean)  # drop temp columns
+# Only replace gender if it's currently NA
+df$gender <- ifelse(
+  is.na(df$gender),
+  sapply(df$first_name_merged, get_gender_from_names),
+  df$gender
+)
+
+df$gender <- gsub("mies", "Male", df$gender)
+df$gender <- gsub("pappi", "Male", df$gender)
+df$gender <- gsub("nainen", "Female", df$gender)
+
+mis_name <- sum(is.na(df$first_name_merged))
+mis_gen <- sum(is.na(df$gender))
+message("Missing author name: ", sum(is.na(df$first_name_merged)))
+message("Missing gender: ", mis_gen - mis_name)
 
 
-author_name$final_firstname <- sapply(author_name$final_firstname, function(x) {
-  if (is.na(x)) return(NA)
-  
-  parts <- unlist(strsplit(x, ","))
-  parts <- trimws(parts)
-  
-  if (length(parts) > 1) {
-    # Keep parts with more than 3 characters
-    parts <- parts[nchar(parts) > 3]
-  }
-  
-  # Recombine
-  paste(parts, collapse = ", ")
-})
