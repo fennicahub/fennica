@@ -93,4 +93,153 @@ original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
 tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
 
 
+```{r}
+#| include = FALSE
+source("author_name_kanto.R")
+```
+
+## Author name Kanto
+
+The author information is enriched using the finto R package. It includes extra missing values of author name, author dates and author profession.
+
+
+-   [Kanto author names](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_kanto.csv)
+-   [Unique accepted entries in kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_kanto_accepted.csv): `r length(unique(df[[field]]))`
+-   [Unique discarded entries in kantoa](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_kanto_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
+-   Original documents with non-NA titles `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
+-   Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
+
+
+```{r}
+#| include = FALSE
+#source("author_name_combined.R")
+```
+
+## Author name combined 
+
+This is the combination of Fennica and Kanto author names.
+
+-   [Author name combined](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/combined_author_name.csv)
+
+-   [Unique accepted entries in combined](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/combined_author_name_accepted.csv): `r length(unique(df[[field]]))`
+-   [Unique discarded entries in combined](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/combined_author_name_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
+-   Original documents with non-NA titles `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
+-   Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
+
+<!-- !```{r} -->
+  <!-- #| label = "combined-author-name", -->
+  <!-- #| echo = FALSE, -->
+  <!-- #| message = FALSE, -->
+  <!-- #| warning = FALSE, -->
+  <!-- #| fig.width = 8, -->
+  <!-- #| fig.height = 6 -->
+  
+  <!-- library(ggplot2) -->
+  <!-- library(comhis) -->
+  
+  <!-- # Set ggplot theme -->
+  <!-- theme_set(theme_bw(base_size = 12)) -->
+  
+  <!-- # Load saved data -->
+  <!-- df_19 <- readRDS("combined_author_name.Rds") -->
+  
+  <!-- # Plot top authors -->
+  <!-- p <- top_plot(df_19, "combined_author_name", ntop = ntop, log10 = TRUE) + -->
+  <!--   labs(y = "Entries (n)", title = "Top authors") -->
+  
+  <!-- print(p) -->
+  
+  <!-- ```! -->
+  
+  
+  
+  ```{r}
+#| include = FALSE
+source("author_date.R")
+```
+## Author Date/Lifetime Fennica
+
+
+MARC: [100d](https://www.loc.gov/marc/bibliographic/bd100.html)
+
+The author's lifetime section furnishes concise summaries following an extensive cleaning process, delineating the accepted and discarded years pertaining to each author.The accepted years signify the refined and validated data, while insights into the discarded years offer valuable context, shedding light on the challenges encountered and decisions made during the cleaning procedure.
+
+### Complete Dataset Overview
+
+[Author date accepted for the complete Fennica](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_accepted.csv)
+
+[Author date discarded for the complete Fennica](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_discarded.csv)
+
+### Subset Analysis: 1809-1917
+
+[Author date accepted for 1809-1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_accepted_19.csv)
+
+[Author date discarded for 1809-1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_discarded_19.csv)
+
+
+<!-- <!```{r} -->
+<!-- #| include = FALSE -->
+<!-- source("author_date_kanto.R") -->
+<!-- ```!> -->
+## Author Date/Lifetime Kanto
+
+[Author date kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_kanto.csv)
+[Author date accepted for the kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_kanto_accepted.csv)
+
+[Author date discarded for the kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_kanto_discarded.csv)
+
+<!-- !```{r} -->
+<!-- #| include = FALSE -->
+<!-- source("author_date_combined.R") -->
+<!-- ```! -->
+
+
+
+
+```{r} 
+#| include = FALSE
+ source("author_profession_kanto.R") 
+```
+
+## Author Profession
+
+The profession of the author is only available via Kanto.
+
+
+[Author profession](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_profession_kanto_fi.csv)
+
+[Author profession accepted for the kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_profession_kanto_fi_accepted.csv)
+
+[Author profession discarded for the kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_profession_kanto_fi_discarded.csv)
+
+[Author profession accepted for the kanto 19th century](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_profession_kanto_fi_accepted_19.csv)
+
+[Author profession discarded for the kanto 19th century](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_profession_kanto_fi_discarded_19.csv)
+
+
+```{r}
+#| label = "author-profession",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
+
+library(ggplot2)
+#library(comhis)
+
+# Set ggplot theme
+theme_set(theme_bw(base_size = 12))
+
+# Load saved data
+df <- readRDS("author_profession_kanto_fi.Rds")
+
+# Plot top authors
+p <- top_plot(df, "author_profession_kanto_fi", ntop = ntop, log10 = TRUE) +
+  labs(y = "Entries (n)", title = "Top authors profession")
+
+print(p)
+
+```
+
 

@@ -1,16 +1,33 @@
+field1 <- "author_name_h"
 field <- "author_name"
 
-
+df.orig <- df.orig %>%
+  mutate(
+    across(
+      c(author_name, author_name_kanto1, author_name_kanto2, access_kanto, author_700a, author_name_kantoVAR),
+      ~ na_if(., "")
+    )
+  ) %>%
+  mutate(
+    author_name_h = coalesce(
+      author_name,
+      author_name_kanto1,
+      author_name_kanto2,
+      access_kanto,
+      author_700a, 
+      author_name_kantoVAR
+    )
+  )
+df <- df.orig[df.orig$melinda_id %in% melindas_19,]
 # Full author name (Last, First)
-author <- polish_author(df.orig[[field]], verbose = TRUE)
 
+author <- polish_author_multi(df.orig[[field1]], verbose = TRUE)
 
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id, 
                      author_name = author$full_name, 
                      last_name = author$last, 
                      first_name = author$first)
-
 
 #add harmonized fields to df
 df.harmonized <- cbind(df.harmonized, 
@@ -71,6 +88,7 @@ df_19 <- readRDS(data.file)
 
 
 # Define output files for the 1807-1917 subset
+field <- "author_name"
 file_accepted_19  <- paste0(output.folder, field, "_accepted_19.csv")
 file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 

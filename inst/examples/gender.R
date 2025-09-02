@@ -1,62 +1,88 @@
+# sources: genderize.io (https://genderize.io/) and henko dataset (https://www.ldf.fi/dataset/henko)
+# see genderize.csv and henko_unique_name_gender.csv which were merged into fennica_name_genders.csv
+# source("author_name_for_gender.R"): get all names that exist in fennica 
+a <- read.csv("fennica_name_genders.csv")
+gender_lookup <- setNames(a$gender, tolower(a$name))
+field <- "gender"
 
-get_gender_from_names <- function(x, lookup = gender_lookup) {
-  if (length(x) == 0 || all(is.na(x))) return(NA_character_)
-  x <- tolower(as.character(x))
-  m <- match(x, names(lookup))    # first position of each x in lookup names (or NA)
-  i <- m[!is.na(m)][1]            # first hit
-  if (is.na(i)) NA_character_ else unname(lookup[[i]])
-}
-# Case-insensitive lookup table
-gender_lookup <- setNames(all_gender1$gender, tolower(all_gender1$name))
-# Clean name column (just in case) and look up
-name_vec <- tolower(trimws(as.character(fennica_genders$names)))
-
-sum(is.na(fennica_genders))
-fennica_genders$gender <- unname(gender_lookup[name_vec])
-sum(is.na(fennica_genders))
-
-mis_gen <- fennica_genders[is.na(fennica_genders$gender), ]
-
-#############read.csv()#######################################################
-# Function to extract gender from first matched sub-name
-gender_lookup <- setNames(all_gender1$gender, tolower(all_gender1$name))
-get_gender_from_names <- function(name_str) {
-  if (is.na(name_str) || name_str == "") return(NA)
-  
-  # Step 1: split on ';' to separate multiple names
-  name_parts <- unlist(strsplit(name_str, ";"))
-  name_parts <- trimws(name_parts)
-  
-  # Step 2: for each name part, split on space to get individual given names
-  subnames <- unlist(strsplit(name_parts, " "))
-  subnames <- trimws(subnames)
-  
-  # Step 3: search for first match
-  for (n in subnames) {
-    if (n %in% names(gender_lookup)) {
-      return(gender_lookup[n])
-    }
-  }
-  return(NA)
-}
-df.harmonized$first_name_merged <- df_all_names$first_name_merged
-df <- df.harmonized[df.harmonized$melinda_id %in% melindas_19,]
-df$first_name_merged[df$first_name_merged == ""] <- NA
+df.tmp <- read.csv("output.tables/fennica_all_names.csv",sep = "\t", header = TRUE, quote = "", 
+                    colClasses = "character")
 
 # Only replace gender if it's currently NA
-df$gender <- ifelse(
-  is.na(df$gender),
-  sapply(df$first_name_merged, get_gender_from_names),
-  df$gender
-)
+df.tmp$gender <- assign_gender(df.tmp$first_name_merged)
 
-df$gender <- gsub("mies", "Male", df$gender)
-df$gender <- gsub("pappi", "Male", df$gender)
-df$gender <- gsub("nainen", "Female", df$gender)
+df.harmonized <- cbind(df.harmonized, gender = df.tmp$gender)
+################################################################
 
-mis_name <- sum(is.na(df$first_name_merged))
-mis_gen <- sum(is.na(df$gender))
-message("Missing author name: ", sum(is.na(df$first_name_merged)))
-message("Missing gender: ", mis_gen - mis_name)
+# Store the title field data
+data.file <- paste0(field, ".Rds")
+saveRDS(df.tmp, file = data.file)
+# Generate markdown summary
+df <- readRDS(data.file)
+# Convert to CSV and store in the output.tables folder
+write.table(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE, sep = ";", row.names = FALSE)
+
+##################################################################
+
+# Define output files for the whole dataset
+file_accepted  <- paste0(output.folder, field, "_accepted.csv")
+file_discarded <- paste0(output.folder, field, "_discarded.csv")
+
+# ------------------------------------------------------------
+
+# Generate data summaries for the whole data set
+
+message("Accepted entries in the preprocessed data")
+s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE)
+
+message("Discarded entries in the original data")
+
+# NA values in the final harmonized data
+#add other fields as well
+inds <- which(is.na(df.tmp[[field]]))
+
+# Original entries that were converted into NA
+original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
+
+# .. ie. those are "discarded" cases; list them in a table
+tmp <- write_xtable(original.na, file_discarded, count = TRUE)
+
+
+# ------------------------------------------------------------
+
+# Run publication_time.R file to get the melindas needed for the 19th century slicing
+
+df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
+field <- "gender"
+
+# Store the title field data
+# FIXME: convert to feather or plain CSV
+data.file <- paste0(field, ".Rds")
+saveRDS(df_19, file = data.file)
+
+# Generate markdown summary
+df_19 <- readRDS(data.file)
+
+
+# Define output files for the 1807-1917 subset
+file_accepted_19  <- paste0(output.folder, field, "_accepted_19.csv")
+file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
+
+# ------------------------------------------------------------
+
+# Generate data summaries for 1809-1917
+message("Accepted entries in the preprocessed data for 1809-1917")
+s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
+
+message("Discarded entries for 1809-1917")
+
+# NA values in the final harmonized data
+inds <- which(is.na(df_19[[field]]))
+
+# Original entries that were converted into NA
+original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
+
+# .. ie. those are "discarded" cases; list them in a table
+tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
 
 

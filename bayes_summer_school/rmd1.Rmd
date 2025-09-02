@@ -1,0 +1,115 @@
+<!-- Maintainer: Mahrukh Nazir -->
+
+---
+title: "Coding Examples Chapter 1"
+output:
+  html_document:
+    df_print: paged
+date: "2024-07-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## *DO NOT CIRCULATE*
+
+These examples and code are taken from the upcoming book Bayesian Statistics: A Primer for Data Scientists, with R and Python by Agresti, Kateri and Mira.
+
+## Chapter 1
+
+One item in the 2021 General Social Survey in the U.S. asked whether a woman should be able to get an abortion if she wants it for any reason. Of 1328 subjects who responded, 749 said *yes* and 579 said *no*. The sampling conducted for the GSS is more complex than a simple random sample, incorporating multiple stages and clustering to make the survey easier to implement, but we will treat it as such for purposes of illustrating frequentist and Bayesian estimation of the population proportion $\pi$ who would answer *yes*.
+
+In this survey, the binomial outcome is $y = 749$ in $n = 1328$ observations. The sample proportion is $y/n = 749/1328 = 0.5640$. With the uniform prior distribution, for $y=749$ and $n-y = 579$, the Bayesian posterior *pdf* $g(\pi \mid y)$ of $\pi$ is beta with hyperparameters $\alpha_{1} = y + 1 = 750$ and $\alpha_{2} = n - y + 1 = 580$. It has mean $(y+1)/(n+2) = 750/1330 = 0.5639$, very close to the sample proportion. Figure below shows this beta *pdf*. According to this posterior distribution, the range of plausible values for $\pi$ is narrow, with 95% of the distribution falling between 0.537 and 0.590. The posterior $P(\pi < 0.50) = 0.0000015$.
+
+```{r}
+qbeta(0.025, 750, 580)# 0.025 quantile of beta distribution with hyperpara's 750, 580
+qbeta(0.975, 750, 580)# 0.975 quantile of beta distribution
+
+pbeta(0.50, 750, 580) # cumulative probability at 0.50 for beta distribution 
+#    with hyperparameters 750, 580 is 0.0000015
+```
+
+Code for the plot of the Beta posterior *pdf* with hyperparameters $\alpha_{1} = 750$ and $\alpha_{2} = 580$ for U.S. population proportion who believe a woman should be able to get an abortion for any reason. The ML estimate is located at the red diamond.
+
+```{r}
+pi <- seq(0, 1, 0.001) # plot the beta posterior pdf
+plot(pi, dbeta(pi, 750, 580), xlab="Binomial parameter", ylab="Posterior pdf", type="l")
+#--> the code with which the figure below is produced follows:
+p = seq(0, 1, 0.0001)
+plot(p, dbeta(p,750,580),
+ylab=expression("Posterior pdf  g("*pi*"| "*alpha[1]*","*alpha[2]*")"),
+xlab=expression("Binomial parameter"~~italic(pi)), type ="l", lwd=2, col="dodgerblue4")
+points(0.564,0,pch=18,col="red4")
+```
+
+The example 1 used General Social Survey data to find the posterior distribution of the population proportion $\pi$ in the U.S. who believe that a woman should have the right to an abortion for any reason.
+
+With a uniform prior distribution and the survey results in which $y=749$ said *yes* and $n-y = 579$ said *no*, the posterior distribution of $\pi$ is a beta distribution with hyperparameters $\alpha_{1} = y+1 = 750$ and $\alpha_{2} = n-y+1 = 580$, which Figure above showed.
+
+The posterior mean estimate of $\pi$ is $E(\pi \mid y) = \alpha_{1}/(\alpha_{1} + \alpha_{2}) = (y+1)/(n+2) = 0.5639$, nearly identical to the ML estimate, $\hat{\pi} = y/n = 749/1328 = 0.5640$. The posterior mode is $(\alpha_{1} - 1)/(\alpha_{1} + \alpha_{2} - 2) = y/n$, the same as the ML estimate. With **R** software, using the quantile function for beta distributions, we find that the posterior median is also nearly identical to the posterior mean and the ML estimate:
+
+```{r}
+qbeta(0.50, 750, 580) # 0.50 quantile for beta dist. with hyperparameters 750, 580 
+#   is the posterior median
+```
+
+### Example: Proportion Supporting a Woman’s Choice about Abortion
+
+One item in the 2021 General Social Survey asked whether a woman should be able to get an abortion if she wants it for any reason. Of 1328 subjects who responded, 749 said yes and 579 said no. The posterior distribution of the population proportion $\pi$ who support a woman's right to an abortion whenever she wants it is the beta distribution with hyperparameters $\alpha_{1} = 750$ and $\alpha_{2} = 580$. The 95% posterior equal-tail percentile interval has as its endpoints the 0.025 and 0.975 quantiles of that posterior distribution. The following **R** output shows that this interval is (0.537, 0.590).
+
+The posterior distribution of the population proportion $\pi$ who support a woman being able to get an abortion whenever she wants it is the beta distribution with hyperparameters $\alpha_1 = 750$ and $\alpha_2 = 580$. The 95% posterior equal-tail percentile interval has as its endpoints the 0.025 and 0.975 quantiles of that posterior distribution.
+
+```{r}
+qbeta(c(0.025, 0.975), 750, 580)       # quantiles, values of beta hyperparameters
+```
+
+Here we utilize the binom package in R, which can provide a wide variety of intervals for the binomial parameter. The output displays the frequentist large-sample 95% confidence interval and in the next line the HPD interval.
+
+Here we utilize the **binom** package in **R**, which can provide a wide variety of intervals for the binomial parameter. The output also displays the frequentist large-sample 95% confidence interval $\hat{\pi} \pm 1.96\sqrt{\hat{\pi}(1 - \hat{\pi})/n}$ that uses the maximum likelihood estimate $\hat{\pi} = y/n$, its estimated standard error, and approximate normal sampling distribution. The output also shows that the HPD interval, which is the default provided with the **binom.bayes** function in the **binom** package, is (0.537, 0.591). Since the sample size $n = 1328$ is large, the Bayesian intervals are similar to each other and to the frequentist confidence interval.
+
+```{r}
+#install.packages("binom")              # installs package for future use
+library(binom)                         # requests use of binom package
+binom.confint(749, 1328, conf=0.95, method="asymptotic") # a frequentist 95% confidence interval
+
+binom.bayes(749, 1328, conf=0.95, alpha1=1.0, alpha2=1.0) 
+# HPD interval, uniform prior dist. is beta with alpha1 = alpha2 = 1
+```
+
+If the posterior distribution had not been a standard one available in software, we could have found an excellent approximation of the percentile interval by simulating a huge number of observations from the posterior distribution and then finding the relevant sample percentiles (quantiles). We show this in the next output.
+
+```{r}
+postvalues <- rbeta(50000000,750,580) # simulate 50 million observations from posterior
+quantile(postvalues, c(0.025, 0.975)) #beta distribution
+#approximate Bayesian 95% percentile interval
+
+hist(postvalues)# histogram of posterior dist.
+```
+
+We next use this posterior distribution to find the posterior $P(\pi > 0.50 \mid y)$ and $P(\pi < 0.50 \mid y)$, to analyze whether we can conclude that a majority or a minority of the population support this right. We can determine these by using R to find the cumulative probability of the posterior distribution at the value 0.50.
+
+```{r}
+pbeta(0.50, 750, 580) # cumulative probability at 0.50 for beta posterior distribution
+
+# with hyperparameter values 750 and 580
+```
+
+The posterior $P(\pi < 0.50 \mid y) = 0.0000015$. Thus, $P(\pi > 0.50 \mid y) = 0.9999985$, indicating extremely strong evidence that a majority of the population believe that a woman should be able to get an abortion for any reason.
+
+A corresponding result with frequentist statistical inference uses the $P$-value for testing $H_0$: $\pi = 0.50$ (implicitly $H_{0}$: $\pi \leq 0.50$) against $H_{1}$: $\pi > 0.50$. Since $y = 749$, this is the probability of observing $Y \geq 749$ out of $n = 1328$ observations when actually $H_0$ is true, which is $1 - P(Y \leq 748 \mid \pi = 0.50) = 0.0000017$.
+
+```{r}
+1 - pbinom(748, 1328, 0.50) # one-sided (right-tail) P-value for binomial distribution
+#    equals 1 - cumulative probability
+```
+
+### Likelihood principle
+
+Not all frequentist statistical methods satisfy the likelihood principle. Some frequentist methods reflect the design for obtaining the data. For example, one can show that the best *unbiased estimator* of $\pi$ is $y/n$ = 8/10 for the binomial experiment and $(y-1)/(y+1)$ = 7/9 in the negative binomial experiment. $P$-values violate the likelihood principle. For testing $H_{0}$: $\pi = 0.50$ against $H_{1}$: $\pi > 0.50$, the $P$-value is $P(Y \geq 8 \mid \pi = 0.50)$, which is 0.055 in the binomial experiment and 0.020 in the negative binomial experiment.
+
+```{r}
+1 - pbinom(7, 10, 0.5) # pbinom(y, n, pi) is Binom(n, pi) cumulative prob. at y
+1 - pnbinom(7, 2, 0.5) # pnbinom(y, k, pi) is negative binomial cumulative prob.
+#    for y successes until k failures
+```

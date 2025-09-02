@@ -7715,7 +7715,6 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
     message("No stopwords provided for authors. Using ready-made stopword lists")
 
     # TODO Use instead the notnames function here ?
-
     f <- system.file("extdata/stopwords.csv", package = "fennica")
     stopwords.general <- as.character(read.csv(f, sep = "\t")[,1])
     stopwords.general <- c(stopwords.general, stopwords(kind = "en"))
@@ -7728,7 +7727,7 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
 
     f <- system.file("extdata/stopwords_titles.csv", package = "fennica")
     stopwords.titles <- as.character(read.csv(f, sep = "\t")[,1])
-    stopwords <- unique(c(stopwords.general, stopwords.organizations, stopwords.names, stopwords.titles))
+    stopwords.all <- unique(c(stopwords.general, stopwords.organizations, stopwords.names, stopwords.titles))
   }
 
   # Accept some names that may be on the stopword lists
@@ -7745,10 +7744,9 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
   # Remove special chars and make lowercase to harmonize
   accept.names <- unique(condense_spaces(gsub("\\,", " ", gsub("\\.", "", tolower(accept.names)))))
 
-
   # Then remove those in stopwords (ie accept these in names)
   # Exclude some names and pseudonyms from assumed stopwords
-  stopwords <- setdiff(stopwords, accept.names)
+  stopwords.all <- setdiff(stopwords.all, accept.names)
 
   # -------------------------------------------------------------
 
@@ -7759,13 +7757,12 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
   suniq <- unique(s)
   s <- suniq
 
-  if (verbose) {
-    message(paste("Polishing author field: ", length(suniq), "unique entries"))
-  }
-
-  # Remove numerics
+  s <- str_trim(s)
+  s <- gsub("\\s+", "", s)
+  s <- s[str_length(s) >= 3]
   s <- gsub("[0-9]", " ", s)
-
+  s <- stringr::str_trim(s)
+  
   # Remove brackets and ending commas / periods
   # Cannot be merged into one regexp ?
   s <- gsub("\\[", " ", s)
@@ -7776,7 +7773,19 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
   s <- gsub("-+", "-", s)
   s <- stringr::str_trim(s)
   s <- gsub("[\\.|\\,]+$", "", s)
+  # trims any trailing commas, whitespace, or dash punctuation (incl. en/em dash)
+  s <- sub("[,\\s\\p{Pd}]+$", "", s, perl = TRUE)
+  s <- gsub("***, A", "", s, fixed = TRUE)
+  s <- gsub("-g, -a", "", s, fixed = TRUE)
+  s <- gsub("-s, -a", "", s, fixed = TRUE)
+  s <- gsub("-ro, -ho", "", s, fixed = TRUE)
+  s <- gsub("Nm, -n", "", s, fixed = TRUE)
+  s <- gsub("-k, -s", "", s, fixed = TRUE)
+  s <- gsub("F-m, -s", "", s, fixed = TRUE)
+  s <- gsub("S, s", "", s, fixed = TRUE)
 
+  s <- str_trim(s)
+  s <- s[!is.na(s) & str_length(s) >= 3]
   # Map back to original indices, then make unique again. Helps to further reduce cases.
   sorig <- s[match(sorig, suniq)]
   s <- suniq <- unique(sorig)
@@ -7799,8 +7808,6 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
     first[inds] <- pick_firstname(s[inds], format = "last, first")
     last[inds]  <-  pick_lastname(s[inds], format = "last, first")
   }
-
-
 
   inds <- inds2 <- setdiff(setdiff(grep(" ", s), inds1), pseudo.inds)
   if (length(inds) > 0) {
@@ -7899,6 +7906,24 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
 
 }
 
+
+#' @title Polish multiple author
+#' @description Polish author names
+#' @param s Vector of author names
+#' @param stopwords Stopwords
+#' @param verbose verbose
+#' @return Polished vector
+#' @export
+#' @authors Leo Lahti \email{leo.lahti@@iki.fi}, Julia Matveeva \email{yulmat@utu.fi}
+#' @references See citation("fennica")
+#' @examples # s2 <- polish_author("Smith, William; Pekka, Nieminen")
+#' @keywords utilities
+
+
+#use this function for multiple authors entries such as marc21 field 700a. 
+#based polish_author
+#modified by Julia Matveeva
+
 polish_author_multi <- function(s, stopwords = NULL, verbose = FALSE) {
   sorig <- s
   
@@ -7932,7 +7957,8 @@ polish_author_multi <- function(s, stopwords = NULL, verbose = FALSE) {
   
   # Handle multiple authors separated by '|'
   s <- as.character(s)
-  s <- gsub(";", "|", s)
+  s <- stringr::str_trim(s)
+  
   # Split by '|' and trim whitespace
   split_s <- lapply(s, function(x) {
     parts <- unlist(strsplit(x, "\\|"))
@@ -7946,10 +7972,21 @@ polish_author_multi <- function(s, stopwords = NULL, verbose = FALSE) {
   # Clean the flat list of authors
   s <- gsub("[0-9]", " ", flat_s)
   s <- gsub("[\\[\\]()?]", " ", s)
-  s <- gsub("-+", "-", s)
+  s <- gsub("-+", "", s)
   s <- stringr::str_trim(s)
   s <- gsub("[\\.|,]+$", "", s)
+  s <- gsub("-", "", s)
+  s <- gsub("\\*", "", s)
+  s <- s |>
+    str_replace_all("\\p{N}", " ") |>          # remove digits
+    str_replace_all("[\\[\\]()?]", " ") |>     # remove brackets and '?'
+    str_replace_all("\\.+", ".") |>            # collapse repeated periods
+    str_remove_all("\\.") |>                   # drop all periods
+    str_remove("[,\\s\\p{Pd}]+$") |>           # trim trailing comma/space/dash
+    str_squish()
   
+  s <- apply_manual_curation(s)
+  s[nchar(s) <= 2] <- NA
   suniq <- unique(s)
   if (verbose) message(paste("Polishing author field:", length(suniq), "unique entries"))
   
@@ -8015,6 +8052,7 @@ polish_author_multi <- function(s, stopwords = NULL, verbose = FALSE) {
   if (verbose) message("Capitalizing names")
   
   nametab$last  <- capitalize(nametab$last, "all.words")
+  nametab$last <- sub("å", "Å", nametab$last)
   nametab$first <- capitalize(nametab$first, "all.words")
   
   nametab$first <- condense_spaces(gsub("\\.", " ", nametab$first))
@@ -8044,41 +8082,77 @@ polish_author_multi <- function(s, stopwords = NULL, verbose = FALSE) {
     stringsAsFactors = FALSE
   )
   
+  
   matched_first <- name_map$first[match(s, name_map$orig)]
   matched_last  <- name_map$last[match(s, name_map$orig)]
   matched_full  <- name_map$full[match(s, name_map$orig)]
   
   recombine_grouped <- function(x) {
     x <- unique(na.omit(x))
-    if (length(x) == 0) NA else paste(x, collapse = "; ")
+    if (length(x) == 0) return(NA_character_) else paste(x, collapse = "; ")
   }
-  if (verbose) { message("Map to the original indices") }
   
-  final_first <- tapply(matched_first, group_idx, recombine_grouped)
-  final_last  <- tapply(matched_last,  group_idx, recombine_grouped)
-  final_full  <- tapply(matched_full,  group_idx, recombine_grouped)
+  # Use `vapply` or `sapply` instead of `tapply` for safety
+  final_first <- vapply(split(matched_first, group_idx), recombine_grouped, character(1))
+  final_last  <- vapply(split(matched_last, group_idx),  recombine_grouped, character(1))
+  final_full  <- vapply(split(matched_full, group_idx),  recombine_grouped, character(1))
   
-  # Ensure all original rows are represented
-  n <- length(sorig)
-  idxs <- seq_len(n)
-  
-  # Fill in missing indices with NA
-  fill_missing <- function(x) {
-    y <- rep(NA_character_, n)
-    y[as.integer(names(x))] <- x
-    return(y)
-  }
+  # Match the original row indices (1:N)
+  final_first <- final_first[as.character(seq_along(split_s))]
+  final_last  <- final_last[as.character(seq_along(split_s))]
+  final_full  <- final_full[as.character(seq_along(split_s))]
+  final_full[nchar(final_full) <= 2] <- NA
   
   final_df <- data.frame(
-    first = fill_missing(final_first),
-    last = fill_missing(final_last),
-    full_name = fill_missing(final_full),
+    first = unname(final_first),
+    last = unname(final_last),
+    full_name = unname(final_full),
     stringsAsFactors = FALSE
   )
   
   return(final_df)
 }
 
+#see if some names can be converted to full names 
+apply_manual_curation <- function(x, verbose = TRUE) {
+  manual <- read.csv("manual_name_curation.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE)
+  normalize <- function(s) {
+    s <- tolower(trimws(s))
+    s <- gsub("[[:punct:]]", " ", s)   # replace all punctuation with space
+    s <- gsub("\\s+", " ", s)          # collapse multiple spaces
+    return(s)
+  }
+  
+  manual$orig_norm <- normalize(manual$orig)
+  manual$new_name <- trimws(manual$new_name)
+  
+  # lookup
+  lookup <- manual$new_name
+  names(lookup) <- manual$orig_norm
+  
+  full_norm <- normalize(x)
+  
+  curated <- x
+  has_map <- full_norm %in% names(lookup)
+  curated[has_map] <- lookup[full_norm[has_map]]
+  
+  if (verbose) {
+    message(sprintf("Manual name curation applied to %d rows", sum(has_map)))
+  }
+  
+  return(curated)
+}
+
+
+
+#' @title Polish 080 x field (UDC)
+#' @description Polish udk auxiliary field
+#' @return Polished vector
+#' @export
+#' @authors Julia Matveeva \email{yulmat@utu.fi}
+#' @references See citation("fennica")
+#' @examples # s2 <- polish_udk_aux("000")
+#' @keywords utilities
 
 polish_udk_aux <- function(x) {
   x0 <- x
@@ -8091,10 +8165,11 @@ polish_udk_aux <- function(x) {
   }
 
   # Apply the function to the input
-  harmonized <- sapply(x0, remove_duplicates)
+  harm <- sapply(x0, remove_duplicates)
 
-  return(harmonized)
+  return(harm)
 }
+
 
 get_pseudonymes <- function (...) {
   pseudo <- as.character(read.csv(system.file("extdata/names/pseudonymes/custom_pseudonymes.csv", package = "fennica"), sep = "\t")[,1])
@@ -8443,25 +8518,133 @@ polish_publisher <- function (x) {
 #' @author Julia Matveeva yulmat@utu.fi
 #' @references See citation("fennica")
 #' @keywords utilities
-
-get_gender_from_names <- function(x) {
-  a <- read.csv("fennica_name_genders.csv")
-  gender_lookup <- setNames(a$gender, tolower(a$name))
-  if (is.na(x) || x == "") return(NA)
+assign_gender <- local({
+  .cache <- new.env(parent = emptyenv())
   
-  # Step 1: split on ';' to separate multiple names
-  name_parts <- unlist(strsplit(name_str, ";"))
-  name_parts <- trimws(name_parts)
-  
-  # Step 2: for each name part, split on space to get individual given names
-  subnames <- unlist(strsplit(name_parts, " "))
-  subnames <- trimws(subnames)
-  
-  # Step 3: search for first match
-  for (n in subnames) {
-    if (n %in% names(gender_lookup)) {
-      return(gender_lookup[n])
+  function(x, current_gender = NULL, dict_path = "fennica_name_genders.csv") {
+    # 0) Load + cache dictionary once per path
+    if (!exists("dict", envir = .cache) ||
+        !identical(get("dict_path", envir = .cache, inherits = FALSE), dict_path)) {
+      
+      dict <- fread(dict_path, colClasses = c(name = "character", gender = "character"))
+      dict[, name_lower := tolower(trimws(name))]
+      setorder(dict, name_lower)
+      dict <- unique(dict, by = "name_lower")  # drop duplicate names
+      setkey(dict, name_lower)
+      
+      assign("dict", dict, envir = .cache)
+      assign("dict_path", dict_path, envir = .cache)
+    } else {
+      dict <- get("dict", envir = .cache)
     }
+    
+    n <- length(x)
+    # 1) Start from current genders (if provided), else build empty
+    out <- if (!is.null(current_gender)) as.character(current_gender) else rep(NA_character_, n)
+    
+    # 2) Only compute for rows we actually need to fill
+    fill_idx <- is.na(out)
+    if (!any(fill_idx)) return(out)
+    
+    need_raw <- x[fill_idx]
+    need <- tolower(trimws(as.character(need_raw)))
+    ok <- nzchar(need)
+    if (!any(ok)) return(out)
+    
+    # 3) Unique strings to resolve
+    u <- unique(need[ok])
+    
+    # 4) Tokenize once (split on ';' and whitespace), preserving order per string
+    split_tokens <- function(v) {
+      if (requireNamespace("stringi", quietly = TRUE)) {
+        stringi::stri_split_regex(v, pattern = "[;\\s]+", omit_empty = TRUE, simplify = FALSE)
+      } else {
+        strsplit(v, "[;[:space:]]+", perl = TRUE)
+      }
+    }
+    splits <- split_tokens(u)
+    
+    if (length(splits) == 0L) return(out)
+    
+    tok_dt <- data.table(
+      id    = rep.int(seq_along(splits), lengths(splits)),
+      token = tolower(trimws(unlist(splits, use.names = FALSE)))
+    )
+    tok_dt <- tok_dt[nzchar(token)]
+    
+    if (nrow(tok_dt)) {
+      # 5) Join tokens to dict, then take the first matching token per unique string
+      matched <- tok_dt[dict, on = .(token = name_lower), nomatch = 0L]
+      if (nrow(matched)) {
+        first <- matched[, .SD[1L], by = id]  # first token with a hit per string
+        lut <- setNames(rep(NA_character_, length(u)), u)
+        lut[first$id] <- first$gender
+      } else {
+        lut <- setNames(rep(NA_character_, length(u)), u)
+      }
+    } else {
+      lut <- setNames(rep(NA_character_, length(u)), u)
+    }
+    
+    # 6) Map back to all rows being filled
+    map <- lut[ match(need, u) ]
+    
+    # careful: assign back using absolute positions
+    idx <- which(fill_idx)
+    out[idx[ok]] <- map
+    
+    out
   }
-  return(NA)
+})
+
+de_html <- function(x) {
+  x <- as.character(x)
+  
+  # 0) Force UTF-8 *before* any HTML parsing
+  x <- iconv(x, from = "", to = "UTF-8", sub = "")
+  
+  # 1) Decode HTML + strip tags, preserving basic line breaks
+  html_to_text <- function(s) {
+    s <- gsub("(?i)<br\\s*/?>", "\n", s, perl = TRUE)
+    s <- gsub("(?i)</p\\s*>", "\n", s, perl = TRUE)
+    tryCatch(
+      html_text2(read_html(paste0("<div>", s, "</div>"),
+                           options = "RECOVER")),
+      error = function(e) {
+        # minimal manual decode if parsing still fails
+        s <- gsub("&nbsp;", " ", s, fixed = TRUE)
+        s <- gsub("&amp;",  "&", s, fixed = TRUE)
+        s <- gsub("&lt;",   "<", s, fixed = TRUE)
+        s <- gsub("&gt;",   ">", s, fixed = TRUE)
+        s <- gsub("&quot;", "\"", s, fixed = TRUE)
+        s <- gsub("&apos;", "'", s, fixed = TRUE)
+        gsub("<[^>]+>", " ", s) # strip tags
+      }
+    )
+  }
+  x <- vapply(x, html_to_text, character(1), USE.NAMES = FALSE)
+  
+  # 2) Unicode normalization (NFKC folds fullwidth etc.)
+  x <- stri_trans_nfkc(x)
+  
+  # 3) Whitespace normalization
+  x <- stri_replace_all_regex(x, "\\p{Z}+", " ")
+  x <- gsub("[\u200B-\u200D\uFEFF]", "", x)   # zero-widths
+  x <- gsub(" *\n+ *", "\n", x)
+  x <- gsub("[ \t]{2,}", " ", x)
+  x <- trimws(x)
+  
+  # 4) Punctuation normalization
+  x <- gsub("[\u2010\u2011\u2012\u2013\u2014\u2015\u2212\uFE63\uFF0D]", "-", x)  # dashes
+  x <- gsub("[\uFF5C\u2758]", "|", x)                                            # bars
+  x <- gsub("[\u2018\u2019\u201A\u201B]", "'", x)                                # quotes
+  x <- gsub("[\u201C\u201D\u201E\u201F\u00AB\u00BB]", "\"", x)
+  x <- gsub("\u2026", "...", x)                                                  # ellipsis
+  x <- gsub("[\uFF0C\u060C\uFE10\uFE11\uFE50\uFE51]", ",", x)                    # commas
+  x <- gsub("[\uFF0E\u3002\u2024\uFE12\uFE52]", ".", x)                          # periods
+  
+  # 5) Drop control characters (keep CR/LF/TAB)
+  x <- gsub("[\\p{Cc}&&[^\\r\\n\\t]]+", "", x, perl = TRUE)
+  
+  trimws(gsub("[ \t]{2,}", " ", x))
 }

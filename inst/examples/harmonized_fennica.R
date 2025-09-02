@@ -11,14 +11,11 @@ df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
                             publication_status = df.orig$publication_status)
 
 source("author_name.R")
-source("author_name_kanto.R")
 
-# #initialize df.harmonized
-df.harmonized <- data.frame(gender = df.orig$gender)
-
+source("gender.R")
 source("author_date.R")
-source("author_date_kanto.R")
-df.harmonized <- data.frame(author_profession = df.orig$author_profession)
+#source("author_date_kanto.R")
+df.harmonized <- cbind(df.harmonized, author_profession = df.orig$author_profession)
 
 source("title.R")
 source("title_remainder.R")
@@ -44,6 +41,7 @@ write.table(df.processed,
             row.names=FALSE, 
             quote = FALSE,
             fileEncoding = "UTF-8")    
+
 
 ###############################################################################
 
