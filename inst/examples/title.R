@@ -11,12 +11,7 @@ df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      title_length = x$title_length,
                      title_word_count = x$title_word_count)
 
-#####################################################################
-#add harmonized fields to df
-df.harmonized <- cbind(df.harmonized,
-                       title = df.tmp$title,
-                       title_length = df.tmp$title_length,
-                       title_word = df.tmp$title_word_count)
+
 
 #####################################################################
 # Define output files

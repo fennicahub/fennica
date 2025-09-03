@@ -24,10 +24,6 @@ geo_data <-  read.csv(f,fileEncoding = "UTF-8")
 df.tmp <- data.frame(melinda_id=df.orig[field_2],publication_place = tab,country=tab_country) %>% left_join(.,geo_data)
 colnames(df.tmp) <- c("melinda_id","publication_place","publication_country","longitude","latitude","chosen_id")
 
-#add harmonized fields to df
-df.harmonized <- cbind(df.harmonized,
-                       publication_place = df.tmp$publication_place, 
-                       publication_country = df.tmp$publication_country)
 ####################################################################################
 
 # Save publication place data

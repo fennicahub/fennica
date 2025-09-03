@@ -17,8 +17,6 @@ df.tmp$harmonized <- as.character(df.tmp$harmonized)
 # Reset the index to convert it into a single-index DataFrame
 row.names(df.tmp) <- NULL
 
-#add harmonized fields to df
-df.harmonized <- cbind(df.harmonized, genre_655 = df.tmp$harmonized)
 
 
 ###############################################################

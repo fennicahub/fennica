@@ -8,10 +8,6 @@ tab <- polish_publisher(df.orig[[field]])
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      publisher = tab)
 
-#add harmonized fields to df
-df.harmonized <- cbind(df.harmonized, publisher = df.tmp$publisher)
-
-
 # Store the title field data
 data.file <- paste0(field, ".Rds")
 saveRDS(df.tmp, file = data.file)

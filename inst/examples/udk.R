@@ -9,17 +9,8 @@ df.tmp$melinda_id <- df.orig$melinda_id
 df.tmp$udk_aux <- polish_udk_aux(df.orig$UDK_aux)
 df.tmp <- select(df.tmp, melinda_id, everything())
 
-#add harmonized fields to df
-df.harmonized <- cbind(df.harmonized,
-                       udk_orig = df.orig$UDK, 
-                       udk_aux = df.tmp$udk_aux,
-                       udk = df.tmp$converted, 
-                       udk_primary = df.tmp$primary, 
-                       udk_multi = df.tmp$multi_udk)
 
 df.tmp1 <- out$undetermined
-
-
 
 # Reset the index to convert it into a single-index DataFrame
 row.names(df.tmp) <- NULL
