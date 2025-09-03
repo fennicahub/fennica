@@ -7977,6 +7977,7 @@ polish_author_multi <- function(s, stopwords = NULL, verbose = FALSE) {
   s <- gsub("[\\.|,]+$", "", s)
   s <- gsub("-", "", s)
   s <- gsub("\\*", "", s)
+  s <- gsub('\\"', "", s)
   s <- s |>
     str_replace_all("\\p{N}", " ") |>          # remove digits
     str_replace_all("[\\[\\]()?]", " ") |>     # remove brackets and '?'

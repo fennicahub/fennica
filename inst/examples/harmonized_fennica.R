@@ -11,6 +11,11 @@ df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
                             publication_status = df.orig$publication_status)
 
 source("author_name.R")
+#add harmonized fields to df
+df.harmonized <- cbind(df.harmonized, 
+                       author_name = df.tmp$author_name,
+                       last_name = df.tmp$last_name, 
+                       first_name = df.tmp$first_name)
 
 source("gender.R")
 source("author_date.R")

@@ -49,14 +49,6 @@ df.orig$gender <- as.character(df.orig$gender)
 #for subset analysis
 source("melindas_19.R")
 
-# #initialize df.harmonized
-df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
-                            data_element = df.orig$data_element_008,
-                            genre_008 = df.orig$converted_008_33,
-                            record_type = df.orig$type_of_record,
-                            biblio_level = df.orig$bibliographic_level,
-                            publication_status = df.orig$publication_status)
-
 
 ##create csv and save to output_tables
 #source("harmonized_fennica.R")

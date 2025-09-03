@@ -2,7 +2,7 @@
 # see genderize.csv and henko_unique_name_gender.csv which were merged into fennica_name_genders.csv
 # source("author_name_for_gender.R"): get all names that exist in fennica 
 a <- read.csv("fennica_name_genders.csv")
-gender_lookup <- setNames(a$gender, tolower(a$name))
+gender_lookup <- setNames(tolower(a$gender), tolower(a$name))
 field <- "gender"
 
 df.tmp <- read.csv("output.tables/fennica_all_names.csv",sep = "\t", header = TRUE, quote = "", 
