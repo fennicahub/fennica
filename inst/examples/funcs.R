@@ -8116,7 +8116,7 @@ polish_author_multi <- function(s, stopwords = NULL, verbose = FALSE) {
 
 #see if some names can be converted to full names 
 apply_manual_curation <- function(x, verbose = TRUE) {
-  manual <- read.csv("manual_name_curation.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE)
+  manual <- read.csv("../extdata/manual_name_curation.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE)
   normalize <- function(s) {
     s <- tolower(trimws(s))
     s <- gsub("[[:punct:]]", " ", s)   # replace all punctuation with space
@@ -8484,6 +8484,7 @@ polish_physext_help <- function (s, page.harmonize) {
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}, Julia Matveeva yulmat@utu.fi
 #' @references See citation("fennica")
 #' @keywords utilities
+
 polish_publisher <- function (x) {
   
   # Remove leading/trailing periods
@@ -8597,55 +8598,3 @@ assign_gender <- local({
     out
   }
 })
-
-de_html <- function(x) {
-  x <- as.character(x)
-  
-  # 0) Force UTF-8 *before* any HTML parsing
-  x <- iconv(x, from = "", to = "UTF-8", sub = "")
-  
-  # 1) Decode HTML + strip tags, preserving basic line breaks
-  html_to_text <- function(s) {
-    s <- gsub("(?i)<br\\s*/?>", "\n", s, perl = TRUE)
-    s <- gsub("(?i)</p\\s*>", "\n", s, perl = TRUE)
-    tryCatch(
-      html_text2(read_html(paste0("<div>", s, "</div>"),
-                           options = "RECOVER")),
-      error = function(e) {
-        # minimal manual decode if parsing still fails
-        s <- gsub("&nbsp;", " ", s, fixed = TRUE)
-        s <- gsub("&amp;",  "&", s, fixed = TRUE)
-        s <- gsub("&lt;",   "<", s, fixed = TRUE)
-        s <- gsub("&gt;",   ">", s, fixed = TRUE)
-        s <- gsub("&quot;", "\"", s, fixed = TRUE)
-        s <- gsub("&apos;", "'", s, fixed = TRUE)
-        gsub("<[^>]+>", " ", s) # strip tags
-      }
-    )
-  }
-  x <- vapply(x, html_to_text, character(1), USE.NAMES = FALSE)
-  
-  # 2) Unicode normalization (NFKC folds fullwidth etc.)
-  x <- stri_trans_nfkc(x)
-  
-  # 3) Whitespace normalization
-  x <- stri_replace_all_regex(x, "\\p{Z}+", " ")
-  x <- gsub("[\u200B-\u200D\uFEFF]", "", x)   # zero-widths
-  x <- gsub(" *\n+ *", "\n", x)
-  x <- gsub("[ \t]{2,}", " ", x)
-  x <- trimws(x)
-  
-  # 4) Punctuation normalization
-  x <- gsub("[\u2010\u2011\u2012\u2013\u2014\u2015\u2212\uFE63\uFF0D]", "-", x)  # dashes
-  x <- gsub("[\uFF5C\u2758]", "|", x)                                            # bars
-  x <- gsub("[\u2018\u2019\u201A\u201B]", "'", x)                                # quotes
-  x <- gsub("[\u201C\u201D\u201E\u201F\u00AB\u00BB]", "\"", x)
-  x <- gsub("\u2026", "...", x)                                                  # ellipsis
-  x <- gsub("[\uFF0C\u060C\uFE10\uFE11\uFE50\uFE51]", ",", x)                    # commas
-  x <- gsub("[\uFF0E\u3002\u2024\uFE12\uFE52]", ".", x)                          # periods
-  
-  # 5) Drop control characters (keep CR/LF/TAB)
-  x <- gsub("[\\p{Cc}&&[^\\r\\n\\t]]+", "", x, perl = TRUE)
-  
-  trimws(gsub("[ \t]{2,}", " ", x))
-}

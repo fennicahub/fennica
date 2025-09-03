@@ -65,10 +65,3 @@ print(p)
 ```
 
 
-
-
-## Author Date/Lifetime combined
-
-This is the combination of both Fennica and Kanto dates.
-
-[author date/Lifetime combined](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_combined.csv)
