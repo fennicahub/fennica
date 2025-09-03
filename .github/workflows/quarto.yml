@@ -43,12 +43,21 @@ jobs:
 
       - name: Install curl package
         run: Rscript -e "install.packages('curl')"
+        
+      - name: Install textutils package
+        run: Rscript -e "install.packages('textutils')"
+
+      - name: Install data.table package
+        run: Rscript -e "install.packages('data.table')"
 
       - name: Install httr package
         run: Rscript -e "install.packages('httr')"
 
       - name: Install devtools package
         run: Rscript -e "install.packages('devtools')"
+        
+      - name: Install brms package
+        run: Rscript -e "install.packages('brms')"
 
       - name: Install qdapRegex package
         run: Rscript -e "install.packages('qdapRegex')"
