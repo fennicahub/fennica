@@ -51,13 +51,10 @@ kable(head(tab, ntop))
 df$publication_decade <- df_pubtime$publication_decade[match(df$melinda_id, df_pubtime$melinda_id)]
 
 # Define the genres you're interested in
-selected_genres <- c("Tietokirjallisuus", "Kaunokirjallisuus", "Draama", "Runot", "Romaanit",
-  "Novellit, kertomukset", "Puheet, esitelmät", "Kirjeet", "Esseet", "Huumori, satiiri")
+selected_genres <- c("Tietokirjallisuus", "Kaunokirjallisuus", "Draama", "Runot", "Romaanit", "Novellit, kertomukset", "Puheet, esitelmät", "Kirjeet", "Esseet", "Huumori, satiiri")
 
-fiction_genres <- c(
-  "Kaunokirjallisuus", "Draama", "Runot", "Romaanit",
-  "Novellit, kertomukset", "Puheet, esitelmät", "Kirjeet", "Esseet", "Huumori, satiiri"
-)
+fiction_genres <- c("Kaunokirjallisuus", "Draama", "Runot", "Romaanit",
+  "Novellit, kertomukset", "Puheet, esitelmät", "Kirjeet", "Esseet", "Huumori, satiiri")
 
 df_selected <- df %>%
   filter(converted_008_33 %in% c(fiction_genres, "Tietokirjallisuus")) %>%
