@@ -24,7 +24,7 @@
     "href": "author_info.html#author-name-fennica",
     "title": "2  Author’s info",
     "section": "",
-    "text": "2.1.1 Complete Dataset Overview\n\nUnique accepted entries in original data: 238625\nUnique discarded entries in original data (excluding NA cases): 2304\nOriginal documents with non-NA titles 948985 / 1229782 (77.2%)\nOriginal documents with missing (NA) titles 280797 / 1229782 documents (22.8%)\n\n\n2.1.1.1 Authors\n\n238625 unique authors These final names capture all name variants from the custom author synonyme table, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the author synonyme table.\n948985 documents have unambiguous author information (77%).\nAuthor name conversions Non-trivial conversions from the original raw data to final names.\n\n\n\n2.1.1.2 Auxiliary files\n\nAuthor synonyme table\nStopwords for names\nStopwords for titles\nCustom pseudonyme lists\n\n\n\n\n2.1.2 Subset Analysis: 1809-1917\n\nUnique accepted entries for for 1809-1917 years: 11088\nUnique discarded entries in original data (excluding NA cases): 581\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.",
+    "text": "2.1.1 Complete Dataset Overview\n\nUnique accepted entries in original data: 239514\nUnique discarded entries in original data (excluding NA cases): 485\nOriginal documents with non-NA titles 958600 / 1229782 (77.9%)\nOriginal documents with missing (NA) titles 271182 / 1229782 documents (22.1%)\n\n\n2.1.1.1 Authors\n\n239514 unique authors These final names capture all name variants from the custom author synonyme table, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the author synonyme table.\n0 documents have unambiguous author information (NaN%).\nAuthor name conversions Non-trivial conversions from the original raw data to final names.\n\n\n\n2.1.1.2 Auxiliary files\n\nAuthor synonyme table\nStopwords for names\nStopwords for titles\nCustom pseudonyme lists\n\n\n\n\n2.1.2 Subset Analysis: 1809-1917\n\nUnique accepted entries for for 1809-1917 years: 11430\nUnique discarded entries in original data (excluding NA cases): 184\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info</span>"
     ]
@@ -359,6 +359,16 @@
     "crumbs": [
       "Appendices",
       "Technical information"
+    ]
+  },
+  {
+    "objectID": "author_info.html#gender",
+    "href": "author_info.html#gender",
+    "title": "2  Author’s info",
+    "section": "2.2 Gender",
+    "text": "2.2 Gender\nGender information is not originally included in Fennica. We enriched the data by linking author names with gender information from various sources, including the HENKO project, the Genderize dataset, and additional records provided by the National Library of Finland. The full list of names and genders can be found here\nIn total N = 1229782 records. After enrichmnet in total there are records 937104 / (76.2%) with assigned gender. There are 306965 (32.8%) female names, 471839 (50.4%) male names and 158279 (16.9%) unisex names.\n\n2.2.1 Genres over Time",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info</span>"
     ]
   }
 ]

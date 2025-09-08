@@ -7960,6 +7960,7 @@ polish_author_multi <- function(s, stopwords = NULL, verbose = FALSE) {
   s <- stringr::str_trim(s)
   
   # Split by '|' and trim whitespace
+  s <- gsub(";", "|", s)
   split_s <- lapply(s, function(x) {
     parts <- unlist(strsplit(x, "\\|"))
     tolower(trimws(parts))
@@ -7972,10 +7973,9 @@ polish_author_multi <- function(s, stopwords = NULL, verbose = FALSE) {
   # Clean the flat list of authors
   s <- gsub("[0-9]", " ", flat_s)
   s <- gsub("[\\[\\]()?]", " ", s)
-  s <- gsub("-+", "", s)
+  s <- gsub("-+", "-", s)
   s <- stringr::str_trim(s)
   s <- gsub("[\\.|,]+$", "", s)
-  s <- gsub("-", "", s)
   s <- gsub("\\*", "", s)
   s <- gsub('\\"', "", s)
   s <- s |>
@@ -7987,13 +7987,14 @@ polish_author_multi <- function(s, stopwords = NULL, verbose = FALSE) {
     str_squish()
   
   s <- apply_manual_curation(s)
-  s[nchar(s) <= 2] <- NA
-  suniq <- unique(s)
+  s[!nzchar(s)] <- NA_character_
+  suniq <- unique(na.omit(s))
   if (verbose) message(paste("Polishing author field:", length(suniq), "unique entries"))
   
   # Initialize name components for suniq
-  first <- last <- character(length(suniq))
-  pseudo.inds <- which(suniq %in% pseudo)
+  first <- last <- rep(NA_character_, length(suniq))
+                    
+  pseudo.inds <- which(!is.na(suniq) & suniq %in% pseudo)
   
   inds1 <- setdiff(grep(",", suniq), pseudo.inds)
   if (length(inds1) > 0) {
@@ -8048,7 +8049,8 @@ polish_author_multi <- function(s, stopwords = NULL, verbose = FALSE) {
     stringsAsFactors = FALSE
   )
   
-  nametab$last[nchar(nametab$last) == 1] <- NA
+  nametab$last[nchar(nametab$last) < 3] <- NA
+  nametab$first[nchar(nametab$first) < 2] <- NA
   
   if (verbose) message("Capitalizing names")
   
@@ -8108,10 +8110,11 @@ polish_author_multi <- function(s, stopwords = NULL, verbose = FALSE) {
     first = unname(final_first),
     last = unname(final_last),
     full_name = unname(final_full),
-    stringsAsFactors = FALSE
-  )
+    stringsAsFactors = FALSE)
   
-  return(final_df)
+  df <- name_search(final_df)
+  
+  return(df)
 }
 
 #see if some names can be converted to full names 
@@ -8145,6 +8148,45 @@ apply_manual_curation <- function(x, verbose = TRUE) {
 }
 
 
+###############3
+name_search <- function(df,
+                        names_path = "fennica_name_genders.csv",
+                        name_col = "name",
+                        case_insensitive = TRUE,
+                        treat_empty_as_na = TRUE) {
+  stopifnot(is.data.frame(df))
+  
+  # read names file
+  nm_df <- utils::read.csv(names_path, stringsAsFactors = FALSE, encoding = "UTF-8")
+  names_vec <- nm_df$name
+  
+  # coerce to character + trim
+  ch <- function(x) if (is.factor(x)) as.character(x) else x
+  df$first <- trimws(ch(df$first))
+  df$last  <- trimws(ch(df$last))
+  names_vec <- trimws(as.character(names_vec))
+  
+  # optionally treat "" as NA
+  if (treat_empty_as_na) {
+    df$first[df$first == ""] <- NA_character_
+    df$last[df$last == ""]   <- NA_character_
+  }
+  
+  # build the match index
+  if (case_insensitive) {
+    idx <- !is.na(df$last) & is.na(df$first) &
+      tolower(df$last) %in% tolower(names_vec)
+  } else {
+    idx <- !is.na(df$last) & is.na(df$first) &
+      df$last %in% names_vec
+  }
+  
+  # move last -> first and blank out last
+  df$first[idx] <- df$last[idx]
+  df$last[idx]  <- NA_character_
+  
+  df
+}
 
 #' @title Polish 080 x field (UDC)
 #' @description Polish udk auxiliary field

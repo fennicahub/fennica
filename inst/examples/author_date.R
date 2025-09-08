@@ -15,12 +15,6 @@ df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
                     df.tmp)
 rownames(df.tmp) <- NULL
 
-#add harmonized fields to df
-df.harmonized <- cbind(df.harmonized, 
-                       author_birth = df.tmp$author_birth,
-                       author_death = df.tmp$author_death,
-                       author_age = df.tmp$author_age)
-
 
 # ------------------------------------------------------------
 # Store the title field data

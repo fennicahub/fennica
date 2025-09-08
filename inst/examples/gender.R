@@ -10,8 +10,8 @@ df.tmp <- read.csv("output.tables/fennica_all_names.csv",sep = "\t", header = TR
 
 # Only replace gender if it's currently NA
 df.tmp$gender <- assign_gender(df.tmp$first_name_merged)
-
-df.harmonized <- cbind(df.harmonized, gender = df.tmp$gender)
+df.tmp$gender <- gsub("male;female","unisex",df.tmp$gender)
+df.tmp$gender <- gsub("female;male","unisex",df.tmp$gender)
 ################################################################
 
 # Store the title field data

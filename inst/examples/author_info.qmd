@@ -7,6 +7,7 @@ description: ""
 ```{r}
 #| include = FALSE
 source("init.R")
+source("publication_time.R")
 source("author_name.R")
 ```
 
@@ -27,7 +28,7 @@ Author's name section's summary tables offer insights into the dataset's integri
 
 -   `r length(unique(df$author_name))` [unique authors](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_accepted.csv) These final names capture all name variants from the custom [author synonyme table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/ambiguous-authors.csv), and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the [author synonyme table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/ambiguous-authors.csv).
 
--   `r sum(!is.na(df$author_name))` documents have unambiguous author information (`r round(100*mean(!is.na(df$author_name)))`%).
+-   `r sum(!is.na(df$author_name_h))` documents have unambiguous author information (`r round(100*mean(!is.na(df$author_name_h)))`%).
 
 -   [Author name conversions](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_conversion_nontrivial.csv) Non-trivial conversions from the original raw data to final names.
 
@@ -64,4 +65,43 @@ p <- top_plot(df_19, "author_name", ntop = ntop, log10 = TRUE)+
 print(p)
 ```
 
+## Gender
 
+Gender information is not originally included in Fennica. We enriched the data by linking author names with gender information from various sources, including the HENKO project, the Genderize dataset, and additional records provided by the National Library of Finland. The full list of names and genders can be found
+[here](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/fennica_name_genders.csv)
+
+```{r}
+#| include: false
+#| message: false
+source("gender.R")
+```
+
+In total N = `r nrow(df)` records. After enrichmnet in total there are records `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df[[field]])), 1)`%) with assigned gender. There are `r sum(df[[field]] == "female", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "female", na.rm = TRUE), 1)`%) female names, `r sum(df[[field]] == "male", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "male", na.rm = TRUE), 1)`%) male names and `r sum(df[[field]] == "unisex", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "unisex", na.rm = TRUE), 1)`%) unisex names. 
+
+### Genres over Time
+```{r}
+#| label = "summary_gender",
+#| echo = FALSE,
+#| warning = FALSE,
+# Join publication_decade from df_pubtime to df by melinda_id
+df$publication_decade <- df_pubtime$publication_decade[match(df$melinda_id, df_pubtime$melinda_id)]
+
+# Filter your data to only include those genres
+df_selected <- df%>%
+  filter(!is.na(publication_decade), 
+         !is.na(df$gender),
+         publication_decade <= 1950)
+
+# Summarize counts by decade and genre
+df_summary <- df_selected %>%
+  group_by(publication_decade, gender) %>%
+  summarise(n = n(), .groups = "drop")
+
+ggplot(df_summary, aes(x = publication_decade,y = n, fill = gender)) +
+  geom_col(position = "stack", width = 8) +  # width makes bars a bit narrower
+  labs(x = "Publication Decade", y = "Gender count", fill = "Gender") +
+  scale_fill_brewer(palette = "Set2") +
+  scale_x_continuous(limits = c(1600, 1950),breaks = seq(1600, 1950, by = 50)) +
+  theme_minimal()
+
+```
