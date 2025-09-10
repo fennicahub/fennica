@@ -8150,14 +8150,13 @@ apply_manual_curation <- function(x, verbose = TRUE) {
 
 ###############3
 name_search <- function(df,
-                        names_path = "fennica_name_genders.csv",
                         name_col = "name",
                         case_insensitive = TRUE,
                         treat_empty_as_na = TRUE) {
   stopifnot(is.data.frame(df))
   
   # read names file
-  nm_df <- utils::read.csv(names_path, stringsAsFactors = FALSE, encoding = "UTF-8")
+  nm_df <- read.csv("../extdata/fennica_name_genders.csv", stringsAsFactors = FALSE, encoding = "UTF-8")
   names_vec <- nm_df$name
   
   # coerce to character + trim

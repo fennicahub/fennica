@@ -18,6 +18,7 @@ df.orig <- df.orig %>%
       author_700a
     )
   )
+
 # Full author name (Last, First, Full)
 author <- polish_author_multi(df.orig[[field1]], verbose = TRUE)
 
