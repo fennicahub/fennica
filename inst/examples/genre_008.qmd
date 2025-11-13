@@ -6,6 +6,7 @@ description: ""
 
 ```{r}
 #| include = FALSE
+#| message = FALSE
 source("init.R")
 source("publication_time.R")
 source("008_33.R")

@@ -1,5 +1,5 @@
 ---
-title: "Author's info"
+title: "Author's info: name, dates, gender, profession"
 hide-description: false
 description: ""
 ---
@@ -9,6 +9,13 @@ description: ""
 source("init.R")
 source("publication_time.R")
 source("author_name.R")
+```
+
+```{r}
+#| include = FALSE
+author_df <- df
+author_df$publication_year <- df_pubtime$publication_year
+author_df$publication_decade <- df_pubtime$publication_decade
 ```
 
 ## Author name Fennica
@@ -64,11 +71,100 @@ p <- top_plot(df_19, "author_name", ntop = ntop, log10 = TRUE)+
   labs(y = "Entries (n)", title = "Top titles")
 print(p)
 ```
+# Author's name after integration
+
+```{r}
+#| include = FALSE
+#source("author_date.R")
+```
+
+# Author's date
+
+```{r}
+#| include = FALSE
+source("author_date.R")
+```
+
+## Author's lifetime
+MARC: [100d](https://www.loc.gov/marc/bibliographic/bd100.html)
+
+The author's lifetime section furnishes concise summaries following an extensive cleaning process, delineating the accepted and discarded years pertaining to each author.The accepted years signify the refined and validated data, while insights into the discarded years offer valuable context, shedding light on the challenges encountered and decisions made during the cleaning procedure.
+
+## Complete Dataset Overview
+The field has `r sum(is.na(df[[field]]))` / (`r round(100*mean(is.na(df[[field]])), 1)`%) missing values and  `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df_19[[field]])), 1)`%) with non-missing lifetime information.
+
+[Author date accepted for the complete Fennica](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_accepted.csv)
+
+[Author date discarded for the complete Fennica](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_discarded.csv)
+
+## Subset Analysis: 1809-1917
+
+[Author date accepted for 1809-1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_accepted_19.csv)
+
+[Author date discarded for 1809-1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_discarded_19.csv)
+
+
+```{r}
+#| label = "summarytitle-author-date",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
+
+library(dplyr)
+library(ggplot2)
+
+# Step 1: Filter out rows without a known age
+
+author_df$age <- df$author_age
+author_df_clean <- author_df %>%
+  filter(!is.na(age), publication_decade >= 1800)
+
+# Step 2: For each author, get their first publication and corresponding age
+first_pub <- author_df_clean %>%
+  group_by(melinda_id) %>%
+  arrange(publication_year, .by_group = TRUE) %>%
+  summarise(
+    first_pub_year = first(publication_year),
+    first_pub_age  = first(age),
+    .groups = "drop"
+  )
+
+# Step 3: Compute the average (and median) age of debut by year
+avg_age_by_year <- first_pub %>%
+  group_by(first_pub_year) %>%
+  summarise(
+    mean_age = mean(first_pub_age, na.rm = TRUE),
+    median_age = median(first_pub_age, na.rm = TRUE),
+    n_authors = n(),
+    .groups = "drop"
+  )
+
+ggplot(avg_age_by_year, aes(x = first_pub_year, y = mean_age)) +
+  geom_point(color = "steelblue", size = 1.5, alpha = 0.6) +
+  geom_smooth(
+    method = "loess",    # local polynomial smoothing
+    se = FALSE,          # remove grey confidence band (set to TRUE if you want it)
+    color = "darkred",
+    linewidth = 1.2
+  ) +
+  labs(
+    x = "Year of First Publication",
+    y = "Average Age at First Publication",
+    title = "Smoothed Trend in Average Age at First Publication (1800–Present)"
+  ) +
+  theme_minimal(base_size = 13)
+
+
+
+```
+
 
 ## Gender
 
-Gender information is not originally included in Fennica. We enriched the data by linking author names with gender information from various sources, including the HENKO project, the Genderize dataset, and additional records provided by the National Library of Finland. The full list of names and genders can be found
-[here](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/fennica_name_genders.csv)
+Gender information is not originally included in Fennica. We enriched the data by linking author names with gender information from various sources, including the HENKO project, the Genderize dataset, manual curation and search, and additional records provided by the National Library of Finland. The full list of names and genders can be found
+[here](https://github.com/fennicahub/fennica/blob/master/inst/extdata/fennica_name_genders.csv).
 
 ```{r}
 #| include: false
@@ -78,7 +174,7 @@ source("gender.R")
 
 In total N = `r nrow(df)` records. After enrichmnet in total there are records `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df[[field]])), 1)`%) with assigned gender. There are `r sum(df[[field]] == "female", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "female", na.rm = TRUE), 1)`%) female names, `r sum(df[[field]] == "male", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "male", na.rm = TRUE), 1)`%) male names and `r sum(df[[field]] == "unisex", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "unisex", na.rm = TRUE), 1)`%) unisex names. 
 
-### Genres over Time
+### Genres over Time (1600-1950)
 ```{r}
 #| label = "summary_gender",
 #| echo = FALSE,
@@ -104,4 +200,55 @@ ggplot(df_summary, aes(x = publication_decade,y = n, fill = gender)) +
   scale_x_continuous(limits = c(1600, 1950),breaks = seq(1600, 1950, by = 50)) +
   theme_minimal()
 
+```
+
+### Gender in 1809-1917
+In total N = `r nrow(df_19)` records. After enrichmnet in total there are records `r sum(!is.na(df_19[[field]]))` / (`r round(100*mean(!is.na(df_19[[field]])), 1)`%) with assigned gender. There are `r sum(df_19[[field]] == "female", na.rm = TRUE)` (`r round(100*mean(df_19[[field]] == "female", na.rm = TRUE), 1)`%) female names, `r sum(df_19[[field]] == "male", na.rm = TRUE)` (`r round(100*mean(df_19[[field]] == "male", na.rm = TRUE), 1)`%) male names and `r sum(df_19[[field]] == "unisex", na.rm = TRUE)` (`r round(100*mean(df_19[[field]] == "unisex", na.rm = TRUE), 1)`%) unisex names. 
+
+#### Genres over Time (1809-1917)
+```{r}
+#| label = "summary_gender_19",
+#| echo = FALSE,
+#| warning = FALSE,
+# Join publication_decade from df_pubtime to df by melinda_id
+df_19$publication_decade <- df_pubtime19$publication_decade[match(df_19$melinda_id, df_pubtime19$melinda_id)]
+
+# Filter your data to only include those genres
+df_selected <- df_19%>%
+  filter(!is.na(publication_decade), 
+         !is.na(df_19$gender))
+
+# Summarize counts by decade and genre
+df_summary <- df_selected %>%
+  group_by(publication_decade, gender) %>%
+  summarise(n = n(), .groups = "drop")
+
+ggplot(df_summary, aes(x = publication_decade,y = n, fill = gender)) +
+  geom_col(position = "stack", width = 8) +  # width makes bars a bit narrower
+  labs(x = "Publication Decade", y = "Gender count", fill = "Gender") +
+  scale_fill_brewer(palette = "Set2") +
+  scale_x_continuous(limits = c(1800, 1920),breaks = seq(1800, 1920, by = 10)) +
+  theme_minimal()
+
+```
+
+## Author's profession
+
+```{r}
+#| include: false
+#| message: false
+source("author_profession.R")
+```
+
+Auhtor profession in fennica is depicted in 700,e field. We enrich it with information from Kanto. 
+In total N = `r nrow(df)` records. Before enrichment 700,e has `r sum(is.na(df[[field]]))` / (`r round(100*mean(is.na(df[[field]])), 1)`%) missing values. After enrichmnet in total there are records `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df_19[[field]])), 1)`%) with assigned profession. There are `r length(unique(na.omit(df[[field]])))` professions.
+
+```{r}
+#| label = "summaryproffesion",
+#| echo = FALSE,
+#| results = "asis"
+x <- top(df, "author_profession")
+tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
+colnames(tab) <- c("Profession", "Entries (n)", "Fraction (%)")
+kable(head(tab, 15))
 ```

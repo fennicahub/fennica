@@ -25,7 +25,6 @@ library(fennica)
 # Load misc functions needed for harmonization
 source("funcs.R")
 
-
 # Define create the output folder
 output.folder <- "output.tables/"
 if (!file.exists(output.folder)) {

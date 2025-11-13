@@ -6878,106 +6878,6 @@ polish_title_remainder <- function (x) {
 }
 
 
-polish_udk <- function(x, patterns = c("929", "908", "92", "894.541", "839.79","839.7")) {
-
-  x0 <- x  # Save the original input for later use
-
-  # Replace '|' with ';' in the input
-  x <- gsub("\\|", ";", x)
-  x <- gsub(" ", "", x)
-  x <- gsub(":", ";", x)
-
-  # Function to replace elements that start with specific patterns (like "929" or "908")
-  replace_patterns <- function(x, patterns) {
-    x <- unlist(strsplit(x, ";"))  # Split the string by semicolons
-    x <- sapply(x, function(elem) {
-      # Replace with the first 3 characters if matching patterns
-      if (any(sapply(patterns, function(p) str_starts(elem, p)))) {
-        return(substr(elem, 1, 3))
-      } else {
-        return(elem)
-      }
-    })
-    return(paste(unique(x), collapse = ";"))  # Collapse and ensure uniqueness
-  }
-
-  # Apply the pattern replacement to the input vector
-  x <- sapply(x, replace_patterns, patterns)
-
-  # Replace any empty strings with NA
-  x[x == ""] <- NA
-
-  ############################################################
-
-  # Load UDK synonyms and names
-  url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk.csv"
-  udk <- read.csv(url, sep = ";", header = FALSE, encoding = "UTF-8")
-  colnames(udk) <- c("synonyme", "name")
-
-  df <- data.frame(original = x0, cleaned = x, stringsAsFactors = FALSE)
-
-  # Function to match UDK codes to names
-  match_and_concatenate <- function(value) {
-    if (is.na(value)) return(NA)
-
-    split_value <- unlist(strsplit(value, ";"))
-    converted_values <- sapply(split_value, function(val) {
-      match_index <- match(val, udk$synonyme)
-      if (!is.na(match_index)) {
-        return(udk$name[match_index])
-      } else {
-        return("Undetermined")
-      }
-    })
-
-    return(paste(converted_values, collapse = ";"))
-  }
-
-  # Apply the matching function to the cleaned UDKs
-  df$converted <- sapply(df$cleaned, match_and_concatenate)
-
-  # Function to find the first UDK that is not "Undetermined"
-  find_primary_udk <- function(value) {
-    if (is.na(value)) return(NA)
-
-    split_value <- unlist(strsplit(value, ";"))  # Split into separate UDKs
-
-    # Find the first non-"Undetermined" UDK
-    primary <- split_value[split_value != "Undetermined"]
-
-    # If there are no non-"Undetermined" UDKs, return "Undetermined"
-    if (length(primary) == 0) {
-      return("Undetermined")
-    } else {
-      return(primary[1])  # Return the first valid UDK
-    }
-  }
-
-  # Apply the function to determine the primary UDK
-  df$primary <- sapply(df$converted, find_primary_udk)
-
-  len <- sapply(strsplit(x, ";"), length)
-  dff <- data.frame(udk_count = len)
-  multi <- len > 1
-  df$multi_udk <- multi
-
-  ############################################################
-
-  # Split values for further processing
-  split_cleaned <- unlist(strsplit(df$cleaned, ";"))
-  split_converted <- unlist(strsplit(df$converted, ";"))
-
-  # Create a data frame for UDK and explanation
-  f <- data.frame(udk = split_cleaned, explanation = split_converted, stringsAsFactors = FALSE)
-
-  # Filter for undetermined and accepted values
-  undetermined <- filter(f, explanation == "Undetermined")
-  accepted <- filter(f, explanation != "Undetermined")
-
-  return(list(full = df, undetermined = undetermined, accepted = accepted))
-}
-
-
 #' @title Polish Place
 #' @description Polish place names.
 #' @param x A vector of place names
@@ -7534,105 +7434,6 @@ polish_080x <- function(x) {
 }
 
 
-polish_udk <- function(x, chunk_size = 10000) {
-  x0 <- x  # Save the original input for later use
-  # Replace '|' with ';' in the input
-  x <- gsub("\\|", ";", x)
-
-  # Load UDK synonyms and names
-  url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk.csv"
-  udk <- read.csv(url, sep = ";", header = FALSE, encoding = "UTF-8", stringsAsFactors = FALSE)
-  colnames(udk) <- c("synonyme", "name")  # Rename columns correctly
-
-  # Create a named vector for mapping
-  mapping <- setNames(udk$name, udk$synonyme)
-
-  # Function to map values with fallback truncation
-  map_with_fallback <- function(value) {
-    if (value == "" | is.na(value)) return(NA)  # Handle empty values
-    while (nchar(value) > 0) {
-      if (!is.na(mapping[value])) {
-        return(mapping[value])  # Return the matched name
-      }
-      value <- substr(value, 1, nchar(value) - 1)  # Remove last character
-    }
-    return("Undetermined")  # If no match found, return "Undetermined"
-  }
-
-  # Function to process a chunk of data
-  process_chunk <- function(chunk, chunk_index) {
-    cleaned_values <- lapply(seq_along(chunk), function(i) {
-      row <- chunk[i]
-      if (is.na(row) | row == "") return(c(original = NA, cleaned = NA, converted = NA))  # Handle empty rows
-      split_values <- unique(unlist(strsplit(row, ";")))  # Split and remove duplicates
-      cleaned_str <- paste(split_values, collapse = ";")    # Recombine cleaned values with ;
-      converted_values <- sapply(split_values, map_with_fallback)  # Convert values
-      converted_str <- paste(converted_values, collapse = ";")  # Recombine converted values with ;
-      return(c(original = x0[(chunk_index - 1) * chunk_size + i], cleaned = cleaned_str, converted = converted_str))
-    })
-    return(do.call(rbind, cleaned_values))  # Return processed chunk as a dataframe
-  }
-
-  # Split data into chunks
-  num_chunks <- ceiling(length(x) / chunk_size)
-  chunks <- split(x, ceiling(seq_along(x) / chunk_size))
-
-  # Process chunks in parallel
-  result_chunks <- mclapply(seq_along(chunks), function(i) process_chunk(chunks[[i]], i), mc.cores = detectCores() - 1)
-
-  # Combine results into a final dataframe
-  result_df <- do.call(rbind, result_chunks)
-
-  # Convert to data frame
-  result_df <- as.data.frame(result_df, stringsAsFactors = FALSE)
-
-  # Function to find the first UDK that is not "Undetermined"
-  find_primary_udk <- function(value) {
-    if (is.na(value)) return(NA)
-
-    split_value <- unlist(strsplit(value, ";"))  # Split into separate UDKs
-
-    # Find the first non-"Undetermined" UDK
-    primary <- split_value[split_value != "Undetermined"]
-
-    # If there are no non-"Undetermined" UDKs, return "Undetermined"
-    if (length(primary) == 0) {
-      return("Undetermined")
-    } else {
-      return(primary[1])  # Return the first valid UDK
-    }
-  }
-
-  # Apply the function to determine the primary UDK
-  result_df$primary <- sapply(result_df$converted, find_primary_udk)
-
-  # Count UDKs
-  len <- sapply(strsplit(result_df$cleaned, ";"), length)
-
-  # Ensure udk_count is NA if converted is NA
-  result_df$udk_count <- ifelse(is.na(result_df$converted), NA, len)
-
-  # Identify multiple UDKs
-  result_df$multi_udk <- ifelse(is.na(result_df$converted), NA, len > 1)
-
-  ####################################################################
-  # Split values for further processing
-  split_cleaned <- unlist(strsplit(result_df$cleaned, ";"))
-  split_converted <- unlist(strsplit(result_df$converted, ";"))
-
-  # Create a data frame for UDK and explanation
-  f <- data.frame(udk = split_cleaned, explanation = split_converted, stringsAsFactors = FALSE)
-
-  # Filter for undetermined and accepted values
-  undetermined <- subset(f, explanation == "Undetermined")
-  accepted <- subset(f, explanation != "Undetermined")
-
-
-  return(list(full = result_df, undetermined = undetermined, accepted = accepted))
-}
-
-
-
 polish_genre_655 <- function(x, chunk_size = 1000) {
   x0 <- x
   x <- gsub("\\.", "", as.character(x))  # Ensure x is treated as a character and remove dots
@@ -7697,12 +7498,79 @@ polish_genre_655 <- function(x, chunk_size = 1000) {
   return(results)
 }
 
+#' @title Manual name replacements
+#' @description Replace known pseudonyms or abbreviations in author names with full names.
+#' @param s Character vector of author names
+#' @param verbose Logical; if TRUE, print which replacements are made
+#' @return Character vector with replacements applied
+#' @examples
+#' manual_name_replace(c("Isko", "A***,", "H-n,"), verbose = TRUE)
+#' @export
+manual_name_replace <- function(s, verbose = FALSE) {
+  
+  # --- Known manual replacements (regex patterns → full names) ---
+  replacements <- list(
+    "G\\. H\\. M-n" = "Mellin, Gustaf Henrik",
+    "H-n" = "Hultin, Constance",
+    "Ignatius, K\\. H\\. J\\." = "Ignatius, Carl Henrik Jakob",
+    "Vendela" = "Randelin, Vendela",
+    "En finne" = "Herman Avellan",
+    "Räty, A" = "Räty, Anders",
+    "-a-e-i" = "Galetski, Johan Fredrik",
+    "-a -g" = "Runeberg, Fredrika",
+    "A-ï-a" = "Ehrnrooth, Lovisa Adelaïda Ehrnrooth",
+    "F\\. I\\." = "Ingberg, F.",
+    "A\\*\\*\\*" = "Hongell, Alma",
+    "Malle" = "Mallander, Malle",
+    "Maria" = "Furuhjelm, Maria",
+    "-ii-" = "Gerda von Mickwitz",
+    "Aina" = "Forssman, Edith Theodora",
+    "Nea" = "Huldi Torckell",
+    "J\\. W\\." = "Wälmä, Juho",
+    "A-nen" = "Anttonen, A. E.",
+    "Isko" = "Kulovuori, Ida Sofia",
+    "-ei-" = "Edelheim, Anna",
+    "-i\\.-i\\.," = "Bergh-Wuori, Martti",
+    "K\\. L\\." = "Lehmus, Kyösti",
+    "Viva" = "Kronqvist, Olivia",
+    "Aira" = "Koljonen, Maiju",
+    "e-d" = "Melander, Elise",
+    "-r-t" = "Enqvist, Walter",
+    "Ura" = "Fredrik Wessman",
+    "-lma" = "Holsti, Ilma",
+    "Kynä" = "Saarinen, Toivo",
+    "Setä" = "Kaarlo Luoto",
+    "M\\. V\\." = "Virtanen, M.",
+    "K-E\\." = "Oskari Korhonen",
+    "Juuso" = "Kaksonen, Antti",
+    "Niku" = "Kivinen, Niilo",
+    "H\\." = "Hoving, Isaac Wilhelm",
+    "L-n" = "Laurén, Ludvig Leonard",
+    "-st-" = "Nordlund, Kustavi (Johan Gustaf)",
+    "Oiva" = "Sahlman, Malviina"
+  )
+  
+  # --- Apply replacements ---
+  for (pattern in names(replacements)) {
+    match_idx <- grepl(pattern, s, ignore.case = TRUE)
+    if (any(match_idx)) {
+      if (verbose) {
+        message(sprintf("Replaced %d occurrence(s) of '%s' with '%s'",
+                        sum(match_idx), pattern, replacements[[pattern]]))
+      }
+      s[match_idx] <- replacements[[pattern]]
+    }
+  }
+  
+  return(s)
+}
+
 
 #' @title Polish author
 #' @description Polish author.
 #' @param s Vector of author names
 #' @param stopwords Stopwords
-#' @param verbose verbose
+#' @param verbose verbose 
 #' @return Polished vector
 #' @export
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
@@ -7710,88 +7578,82 @@ polish_genre_655 <- function(x, chunk_size = 1000) {
 #' @examples # s2 <- polish_author("Smith, William")
 #' @keywords utilities
 polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
+  
+  s <- manual_name_replace(s)
 
   if (is.null(stopwords)) {
     message("No stopwords provided for authors. Using ready-made stopword lists")
-
+    
     # TODO Use instead the notnames function here ?
+    
     f <- system.file("extdata/stopwords.csv", package = "fennica")
     stopwords.general <- as.character(read.csv(f, sep = "\t")[,1])
     stopwords.general <- c(stopwords.general, stopwords(kind = "en"))
-
+    
     f <- system.file("extdata/stopwords_for_names.csv", package = "fennica")
     stopwords.names <- as.character(read.csv(f, sep = "\t")[,1])
-
+    
     f <- system.file("extdata/organizations.csv", package = "fennica")
     stopwords.organizations <- as.character(read.csv(f, sep = "\t")[,1])
-
+    
     f <- system.file("extdata/stopwords_titles.csv", package = "fennica")
     stopwords.titles <- as.character(read.csv(f, sep = "\t")[,1])
-    stopwords.all <- unique(c(stopwords.general, stopwords.organizations, stopwords.names, stopwords.titles))
+    stopwords <- unique(c(stopwords.general, stopwords.organizations, stopwords.names, stopwords.titles))
   }
-
+  
   # Accept some names that may be on the stopword lists
   # TODO add here all known names
   f <- system.file("extdata/author_accepted.csv", package = "fennica")
   author.accepted <- as.character(read.csv(f, sep = "\t")[,1])
-
+  
   pseudo <- get_pseudonymes()
-
+  
   accept.names <- unique(c(pseudo, author.accepted))
-
+  
   # Also add individual terms in these names on the list
   accept.names <- c(accept.names, unique(unlist(strsplit(accept.names, " "))))
   # Remove special chars and make lowercase to harmonize
   accept.names <- unique(condense_spaces(gsub("\\,", " ", gsub("\\.", "", tolower(accept.names)))))
-
+  
+  
   # Then remove those in stopwords (ie accept these in names)
   # Exclude some names and pseudonyms from assumed stopwords
-  stopwords.all <- setdiff(stopwords.all, accept.names)
-
+  stopwords <- setdiff(stopwords, accept.names)
+  
   # -------------------------------------------------------------
-
   s <- tolower(as.character(s))
-
+  
   # Only handle unique entries, in the end map back to original indices
   sorig <- s
   suniq <- unique(s)
   s <- suniq
-
+  
+  if (verbose) {
+    message(paste("Polishing author field: ", length(suniq), "unique entries"))
+  }
+  
   s <- str_trim(s)
-  s <- gsub("\\s+", "", s)
-  s <- s[str_length(s) >= 3]
-  s <- gsub("[0-9]", " ", s)
-  s <- stringr::str_trim(s)
+  s <- gsub("[\\.|\\,]+$", "", s)
+  message("Manual name curation")
+  s <- apply_manual_curation(s)
+  # Remove numerics
+  s <- gsub("[0-9]", "", s) 
   
   # Remove brackets and ending commas / periods
   # Cannot be merged into one regexp ?
-  s <- gsub("\\[", " ", s)
-  s <- gsub("\\]", " ", s)
-  s <- gsub("\\(", " ", s)
-  s <- gsub("\\)", " ", s)
-  s <- gsub("\\?", " ", s)
-  s <- gsub("-+", "-", s)
-  s <- stringr::str_trim(s)
-  s <- gsub("[\\.|\\,]+$", "", s)
-  # trims any trailing commas, whitespace, or dash punctuation (incl. en/em dash)
-  s <- sub("[,\\s\\p{Pd}]+$", "", s, perl = TRUE)
-  s <- gsub("***, A", "", s, fixed = TRUE)
-  s <- gsub("-g, -a", "", s, fixed = TRUE)
-  s <- gsub("-s, -a", "", s, fixed = TRUE)
-  s <- gsub("-ro, -ho", "", s, fixed = TRUE)
-  s <- gsub("Nm, -n", "", s, fixed = TRUE)
-  s <- gsub("-k, -s", "", s, fixed = TRUE)
-  s <- gsub("F-m, -s", "", s, fixed = TRUE)
-  s <- gsub("S, s", "", s, fixed = TRUE)
+  s <- gsub("\\[", "", s)
+  s <- gsub("\\]", "", s)
+  s <- gsub("\\(", "", s)
+  s <- gsub("\\)", "", s)
+  s <- gsub("\\?", "", s)
+  s <- gsub("-+", "-", s)      
 
-  s <- str_trim(s)
-  s <- s[!is.na(s) & str_length(s) >= 3]
   # Map back to original indices, then make unique again. Helps to further reduce cases.
   sorig <- s[match(sorig, suniq)]
   s <- suniq <- unique(sorig)
-
+  
   # ----------------------------------------------------------------
-
+  
   if (verbose) {
     message("Separating names")
   }
@@ -7800,15 +7662,16 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
   # pseudonymes are taken as such
   # convert to character type
   first <- last <- as.character(rep(NA, length(s)))
-
+  
   pseudo.inds <- which(s %in% pseudo)
-
+  
   inds <- inds1 <- setdiff(grep(",", s), pseudo.inds)
   if (length(inds) > 0) {
     first[inds] <- pick_firstname(s[inds], format = "last, first")
     last[inds]  <-  pick_lastname(s[inds], format = "last, first")
   }
-
+  
+  
   inds <- inds2 <- setdiff(setdiff(grep(" ", s), inds1), pseudo.inds)
   if (length(inds) > 0) {
     first[inds] <- pick_firstname(s[inds], format = "first last")
@@ -7824,86 +7687,77 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
   inds <- inds4 <- pseudo.inds
   if (length(pseudo.inds) > 0) {
     first[inds] <- as.character(s[inds])
-  }
-
+  }  
+  
   # ------------------------------------------------------------
-
+  
   if (verbose) { message("Formatting names") }
-  # Some additional formatting
-  # eg. "Wellesley, Richard Wellesley" -> "Wellesley, Richard"
   inds <- which(!is.na(first) | !is.na(last))
   for (i in inds) {
-
+    
     fi <- first[[i]]
-    if (!is.na(fi)) {
-      fi <- unlist(strsplit(fi, " "), use.names = FALSE)
-    }
-
     la <- last[[i]]
-    if (!is.na(la)) {
-      la <- unlist(strsplit(la, " "), use.names = FALSE)
-    }
-
-    if (length(fi) == 0) {fi <- NA}
-    if (length(la) == 0) {la <- NA}
-    if (all(!is.na(fi)) && all(!is.na(la))) {
-      if (la[[1]] == fi[[length(fi)]]) {
+    
+    # tokenize safely
+    fi <- if (!is.na(fi)) unlist(strsplit(fi, " "), use.names = FALSE) else character(0)
+    la <- if (!is.na(la)) unlist(strsplit(la, " "), use.names = FALSE) else character(0)
+    
+    if (length(fi) == 0) fi <- NA_character_
+    if (length(la) == 0) la <- NA_character_
+    
+    # only proceed if both sides are “present”
+    if (!all(is.na(fi)) && !all(is.na(la))) {
+      fi_last <- tail(fi, 1)
+      la_str  <- paste(la, collapse = " ")
+      if (!is.na(fi_last) && !is.na(la_str) && fi_last == la_str) {
+        # drop duplicated last token from first names
         fi <- fi[-length(fi)]
       }
     }
+    
     first[[i]] <- paste(fi, collapse = " ")
-    last[[i]] <- paste(la, collapse = " ")
+    last[[i]]  <- paste(la, collapse = " ")
   }
-
+  
   message("Name table")
   nametab <- data.frame(last = unname(last),
                         first = unname(first),
                         stringsAsFactors = FALSE
   )
   rownames(nametab) <- NULL
-
+  
   message("Remove single letter last names")
-  nametab$last[nchar(as.character(nametab$last)) == 1] <- NA
-
+  nametab$last[nchar(as.character(nametab$last)) == 1] <- NA   
+  
   if (verbose) { message("Capitalize names")}
   nametab$last  <- capitalize(nametab$last, "all.words")
   nametab$first <- capitalize(nametab$first, "all.words")
-
+  
   message("Remove periods")
   nametab$first <- condense_spaces(gsub("\\.", " ", nametab$first))
-  nametab$last  <- condense_spaces(gsub("\\.", " ", nametab$last))
+  nametab$last  <- condense_spaces(gsub("\\.", " ", nametab$last))  
   
-  first <- nametab$first
-  last <- nametab$last
-  
-  first[first == "NA"] <- NA
-  last[last == "NA"] <- NA
-  first <- gsub("[ ,\\-]+$", "", first)
-  last <- gsub("[ ,\\-]+$", "", last)
-
   if (verbose) { message("Collapse accepted names to the form: Last, First") }
   full.name <- apply(nametab, 1, function (x) { paste(x, collapse = ", ") })
   full.name <- unname(full.name)
   full.name[full.name == "NA, NA"] <- NA
   full.name <- gsub("\\, NA$", "", full.name) # "Tolonen, NA" -> "Tolonen"
   full.name <- gsub("^NA, ", "", full.name) # "NA, Mikael" -> "Mikael"
-  full.name <- gsub("[ ,\\-]+$", "", full.name)
-
-  if (verbose) { message("Map to the original indices") }
   
-  # Map full_name, first and last name back to original order
-  final_first <- first[match(sorig, suniq)]
-  final_last <- last[match(sorig, suniq)]
-  final_full <- full.name[match(sorig, suniq)]
+  if (verbose) { message("Map to the original indices and return a data frame") }
   
-  # Return all components in a data frame
-  return(data.frame(
-    first = final_first,
-    last = final_last,
-    full_name = final_full,
+  # indices that map unique entries back to original order (including duplicates)
+  idx <- match(sorig, suniq)
+  
+  # Build the output in original order
+  out <- data.frame(
+    full_name = full.name[idx],     # "Last, First" (with NA handling already applied)
+    first = nametab$first[idx], # First name(s)
+    last = nametab$last[idx],
     stringsAsFactors = FALSE
-  ))
-
+  )
+  
+  return(out)
 }
 
 
@@ -8090,9 +7944,11 @@ polish_author_multi <- function(s, stopwords = NULL, verbose = FALSE) {
   matched_last  <- name_map$last[match(s, name_map$orig)]
   matched_full  <- name_map$full[match(s, name_map$orig)]
   
+  # replace your recombine_grouped() with this:
   recombine_grouped <- function(x) {
-    x <- unique(na.omit(x))
-    if (length(x) == 0) return(NA_character_) else paste(x, collapse = "; ")
+    x <- unique(na.omit(x))              # keep your current behavior
+    if (length(x) == 0) return(NA_character_)
+    paste(x, collapse = " | ")           # <-- pipe-separated
   }
   
   # Use `vapply` or `sapply` instead of `tapply` for safety
@@ -8156,7 +8012,7 @@ name_search <- function(df,
   stopifnot(is.data.frame(df))
   
   # read names file
-  nm_df <- read.csv("../extdata/fennica_name_genders.csv", stringsAsFactors = FALSE, encoding = "UTF-8")
+  nm_df <- read.csv("../extdata/fennica_name_genders.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE, encoding = "UTF-8")
   names_vec <- nm_df$name
   
   # coerce to character + trim
@@ -8187,14 +8043,105 @@ name_search <- function(df,
   df
 }
 
-#' @title Polish 080 x field (UDC)
-#' @description Polish udk auxiliary field
-#' @return Polished vector
-#' @export
-#' @authors Julia Matveeva \email{yulmat@utu.fi}
-#' @references See citation("fennica")
-#' @examples # s2 <- polish_udk_aux("000")
-#' @keywords utilities
+polish_udk <- function(x, chunk_size = 10000) {
+  x0 <- x  # Save the original input for later use
+  # Replace '|' with ';' in the input
+  x <- gsub("\\|", ";", x)
+  x <- gsub("\\(|\\)", "", x)
+  
+  # Load UDK synonyms and names
+  url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk.csv"
+  udk <- read.csv(url, sep = ";", header = FALSE, encoding = "UTF-8", stringsAsFactors = FALSE)
+  colnames(udk) <- c("synonyme", "name")  # Rename columns correctly
+  
+  # Create a named vector for mapping
+  mapping <- setNames(udk$name, udk$synonyme)
+  
+  # Function to map values with fallback truncation
+  map_with_fallback <- function(value) {
+    if (value == "" | is.na(value)) return(NA)  # Handle empty values
+    while (nchar(value) > 0) {
+      if (!is.na(mapping[value])) {
+        return(mapping[value])  # Return the matched name
+      }
+      value <- substr(value, 1, nchar(value) - 1)  # Remove last character
+    }
+    return("Undetermined")  # If no match found, return "Undetermined"
+  }
+  
+  # Function to keep unique values in each string
+  process_chunk <- function(chunk, chunk_index) {
+    cleaned_values <- lapply(seq_along(chunk), function(i) {
+      row <- chunk[i]
+      if (is.na(row) | row == "") return(c(original = NA, cleaned = NA, converted = NA))  # Handle empty rows
+      split_values <- unique(unlist(strsplit(row, ";")))  # Split and remove duplicates
+      cleaned_str <- paste(split_values, collapse = ";")    # Recombine cleaned values with ;
+      converted_values <- sapply(split_values, map_with_fallback)  # Convert values
+      converted_str <- paste(converted_values, collapse = ";")  # Recombine converted values with ;
+      return(c(original = x0[(chunk_index - 1) * chunk_size + i], cleaned = cleaned_str, converted = converted_str))
+    })
+    return(do.call(rbind, cleaned_values))  # Return processed chunk as a dataframe
+  }
+  
+  # Split data into chunks
+  num_chunks <- ceiling(length(x) / chunk_size)
+  chunks <- split(x, ceiling(seq_along(x) / chunk_size))
+  
+  # Process chunks in parallel
+  result_chunks <- mclapply(seq_along(chunks), function(i) process_chunk(chunks[[i]], i), mc.cores = detectCores() - 1)
+  
+  # Combine results into a final dataframe
+  result_df <- do.call(rbind, result_chunks)
+  
+  # Convert to data frame
+  result_df <- as.data.frame(result_df, stringsAsFactors = FALSE)
+  
+  # Function to find the first UDK that is not "Undetermined"
+  find_primary_udk <- function(value) {
+    if (is.na(value)) return(NA)
+    
+    split_value <- unlist(strsplit(value, ";"))  # Split into separate UDKs
+    
+    # Find the first non-"Undetermined" UDK
+    primary <- split_value[split_value != "Undetermined"]
+    
+    # If there are no non-"Undetermined" UDKs, return "Undetermined"
+    if (length(primary) == 0) {
+      return("Undetermined")
+    } else {
+      return(primary[1])  # Return the first valid UDK
+    }
+  }
+  
+  # Apply the function to determine the primary UDK
+  result_df$primary <- sapply(result_df$converted, find_primary_udk)
+  
+  # Count UDKs
+  len <- sapply(strsplit(result_df$cleaned, ";"), length)
+  
+  # Ensure udk_count is NA if converted is NA
+  result_df$udk_count <- ifelse(is.na(result_df$converted), NA, len)
+  
+  # Identify multiple UDKs
+  result_df$multi_udk <- ifelse(is.na(result_df$converted), NA, len > 1)
+  
+  ####################################################################
+  # Split values for further processing
+  split_cleaned <- unlist(strsplit(result_df$cleaned, ";"))
+  split_converted <- unlist(strsplit(result_df$converted, ";"))
+  
+  # Create a data frame for UDK and explanation
+  f <- data.frame(udk = split_cleaned, explanation = split_converted, stringsAsFactors = FALSE)
+  
+  # Filter for undetermined and accepted values
+  undetermined <- subset(f, explanation == "Undetermined")
+  accepted <- subset(f, explanation != "Undetermined")
+  
+  
+  return(list(full = result_df, undetermined = undetermined, accepted = accepted))
+}
+
+
 
 polish_udk_aux <- function(x) {
   x0 <- x
@@ -8527,30 +8474,238 @@ polish_physext_help <- function (s, page.harmonize) {
 #' @keywords utilities
 
 polish_publisher <- function (x) {
+
+  # Lowercase early
+  x <- trimws(x)
+  x <- tolower(x)
   
-  # Remove leading/trailing periods
-  x <- gsub("^\\.*", "", x)
-  x <- gsub("\\.*$", "", x)
+  # Handle Latin cataloging abbreviations
+  # cataloging abbreviations (Latin "sine" forms)
+  x <- gsub("\\[\\s*s\\s*\\.?\\s*n\\s*\\.?\\s*\\]", "kustantaja tuntematon", x, ignore.case = TRUE, perl = TRUE)
+  x <- gsub("\\[\\s*s\\s*\\.?\\s*l\\s*\\.?\\s*\\]", "", x, ignore.case = TRUE, perl = TRUE)
+  x <- gsub("\\[\\s*s\\s*\\.?\\s*a\\s*\\.?\\s*\\]", "", x, ignore.case = TRUE, perl = TRUE)
+  x <- gsub("\\bjakelu\\b", "jakelija", x)
+  x <- gsub("\\bjakaja\\b", "jakelija", x)
+  x <- gsub("\\bdistr\\b", "jakelija", x)
+  x <- gsub("\\bdistributor\\b", "jakelija", x)
+  x <- gsub("\\bdistribution\\b", "jakelija", x)
+  x <- gsub("\\bdistributed by\\b", "jakelija", x)
   
-  # Remove leading/trailing commas
-  x <- gsub("^,+", "", x)
-  x <- gsub(",+$", "", x)
+  # Normalize some common publisher patterns
+  x <- gsub("c:o", "co", x)       # Replace 'C:o' → 'co'
+  x <- gsub("a/b", "ab", x)       # Replace 'A/B' → 'ab'
+  x <- gsub("a\\.b\\.", "ab", x)  # Replace 'A.B.' → 'ab'
   
-  # Remove square brackets
-  x <- gsub("\\[|\\]", "", x)
+  # Handle separators
+  x <- gsub("\\|", ";", x)        # Replace vertical bar with semicolon
+  x <- gsub(":", " ", x)          # Remove colons
+  x <- trimws(x)
   
-  # Remove quotation marks
-  x <- gsub('"', "", x)
+  # Remove specific punctuation marks except semicolon
+  x <- gsub("\\.", "", x)        # Remove dots
+  x <- gsub(",", " ", x)          # Remove commas
+  x <- gsub("\\(", "", x)
+  x <- gsub("\\)", "", x)
+  x <- gsub("\\[", "", x)
+  x <- gsub("\\]", "", x)
+  x <- gsub("'", "", x)
+  x <- gsub("\"", " ", x)
+  x <- gsub("!", "", x)
+  x <- gsub("-", " ", x)
+  x <- gsub("\\+", " and ", x)
+  x <- gsub("\\?", "", x)
+  x <- trimws(x)
+  x <- gsub("\\\\", "", x)
+  x <- gsub("=", " ", x)
+  x <- gsub("_", " ", x)
+  x <- gsub("\\*", "", x)
+  x <- gsub("#", "", x)
+  x <- gsub("@", "", x)
+  x <- gsub("%", "", x)
+  x <- gsub("§", "", x)
+  x <- gsub("\\$", "", x)
+  x <- gsub("<", "", x)
+  x <- gsub("&", " ", x)
+  x <- gsub(">", "", x)
+  x <- gsub("\\^", "", x)
+  x <- trimws(x)
+  x <- gsub("`", "", x)
+  x <- gsub("~", "", x)
+  x <- gsub("\\{", "", x)
+  x <- gsub("\\}", "", x)
+  x <- gsub("\\s+", " ", x, perl = TRUE)
+  x <- gsub(";;", ";", x)
+  x <- gsub(" ;", ";", x)
   
-  x <- gsub(":\\|", ";", x)
   
+  # Trim leading/trailing spaces
+  x <- trimws(x)
   
-  f <- system.file("extdata/sl.csv", package = "fennica") 
-  terms <- as.character(read.csv(f)[,1])
-  x <- remove_sl(x, terms)
+  x[grepl("johan winterildä", x, ignore.case = TRUE)] <- "johan winter"
+  x[grepl("frenckell", x, ignore.case = TRUE)] <- "frenckell"
+  x <- gsub("tekijät", "tekijä", x, ignore.case = TRUE)
+  x <- gsub("\\bsöderstöm\\b", "söderström", x, ignore.case = TRUE)
+  x <- gsub("\\bsöderstörm\\b", "söderström", x, ignore.case = TRUE)
+  x <- gsub("\\bsödeström\\b", "söderström", x, ignore.case = TRUE)
+  x <- gsub("\\bsödesrtröm\\b", "söderström", x, ignore.case = TRUE)
+  x <- gsub("\\bgummerrus\\b", "gummerus", x, perl = TRUE)   # double-r → single-r
+  x <- gsub("\\bgummerruksen\\b", "gummeruksen", x, perl = TRUE) 
+  x <- gsub("nats", "nordisk avisteknisk samarbetsnämnd", x, ignore.case = TRUE)
+  x <- gsub("vtt", "valtion teknillinen tutkimuskeskus", x, ignore.case = TRUE)
+  x <- gsub("\\bws\\b", "wsoy", x)
+  x <- gsub("\\bwsoy yhtymä\\b", "wsoy", x)
+  x <- gsub("\\bwsoy weilin\\b", "wsoy;weilin", x)
+  x <- gsub("werner söderström osakeyhtiö", "wsoy", x, ignore.case = TRUE) 
+  canon <- rep(NA_character_, length(x))
+  
+  #weilin+göös
+  # normalize connectors to a plus
+  x <- gsub("\\bweilin\\s*(?:ja|and|och|&|\\+|-)\\s*g[öo]ös\\b", "weilin and göös", x, perl = TRUE)
+  # common shorthand
+  x <- gsub("\\bw\\s*ja\\s*g\\b", "weilin and göös", x, perl = TRUE)   # "w ja g"
+  # also collapse duplicated spaces around 'and'
+  x <- gsub("\\s*\\and\\s*", "and", x, perl = TRUE)
+  
+  # u. w. telen and variations
+  x <- gsub("\\bu\\.?\\s*w\\.?\\s*tel(?:en|én)\\b", "u w telen", x, perl = TRUE)
+  # lone 'u telen' (19th-c style)
+  x <- gsub("\\bu\\.?\\s*tel(?:en|én)\\b", "u w telen", x, perl = TRUE)
+  # collapse multiple spaces
+  x <- gsub("\\s+", " ", x, perl = TRUE)
+  x <- trimws(x)
+  
+  x <- gsub("\\bsuomalaisen\\s+kirjallisuuden\\s+seuran\\s+kirjapaino\\b",
+            "suomalaisen kirjallisuuden seura", x, perl = TRUE)
+  # --- SKS abbreviation normalization ---
+  x <- gsub("\\bsks\\b", "suomalaisen kirjallisuuden seura", x, perl = TRUE)
+  
+  x <- gsub("\\bosakeyhti[öo]\\b", "oy", x, perl = TRUE)
+  x <- gsub("\\baktiebolag\\b", "ab", x, perl = TRUE)
+  
+  x <- gsub("\\bfinska\\s+vetenskapssocieteten\\b", "f vetenskapssocieteten", x, perl = TRUE)
+  
+  # --- Yleisradio / YLE ---
+  x[grepl("yleisradio", x, perl = TRUE)] <- "yle"
+  x[grepl("\\byle\\b", x, perl = TRUE)] <- "yle"   # keep uppercase variants consistent
+  
+  # --- Londicer family ---
+  x[grepl("londicer", x, perl = TRUE)] <- "londicer"
+  
+  # --- Holm (K.E. Holm, E.K. Holm, K Holm) ---
+  x[grepl("\\b(k\\.?\\s*e\\.?|e\\.?\\s*k\\.?)\\s*holm\\b", x, perl = TRUE)] <- "holm"
+  x[grepl("\\bk\\.?\\s*holm\\b", x, perl = TRUE)] <- "holm"
+
+  # --- Söderström family (Werner/Verner Söderström, Söderström & Co, etc.) ---
+  hit_soderstrom <- (
+    grepl("\\bsöderstr(?:ö|o)m\\b", x, perl = TRUE) |                                  # söderström
+      grepl("\\bsöderstr(?:ö|o)ms\\b", x, perl = TRUE) |                                 # söderströms (possessive)
+      grepl("\\bsöderstr(?:ö|o)min\\b", x, perl = TRUE) |                                # söderströmin (genitive)
+      grepl("\\b(w|v)erner\\s+söderstr", x, perl = TRUE) |                               # verner / werner söderström
+      (grepl("\\bsöderstr", x, perl = TRUE) & grepl("\\bs[\\s&]*co\\b", x, perl = TRUE)) | # söderström & co / s & co
+      grepl("\\bsöderstr(?:ö|o)m.*(förlag|förlagsaktiebolag|ab|oy|distr|suku)", x, perl = TRUE) # söderström förlag, distr, suku
+  )
+  x[is.na(canon) & hit_soderstrom] <- "söderström"
+  
+  x <- trimws(x) 
+  x <- gsub("^[\\.,;\\s]+|[\\.,;\\s]+$", "", x, perl = TRUE) #trim dots, commas, ;
+  
+  map <- list(
+    # Frenckell (J. C. Frenckell; Joh. Christoph.; widow forms)
+    list(pattern = "(viduam\\s+[^;]*\\bfrenckell\\b)|\\bj\\.?\\s*c\\.?\\s*frenckell\\b|\\b(joh|ioh)\\w*\\s*christoph\\w*\\s+frenckell\\b|\\bfrenckell\\b",
+         label   = "frenckell"),
+    
+    # Waldius family (Joh./Petrus Waldius; Waldio/Waldium; widow)
+    list(pattern = "\\bwald(?:ius|io|ium|i)?\\b|\\bpetr(?:us|um)\\s+wald\\b|\\bjoh\\w*\\s+wald\\b|viduam\\s+wald",
+         label   = "waldius"),
+    
+    # Wallius (Johanne Laurentius Wallius; Wallio/Wallium; widow)
+    # use 'walli' (double 'l' + i) to avoid catching 'wald'
+    list(pattern = "\\bwalli(?:us|o|um|i)\\b|\\b(joh|ioh)\\w*\\s*(l\\.|laur)\\w*\\s+wall",
+         label   = "johanne laurentius wallius ac"),
+    
+    # Winter (Joh. / Ioh. Winter; widow)
+    list(pattern = "\\bwinter\\b|viduam\\s+winter",
+         label   = "johan winter"),
+    
+    # Hansonio/Hansson (incl. widow; odd OCR variants)
+    list(pattern = "\\bhans(?:on|oni|onio|onius|son|sonii|onium)\\b|viduam\\s+hans",
+         label   = "petro hansonio"),
+    
+    # Syngman (Syngmanni; widow)
+    list(pattern = "\\bsyngman\\w*\\b|viduam\\s+syng",
+         label   = "matthaeus syngman"),
+    
+    # Horrn (appears in your list once; optional but included)
+    list(pattern = "\\bhorrn\\b|\\bhornn\\b",
+         label   = "johanne laurentius horrn")
+  )
+  
+  # apply first-match mapping
+  for (rule in map) {
+    hit <- is.na(canon) & grepl(rule$pattern, x, perl = TRUE)
+    canon[hit] <- rule$label
+  }
+  # keep originals where no rule matched (already cleaned text)
+  x <- ifelse(is.na(canon), x, canon)
+  
+  x[grepl("frenckellildä", x, ignore.case = TRUE)] <- "frenckell"
+  x[grepl("frenckellin", x, ignore.case = TRUE)] <- "frenckell"
+  x[grepl("frenckellska", x, ignore.case = TRUE)] <- "frenckell"
+  x[grepl("frenckells", x, ignore.case = TRUE)] <- "frenckell"
+  x[grepl("frenckellanis", x, ignore.case = TRUE)] <- "frenckell"
+  
+  # --- Holger Schildt family (covers: schildt, schildts, schildtin, shildts) ---
+  hit_hs <- grepl("\\bholger\\b[^;]*\\bsch(i)?ldt", x, perl = TRUE) |
+    grepl("\\bsch(i)?ldts?\\b", x, perl = TRUE) |     # schildt / schildts / shildts
+    grepl("\\bsch(i)?ldtin\\b", x, perl = TRUE)       # Finnish genitive: schildtin
+  
+  x[is.na(canon) & hit_hs] <- "holger schildt"
+  
+  # --- G. W. Edlund family (Edlund, Edlunds, Edlundin, Edlundska …) ---
+  hit_edlund <- (
+    grepl("\\bg\\.?\\s*w\\.?\\s*edlund(?:in|s)?\\b", x, perl = TRUE) |                        # g. w. edlund / edlundin / edlunds
+      grepl("\\bedlund(?:s|in)?\\b", x, perl = TRUE) |                                          # edlund / edlunds / edlundin
+      grepl("\\bedlundska\\b", x, perl = TRUE) |                                                # edlundska
+      grepl("\\bedlundska\\s+bokhandel(n)?\\b", x, perl = TRUE) |                               # edlundska bokhandel(n)
+      grepl("\\bedlundska\\s+bokhandel\\s+i\\s+distr\\b", x, perl = TRUE) |                     # ... i distr.
+      grepl("\\bedlund(?:s|in)?\\s+(förlag|förlags(ab|aktiebolag)?|förl\\.?|kustannus(?:[- ]?oy)?|kustannuksella|ab|oy|bokhandel(n)?)\\b",
+            x, perl = TRUE) |                                                                   # förlag… / kustannus / kustannuksella …
+      grepl("\\bedlund\\b.*\\b(jakaja|i\\s*distr\\.?|distribut(?:ör|ion))\\b", x, perl = TRUE)  # distributor notes
+  )
+  
+  x[is.na(canon) & hit_edlund] <- "g w edlund"
+  
+  # --- Gummerus family (K. J. Gummerus, oy/ab, kustannus, kirjapaino, KJG) ---
+  hit_gummerus <- (
+    grepl("\\bgummerus\\b", x, perl = TRUE) |                                                   # plain gummerus
+      grepl("\\bgummeruksen\\b", x, perl = TRUE) |
+      grepl("\\b(k\\.?\\s*j\\.?|j\\.?\\s*k\\.?)\\s*gummerus\\b", x, perl = TRUE) |                # k. j. gummerus / j. k. gummerus
+      grepl("\\bgummerus\\s+(oy|ab|osakeyhtiö|aktiebolag|förlag|bokförlag|kustannus(osakeyhtiö)?|kirjapaino|tryckeri)\\b",
+            x, perl = TRUE) |                                                                     # company/role words
+      grepl("\\b(kj\\s*g\\b|kjg\\b)\\b", x, perl = TRUE) |                                        # kj g / kjg acronym
+      grepl("\\b(k\\s*j|j\\s*k)\\s*gummerus\\b", x, perl = TRUE)                                  # k j gummerus (no dots)
+  )
+  
+  # If you keep a 'canon' guard:
+  hit <- is.na(canon) & hit_gummerus
+  canon[hit] <- "gummerus"
+  x[hit] <- canon[hit]
+  
   
   x <- condense_spaces(x)
+  x[!nzchar(trimws(x))] <- NA
   
+  dedup_sc <- function(s) {
+    if (is.na(s) || !nzchar(s)) return(NA_character_)
+    parts <- unlist(strsplit(s, ";", fixed = TRUE))
+    parts <- trimws(parts)
+    parts <- parts[nzchar(parts)]
+    if (!length(parts)) return(NA_character_)
+    parts <- parts[!duplicated(parts)]            # order-preserving
+    paste(parts, collapse = ";")                  # paste back after cleaning
+  }
+  
+  x <- vapply(x, dedup_sc, character(1L))
   x
 }
 
@@ -8561,81 +8716,106 @@ polish_publisher <- function (x) {
 #' @author Julia Matveeva yulmat@utu.fi
 #' @references See citation("fennica")
 #' @keywords utilities
-assign_gender <- local({
-  .cache <- new.env(parent = emptyenv())
+assign_gender <- function(x, current_gender = NULL,
+                          dict_path = "../extdata/fennica_name_genders.csv") {
+  # Load dictionary fresh
+  dict <- data.table::fread(
+    dict_path,
+    colClasses = c(name = "character", gender = "character")
+  )
+  dict[, name_lower := tolower(trimws(name))]
+  dict <- unique(dict, by = "name_lower")
+  data.table::setkey(dict, name_lower)  # key enables fast join
   
-  function(x, current_gender = NULL, dict_path = "fennica_name_genders.csv") {
-    # 0) Load + cache dictionary once per path
-    if (!exists("dict", envir = .cache) ||
-        !identical(get("dict_path", envir = .cache, inherits = FALSE), dict_path)) {
-      
-      dict <- fread(dict_path, colClasses = c(name = "character", gender = "character"))
-      dict[, name_lower := tolower(trimws(name))]
-      setorder(dict, name_lower)
-      dict <- unique(dict, by = "name_lower")  # drop duplicate names
-      setkey(dict, name_lower)
-      
-      assign("dict", dict, envir = .cache)
-      assign("dict_path", dict_path, envir = .cache)
+  n <- length(x)
+  out <- if (!is.null(current_gender)) as.character(current_gender) else rep(NA_character_, n)
+  
+  fill_idx <- is.na(out)
+  if (!any(fill_idx)) return(out)
+  
+  # Split authors per record on '|' or legacy ';'
+  authors_list <- strsplit(x[fill_idx], "\\s*[|;]\\s*", perl = TRUE)
+  
+  # Extract first-name token
+  extract_firstname_token <- function(s) {
+    s <- trimws(s)
+    if (identical(s, "") || is.na(s)) return(NA_character_)
+    if (grepl(",", s, fixed = TRUE)) {
+      after <- trimws(sub(".*?,", "", s))
+      tolower(trimws(sub("\\s+.*$", "", after)))
     } else {
-      dict <- get("dict", envir = .cache)
+      tolower(trimws(sub("\\s+.*$", "", s)))
     }
-    
-    n <- length(x)
-    # 1) Start from current genders (if provided), else build empty
-    out <- if (!is.null(current_gender)) as.character(current_gender) else rep(NA_character_, n)
-    
-    # 2) Only compute for rows we actually need to fill
-    fill_idx <- is.na(out)
-    if (!any(fill_idx)) return(out)
-    
-    need_raw <- x[fill_idx]
-    need <- tolower(trimws(as.character(need_raw)))
-    ok <- nzchar(need)
-    if (!any(ok)) return(out)
-    
-    # 3) Unique strings to resolve
-    u <- unique(need[ok])
-    
-    # 4) Tokenize once (split on ';' and whitespace), preserving order per string
-    split_tokens <- function(v) {
-      if (requireNamespace("stringi", quietly = TRUE)) {
-        stringi::stri_split_regex(v, pattern = "[;\\s]+", omit_empty = TRUE, simplify = FALSE)
-      } else {
-        strsplit(v, "[;[:space:]]+", perl = TRUE)
-      }
-    }
-    splits <- split_tokens(u)
-    
-    if (length(splits) == 0L) return(out)
-    
-    tok_dt <- data.table(
-      id    = rep.int(seq_along(splits), lengths(splits)),
-      token = tolower(trimws(unlist(splits, use.names = FALSE)))
-    )
-    tok_dt <- tok_dt[nzchar(token)]
-    
-    if (nrow(tok_dt)) {
-      # 5) Join tokens to dict, then take the first matching token per unique string
-      matched <- tok_dt[dict, on = .(token = name_lower), nomatch = 0L]
-      if (nrow(matched)) {
-        first <- matched[, .SD[1L], by = id]  # first token with a hit per string
-        lut <- setNames(rep(NA_character_, length(u)), u)
-        lut[first$id] <- first$gender
-      } else {
-        lut <- setNames(rep(NA_character_, length(u)), u)
-      }
-    } else {
-      lut <- setNames(rep(NA_character_, length(u)), u)
-    }
-    
-    # 6) Map back to all rows being filled
-    map <- lut[ match(need, u) ]
-    
-    # careful: assign back using absolute positions
-    idx <- which(fill_idx)
-    out[idx[ok]] <- map
-    
-    out
   }
-})
+  
+  # Flatten first-name tokens across all records
+  tokens <- unlist(lapply(authors_list, function(vec)
+    vapply(vec, extract_firstname_token, "", USE.NAMES = FALSE)),
+    use.names = FALSE)
+  
+  # Recombine genders per record (handle edge case: no tokens)
+  if (length(tokens) == 0L) {
+    recombined <- rep(NA_character_, length(authors_list))
+  } else {
+    # Lookup genders (correct column name is 'gender')
+    genders_flat <- dict[.(tokens), on = "name_lower", gender]
+    
+    lens <- lengths(authors_list)
+    grp  <- rep(seq_along(lens), times = lens)
+    
+    recombined <- vapply(split(genders_flat, grp), function(v) {
+      v[is.na(v)] <- ""                       # preserve author positions
+      g <- paste(v, collapse = " | ")
+      g <- trimws(g)
+      if (g == "" || grepl("^\\s*$", g)) NA_character_ else g
+    }, character(1))
+  }
+  
+  # Assign back and clean final output
+  out[fill_idx] <- recombined
+  out[trimws(out) == ""] <- NA_character_
+  
+  # Tidy separators: collapse duplicate bars/spaces, strip edge bars; empty -> NA
+  clean_pipes <- function(s) {
+    s <- trimws(s)
+    s <- gsub("(\\s*\\|\\s*){2,}", " | ", s, perl = TRUE)         # collapse repeated separators
+    s <- gsub("^\\s*\\|\\s*|\\s*\\|\\s*$", "", s, perl = TRUE)    # drop leading/trailing bar
+    s <- trimws(s)
+    s[s == ""] <- NA_character_
+    s
+  }
+  out <- clean_pipes(out)
+  out
+}
+
+#' @title Polish profession (merged kanto and 700e)
+#' @description Polish profession
+#' @param x Character vector of professions
+#' @return Data frame with profession
+#' @author Julia Matveeva yulmat@utu.fi
+#' @references See citation("fennica")
+#' @keywords utilities
+polish_profession <- function(x){
+  
+  x <- gsub(",NA","",x)
+  x <- gsub("NA","",x)
+  x <- gsub("[()]", ",", x)
+  x <- gsub(";","",x)
+  x <- gsub(" ","",x)
+  x <- gsub("\\.",",",x)
+  x <- gsub("\\|","",x)
+  x <- gsub(",+", ",", x)
+  x <- gsub("^,+|,+$", "", x)
+  
+  # Function to remove duplicates and rejoin the values
+  remove_duplicates <- function(x) {
+    if (is.na(x) || x == "") return(NA)  # Convert empty values to NA
+    unique_values <- unique(strsplit(x, ",")[[1]])  # Split by ',' and remove duplicates
+    paste(unique_values, collapse = ",")  # Rejoin with ','
+  }
+  
+  # Apply the function to the input
+  harm <- sapply(x, remove_duplicates)
+  
+  return(harm)
+}

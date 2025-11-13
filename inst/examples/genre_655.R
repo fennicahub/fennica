@@ -6,9 +6,8 @@ df.tmp <- polish_genre_655(df.orig[[field]], chunk_size = 1000)
 df.tmp$melinda_id <- df.orig$melinda_id
 df.tmp <- select(df.tmp, melinda_id, everything())
 df.tmp <- df.tmp %>%
-  mutate(
-    genre_655 = ifelse(!is.na(finnish), finnish,
-                       ifelse(!is.na(swedish), swedish,
+  mutate(genre_655 = ifelse(!is.na(finnish), finnish,
+                    ifelse(!is.na(swedish), swedish,
                               english)))
 
 # Ensure the column is character
@@ -18,12 +17,12 @@ df.tmp$harmonized <- as.character(df.tmp$harmonized)
 row.names(df.tmp) <- NULL
 
 
-
 ###############################################################
 # Define output files
 
 file_discarded <- paste0(output.folder, field, "_discarded.csv")
 file_accepted <- paste0(output.folder, field, "_accepted.csv")
+error_list <- paste0(output.folder, field, "_error_list.csv")
 
 # Store the title field data
 data.file <- paste0(field, ".Rds")
@@ -41,13 +40,8 @@ write.table(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FAL
 message("Accepted entries in the preprocessed data")
 s <- write_xtable(df.tmp$harmonized, file_accepted, count = TRUE)
 
+###############
 message("Discarded entries in the original data")
-
-# NA values in the final harmonized data
-inds <- which(is.na(df.tmp$genre_655))
-
-# Original entries that were converted into NA
-original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
 
 unique_655 <- unique(trimws(unlist(strsplit(df.tmp$harmonized, ";"))))
 genre_lang_df <- read.csv("genre_655.csv", sep = ";", stringsAsFactors = FALSE)
@@ -56,7 +50,33 @@ difference_unique <- na.omit(setdiff(unique_655, genre_lang_df$genre))
 # .. ie. those are "discarded" cases; list them in a table
 tmp <- write_xtable(difference_unique, file_discarded, count = TRUE)
 
+message("Error list")
 
+# split harmonized by ";" and trim, handling NA safely
+harm <- df.tmp$harmonized
+genres_list <- strsplit(ifelse(is.na(harm), "", harm), ";", fixed = TRUE)
+genres_list <- lapply(genres_list, function(x) {
+  x <- trimws(x)
+  x[x != ""]
+})
+
+# 3) per-row: tokens NOT in difference_unique
+wrong_list <- lapply(genres_list, function(x) x[(x %in% difference_unique)])
+
+# 4) flag rows with at least one wrong token
+has_wrong <- vapply(wrong_list, function(x) length(x) > 0, logical(1))
+
+# 5) build output with the exact wrong tokens
+errors <- cbind(
+  df.tmp[has_wrong, c("melinda_id", "original"), drop = FALSE],
+  wrong_tokens = vapply(wrong_list[has_wrong], function(x) paste(x, collapse = "; "), "")
+)
+
+tmp <- write.csv(errors, 
+          file = error_list,
+          row.names=FALSE, 
+          quote = FALSE,
+          fileEncoding = "UTF-8")
 # ------------------------------------------------------------
 
 # Run publication_time.R file to get the melindas needed for the 19th century slicing

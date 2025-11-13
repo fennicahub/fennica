@@ -1,0 +1,19 @@
+---
+title: "Author's Gender"
+hide-description: false
+description: ""
+---
+
+```{r}
+#| include = FALSE
+source("init.R")
+source("gender.R")
+```
+
+```{r}
+mis_name <- sum(is.na(df.tmp$first_name_merged))
+mis_gen <- sum(is.na(df.tmp$gender))
+message("Missing author name: ", sum(is.na(df.tmp$first_name_merged)))
+message("Missing gender: ", mis_gen - mis_name)
+```
+

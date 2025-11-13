@@ -1,17 +1,24 @@
 # sources: genderize.io (https://genderize.io/) and henko dataset (https://www.ldf.fi/dataset/henko)
 # see genderize.csv and henko_unique_name_gender.csv which were merged into fennica_name_genders.csv
-# source("author_name_for_gender.R"): get all names that exist in fennica 
-a <- read.csv("fennica_name_genders.csv")
-gender_lookup <- setNames(tolower(a$gender), tolower(a$name))
+#source("author_name_for_gender.R"): get all names that exist in fennica 
 field <- "gender"
 
-df.tmp <- read.csv("output.tables/fennica_all_names.csv",sep = "\t", header = TRUE, quote = "", 
-                    colClasses = "character")
+df.tmp <- read.delim(
+  "../extdata/fennica_all_names.csv",
+  header = TRUE,
+  sep = "\t",
+  quote = "",
+  fileEncoding = "UTF-8",
+  colClasses = "character",  # all columns as character
+  check.names = FALSE
+)
+
 
 # Only replace gender if it's currently NA
-df.tmp$gender <- assign_gender(df.tmp$first_name_merged)
+df.tmp$gender <- assign_gender(df.tmp$first)
 df.tmp$gender <- gsub("male;female","unisex",df.tmp$gender)
 df.tmp$gender <- gsub("female;male","unisex",df.tmp$gender)
+
 ################################################################
 
 # Store the title field data
@@ -70,19 +77,19 @@ file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 
 # ------------------------------------------------------------
 
-# Generate data summaries for 1809-1917
-message("Accepted entries in the preprocessed data for 1809-1917")
-s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
-
-message("Discarded entries for 1809-1917")
-
-# NA values in the final harmonized data
-inds <- which(is.na(df_19[[field]]))
-
-# Original entries that were converted into NA
-original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
-
-# .. ie. those are "discarded" cases; list them in a table
-tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
-
+# # Generate data summaries for 1809-1917
+# message("Accepted entries in the preprocessed data for 1809-1917")
+# s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
+# 
+# message("Discarded entries for 1809-1917")
+# 
+# # NA values in the final harmonized data
+# inds <- which(is.na(df_19[[field]]))
+# 
+# # Original entries that were converted into NA
+# original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
+# 
+# # .. ie. those are "discarded" cases; list them in a table
+# tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
+# 
 

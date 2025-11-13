@@ -16,9 +16,9 @@ Absurdi;Finnish
 Absurdi teatteri;Finnish
 Academic Dissertation;English
 Academic Dissertations;English
+Academic dissertation;English
 Academic dissertations;English
 Academic theses;English
-AcademicDissertation;English
 Ackompanjemang;Swedish
 Ackordtabeller;Swedish
 Actionfilmer;Swedish
@@ -41,8 +41,8 @@ Aikakauslehtisarjakuvat;Finnish
 Aikakausromaanit;Finnish
 Aikuisopiskelu;Finnish
 Aineskokoelmat;Finnish
-Airer;Finnish
-Airit;Swedish
+Airer;Swedish
+Airit;Finnish
 Ajankuvaus;Finnish
 Ajopelit;Finnish
 Akkadinkielinen kirjallisuus;Finnish
@@ -107,6 +107,7 @@ Asarjakuvat;Finnish
 Asetukset;Finnish
 Asiakaslehdet;Finnish
 Asiakirjaoppaat;Finnish
+Asumislehdet;Finnish
 Asiasanastot;Finnish
 Askungeberättelser;Swedish
 Atlases;English
@@ -117,7 +118,7 @@ Authors' presentation inscriptions (Provenance);English
 Autobiography;English
 Autobiography as Topic;English
 Autofiktio;Finnish
-Autofiktion;Finnish
+Autofiktion; Swedish
 Autolehdet;Finnish
 Avainromaanit;Finnish
 Avantgarde;Swedish
@@ -206,8 +207,8 @@ Bröder;Swedish
 Bröllopsmarscher;Swedish
 Bröllopsmusik;Swedish
 Bröllopstidningar;Swedish
-Bulgariankielinen kirjallisuus;English
-Burmankielinen kirjallisuus;English
+Bulgariankielinen kirjallisuus;Finnish
+Burmankielinen kirjallisuus;Finnish
 Bygderomaner;Swedish
 Byggnadshistoriker;Swedish
 Byggnadsinstruktioner;Swedish
@@ -393,16 +394,14 @@ Encyklopediska romaner;Swedish
 Endagsromaner;Swedish
 Engelsk litteratur;Swedish
 Engelsk översättning;Swedish
-Englaninnkielinen kirjallisuus;Finnish
 Englannin kieli;Finnish
 Englanninkielinen kaunokirjallisuus;Finnish
 Englanninkielinen kirjallisuus;Finnish
-Englanninkielinen kirjallisuuus;Finnish
 Englanninkielinen käännös;Finnish
 Ensamspel;Swedish
 Ensyklopediset romaanit;Finnish
 Entsyymit;Finnish
-Epigram;Finnish
+Epigram;Swedish
 Epigrammit;Finnish
 Epik;Swedish
 Episka dikter;Swedish
@@ -515,10 +514,9 @@ Filosofiset runot;Finnish
 Filosofiska dikter;Swedish
 Filosofiska romaner;Swedish
 Finland;English
-Finlandsvensk litteratur;Swedish
+Finlandssvensk litteratur;Swedish
 Finsk litteratur;Swedish
 Finsk skönlitteratur;Swedish
-FI-S;Finnish
 Flamenco;Swedish
 Flavonoidit;Finnish
 Flerspråkiga böcker (parallellöversättningar);Swedish
@@ -558,7 +556,7 @@ Frågesportsfrågor;Swedish
 Fusionsmusik;Swedish
 Fuusiomusiikki;Finnish
 Färgserier;Swedish
-Fäärinkielinen kirjallisuus;Swedish
+Fäärinkielinen kirjallisuus;Finnish
 Följetonger;Swedish
 Fönsterböcker;Swedish
 Föredrag;Swedish
@@ -601,7 +599,7 @@ Guidekartor;Swedish
 Guideline;English
 Guidelines;English
 Guidelines as Topic;English
-Guider;English
+Guider;Swedish
 Gymnasiet;Swedish
 Gåtor;Swedish
 Haastattelut;Finnish
@@ -682,12 +680,9 @@ Historiska berättelser;Swedish
 Historiska dramer;Swedish
 Historiska filmer;Swedish
 Historiska kartor;Swedish
-Historiska kärkelsromaner;Swedish
 Historiska kärleksromaner;Swedish
 Historiska noveller;Swedish
-Historiska roaner;Swedish
 Historiska romaner;Swedish
-Historiska romer;Swedish
 Historiska serier (tecknade serier);Swedish
 Historiska skildringar;Swedish
 Historiska sägner;Swedish
@@ -804,7 +799,6 @@ Joululaulut;Finnish
 Joululehdet;Finnish
 Joulumusiikki;Finnish
 Juhla;Finnish
-Juhlajulkaisitu;Finnish
 Juhlajulkaisut;Finnish
 Juhlamusiikki;Finnish
 Julberättelser;Swedish
@@ -817,7 +811,6 @@ Juomalaulut;Finnish
 Juvenile Literature;English
 Jännityselokuvat;Finnish
 Jännityskertomukset;Finnish
-Jännityskirjallisuss;Finnish
 Jännityskirjallisuus;Finnish
 Jännitysromaani;Finnish
 Jännitysromaanit;Finnish
@@ -1012,7 +1005,6 @@ Kotieläinten jalostustiede;Finnish
 Kotiseutukuvaukset;Finnish
 Kotiseutulaulut;Finnish
 Kotiseutulehdet;Finnish
-Kouluhistoriiki;Finnish
 Kouluhistoriikit;Finnish
 Koululaisromaanit;Finnish
 Koululehdet;Finnish
@@ -1223,7 +1215,6 @@ Läromedel;Swedish
 Läroplaner;Swedish
 Läseböcker;Swedish
 Läseböcker (skolböcker);Swedish
-Läsenöcker;Swedish
 Lättlästa böcker;Swedish
 Lättlästa tidningar;Swedish
 Lääkärikirjat;Finnish
@@ -1251,7 +1242,6 @@ Makedoniankielinen kirjallisuus;Finnish
 Manga;Swedish
 Mangat;Finnish
 Manhwa;Swedish
-Manhwat;Swedish
 Manslitteratur;Swedish
 Manuskript;Swedish
 Marjat;Finnish
@@ -1386,7 +1376,6 @@ Musiktidskrifter;Swedish
 Musikvideor;Swedish
 Musta huumori;Finnish
 Musta komedia;Finnish
-Mustavalkoiset sarjakut;Finnish
 Mustavalkoiset sarjakuvat;Finnish
 Muunnelmat;Finnish
 Mykkä sarjakuva;Finnish
@@ -1408,7 +1397,6 @@ Naisnäkökulma;Finnish
 Naissarjakuvat;Finnish
 Naistenlehdet;Finnish
 Narkomaanit;Finnish
-Natioalepos;Swedish
 Nationalbibliografier;Swedish
 Nationalepos;Swedish
 Nationalsånger;Swedish
@@ -1430,7 +1418,7 @@ Noppapelit;Finnish
 Norjan kieli;Finnish
 Norjankielinen kirjallisuus;Finnish
 Norsk litteratur;Swedish
-Novellas;Swedish
+Novellas;English
 Noveller;Swedish
 Novelli;Finnish
 Novellisadut;Finnish
@@ -1454,7 +1442,6 @@ Nuortensarjakuvat;Finnish
 Nuortensarjat;Finnish
 Nuottijulkaisut;Finnish
 Nurses' Instruction;English
-Nurses’ Instruction;Swedish
 Nya romanen;Swedish
 Nybyggarromaner;Swedish
 Nybörjarnivå;Swedish
@@ -1536,7 +1523,6 @@ Paikallislehdet;Finnish
 Paikallistarinat;Finnish
 Pakinat;Finnish
 Pakolaiskirjallisuus;Finnish
-Paksulehtinen kirjat;Finnish
 Paksulehtiset kirjat;Finnish
 Palapelikirjat;Finnish
 Palapelit;Finnish
@@ -1596,7 +1582,7 @@ Personporträtt (personhistoria);Swedish
 Personregister (index);Swedish
 Personregister (personupplysningar);Swedish
 Peruskirjat;Finnish
-Pharmacopoeia;Swedish
+Pharmacopoeia;English
 Photobooks;English
 Pictorial Works;English
 Pienoiskirjat;Finnish
@@ -1671,7 +1657,7 @@ Practice Guideline;English
 Predikningar;Swedish
 Prislistor;Swedish
 Pro gradu -tutkielmat;Finnish
-Pro gradu-avhandlingar;Swedish
+Pro gradu -avhandlingar;Swedish
 Problemlösningsspel;Swedish
 Problems and Exercises;English
 Produktkataloger;Swedish
@@ -1703,6 +1689,8 @@ Psykologiska romaner;Swedish
 Psykologiska thrillers (litteratur);Swedish
 Puheet;Finnish
 Punk rock;English
+Punkrock; Swedish
+Punkrock; Finnish
 Punktskriftsböcker;Swedish
 Puolan kieli;Finnish
 Puolankielinen kirjallisuus;Finnish
@@ -1753,7 +1741,6 @@ Raski;Finnish
 Rasva;Finnish
 Rasvapitoisuus;Finnish
 Ratkaisukirjat;Finnish
-Rbetartidningar;Swedish
 Recensioner;Swedish
 Referatpublikationer;Swedish
 Referensdatabaser;Swedish
@@ -1822,7 +1809,6 @@ Rollspel (digitala spel);Swedish
 Romaanisovitukset;Finnish
 Romaanit;Finnish
 Romaner;Swedish
-Romanet;Swedish
 Romaniankielinen kirjallisuus;Finnish
 Romanimusiikki (viihdemusiikki);Finnish
 Romanser (musik);Swedish
@@ -1883,17 +1869,13 @@ Salsa;Finnish
 Samarbetsspel;Swedish
 Sambat;Finnish
 Sambor (kompositioner);Swedish
-Samglinsverk;Swedish
-Samhälliga romaner;Swedish
 Samhällsdikter;Swedish
 Samhällsdramer;Swedish
-Samhällsomaner;Swedish
 Samhällsromaner;Swedish
 Samhällsserier (tecknade serier);Swedish
 Samlade verk;Swedish
 Samlingskataloger;Swedish
 Samlingsverk;Swedish
-Samlingsvkataloger;Swedish
 Sammusicerande;Swedish
 Sanakirjat;Finnish
 Sanaleikit;Finnish
@@ -1912,12 +1894,10 @@ Sarjakuva-albumit;Finnish
 Sarjakuvahahmot;Finnish
 Sarjakuvakirjat;Finnish
 Sarjakuvalehdet;Finnish
-Sarjakuvaosvitukset;Finnish
 Sarjakuvaromaanit;Finnish
 Sarjakuvasovitukset;Finnish
 Sarjakuvat;Finnish
 Sarjakuvataiteilijat;Finnish
-Sarjakvuat;Finnish
 Sarjaohjelmat;Finnish
 Sarjat;Finnish
 Satiiri;Finnish
@@ -1938,7 +1918,7 @@ Science fiction-filmer;Swedish
 Science fiction-litteratur;Swedish
 Science fiction-serier (tecknade serier);Swedish
 Science fiction-spel;Swedish
-Scifipelit;Swedish
+Scifipelit;Finnish
 Screenplays;English
 Sedekomedier;Swedish
 Sederomaner;Swedish
@@ -1947,7 +1927,6 @@ Seikkailukirjallisuus;Finnish
 Seikkailupelit;Finnish
 Seikkailuromaanit;Swedish
 Seikkailusarjakuvat;Finnish
-Seikkalukirjallisuus;Finnish
 Seksielokuvat;Finnish
 Seksilehdet;Finnish
 Seksuaalioppaat;Finnish
@@ -1956,7 +1935,7 @@ Selkokirjat;Finnish
 Selkolehdet;Finnish
 Selviytymispelit;Finnish
 Sensaatiolehdet;Finnish
-Sensationspress;English
+Sensationspress;Swedish
 Serbiankielinen kirjallisuus;Finnish
 Serbokroaatinkielinen kirjallisuus;Finnish
 Seriealbum;Swedish
@@ -1971,7 +1950,7 @@ Sexfilmer;Swedish
 Sextidningar;Swedish
 Sexualhandböcker;Swedish
 Short stories;English
-Siirtolaisuuskirjallisuus;Finnish
+Siirtolaiskirjallisuus;Finnish
 Sijaiset;Finnish
 Simulaatiopelit;Finnish
 Simulatorspel;Swedish
@@ -2420,7 +2399,6 @@ Viihdelukemistot;Finnish
 Viihdemusiikki;Finnish
 Viihdeohjelmat;Finnish
 Viihderomaanit;Finnish
-Viihekirjallisuus;Finnish
 Viitetietokannat;Finnish
 Viittomalaulut;Finnish
 Vildmarksberättelser;Swedish

@@ -40,7 +40,7 @@ book:
   #- note_source.qmd
   - publisher.qmd
   ##- publication_interval.qmd
-  ##- publication_place.qmd
+  - publication_place.qmd
   - publication_time.qmd
   ##- publication_frequency.qmd
   - signum.qmd

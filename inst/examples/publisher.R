@@ -1,12 +1,13 @@
 field <- "publisher"
 
 # Generic cleanup for the publisher field
-tab <- polish_publisher(df.orig[[field]])
+x <- polish_publisher(df.orig[[field]])
 
 
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
-                     publisher = tab)
+                     original = df.orig$publisher,
+                     publisher = x)
 
 # Store the title field data
 data.file <- paste0(field, ".Rds")
@@ -30,17 +31,20 @@ s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE)
 
 message("Discarded entries in the original data")
 
-# NA values in the final harmonized data
+# Identify rows that became NA in the cleaned data
 inds <- which(is.na(df.tmp[[field]]))
 
-# Original entries that were converted into NA
+# Match those rows in the original data
 original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
 
-# .. ie. those are "discarded" cases; list them in a table
-tmp <- write_xtable(original.na, file_discarded, count = TRUE)
+# --- Keep only those that had content originally (not NA or blank) ---
+keep <- !is.na(original.na) & nzchar(trimws(original.na))
+original.na <- original.na[keep]
 
-# ------------------------------------------------------------
-
+# Only write if any true discarded values remain
+if (length(original.na) > 0) {
+  tmp <- write_xtable(original.na, file_discarded, count = TRUE)
+}
 
 # ------------------------------------------------------------
 
@@ -60,24 +64,24 @@ file_accepted_19  <- paste0(output.folder, field, "_accepted_19.csv")
 file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 
 # ------------------------------------------------------------
-
-# Generate data summaries for 1809-1917
-
-message("Accepted entries in the preprocessed data")
-s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
-
-message("Discarded entries in the original data")
-
-# NA values in the final harmonized data
-inds <- which(is.na(df_19[[field]]))
-
-# Original entries that were converted into NA
-original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
-
-# .. ie. those are "discarded" cases; list them in a table
-tmp <- write_xtable(original.na, file_discarded_19, count = TRUE)
-
-# ------------------------------------------------------------
+# 
+# # Generate data summaries for 1809-1917
+# 
+# message("Accepted entries in the preprocessed data")
+# s19 <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
+# 
+# message("Discarded entries in the original data")
+# 
+# # NA values in the final harmonized data
+# inds <- which(is.na(df_19[[field]]))
+# 
+# # Original entries that were converted into NA
+# original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
+# 
+# # .. ie. those are "discarded" cases; list them in a table
+# tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
+# 
+# # ------------------------------------------------------------
 
 # Convert to CSV and store in the output.tables folder
 write.csv(df_19, file = paste0(output.folder, paste0(field, "_19", ".csv")),, quote = FALSE, row.names = FALSE)

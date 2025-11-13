@@ -11,10 +11,7 @@ df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
 
 source("author_name.R")
 #add harmonized fields to df
-df.harmonized <- cbind(df.harmonized, 
-                       author_name = df.tmp$author_name,
-                       last_name = df.tmp$last_name, 
-                       first_name = df.tmp$first_name)
+df.harmonized <- cbind(df.harmonized,author_name = df.tmp$author_name)
 
 source("gender.R")
 df.harmonized <- cbind(df.harmonized, gender = df.tmp$gender)
@@ -28,18 +25,18 @@ df.harmonized <- cbind(df.harmonized,
 #source("author_date_kanto.R")
 df.harmonized <- cbind(df.harmonized, author_profession = df.orig$author_profession)
 
-source("title.R")
+source("title2.R")
 
 df.harmonized <- cbind(df.harmonized,
-                       title = df.tmp$title,
-                       title_length = df.tmp$title_length,
-                       title_word = df.tmp$title_word_count)
-source("title_remainder.R")
+                       title = df.tmp$title2,
+                       title_length = df.tmp$title2_length,
+                       title_word = df.tmp$title2_word_count)
 
-df.harmonized <- cbind(df.harmonized,
-                       title_remainder = df.tmp$title_remainder, 
-                       title_remainder_length = df.tmp$title_remainder_length,
-                       title_remainder_word = df.tmp$title_remainder_word_count)
+# source("title_remainder.R")
+# df.harmonized <- cbind(df.harmonized,
+#                        title_remainder = df.tmp$title_remainder, 
+#                        title_remainder_length = df.tmp$title_remainder_length,
+#                        title_remainder_word = df.tmp$title_remainder_word_count)
 source("language.R")
 #add harmonized fields to df
 df.harmonized <- cbind(df.harmonized,

@@ -37,6 +37,22 @@ tmp <- write_xtable(o[inds],
                     count = TRUE,
                     add.percentages = TRUE)
 
+message("Error list")
+## IDs for rows whose harmonized title is NA (i.e., discarded)
+melinda_ids_discarded <- df.orig$melinda_id[inds]
+
+## If you also want the (id, original title) pairs:
+df_discarded <- data.frame(
+  melinda_id = df.orig$melinda_id[inds],
+  original   = df.orig[[field]][inds],
+  stringsAsFactors = FALSE
+)
+tmp <- write.csv(df_discarded, 
+                 file = error_list,
+                 row.names=FALSE, 
+                 quote = FALSE,
+                 fileEncoding = "UTF-8")
+
 # ------------------------------------------------------------
 
 # Store the title field data

@@ -32,16 +32,42 @@ tab <- cbind(melinda_id = df.tmp$melinda_id,
              original = df.tmp$original, 
              converted = df.tmp$converted, 
              primary = df.tmp$primary)
-tmp <- write_xtable(tab, paste(output.folder, field, "_accepted.csv", sep = ""), 
+
+tmp <- write_xtable(tab, file_accepted, 
                     count = TRUE,
                     add.percentages = TRUE)
 
 
 message("UDK discarded")
-# .. ie. those are "discarded" cases; list them in a table
 tmp2 <- write_xtable(df.tmp1, file_discarded, 
                      count = TRUE, 
                      add.percentages = TRUE)
+
+message("Error list")
+errors <- df.tmp %>%
+  # remove rows with missing data
+  filter(!is.na(cleaned), !is.na(converted)) %>%
+  # split both columns on ";"
+  mutate(
+    unknown = str_split(cleaned, ";"),
+    converted = str_split(converted, ";")
+  ) %>%
+  # unnest so each pair (code, label) gets its own row
+  unnest(c(unknown, converted)) %>%
+  # trim whitespace
+  mutate(across(c(unknown, converted), str_trim)) %>%
+  # keep only the rows where converted == "Undetermined"
+  filter(str_detect(converted, regex("^Undetermined\\.?$", ignore_case = TRUE)))
+
+errors <- data.frame(melimda_id = errors$melinda_id, original = errors$original, 
+                     harmonized = errors$cleaned, unknown_udk = errors$unknown)
+
+tmp1 <- write.csv(errors, 
+                   file = paste0(output.folder, "udk_errors_list.csv"),
+                   row.names=FALSE, 
+                   quote = FALSE,
+                   fileEncoding = "UTF-8")  
+
 
 # Store the UDK field data
 data.file <- paste0(field, ".Rds")

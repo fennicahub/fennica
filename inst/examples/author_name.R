@@ -1,33 +1,20 @@
-field1 <- "author_name_h"
 field <- "author_name"
-field2 <- "author_name_kantoVAR"
-
-df.orig <- df.orig %>%
-  mutate(
-    across(
-      c(author_name, author_name_kanto1, author_name_kanto2, access_kanto, author_700a),
-      ~ na_if(., "")
-    )
-  ) %>%
-  mutate(
-    author_name_h = coalesce(
-      author_name,
-      author_name_kanto1,
-      author_name_kanto2,
-      access_kanto,
-      author_700a
-    )
-  )
 
 # Full author name (Last, First, Full)
-author <- polish_author_multi(df.orig[[field1]], verbose = TRUE)
+author <- polish_author(df.orig[[field]], verbose = TRUE)
 
 # Collect the results into a data.frame
-df.tmp <- data.frame(melinda_id = df.orig$melinda_id, 
+df.tmp1 <- data.frame(melinda_id = df.orig$melinda_id, 
+                     orig = df.orig$author_name,
                      author_name = author$full_name, 
-                     last_name = author$last, 
-                     first_name = author$first)
+                     first = author$first, 
+                     last= author$last)
 
+df.tmp1$first[df.tmp1$first == ""] <- NA
+df.tmp1$first[df.tmp1$first == "NA"] <- NA
+
+df.tmp1$last[df.tmp1$last == ""] <- NA
+df.tmp1$last[df.tmp1$last == "NA"] <- NA
 ################################################################
 
 # Store the title field data
@@ -46,23 +33,33 @@ file_discarded <- paste0(output.folder, field, "_discarded.csv")
 
 # ------------------------------------------------------------
 
-# Generate data summaries for the whole data set
+# Generate data summaries for the whole data set 
 
 message("Accepted entries in the preprocessed data")
-s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE)
+s <- write_xtable(df.tmp$full_name, file_accepted, count = TRUE)
 
 message("Discarded entries in the original data")
 
-# NA values in the final harmonized data
-#add other fields as well
-inds <- which(is.na(df.tmp[[field]]))
-
-# Original entries that were converted into NA
-original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
-
-# .. ie. those are "discarded" cases; list them in a table
+# NA values in the final harmonized data #add other fields as well 
+inds <- which(is.na(df.tmp$full_name)) 
+# Original entries that were converted into NA 
+original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field] 
+# .. ie. those are "discarded" cases; list them in a table 
 tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 
+# Match those rows to original data
+matched_inds <- match(df.tmp$melinda_id[inds], df.orig$melinda_id)
+# Keep only cases that were NOT NA originally (i.e., became NA)
+became_na <- !is.na(df.orig[[field]][matched_inds])
+# Select rows that became NA
+discarded_rows <- df.orig[matched_inds[became_na], c("melinda_id", "author_name")]
+# Write the table with count
+tmp <- write.table(discarded_rows, 
+                   file = paste0(output.folder, "author_name_100a_discraded.csv"),
+                   sep = "\t",
+                   row.names=FALSE, 
+                   quote = FALSE,
+                   fileEncoding = "UTF-8")  
 
 # ------------------------------------------------------------
 

@@ -47,6 +47,7 @@ df.orig <- df.orig %>%
 
 # Remove duplicate rows
 df.orig <- df.orig %>% distinct()
+df.orig$title2 <- paste(df.orig$title, "|" ,df.orig$title_remainder)
 
 source("priority_fields_kanto.R")
 df.orig$author_name_kanto1 <- df.kanto$prefLabel
