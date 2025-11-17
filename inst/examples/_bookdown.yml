@@ -1,4 +1,4 @@
-rmd_files: ["index.Rmd", "author_date.Rmd", "author_name.Rmd", 
+rmd_files: ["index.Rmd", "author_date.Rmd", "author_name.Rmd", "gender.Rmd", "author_profession.Rmd",
 "corporate.Rmd", "language.Rmd", "holder.Rmd",
 "note_dissertation.Rmd", "note_granter.Rmd", "note_source.Rmd",
 "publisher.Rmd", "publication_interval.Rmd", "publication_place.Rmd",

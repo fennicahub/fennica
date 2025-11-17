@@ -25,8 +25,10 @@ book:
   # files with '##' are the one that need to be corrected
   chapters:
   - index.qmd
-  - author_info.qmd
-  #- author_date.qmd
+  - author_name.qmd
+  - author_date.qmd
+  - gender.qmd
+  - author_profession.qmd
   #- kanto_author_info.qmd
   #- corporate.qmd
   - genre_655.qmd

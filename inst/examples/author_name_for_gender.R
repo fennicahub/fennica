@@ -13,20 +13,32 @@ author3 <- polish_author_multi(df.orig[[field3]], verbose = TRUE)
 author4 <- polish_author_multi(df.orig[[field4]], verbose = TRUE)
 author5 <- polish_author_multi(df.orig[[field5]], verbose = TRUE)
 
-# Extract part before the colon
+##clean note
+
+df.orig$note_kanto <- trimws(df.orig$note_kanto)
 df.orig$note_kanto <- gsub("Todellinen nimi: ", "", df.orig$note_kanto, ignore.case = TRUE)
 df.orig$note_kanto <- gsub("Täydellinen nimi: ", "", df.orig$note_kanto, ignore.case = TRUE)
 df.orig$note_kanto <- gsub("todellinen nimi", "", df.orig$note_kanto, ignore.case = TRUE)
 df.orig$note_kanto <- gsub(":", "", df.orig$note_kanto, ignore.case = TRUE)
+df.orig$note_kanto <- trimws(df.orig$note_kanto)
 df.orig$note_kanto <- gsub(
-  "Koko nimi:|Syntymänimi:|Aiempi nimi:|Tunnetaan myös nimellä|entinen nimi|Kirjoitti myös nimimerkillä:|maallikkonimi:|Maanmittari|nimi vuoteen|vuodesta|nimi vuodesta|professori|senaattori|valtioneuvos|Ruotsin tiedeakatemian jäsen|Aateloitu 1809|maantieteilijä",
+  "Koko nimi|Syntymänimi|Aiempi nimi|Tunnetaan myös nimellä|entinen nimi|Kirjoitti myös nimimerkillä|maallikkonimi|Maanmittari|nimi vuoteen|vuodesta|nimi vuodesta|professori|senaattori|valtioneuvos|Ruotsin tiedeakatemian jäsen|Aateloitu 1809|maantieteilijä",
   "",
   df.orig$note_kanto,
   ignore.case = TRUE
 )
+df.orig$note_kanto <- gsub("\\s+", " ", gsub("[0-9]", "", df.orig$note_kanto))
+df.orig$note_kanto <- trimws(df.orig$note_kanto)
+df.orig$note_kanto <- gsub("[\\(\\)\\[\\]\\{\\}]", "", df.orig$note_kanto)
 
+# Remove double quotes (")
+df.orig$note_kanto <- gsub('"', "", df.orig$note_kanto)
 
+# Replace multiple spaces with a single space
+df.orig$note_kanto <- gsub("\\s+", " ", df.orig$note_kanto)
 
+# Trim leading and trailing spaces
+df.orig$note_kanto <- trimws(df.orig$note_kanto)
 
 # Collect the results into a data.frame
 all_names <- data.frame(melinda_id = df.orig$melinda_id, 
@@ -46,7 +58,8 @@ all_names <- data.frame(melinda_id = df.orig$melinda_id,
                      last_var = author5$last,
                      first_var = author5$first,
                      note = df.orig$note_kanto)
- 
+
+########################################################### 
 
 library(data.table)
 
@@ -100,7 +113,7 @@ all_names_final <- merge(
 setcolorder(all_names_final, c("melinda_id", "full_name", "first", "last", "note"))
 
 
-
+#########################clean more
 library(dplyr)
 
 orig_order <- df.orig$melinda_id  # or all_names$melinda_id — whichever order you want to keep
@@ -118,6 +131,8 @@ df.tmp <- all_names_final
 df.tmp$first[df.tmp$first == "NA"] <- NA
 df.tmp$last[df.tmp$last == "NA"] <- NA
 df.tmp$orig_100[df.tmp$orig_100 == ""] <- NA
+
+################create final df###############################
 df.tmp <- data.frame(melinda_id = df.tmp$melinda_id, 
                  orig_100 = df.orig$author_name,
                  full_name = df.tmp$full_name,
@@ -131,10 +146,40 @@ df.tmp$full_name[is.na(df.tmp$full_name) & !is.na(df.tmp$note)] <-
 # you need to clean now full_name from numbers , signs like except , 
 #and see if there is anything in note
 
+#clean first
+# 1. Make sure it's character
+df.tmp$first <- as.character(df.tmp$first)
 
+# 2. Lowercase everything (decapitalize)
+df.tmp$first <- tolower(df.tmp$first)
+
+# 3. Remove all punctuation except "-"
+df.tmp$first <- gsub("[[:punct:]&&[^-]]", "", df.tmp$first)
+
+# 4. Replace all spaces with ";"
+df.tmp$first <- gsub(" +", ";", df.tmp$first)
+
+# 5. Split by ";"
+split_first <- strsplit(df.tmp$first, ";")
+
+# 6. Remove all parts shorter than 3 characters
+split_first <- lapply(split_first, function(x) x[nchar(x) >= 3])
+
+# 7. Recombine with ";"
+df.tmp$first <- sapply(split_first, function(x) {
+  x <- unique(x)
+  x <- x[x != ""]  # remove any empty strings before joining
+  if (length(x) == 0) "" else paste(x, collapse = ";")
+})
+
+# 8. Replace empty strings with NA
+df.tmp$first[df.tmp$first == ""] <- NA
+df.tmp$first[df.tmp$first == "NA"] <- NA
+df.tmp$last[df.tmp$last == "NA"] <- NA
+df.tmp$first <- gsub(";", "|", df.tmp$first)
 
 write.table(df.tmp, 
-            file = "../extdata/fennica_all_names.csv",
+            file = paste0(output.folder,"fennica_all_names.csv"),
             sep = "\t",
             row.names=FALSE, 
             quote = FALSE,

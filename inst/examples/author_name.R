@@ -4,17 +4,17 @@ field <- "author_name"
 author <- polish_author(df.orig[[field]], verbose = TRUE)
 
 # Collect the results into a data.frame
-df.tmp1 <- data.frame(melinda_id = df.orig$melinda_id, 
+df.tmp <- data.frame(melinda_id = df.orig$melinda_id, 
                      orig = df.orig$author_name,
                      author_name = author$full_name, 
                      first = author$first, 
                      last= author$last)
 
-df.tmp1$first[df.tmp1$first == ""] <- NA
-df.tmp1$first[df.tmp1$first == "NA"] <- NA
+df.tmp$first[df.tmp$first == ""] <- NA
+df.tmp$first[df.tmp$first == "NA"] <- NA
 
-df.tmp1$last[df.tmp1$last == ""] <- NA
-df.tmp1$last[df.tmp1$last == "NA"] <- NA
+df.tmp$last[df.tmp$last == ""] <- NA
+df.tmp$last[df.tmp$last == "NA"] <- NA
 ################################################################
 
 # Store the title field data
@@ -36,12 +36,12 @@ file_discarded <- paste0(output.folder, field, "_discarded.csv")
 # Generate data summaries for the whole data set 
 
 message("Accepted entries in the preprocessed data")
-s <- write_xtable(df.tmp$full_name, file_accepted, count = TRUE)
+s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE)
 
 message("Discarded entries in the original data")
 
 # NA values in the final harmonized data #add other fields as well 
-inds <- which(is.na(df.tmp$full_name)) 
+inds <- which(is.na(df.tmp[[field]])) 
 # Original entries that were converted into NA 
 original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field] 
 # .. ie. those are "discarded" cases; list them in a table 

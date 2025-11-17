@@ -1,8 +1,9 @@
-field <- "author_name_all"
+field <- "author_name_enriched"
 #source("author_name_for_gender.R") to run the code if needed 
-#or just read the file which is bg
+#or just read the file which is big
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/fennica_all_names.csv"
 df.tmp <- read.delim(
-  "../extdata/fennica_all_names.csv",
+  url,
   header = TRUE,
   sep = "\t",
   quote = "",
@@ -10,16 +11,11 @@ df.tmp <- read.delim(
   colClasses = "character",  # all columns as character
   check.names = FALSE
 )
-# Full author name (Last, First, Full)
-# Collect the results into a data.frame
-df.tmp <- data.frame(melinda_id = df.orig$melinda_id, 
-                     author_name = author$full_name, 
-                     last_name = author$last, 
-                     first_name = author$first, 
-                     firs_var = variant$first, 
-                     last_var = variant$last, 
-                     note = df.orig$note_kanto)
+df.tmp$first[df.tmp$first == ""] <- NA
+df.tmp$first[df.tmp$first == "NA"] <- NA
 
+df.tmp$last[df.tmp$last == ""] <- NA
+df.tmp$last[df.tmp$last == "NA"] <- NA
 
 ################################################################
 
@@ -42,7 +38,7 @@ file_discarded <- paste0(output.folder, field, "_discarded.csv")
 # Generate data summaries for the whole data set
 
 message("Accepted entries in the preprocessed data")
-s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE)
+s <- write_xtable(df.tmp$author_name, file_accepted, count = TRUE)
 
 message("Discarded entries in the original data")
 

@@ -11,10 +11,12 @@ df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
 
 source("author_name.R")
 #add harmonized fields to df
-df.harmonized <- cbind(df.harmonized,author_name = df.tmp$author_name)
+#df.harmonized <- cbind(df.harmonized,author_name = df.tmp$author_name)
+df.harmonized$author_name <- df.tmp$author_name
 
 source("gender.R")
-df.harmonized <- cbind(df.harmonized, gender = df.tmp$gender)
+#df.harmonized <- cbind(df.harmonized, gender = df.tmp$gender)
+df.harmonized$gender <- df.tmp$gender_primary
 
 source("author_date.R")
 #add harmonized fields to df
@@ -22,8 +24,9 @@ df.harmonized <- cbind(df.harmonized,
                        author_birth = df.tmp$author_birth,
                        author_death = df.tmp$author_death,
                        author_age = df.tmp$author_age)
+
 #source("author_date_kanto.R")
-df.harmonized <- cbind(df.harmonized, author_profession = df.orig$author_profession)
+#df.harmonized <- cbind(df.harmonized, author_profession = df.orig$author_profession)
 
 source("title2.R")
 

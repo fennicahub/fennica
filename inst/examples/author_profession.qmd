@@ -1,0 +1,28 @@
+---
+title: "Author's info: profession"
+hide-description: false
+description: ""
+---
+
+```{r}
+#| include = FALSE
+source("init.R")
+source("publication_time.R")
+source("author_profession.R")
+```
+
+## Author's profession
+
+
+Auhtor profession in fennica is depicted in 700,e field. We enrich it with information from Kanto. 
+In total N = `r nrow(df)` records. Before enrichment 700,e has `r sum(is.na(df[[field]]))` / (`r round(100*mean(is.na(df[[field]])), 1)`%) missing values. After enrichment in total there are records `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df_19[[field]])), 1)`%) with assigned profession. There are `r length(unique(na.omit(df[[field]])))` professions.
+
+```{r}
+#| label = "summaryproffesion",
+#| echo = FALSE,
+#| results = "asis"
+x <- top(df, "author_profession")
+tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
+colnames(tab) <- c("Profession", "Entries (n)", "Fraction (%)")
+kable(head(tab, 15))
+```

@@ -1,5 +1,5 @@
 ---
-title: "Author's lifetime"
+title: "Author's info: lifespan"
 hide-description: false
 description: ""
 ---
@@ -7,6 +7,7 @@ description: ""
 ```{r}
 #| include = FALSE
 source("init.R")
+source("publication_time.R")
 source("author_date.R")
 ```
 
@@ -15,6 +16,7 @@ MARC: [100d](https://www.loc.gov/marc/bibliographic/bd100.html)
 The author's lifetime section furnishes concise summaries following an extensive cleaning process, delineating the accepted and discarded years pertaining to each author.The accepted years signify the refined and validated data, while insights into the discarded years offer valuable context, shedding light on the challenges encountered and decisions made during the cleaning procedure.
 
 ## Complete Dataset Overview
+The field has `r sum(is.na(df[[field]]))` / (`r round(100*mean(is.na(df[[field]])), 1)`%) missing values and  `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df_19[[field]])), 1)`%) with non-missing lifetime information.
 
 [Author date accepted for the complete Fennica](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_accepted.csv)
 
@@ -26,4 +28,57 @@ The author's lifetime section furnishes concise summaries following an extensive
 
 [Author date discarded for 1809-1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_discarded_19.csv)
 
+```{r}
+#| label = "summarytitle-author-date",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
+
+library(dplyr)
+library(ggplot2)
+
+# Step 1: Filter out rows without a known age
+
+author_df$age <- df$author_age
+author_df_clean <- author_df %>%
+  filter(!is.na(age), publication_decade >= 1800)
+
+# Step 2: For each author, get their first publication and corresponding age
+first_pub <- author_df_clean %>%
+  group_by(melinda_id) %>%
+  arrange(publication_year, .by_group = TRUE) %>%
+  summarise(
+    first_pub_year = first(publication_year),
+    first_pub_age  = first(age),
+    .groups = "drop"
+  )
+
+# Step 3: Compute the average (and median) age of debut by year
+avg_age_by_year <- first_pub %>%
+  group_by(first_pub_year) %>%
+  summarise(
+    mean_age = mean(first_pub_age, na.rm = TRUE),
+    median_age = median(first_pub_age, na.rm = TRUE),
+    n_authors = n(),
+    .groups = "drop"
+  )
+
+ggplot(avg_age_by_year, aes(x = first_pub_year, y = mean_age)) +
+  geom_point(color = "steelblue", size = 1.5, alpha = 0.6) +
+  geom_smooth(
+    method = "loess",    # local polynomial smoothing
+    se = FALSE,          # remove grey confidence band (set to TRUE if you want it)
+    color = "darkred",
+    linewidth = 1.2
+  ) +
+  labs(
+    x = "Year of First Publication",
+    y = "Average Age at First Publication",
+    title = "Smoothed Trend in Average Age at First Publication (1800–Present)"
+  ) +
+  theme_minimal(base_size = 13)
+
+```
 

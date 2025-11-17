@@ -1,10 +1,11 @@
 # sources: genderize.io (https://genderize.io/) and henko dataset (https://www.ldf.fi/dataset/henko)
 # see genderize.csv and henko_unique_name_gender.csv which were merged into fennica_name_genders.csv
-#source("author_name_for_gender.R"): get all names that exist in fennica 
+#source("author_name_for_gender.R"): get all names that exist in fennica and create fennica_all_names.csv
 field <- "gender"
 
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/fennica_all_names.csv"
 df.tmp <- read.delim(
-  "../extdata/fennica_all_names.csv",
+  url,
   header = TRUE,
   sep = "\t",
   quote = "",
@@ -13,11 +14,39 @@ df.tmp <- read.delim(
   check.names = FALSE
 )
 
-
 # Only replace gender if it's currently NA
-df.tmp$gender <- assign_gender(df.tmp$first)
-df.tmp$gender <- gsub("male;female","unisex",df.tmp$gender)
-df.tmp$gender <- gsub("female;male","unisex",df.tmp$gender)
+df.tmp$gender <- assign_gender(as.character(df.tmp$first))
+
+##add to author_name_for_gender.R
+df.tmp$note <- gsub(
+  "Koko nimi|Syntymänimi|Aiempi nimi|Tunnetaan myös nimellä|entinen nimi|Kirjoitti myös nimimerkillä|maallikkonimi|Maanmittari|nimi vuoteen|vuodesta|nimi vuodesta|professori|senaattori|valtioneuvos|Ruotsin tiedeakatemian jäsen|Aateloitu 1809|maantieteilijä",
+  "",
+  df.tmp$note,
+  ignore.case = TRUE
+)
+
+df.tmp$note <- trimws(df.tmp$note) 
+###########
+
+missing_idx <- is.na(df.tmp$gender)
+df.tmp$gender[missing_idx] <- assign_gender(df.tmp$note[missing_idx])
+df.tmp$gender <- df$gender |>
+  # 3. Trim leading/trailing spaces
+  trimws() |>
+  # 4. Fix common typos (like "fmale" → "female")
+  tolower() |>
+  # 5. Normalize known variants
+  dplyr::recode(
+    "fmale" = "female",
+    "male " = "male",
+    "female " = "female", 
+    "male;female" ="unisex", 
+    "female;male" = "unisex", 
+    "nainen" = "female", 
+    "mies" = "male")
+
+df.tmp$gender_primary <- sapply(strsplit(df.tmp$gender, "\\|"), `[`, 1)
+
 
 ################################################################
 
@@ -69,7 +98,7 @@ saveRDS(df_19, file = data.file)
 
 # Generate markdown summary
 df_19 <- readRDS(data.file)
-
+write.table(df_19, file = paste0(output.folder, paste0(field, "_19.csv")), quote = FALSE, sep = ";", row.names = FALSE)
 
 # Define output files for the 1807-1917 subset
 file_accepted_19  <- paste0(output.folder, field, "_accepted_19.csv")
@@ -78,8 +107,8 @@ file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 # ------------------------------------------------------------
 
 # # Generate data summaries for 1809-1917
-# message("Accepted entries in the preprocessed data for 1809-1917")
-# s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
+#message("Accepted entries in the preprocessed data for 1809-1917")
+#s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
 # 
 # message("Discarded entries for 1809-1917")
 # 
@@ -90,6 +119,6 @@ file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 # original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
 # 
 # # .. ie. those are "discarded" cases; list them in a table
-# tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
+tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
 # 
 

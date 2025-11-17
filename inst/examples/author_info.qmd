@@ -39,6 +39,22 @@ Author's name section's summary tables offer insights into the dataset's integri
 
 -   [Author name conversions](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_conversion_nontrivial.csv) Non-trivial conversions from the original raw data to final names.
 
+#Author's name (100a) - Top 10
+```{r}
+#| label = "summarytitle-author-name",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
+library(ggplot2)
+#library(comhis)
+
+theme_set(theme_bw(base_size = 12))
+p <- top_plot(df, "author_name", ntop = ntop, log10 = TRUE)+
+  labs(y = "Entries (n)", title = "Top titles")
+print(p)
+```
 #### Auxiliary files
 
 -   [Author synonyme table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/ambiguous-authors.csv)
@@ -57,7 +73,7 @@ Top-`r ntop` titles and their title counts for period 1809-1917.
 The accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.
 
 ```{r}
-#| label = "summarytitle-author-name",
+#| label = "summarytitle-author-name19",
 #| echo = FALSE,
 #| message = FALSE,
 #| warning = FALSE,
@@ -75,8 +91,46 @@ print(p)
 
 ```{r}
 #| include = FALSE
-#source("author_date.R")
+source("author_all_names.R")
 ```
+-   [Unique accepted entries in original data](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_enriched_accepted.csv): `r length(unique(df[[field]]))`
+-   [Unique discarded entries in original data](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_enriched_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
+-   Original documents with non-NA titles `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
+-   Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
+
+# Author's Name after Kanto integration
+
+```{r}
+#| label = "summarytitle-author-all-names",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
+library(ggplot2)
+theme_set(theme_bw(base_size = 12))
+p <- top_plot(df, "author_name", ntop = ntop, log10 = TRUE)+
+  labs(y = "Entries (n)", title = "Top titles")
+print(p)
+```
+
+# 1809-1917 all names
+```{r}
+#| label = "summarytitle-author-all-names19",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
+library(ggplot2)
+#library(comhis)
+
+theme_set(theme_bw(base_size = 12))
+p <- top_plot(df, "author_name", ntop = ntop, log10 = TRUE)+
+  labs(y = "Entries (n)", title = "Top titles")
+print(p)
+```
+
 
 # Author's date
 
@@ -161,7 +215,7 @@ ggplot(avg_age_by_year, aes(x = first_pub_year, y = mean_age)) +
 ```
 
 
-## Gender
+## Author's Gender
 
 Gender information is not originally included in Fennica. We enriched the data by linking author names with gender information from various sources, including the HENKO project, the Genderize dataset, manual curation and search, and additional records provided by the National Library of Finland. The full list of names and genders can be found
 [here](https://github.com/fennicahub/fennica/blob/master/inst/extdata/fennica_name_genders.csv).
@@ -170,11 +224,12 @@ Gender information is not originally included in Fennica. We enriched the data b
 #| include: false
 #| message: false
 source("gender.R")
+field <- "gender_primary"
 ```
 
 In total N = `r nrow(df)` records. After enrichmnet in total there are records `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df[[field]])), 1)`%) with assigned gender. There are `r sum(df[[field]] == "female", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "female", na.rm = TRUE), 1)`%) female names, `r sum(df[[field]] == "male", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "male", na.rm = TRUE), 1)`%) male names and `r sum(df[[field]] == "unisex", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "unisex", na.rm = TRUE), 1)`%) unisex names. 
 
-### Genres over Time (1600-1950)
+### Gender over Time (1600-2000)
 ```{r}
 #| label = "summary_gender",
 #| echo = FALSE,
@@ -185,19 +240,19 @@ df$publication_decade <- df_pubtime$publication_decade[match(df$melinda_id, df_p
 # Filter your data to only include those genres
 df_selected <- df%>%
   filter(!is.na(publication_decade), 
-         !is.na(df$gender),
-         publication_decade <= 1950)
+         !is.na(df$gender_primary),
+         publication_decade <= 2020)
 
 # Summarize counts by decade and genre
 df_summary <- df_selected %>%
-  group_by(publication_decade, gender) %>%
+  group_by(publication_decade, gender_primary) %>%
   summarise(n = n(), .groups = "drop")
 
-ggplot(df_summary, aes(x = publication_decade,y = n, fill = gender)) +
+ggplot(df_summary, aes(x = publication_decade,y = n, fill = gender_primary)) +
   geom_col(position = "stack", width = 8) +  # width makes bars a bit narrower
   labs(x = "Publication Decade", y = "Gender count", fill = "Gender") +
   scale_fill_brewer(palette = "Set2") +
-  scale_x_continuous(limits = c(1600, 1950),breaks = seq(1600, 1950, by = 50)) +
+  scale_x_continuous(limits = c(1600, 2020),breaks = seq(1600, 2020, by = 50)) +
   theme_minimal()
 
 ```
@@ -216,14 +271,14 @@ df_19$publication_decade <- df_pubtime19$publication_decade[match(df_19$melinda_
 # Filter your data to only include those genres
 df_selected <- df_19%>%
   filter(!is.na(publication_decade), 
-         !is.na(df_19$gender))
+         !is.na(df_19$gender_primary))
 
 # Summarize counts by decade and genre
 df_summary <- df_selected %>%
-  group_by(publication_decade, gender) %>%
+  group_by(publication_decade, gender_primary) %>%
   summarise(n = n(), .groups = "drop")
 
-ggplot(df_summary, aes(x = publication_decade,y = n, fill = gender)) +
+ggplot(df_summary, aes(x = publication_decade,y = n, fill = gender_primary)) +
   geom_col(position = "stack", width = 8) +  # width makes bars a bit narrower
   labs(x = "Publication Decade", y = "Gender count", fill = "Gender") +
   scale_fill_brewer(palette = "Set2") +
@@ -241,7 +296,7 @@ source("author_profession.R")
 ```
 
 Auhtor profession in fennica is depicted in 700,e field. We enrich it with information from Kanto. 
-In total N = `r nrow(df)` records. Before enrichment 700,e has `r sum(is.na(df[[field]]))` / (`r round(100*mean(is.na(df[[field]])), 1)`%) missing values. After enrichmnet in total there are records `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df_19[[field]])), 1)`%) with assigned profession. There are `r length(unique(na.omit(df[[field]])))` professions.
+In total N = `r nrow(df)` records. Before enrichment 700,e has `r sum(is.na(df[[field]]))` / (`r round(100*mean(is.na(df[[field]])), 1)`%) missing values. After enrichment in total there are records `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df_19[[field]])), 1)`%) with assigned profession. There are `r length(unique(na.omit(df[[field]])))` professions.
 
 ```{r}
 #| label = "summaryproffesion",
