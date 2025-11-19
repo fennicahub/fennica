@@ -19,8 +19,8 @@ df.harmonized$signum <- gsub("[[:space:];-]", "",df.harmonized$signum)
 df.harmonized$signum <- tolower(df.harmonized$signum)
 df.harmonized$signum <- gsub(" ", "", df.harmonized$signum) 
 df.harmonized$udk <- trimws(as.character(df.harmonized$udk)) 
-df.harmonized$title_2 <- gsub("/", "",df.harmonized$title_2)
-df.harmonized$title_2 <- trimws(as.character(df.harmonized$title_2))
+df.harmonized$title <- gsub("/", "",df.harmonized$title)
+df.harmonized$title <- trimws(as.character(df.harmonized$title))
 df.harmonized <- df.harmonized %>%
   mutate(
     title_3 = case_when(
@@ -35,6 +35,7 @@ df.harmonized$title_3 <- trimws(as.character(df.harmonized$title_3))
 
 df.harmonized19 <- df.harmonized[df.harmonized$melinda_id %in% melindas_19,]
 
+df.harmonized <- unique(df.harmonized)
 # Store the data
 data.file <- paste0(field, ".Rds")
 saveRDS(df.harmonized, file = data.file)
@@ -96,7 +97,7 @@ genres_to_keep <- c("Kaunokirjallisuus", "Draama", "Esseet", "Romaanit", "Huumor
 list <- list %>%
   filter(genre_008 %in% genres_to_keep | is.na(genre_008))
 
-#5. Exclude childeren's literature and translations
+#5. Exclude children's literature and translations
 
 list <- list %>%
   filter(
@@ -116,9 +117,9 @@ list[list == ""] <- NA
 
 
 list <- list %>%
-  group_by(title_2, author_name) %>%
+  group_by(title, author_name) %>%
   filter(publication_year == min(publication_year)) %>%
-  distinct(title_2, author_name, .keep_all = TRUE) %>%
+  distinct(title, author_name, .keep_all = TRUE) %>%
   arrange(publication_year)
 
 # Count how many signums are empty
@@ -172,4 +173,17 @@ pl <- ggplot(data, aes(x = Category, y = Count, fill = ListType)) +
   expand_limits(y = max(data$Count) * 1.1)  # Room for text outside bars
 
 pl
+
+write.csv(list,
+          file = "automated_first_edition_gender.csv",
+          row.names=FALSE,
+          quote = FALSE,
+          fileEncoding = "UTF-8")
+
+tbl <- table(list$gender, useNA = "ifany")
+
+# Add total
+tbl_with_total <- addmargins(tbl)
+
+tbl_with_total
 

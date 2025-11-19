@@ -57,7 +57,8 @@ df.orig$hidden_kanto <- df.kanto$hiddenLabel
 df.orig$access_kanto <- df.kanto$authorizedAccessPoint
 df.orig$note_kanto <- df.kanto$note
 
-df.orig$author_date_kanto <- df.kanto$author_date_kanto
+df.orig$author_birth_date_kanto <- df.kanto$birthDate
+df.orig$author_death_date_kanto <- df.kanto$deathDate
 df.orig$author_profession <- df.kanto$author_profession_kanto_fi
 df.orig <- df.orig %>%
   mutate(

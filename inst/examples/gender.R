@@ -30,7 +30,7 @@ df.tmp$note <- trimws(df.tmp$note)
 
 missing_idx <- is.na(df.tmp$gender)
 df.tmp$gender[missing_idx] <- assign_gender(df.tmp$note[missing_idx])
-df.tmp$gender <- df$gender |>
+df.tmp$gender <- df.tmp$gender |>
   # 3. Trim leading/trailing spaces
   trimws() |>
   # 4. Fix common typos (like "fmale" → "female")
@@ -46,15 +46,9 @@ df.tmp$gender <- df$gender |>
     "mies" = "male")
 
 df.tmp$gender_primary <- sapply(strsplit(df.tmp$gender, "\\|"), `[`, 1)
-
-
+df <- df.tmp
 ################################################################
 
-# Store the title field data
-data.file <- paste0(field, ".Rds")
-saveRDS(df.tmp, file = data.file)
-# Generate markdown summary
-df <- readRDS(data.file)
 # Convert to CSV and store in the output.tables folder
 write.table(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE, sep = ";", row.names = FALSE)
 
@@ -91,18 +85,11 @@ tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
 field <- "gender"
 
-# Store the title field data
-# FIXME: convert to feather or plain CSV
-data.file <- paste0(field, ".Rds")
-saveRDS(df_19, file = data.file)
-
-# Generate markdown summary
-df_19 <- readRDS(data.file)
 write.table(df_19, file = paste0(output.folder, paste0(field, "_19.csv")), quote = FALSE, sep = ";", row.names = FALSE)
 
-# Define output files for the 1807-1917 subset
-file_accepted_19  <- paste0(output.folder, field, "_accepted_19.csv")
-file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
+# # Define output files for the 1807-1917 subset
+# file_accepted_19  <- paste0(output.folder, field, "_accepted_19.csv")
+# file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 
 # ------------------------------------------------------------
 
@@ -119,6 +106,6 @@ file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 # original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
 # 
 # # .. ie. those are "discarded" cases; list them in a table
-tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
+#tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
 # 
 

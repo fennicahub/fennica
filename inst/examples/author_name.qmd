@@ -1,6 +1,5 @@
-
 ---
-title: "Author's info: name
+title: "Author's info: name"
 hide-description: false
 description: ""
 ---
@@ -92,7 +91,7 @@ print(p)
 
 ```{r}
 #| include = FALSE
-source("author_all_names.R")
+source("author_name_enriched.R")
 ```
 -   [Unique accepted entries in original data](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_enriched_accepted.csv): `r length(unique(df[[field]]))`
 -   [Unique discarded entries in original data](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_enriched_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
@@ -127,7 +126,7 @@ library(ggplot2)
 #library(comhis)
 
 theme_set(theme_bw(base_size = 12))
-p <- top_plot(df, "author_name", ntop = ntop, log10 = TRUE)+
+p <- top_plot(df_19, "author_name", ntop = ntop, log10 = TRUE)+
   labs(y = "Entries (n)", title = "Top titles")
 print(p)
 ```

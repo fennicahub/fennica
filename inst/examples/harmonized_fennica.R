@@ -11,12 +11,18 @@ df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
 
 source("author_name.R")
 #add harmonized fields to df
-#df.harmonized <- cbind(df.harmonized,author_name = df.tmp$author_name)
-df.harmonized$author_name <- df.tmp$author_name
+df.harmonized <- cbind(df.harmonized,author_name = df.tmp$author_name)
+#df.harmonized$author_name <- df.tmp$author_name
+
+source("author_name_enriched.R")
+#add harmonized fields to df
+#df.harmonized <- cbind(df.harmonized,author_name_enriched = df.tmp$full_name)
+df.harmonized$author_name_enriched <- df.tmp$full_name
+
 
 source("gender.R")
-#df.harmonized <- cbind(df.harmonized, gender = df.tmp$gender)
-df.harmonized$gender <- df.tmp$gender_primary
+df.harmonized <- cbind(df.harmonized, gender = df.tmp$gender_primary)
+#df.harmonized$gender <- df.tmp$gender_primary
 
 source("author_date.R")
 #add harmonized fields to df
@@ -34,6 +40,10 @@ df.harmonized <- cbind(df.harmonized,
                        title = df.tmp$title2,
                        title_length = df.tmp$title2_length,
                        title_word = df.tmp$title2_word_count)
+# df.harmonized$title <- df.tmp$title2
+# df.harmonized$title_length <- df.tmp$title2_length
+# df.harmonized$title_word <- df.tmp$title2_word_count
+
 
 # source("title_remainder.R")
 # df.harmonized <- cbind(df.harmonized,
@@ -79,6 +89,8 @@ df.harmonized <- cbind(df.harmonized,
 source("genre_655.R")
 df.harmonized <- cbind(df.harmonized, genre_655 = df.tmp$harmonized)
 
+df.harmonized <- unique(df.harmonized)
+
 df.processed <- df.harmonized
 
 # Store the data
@@ -112,7 +124,6 @@ write.table(df.processed19,
             quote = FALSE,
             sep = "\t",
             fileEncoding = "UTF-8")
-
 
 ###############################################################################
 

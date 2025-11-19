@@ -17,7 +17,7 @@ Gender information is not originally included in Fennica. We enriched the data b
 [here](https://github.com/fennicahub/fennica/blob/master/inst/extdata/fennica_name_genders.csv).
 
 
-In total N = `r nrow(df)` records. After enrichmnet in total there are records `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df[[field]])), 1)`%) with assigned gender. There are `r sum(df[[field]] == "female", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "female", na.rm = TRUE), 1)`%) female names, `r sum(df[[field]] == "male", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "male", na.rm = TRUE), 1)`%) male names and `r sum(df[[field]] == "unisex", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "unisex", na.rm = TRUE), 1)`%) unisex names. 
+In total N = `r nrow(df)` records. After enrichment in total there are records `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df[[field]])), 1)`%) with assigned gender. There are `r sum(df[[field]] == "female", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "female", na.rm = TRUE), 1)`%) female names, `r sum(df[[field]] == "male", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "male", na.rm = TRUE), 1)`%) male names and `r sum(df[[field]] == "unisex", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "unisex", na.rm = TRUE), 1)`%) unisex names. 
 
 ### Gender over Time (1600-2000)
 
@@ -31,8 +31,8 @@ df$publication_decade <- df_pubtime$publication_decade[match(df$melinda_id, df_p
 # Filter your data to only include those genres
 df_selected <- df%>%
   filter(!is.na(publication_decade), 
-         !is.na(df$gender_primary),
-         publication_decade <= 2020)
+         !is.na(gender_primary),
+         publication_decade <= 2000)
 
 # Summarize counts by decade and genre
 df_summary <- df_selected %>%
@@ -43,26 +43,28 @@ ggplot(df_summary, aes(x = publication_decade,y = n, fill = gender_primary)) +
   geom_col(position = "stack", width = 8) +  # width makes bars a bit narrower
   labs(x = "Publication Decade", y = "Gender count", fill = "Gender") +
   scale_fill_brewer(palette = "Set2") +
-  scale_x_continuous(limits = c(1600, 2020),breaks = seq(1600, 2020, by = 50)) +
+  scale_x_continuous(limits = c(1600, 2000),breaks = seq(1600, 2000, by = 50)) +
   theme_minimal()
 
 ```
 
 
-### Gender over Time (1600-2000)
+### Gender over Time (1809-1917)
 
 ```{r}
-#| label = "summary_gender",
+#| label = "summary_gender19",
 #| echo = FALSE,
 #| warning = FALSE,
 # Join publication_decade from df_pubtime to df by melinda_id
-df_19$publication_decade <- df_pubtime19$publication_decade[match(df19$melinda_id, df_pubtime19$melinda_id)]
+df_19$publication_decade <- df_pubtime19$publication_decade[match(df_19$melinda_id, df_pubtime19$melinda_id)]
 
 # Filter your data to only include those genres
-df_selected <- df_19%>%
-  filter(!is.na(publication_decade), 
-         !is.na(df$gender_primary),
-         publication_decade <= 2020)
+df_selected <- df_19 %>%
+  filter(
+    !is.na(publication_decade),
+    !is.na(gender_primary),
+    publication_decade >= 1800 & publication_decade <= 1920
+  )
 
 # Summarize counts by decade and genre
 df_summary <- df_selected %>%
@@ -73,7 +75,6 @@ ggplot(df_summary, aes(x = publication_decade,y = n, fill = gender_primary)) +
   geom_col(position = "stack", width = 8) +  # width makes bars a bit narrower
   labs(x = "Publication Decade", y = "Gender count", fill = "Gender") +
   scale_fill_brewer(palette = "Set2") +
-  scale_x_continuous(limits = c(1600, 2020),breaks = seq(1600, 2020, by = 50)) +
+  scale_x_continuous(limits = c(1800, 1920),breaks = seq(1800, 1920, by = 50)) +
   theme_minimal()
-
 ```

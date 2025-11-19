@@ -410,5 +410,85 @@
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name, dates, gender, profession</span>"
     ]
+  },
+  {
+    "objectID": "author_name.html",
+    "href": "author_name.html",
+    "title": "Publisher",
+    "section": "",
+    "text": "2.1 Author name Fennica\nMARC: 100a\nAuthor’s name section’s summary tables offer insights into the dataset’s integrity, illustrating the accepted and discarded author names. An examination of missing values in the original dataset provides transparency regarding data completeness. The inclusion of information on name variants and pseudonyms enriches the analysis, addressing nuances in authorship representation. This comprehensive approach ensures a thorough understanding of the dataset’s composition and the intricacies associated with author identification.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name</span>"
+    ]
+  },
+  {
+    "objectID": "author_name.html#author-name-fennica",
+    "href": "author_name.html#author-name-fennica",
+    "title": "Publisher",
+    "section": "",
+    "text": "2.1.1 Complete Dataset Overview\n\nUnique accepted entries in original data: 195920\nUnique discarded entries in original data (excluding NA cases): 25\nOriginal documents with non-NA titles 776976 / 1229782 (63.2%)\nOriginal documents with missing (NA) titles 452806 / 1229782 documents (36.8%)\n\n\n2.1.1.1 Authors\n\n195920 unique authors These final names capture all name variants from the custom author synonyme table, and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the author synonyme table.\n0 documents have unambiguous author information (NaN%).\nAuthor name conversions Non-trivial conversions from the original raw data to final names.\n\n#Author’s name (100a) - Top 10\n\n\n\n\n\n\n\n\n\n\n\n2.1.1.2 Auxiliary files\n\nAuthor synonyme table\nStopwords for names\nStopwords for titles\nCustom pseudonyme lists\n\n\n\n\n2.1.2 Subset Analysis: 1809-1917\n\nUnique accepted entries for for 1809-1917 years: 10046\nUnique discarded entries in original data (excluding NA cases): 16\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name</span>"
+    ]
+  },
+  {
+    "objectID": "gender.html",
+    "href": "gender.html",
+    "title": "4  Author’s info: gender",
+    "section": "",
+    "text": "4.1 Author’s Gender\nGender information is not originally included in Fennica. We enriched the data by linking author names with gender information from various sources, including the HENKO project, the Genderize dataset, manual curation and search, and additional records provided by the National Library of Finland. The full list of names and genders can be found here.\nIn total N = 1229782 records. After enrichment in total there are records 939699 / (76.4%) with assigned gender. There are 153632 (16.3%) female names, 293578 (31.2%) male names and 0 (0%) unisex names.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Author's info: gender</span>"
+    ]
+  },
+  {
+    "objectID": "gender.html#authors-gender",
+    "href": "gender.html#authors-gender",
+    "title": "4  Author’s info: gender",
+    "section": "",
+    "text": "4.1.1 Gender over Time (1600-2000)\n\n\n\n\n\n\n\n\n\n\n\n4.1.2 Gender over Time (1809-1917)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Author's info: gender</span>"
+    ]
+  },
+  {
+    "objectID": "author_name.html#authors-gender",
+    "href": "author_name.html#authors-gender",
+    "title": "Publisher",
+    "section": "5.1 Author’s Gender",
+    "text": "5.1 Author’s Gender\nGender information is not originally included in Fennica. We enriched the data by linking author names with gender information from various sources, including the HENKO project, the Genderize dataset, manual curation and search, and additional records provided by the National Library of Finland. The full list of names and genders can be found here.\nIn total N = r nrow(df) records. After enrichment in total there are records r sum(!is.na(df[[field]])) / (r round(100*mean(!is.na(df[[field]])), 1)%) with assigned gender. There are r sum(df[[field]] == \"female\", na.rm = TRUE) (r round(100*mean(df[[field]] == \"female\", na.rm = TRUE), 1)%) female names, r sum(df[[field]] == \"male\", na.rm = TRUE) (r round(100*mean(df[[field]] == \"male\", na.rm = TRUE), 1)%) male names and r sum(df[[field]] == \"unisex\", na.rm = TRUE) (r round(100*mean(df[[field]] == \"unisex\", na.rm = TRUE), 1)%) unisex names.\n\n5.1.1 Gender over Time (1600-2000)\n#| label = \"summary_gender\",\n#| echo = FALSE,\n#| warning = FALSE,\n# Join publication_decade from df_pubtime to df by melinda_id\ndf$publication_decade &lt;- df_pubtime$publication_decade[match(df$melinda_id, df_pubtime$melinda_id)]\n\n# Filter your data to only include those genres\ndf_selected &lt;- df%&gt;%\n  filter(!is.na(publication_decade), \n         !is.na(gender_primary),\n         publication_decade &lt;= 2000)\n\n# Summarize counts by decade and genre\ndf_summary &lt;- df_selected %&gt;%\n  group_by(publication_decade, gender_primary) %&gt;%\n  summarise(n = n(), .groups = \"drop\")\n\nggplot(df_summary, aes(x = publication_decade,y = n, fill = gender_primary)) +\n  geom_col(position = \"stack\", width = 8) +  # width makes bars a bit narrower\n  labs(x = \"Publication Decade\", y = \"Gender count\", fill = \"Gender\") +\n  scale_fill_brewer(palette = \"Set2\") +\n  scale_x_continuous(limits = c(1600, 2000),breaks = seq(1600, 2000, by = 50)) +\n  theme_minimal()\n\n\n\n5.1.2 Gender over Time (1809-1917)\n#| label = \"summary_gender19\",\n#| echo = FALSE,\n#| warning = FALSE,\n# Join publication_decade from df_pubtime to df by melinda_id\ndf_19$publication_decade &lt;- df_pubtime19$publication_decade[match(df_19$melinda_id, df_pubtime19$melinda_id)]\n\n# Filter your data to only include those genres\ndf_selected &lt;- df_19 %&gt;%\n  filter(\n    !is.na(publication_decade),\n    !is.na(gender_primary),\n    publication_decade &gt;= 1800 & publication_decade &lt;= 1920\n  )\n\n# Summarize counts by decade and genre\ndf_summary &lt;- df_selected %&gt;%\n  group_by(publication_decade, gender_primary) %&gt;%\n  summarise(n = n(), .groups = \"drop\")\n\nggplot(df_summary, aes(x = publication_decade,y = n, fill = gender_primary)) +\n  geom_col(position = \"stack\", width = 8) +  # width makes bars a bit narrower\n  labs(x = \"Publication Decade\", y = \"Gender count\", fill = \"Gender\") +\n  scale_fill_brewer(palette = \"Set2\") +\n  scale_x_continuous(limits = c(1800, 1920),breaks = seq(1800, 1920, by = 50)) +\n  theme_minimal()\n#| include = FALSE\nsource(\"init.R\")\nsource(\"publication_time.R\")\nsource(\"author_profession.R\")",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name</span>"
+    ]
+  },
+  {
+    "objectID": "author_name.html#authors-profession",
+    "href": "author_name.html#authors-profession",
+    "title": "Publisher",
+    "section": "5.2 Author’s profession",
+    "text": "5.2 Author’s profession\nAuhtor profession in fennica is depicted in 700,e field. We enrich it with information from Kanto. In total N = r nrow(df) records. Before enrichment 700,e has r sum(is.na(df[[field]])) / (r round(100*mean(is.na(df[[field]])), 1)%) missing values. After enrichment in total there are records r sum(!is.na(df[[field]])) / (r round(100*mean(!is.na(df_19[[field]])), 1)%) with assigned profession. There are r length(unique(na.omit(df[[field]]))) professions.\n#| label = \"summaryproffesion\",\n#| echo = FALSE,\n#| results = \"asis\"\nx &lt;- top(df, \"author_profession\")\ntab &lt;- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))\ncolnames(tab) &lt;- c(\"Profession\", \"Entries (n)\", \"Fraction (%)\")\nkable(head(tab, 15))\n#| label = \"source-index\",\n#| include = FALSE\nsource(\"init.R\")\nsource(\"publisher.R\")\nMARC: 260b",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name</span>"
+    ]
+  },
+  {
+    "objectID": "author_name.html#complete-dataset-overview-1",
+    "href": "author_name.html#complete-dataset-overview-1",
+    "title": "Publisher",
+    "section": "5.3 Complete Dataset Overview",
+    "text": "5.3 Complete Dataset Overview\n\nr length(unique(df$publisher)) unique publishers\nr sum(!is.na(df$publisher)) documents have unambiguous publisher information (r round(100*mean(!is.na(df$publisher)), 1)%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\nConversions from original to final names (only non-trivial conversions shown)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name</span>"
+    ]
+  },
+  {
+    "objectID": "author_name.html#subset-analysis-1809-1917-1",
+    "href": "author_name.html#subset-analysis-1809-1917-1",
+    "title": "Publisher",
+    "section": "5.4 Subset Analysis: 1809-1917",
+    "text": "5.4 Subset Analysis: 1809-1917\n\nr length(unique(df_19$publisher)) unique publishers\nr sum(!is.na(df_19$publisher)) documents have unambiguous publisher information (r round(100*mean(!is.na(df_19$publisher)), 1)%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\n\nThe r ntop most common publishers from 1809 to 1917 are shown with the number of documents.\n#| label = \"summarypublisher2\",\n#| echo = FALSE,\n#| message = FALSE,\n#| warning = FALSE,\n#| fig.width = 12,\n#| fig.height = 9\np &lt;- top_plot(df_19, \"publisher\", ntop)\np &lt;- p + ggtitle(paste(\"Top publishers\"))\np &lt;- p + scale_y_log10()\np &lt;- p + ylab(\"Documents\")\nprint(p)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name</span>"
+    ]
   }
 ]
