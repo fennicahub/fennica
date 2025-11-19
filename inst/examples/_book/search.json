@@ -62,31 +62,31 @@
   {
     "objectID": "genre_008.html",
     "href": "genre_008.html",
-    "title": "4  Genre 008/33",
+    "title": "7  Genre 008/33",
     "section": "",
-    "text": "4.1 Description\nMARC: 008\nMARC21 field 008 contains fixed-length data elements that encode various bibliographic details. In this context, we focus specifically on books—that is, records where the Type of Record is language material. From this field, we extract and interpret the genre information as encoded in position 33 of the 008 field.\nThis analysis is based on 1043567 book records in the Fennica database.",
+    "text": "7.1 Description\nMARC21 field 008 contains fixed-length data elements that encode various bibliographic details. In this context, we focus specifically on books—that is, records where the Type of Record is language material. From this field, we extract and interpret the genre information as encoded in position 33 of the 008 field.\nThis analysis is based on 1043567 book records in the Fennica database.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Genre 008/33</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Genre 008/33</span>"
     ]
   },
   {
     "objectID": "genre_008.html#complete-dataset-overview",
     "href": "genre_008.html#complete-dataset-overview",
-    "title": "4  Genre 008/33",
-    "section": "4.2 Complete Dataset Overview",
-    "text": "4.2 Complete Dataset Overview\nUnique genre 008: 13.\nThere are 52 missing values in the dataset, accounting for (0%) of the total. Also, there 402097 “Not coded” genres in the field 008/33, accounting for (38.53%) of the total.\nUnrecognized genre 088 provides details of Genre 008 that were discarded, in total: 0.\n\n4.2.1 Top 20 Genre Count in Fennica\n\n\n\nGenre for Books\nEntries (n)\nFraction (%)\n\n\n\n\nTietokirjallisuus\n413280\n39.6\n\n\nRomaanit\n132454\n12.7\n\n\nKaunokirjallisuus\n33805\n3.2\n\n\nRunot\n29636\n2.8\n\n\nNovellit, kertomukset\n13301\n1.3\n\n\nDraama\n8255\n0.8\n\n\nYhdistelmä\n6252\n0.6\n\n\nPuheet, esitelmät\n2156\n0.2\n\n\nEsseet\n1271\n0.1\n\n\nKirjeet\n767\n0.1\n\n\nHuumori, satiiri\n223\n0\n\n\nTuntematon\n18\n0\n\n\n\n\n\n4.2.2 Fiction VS Non-Fiction over Time (log10)",
+    "title": "7  Genre 008/33",
+    "section": "7.2 Complete Dataset Overview",
+    "text": "7.2 Complete Dataset Overview\nUnique genre 008: 13.\nThere are 52 missing values in the dataset, accounting for (0%) of the total. Also, there 402097 “Not coded” genres in the field 008/33, accounting for (38.53%) of the total.\nUnrecognized genre 088 provides details of Genre 008 that were discarded, in total: 0.\n\n7.2.1 Top 20 Genre Count in Fennica\n\n\n\nGenre for Books\nEntries (n)\nFraction (%)\n\n\n\n\nTietokirjallisuus\n413280\n39.6\n\n\nRomaanit\n132454\n12.7\n\n\nKaunokirjallisuus\n33805\n3.2\n\n\nRunot\n29636\n2.8\n\n\nNovellit, kertomukset\n13301\n1.3\n\n\nDraama\n8255\n0.8\n\n\nYhdistelmä\n6252\n0.6\n\n\nPuheet, esitelmät\n2156\n0.2\n\n\nEsseet\n1271\n0.1\n\n\nKirjeet\n767\n0.1\n\n\nHuumori, satiiri\n223\n0\n\n\nTuntematon\n18\n0\n\n\n\n\n\n7.2.2 Fiction VS Non-Fiction over Time (log10)",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Genre 008/33</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Genre 008/33</span>"
     ]
   },
   {
     "objectID": "genre_008.html#subset-analysis-1809-1917",
     "href": "genre_008.html#subset-analysis-1809-1917",
-    "title": "4  Genre 008/33",
-    "section": "4.3 Subset Analysis: 1809-1917",
-    "text": "4.3 Subset Analysis: 1809-1917\nUnique genre 008: 12.\nThere are 1 missing values in the dataset, accounting for (0%) of the total. Also, there 30951 “Not coded” genres in the field 008/33, accounting for (53.01%) of the total.\n\n4.3.1 Top 15 Genre Count in Fennica (1809-1917)\n\n\n\nGenre for Books (1809-1917)\nEntries (n)\nFraction (%)\n\n\n\n\nTietokirjallisuus\n14653\n1.4\n\n\nRomaanit\n5336\n0.5\n\n\nRunot\n3002\n0.3\n\n\nNovellit, kertomukset\n1908\n0.2\n\n\nDraama\n1715\n0.2\n\n\nYhdistelmä\n276\n0\n\n\nKaunokirjallisuus\n263\n0\n\n\nPuheet, esitelmät\n229\n0\n\n\nEsseet\n19\n0\n\n\nKirjeet\n18\n0\n\n\nHuumori, satiiri\n12\n0\n\n\n\n\n\n4.3.2 Certain Genres over Time",
+    "title": "7  Genre 008/33",
+    "section": "7.3 Subset Analysis: 1809-1917",
+    "text": "7.3 Subset Analysis: 1809-1917\nUnique genre 008: 12.\nThere are 1 missing values in the dataset, accounting for (0%) of the total. Also, there 30951 “Not coded” genres in the field 008/33, accounting for (53.01%) of the total.\n\n7.3.1 Top 15 Genre Count in Fennica (1809-1917)\n\n\n\nGenre for Books (1809-1917)\nEntries (n)\nFraction (%)\n\n\n\n\nTietokirjallisuus\n14653\n1.4\n\n\nRomaanit\n5336\n0.5\n\n\nRunot\n3002\n0.3\n\n\nNovellit, kertomukset\n1908\n0.2\n\n\nDraama\n1715\n0.2\n\n\nYhdistelmä\n276\n0\n\n\nKaunokirjallisuus\n263\n0\n\n\nPuheet, esitelmät\n229\n0\n\n\nEsseet\n19\n0\n\n\nKirjeet\n18\n0\n\n\nHuumori, satiiri\n12\n0\n\n\n\n\n\n7.3.2 Certain Genres over Time",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Genre 008/33</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Genre 008/33</span>"
     ]
   },
   {
