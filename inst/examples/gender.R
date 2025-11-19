@@ -30,23 +30,20 @@ df.tmp$note <- trimws(df.tmp$note)
 
 missing_idx <- is.na(df.tmp$gender)
 df.tmp$gender[missing_idx] <- assign_gender(df.tmp$note[missing_idx])
-df.tmp$gender <- df.tmp$gender |>
-  # 3. Trim leading/trailing spaces
-  trimws() |>
-  # 4. Fix common typos (like "fmale" → "female")
-  tolower() |>
-  # 5. Normalize known variants
-  dplyr::recode(
-    "fmale" = "female",
-    "male " = "male",
-    "female " = "female", 
-    "male;female" ="unisex", 
-    "female;male" = "unisex", 
-    "nainen" = "female", 
-    "mies" = "male")
+
+df.tmp$gender <- trimws(df.tmp$gender)
+df.tmp$gender <- tolower(df.tmp$gender)
+df.tmp$gender <- gsub("fmale", "female", df.tmp$gender)
+df.tmp$gender <- gsub("fmale", "female", df.tmp$gender)
+df.tmp$gender <- gsub("male ", "male", df.tmp$gender)
+df.tmp$gender <- gsub("female ", "female", df.tmp$gender)
+df.tmp$gender <- gsub("nainen", "female", df.tmp$gender)
+df.tmp$gender <- gsub("mies", "male", df.tmp$gender)
 
 df.tmp$gender_primary <- sapply(strsplit(df.tmp$gender, "\\|"), `[`, 1)
+
 df <- df.tmp
+
 ################################################################
 
 # Convert to CSV and store in the output.tables folder

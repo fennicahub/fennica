@@ -436,7 +436,7 @@
     "href": "gender.html",
     "title": "4  Author’s info: gender",
     "section": "",
-    "text": "4.1 Author’s Gender\nGender information is not originally included in Fennica. We enriched the data by linking author names with gender information from various sources, including the HENKO project, the Genderize dataset, manual curation and search, and additional records provided by the National Library of Finland. The full list of names and genders can be found here.\nIn total N = 1229782 records. After enrichment in total there are records 939699 / (76.4%) with assigned gender. There are 153632 (16.3%) female names, 293578 (31.2%) male names and 0 (0%) unisex names.",
+    "text": "4.1 Author’s Gender\nGender information is not originally included in Fennica. We enriched the data by linking author names with gender information from various sources, including the HENKO project, the Genderize dataset, manual curation and search, and additional records provided by the National Library of Finland. The full list of names and genders can be found here.\nIn total N = 1229782 records. After enrichment in total there are records 939699 / (76.4%) with assigned gender. There are 334864 (35.6%) female names, 604835 (64.4%) male names and 0 (0%) unisex names.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Author's info: gender</span>"
     ]
