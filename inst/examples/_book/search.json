@@ -122,31 +122,31 @@
   {
     "objectID": "publisher.html",
     "href": "publisher.html",
-    "title": "6  Publisher",
+    "title": "9  Publisher",
     "section": "",
-    "text": "6.1 Complete Dataset Overview",
+    "text": "9.1 Complete Dataset Overview",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Publisher</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publisher</span>"
     ]
   },
   {
     "objectID": "publisher.html#complete-dataset-overview",
     "href": "publisher.html#complete-dataset-overview",
-    "title": "6  Publisher",
+    "title": "9  Publisher",
     "section": "",
     "text": "131075 unique publishers\n940452 documents have unambiguous publisher information (76.5%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\nConversions from original to final names (only non-trivial conversions shown)",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Publisher</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publisher</span>"
     ]
   },
   {
     "objectID": "publisher.html#subset-analysis-1809-1917",
     "href": "publisher.html#subset-analysis-1809-1917",
-    "title": "6  Publisher",
-    "section": "6.2 Subset Analysis: 1809-1917",
-    "text": "6.2 Subset Analysis: 1809-1917\n\n8554 unique publishers\n51124 documents have unambiguous publisher information (76.4%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\n\nThe 20 most common publishers from 1809 to 1917 are shown with the number of documents.",
+    "title": "9  Publisher",
+    "section": "9.2 Subset Analysis: 1809-1917",
+    "text": "9.2 Subset Analysis: 1809-1917\n\n8554 unique publishers\n51124 documents have unambiguous publisher information (76.4%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\n\nThe 20 most common publishers from 1809 to 1917 are shown with the number of documents.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Publisher</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publisher</span>"
     ]
   },
   {

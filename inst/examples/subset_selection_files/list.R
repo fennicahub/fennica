@@ -174,16 +174,62 @@ pl <- ggplot(data, aes(x = Category, y = Count, fill = ListType)) +
 
 pl
 
-write.csv(list,
-          file = "automated_first_edition_gender.csv",
-          row.names=FALSE,
-          quote = FALSE,
-          fileEncoding = "UTF-8")
+list$melinda_id <- as.character(list$melinda_id)
+write.table(
+  list,
+  file = "automated_first_edition_gender.csv",
+  sep = "\t",
+  row.names = FALSE,
+  quote = FALSE,
+  fileEncoding = "UTF-8"
+)
 
-tbl <- table(list$gender, useNA = "ifany")
+############analytics##############
 
-# Add total
-tbl_with_total <- addmargins(tbl)
+list_count <- data.frame(decade = list$publication_decade, gender = list$gender)
+list_count %>%
+  count(decade, gender) %>%
+  pivot_wider(
+    names_from = gender,
+    values_from = n,
+    values_fill = 0
+  ) %>%
+  mutate(total = female + male)
 
+
+
+
+tbl_with_total <- addmargins(table(list$gender, useNA = "ifany"))
 tbl_with_total
 
+library(dplyr)
+
+female_1830 <- list %>%
+  filter(gender == "female",
+         publication_decade == 1830)
+
+female_1840 <- list %>%
+  filter(gender == "female",
+         publication_decade == 1840)
+############vizualize gender##################
+
+
+# Filter your data to only include those genres
+df_selected <- list %>%
+  filter(
+    !is.na(publication_decade),
+    !is.na(gender),
+    publication_decade >= 1800 & publication_decade <= 1920
+  )
+
+# Summarize counts by decade and genre
+df_summary <- df_selected %>%
+  group_by(publication_decade, gender) %>%
+  summarise(n = n(), .groups = "drop")
+
+ggplot(df_summary, aes(x = publication_decade,y = n, fill = gender)) +
+  geom_col(position = "stack", width = 8) +  # width makes bars a bit narrower
+  labs(x = "Publication Decade", y = "Gender count", fill = "Gender") +
+  scale_fill_brewer(palette = "Set2") +
+  scale_x_continuous(limits = c(1800, 1920),breaks = seq(1800, 1920, by = 10)) +
+  theme_minimal()
