@@ -22,7 +22,7 @@ df.harmonized$author_name_enriched <- df.tmp$full_name
 
 source("gender.R")
 df.harmonized <- cbind(df.harmonized, gender = df.tmp$gender_primary)
-#df.harmonized$gender <- df.tmp$gender_primary
+df.harmonized$gender <- df.tmp$gender_primary
 
 source("author_date.R")
 #add harmonized fields to df

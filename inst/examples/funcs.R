@@ -6749,7 +6749,6 @@ polish_languages <- function(x) {
 #' @keywords utilities
 # Modified polish_title function
 
-
 polish_title <- function(x) {
   # Save the original titles
   title_original <- as.character(x)
@@ -6788,12 +6787,14 @@ polish_title <- function(x) {
 
   # Map back to original indices
   title_harmonized <- x[xinds]
-
+  
+  title_harmonized <- trimws(title_harmonized)
+  title_harmonized <- gsub("^[\\s\\.,\\(\\)\\[\\]\\{\\}:;!\\?-]+", "", title_harmonized)
+  
   # Calculate the length of harmonized titles
   title_length <- nchar(title_harmonized)
 
   title_word_count <- ifelse(is.na(title_harmonized), NA, sapply(strsplit(title_harmonized, "\\s+"), length))
-
 
   # Create the result dataframe
   df <- data.frame(

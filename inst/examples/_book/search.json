@@ -490,5 +490,75 @@
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name</span>"
     ]
+  },
+  {
+    "objectID": "publication_place.html",
+    "href": "publication_place.html",
+    "title": "10  Publication place",
+    "section": "",
+    "text": "10.1 Complete Dataset Overview",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+  },
+  {
+    "objectID": "publication_place.html#complete-dataset-overview",
+    "href": "publication_place.html#complete-dataset-overview",
+    "title": "10  Publication place",
+    "section": "",
+    "text": "5297 unique publication places; available for 1162776 documents (95%).\nambiguous publication places; some of these can be possibly resolved by checking that the the synonyme list does not contain multiple versions of the final name (case sensitive).\nunknown place names These terms do not map to any known place on the synonyme list; either because they require further cleaning or have not yet been encountered in the analyses. Terms that are clearly not place names can be added to stopwords; borderline cases that are not accepted as place names can be added as NA on the synonyme list.\ndiscarded place names These terms are potential place names but with a closer check have been explicitly rejected on the synonyme list\nConversions from the original to the accepted place names",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+  },
+  {
+    "objectID": "publication_place.html#publication-countries",
+    "href": "publication_place.html#publication-countries",
+    "title": "10  Publication place",
+    "section": "10.2 Publication countries",
+    "text": "10.2 Publication countries\n\n46 unique publication countries; available for 1080983 documents (88%).\n4563 places with unknown publication country (86.2% of the unique places; can be added to country mappings)\npotentially ambiguous region-country mappings (these may occur in the data in various synonymes and the country is not always clear when multiple countries have a similar place name; the default country is listed first). NOTE: possible improvements should not be done in this output summary but instead in the country mapping file.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+  },
+  {
+    "objectID": "publication_place.html#geocoordinates",
+    "href": "publication_place.html#geocoordinates",
+    "title": "10  Publication place",
+    "section": "10.3 Geocoordinates",
+    "text": "10.3 Geocoordinates\n\n87.6% of the documents were matched to geographic coordinates (based on COMHIS geomapping process).\n4628 unique places (87.4% of all unique places and 12.41% of all documents) are missing geocoordinates. See list of places missing geocoordinate information.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+  },
+  {
+    "objectID": "publication_place.html#subset-analysis-1809-1917",
+    "href": "publication_place.html#subset-analysis-1809-1917",
+    "title": "10  Publication place",
+    "section": "10.4 Subset Analysis: 1809-1917",
+    "text": "10.4 Subset Analysis: 1809-1917\n\n548 unique publication places; available for 65134 documents (97%).\nUnique publication country for a period 1809-1917: 32; available for 63299 documents (95%).\ndiscarded place names\n\nTop-20 publication places are shown together with the number of documents.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCountry\nDocuments (n)\nFraction (%)\n\n\n\n\nFinland\n56411\n84.3\n\n\nRussia\n2576\n3.9\n\n\nSweden\n1765\n2.6\n\n\nUSA\n983\n1.5\n\n\nGermany\n658\n1.0\n\n\nFrance\n183\n0.3",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+  },
+  {
+    "objectID": "title2.html",
+    "href": "title2.html",
+    "title": "13  Complete Dataset Overview",
+    "section": "",
+    "text": "13.0.1 Top-20 title",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Complete Dataset Overview</span>"
+    ]
+  },
+  {
+    "objectID": "title2.html#subset-analysis-1809-1917",
+    "href": "title2.html#subset-analysis-1809-1917",
+    "title": "13  Complete Dataset Overview",
+    "section": "13.1 Subset Analysis: 1809-1917",
+    "text": "13.1 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 53118\nOriginal documents with non-NA titles: 66889 / 66889 (100%)\nOriginal documents with missing (NA) titles 0 / 66889 documents (0%)\nDownload title2 field harmonized dataset(1809-1917)\n\n13.1.1 Top-20 title for years 1809-1917\n\n\n\n\n\n\n\n\ntitle2\nEntries (n)\nFraction (%)\n\n\n\n\nTopografičeskaâ karta 1:42000].\n1323\n2\n\n\nTheses\n143\n0.2\n\n\nHomeri Odyssea svethice reddita.\n113\n0.2\n\n\nKalmbergin kartasto].\n87\n0.1\n\n\nHandlingar rörande Finlands historia kring medlet af 17:de århundradet.\n64\n0.1\n\n\nDissertatio entomologica insecta Fennica enumerans.\n64\n0.1\n\n\nLäsning för barn.\n62\n0.1\n\n\nKertomuksia Suomen historiasta.\n61\n0.1\n\n\nFänrik Ståls sägner : en samling sånger\n57\n0.1\n\n\nFältskärns berättelser.\n55\n0.1\n\n\nDikter\n55\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder : ny följd\n52\n0.1\n\n\nLähetysrukoushetkiä warten sowitettuja kertomuksia lähetystoimesta : uusi jakso\n52\n0.1\n\n\nCommentarii in scriptores graecos et latinos : commentarii in Sallustium\n52\n0.1\n\n\nPrincipia grammatices Neo-persicae.\n48\n0.1\n\n\nSuomen virallinen tilasto.\n45\n0.1\n\n\nSuomen yleiskartta Generalkarta öfver Finland\n41\n0.1\n\n\nSuomen taloudellinen kartta 1:100000 : kihlakunnankartta Finlands ekonomiska karta 1:100000 : häradskarta\n37\n0.1\n\n\nUtrum Comitia ordinum Fenniae habita sint Arctopoli anno MDCII, an non.\n36\n0.1\n\n\nEvankelinen Lähetys Afrikassa : katsastettu lähetysrukous-hetkinä\n36\n0.1\n\n\n\n\n\n13.1.2 Top-20 title2s for years 1809-1917 period / “Language material” content type\n\n\n\n\n\n\n\n\ntitle2\nEntries (n)\nFraction (%)\n\n\n\n\nTheses\n143\n0.2\n\n\nHomeri Odyssea svethice reddita.\n113\n0.2\n\n\nHandlingar rörande Finlands historia kring medlet af 17:de århundradet.\n64\n0.1\n\n\nDissertatio entomologica insecta Fennica enumerans.\n64\n0.1\n\n\nLäsning för barn.\n62\n0.1\n\n\nKertomuksia Suomen historiasta.\n61\n0.1\n\n\nFänrik Ståls sägner : en samling sånger\n57\n0.1\n\n\nFältskärns berättelser.\n55\n0.1\n\n\nDikter\n55\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder : ny följd\n52\n0.1\n\n\nLähetysrukoushetkiä warten sowitettuja kertomuksia lähetystoimesta : uusi jakso\n52\n0.1\n\n\nCommentarii in scriptores graecos et latinos : commentarii in Sallustium\n52\n0.1\n\n\nPrincipia grammatices Neo-persicae.\n48\n0.1\n\n\nSuomen virallinen tilasto.\n45\n0.1\n\n\nUtrum Comitia ordinum Fenniae habita sint Arctopoli anno MDCII, an non.\n36\n0.1\n\n\nEvankelinen Lähetys Afrikassa : katsastettu lähetysrukous-hetkinä\n36\n0.1\n\n\nLukemisia lapsille.\n34\n0.1\n\n\nNal och Damayanti : en indisk dikt, öfversatt från sanskrit\n30\n0\n\n\nKatekismus, Suomen evankelis-lutherisen kirkon : hyväksytty Suomen kolmannessa yleisessä kirkolliskokouksessa vuonna 1893 : kysymyksillä varustettu\n30\n0\n\n\nSamlade arbeten.\n29\n0",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Complete Dataset Overview</span>"
+    ]
   }
 ]

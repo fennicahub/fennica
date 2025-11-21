@@ -7,16 +7,9 @@ description: ""
 ```{r}
 #| include = FALSE
 source("init.R")
-source("publication_time.R")
 source("author_name.R")
 ```
 
-```{r}
-#| include = FALSE
-author_df <- df
-author_df$publication_year <- df_pubtime$publication_year
-author_df$publication_decade <- df_pubtime$publication_decade
-```
 
 ## Author name Fennica
 
@@ -34,8 +27,6 @@ Author's name section's summary tables offer insights into the dataset's integri
 #### Authors
 
 -   `r length(unique(df$author_name))` [unique authors](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_accepted.csv) These final names capture all name variants from the custom [author synonyme table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/ambiguous-authors.csv), and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the [author synonyme table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/ambiguous-authors.csv).
-
--   `r sum(!is.na(df$author_name_h))` documents have unambiguous author information (`r round(100*mean(!is.na(df$author_name_h)))`%).
 
 -   [Author name conversions](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_conversion_nontrivial.csv) Non-trivial conversions from the original raw data to final names.
 
@@ -109,7 +100,7 @@ source("author_name_enriched.R")
 #| fig.height = 6
 library(ggplot2)
 theme_set(theme_bw(base_size = 12))
-p <- top_plot(df, "author_name", ntop = ntop, log10 = TRUE)+
+p <- top_plot(df, "full_name", ntop = ntop, log10 = TRUE)+
   labs(y = "Entries (n)", title = "Top titles")
 print(p)
 ```
@@ -126,7 +117,7 @@ library(ggplot2)
 #library(comhis)
 
 theme_set(theme_bw(base_size = 12))
-p <- top_plot(df_19, "author_name", ntop = ntop, log10 = TRUE)+
+p <- top_plot(df_19, "full_name", ntop = ntop, log10 = TRUE)+
   labs(y = "Entries (n)", title = "Top titles")
 print(p)
 ```

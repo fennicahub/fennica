@@ -46,9 +46,9 @@ book:
   - publication_time.qmd
   ##- publication_frequency.qmd
   - signum.qmd
-  - title.qmd
-  - title_remainder.qmd
-  #- title2.qmd
+  #- title.qmd
+  #- title_remainder.qmd
+  - title2.qmd
   - content_type.qmd
   - udk.qmd
   #- title_uniform.qmd
