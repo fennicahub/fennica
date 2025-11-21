@@ -7,12 +7,13 @@ df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
                             genre_008 = df.orig$converted_008_33,
                             record_type = df.orig$type_of_record,
                             biblio_level = df.orig$bibliographic_level,
-                            publication_status = df.orig$publication_status)
+                            publication_status = df.orig$publication_status, 
+                            lang_orig = df.orig$language_original)
 
 source("author_name.R")
 #add harmonized fields to df
-df.harmonized <- cbind(df.harmonized,author_name = df.tmp$author_name)
-#df.harmonized$author_name <- df.tmp$author_name
+#df.harmonized <- cbind(df.harmonized,author_name = df.tmp$author_name)
+df.harmonized$author_name <- df.tmp$author_name
 
 source("author_name_enriched.R")
 #add harmonized fields to df
@@ -21,8 +22,9 @@ df.harmonized$author_name_enriched <- df.tmp$full_name
 
 
 source("gender.R")
-df.harmonized <- cbind(df.harmonized, gender = df.tmp$gender_primary)
-df.harmonized$gender <- df.tmp$gender_primary
+#df.harmonized <- cbind(df.harmonized, gender = df.tmp$gender_primary)
+df.harmonized$gender <- df.tmp$gender
+df.harmonized$gender_primary <- df.tmp$gender_primary
 
 source("author_date.R")
 #add harmonized fields to df
@@ -36,13 +38,13 @@ df.harmonized <- cbind(df.harmonized,
 
 source("title2.R")
 
-df.harmonized <- cbind(df.harmonized,
-                       title = df.tmp$title2,
-                       title_length = df.tmp$title2_length,
-                       title_word = df.tmp$title2_word_count)
-# df.harmonized$title <- df.tmp$title2
-# df.harmonized$title_length <- df.tmp$title2_length
-# df.harmonized$title_word <- df.tmp$title2_word_count
+# df.harmonized <- cbind(df.harmonized,
+#                        title = df.tmp$title2,
+#                        title_length = df.tmp$title2_length,
+#                        title_word = df.tmp$title2_word_count)
+df.harmonized$title <- df.tmp$title2
+df.harmonized$title_length <- df.tmp$title2_length
+df.harmonized$title_word <- df.tmp$title2_word_count
 
 
 # source("title_remainder.R")
@@ -56,6 +58,7 @@ df.harmonized <- cbind(df.harmonized,
                        language = df.tmp$full_language_name, 
                        language_primary = df.tmp$language_primary,
                        language_multi = df.tmp$multiple)
+df.harmonized$lang_orig <- df.orig$language_original
 
 source("publication_time.R")
 
@@ -74,6 +77,7 @@ df.harmonized <- cbind(df.harmonized,
 source("publisher.R")
 
 df.harmonized <- cbind(df.harmonized, publisher = df.tmp$publisher)
+
 source("signum.R")
 
 df.harmonized <- cbind(df.harmonized, signum = df.tmp$signum_harmonized)

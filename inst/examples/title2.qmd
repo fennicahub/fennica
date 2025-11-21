@@ -1,5 +1,5 @@
 ---
-title2 : "Title (Remainder incl.)"
+title : "Title (Remainder incl.)"
 hide-description: false
 description: ""
 ---

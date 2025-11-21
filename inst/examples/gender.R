@@ -1,5 +1,5 @@
 # sources: genderize.io (https://genderize.io/) and henko dataset (https://www.ldf.fi/dataset/henko)
-# see genderize.csv and henko_unique_name_gender.csv which were merged into fennica_name_genders.csv
+# see genderize.csv and henko_unique_name_gender.csv which were merged into fennica_name_genders.csv see get_names_for_gender.R
 #source("author_name_for_gender.R"): get all names that exist in fennica and create fennica_all_names.csv
 field <- "gender"
 

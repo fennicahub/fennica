@@ -16,6 +16,7 @@ library(arrow)
 library(textutils)
 library(data.table)
 library(brms)
+library(rnaturalearth)
 
 # Install latest version from Github
 # install_github("fennicahub/fennica") # or
