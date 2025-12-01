@@ -38,3 +38,5 @@ fennica.Rds
 *.quarto
 /.quarto/
 inst/examples/priority_fields.zip
+
+**/*.quarto_ipynb
