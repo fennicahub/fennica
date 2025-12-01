@@ -1,9 +1,10 @@
+#the idea is to create a df with only authors and author info
+# dates, names, place of residence, gender
+#it might be usefull 
+# maybe KK has a ready made list from KANTO
+#field 700id is very messy 
+
 # Combine and deduplicate
-# 2. Split multiple IDs in author_asteri-id
-asteri_id <- df.orig %>%
-  pull(asteri) %>%
-  str_split("\\|") %>%
-  unlist()
 
 all_unique_authors <- unique(na.omit(df.orig$author_id))
 all_unique_authors <- gsub("https?://isni\\.org/isni/", "(ISNI)",all_unique_authors, ignore.case = TRUE)

@@ -2,7 +2,7 @@ library(dplyr)
 library(stringr)
 
 # start clean
-lin_df <- df.harmonized
+lin_df <- df.harmonized19
 lin_df <- lin_df[, !duplicated(names(lin_df))]
 table(df.harmonized$genre_008)
 
@@ -32,49 +32,23 @@ lin_df <- lin_df %>%
 # sanity check
 table(lin_df$genre, useNA = "ifany")
 
-
-
-# --- 2) filter to langs & years; top-5 publishers
-df_test <- lin_df %>%
-  filter(language %in% c("Finnish","Swedish", "Russian"),
-         publication_year >= 1700, publication_year <= 1950)
-
-# top 10 publishers, excluding NA
-top_pubs <- df_test %>%
-  filter(!is.na(publisher)) %>%
-  count(publisher, sort = TRUE) %>%
-  slice_head(n = 30) %>%
-  pull(publisher)
-
-# keep only rows with a non-missing publisher in that top list
-df_test <- df_test %>%
-  filter(!is.na(publisher), publisher %in% top_pubs)
-
-# top 10 publishers, excluding NA
-top_places <- df_test %>%
-  filter(!is.na(publication_place)) %>%
-  count(publication_place, sort = TRUE) %>%
-  slice_head(n = 30) %>%
-  pull(publication_place)
-
-# keep only rows with a non-missing publisher in that top list
-df_test <- df_test %>%
-  filter(!is.na(publication_place), publication_place %in% top_places)
+#GROUP PUBLISHER
+# big_pub (> 100)
+# medium_pub (99-5)
+# small_pub (4 - 1)
 
 # --- 3) construct modeling dataset
-df <- df_test %>%
+df <- lin_df %>%
   mutate(
     decade    = factor(publication_decade),
-    genre     = factor(genre, levels = c("non-fiction","fiction")),
+    genre     = factor(genre),
     gender    = factor(gender),
-    publisher = fct_infreq(factor(publisher)) %>% fct_drop(),
-    language  = factor(language, levels = c("Finnish","Swedish", "Russian")),
-    place = factor(publication_place)
+    language  = factor(language),
   ) %>%
-  tidyr::drop_na(genre, gender, publisher, language, decade, place)
+  tidyr::drop_na(genre, gender, language, decade)
 
 # --- 4) drop unused levels + lump long tails
-vars <- c("genre","gender","publisher","language","decade", "place")
+vars <- c("genre","gender","language","decade")
 df2 <- df %>%
   mutate(
     across(all_of(vars), ~ droplevels(factor(.x))),
@@ -136,3 +110,51 @@ coef_tab <- tidy(fit, conf.int = TRUE, conf.level = 0.95, exponentiate = TRUE) %
   mutate(across(estimate:conf.high, ~ round(.x, 3)))
 
 coef_tab
+
+
+############ VISUALS #####################
+# gender per decade
+# Filter your data to only include those genres
+df.processed19$author_name <- NULL
+df_selected <- df.processed19 %>%
+  filter(
+    !is.na(publication_decade),
+    !is.na(gender_primary),
+    publication_decade >= 1800 & publication_decade <= 1920
+  )
+
+# Summarize counts by decade and genre
+df_summary <- df_selected %>%
+  group_by(publication_decade, gender_primary) %>%
+  summarise(n = n(), .groups = "drop")
+
+
+ggplot(df_summary, aes(x = publication_decade, y = n, fill = gender_primary)) +
+  geom_col(position = "stack", width = 8, color = "black") +
+  scale_fill_grey(start = 0.1, end = 0.8) +
+  labs(x = "Publication Decade", y = "Gender Count", fill = "Gender") +
+  coord_flip() +
+  theme_minimal()
+
+
+table_summary <- df_summary %>%
+  group_by(publication_decade) %>%
+  mutate(
+    decade_total = sum(n),
+    pct = n / decade_total * 100
+  ) %>%
+  ungroup() %>%
+  arrange(publication_decade, gender_primary)
+
+
+library(dplyr)
+
+genre_summary <- lin_df %>%
+  mutate(
+    genre_group = case_when(
+      genre %in% c("fiction") ~ "fiction",
+      TRUE ~ "non-fiction"
+    )
+  ) %>%
+  group_by(publication_decade, gender, genre_group) %>%
+  summarise(n = n(), .groups = "drop")

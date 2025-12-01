@@ -17,7 +17,7 @@ Gender information is not originally included in Fennica. We enriched the data b
 [here](https://github.com/fennicahub/fennica/blob/master/inst/extdata/fennica_name_genders.csv).
 
 
-In total N = `r nrow(df)` records. After enrichment in total there are records `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df[[field]])), 1)`%) with assigned gender. There are `r sum(df[[field]] == "female", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "female", na.rm = TRUE), 1)`%) female names, `r sum(df[[field]] == "male", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "male", na.rm = TRUE), 1)`%) male names and `r sum(df[[field]] == "unisex", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "unisex", na.rm = TRUE), 1)`%) unisex names. 
+In total N = `r nrow(df)` records. After enrichment in total there are records `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df[[field]])), 1)`%) with assigned gender. There are `r sum(df[[field]] == "female", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "female", na.rm = TRUE), 1)`%) female names, `r sum(df[[field]] == "male", na.rm = TRUE)` (`r round(100*mean(df[[field]] == "male", na.rm = TRUE), 1)`%) male names.
 
 ### Gender over Time (1600-2000)
 
@@ -51,6 +51,8 @@ ggplot(df_summary, aes(x = publication_decade,y = n, fill = gender_primary)) +
 
 ### Gender over Time (1809-1917)
 
+
+In total N = `r nrow(df_19)` records. After enrichment in total there are records `r sum(!is.na(df_19[[field]]))` / (`r round(100*mean(!is.na(df_19[[field]])), 1)`%) with assigned gender. There are `r sum(df_19[[field]] == "female", na.rm = TRUE)` (`r round(100*mean(df_19[[field]] == "female", na.rm = TRUE), 1)`%) female names, `r sum(df_19[[field]] == "male", na.rm = TRUE)` (`r round(100*mean(df_19[[field]] == "male", na.rm = TRUE), 1)`%) male names.
 ```{r}
 #| label = "summary_gender19",
 #| echo = FALSE,
