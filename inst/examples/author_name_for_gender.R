@@ -4,6 +4,7 @@ field1 <- "author_name_kanto1"
 field3 <- "access_kanto"
 field4 <- "author_700a"
 field5 <- "author_name_kantoVAR"
+field6 <- "related_person"
 
 # Full author name (Last, First)
 
@@ -12,7 +13,7 @@ author1 <- polish_author_multi(df.orig[[field1]], verbose = TRUE)
 author3 <- polish_author_multi(df.orig[[field3]], verbose = TRUE)
 author4 <- polish_author_multi(df.orig[[field4]], verbose = TRUE)
 author5 <- polish_author_multi(df.orig[[field5]], verbose = TRUE)
-
+author6 <- polish_author_multi(df.orig[[field6]], verbose = TRUE)
 ##clean note
 
 df.orig$note_kanto <- trimws(df.orig$note_kanto)
@@ -57,7 +58,11 @@ all_names <- data.frame(melinda_id = df.orig$melinda_id,
                      name_var = author5$full_name,
                      last_var = author5$last,
                      first_var = author5$first,
-                     note = df.orig$note_kanto)
+                     name_related = author6$full_name,
+                     last_related = author6$last,
+                     first_related = author6$first,
+                     note = df.orig$note_kanto,
+                     fuller_first = df.orig$fuller_first)
 
 ########################################################### 
 

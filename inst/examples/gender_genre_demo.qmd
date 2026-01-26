@@ -1,0 +1,367 @@
+---
+title: "Genre and publishing metadata: exploratory association tests and probabilistic modeling"
+format: html
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+# Introduction
+
+This Quarto notebook documents a step-by-step workflow for assessing whether **genre** is associated with selected bibliographic metadata variables before fitting a full multivariable model. The response variable is **genre**, and the predictors are **gender**, **language**, **publication_place**, and **publisher_size** (large/medium/small). All variables are categorical.
+
+The workflow is intentionally staged. First, simple descriptive summaries and association tests are used to evaluate whether relationships are present at all. Next, models are introduced only after basic structure has been established. The final stage estimates genre probabilities under a Bayesian framework, enabling probabilistic interpretation and uncertainty quantification.
+
+Criteria: books published in Finland, Sweden or Russia in 1809-1917.
+Genre (outcome)	Nominal categorical (K>2)
+Gender	Categorical
+Language	Categorical
+Publication place	Categorical (20 cities)
+Publisher size	Categorical (3 levels)
+
+
+Gender	male vs female
+Language	Finnish vs Swedish
+Publisher size	small / medium / large
+Place	19 dummies (reference = largest city)
+
+multinomial logistic regression for each k 
+P(genre=k∣gender, language, place, publisher)
+# Data and setup
+
+## Packages
+
+```{r}
+# Core
+library(dplyr)
+library(tidyr)
+library(stringr)
+
+# Tables and effect sizes
+library(janitor)     # tabyl()
+library(rstatix)     # chisq_test()
+library(effectsize)  # cramers_v()
+
+# Plots
+library(ggplot2)
+
+# Optional modeling
+library(MASS)      # loglm()
+library(brms)      # Bayesian multinomial/logistic models
+```
+
+
+## Load the data
+```{r}
+# # Download the csv file
+#url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/books_19th.csv"
+
+df <- read.table(
+  file = paste0(output.folder, "books_19th.tsv"), 
+  sep = "\t",
+  header = TRUE,
+  colClasses = "character",
+  fileEncoding = "UTF-8",
+  quote = "\"",
+  comment.char = "",
+  stringsAsFactors = FALSE
+)
+
+
+```
+
+
+## Cross-tabs and proportions
+
+```{r}
+df <- df %>%
+mutate(
+code_genre = factor(code_genre), #note it is only for fiction/non-fiction here
+gender = factor(gender_primary, levels = c("male", "female")),
+language = factor(language_primary, levels = c("Finnish", "Swedish")),
+decade = factor(publication_decade),
+publisher_size = factor(publisher_size, levels = c("group_1", "group_2", "group_3")),
+publication_place = factor(publication_place)
+)
+```
+
+```{r}
+dplyr::glimpse(df)
+summary(df)
+```
+### Genre X Gender
+```{r}
+tab_gender <- janitor::tabyl(df, genre, gender)
+tab_gender
+janitor::adorn_percentages(tab_gender, "row") %>% janitor::adorn_pct_formatting()
+```
+```{r}
+tab_language <- janitor::tabyl(df, genre, language)
+tab_language
+janitor::adorn_percentages(tab_language, "row") %>% janitor::adorn_pct_formatting()
+```
+```{r}
+tab_pubsize <- janitor::tabyl(df, genre, publisher_size)
+tab_pubsize
+janitor::adorn_percentages(tab_pubsize, "row") %>% janitor::adorn_pct_formatting()
+```
+
+```{r}
+df_place <- df %>%
+  add_count(publication_place, name = "n_place") %>%
+  mutate(publication_place_top = forcats::fct_lump_n(publication_place, n = 10)) %>%
+  dplyr::select(-n_place)
+
+tab_place <- janitor::tabyl(df_place, genre, publication_place_top)
+tab_place
+janitor::adorn_percentages(tab_place, "row") %>% janitor::adorn_pct_formatting()
+
+```
+
+# χ² tests for each predictor
+```{r}
+chisq_with_v <- function(data, x, y) {
+
+# x and y are column names as strings
+
+tab <- table(data[[x]], data[[y]])
+
+# Chi-square test
+chi <- chisq.test(tab)
+# Effect size
+
+v <- effectsize::cramers_v(tab)
+
+list(
+table = tab,
+chisq = chi,
+cramers_v = v
+)
+}
+
+```
+
+
+```{r}
+res_gender <- chisq_with_v(df, "genre", "gender")
+res_gender$chisq
+res_gender$cramers_v
+
+```
+```{r}
+res_language <- chisq_with_v(df, "genre", "language")
+res_language$chisq
+res_language$cramers_v
+```
+```{r}
+res_pubsize <- chisq_with_v(df, "genre", "publisher_size")
+res_pubsize$chisq
+res_pubsize$cramers_v
+
+```
+```{r}
+res_place <- chisq_with_v(df_place, "genre", "publication_place_top")
+res_place$chisq
+res_place$cramers_v
+
+```
+
+```{r}
+ggplot(df, aes(x = gender, fill = genre)) +
+geom_bar(position = "fill") +
+labs(y = "Proportion", x = "Gender", fill = "Genre") +
+theme_minimal()
+
+```
+```{r}
+ggplot(df, aes(x = language, fill = genre)) +
+geom_bar(position = "fill") +
+labs(y = "Proportion", x = "Language", fill = "Genre") +
+theme_minimal()
+
+```
+```{r}
+ggplot(df, aes(x = publisher_size, fill = genre)) +
+geom_bar(position = "fill") +
+labs(y = "Proportion", x = "Publisher size", fill = "Genre") +
+theme_minimal()
+
+```
+```{r}
+ggplot(df_place, aes(x = publication_place_top, fill = genre)) +
+geom_bar(position = "fill") +
+labs(y = "Proportion", x = "Publication place (top categories)", fill = "Genre") +
+theme_minimal() +
+theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+# multinomial linear regression
+
+```{r}
+df_counts <- df %>%
+count(genre, gender, language, publication_place, publisher_size, name = "n")
+
+df_counts
+```
+
+
+```{r}
+library(nnet)
+library(forcats)
+df$publication_place <- fct_lump_n(
+  factor(df$publication_place),
+  n = 20,
+  other_level = "Other"
+)
+
+df$publication_place <- fct_explicit_na(df$publication_place, na_level = "Unknown")
+df$publication_decade <- fct_explicit_na(df$publication_decade, na_level = "Unknown")
+df$gender       <- fct_explicit_na(factor(df$gender), na_level = "Unknown")
+df$language          <- fct_explicit_na(factor(df$language), na_level = "Unknown")
+df$publisher_size    <- fct_explicit_na(factor(df$publisher_size), na_level = "Unknown")
+df$code_genre             <- fct_explicit_na(factor(df$code_genre), na_level = "Unknown")
+
+
+model <- multinom(
+  code_genre ~ gender + language + + publication_decade + publication_place + publisher_size,
+  data = df,
+  trace = FALSE
+)
+
+summary(model)
+
+```
+```{r}
+RRR <- exp(coef(model))
+RRR
+```
+
+
+# Bayesian regression for probabilistic interpretation
+```{r}
+df$genre <- gsub("Puheet, esitelmät", "Puheetesitelmat",df$genre)
+df$genre <- gsub("Novellit, kertomukset", "Novellitkertomukset",df$genre)
+df$genre <- gsub("Yhdistelmä", "Yhdistelma",df$genre)
+```
+
+
+
+```{r}
+priors1 <- c(
+  brms::prior(brms::normal(0, 1), class = "b", dpar = "muEsseet"),
+  brms::prior(brms::normal(0, 1), class = "b", dpar = "muHuumorisatiiri"),
+  brms::prior(brms::normal(0, 1), class = "b", dpar = "muKaunokirjallisuus"),
+  brms::prior(brms::normal(0, 1), class = "b", dpar = "muKirjeet"),
+  brms::prior(brms::normal(0, 1), class = "b", dpar = "muNovellitkertomukset"),
+  brms::prior(brms::normal(0, 1), class = "b", dpar = "muPuheetesitelmat"),
+  brms::prior(brms::normal(0, 1), class = "b", dpar = "muRomaanit"),
+  brms::prior(brms::normal(0, 1), class = "b", dpar = "muRunot"),
+  brms::prior(brms::normal(0, 1), class = "b", dpar = "muTietokirjallisuus"),
+  brms::prior(brms::normal(0, 1), class = "b", dpar = "muYhdistelma")
+)
+```
+
+
+
+```{r}
+library(rstan)
+library(Rcpp)
+library(brms)
+
+fit.bayes <- brms::brm(
+  code_genre ~ gender * language + publication_decade +
+    (1|publication_place) + (1|publisher_size),
+  family = bernoulli(link = "logit"),
+  data = df,
+  prior = c(
+    prior(normal(0, 2), class = "Intercept"),
+    prior(normal(0, 1), class = "b")
+  ),
+  chains = 4,
+  cores = 4,
+  iter = 3000,
+  control = list(adapt_delta = 0.95)
+)
+```
+
+
+```{r}
+summary(fit.bayes)
+```
+
+```{r}
+plot(fit.bayes)
+```
+
+
+```{r}
+library(rstan)
+library(Rcpp)
+library(brms)
+library(nnet)
+library(forcats)
+
+df <- read.table(
+  file = paste0(output.folder, "books_19th.tsv"), 
+  sep = "\t",
+  header = TRUE,
+  colClasses = "character",
+  fileEncoding = "UTF-8",
+  quote = "\"",
+  comment.char = "",
+  stringsAsFactors = FALSE
+)
+
+df$genre <- gsub("Puheet, esitelmät", "Puheetesitelmat",df$genre)
+df$genre <- gsub("Novellit, kertomukset", "Novellitkertomukset",df$genre)
+df$genre <- gsub("Yhdistelmä", "Yhdistelma",df$genre)
+
+df_fiction <- df %>%
+  filter(genre != "Tietokirjallisuus") %>%
+  droplevels()
+
+df_fiction$publication_place <- fct_lump_n(
+  factor(df_fiction$publication_place),
+  n = 20,
+  other_level = "Other"
+)
+
+df_fiction$publication_place  <- fct_na_value_to_level(df_fiction$publication_place,  level = "Unknown")
+df_fiction$publication_decade <- fct_na_value_to_level(df_fiction$publication_decade, level = "Unknown")
+df_fiction$gender             <- fct_na_value_to_level(factor(df_fiction$gender),     level = "Unknown")
+df_fiction$language           <- fct_na_value_to_level(factor(df_fiction$language),   level = "Unknown")
+df_fiction$publisher_size     <- fct_na_value_to_level(factor(df_fiction$publisher_size), level = "Unknown")
+df_fiction$genre              <- fct_na_value_to_level(factor(df_fiction$genre),      level = "Unknown")
+
+```
+
+
+```{r}
+priors3 <- c(
+  prior(normal(0, 1), class = "b", dpar = "muEsseet"),
+  prior(normal(0, 1), class = "b", dpar = "muHuumorisatiiri"),
+  prior(normal(0, 1), class = "b", dpar = "muKaunokirjallisuus"),
+  prior(normal(0, 1), class = "b", dpar = "muKirjeet"),
+  prior(normal(0, 1), class = "b", dpar = "muNovellitkertomukset"),
+  prior(normal(0, 1), class = "b", dpar = "muPuheetesitelmat"),
+  prior(normal(0, 1), class = "b", dpar = "muRomaanit"),
+  prior(normal(0, 1), class = "b", dpar = "muRunot"),
+  prior(normal(0, 1), class = "b", dpar = "muYhdistelma"))
+```
+
+
+
+```{r}
+fit.bayes1 <- brms::brm(
+  genre ~ gender * language + publication_decade,
+  family = categorical(),
+  data = df_fiction,
+  prior = priors3,
+  chains = 3,
+  cores = 1,
+  iter = 2000,
+  control = list(adapt_delta = 0.95)
+)
+```

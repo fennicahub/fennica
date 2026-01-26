@@ -6,8 +6,10 @@ df.kanto <- read_parquet(url)
 df.kanto <- df.kanto %>%
   mutate(author_profession_kanto_fi = profession_metadata_profession_prefLabel_fi)
 
-# Columns to keep
-columns_to_keep <- c("melinda_id", "prefLabel", "altLabel", "variantName", "hiddenLabel", "authorizedAccessPoint", "note","birthDate", "deathDate", "author_profession_kanto_fi")
+# Columns to kee
+columns_to_keep <- c("melinda_id", "prefLabel", "altLabel",
+                     "variantName", "fullerFormOfName", "authorizedAccessPoint", "relatedPersonOfPerson_prefLabel",
+                     "note","birthDate", "deathDate", "author_profession_kanto_fi")
 
 # Filter to required columns
 df.kanto <- df.kanto %>% select(all_of(columns_to_keep)) #%>% distinct()

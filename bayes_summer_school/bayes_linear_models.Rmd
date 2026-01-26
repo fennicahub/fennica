@@ -1,0 +1,634 @@
+---
+title: "Coding example chapter 4"
+output:
+  html_document:
+    df_print: paged
+date: "2024-07-19"
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Bayesian Inference for Linear Models
+
+## Example: Normal Linear Model for Mental Impairment
+
+Data from a study with a random sample of adults from a county in
+Florida in the U.S., that investigated the relationship between certain
+mental health indices and several explanatory variables.
+
+The response variable is an index of mental impairment, which
+incorporates various dimensions of psychiatric symptoms, including
+aspects of anxiety and depression. This measure ranged from 17 to 41 for
+the 40 observations in the data file, with $\overline{y} = 27.30$ and
+$s_{y} = 5.46$. The explanatory variables are $x_1$ = life events score
+and $x_2$ = socioeconomic status (SES). The life events score is a
+composite measure of both the number and severity of life events the
+subject experienced within the past three years, such as a death in the
+family or divorce or losing a job or moving. It ranged from 3 to 97 in
+the sample, with $\overline{x}_{1} = 44.42$ and $s_{x_{1}} = 22.62$. SES
+is a composite index based on occupation, income, and education. It
+ranged from 0 to 100, with $\overline{x}_{2} = 56.60$ and
+$s_{x_{2}} = 25.28$.
+
+\thispagestyle{plain}
+
+In the table: Part of {\bf Mental} data file at the text website with
+$y =$ mental impairment, $x_1 =$ life events, and $x_2 =$ socioeconomic
+status (ses).
+
+\begin{table}[ht] 
+\begin{center}
+\small{
+\begin{tabular}{ccccccccccc}\hline
+impair & life & ses &  & impair & life & ses & & impair & life & ses  \\ \hline
+17 & 46 & 84 &  & 26 & 50 & 40 &  & 30 & 44 & 53 \\ 
+19 & 39 & 97 &  & 26 & 48 & 52 &  & 31 & 35 & 38 \\ 
+20 & 27 & 24 &  & 26 & 45 & 61 &  & 31 & 95 & 29 \\ 
+\hline
+\end{tabular}}
+\end{center}
+\end{table}
+
+```{r}
+ Mental <- read.table("http://stat4ds.rwth-aachen.de/data/Mental.dat", header=TRUE)
+ Mental
+
+ pairs(~impair + life + ses, data=Mental) # scatterplot matrix for pairs (not shown)
+ cor(cbind(Mental$impair, Mental$life, Mental$ses)) # correlation matrix
+
+ summary(lm(impair ~ life + ses, data=Mental)) # least squares fit of linear model (lm)
+  # estimate of sigma = error std. dev.
+
+
+```
+
+The least-squares prediction equation is
+$\hat{\mu}_{i} = 28.230 + 0.103x_{i1} - 0.097x_{i2}$. The $F$ statistic
+for testing $H_0$: $\beta_1 = \beta_2 = 0$ is 9.495 with $df_1 = 2$ and
+$df_2 = 37$, giving a $P$-value of 0.0005. The evidence is very strong
+that at least one explanatory variable is associated with mental
+impairment, although the overall predictive power summarized by the
+adjusted $R^2 = 0.30$ is modest. The individual $t$ statistics of 3.18
+and $-3.35$ with their $P$-values of 0.003 and 0.002 provide strong
+evidence that each explanatory variable has an effect on mental
+impairment, life events a positive effect and SES a negative effect,
+adjusting for the other variable.
+
+## Example: Bayesian Linear Model for Mental Impairment
+
+To obtain a Bayesian fit of the model that is similar to the least
+squares fit of the linear model, we select highly disperse
+$\mathcal{N}(0, 100^2)$ prior distributions for $\{\beta_{j}\}$, which
+resemble the uniform distribution over the region in which the
+likelihood function mainly concentrates. The frequentist estimate of
+$\sigma$ is 4.6, and we use an exponential prior distribution for
+$\sigma$ with rate 0.01 (mean = standard deviation 100), which
+practically contains little information and does not differ much from a
+uniform distribution over the relevant region of $\sigma$ values. To
+implement the Bayesian fit, we use the {\bf brms} package:
+
+```{r}
+ Mental <- read.table("http://stat4ds.rwth-aachen.de/data/Mental.dat", header=TRUE)
+ library(brms)
+ fit.bayes <- brm(
+   impair ~ life + ses, data=Mental, family=gaussian,
+   prior = prior(normal(0,100),class=Intercept)+prior(normal(0.2,0.1),class=b,coef=life)+
+   prior(normal(-0.2,0.1),class=b,coef=ses) + prior(exponential(0.01),class=sigma)
+ )
+ print(fit.bayes, digits=3)
+ # mean of posterior dist. of sigma is 4.716 
+ beta1 <- as_draws_df(fit.bayes)$b_life   # values from posterior dist. of beta1
+ beta2 <- as_draws_df(fit.bayes)$b_ses    # values from posterior dist. of beta2
+ mean(beta1 <= 0); mean(beta2 >= 0)
+
+ plot(fit.bayes) # plots posterior distributions 
+ hist(beta1)     # histogram of posterior distribution of life events effect
+ hist(beta1, freq=FALSE, main = "", xlab = expression(beta[1]), ylab = "Density")
+                          # histogram of posterior distribution of life events effect
+ dens1 <- density(beta1) # smoothed posterior distribution added on the histogram plot
+ lines(dens1, lwd=2, lty=1)
+
+```
+
+```{r}
+ hist(beta2)
+ hist(beta2, freq=FALSE, main = "", xlab = expression(beta[2]), ylab = "")
+                          # histogram of posterior distribution of ses effects
+ dens2 <- density(beta2) # smoothed posterior distribution added on the histogram plot
+ lines(dens2, lwd=2, lty=1)
+```
+
+We illustrate the analysis of separate partial effects by investigating
+the effect of life events. The {\bf R} output shows a posterior interval
+(0.04, 0.17) having probability 0.95. Adjusting for SES, the posterior
+probability is 0.95 that the change in mean mental impairment per
+one-unit increase in life events falls between 0.04 and 0.17, or
+equivalently, between 4 and 17 when life-events increases from 0 to 100.
+Since the interval contains only positive numbers, we infer that the
+association between mental impairment and life events is positive,
+adjusting for SES. From the least squares fit, the corresponding
+frequentist 95% confidence interval for $\beta_1$ is
+
+$$
+\hat{\beta}_1 \pm t_{_{0.025, 37}}(se_{1}) = 0.103 \pm 2.026(0.032), \quad
+\hbox{which is} \quad (0.04, 0.17).
+$$
+
+The Bayesian approach can also generate posterior probabilities, such as
+$P(\beta_{1} \leq 0 \mid {\bf y})$ that life events has a nonpositive
+effect on mental impairment, adjusting for SES. The {\bf R} analysis, by
+finding the indicator for whether each of the elements in the simulation
+for generating the posterior distribution of $\beta_{1}$ is less than 0
+and then finding their mean, reports
+$P(\beta_{1} \leq 0 \mid {\bf y}) = 0.002$; that is, 0 is the 0.002
+quantile of the marginal posterior distribution of $\beta_{1}$. This is
+very similar to the classical one-sided $P$-value for testing $H_{0}$:
+$\beta_{1} = 0$ (and implicitly $H_{0}$: $\beta_{1} \leq 0$) against
+$H_{a}$: $\beta_{1} > 0$, where the least squares output shows the
+observed test statistic is
+$t = \hat{\beta}_{1}/se_{1} = 0.103/0.032 = 3.18$, with
+$df = n - (p+1) = 40 - (2+1) = 37$ has one-sided $P$-value 0.0015.
+Similarly, the Bayesian posterior $P(\beta_{2} \geq 0) = 0.0007$ is
+similar to the frequentist $P$-value for testing $H_{0}$:
+$\beta_{2} = 0$ (and implicitly $H_{0}$: $\beta_{2} \geq 0$) against
+$H_{a}$: $\beta_{2} < 0$, which is 0.0009. The Bayesian interpretations
+are simpler. From $P(\beta_{1} \leq 0 \mid {\bf y}) = 0.002$, we
+conclude that the probability is 0.998 that life effects has a positive
+effect on mental impairment, adjusting for SES.
+
+In using {\ttfamily brms}, when one enters
+`summary(fit.bayes)' to describe a Bayesian fit called`fit.bayes', it
+shows results to their default printing of two decimal places.
+
+## Bayesian Inference about the Correlation
+
+Suppose we want to construct a Bayesian posterior interval for the
+population value $\rho$ of a correlation between random variables $X$
+and $Y$. If you do an Internet search, you will not find a
+straightforward way to do this. However, you could construct the
+standard frequentist confidence interval for $\rho$ based on the normal
+linear model, but treat it as a Bayesian posterior interval for improper
+priors and then apply the simpler Bayesian interpretation. For the
+frequentist approach, the sampling distribution of the correlation $r$
+is not symmetric unless $\rho = 0$, but R. A. Fisher showed that the
+transformation $T = (1/2)\log[(1 + r)/(1 - r)]$ has an approximately
+normal sampling distribution about
+$\tau = (1/2)\log[(1 + \rho)/(1 - \rho)]$, with standard error
+$1/\sqrt{n - 3}$. We can use the normal distribution to find the
+confidence interval for $\tau$ and then substitute each of its endpoints
+in the inverse transformation $\rho = (e^{2\tau} - 1)/(e^{2\tau} + 1)$
+to find the confidence interval for $\rho$ and interpret it as a
+Bayesian posterior interval based on improper priors.
+
+To illustrate, for 100 home sales in Gainesville, Florida, the
+{\ttfamily Houses} data file at the book's website lists the selling
+price and size of the house. The correlation between them is
+$r = 0.8338$. Fisher's transformation
+$T = (1/2)\log[(1 + 0.8338)/(1 - 0.8338)] = 1.2004$ has standard error
+$1/\sqrt{100 - 3} = 0.1015$. The 95% confidence interval for $\tau$ is
+$1.2004 \pm 1.96(0.1015)$. Using the inverse transformation on its
+endpoints yields the 95% confidence interval for $\rho$, which
+{\ttfamily R} reports as (0.762, 0.885) and is available in an
+{\ttfamily R} package.
+
+```{r}
+
+ Houses <- read.table("http://stat4ds.rwth-aachen.de/data/Houses.dat", header=TRUE)
+ T <- (1/2)*log((1 + cor(Houses$price,Houses$size))/(1 - cor(Houses$price,Houses$size)))
+ L <- T - 1.96/sqrt(100-3); U <- T + 1.96/sqrt(100-3) # endpoints of CI for tau
+ (exp(2*L) - 1)/(exp(2*L) + 1); (exp(2*U) - 1)/(exp(2*U) + 1)
+     # Frequentist CI for rho based on Fisher's transformation
+ library(confintr)  # R package that can provide CI for correlation
+ ci_cor(Houses$price, Houses$size, probs = c(0.025, 0.975)) 
+ # This is also a Bayesian posterior interval, for improper priors
+
+
+```
+
+For the improper prior distributions or very highly disperse proper
+prior distributions for the parameters of the normal linear model, it
+follows that (0.76, 0.89) is a Bayesian posterior interval for the
+population correlation $\rho$. We conclude that the probability is 0.95
+that $\rho$ falls between 0.76 and 0.89.
+
+Since the correlation is merely a standardized slope, $H_0$: $\rho = 0$
+is equivalent to $H_0$: $\beta_{1} = 0$ in the model
+$E(Y) = \beta_{0} + \beta_{1}x$. So, regardless of the selected prior
+distributions for Bayesian fitting of the model, the estimates of
+$P(\rho > 0 \mid {\bf y})$ and $P(\rho < 0 \mid {\bf y})$ are identical
+to the posterior probabilities $P(\beta_{1} > 0 \mid {\bf y})$ and
+$P(\beta_{1} < 0 \mid {\bf y})$ obtained from the Bayesian fit.
+
+## Example: Comparing Mean Fertility for Natives and Migrants
+
+A recent study of factors associated with fertility (a woman's number of
+children) in a Latin American city focused on whether migrants from
+other cities or migrants from rural areas differ from natives of the
+city in their family sizes. For a random sample of married women above
+age 45, the groups compared were urban natives, urban migrants, and
+rural migrants. Since fertility is typically negatively related to
+educational level and since that level might differ among the three
+groups, the {\ttfamily Fertility} data file at the book's website
+contains data on $y$ = fertility, $x$ = number of years of education,
+and the group ID. In the following code, software uses indicator
+variables $z_{i1} = 1$ for urban migrants and 0 otherwise and
+$z_{i2} = 1$ for urban natives and 0 otherwise, with
+$z_{i1} = z_{i2} = 0$ for rural migrants.
+
+The code shows shows a Bayesian fit of the model % $$
+E(Y_{i}) = \beta_{0} + \beta_1 x_{i} + \beta_2 z_{i2} + \beta_{3}z_{i3},
+$$ % using highly disperse prior distributions that provide similar
+results to least squares:
+
+```{r}
+
+ Fertility <- #read.table("https://stat4ds.rwth-aachen.de/data/Fertility.dat", header=TRUE)
+  read.table("../Data/Fertility.dat", header=TRUE)
+ tail(Fertility, 3)
+# 52 observations in Fertility data file
+ library(brms)                                         
+ fit.bayes <- brm(
+   fertility ~ education + group, data=Fertility, family=gaussian,
+   prior = prior(normal(0,100), class=Intercept) + prior(normal(0,100), class=b) +                    prior(exponential(0.01), class=sigma)
+ )
+ summary(fit.bayes)                           
+
+```
+
+For identifiability, not including an indicator for rural migrants,
+$\beta_2$ and $\beta_3$ provide comparisons of the other two groups with
+them. For example, $\tilde{\beta}_{2} = -1.41$ is the estimated
+difference between the mean fertility of urban migrants and rural
+migrants at each fixed level of education. For each group, mean
+fertility is estimated to decrease by 0.24 for each additional year of
+education.
+
+## Example: Linear Model for Scottish Hill Races
+
+Each year the Scottish Hill Runners Association publishes a list of hill
+races in Scotland for the
+year.\footnote{See \url{https://scottishhillrunners.uk}}. Table
+\ref{tab4-races} shows the record times (in minutes) for men and for
+women for some of the races, as of January 2021, and the
+{\ttfamily ScotsRaces} data file at the text website has data for 68
+races. Explanatory variables listed are the distance of the race and the
+climb in elevation (in kilometers).
+
+In the table: Record time to complete Scottish hill race (in minutes),
+by distance and climb in elevation of the course (in kilometers).
+
+\\begin{table} \label{tab4-races}}{%
+
+\begin{tabular}{@{}lcccc@{}}
+
+\hline
+Race & Distance & Climb & Record Time Men & Record Time Women \\
+\hline
+Ben Lomond     &   12.0  &  0.97  &   \phantom{1}62.27 & \phantom{1}71.95 \\
+Craig Dunain     &   9.0   &  0.27  &   \phantom{1}39.23 & \phantom{1}45.76 \\
+Greenmantle &   3.2  &  0.20  &   \phantom{1}15.10 & \phantom{1}18.75 \\ 
+Highland Fling & 85.0 & 1.20 & 439.15 & 490.05 \\
+Isle of Jura  &  28.0   &  2.37  &  185.23 & 218.72 \\ 
+Lairig Ghru  &  43.0 & 0.64  &  178.17 & 212.63 \\
+\hline
+%\ \\
+\end{tabular}
+
+ \\ The data for all 68 races are in the {\ttfamily ScotsRaces} data
+file at the book's website.} \\end{table}
+
+Here, we use Bayesian fitting of linear models to describe the effects
+of distance and climb on the the record times for women. We do not
+conduct statistical inference, because the races are not in any sense a
+random sample of possible races. Here are some summary statistics:
+
+```{r}
+
+ Races <- read.table("http://stat4ds.rwth-aachen.de/data/ScotsRaces.dat", header=TRUE)
+ head(Races, 3)                         # timeM for men, timeW for women
+
+
+ matrix(cbind(mean(Races$timeW), sd(Races$timeW), mean(Races$climb), sd(Races$climb), 
+              mean(Races$distance), sd(Races$distance)), nrow=2)
+  # timeW has mean = 100.7, standard deviation = 72.6 minutes
+  # climb has mean = 0.89, standard deviation = 0.54 km
+                            # distance has mean = 16.6, standard deviation = 11.8 km
+
+  pairs(~timeW + distance + climb, data=Races) # scatterplot matrix (Figure 4.1) 
+
+```
+
+The scatterplot for record time and distance reveals a strong linear
+trend. The scatterplot of record time and climb shows a rather severe
+outlier.
+
+It is plausible that the effect of $d$ = distance on record time is
+greater when $c$ = climb in elevation is greater. To allow the effect of
+distance to depend on the climb, we include an interaction term in the
+fitted model. Moreover, so that the predicted record time is 0 when
+$d = c = 0$, we constrain the $y$-intercept term to equal 0.
+
+```{r}
+ library(brms) # no intercept specified by -1 at beginning of linear predictor
+ fit.bayes <- brm(timeW ~ -1 + distance + climb + distance:climb, data=Races,
+                  family=gaussian, prior = prior(normal(0,100), class=b) + 
+                    prior(exponential(0.01), class=sigma))
+ summary(fit.bayes) 
+
+```
+
+The prediction equation is
+$\hat{\mu} = 4.09 d + 18.63 c + 0.92(d \times c)$. For a fixed value of
+$c$, the coefficient of $d$ in the prediction equation is 4.09 +
+0.92$c$. Between the minimum climb of $c$ = 0.185 \textit{km} and the
+maximum climb of $c$ = 2.40 \textit{km}, the effect on record time of a
+1 \textit{km} increase in distance changes from 4.09 + 0.92(0.185) =
+4.26 minutes to 4.09 + 0.92(2.40) = 6.30 minutes.
+
+The outlier that we observe in the scatterplots is the Highland Fling
+race. It is a highly influential observation, having much greater
+distance than the others but not an extreme climb.
+\textit{Cook's distance} is a diagnostic based on the change in the
+least squares estimates $\{\hat{\beta}_{j}\}$ when the observation is
+removed from the data set. We use this diagnostic here, since the
+Bayesian fit with highly disperse priors is very similar to the least
+squares fit. For the Highland Fling observation, which is observation 41
+in the data file, Cook's distance equals 9.13 and is 33 times the next
+largest value. When we remove Highland Fling from the data file, the
+estimated effects change considerably.
+
+```{r}
+ fit.LS <- lm(timeW ~ -1+distance+climb+distance:climb, data=Races) # least squares
+ cooks.ds <-cooks.distance(fit.LS); tail(sort(cooks.ds), 3)
+                  # 3 largest Cook's distance values
+                  # Cook's distance = 9.13 for observ. 41
+ fit.bayes2 <- brm(timeW ~ -1+distance+climb+distance:climb,data=Races[-41,],family=gaussian,
+                   prior=prior(normal(0,100),class=b)+prior(exponential(0.01),class=sigma))
+ summary(fit.bayes2)
+  
+```
+
+For a fixed value of $c$, the coefficient of $d$ in the prediction
+equation is now 3.706 + 0.469$c$. Between the minimum climb of 0.185
+\textit{km} and the maximum climb of 2.40 \textit{km}, the effect on
+record time of a 1 \textit{km} increase in distance changes from 3.706 +
+0.469(0.185) = 3.79 minutes to 3.706 + 0.469(2.40) = 4.83 minutes. The
+difference is not nearly as great as when the outlying observation is
+included in the analysis.
+
+## Collinearity and its Effects
+
+In observational studies, the explanatory variables are often so
+correlated that they \`\`overlap'' considerably in the following sense:
+Each explanatory variable is nearly redundant, as it can be predicted
+well using the others. Because of this, standard deviations for the
+estimates generated from posterior distributions can be inflated, making
+it difficult to interpret individual effects. Deleting one or more
+explanatory variables that are nearly redundant can help to reduce
+standard deviations of the remaining estimated effects.
+
+Let $R^{2}_{j}$ denote $R^2$ from least squares regression of $x_j$ on
+the other explanatory variables from the model. Then, the
+\textit{variance inflation factor} $VIF_{j} = 1/(1 - R_{j}^{2})$
+represents the multiplicative increase in var($\hat{\beta}_{j}$) due to
+$x_j$ being correlated with the other explanatory variables. As
+$R^{2}_{j}$ and hence $VIF$ increases, var($\hat{\beta}_{j}$) increases.
+When $VIF$ values are large, standard errors are relatively large and
+estimates of the partial effects are imprecise and may themselves be
+highly correlated. This condition is called
+\\textbf{\textit{collinearity}.
+
+When it occurs in multiple regression modeling, usually we can attain
+nearly as large an $R^2$ value in predicting $Y$ with a reduced set of
+explanatory variables. \index{s}{Overfitting} We run the risk of
+\textit{overfitting} the data if we try to use several highly
+intercorrelated explanatory variables, one impact being that estimates
+of individual effects can have large standard deviations and be quite
+poor.
+
+We illustrate collinearity with a simple simulation. Suppose that $Y$ is
+a continuous variable that measures a person's intelligence, but it is
+unobservable, called a \textit{latent variable}.\
+In a population of interest, suppose that $Y$ has a
+$\mathcal{N}(100, 16^{2})$ distribution. To approximate it, suppose
+there are four versions of an IQ test, where, conditional on $Y=y$, each
+one has a $\mathcal{N}(y, 2^{2})$ distribution. If we could observe $y$,
+we now analyze how well we can estimate the effect of $x_{1}$ as a
+predictor of $y$, when it is the sole predictor and when the model
+contains all four predictors. Here we show least squares results, but
+similar results occur with Bayesian analyses:
+
+```{r}
+ y <- rnorm(100, 100, 16)
+ x1 <- rnorm(100,y,2); x2 <- rnorm(100,y,2); x3 <- rnorm(100,y,2); x4 <- rnorm(100,y,2)
+ summary(lm(y ~ x1))
+ cor(cbind(y, x1, x2, x3, x4))
+ summary(lm(y ~ x1 + x2 + x3 + x4))
+
+```
+
+The model with $x_1$ alone gives a very precise estimate of $y$ and of
+the true effect of $x_1$. With all four predictors, the effects change
+as they are now partial effects, and the standard errors are much
+larger. The correlation is about 0.99 between $y$ and each predictor and
+about 0.98 between each pair of predictors. We can predict $y$ nearly as
+well with the simpler model, and the interpretation of its effect is
+simpler.
+
+## Example: Modeling Selling Price of a Home
+
+The {\bf Houses} data file analyzed the correlation between the selling
+price and the size of the house lists $y$ = selling price (in thousands
+of dollars) of 100 homes in Gainesville, Florida, together with several
+explanatory variables --- the size of the house (in square feet), the
+annual tax bill (in dollars), the number of bedrooms, the number of
+bathrooms, and an indicator variable for whether the home is new (1 =
+yes, 0 = no).
+
+```{r}
+ Houses <- read.table("http://stat4ds.rwth-aachen.de/data/Houses.dat", header=TRUE)
+ library(brms)
+ fit.bayes <- brm(
+   price ~ size+taxes+new+bedrooms+baths, family=gaussian, data=Houses,
+   prior = prior(normal(0,1000), class="b") + 
+     prior(normal(0,1000), class="Intercept") + 
+     prior(exponential(0.001), class=sigma)
+ )
+ summary(fit.bayes)
+ 
+ BIC(lm(price~size + taxes + new + bedrooms + baths, data=Houses))
+
+
+```
+
+In the table: Results of Bayesian fitting of linear models to predict
+home selling prices, selecting explanatory variables using backward
+elimination beginning with all the main effects or using forward
+selection
+
+\begin{table} 
+\label{tab4-models} 
+\begin{center}
+\begin{tabular}{llccllc}
+  \hline
+  \multicolumn{3}{c}{Backward elimination} && \multicolumn{3}{c}{Forward selection} \\
+Step  & \multicolumn{1}{l}{Explanatory Variables} & BIC &&
+Step  & \multicolumn{1}{l}{Explanatory Variables} & BIC \\ \hline
+1 & $S$, $T$, $N$, $Be$, $Ba$ & 1162.0    &&   1 & $T$ & 1177.8 \\
+2 & $S$, $T$, $N$, $Be$ & 1157.4          &&  2 & $S$, $T$ & 1157.9 \\
+3 & $S$, $T$, $N$  & 1154.6               &&  3 & $S$, $T$, $N$ & 1154.6 \\
+%4 & $S$, $T$  & 1157.9                    &&  4 & $S$, $T$, $N$, $Be$ & 1157.4\\
+%4 & $S$, $T$, $N$, $S$$\times$$N$ & 1145.4 && 4 & $S$, $T$, $N$, $S$$\times$$N$ & 1145.4\\ 
+%4b & $S$, $T$, $N$, $S$$\times$$T$ & 1151.2  \\
+%4c & $S$, $T$, $N$, $T$$\times$$N$ & 1158.3  \\
+%5 & $S$, $T$, $N$, $S$$\times$$N$, $T$$\times$$N$ & 1130.3 && 5 & $S$, $T$, $N$, $S$$\times$$N$, $T$$\times$$N$ & 1130.3 \\
+%6 & $S$, $T$, $N$, $S$$\times$$N$, $T$$\times$$N$, $S$$\times$$T$ & 1125.2 \\
+\hline 
+\end{tabular}
+\end{center}
+\footnotesize \textit{Note:} $S$ = size, $T$ = taxes, $N$ = whether new, $Ba$ = number of bathrooms, $Be$ = number of bedrooms  \\ \end{table}
+
+Table \ref{tab4-models} also shows results with a forward selection
+process. Beginning with the null model and its BIC of 1296.6, one adds
+taxes, then size, then whether new, and then BIC increases with other
+additions. Here is the Bayesian fit of the simpler model, again with
+highly disperse prior distributions:
+
+```{r}
+ fit.bayes2 <- brm(
+   price ~ size + taxes + new, family=gaussian, data=Houses,
+   prior = prior(normal(0,1000), class="b") + 
+     prior(normal(0,1000), class="Intercept") + 
+     prior(exponential(0.001), class=sigma))
+ summary(fit.bayes2)
+
+
+```
+
+The posterior means for the effects are similar to the more complex
+model.
+
+In practical terms, do we lose much by removing the information about
+bedrooms and bathrooms? For the frequentist fits that are essentially
+the same as the Bayesian fits, the multiple correlation between the
+observed selling prices and the fitted values is 0.891 for the model
+with all the predictors and 0.889 for the simpler model.
+
+```{r}
+
+ fit1 <- lm(price ~ taxes + size + new + baths + bedrooms, data=Houses)
+ fit2 <- lm(price ~ taxes + size + new, data=Houses)
+ cor(Houses$price, fitted(fit1)); cor(Houses$price, fitted(fit2))
+
+```
+
+The adjusted $R^2$ values are 0.782 with all the predictors and 0.783
+for the simpler model, so it makes sense to continue the model-building
+and checking with the simpler model.
+
+At the next stage we could consider potential interaction terms, and in
+fact BIC improves with some such additions to the model. Howover, basic
+diagnostic analyses with the working main effects model make additional
+model-fitting questionable, because of possible violations of the linear
+modeling assumptions. For example we could look at a scatterplot between
+price and size, distinguishing between the 11 new homes and 89 older
+ones. The scatterplot suggests that the variability in selling prices
+values may be greater at higher house sizes, whereas the ordinary linear
+model assumes constant variability. The figure also shows that one older
+home is a clear outlier, having a very large size but relatively low
+selling price, yet this observation might not be an outlier for a linear
+model that permits the variance of the response variable to increase as
+its mean increases. We leave further model building for these data to
+the next chapter, where we shall find that more appropriate models can
+yield somewhat different conclusions, such as suggesting that
+interaction terms are not needed.
+
+## Posterior Predictive Distribution and Its Use for Model Checking
+
+For the {\bf Students} data two %shows responses to a questionnaire by
+60 social science graduate students in an introductory Statistics course
+at the %University of Florida. Two of the variables observed were $x$ =
+high school GPA and $y$ = college GPA. We construct a 95% prediction
+interval at the mean high school GPA value of 3.3.
+
+```{r}
+
+ Students <- read.table("http://stat4ds.rwth-aachen.de/data/Students.dat", header=TRUE)
+ newdata <- data.frame(hsgpa = 3.3)
+ fit <- lm(cogpa ~ hsgpa, data=Students)
+ predict(fit, newdata, interval = "predict")
+
+
+```
+
+The predicted college GPA is 3.45, and we can be 95% sure that it falls
+between 2.76 and 4.14 in the corresponding population that this sample
+represents. The relatively wide interval reflects that the sample size
+is not very large and the sample correlation is only 0.28.
+
+## Regularization for Large p - Lasso Shrinkage to 0. Example: Predicting GPA with Student Survey Data
+
+We use the {\bf Students} data file. We use the 14 binary and
+quantitative variables to predict a subject's college GPA. When we use
+all 14 explanatory variables as main effects in a linear model and
+obtain a Bayesian fit using highly disperse prior distributions, none of
+the explanatory variables have posterior means that are more than 2
+standard deviations from 0.
+
+```{r}
+
+ Students <- read.table("http://stat4ds.rwth-aachen.de/data/Students.dat", header=TRUE)
+ library(brms)
+ fit.bayes <- brm(
+   cogpa ~ hsgpa + relig + ideol + gender + age + abor + dhome + dres + 
+     tv + sport + news + aids + veg + affirm, family=gaussian,
+   data=Students,
+   prior = prior(normal(0,1000), class=Intercept) +  
+     prior(normal(0,1000), class=b) + 
+     prior(exponential(0.001), class=sigma)
+ )
+ print(fit.bayes, digits=3)
+
+```
+
+When we consider each variable by itself as a predictor, \textit{hsgpa}
+(high-school GPA) has the highest correlation with the response, but
+only 0.278, and it has $t = \tilde{\beta}_{1}/se_{1} = 2.2$. Otherwise,
+only \textit{gender} and \textit{relig} (how often attend religious
+services, with 0 = never, 1 = occasionally, 2 = most weeks, 3 = every
+week) have moderately large $t$ ratios of the estimate divided by its
+standard deviation (about 1.5 and 1.8). We next use the lasso,
+implemented in {\ttfamily R} with the {\bf glmnet} package applied with
+standardized variables.
+
+```{r}
+
+ attach(Students)
+ x <- cbind(gender, age, hsgpa, abor, dhome, dres, tv, sport, news,
+            aids, veg, ideol, relig, affirm)
+ library(glmnet)
+ fit.lasso <- glmnet(x, cogpa, alpha=1, family="gaussian") 
+ plot(fit.lasso, "lambda")
+ set.seed(3)
+ cv <- cv.glmnet(x, cogpa, alpha=1, family="gaussian") 
+ cv$lambda.min
+ cv$lambda.1se
+ coef(glmnet(x, cogpa, alpha=1, family="gaussian", lambda=0.097))
+
+```
+
+The fit using the smoothing parameter value of $\lambda = 0.097$
+suggested by cross-validation for minimizing prediction error with the
+one-standard-error rule has only \textit{hsgpa} as a predictor, and its
+estimated effect is only 0.000041. Figure in the book / slides shows how
+the lasso estimates change as the smoothing parameter $\lambda$
+increases, on the log scale. The values at the left end of the plot,
+with the smallest shown value for $\log(\lambda)$, are very close to the
+least squares estimates, for which $\lambda = 0$. The \textit{hsgpa}
+estimate shrinks toward 0 from the least squares value of 0.148,
+becoming 0 when $\log(\lambda) \geq -2.33$ (i.e., $\lambda \geq 0.097$).

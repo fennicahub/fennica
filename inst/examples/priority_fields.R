@@ -56,6 +56,8 @@ df.orig$author_name_kantoVAR <- df.kanto$variantName
 df.orig$hidden_kanto <- df.kanto$hiddenLabel
 df.orig$access_kanto <- df.kanto$authorizedAccessPoint
 df.orig$note_kanto <- df.kanto$note
+df.orig$fuller_first <- df.kanto$fullerFormOfName
+df.orig$related_person <- df.kanto$relatedPersonOfPerson_prefLabel
 
 df.orig$author_birth_date_kanto <- df.kanto$birthDate
 df.orig$author_death_date_kanto <- df.kanto$deathDate

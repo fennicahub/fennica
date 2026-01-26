@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Genre and publishing metadata: exploratory association tests and probabilistic modeling</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="workshop_dariah_files/libs/clipboard/clipboard.min.js"></script>
+<script src="workshop_dariah_files/libs/quarto-html/quarto.js"></script>
+<script src="workshop_dariah_files/libs/quarto-html/popper.min.js"></script>
+<script src="workshop_dariah_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="workshop_dariah_files/libs/quarto-html/anchor.min.js"></script>
+<link href="workshop_dariah_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="workshop_dariah_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="workshop_dariah_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="workshop_dariah_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="workshop_dariah_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Genre and publishing metadata: exploratory association tests and probabilistic modeling</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This Quarto notebook documents a step-by-step workflow for assessing whether <strong>genre</strong> is associated with selected bibliographic metadata variables before fitting a full multivariable model. The response variable is <strong>genre</strong>, and the predictors are <strong>gender</strong>, <strong>language</strong>, <strong>publication_place</strong>, and <strong>publisher_size</strong> (large/medium/small). All variables are categorical.</p>
+<p>The workflow is intentionally staged. First, simple descriptive summaries and association tests are used to evaluate whether relationships are present at all. Next, models are introduced only after basic structure has been established. The final stage estimates genre probabilities under a Bayesian framework, enabling probabilistic interpretation and uncertainty quantification.</p>
+<p>Criteria: books published in Finland, Sweden or Russia in 1809-1917. Genre (outcome) Nominal categorical (K&gt;2) Gender Categorical Language Categorical Publication place Categorical (20 cities) Publisher size Categorical (3 levels)</p>
+<p>Gender male vs female Language Finnish vs Swedish Publisher size small / medium / large Place 19 dummies (reference = largest city)</p>
+<p>multinomial logistic regression for each k P(genre=k∣gender, language, place, publisher) # Data and setup</p>
+<section id="packages" class="level2">
+<h2 class="anchored" data-anchor-id="packages">Packages</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)     <span class="co"># tabyl()</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nnet)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="load-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-data">Load the data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # Download the csv file</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/harmonized/books_19th.tsv"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> url, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">colClasses =</span> <span class="st">"character"</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">fileEncoding =</span> <span class="st">"UTF-8"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">quote =</span> <span class="st">"</span><span class="sc">\"</span><span class="st">"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">comment.char =</span> <span class="st">""</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   melinda_id data_element         genre_008       record_type   biblio_level
+1   000864216       Kirjat          Romaanit Language material Monograph/Item
+2   000864217       Kirjat Tietokirjallisuus Language material Monograph/Item
+3   000864220       Kirjat Tietokirjallisuus Language material Monograph/Item
+4   000864223       Kirjat Puheet, esitelmät Language material Monograph/Item
+5   000864224       Kirjat Tietokirjallisuus Language material Monograph/Item
+6   000864226       Kirjat Tietokirjallisuus Language material Monograph/Item
+7   000864227       Kirjat Puheet, esitelmät Language material Monograph/Item
+8   000864230       Kirjat Puheet, esitelmät Language material Monograph/Item
+9   000864233       Kirjat            Draama Language material Monograph/Item
+10  000864234       Kirjat            Draama Language material Monograph/Item
+                publication_status                      author_name
+1  Single known date/probable date                    Malot, Hector
+2  Single known date/probable date Mangasarian, Mangasar Mugurditch
+3  Single known date/probable date        Louhivuori, Oskar Wilhelm
+4  Single known date/probable date                  Lunde, Albert G
+5  Single known date/probable date                   Manner, Viktor
+6  Single known date/probable date                   Manner, Viktor
+7  Single known date/probable date                  Lunde, Albert G
+8  Single known date/probable date                  Lunde, Albert G
+9  Single known date/probable date                   Mantero, Jussi
+10 Single known date/probable date                   Mantero, Jussi
+                                                     author_name_enriched
+1                                     Malot, Hector | Malot, Hector Henri
+2     Mangasarian, Mangasar Mugurditch | Monisti | Rautell, Emil Frithiof
+3  Louhivuori, Oskar Wilhelm | Louhivuori, O V | Louhivuori, Oskari Wilho
+4                                                         Lunde, Albert G
+5                                  Manner, Viktor | Manner, Antero Viktor
+6                                  Manner, Viktor | Manner, Antero Viktor
+7                                                         Lunde, Albert G
+8                                                         Lunde, Albert G
+9                                                          Mantero, Jussi
+10                                                         Mantero, Jussi
+                   gender gender_primary author_birth
+1              male| male           male         &lt;NA&gt;
+2              male| male           male         &lt;NA&gt;
+3  male| male| male| male           male           69
+4                    male           male         &lt;NA&gt;
+5              male| male           male         &lt;NA&gt;
+6              male| male           male         &lt;NA&gt;
+7                    male           male         &lt;NA&gt;
+8                    male           male         &lt;NA&gt;
+9                    male           male         &lt;NA&gt;
+10                   male           male         &lt;NA&gt;
+                                                                                                                                  title
+1                                                                                                                      Kosto :  romaani
+2                                                                                              Uusi Katkismus eli maailma ilman Jumalaa
+3  Den sociala alkoholfrågan :  nykterhetens Vänners tavlor för åskådningsundervisning, 3:dje serien : förklaringar och källförteckning
+4                                                        Gören bättring och tron evangelium :  tal hållet i Helsingfors den 4 mars 1912
+5                                                                                    Asunto-olosuhteet Hämeenlinnan kaupungissa v. 1908
+6                                                                           Terveys- ja sairashoidolliset olot Hämeenlinnan kaupungissa
+7                                                                 Jerusalems vittnen :  tal hållet i Nikolaikyrkan den 26 februari 1912
+8                                                                                 Seger :  tal hållet i Helsingfors d. 26 februari 1912
+9                                                                                    Lempeä ja lemmen leikkiä :  yksinäytöksinen kuvaus
+10                                                                                        Viimeinen Villitys :  yksinäytöksinen ilveily
+   title_length title_word language language_primary language_multi lang_orig
+1            16          3  Finnish          Finnish          FALSE       und
+2            40          6  Finnish          Finnish          FALSE       eng
+3           132         15  Swedish          Swedish          FALSE          
+4            78         14  Swedish          Swedish          FALSE          
+5            50          5  Finnish          Finnish          FALSE          
+6            59          6  Finnish          Finnish          FALSE          
+7            69         11  Swedish          Swedish          FALSE          
+8            53         10  Swedish          Swedish          FALSE          
+9            50          7  Finnish          Finnish          FALSE          
+10           45          5  Finnish          Finnish          FALSE          
+   publication_year_from publication_year_till publication_year
+1                   1910                  &lt;NA&gt;             1910
+2                   1907                  &lt;NA&gt;             1907
+3                   1912                  &lt;NA&gt;             1912
+4                   1912                  &lt;NA&gt;             1912
+5                   1909                  &lt;NA&gt;             1909
+6                   1909                  &lt;NA&gt;             1909
+7                   1912                  &lt;NA&gt;             1912
+8                   1912                  &lt;NA&gt;             1912
+9                   1908                  &lt;NA&gt;             1908
+10                  1910                  &lt;NA&gt;             1910
+   publication_decade publication_place publication_country
+1                1910      Lappeenranta             Finland
+2                1900            Kuopio             Finland
+3                1910          Helsinki             Finland
+4                1910          Helsinki             Finland
+5                1900       Hämeenlinna             Finland
+6                1900       Hämeenlinna             Finland
+7                1910          Helsinki             Finland
+8                1910          Helsinki             Finland
+9                1900            Kuopio             Finland
+10               1910            Kuopio             Finland
+                              publisher
+1                     osuuskunta saimaa
+2  savon työväen sanomalehti osuuskunta
+3                 kustantaja tuntematon
+4                       svenska k f u m
+5                 kustantaja tuntematon
+6                enok rytkönen jakelija
+7                       svenska k f u m
+8                       svenska k f u m
+9                          u w telen co
+10                         u w telen co
+                                        signum udk_orig udk_harm udk_aux
+1                     Suom. kaunokirj. 2 -1972              &lt;NA&gt;    &lt;NA&gt;
+2                           Hartauskirj. -1972              &lt;NA&gt;    &lt;NA&gt;
+3  Raittius 3 -1972;Käsifilmistö - filmikortit              &lt;NA&gt;    &lt;NA&gt;
+4                      Mf.;K.Saarnakirj. -1972              &lt;NA&gt;    &lt;NA&gt;
+5                           Lääketiede 3 -1972              &lt;NA&gt;    &lt;NA&gt;
+6                           Lääketiede 3 -1972              &lt;NA&gt;    &lt;NA&gt;
+7                      K.Saarnakirj. -1972;Mf.              &lt;NA&gt;    &lt;NA&gt;
+8                      K.Saarnakirj. -1972;Mf.              &lt;NA&gt;    &lt;NA&gt;
+9                     Suom. kaunokirj. 4 -1972  894.541  894.541      -2
+10                    Suom. kaunokirj. 4 -1972  894.541  894.541      -2
+                           udk                 udk_primary udk_multi
+1                         &lt;NA&gt;                        &lt;NA&gt;      &lt;NA&gt;
+2                         &lt;NA&gt;                        &lt;NA&gt;      &lt;NA&gt;
+3                         &lt;NA&gt;                        &lt;NA&gt;      &lt;NA&gt;
+4                         &lt;NA&gt;                        &lt;NA&gt;      &lt;NA&gt;
+5                         &lt;NA&gt;                        &lt;NA&gt;      &lt;NA&gt;
+6                         &lt;NA&gt;                        &lt;NA&gt;      &lt;NA&gt;
+7                         &lt;NA&gt;                        &lt;NA&gt;      &lt;NA&gt;
+8                         &lt;NA&gt;                        &lt;NA&gt;      &lt;NA&gt;
+9  Suomenkielinen kirjallisuus Suomenkielinen kirjallisuus     FALSE
+10 Suomenkielinen kirjallisuus Suomenkielinen kirjallisuus     FALSE
+                    genre_655   author_profession             genre
+1  Käännökset; Översättningar                &lt;NA&gt;          Romaanit
+2                        &lt;NA&gt;                &lt;NA&gt; Tietokirjallisuus
+3                        &lt;NA&gt;    taloustieteilijä Tietokirjallisuus
+4                        &lt;NA&gt;                &lt;NA&gt; Puheet, esitelmät
+5                        &lt;NA&gt;                &lt;NA&gt; Tietokirjallisuus
+6         Tilastot; Statistik                &lt;NA&gt; Tietokirjallisuus
+7                        &lt;NA&gt;                &lt;NA&gt; Puheet, esitelmät
+8                        &lt;NA&gt;                &lt;NA&gt; Puheet, esitelmät
+9                        &lt;NA&gt; kirjailija,kääntäjä            Draama
+10                       &lt;NA&gt; kirjailija,kääntäjä            Draama
+   publisher_size  code_genre
+1         group_3     fiction
+2         group_3 non-fiction
+3         group_1 non-fiction
+4         group_3     fiction
+5         group_1 non-fiction
+6         group_3 non-fiction
+7         group_3     fiction
+8         group_3     fiction
+9         group_2     fiction
+10        group_2     fiction</code></pre>
+</div>
+</div>
+</section>
+<section id="cross-tabs-and-proportions" class="level2">
+<h2 class="anchored" data-anchor-id="cross-tabs-and-proportions">Cross-tabs and proportions</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">gender =</span> <span class="fu">factor</span>(gender_primary, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">profession_primary =</span> <span class="fu">trimws</span>(<span class="fu">sub</span>(<span class="st">",.*"</span>, <span class="st">""</span>, author_profession))</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>profession_primary <span class="ot">&lt;-</span> <span class="fu">fct_lump_n</span>(</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">factor</span>(df<span class="sc">$</span>profession_primary),</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">10</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">other_level =</span> <span class="st">"Other"</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="genre-x-gender" class="level3">
+<h3 class="anchored" data-anchor-id="genre-x-gender">Genre X Gender</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tab_gender <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">tabyl</span>(df, genre, gender)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tab_gender</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 genre  male female  NA_
+                Draama  1432    181  102
+                Esseet    19      0    0
+      Huumori, satiiri     6      0    6
+     Kaunokirjallisuus   172     36   55
+               Kirjeet    17      0    1
+ Novellit, kertomukset  1259    367  282
+     Puheet, esitelmät   197     16   16
+              Romaanit  3908    897  531
+                 Runot  2148    162  692
+     Tietokirjallisuus 11982    453 2217
+            Yhdistelmä   189     31   56</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">adorn_percentages</span>(tab_gender, <span class="st">"row"</span>) <span class="sc">%&gt;%</span> janitor<span class="sc">::</span><span class="fu">adorn_pct_formatting</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 genre   male female   NA_
+                Draama  83.5%  10.6%  5.9%
+                Esseet 100.0%   0.0%  0.0%
+      Huumori, satiiri  50.0%   0.0% 50.0%
+     Kaunokirjallisuus  65.4%  13.7% 20.9%
+               Kirjeet  94.4%   0.0%  5.6%
+ Novellit, kertomukset  66.0%  19.2% 14.8%
+     Puheet, esitelmät  86.0%   7.0%  7.0%
+              Romaanit  73.2%  16.8% 10.0%
+                 Runot  71.6%   5.4% 23.1%
+     Tietokirjallisuus  81.8%   3.1% 15.1%
+            Yhdistelmä  68.5%  11.2% 20.3%</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>tab_language <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">tabyl</span>(df, genre, profession_primary)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tab_language</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 genre kääntäjä kirjailija kirjoittaja kuvittaja opettaja
+                Draama      206        276           6         8       51
+                Esseet        4          1           0         0        1
+      Huumori, satiiri        0          2           0         0        0
+     Kaunokirjallisuus       30         33          13         4       10
+               Kirjeet        0          0           0         0        0
+ Novellit, kertomukset      311        344          46       112       39
+     Puheet, esitelmät       15          9           5         2        4
+              Romaanit      853       1121          33       149       61
+                 Runot      173        253          91        33      386
+     Tietokirjallisuus      647        348         505        73      233
+            Yhdistelmä       26         29          15        42        3
+ professori rehtori respondentti runoilija toimittaja Other  NA_
+          9      40            0        45        110   436  528
+          0       7            0         1          0     5    0
+          0       0            0         0          0     0   10
+          1       4            0         4         16    30  118
+          1       0            2         0          2     5    8
+          6      57            0        21        104   160  708
+         16       4            0         3          3    68  100
+          6     176            0        33        128   467 2309
+         38      52           12       230        184   383 1167
+        736     105         2269        48        307  3368 6013
+          2      22            0         4         28    18   87</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">adorn_percentages</span>(tab_language, <span class="st">"row"</span>) <span class="sc">%&gt;%</span> janitor<span class="sc">::</span><span class="fu">adorn_pct_formatting</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 genre kääntäjä kirjailija kirjoittaja kuvittaja opettaja
+                Draama    12.0%      16.1%        0.3%      0.5%     3.0%
+                Esseet    21.1%       5.3%        0.0%      0.0%     5.3%
+      Huumori, satiiri     0.0%      16.7%        0.0%      0.0%     0.0%
+     Kaunokirjallisuus    11.4%      12.5%        4.9%      1.5%     3.8%
+               Kirjeet     0.0%       0.0%        0.0%      0.0%     0.0%
+ Novellit, kertomukset    16.3%      18.0%        2.4%      5.9%     2.0%
+     Puheet, esitelmät     6.6%       3.9%        2.2%      0.9%     1.7%
+              Romaanit    16.0%      21.0%        0.6%      2.8%     1.1%
+                 Runot     5.8%       8.4%        3.0%      1.1%    12.9%
+     Tietokirjallisuus     4.4%       2.4%        3.4%      0.5%     1.6%
+            Yhdistelmä     9.4%      10.5%        5.4%     15.2%     1.1%
+ professori rehtori respondentti runoilija toimittaja Other   NA_
+       0.5%    2.3%         0.0%      2.6%       6.4% 25.4% 30.8%
+       0.0%   36.8%         0.0%      5.3%       0.0% 26.3%  0.0%
+       0.0%    0.0%         0.0%      0.0%       0.0%  0.0% 83.3%
+       0.4%    1.5%         0.0%      1.5%       6.1% 11.4% 44.9%
+       5.6%    0.0%        11.1%      0.0%      11.1% 27.8% 44.4%
+       0.3%    3.0%         0.0%      1.1%       5.5%  8.4% 37.1%
+       7.0%    1.7%         0.0%      1.3%       1.3% 29.7% 43.7%
+       0.1%    3.3%         0.0%      0.6%       2.4%  8.8% 43.3%
+       1.3%    1.7%         0.4%      7.7%       6.1% 12.8% 38.9%
+       5.0%    0.7%        15.5%      0.3%       2.1% 23.0% 41.0%
+       0.7%    8.0%         0.0%      1.4%      10.1%  6.5% 31.5%</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> genre)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Proportion"</span>, <span class="at">x =</span> <span class="st">"Gender"</span>, <span class="at">fill =</span> <span class="st">"Genre"</span>) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workshop_dariah_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> profession_primary, <span class="at">fill =</span> genre)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Proportion"</span>, <span class="at">x =</span> <span class="st">""</span>, <span class="at">fill =</span> <span class="st">"Genre"</span>) <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">50</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="dv">1</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workshop_dariah_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="multinomial-linear-regression" class="level1">
+<h1>multinomial linear regression</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>gender      <span class="ot">&lt;-</span> <span class="fu">fct_explicit_na</span>(<span class="fu">factor</span>(df<span class="sc">$</span>gender), <span class="at">na_level =</span> <span class="st">"Unknown"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>profession <span class="ot">&lt;-</span> <span class="fu">fct_explicit_na</span>(<span class="fu">factor</span>(df<span class="sc">$</span>profession_primary), <span class="at">na_level =</span> <span class="st">"Unknown"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>model_freq <span class="ot">&lt;-</span> <span class="fu">multinom</span>(</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  genre <span class="sc">~</span> gender <span class="sc">+</span> profession,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># weights:  165 (140 variable)
+initial  value 65774.267333 
+iter  10 value 37108.840839
+iter  20 value 34853.024115
+iter  30 value 33565.128196
+iter  40 value 33267.629373
+iter  50 value 33108.894870
+iter  60 value 33068.059621
+iter  70 value 33062.142230
+iter  80 value 33057.809121
+iter  90 value 33055.556511
+iter 100 value 33054.845706
+final  value 33054.845706 
+stopped after 100 iterations</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+multinom(formula = genre ~ gender + profession, data = df)
+
+Coefficients:
+                      (Intercept) genderfemale genderUnknown
+Esseet                 -3.8040891   -4.9067357    -2.5148265
+Huumori, satiiri       -8.8258307   -4.3310931     1.7516091
+Kaunokirjallisuus      -2.0126143    0.4651468     1.3488722
+Kirjeet               -10.0094076   -4.8527114    -0.6084198
+Novellit, kertomukset   0.2705865    0.7469405     1.1222738
+Puheet, esitelmät      -2.5867865   -0.2701653    -0.2290008
+Romaanit                1.3438031    0.4820739     0.3124429
+Runot                  -0.1493660   -0.4994830     1.6983739
+Tietokirjallisuus       1.2105912   -0.8264212     0.8377702
+Yhdistelmä             -2.1413535    0.2989499     1.8922703
+                      professionkirjailija professionkirjoittaja
+Esseet                         -1.60701679           -3.72727052
+Huumori, satiiri                4.08916516            0.79272137
+Kaunokirjallisuus              -0.21836913            2.73390630
+Kirjeet                        -5.21274437           -0.02125013
+Novellit, kertomukset          -0.23731178            1.67665379
+Puheet, esitelmät              -0.79177241            2.43145875
+Romaanit                       -0.04995241            0.30928080
+Runot                           0.12958747            2.88793938
+Tietokirjallisuus              -0.87324817            3.26396941
+Yhdistelmä                     -0.18244705            3.01488629
+                      professionkuvittaja professionopettaja
+Esseet                        -4.08180435         0.04221004
+Huumori, satiiri               0.02525329        -0.95523565
+Kaunokirjallisuus              1.22787496         0.28868587
+Kirjeet                       -0.65083342        -2.30150407
+Novellit, kertomukset          2.22126274        -0.69717248
+Puheet, esitelmät              1.23769228         0.07917835
+Romaanit                       1.50014961        -1.25438954
+Runot                          1.59054415         2.22138135
+Tietokirjallisuus              1.06751864         0.39183842
+Yhdistelmä                     3.72327130        -0.75732547
+                      professionprofessori professionrehtori
+Esseet                          -4.6442223        2.06161938
+Huumori, satiiri                 0.3645733       -1.41511668
+Kaunokirjallisuus               -0.1992758       -0.29347910
+Kirjeet                          7.8429748       -2.84413103
+Novellit, kertomukset           -0.7109354        0.08284068
+Puheet, esitelmät                3.1679559        0.28552137
+Romaanit                        -1.7635010        0.13818180
+Runot                            1.6002703        0.41665520
+Tietokirjallisuus                3.2088358       -0.24173085
+Yhdistelmä                       0.6285321        1.54365209
+                      professionrespondentti professionrunoilija
+Esseet                             1.6806985          0.05953787
+Huumori, satiiri                   3.5233457         -1.28518958
+Kaunokirjallisuus                  0.6667030         -0.44196624
+Kirjeet                           14.9053528         -2.60013684
+Novellit, kertomukset              0.4800538         -1.09435952
+Puheet, esitelmät                  0.3485756         -0.10556728
+Romaanit                          -1.1747702         -1.69086473
+Runot                              6.8332151          1.79539819
+Tietokirjallisuus                 10.7149855         -1.11823105
+Yhdistelmä                         0.4657163         -0.29795603
+                      professiontoimittaja professionOther professionUnknown
+Esseet                          -6.9112090     -0.58382537       -5.09648889
+Huumori, satiiri                -1.8220014     -0.63007333        4.28020046
+Kaunokirjallisuus                0.0126114     -0.71576911        0.05426182
+Kirjeet                          6.1181430      5.61854781        6.02282502
+Novellit, kertomukset           -0.4487840     -1.35685921       -0.37539985
+Puheet, esitelmät               -0.9855764      0.74623189        0.98507086
+Romaanit                        -1.2571386     -1.31930269        0.01200172
+Runot                            0.6783271      0.02900084        0.36112977
+Tietokirjallisuus               -0.1309523      0.86859057        1.04891322
+Yhdistelmä                       0.7053466     -1.09210197       -0.39279318
+
+Std. Errors:
+                      (Intercept) genderfemale genderUnknown
+Esseet                 0.50562911   9.65140172    13.6078628
+Huumori, satiiri       6.04645106   8.80662107     0.6509307
+Kaunokirjallisuus      0.19877671   0.20172724     0.2127673
+Kirjeet               10.79932749   8.99364449     1.0681789
+Novellit, kertomukset  0.09169807   0.10066804     0.1334804
+Puheet, esitelmät      0.26870849   0.27388174     0.2938271
+Romaanit               0.07869436   0.08882196     0.1203330
+Runot                  0.10401126   0.11711355     0.1235037
+Tietokirjallisuus      0.08078918   0.09472904     0.1128163
+Yhdistelmä             0.21105023   0.21486137     0.2299374
+                      professionkirjailija professionkirjoittaja
+Esseet                           1.1179069            18.4032467
+Huumori, satiiri                 6.0878643            24.2241839
+Kaunokirjallisuus                0.2690271             0.5307807
+Kirjeet                          1.2915221            64.8660142
+Novellit, kertomukset            0.1214186             0.4433558
+Puheet, esitelmät                0.4315220             0.6606189
+Romaanit                         0.1029545             0.4505460
+Runot                            0.1352333             0.4338836
+Tietokirjallisuus                0.1138152             0.4183187
+Yhdistelmä                       0.2858885             0.5261348
+                      professionkuvittaja professionopettaja
+Esseet                         19.6208759          1.1261041
+Huumori, satiiri               30.9570667         20.9160658
+Kaunokirjallisuus               0.6429422          0.3977317
+Kirjeet                        77.9331363         71.9969317
+Novellit, kertomukset           0.3771572          0.2314799
+Puheet, esitelmät               0.8331469          0.5836167
+Romaanit                        0.3712222          0.2052259
+Runot                           0.4075537          0.1814648
+Tietokirjallisuus               0.3810459          0.1743728
+Yhdistelmä                      0.4384779          0.6297330
+                      professionprofessori professionrehtori
+Esseet                          23.0962715         0.6513947
+Huumori, satiiri                24.0122919        27.2262120
+Kaunokirjallisuus                1.0715639         0.5615921
+Kirjeet                         10.8504156         3.9988163
+Novellit, kertomukset            0.5355788         0.2257854
+Puheet, esitelmät                0.4954998         0.5896108
+Romaanit                         0.5323577         0.1921471
+Runot                            0.3849323         0.2346706
+Tietokirjallisuus                0.3448837         0.2027433
+Yhdistelmä                       0.8090831         0.3391482
+                      professionrespondentti professionrunoilija
+Esseet                            24.9617011           1.1273773
+Huumori, satiiri                   0.5278589          24.6982485
+Kaunokirjallisuus                 17.9460656           0.5571673
+Kirjeet                           13.5360799          14.8338001
+Novellit, kertomukset              9.8826596           0.2796489
+Puheet, esitelmät                 26.2797610           0.6527036
+Romaanit                          11.0662469           0.2423363
+Runot                              8.1437489           0.1931461
+Tietokirjallisuus                  8.1383967           0.2226012
+Yhdistelmä                        20.5420626           0.5604142
+                      professiontoimittaja professionOther professionUnknown
+Esseet                          21.4698946       0.6760847        4.38542879
+Huumori, satiiri                21.2220777       8.2107636        6.06554342
+Kaunokirjallisuus                0.3310500       0.2721019        0.23439474
+Kirjeet                         10.8227986      10.8086437       10.80591203
+Novellit, kertomukset            0.1642044       0.1293368        0.11218990
+Puheet, esitelmät                0.6427784       0.2976167        0.29225451
+Romaanit                         0.1516419       0.1025101        0.09420482
+Runot                            0.1589808       0.1249492        0.12143048
+Tietokirjallisuus                0.1372036       0.0950665        0.09462367
+Yhdistelmä                       0.2970135       0.3183561        0.26383187
+
+Residual Deviance: 66109.69 
+AIC: 66389.69 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>RRR <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(model_freq))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>RRR</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                       (Intercept) genderfemale genderUnknown
+Esseet                2.227948e-02  0.007396593    0.08087694
+Huumori, satiiri      1.468894e-04  0.013153162    5.76387003
+Kaunokirjallisuus     1.336389e-01  1.592247854    3.85307775
+Kirjeet               4.497483e-05  0.007807180    0.54421013
+Novellit, kertomukset 1.310733e+00  2.110532959    3.07183096
+Puheet, esitelmät     7.526150e-02  0.763253338    0.79532789
+Romaanit              3.833595e+00  1.619429480    1.36675995
+Runot                 8.612538e-01  0.606844343    5.46505335
+Tietokirjallisuus     3.355468e+00  0.437612631    2.31120760
+Yhdistelmä            1.174957e-01  1.348442131    6.63441363
+                      professionkirjailija professionkirjoittaja
+Esseet                         0.200484811            0.02405841
+Huumori, satiiri              59.690039455            2.20940085
+Kaunokirjallisuus              0.803828672           15.39289895
+Kirjeet                        0.005446705            0.97897406
+Novellit, kertomukset          0.788745332            5.34763171
+Puheet, esitelmät              0.453041110           11.37546392
+Romaanit                       0.951274690            1.36244490
+Runot                          1.138358683           17.95627032
+Tietokirjallisuus              0.417592931           26.15314396
+Yhdistelmä                     0.833228761           20.38677255
+                      professionkuvittaja professionopettaja
+Esseet                         0.01687699          1.0431135
+Huumori, satiiri               1.02557486          0.3847215
+Kaunokirjallisuus              3.41396700          1.3346724
+Kirjeet                        0.52161088          0.1001082
+Novellit, kertomukset          9.21896466          0.4979914
+Puheet, esitelmät              3.44764806          1.0823973
+Romaanit                       4.48235961          0.2852499
+Runot                          4.90641802          9.2200582
+Tietokirjallisuus              2.90815437          1.4796986
+Yhdistelmä                    41.39960317          0.4689189
+                      professionprofessori professionrehtori
+Esseet                        9.617006e-03        7.85868572
+Huumori, satiiri              1.439900e+00        0.24289727
+Kaunokirjallisuus             8.193239e-01        0.74566481
+Kirjeet                       2.547773e+03        0.05818481
+Novellit, kertomukset         4.911845e-01        1.08636872
+Puheet, esitelmät             2.375887e+01        1.33045550
+Romaanit                      1.714436e-01        1.14818427
+Runot                         4.954371e+00        1.51687941
+Tietokirjallisuus             2.475026e+01        0.78526750
+Yhdistelmä                    1.874856e+00        4.68165693
+                      professionrespondentti professionrunoilija
+Esseet                          5.369305e+00          1.06134595
+Huumori, satiiri                3.389765e+01          0.27659814
+Kaunokirjallisuus               1.947805e+00          0.64277134
+Kirjeet                         2.973805e+06          0.07426342
+Novellit, kertomukset           1.616161e+00          0.33475394
+Puheet, esitelmät               1.417048e+00          0.89981393
+Romaanit                        3.088900e-01          0.18436003
+Runot                           9.281702e+02          6.02187208
+Tietokirjallisuus               4.502555e+04          0.32685748
+Yhdistelmä                      1.593155e+00          0.74233398
+                      professiontoimittaja professionOther professionUnknown
+Esseet                        9.965523e-04       0.5577606      6.118191e-03
+Huumori, satiiri              1.617018e-01       0.5325527      7.225492e+01
+Kaunokirjallisuus             1.012691e+00       0.4888160      1.055761e+00
+Kirjeet                       4.540208e+02     275.4890294      4.127430e+02
+Novellit, kertomukset         6.384040e-01       0.2574682      6.870145e-01
+Puheet, esitelmät             3.732241e-01       2.1090379      2.678002e+00
+Romaanit                      2.844669e-01       0.2673216      1.012074e+00
+Runot                         1.970578e+00       1.0294255      1.434950e+00
+Tietokirjallisuus             8.772596e-01       2.3835490      2.854547e+00
+Yhdistelmä                    2.024548e+00       0.3355105      6.751684e-01</code></pre>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

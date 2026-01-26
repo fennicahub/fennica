@@ -24,13 +24,8 @@ Author's name section's summary tables offer insights into the dataset's integri
 -   Original documents with non-NA titles `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
 -   Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
 
-#### Authors
 
--   `r length(unique(df$author_name))` [unique authors](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_accepted.csv) These final names capture all name variants from the custom [author synonyme table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/ambiguous-authors.csv), and exclude known pseudonymes (see below). If multiple names for the same author are still observed on this list, they should be added on the [author synonyme table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/ambiguous-authors.csv).
-
--   [Author name conversions](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_conversion_nontrivial.csv) Non-trivial conversions from the original raw data to final names.
-
-#Author's name (100a) - Top 10
+### Author's name (100a) - Top 10
 ```{r}
 #| label = "summarytitle-author-name",
 #| echo = FALSE,
@@ -46,12 +41,6 @@ p <- top_plot(df, "author_name", ntop = ntop, log10 = TRUE)+
   labs(y = "Entries (n)", title = "Top titles")
 print(p)
 ```
-#### Auxiliary files
-
--   [Author synonyme table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/ambiguous-authors.csv)
--   [Stopwords for names](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/stopwords_for_names.csv)
--   [Stopwords for titles](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/stopwords_titles.csv)
--   [Custom pseudonyme lists](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/custom_pseudonymes.csv)
 
 ### Subset Analysis: 1809-1917
 
@@ -78,46 +67,4 @@ p <- top_plot(df_19, "author_name", ntop = ntop, log10 = TRUE)+
   labs(y = "Entries (n)", title = "Top titles")
 print(p)
 ```
-# Author's name after integration
 
-```{r}
-#| include = FALSE
-source("author_name_enriched.R")
-```
--   [Unique accepted entries in original data](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_enriched_accepted.csv): `r length(unique(df[[field]]))`
--   [Unique discarded entries in original data](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_enriched_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
--   Original documents with non-NA titles `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
--   Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
-
-# Author's Name after Kanto integration
-
-```{r}
-#| label = "summarytitle-author-all-names",
-#| echo = FALSE,
-#| message = FALSE,
-#| warning = FALSE,
-#| fig.width = 8,
-#| fig.height = 6
-library(ggplot2)
-theme_set(theme_bw(base_size = 12))
-p <- top_plot(df, "full_name", ntop = ntop, log10 = TRUE)+
-  labs(y = "Entries (n)", title = "Top titles")
-print(p)
-```
-
-# 1809-1917 all names
-```{r}
-#| label = "summarytitle-author-all-names19",
-#| echo = FALSE,
-#| message = FALSE,
-#| warning = FALSE,
-#| fig.width = 8,
-#| fig.height = 6
-library(ggplot2)
-#library(comhis)
-
-theme_set(theme_bw(base_size = 12))
-p <- top_plot(df_19, "full_name", ntop = ntop, log10 = TRUE)+
-  labs(y = "Entries (n)", title = "Top titles")
-print(p)
-```

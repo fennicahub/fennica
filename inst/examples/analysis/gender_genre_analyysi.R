@@ -1,160 +1,96 @@
+############ genre / gender analysis for the 1809-1917############
+
 library(dplyr)
 library(stringr)
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/harmonized/harmonized_fennica.csv"
 
+df <- read.table(
+  url,
+  sep = "\t",
+  header = TRUE,
+  colClasses = "character",
+  quote = "", 
+  comment.char = "",
+  fileEncoding = "UTF-8",
+  stringsAsFactors = FALSE
+)
+
+df.processed19 <- df[df$melinda_id %in% melindas_19,] 
 # start clean
-lin_df <- df.harmonized19
+lin_df <- df.processed19
 lin_df <- lin_df[, !duplicated(names(lin_df))]
-table(df.harmonized$genre_008)
 
 
-# collapse to binary: non-fiction vs fiction; unknowns -> NA
+values_to_na <- c(
+  "tuntematon", "ei koodattu", "aakkostoa tai kirjaimistoa ei ole",
+  "arabialainen", "laajennettu latinalainen", "kalvo",
+  "latinalainen", "videotallenne", "dia", "kyrillinen",
+  "ei transponointia", "moniviestin", "sana- tai kuvakortti",
+  "muu", "peli", "ilmiasun erityispiirteitä ei ole määritelty",
+  "taidejäljennös", "soveltumaton", "kuva", "sekalaiset aineistot",
+  "kreikkalainen", "kiinalainen", "dioraama", "raina",
+  "japanilainen", "korealainen", "mikroskoopin preparaatti",
+  "sovitus", "thaimaalainen", "transponointi"
+)
+
 lin_df <- lin_df %>%
   mutate(
-    genre_label = tolower(str_trim(genre_008)),
-    genre = case_when(
-      genre_label == "tietokirjallisuus" ~ "non-fiction",
-      # --- unknown / uncoded / non-genre categories → NA
-      genre_label %in% c(
-        "tuntematon", "ei koodattu", "aakkostoa tai kirjaimistoa ei ole",
-        "arabialainen", "laajennettu latinalainen", "kalvo",
-        "latinalainen", "videotallenne", "dia", "kyrillinen",
-        "ei transponointia", "moniviestin", "sana- tai kuvakortti",
-        "muu", "peli", "ilmiasun erityispiirteitä ei ole määritelty",
-        "taidejäljennös", "soveltumaton", "kuva", "sekalaiset aineistot",
-        "kreikkalainen", "kiinalainen", "dioraama", "raina",
-        "japanilainen", "korealainen", "mikroskoopin preparaatti",
-        "sovitus", "thaimaalainen", "transponointi", NA_character_
-      ) ~ NA_character_,
-      TRUE ~ "fiction"
-    )
+    genre = ifelse(tolower(genre_008) %in% values_to_na, NA, genre_008)
   )
 
 # sanity check
 table(lin_df$genre, useNA = "ifany")
-
-#GROUP PUBLISHER
-# big_pub (> 100)
-# medium_pub (99-5)
-# small_pub (4 - 1)
-
-# --- 3) construct modeling dataset
-df <- lin_df %>%
-  mutate(
-    decade    = factor(publication_decade),
-    genre     = factor(genre),
-    gender    = factor(gender),
-    language  = factor(language),
-  ) %>%
-  tidyr::drop_na(genre, gender, language, decade)
-
-# --- 4) drop unused levels + lump long tails
-vars <- c("genre","gender","language","decade")
-df2 <- df %>%
-  mutate(
-    across(all_of(vars), ~ droplevels(factor(.x))),
-    across(all_of(setdiff(vars, "genre")), ~ {
-      k <- 10L
-      if (nlevels(.x) > k) fct_lump_n(.x, n = k, other_level = "OTHER") else .x
-    })
-  )
-
-# --- 5) safe Cramér’s V using df2 (not df!)
-safe_cramers_v <- function(x, y) {
-  tb <- table(x, y)                 # includes only present levels after droplevels()
-  if (sum(tb) == 0 || nrow(tb) < 2 || ncol(tb) < 2) return(NA_real_)
-  tryCatch(CramerV(tb, bias.correct = TRUE), error = function(e) NA_real_)
-}
-
-cat_vars <- vars
-cramers_v_mat <- matrix(NA_real_, length(cat_vars), length(cat_vars),
-                        dimnames = list(cat_vars, cat_vars))
-
-for (i in seq_along(cat_vars)) {
-  for (j in seq_along(cat_vars)) {
-    if (i == j) {
-      cramers_v_mat[i, j] <- 1
-    } else if (i < j) {
-      v <- safe_cramers_v(df2[[cat_vars[i]]], df2[[cat_vars[j]]])
-      cramers_v_mat[i, j] <- v
-      cramers_v_mat[j, i] <- v
-    }
-  }
-}
-
-cramers_v_mat
+table(lin_df$biblio_level, useNA = "ifany")
+table(lin_df$data_element, useNA = "ifany")
+table(lin_df$record_type, useNA = "ifany")
 
 
-cramers_v_long <- as.data.frame(cramers_v_mat) |>
-  tibble::rownames_to_column("var1") |>
-  pivot_longer(-var1, names_to = "var2", values_to = "V")
-
-ggplot(cramers_v_long, aes(var1, var2, fill = V)) +
-  geom_tile() +
-  geom_text(aes(label = sprintf("%.2f", V))) +
-  scale_fill_gradient(low = "white", high = "blue") +
-  coord_equal() +
-  labs(title = "Cramér's V between categorical variables", x = NULL, y = NULL) +
-  theme_minimal(base_size = 12)
-
-
-fit <- glm(
-  genre ~ gender + publisher + language + decade + place,
-  data   = df,
-  family = binomial()
-)
-
-summary(fit)         # coefficients on log-odds scale
-glance(fit)          # model fit stats
-
-coef_tab <- tidy(fit, conf.int = TRUE, conf.level = 0.95, exponentiate = TRUE) %>%
-  mutate(across(estimate:conf.high, ~ round(.x, 3)))
-
-coef_tab
-
-
-############ VISUALS #####################
-# gender per decade
-# Filter your data to only include those genres
-df.processed19$author_name <- NULL
-df_selected <- df.processed19 %>%
+lin_df <- lin_df %>%
   filter(
-    !is.na(publication_decade),
-    !is.na(gender_primary),
-    publication_decade >= 1800 & publication_decade <= 1920
+    biblio_level == "Monigraph/Item" |
+    publication_status == "Kirjat" |
+    record_type == "Language material"
   )
 
-# Summarize counts by decade and genre
-df_summary <- df_selected %>%
-  group_by(publication_decade, gender_primary) %>%
-  summarise(n = n(), .groups = "drop")
+table(lin_df$publication_place, useNA = "ifany")
+table(lin_df$publication_country, useNA = "ifany")
+
+# lin_df <- lin_df %>%
+#   filter(publication_country %in% c("Finland", "Sweden", "Russia"))
 
 
-ggplot(df_summary, aes(x = publication_decade, y = n, fill = gender_primary)) +
-  geom_col(position = "stack", width = 8, color = "black") +
-  scale_fill_grey(start = 0.1, end = 0.8) +
-  labs(x = "Publication Decade", y = "Gender Count", fill = "Gender") +
-  coord_flip() +
-  theme_minimal()
 
-
-table_summary <- df_summary %>%
-  group_by(publication_decade) %>%
-  mutate(
-    decade_total = sum(n),
-    pct = n / decade_total * 100
-  ) %>%
-  ungroup() %>%
-  arrange(publication_decade, gender_primary)
-
-
+# 1  - big, 2 - medium, 3 - small publisher
 library(dplyr)
 
-genre_summary <- lin_df %>%
+lin_df <- lin_df %>%
+  add_count(publisher, name = "publisher_n") %>% 
   mutate(
-    genre_group = case_when(
-      genre %in% c("fiction") ~ "fiction",
-      TRUE ~ "non-fiction"
+    publisher_size = case_when(
+      publisher_n > 2000 ~ "group_1",
+      publisher_n >= 50 & publisher_n <= 1999 ~ "group_2",
+      publisher_n >= 1   & publisher_n <= 49  ~ "group_3",
+      TRUE ~ NA_character_
     )
   ) %>%
-  group_by(publication_decade, gender, genre_group) %>%
-  summarise(n = n(), .groups = "drop")
+  dplyr::select(-publisher_n)   # optional: remove the count column
+table(lin_df$publisher_size, useNA = "ifany")
+
+lin_df <- filter(lin_df, !is.na(genre))
+
+kauno <- c("Draama", "Esseet", "Huumori, satiiri", 
+           "Kaunokirjallisuus", "Kirjeet", "Novellit, kertomukset", 
+           "Puheet, esitelmät", "Romaanit", "Runot", "Yhdistelmä")
+
+lin_df <- lin_df %>% mutate(code_genre = ifelse(genre %in% kauno, "fiction", "non-fiction"))
+lin_df$code_genre <- lin_df$code_genre
+
+write.table(
+  lin_df,
+  file = paste0(output.folder, "books_19th.tsv"),
+  sep = "\t",
+  row.names = FALSE,
+  quote = TRUE,          # important
+  qmethod = "double",    # escape quotes inside fields
+  fileEncoding = "UTF-8"
+)

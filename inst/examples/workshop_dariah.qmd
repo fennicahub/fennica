@@ -1,0 +1,148 @@
+---
+title: "Genre and publishing metadata: exploratory association tests and probabilistic modeling"
+format: html
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+# Introduction
+
+This Quarto notebook documents a step-by-step workflow for assessing whether **genre** is associated with selected bibliographic metadata variables before fitting a full multivariable model. The response variable is **genre**, and the predictors are **gender**, **language**, **publication_place**, and **publisher_size** (large/medium/small). All variables are categorical.
+
+The workflow is intentionally staged. First, simple descriptive summaries and association tests are used to evaluate whether relationships are present at all. Next, models are introduced only after basic structure has been established. The final stage estimates genre probabilities under a Bayesian framework, enabling probabilistic interpretation and uncertainty quantification.
+
+Criteria: books published in Finland, Sweden or Russia in 1809-1917.
+Genre (outcome)	Nominal categorical (K>2)
+Gender	Categorical
+Language	Categorical
+Publication place	Categorical (20 cities)
+Publisher size	Categorical (3 levels)
+
+
+Gender	male vs female
+Language	Finnish vs Swedish
+Publisher size	small / medium / large
+Place	19 dummies (reference = largest city)
+
+multinomial logistic regression for each k 
+P(genre=k∣gender, language, place, publisher)
+# Data and setup
+
+## Packages
+
+```{r}
+#| message: FALSE
+#| warning: FALSE
+
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(janitor)     # tabyl()
+library(ggplot2) 
+library(nnet)
+library(forcats)
+```
+
+
+## Load the data
+```{r}
+#| message: FALSE
+#| warning: FALSE
+# # Download the csv file
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/harmonized/books_19th.tsv"
+
+df <- read.table(
+  file = url, 
+  sep = "\t",
+  header = TRUE,
+  colClasses = "character",
+  fileEncoding = "UTF-8",
+  quote = "\"",
+  comment.char = "",
+  stringsAsFactors = FALSE
+)
+
+head(df, 10)
+```
+
+
+## Cross-tabs and proportions
+
+```{r}
+df <- df %>%
+mutate(
+gender = factor(gender_primary, levels = c("male", "female"))
+)
+
+df <- df %>%
+  mutate(
+    profession_primary = trimws(sub(",.*", "", author_profession))
+  )
+
+df$profession_primary <- fct_lump_n(
+  factor(df$profession_primary),
+  n = 10,
+  other_level = "Other"
+)
+```
+
+
+### Genre X Gender
+```{r}
+tab_gender <- janitor::tabyl(df, genre, gender)
+tab_gender
+janitor::adorn_percentages(tab_gender, "row") %>% janitor::adorn_pct_formatting()
+```
+```{r}
+tab_language <- janitor::tabyl(df, genre, profession_primary)
+tab_language
+janitor::adorn_percentages(tab_language, "row") %>% janitor::adorn_pct_formatting()
+```
+
+
+
+
+```{r}
+ggplot(df, aes(x = gender, fill = genre)) +
+geom_bar(position = "fill") +
+labs(y = "Proportion", x = "Gender", fill = "Genre") +
+theme_minimal()
+```
+
+```{r}
+ggplot(df, aes(x = profession_primary, fill = genre)) +
+  geom_bar(position = "fill") +
+  labs(y = "Proportion", x = "", fill = "Genre") +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 50, vjust = 0.5, hjust = 1)
+  )
+
+```
+
+
+
+# multinomial linear regression
+
+
+```{r}
+
+df$gender      <- fct_explicit_na(factor(df$gender), na_level = "Unknown")
+df$profession <- fct_explicit_na(factor(df$profession_primary), na_level = "Unknown")
+
+
+
+model_freq <- multinom(
+  genre ~ gender + profession,
+  data = df
+)
+
+summary(model_freq)
+```
+
+```{r}
+RRR <- exp(coef(model_freq))
+RRR
+```

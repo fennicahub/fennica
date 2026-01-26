@@ -8544,7 +8544,8 @@ polish_publisher <- function (x) {
   
   x[grepl("johan winterildä", x, ignore.case = TRUE)] <- "johan winter"
   x[grepl("frenckell", x, ignore.case = TRUE)] <- "frenckell"
-  x <- gsub("tekijät", "tekijä", x, ignore.case = TRUE)
+  x <- gsub("\\bförfattaren\\b|\\bförfattare\\b|\\bförf\\b|\\bförfattarens\\s+förlag\\b", "tekijä", x)
+  x <- gsub("\\btekijät\\b", "tekijä", x, ignore.case = TRUE)
   x <- gsub("\\bsöderstöm\\b", "söderström", x, ignore.case = TRUE)
   x <- gsub("\\bsöderstörm\\b", "söderström", x, ignore.case = TRUE)
   x <- gsub("\\bsödeström\\b", "söderström", x, ignore.case = TRUE)
@@ -8798,25 +8799,54 @@ assign_gender <- function(x, current_gender = NULL,
 #' @keywords utilities
 polish_profession <- function(x){
   
-  x <- gsub(",NA","",x)
-  x <- gsub("NA","",x)
+  # keep length = n, operate element-wise
+  x <- as.character(x)
+  
+  x <- gsub(",NA", "", x, fixed = TRUE)
+  x <- gsub("NA", "", x, fixed = TRUE)
   x <- gsub("[()]", ",", x)
-  x <- gsub(";","",x)
-  x <- gsub(" ","",x)
-  x <- gsub("\\.",",",x)
-  x <- gsub("\\|","",x)
+  x <- gsub("[", "", x, fixed = TRUE)
+  x <- gsub("]", "", x, fixed = TRUE)
+  x <- gsub(";", "", x, fixed = TRUE)
+  x <- gsub(":", "", x, fixed = TRUE)
+  x <- gsub(" ", "", x, fixed = TRUE)
+  x <- gsub("'", "", x, fixed = TRUE)
+  x <- gsub("^-+|-+$", "", x)
+  x <- gsub("\\.", ",", x)
+  x <- gsub("=", "", x, fixed = TRUE)
+  x <- gsub("\\|", "", x)
   x <- gsub(",+", ",", x)
   x <- gsub("^,+|,+$", "", x)
+  x <- gsub("vvvvvvvvv", "", x, fixed = TRUE)
+  x <- gsub("FI-ASTERI-N", "", x, fixed = TRUE)
+  x <- gsub("Krohn", "", x, fixed = TRUE)
+  x <- gsub("pitkänen", "", x, fixed = TRUE)
+  x <- gsub("ed", "", x, fixed = TRUE)
   
-  # Function to remove duplicates and rejoin the values
-  remove_duplicates <- function(x) {
-    if (is.na(x) || x == "") return(NA)  # Convert empty values to NA
-    unique_values <- unique(strsplit(x, ",")[[1]])  # Split by ',' and remove duplicates
-    paste(unique_values, collapse = ",")  # Rejoin with ','
+  
+  # remove values containing digits (set to NA, don't drop rows)
+  x[grepl("[0-9]", x)] <- NA_character_
+  x <- trimws(x)
+  # drop too-short values (set to NA)
+  x[nchar(x) <= 2] <- NA_character_
+  x[x == ""] <- NA_character_
+  
+  remove_duplicates <- function(one) {
+    if (is.na(one) || one == "") return(NA_character_)
+    parts <- strsplit(one, ",", fixed = TRUE)[[1]]
+    parts <- parts[parts != ""]
+    if (!length(parts)) return(NA_character_)
+    paste(unique(parts), collapse = ",")
   }
   
-  # Apply the function to the input
-  harm <- sapply(x, remove_duplicates)
+  harm <- vapply(x, remove_duplicates, character(1))
   
-  return(harm)
+  # first profession in the cleaned string
+  prof_primary <- ifelse(
+    is.na(harm),
+    NA_character_,
+    sub(",.*$", "", harm)
+  )
+  
+  data.frame(profession_clean = harm, prof_primary = prof_primary, stringsAsFactors = FALSE)
 }

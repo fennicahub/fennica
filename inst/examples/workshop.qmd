@@ -1,0 +1,114 @@
+---
+title: "Modeling genre probabilities with categorical predictors"
+format: html
+editor: visual
+---
+
+```{r}
+#|warning: FALSE
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(forcats)
+library(ggplot2)
+library(nnet)
+```
+
+# Load the data
+```{r}
+
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/harmonized/workshop_dariah.tsv"
+
+df_model <- read.table(
+file = url,
+sep = "\t",
+header = TRUE,
+colClasses = "character",
+fileEncoding = "UTF-8",
+quote = "\"",
+comment.char = "",
+stringsAsFactors = FALSE
+)
+
+# Choose a common reference level (baseline) for interpretation
+df_model$genre <- fct_relevel(df_model$genre, "Romaanit")
+head(df_model, 10)
+```
+
+
+```{r}
+# Quick sanity checks
+
+table(df_model$genre) %>% sort(decreasing = TRUE) %>% head(10)
+table(df_model$gender)
+table(df_model$profession_primary) %>% sort(decreasing = TRUE) %>% head(10)
+```
+
+# Plot 1: Genre composition by gender (proportions)
+
+```{r}
+ggplot(df_model, aes(x = gender, fill = genre)) +
+geom_bar(position = "fill") +
+labs(x = "Gender", y = "Proportion", fill = "Genre") +
+theme_minimal()
+```
+
+# Plot 2: Genre composition by profession (proportions)
+
+```{r}
+ggplot(df_model, aes(x = profession_primary, fill = genre)) +
+geom_bar(position = "fill") +
+labs(x = "", y = "Proportion", fill = "Genre") +
+theme_minimal() +
+theme(axis.text.x = element_text(angle = 50, vjust = 0.5, hjust = 1))
+```
+
+# Multinomial regression 
+```{r}
+model <- multinom(
+genre ~ gender + profession_primary,
+data = df_model,
+trace = FALSE
+)
+
+summary(model)
+```
+
+
+# Predicted probabilities for each row (N x K)
+
+```{r}
+p_hat <- fitted(model)
+head(p_hat, 10)
+
+nrow(p_hat)
+```
+
+# Average predicted probabilities by gender
+```{r}
+#| warning: FALSE
+avg_probs_by_gender <- as.data.frame(p_hat) %>%
+mutate(gender = df_model$gender) %>%
+group_by(gender) %>%
+summarise(across(everything(), mean, na.rm = TRUE), .groups = "drop") %>%
+pivot_longer(-gender, names_to = "genre", values_to = "p")
+
+ggplot(avg_probs_by_gender, aes(x = gender, y = p, fill = genre)) +
+geom_col(position = "fill") +
+labs(x = "Gender", y = "Average predicted probability", fill = "Genre") +
+theme_minimal()
+```
+```{r}
+#| warning: FALSE
+avg_probs_by_prof <- as.data.frame(p_hat) %>%
+mutate(prof = df_model$author_profession) %>%
+group_by(prof) %>%
+summarise(across(everything(), mean, na.rm = TRUE), .groups = "drop") %>%
+pivot_longer(-prof, names_to = "genre", values_to = "p")
+
+ggplot(avg_probs_by_prof, aes(x = prof, y = p, fill = genre)) +
+geom_col(position = "fill") +
+labs(x = "Gender", y = "Average predicted probability", fill = "Genre") +
+theme_minimal()
+```
+
