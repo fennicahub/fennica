@@ -23,45 +23,68 @@ file_accepted <- paste0(output.folder, field, "_accepted.csv")
 
 message("Accepted languages")
 for (myfield in c("full_language_name", "language_primary")) {
-  tmp <- write_xtable(df.tmp[[myfield]], paste(output.folder, myfield, "_accepted.csv", sep = ""), 
-                      count = TRUE, 
-                      add.percentages = TRUE)
+  tmp <- write_xtable(
+    df.tmp[[myfield]],
+    paste(output.folder, myfield, "_accepted.csv", sep = ""),
+    count = TRUE,
+    add.percentages = TRUE
+  )
 }
 
 message("Language conversions")
 tab <- cbind(original = df.orig[[field]], df.tmp[, 1:4])
-tmp1 <- write_xtable(tab, paste(output.folder, field, "_conversions.csv", sep = ""), 
-                                         count = TRUE,
-                                         add.percentages = TRUE)
-                    
+tmp1 <- write_xtable(
+  tab,
+  paste(output.folder, field, "_conversions.csv", sep = ""),
+  count = TRUE,
+  add.percentages = TRUE
+)
+
 message("Language discarded")
-# Original entries that were converted into NA
-s <- unlist(strsplit(df.orig$language, ";"))
-original.na <- s[s %in% out$unrecognized]
-# .. ie. those are "discarded" cases; list them in a table
-tmp2 <- write_xtable(original.na, file_discarded, 
-                                         count = TRUE, 
-                                         add.percentages = TRUE)
-                    
-message("Language discraded ID")
-language_checks <- sapply(strsplit(df.orig$language, ";"), function(lang) 
-                      any(original.na %in% lang))
-# Find rows where any language matches a discarded variable
-matching_rows <- which(language_checks)
-                    
-# Get the corresponding melinda_ids
-result_melinda_ids <- df.orig$melinda_id[matching_rows]
-id <- data.frame(Melinda_ID = result_melinda_ids,
-                 Language = df.orig$language[matching_rows])
-                    
-# Add a new column to `id` for discarded languages
-id$Discarded <- sapply(strsplit(id$Language, ";"), function(lang) {
-# Find intersection between languages and discarded values
-discarded_langs <- intersect(lang, original.na)
-# Combine discarded languages as a semicolon-separated string
-paste(discarded_langs, collapse = ";")})
-                    
-# Write the result to a CSV file without row numbers
+
+orig_split <- strsplit(df.tmp$language_original, ";")
+full_split <- strsplit(df.tmp$full_language_name, ";")
+
+original.na <- unlist(
+  sapply(seq_along(orig_split), function(i) {
+    if (is.na(df.tmp$language_original[i]) || is.na(df.tmp$full_language_name[i])) {
+      return(character(0))
+    }
+    bad_idx <- which(trimws(full_split[[i]]) == "Unrecognized")
+    
+    if (length(bad_idx) == 0) {
+      return(character(0))
+    }
+    
+    trimws(orig_split[[i]][bad_idx])
+  })
+)
+
+original.na <- original.na[!is.na(original.na) & original.na != ""]
+
+tmp2 <- write_xtable(
+  original.na,
+  file_discarded,
+  count = TRUE,
+  add.percentages = TRUE
+)
+
+message("Language discarded ID")
+
+matching_rows <- which(
+  sapply(full_split, function(x) any(trimws(x) == "Unrecognized"))
+)
+
+id <- data.frame(
+  Melinda_ID = df.orig$melinda_id[matching_rows],
+  Language = df.orig[[field]][matching_rows],
+  Discarded = sapply(matching_rows, function(i) {
+    bad_idx <- which(trimws(full_split[[i]]) == "Unrecognized")
+    paste(trimws(orig_split[[i]][bad_idx]), collapse = ";")
+  }),
+  stringsAsFactors = FALSE
+)
+
 write.csv(id, file = file_discarded_id, row.names = FALSE, quote = FALSE)
                     
 
