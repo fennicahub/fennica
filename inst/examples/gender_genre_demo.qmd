@@ -7,6 +7,11 @@ execute:
   message: false
 ---
 
+```{r setup, include=FALSE}
+options(device.ask.default = FALSE)
+grDevices::devAskNewPage(FALSE)
+par(ask = FALSE)
+```
 # Introduction
 
 This Quarto notebook documents a step-by-step workflow for assessing whether **genre** is associated with selected bibliographic metadata variables before fitting a full multivariable model. The response variable is **genre**, and the predictors are **gender**, **language**, **publication_place**, and **publisher_size** (large/medium/small). All variables are categorical.
@@ -119,61 +124,15 @@ janitor::adorn_percentages(tab_place, "row") %>% janitor::adorn_pct_formatting()
 
 ```
 
-# χ² tests for each predictor
-```{r}
-chisq_with_v <- function(data, x, y) {
 
-# x and y are column names as strings
-
-tab <- table(data[[x]], data[[y]])
-
-# Chi-square test
-chi <- chisq.test(tab)
-# Effect size
-
-v <- effectsize::cramers_v(tab)
-
-list(
-table = tab,
-chisq = chi,
-cramers_v = v
-)
-}
-
-```
-
-
-```{r}
-res_gender <- chisq_with_v(df, "genre", "gender")
-res_gender$chisq
-res_gender$cramers_v
-
-```
-```{r}
-res_language <- chisq_with_v(df, "genre", "language")
-res_language$chisq
-res_language$cramers_v
-```
-```{r}
-res_pubsize <- chisq_with_v(df, "genre", "publisher_size")
-res_pubsize$chisq
-res_pubsize$cramers_v
-
-```
-```{r}
-res_place <- chisq_with_v(df_place, "genre", "publication_place_top")
-res_place$chisq
-res_place$cramers_v
-
-```
 
 ```{r}
 ggplot(df, aes(x = gender, fill = genre)) +
 geom_bar(position = "fill") +
 labs(y = "Proportion", x = "Gender", fill = "Genre") +
 theme_minimal()
-
 ```
+
 ```{r}
 ggplot(df, aes(x = language, fill = genre)) +
 geom_bar(position = "fill") +
@@ -188,6 +147,7 @@ labs(y = "Proportion", x = "Publisher size", fill = "Genre") +
 theme_minimal()
 
 ```
+
 ```{r}
 ggplot(df_place, aes(x = publication_place_top, fill = genre)) +
 geom_bar(position = "fill") +
@@ -224,8 +184,8 @@ df$publisher_size    <- fct_explicit_na(factor(df$publisher_size), na_level = "U
 df$code_genre             <- fct_explicit_na(factor(df$code_genre), na_level = "Unknown")
 
 
-model <- multinom(
-  code_genre ~ gender + language + + publication_decade + publication_place + publisher_size,
+model_freq <- multinom(
+  genre ~ gender + author_profession,
   data = df,
   trace = FALSE
 )
@@ -233,6 +193,7 @@ model <- multinom(
 summary(model)
 
 ```
+
 ```{r}
 RRR <- exp(coef(model))
 RRR
@@ -247,31 +208,13 @@ df$genre <- gsub("Yhdistelmä", "Yhdistelma",df$genre)
 ```
 
 
-
-```{r}
-priors1 <- c(
-  brms::prior(brms::normal(0, 1), class = "b", dpar = "muEsseet"),
-  brms::prior(brms::normal(0, 1), class = "b", dpar = "muHuumorisatiiri"),
-  brms::prior(brms::normal(0, 1), class = "b", dpar = "muKaunokirjallisuus"),
-  brms::prior(brms::normal(0, 1), class = "b", dpar = "muKirjeet"),
-  brms::prior(brms::normal(0, 1), class = "b", dpar = "muNovellitkertomukset"),
-  brms::prior(brms::normal(0, 1), class = "b", dpar = "muPuheetesitelmat"),
-  brms::prior(brms::normal(0, 1), class = "b", dpar = "muRomaanit"),
-  brms::prior(brms::normal(0, 1), class = "b", dpar = "muRunot"),
-  brms::prior(brms::normal(0, 1), class = "b", dpar = "muTietokirjallisuus"),
-  brms::prior(brms::normal(0, 1), class = "b", dpar = "muYhdistelma")
-)
-```
-
-
-
 ```{r}
 library(rstan)
 library(Rcpp)
 library(brms)
 
-fit.bayes <- brms::brm(
-  code_genre ~ gender * language + publication_decade +
+fit.bayes_mixed <- brms::brm(
+  code_genre ~ gender + language + publication_decade +
     (1|publication_place) + (1|publisher_size),
   family = bernoulli(link = "logit"),
   data = df,
@@ -284,15 +227,6 @@ fit.bayes <- brms::brm(
   iter = 3000,
   control = list(adapt_delta = 0.95)
 )
-```
-
-
-```{r}
-summary(fit.bayes)
-```
-
-```{r}
-plot(fit.bayes)
 ```
 
 
@@ -318,19 +252,26 @@ df$genre <- gsub("Puheet, esitelmät", "Puheetesitelmat",df$genre)
 df$genre <- gsub("Novellit, kertomukset", "Novellitkertomukset",df$genre)
 df$genre <- gsub("Yhdistelmä", "Yhdistelma",df$genre)
 
+df <- df %>%
+mutate(
+gender_primary = factor(gender_primary, levels = c("male", "female")),
+language = factor(language_primary, levels = c("Finnish", "Swedish")),
+publisher_size = factor(publisher_size, levels = c("group_1", "group_2", "group_3")),
+)
+
 df_fiction <- df %>%
   filter(genre != "Tietokirjallisuus") %>%
   droplevels()
 
 df_fiction$publication_place <- fct_lump_n(
   factor(df_fiction$publication_place),
-  n = 20,
+  n = 10,
   other_level = "Other"
 )
 
 df_fiction$publication_place  <- fct_na_value_to_level(df_fiction$publication_place,  level = "Unknown")
 df_fiction$publication_decade <- fct_na_value_to_level(df_fiction$publication_decade, level = "Unknown")
-df_fiction$gender             <- fct_na_value_to_level(factor(df_fiction$gender),     level = "Unknown")
+df_fiction$gender_primary     <- fct_na_value_to_level(factor(df_fiction$gender_primary), level = "Unknown")
 df_fiction$language           <- fct_na_value_to_level(factor(df_fiction$language),   level = "Unknown")
 df_fiction$publisher_size     <- fct_na_value_to_level(factor(df_fiction$publisher_size), level = "Unknown")
 df_fiction$genre              <- fct_na_value_to_level(factor(df_fiction$genre),      level = "Unknown")
@@ -353,15 +294,100 @@ priors3 <- c(
 
 
 
+
 ```{r}
-fit.bayes1 <- brms::brm(
-  genre ~ gender * language + publication_decade,
+fit.bayes <- brms::brm(
+  genre ~ gender_primary + language + publication_decade + publisher_size + publication_place,
   family = categorical(),
   data = df_fiction,
   prior = priors3,
-  chains = 3,
-  cores = 1,
+  chains = 4,
+  cores = 2,
   iter = 2000,
   control = list(adapt_delta = 0.95)
 )
 ```
+
+
+```{r}
+summary(fit.bayes)
+```
+
+
+```{r width = 8, height = 18}
+plot(fit.bayes)
+```
+
+
+```{r, fig.width=7, fig.height=16}
+plot(
+  fit.bayes,
+  pars = "muEsseet",
+  ncol = 1
+)
+```
+
+```{r, fig.width=7, fig.height=16}
+plot(
+  fit.bayes,
+  pars = "muRomaanit",
+  ncol = 1
+)
+```
+
+```{r, fig.width=7, fig.height=16}
+plot(
+  fit.bayes,
+  pars = "muRunot",
+  ncol = 1
+)
+```
+
+```{r, fig.width=7, fig.height=16}
+plot(
+  fit.bayes,
+  pars = "muHuumorisatiiri",
+  ncol = 1
+)
+```
+
+```{r, fig.width=7, fig.height=16}
+plot(
+  fit.bayes,
+  pars = "muKaunokirjallisuus",
+  ncol = 1
+)
+```
+
+```{r, fig.width=7, fig.height=16}
+plot(
+  fit.bayes,
+  pars = "muKirjeet",
+  ncol = 1
+)
+```
+
+```{r, fig.width=7, fig.height=16}
+plot(
+  fit.bayes,
+  pars = "muNovellitkertomukset",
+  ncol = 1
+)
+```
+
+```{r, fig.width=7, fig.height=16}
+plot(
+  fit.bayes,
+  pars = "muPuheetesitelmat",
+  ncol = 1
+)
+```
+
+```{r, fig.width=7, fig.height=16}
+plot(
+  fit.bayes,
+  pars = "muYhdistelma",
+  ncol = 1
+)
+```
+

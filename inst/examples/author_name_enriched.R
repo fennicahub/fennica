@@ -38,7 +38,7 @@ file_discarded <- paste0(output.folder, field, "_discarded.csv")
 # Generate data summaries for the whole data set
 
 message("Accepted entries in the preprocessed data")
-s <- write_xtable(df.tmp$author_name, file_accepted, count = TRUE)
+s <- write_xtable(df.tmp$full_name, file_accepted, count = TRUE)
 
 message("Discarded entries in the original data")
 

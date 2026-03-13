@@ -1,0 +1,263 @@
+---
+title: "Bayes Multinomial Logistic Regression"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    chalkboard: false
+    transition: fade
+    center: false
+    width: 1280
+    height: 720
+    margin: 0.06
+    min-scale: 0.7
+    max-scale: 1.2
+    css: styles.css
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+
+```{r}
+#| echo: true
+#| warning: false
+```
+
+# Introduction
+
+## Goal
+- Outcome: **genre** (nominal, K>2)
+- Predictors: **gender_primary**, **language_primary** (categorical)
+- Corpus: **1809–1917**, fiction subset (exclude *Tietokirjallisuus*)
+- Model: Bayesian multinomial logistic regression (categorical logit)
+
+## Genres (levels)
+- Esseet, Huumori/satiiri, Kaunokirjallisuus, Kirjeet  
+- Novellit/kertomukset, Puheet/esitelmät, Romaanit, Runot, Yhdistelmä
+
+## Workflow
+1. Load + harmonize factor levels  
+2. Inspect model parameters (get_prior)  
+3. Set weakly-informative priors  
+4. Fit `brms` categorical model  
+5. Posterior predictive check + diagnostics  
+6. Predicted probabilities + plots
+
+
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(stringr)
+library(brms)
+library(rstan)
+library(Rcpp)
+library(nnet)
+library(forcats)
+library(bayesplot)
+```
+
+
+# Load and prepare the data
+```{r}
+#| code-overflow: wrap
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/harmonized/books_19th.tsv"
+
+df <- read.table(
+file = url,
+sep = "\t",
+header = TRUE,
+colClasses = "character",
+fileEncoding = "UTF-8",
+quote = "\"",
+comment.char = "",
+stringsAsFactors = FALSE
+)
+
+df$genre <- gsub("Puheet, esitelmät", "Puheetesitelmat",df$genre)
+df$genre <- gsub("Novellit, kertomukset", "Novellitkertomukset",df$genre)
+df$genre <- gsub("Yhdistelmä", "Yhdistelma",df$genre)
+
+df <- df %>%
+mutate(
+gender_primary = factor(gender_primary, levels = c("male", "female")),
+language = factor(language_primary, levels = c("Finnish", "Swedish")),
+publisher_size = factor(publisher_size, levels = c("group_1", "group_2", "group_3")),
+)
+
+nrow(df)
+
+df_fiction <- df %>%
+  filter(genre != "Tietokirjallisuus") %>%
+  droplevels()
+
+df_fiction$publication_place <- fct_lump_n(
+  factor(df_fiction$publication_place),
+  n = 10,
+  other_level = "Other"
+)
+
+df_fiction$publication_place  <- fct_na_value_to_level(df_fiction$publication_place,  level = "Unknown")
+df_fiction$publication_decade <- fct_na_value_to_level(df_fiction$publication_decade, level = "Unknown")
+df_fiction$gender_primary     <- fct_na_value_to_level(factor(df_fiction$gender_primary), level = "Unknown")
+df_fiction$language           <- fct_na_value_to_level(factor(df_fiction$language),   level = "Unknown")
+df_fiction$publisher_size     <- fct_na_value_to_level(factor(df_fiction$publisher_size), level = "Unknown")
+df_fiction$genre              <- fct_na_value_to_level(factor(df_fiction$genre),      level = "Unknown")
+
+nrow(df_fiction)
+```
+
+#Get parameters
+```{r}
+gp <- get_prior(
+    genre ~ gender_primary + language,
+     family = categorical(),
+     data = df_fiction
+ )
+gp
+```
+
+#Priors
+```{r}
+priors <- c(
+  prior(normal(0, 1), class = "b", dpar = "muEsseet"),
+  prior(normal(0, 1), class = "b", dpar = "muHuumorisatiiri"),
+  prior(normal(0, 1), class = "b", dpar = "muKaunokirjallisuus"),
+  prior(normal(0, 1), class = "b", dpar = "muKirjeet"),
+  prior(normal(0, 1), class = "b", dpar = "muNovellitkertomukset"),
+  prior(normal(0, 1), class = "b", dpar = "muPuheetesitelmat"),
+  prior(normal(0, 1), class = "b", dpar = "muRomaanit"),
+  prior(normal(0, 1), class = "b", dpar = "muRunot"),
+  prior(normal(0, 1), class = "b", dpar = "muYhdistelma"))
+```
+
+#Fit model
+```{r}
+fit.bayes <- brms::brm(
+  genre ~ gender_primary + language,
+  family = categorical(),
+  data = df_fiction,
+  prior = priors,
+  chains = 4,
+  cores = 2,
+  iter = 2000,
+  control = list(adapt_delta = 0.95)
+)
+```
+
+# Summary
+```{r}
+summary(fit.bayes)
+     
+pp_check(fit.bayes)         
+
+```
+
+#Diagnostics
+
+```{r}
+nuts <- nuts_params(fit.bayes)
+summary(nuts$Value[nuts$Parameter == "accept_stat__"])
+```
+
+
+#Probabilities
+
+```{r}
+newdata <- expand.grid(
+  gender_primary = levels(df_fiction$gender_primary),
+  language       = levels(df_fiction$language)
+)
+
+fit_prob <- fitted(
+  fit.bayes,
+  newdata = newdata,
+  scale = "response",   # probabilities
+  summary = TRUE,
+  probs = c(0.005, 0.5, 0.995)
+)
+
+
+rownames(fit_prob) <- apply(newdata, 1, paste, collapse = " | ")
+fit_prob
+```
+
+# Predicted genre probabilities by gender and language
+```{r}
+# convert fitted() output to tidy df
+plot_df <- as.data.frame(as.table(fit_prob[, "Estimate", ]))
+colnames(plot_df) <- c("group", "genre", "probability")
+
+# split group into gender + language
+plot_df <- plot_df %>%
+  separate(group, into = c("gender", "language"), sep = " \\| ")
+
+s <- ggplot(plot_df %>% 
+         filter(gender != "Unknown", language != "Unknown"),
+       aes(x = genre, y = probability, fill = gender)) +
+  geom_col(position = "dodge") +
+  facet_wrap(~ language) +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(
+    x = "Genre",
+    y = "Predicted probability",
+    fill = "Gender",
+    title = "Predicted genre probabilities by gender and language"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+
+
+```
+
+# Novels vs Poems
+```{r}
+#| fig-width: 11
+#| fig-height: 5.5
+plot_df2 <- plot_df %>%
+  mutate(genre = str_replace(genre, "^P\\(Y = (.*)\\)$", "\\1"))
+
+plot_df2 %>%
+  filter(
+    genre %in% c("Romaanit", "Runot"),
+    gender != "Unknown",
+    language != "Unknown"
+  ) %>%
+  ggplot(aes(x = genre, y = probability, fill = gender)) +
+  geom_col(position = "dodge") +
+  facet_wrap(~ language) +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(
+    x = NULL, y = "Predicted probability", fill = "Gender",
+    title = "Contrasting genre specialization: novels vs poetry"
+  ) +
+  theme_minimal()
+
+```
+
+
+
+
+#Analysis
+
+
+Several genres (*Esseet*, *Huumori/satiiri*, *Kirjeet*) are extremely rare in the corpus, with predicted probabilities well below 1% across all gender–language groups. Due to these very small base rates and relatively wide credible intervals, no substantive conclusions can be drawn for these genres.
+
+Clear and systematic differences emerge for the major genres. Women exhibit higher predicted probabilities of writing both **novels (*Romaanit*)** and **short prose (*Novellit, kertomukset*)** than men in both language groups. Among Finnish-language publications, the posterior mean probability of novels is approximately **13 percentage points higher** for women than for men, while among Swedish-language publications the corresponding difference is about **11 percentage points**. Similar for short prose. 
+
+In contrast, **poetry (*Runot*)** is more strongly associated with male authors in both languages, with consistently higher predicted probabilities for men than for women. This pattern is particularly pronounced in Swedish-language publications. Thus, poetry is associated with male authors and Swedish-language publications (both true).
+
+**Drama (*Draama*)** also appears to be more strongly associated with male authors, especially in Finnish-language publications. However, this result should be interpreted with caution, as the drama category contains a relatively large proportion of records with missing or uncertain metadata, which may influence the estimated probabilities.
+
+Overall, the results indicate a clear gendered pattern in genre specialization, with women concentrating more heavily in long and short prose forms, while men are relatively more represented in poetry and drama. Language effects are substantial and often comparable in magnitude to gender effects, highlighting the importance of considering both dimensions jointly.
+
+
+
+
+

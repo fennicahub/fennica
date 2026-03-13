@@ -4,9 +4,9 @@ import math
 from tqdm import tqdm
 import numpy as np
 #%%
-path_csvs = "/mnt/trial/csvs"
+path_csvs = "/mnt/trial/csvs" 
 #https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/full.csv
-full_path = f"{path_csvs}/raw_full_fennica.csv"
+full_path = f"{path_csvs}/fennica_full_20260204.csv"
 # df = pd.read_csv(full_path, engine='c', low_memory=False)
 # df = pd.read_csv(full_path, engine='pyarrow', dtype=str)
 #%%

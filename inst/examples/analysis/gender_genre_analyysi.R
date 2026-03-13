@@ -85,12 +85,34 @@ kauno <- c("Draama", "Esseet", "Huumori, satiiri",
 lin_df <- lin_df %>% mutate(code_genre = ifelse(genre %in% kauno, "fiction", "non-fiction"))
 lin_df$code_genre <- lin_df$code_genre
 
+lin_df
+
+
+############ for workshop only############### delete after###############
+lin_df <- lin_df %>%
+  mutate(
+    genre = fct_explicit_na(factor(genre), na_level = "Unknown"),
+    gender = fct_explicit_na(factor(gender_primary), na_level = "Unknown"),
+    profession_primary = trimws(sub(",.*", "", author_profession)),
+    profession_primary = fct_explicit_na(factor(profession_primary), na_level = "Unknown"),
+    profession_primary = fct_lump_n(profession_primary, n = 10, other_level = "Other")
+  )
+
+# Keep only sufficiently common genres to avoid separation in a workshop setting
+
+genre_counts <- table(lin_df$genre)
+keep_genres <- names(genre_counts[genre_counts >= 200])
+df_model <- lin_df %>% filter(genre %in% keep_genres)
+
+#############################
+
 write.table(
-  lin_df,
-  file = paste0(output.folder, "books_19th.tsv"),
+  df_model,
+  file = paste0(output.folder, "workshop_dariah.tsv"),
   sep = "\t",
   row.names = FALSE,
   quote = TRUE,          # important
   qmethod = "double",    # escape quotes inside fields
   fileEncoding = "UTF-8"
 )
+

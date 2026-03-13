@@ -1,4 +1,3 @@
-#%%
 
 #%%
 import pandas as pd
@@ -9,7 +8,7 @@ import more_itertools as mit
 # %%
 path_csvs = "/mnt/trial/csvs"
 # list of files in pivoted_csvs folder
-folder = f"{path_csvs}/pivoted_csvs"
+folder = f"{path_csvs}/pivoted_callnumbered_csvs"
 csv_filenames = list(os.walk(folder))[0][2]
 csv_filenames
 #%%
@@ -34,7 +33,7 @@ csv_filenames
 
 #%%
 # load callnumbers database
-df_callnumbers = pd.read_table('../../fen-callnumbers-20220902.tsv.gz', compression='gzip', sep="\t")
+df_callnumbers = pd.read_table( "https://a3s.fi/swift/v1/fennica-container/fen-callnumbers-20220902.tsv.gz", compression="gzip", sep='\t', dtype=str )
 df_callnumbers.head(50)
 
 #%%

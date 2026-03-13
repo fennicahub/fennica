@@ -61,3 +61,4 @@ knit_bookdown <- TRUE
 
 # Visualization options
 theme_set(theme_bw(20))
+

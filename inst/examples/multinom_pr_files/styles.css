@@ -1,0 +1,18 @@
+/* overall text smaller */
+.reveal { font-size: 28px; }
+
+/* tighter heading sizes */
+.reveal h1 { font-size: 1.6em; }
+.reveal h2 { font-size: 1.25em; }
+.reveal h3 { font-size: 1.05em; }
+
+/* lists slightly tighter */
+.reveal ul, .reveal ol { line-height: 1.25; }
+.reveal li { margin: 0.15em 0; }
+
+/* code smaller and scroll if needed */
+.reveal pre code { font-size: 0.70em; line-height: 1.15; }
+.reveal pre { max-height: 520px; overflow: auto; }
+
+/* tables smaller */
+.reveal table { font-size: 0.80em; }

@@ -7508,31 +7508,31 @@ polish_genre_655 <- function(x, chunk_size = 1000) {
 #' manual_name_replace(c("Isko", "A***,", "H-n,"), verbose = TRUE)
 #' @export
 manual_name_replace <- function(s, verbose = FALSE) {
+  s <- trimws(s)
   
-  # --- Known manual replacements (regex patterns → full names) ---
-  replacements <- list(
-    "G\\. H\\. M-n" = "Mellin, Gustaf Henrik",
+  replacements <- c(
+    "G. H. M-n" = "Mellin, Gustaf Henrik",
     "H-n" = "Hultin, Constance",
-    "Ignatius, K\\. H\\. J\\." = "Ignatius, Carl Henrik Jakob",
+    "Ignatius, K. H. J." = "Ignatius, Carl Henrik Jakob",
     "Vendela" = "Randelin, Vendela",
     "En finne" = "Herman Avellan",
     "Räty, A" = "Räty, Anders",
     "-a-e-i" = "Galetski, Johan Fredrik",
     "-a -g" = "Runeberg, Fredrika",
     "A-ï-a" = "Ehrnrooth, Lovisa Adelaïda Ehrnrooth",
-    "F\\. I\\." = "Ingberg, F.",
-    "A\\*\\*\\*" = "Hongell, Alma",
+    "F. I." = "Ingberg, F.",
+    "A***" = "Hongell, Alma",
     "Malle" = "Mallander, Malle",
     "Maria" = "Furuhjelm, Maria",
     "-ii-" = "Gerda von Mickwitz",
     "Aina" = "Forssman, Edith Theodora",
     "Nea" = "Huldi Torckell",
-    "J\\. W\\." = "Wälmä, Juho",
+    "J. W." = "Wälmä, Juho",
     "A-nen" = "Anttonen, A. E.",
     "Isko" = "Kulovuori, Ida Sofia",
     "-ei-" = "Edelheim, Anna",
-    "-i\\.-i\\.," = "Bergh-Wuori, Martti",
-    "K\\. L\\." = "Lehmus, Kyösti",
+    "-i.-i.," = "Bergh-Wuori, Martti",
+    "K. L." = "Lehmus, Kyösti",
     "Viva" = "Kronqvist, Olivia",
     "Aira" = "Koljonen, Maiju",
     "e-d" = "Melander, Elise",
@@ -7541,31 +7541,32 @@ manual_name_replace <- function(s, verbose = FALSE) {
     "-lma" = "Holsti, Ilma",
     "Kynä" = "Saarinen, Toivo",
     "Setä" = "Kaarlo Luoto",
-    "M\\. V\\." = "Virtanen, M.",
-    "K-E\\." = "Oskari Korhonen",
+    "M. V." = "Virtanen, M.",
+    "K-E." = "Oskari Korhonen",
     "Juuso" = "Kaksonen, Antti",
     "Niku" = "Kivinen, Niilo",
-    "H\\." = "Hoving, Isaac Wilhelm",
+    "H." = "Hoving, Isaac Wilhelm",
     "L-n" = "Laurén, Ludvig Leonard",
     "-st-" = "Nordlund, Kustavi (Johan Gustaf)",
     "Oiva" = "Sahlman, Malviina"
   )
   
-  # --- Apply replacements ---
-  for (pattern in names(replacements)) {
-    match_idx <- grepl(pattern, s, ignore.case = TRUE)
-    if (any(match_idx)) {
-      if (verbose) {
-        message(sprintf("Replaced %d occurrence(s) of '%s' with '%s'",
-                        sum(match_idx), pattern, replacements[[pattern]]))
-      }
-      s[match_idx] <- replacements[[pattern]]
+  match_idx <- match(s, names(replacements), nomatch = 0)
+  replaced <- match_idx > 0
+  
+  if (verbose && any(replaced)) {
+    tab <- table(names(replacements)[match_idx[replaced]])
+    for (nm in names(tab)) {
+      message(sprintf(
+        "Replaced %d occurrence(s) of '%s' with '%s'",
+        tab[[nm]], nm, replacements[[nm]]
+      ))
     }
   }
   
-  return(s)
+  s[replaced] <- replacements[match_idx[replaced]]
+  s
 }
-
 
 #' @title Polish author
 #' @description Polish author.

@@ -11,16 +11,21 @@ df.tmp <- df.tmp %>%
 
 # Add melinda id info as first column
 df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
-                    author_date = df.orig$author_date, # add field column
+                    date_orig = df.orig$author_date, # add field column
                     df.tmp)
 rownames(df.tmp) <- NULL
 
 
 # ------------------------------------------------------------
 # Store the title field data
-# FIXME: convert to feather or plain CSV
 data.file <- paste0(field, ".Rds")
 saveRDS(df.tmp, file = data.file)
+# Generate markdown summary
+df <- readRDS(data.file)
+# Convert to CSV and store in the output.tables folder
+write.table(df, file = paste0(output.folder, paste0(field, ".csv")), 
+            quote = FALSE, sep = ";", row.names = FALSE)
+ 
 
 # Generate data summaries for the whole data set
 o <- as.character(df.orig[[field]])
