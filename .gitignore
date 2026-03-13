@@ -15,6 +15,7 @@ language.Rds
 # Docker related
 # Dockerfile
 .dockerignore
+*.csv
 inst/examples/priority_fields.csv
 
 inst/examples/df.preprocessed.csv
