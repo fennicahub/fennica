@@ -67,9 +67,9 @@ source("publisher.R")
 
 df.harmonized$publisher <- df.tmp$publisher
 
-source("signum.R")
-
-df.harmonized$signum <- df.tmp$signum_harmonized
+# source("signum.R")
+# 
+# df.harmonized$signum <- df.tmp$signum_harmonized
 
 source("udk.R")
 
@@ -103,7 +103,7 @@ write.table(df.processed,
 ###############################################################################
 
 
-df.processed19 <- df.processed[df.processed$melinda_id %in% melindas_19,] 
+df.processed19_new <- df.processed[df.processed$melinda_id %in% melindas_19,] 
 
 # Store the data
 data.file <- paste0(field, ".Rds")

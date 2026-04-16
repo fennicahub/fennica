@@ -4,44 +4,56 @@ library(stringr)
 library(finto)
 library(arrow)
 
-# choose the reading of the files  depending on the file type
-#If the file is parquet file
-url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/priority_fields.parquet"
-df.orig <- read_parquet(url)
+# priority_fields.R is used to create df.orig 
+# Step 1. load author_id from df.orig 
+# # Download the csv file
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/priority_fields.csv"
+# 
+# Read the CSV file, explicitly setting the first column to character
+# Count the number of columns in the file
+column_count <- ncol(read.csv(url, nrows = 1, sep = "\t"))
+#Create colClasses with 'character' for the first column and 'default' for the rest
+col_classes <- c("character", rep(NA, column_count - 1))
 
-# If the file is CSV
-# url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/priority_fields.csv"
-# df.orig <- read_csv(url)
+# Read the file with the specified colClasses
+df.orig <- read.csv(url, skip = 2, header = TRUE, sep = "\t", colClasses = col_classes)
 
 df.orig <- df.orig %>%
   dplyr::rename(
-    melinda_id = 1, leader = 2, `008` = 3,
-    author_name = 4, author_date = 5, author_id = 6,
-    language = 7, language_original = 8,
-    title_uniform = 9, title = 10, title_remainder = 11,
-    publication_place = 12, publisher = 13,
-    physical_dimensions = 14, physical_extent = 15,
-    publication_frequency = 16, publication_interval = 17,
-    signum = 18, location_852 = 19,
-    UDK = 20, UDK_aux = 21, `245n` = 22,
-    genre_655 = 23, `650a` = 24, general_note = 25,
-    `700a` = 26, `700_0` = 27, `264a` = 28
-  ) %>%
-  mutate(
-    author_ID = case_when(
-      author_id != "" & `264a` != "" ~ paste(author_id, `264a`, sep = " | "),
-      author_id != "" ~ author_id,
-      `264a` != "" ~ `264a`,
-      TRUE ~ ""
-    )
-  ) %>%
-  relocate(author_ID, .after = author_date) %>%
-  select(-author_id, -`264a`) %>%
-  distinct()
+    melinda_id = 1,            # ("001", "-")
+    leader = 2,                # ("leader", "-")
+    `008` = 3,                 # ("008", "-")
+    author_name = 4,           # ("100", "a")
+    author_date = 5,           # ("100", "d")
+    author_id = 6,             # ("100", "0")
+    language = 7,            # ("041", "a")
+    language_original = 8,   # ("041", "h")
+    title_uniform = 9,       # ("240", "a")
+    title = 10,               # ("245", "a")
+    title_remainder = 11,     # ("245", "b")
+    `245n` = 12,              # ("245", "n")
+    publication_place = 13,   # ("260", "a")
+    publisher = 14,           # ("260", "b")
+    physical_dimensions = 15,# ("300", "c")
+    physical_extent = 16,     # ("300", "a")
+    publication_frequency = 17,# ("310", "a")
+    publication_interval = 18,# ("362", "a")
+    UDK = 19,                 # ("080", "a")
+    UDK_aux = 20,             # ("080", "x")
+    genre_655 = 21,           # ("655", "a")
+    un650 = 22,
+    un500 = 23,
+    author_700a = 23,                # ("700", "a")
+    author_id_700 = 25,              # ("700", "0")
+    unknowm1 = 26, 
+    un264 = 27
+  )
+
+id <- data.frame(author_id = df.orig$author_id)
 
 # Step 3: Extract 9-digit author ID
-fennica_subset <- df.orig %>%
-  mutate(author_ID = str_extract(author_ID, "\\d{9}"))
+fennica_subset <- id %>%
+  mutate(author_ID = str_extract(author_id, "\\d{9}"))
 
 
 # Step 4:Drop NA before calling get_kanto
@@ -49,23 +61,21 @@ author_ids_clean <- fennica_subset %>%
   filter(!is.na(author_ID) & author_ID != "") %>%
   distinct(author_ID)
 
-#authors_df <- get_kanto(author_ids_clean)
-
 # Step 5:Use get_kanto() on just the IDs
 authors_df <- finto::get_kanto(author_ids_clean)
+authors_df
 
-# Step 6: Merge enriched authors_df back to the fennica_subset
+# # Step 6: Merge enriched authors_df back to the fennica_subset
 authors_df_clean <- authors_df %>%
-  distinct(author_ID, .keep_all = TRUE)
-
-
-# Final join
+   distinct(author_ID, .keep_all = TRUE)
+# 
+# 
+# # Final join
 merged_data <- dplyr::left_join(fennica_subset, authors_df_clean, by = "author_ID")
-
-# choose the file type as the following both files formats compress the files as the enriched data is big
+# 
+# # choose the file type as the following both files formats compress the files as the enriched data is big
 arrow::write_parquet(merged_data, "fennica_enriched.parquet", compression = "zstd")
 
-arrow::write_feather(df, "fennica_kanto_enriched.feather", compression = "zstd")
 
 
 

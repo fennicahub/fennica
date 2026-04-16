@@ -1,0 +1,710 @@
+---
+title: "Coding Examples Chapter 2"
+output:
+  html_document:
+    df_print: paged
+date: "2024-07-16"
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## *DO NOT CIRCULATE*
+
+These examples and code are taken from the upcoming book 'Bayesian
+Statistics: A Primer for Data Scientists, with R and Python' by Agresti,
+Kateri and Mira.
+
+## Chapter 2
+
+### Example: Bayes Estimates with Three Prior Distributions and the Same Data
+
+In this illustration we find Bayesian posterior mean estimates of the
+probability $\pi$ of success for each of three binomial experiments that
+have the same data, $y = 10$ successes in $n = 10$ trials: (1) a British
+woman claims that in tasting a cup of tea with milk, she can tell
+whether the milk was poured before or after the tea was poured; (2) A
+professor of 18th century musicology claims to be able to tell for any
+pair of pages of music, one composed by Mozart and one by Haydn, who
+composed each. (3) A person in a drunken state claims to be able to
+predict whether your flip of a balanced coin will result in a head or in
+a tail. In each case, the frequentist ML estimate of the probability
+$\pi$ of a correct prediction is $\hat{\pi} = y/n = 10/10 = 1$. With the
+Bayesian approach, however, we may obtain different estimates by
+incorporating prior opinion/belief for each scenario. We shall next find
+Bayesian posterior mean estimates of $\pi$ based on three separate prior
+distributions.
+
+For the tea taster, if we have no *a priori* reason to expect any
+particular value for $\pi$, we could select a uniform prior
+distribution, which is the Beta(1, 1) distribution. This prior
+distribution has mean 0.50 and standard deviation $1/\sqrt{12} = 0.29$.
+By contrast, for the other two , our prior beliefs might be easier to
+specify in terms of an average chance of success (the mean) and
+reasonable variation from the average (the standard deviation). For coin
+flips we may be highly skeptical of any claim about predictions and
+decide to use a beta prior distribution with mean 0.50 but with small
+standard deviation, say 0.03, so that the beta distribution is highly
+concentrated near 0.50. We might have greater faith in the
+musicologist's claim, perhaps using a beta prior distribution with a
+mean of 0.90 and standard deviation 0.10. We need now to solve for the
+$\alpha_1$ and $\alpha_2$ values that identify the beta distributions
+having these means and standard deviations. For a chosen mean $\mu$,
+from the formula $\mu = \alpha_{1}/(\alpha_{1} + \alpha_{2})$ for a beta
+distribution, any particular value $\alpha_{1}$ has a corresponding
+$\alpha_{2} = \alpha_{1}(1 - \mu)/\mu$. By trial and error for a
+particular value of $\mu$ we can find a pair of
+($\alpha_{1}, \alpha_{2}$) values that have a particular standard
+deviation $\sigma$, or we could solve simultaneously for
+($\alpha_{1}, \alpha_{2}$) based on ($\mu, \sigma$). The following *R*
+code shows that for a beta prior distribution with ($\mu, \sigma$) =
+(0.50, 0.03) for the coin-tossing predictions, we can take
+hyperparameter values ($\alpha_{1}, \alpha_{2}$) $\approx$ (138, 138),
+and for ($\mu, \sigma$) = (0.90, 0.10) for the musicologist, we can take
+($\alpha_{1}, \alpha_{2}$) $\approx$ (7, 7/9).
+
+```{r}
+alpha1 = 138; alpha2 = 138 # beta hyperparameters for predictor of coin flips
+alpha1/(alpha1+alpha2) # mean of beta prior distribution
+sqrt((alpha1*alpha2)/((alpha1+alpha2)^2 * (alpha1+alpha2+1)))
+# standard deviation of beta prior distribution 
+
+alpha1 = 7; alpha2 = 7/9 # beta hyperparameters for musicologist
+alpha1/(alpha1+alpha2) # mean of beta prior distribution
+sqrt((alpha1*alpha2)/((alpha1+alpha2)^2 * (alpha1+alpha2+1)))  
+# standard deviation of beta prior distribution
+```
+
+With $y=10$ successes in $n=10$ trials, the posterior beta distribution
+has hyperparameter values
+$\alpha_{1}^* = y + \alpha_{1} = 10 + \alpha_{1}$ and
+$\alpha_{2}^* = n - y + \alpha_{2} = 10 - 10 + \alpha_{2} = \alpha_{2}$.
+The posterior mean is
+$\tilde{\pi} = \alpha_{1}^*/(\alpha_{1}^* + \alpha_{2}^*) = (10 + \alpha_{1})/(10 + \alpha_{1} + \alpha_{2})$.
+We now find $\tilde{\pi}$ for the three chosen prior distributions:
+
+```{r}
+alpha1 <- 1; alpha2 <- 1  # hyperparameter values for uniform prior distribution
+alpha1post <- 10 + alpha1; alpha2post <- alpha2 # hyperpara's for posterior when y=n=10
+alpha1post/(alpha1post + alpha2post) # beta posterior mean for British tea taster
+qbeta(0.5, alpha1post, alpha2post) # posterior median for British tea taster
+alpha1 = 138; alpha2 = 138 # beta hyperparameters with mean 0.50, standard dev. 0.03
+alpha1post <- 10 + alpha1; alpha2post <- alpha2 # hyperpara's for posterior when y=n=10
+alpha1post/(alpha1post + alpha2post) # beta posterior mean for predictor of coin flips
+
+alpha1 = 7; alpha2 = 7/9 # beta hyperparameters with mean 0.90, standard dev. 0.10
+alpha1post <- 10 + alpha1; alpha2post <- alpha2 # hyperpara's for posterior when y=n=10
+alpha1post/(alpha1post + alpha2post) # beta posterior mean for musicologist 
+qbeta(0.5, alpha1post, alpha2post) # posterior median for musicologist 
+```
+
+With these prior distributions, the posterior mean estimates of $\pi$
+are 0.917 for the tea taster and 0.956 for the musicologist but only
+0.517 for the predictor of coin flips. The posterior mean for coin
+flipping is very close to the prior mean of 0.50, the data having
+relatively little influence because the prior beliefs express a high
+degree of certainty.
+
+The **LearnBayes** package in R has a useful function for approximating
+hyperparameter values for a beta distribution having a specified
+probability in a particular range. For instance, the following code
+finds the beta distribution that has probability 0.95 between 0.10 and
+0.30:
+
+```{r}
+library(LearnBayes)
+quantile1 <- list(p = .025, x = 0.10); quantile2 <- list(p = .975, x = 0.30)
+shape <- beta.select(quantile1, quantile2)
+cat("shape parameters", shape)
+```
+
+### Example: Do you believe in hell?
+
+The 2018 General Social Survey in the U.S. asked “Do you believe in
+hell?” The percentage who responded *yes* was 74.0% for the 727 subjects
+with a high school education or less, 70.1% for the 304 subjects with a
+junior college or bachelor's degree, and 56.8% for the 111 subjects with
+a graduate degree. We shall find posterior intervals for the population
+proportion $\pi$ of those with a graduate degree who would respond
+*yes*. For the counts of 63 for the *yes* response and 48 for the *no*
+response, the ML estimate of $\pi$ is $\hat{\pi} = 63/111 = 0.568$, and
+the 95% Wald confidence interval
+$\hat{\pi} \pm 1.96\sqrt{\hat{\pi}(1 - \hat{\pi})/n}$ is (0.475, 0.660).
+For the uniform Beta(1, 1) prior distribution with $y=63$ and
+$n-y = 48$, the posterior distribution is
+Beta($\alpha_{1}^*, \alpha_{2}^*$) with
+$\alpha_{1}^* = y + \alpha_{1} = 64$ and
+$\alpha_{2}^* = n - y + \alpha_{2} = 49$. The posterior mean estimate of
+$\pi$ is
+$\alpha_{1}^{*}/(\alpha_{1}^{*} + \alpha_{2}^{*}) = 64/(64 + 49) = 0.566$,
+and the 0.025 and 0.975 quantiles of the beta posterior distribution are
+(0.474, 0.656). Software reports that the 95% HPD interval is (0.475,
+0.657). Very similar results occur for the Jeffreys prior distribution,
+which is the Beta(0.5, 0.5) distribution.
+
+```{r}
+qbeta(c(0.025, 0.975), 63 + 1, 48 + 1)
+# quantiles of beta posterior dist. for 95% equal-tail percentile int. with uniform prior
+
+qbeta(c(0.025, 0.975), 63.5, 48.5) 
+# quantiles of beta posterior dist. for 95% equal-tail percentile int. with Jeffreys prior
+
+library(binom)
+binom.bayes(63, 111, conf.level=0.95, type="central", alpha1=1, alpha2=1)
+# 95% equal-tail percentile int. for uniform prior dist.
+
+binom.bayes(63, 111, conf.level=0.95, alpha1=1, alpha2=1)
+# 95% HPD interval for uniform prior dist.
+
+binom.bayes(63, 111, conf.level=0.95, alpha1=0.5, alpha2=0.5)
+# 95% HPD interval for Jeffreys prior dist.
+
+binom.confint(63, 111, conf.level=0.95, method="asymptotic") # 95% Wald confidence int.
+
+binom.confint(63, 111, conf.level=0.95, method="wilson")  
+# 95% score confidence int. (better than Wald CI if n small or pi near 0 or 1)
+```
+
+### Influence of Sample Size and Prior Distribution on Posterior Intervals
+
+As the sample size $n$ increases, the influence of the prior
+distribution weakens and the posterior distribution has appearance
+closer to that of the likelihood function. As $n$ increases, Bayesian
+posterior mean estimates of $\pi$ become more similar to the ML estimate
+and Bayesian posterior intervals become more similar to frequentist
+confidence intervals.
+
+We illustrate this with a sequence of cases in which $\hat{\pi} = 0.70$,
+computing for increasing values of n the frequentist Wald confidence
+interval and the Bayesian HPD interval obtained with uniform prior
+distribution ($\alpha_1 = \alpha_2 = 1$):
+
+```{r}
+library(binom)
+binom.confint(7, 10, conf.level=0.95, method="asymptotic") # n = 10
+# frequentist Wald CI
+
+binom.bayes(7, 10, conf.level=0.95, alpha1=1, alpha2=1) 
+# Bayesian HPD interval for uniform prior distribution
+                                              
+binom.confint(70, 100, conf.level=0.95, method="asymptotic") # n = 100
+# frequentist Wald CI
+
+binom.bayes(70, 100, conf.level=0.95, alpha1=1, alpha2=1)
+# Bayesian HPD interval
+
+binom.confint(7000, 10000, conf.level=0.95, method="asymptotic") # n=10000
+# frequentist Wald CI
+
+binom.bayes(7000, 10000, conf.level=0.95, alpha1=1, alpha2=1)
+# Bayesian HPD interval
+```
+
+For a particular sample size n (set to 100 in the R code below), a
+Bayesian interval is more similar to the frequentist confidence interval
+as the prior distribution is more diffuse, that is, as
+$\alpha_1 = \alpha_2  = \alpha$ decreases toward 0:
+
+```{r}
+library(binom)
+binom.bayes(70, 100, conf.level=0.95, alpha1=100, alpha2=100)  # beta hyperpara's=100
+# narrow interval when prior dist. has small variance
+
+binom.bayes(70, 100, conf.level=0.95, alpha1=10, alpha2=10)    # beta hyperpara's=10
+
+binom.bayes(70, 100, conf.level=0.95, alpha1=1, alpha2=1)      # beta hyperpara's=1
+
+binom.bayes(70, 100, conf.level=0.95, alpha1=0.1, alpha2=0.1)  # beta hyperpara's=0.1
+
+binom.bayes(70, 100, conf.level=0.95, alpha1=0.01, alpha2=0.01) # beta hyperpara's=0.01
+
+binom.confint(70, 100, conf.level=0.95, method="asymptotic") # frequentist Wald CI
+```
+
+## Posterior Probability Analogs of P-values
+
+With the uniform prior, the posterior distribution is beta with
+hyperparameters $\alpha_{1}^* = y + 1 = 64$ and
+$\alpha_{2}^* = n - y + 1 = 49$. We next use this posterior distribution
+to find $P(\pi < 0.50 \mid y)$ and $P(\pi > 0.50 \mid y)$:
+
+```{r}
+pbeta(0.50, 64, 49) # cumulative probability at 0.50 for beta posterior distribution
+
+1 - pbeta(0.50, 64, 49) # posterior P(pi > 0.50 | y)
+
+```
+
+The posterior $P(\pi > 0.50 \mid y) = 0.922$ and
+$P(\pi < 0.50 \mid y) = 0.078$ provide substantial but not overly strong
+evidence that the majority believe in hell.
+
+A corresponding frequentist statistical inference reports the $P$-value
+for testing $H_0$: $\pi = 0.50$ (implicitly $\pi \leq 0.50$) against
+$H_{1}$: $\pi > 0.50$. Since $y = 63$, the $P$-value is the binomial
+probability of observing $Y \geq 63$ in $n=111$ trials when actually
+$H_0$ is true, that is, $1 - P(Y \leq 62 \mid \pi = 0.50) = 0.092$. It
+is plausible that this particular $H_0$ is true (i.e., $\pi = 0.50$),
+because the $P$-value is small but not overly so, and we would not
+reject $H_0$ at the usual significance levels such as 0.05.
+
+```{r}
+1 - pbinom(62, 111, 0.50) # one-sided (right-tail) P-value for Binom(111, 0.50) dist.
+```
+
+### Bayesian Prediction of Future Observations
+
+Returning to the example of the British tea taster we illustrate the
+concept of Bayesian prediction of future observations. After observing
+10 successful guesses in 10 cups, combined with a uniform prior
+distribution we obtained a posterior beta distribution for the
+probability of a successful prediction, with $\alpha_{1}^{*} = 11$ and
+$\alpha_{2}^{*} = 1$, for which the posterior mean is
+$\mu^{*} = 11/12 = 0.9167$. For the next $n_{_{f}} = 5$ cups, here is
+the beta-binomial distribution for the number of correct guesses
+$Y_{_f}$:
+
+```{r}
+#install.packages("extraDistr")
+library(extraDistr)
+dbbinom(c(0,1,2,3,4,5), 5, alpha = 11, beta = 1) 
+# predictive probabilities P(Y_f = 0), P(Y_f = 1), ... , P(Y_f = 5)
+
+```
+
+For the five future guesses, the expected number of correct guesses is
+$E(Y_{_{f}}) = n_{_{f}}\mu^{*} = 5(11/12) = 4.58$, and the probability
+is 0.6875 that all five will be correct.
+
+### Example: Do you believe in hell? - continued
+
+With independent binomial samples, we can construct a Bayesian posterior
+interval for $\pi_{1} - \pi_{2}$ by selecting independent beta prior
+distributions for $\pi_{1}$ and $\pi_{2}$. When $\alpha_1 = \alpha_2$
+for each beta prior distribution, the prior distribution of
+$\pi_1 - \pi_2$ is symmetric around 0.
+
+We illustrate Bayesian inference for $\pi_1 - \pi_2$ by comparing the
+proportions of females and of males who believe in hell, again using
+data from the 2018 General Social Survey. The sample proportions are
+$\hat{\pi}_{1} = 498/674 = 0.739$ for females and
+$\hat{\pi}_{2} = 316/468 = 0.675$ for males. When we use uniform prior
+distributions for $\pi_1$ and $\pi_2$, the posterior distribution is
+Beta($y_{1} + 1, n_{1} - y_{1} + 1$) = Beta(499, 177) for $\pi_1$ and
+Beta($y_{2} + 1, n_{2} - y_{2} + 1$) = Beta(317, 153) for $\pi_2$. A
+simple way to construct a posterior interval for $\pi_{1} - \pi_{2}$ is
+by simulating from the posterior distributions of $\pi_1$ and $\pi_2$
+and using those values to approximate the posterior distribution of
+$\pi_1 - \pi_2$ and its quantiles; that is, generate a very large number
+of beta random variables from the posterior beta densities of $\pi_1$
+and $\pi_2$ and approximate the relevant posterior quantiles of
+$\pi_1 - \pi_2$ for the posterior interval.\
+The following **R** code shows a posterior 95% percentile interval based
+on simulating 50 million random draws from each posterior beta density.
+We also show results using **R** functions to simulate the HPD interval
+and to construct the frequentist 95% Wald and score confidence
+intervals:
+
+```{r}
+pi1 <- rbeta(5000000, 499, 177) # simulating from posterior dist. of pi_1
+pi2 <- rbeta(5000000, 317, 153) # simulating from posterior dist. of pi_2 
+quantile(pi1 - pi2, c(0.025, 0.975)) # 0.025 and 0.975 quantiles of simulated difference
+# simulated 95% percentile interval for pi1 - pi2
+
+hist(pi1 - pi2)                  # posterior distribution is bell-shaped
+plot(density(pi1 - pi2), ylab="Density", xlab="Difference of Probabilities", main="")
+
+#install.packages('HDInterval')
+library(HDInterval)
+hdi(pi1 - pi2, credMass=0.95) # simulated 95% HPD interval for pi1 - pi2
+
+prop.test(c(498, 316), c(674, 468), correct=FALSE) # data c(y1, y2), c(n1, n2) 
+# frequentist 95% Wald CI for pi1 - pi2
+
+#install.packages('PropCIs')
+library(PropCIs)
+diffscoreci(498, 674, 316, 468, conf.level=0.95) # arguments y1, n1, y2, n2
+# frequentist 95% score CI for pi1 - pi2
+
+quantile(pi1/pi2, c(0.025, 0.975)) # simulated 95% percentile interval for risk ratio
+```
+
+With such large sample sizes, the Bayesian and frequentist intervals are
+all very similar.
+
+For comparing two proportions, another useful summary measure is the
+ratio $\pi_{1}/\pi_{2}$. This is called the
+\textbf{\textit{relative risk}} or \textbf{\textit{risk ratio}}. It is
+often used in medical research to compare the probability of a certain
+undesirable outcome for two treatments, because the ratio can be more
+relevant than the difference when both probabilities are close to 0. We
+can simulate the posterior distribution of $\pi_{1}/\pi_{2}$ and form
+posterior intervals using the simulated values from the beta posterior
+distributions of $\pi_{1}$ and $\pi_{2}$. For example, the posterior
+probability is 0.95 that the population proportion in the U.S. who
+believe in hell is between 1.01 and 1.18 times as high for women as for
+men:
+
+```{r}
+quantile(pi1/pi2, c(0.025, 0.975)) # using values simulated in previously shown output
+# simulated 95% percentile interval for risk ratio
+```
+
+## Analogs of Significance Tests about Difference of Proportions
+
+Using a simulated posterior distribution for $\pi_1 - \pi_2$, we can
+precisely approximate posterior probabilities such as
+$P(\pi_{1} > \pi_{2} \mid y_{1}, y_{2})$ by the proportion of the
+simulated joint distribution for which $\pi_1 > \pi_2$. For analyzing
+belief in hell by gender, we used uniform prior distributions. As seen
+in the following **R** code, the posterior probability that females are
+more likely than males to believe in hell is 0.990. It seems highly
+likely that $\pi_1 > \pi_2$.
+
+```{r}
+pi1 <- rbeta(5000000, 499, 177) 
+pi2 <- rbeta(5000000, 317, 153) 
+mean(pi1 < pi2); mean(pi1 > pi2) # simulated posterior P(pi1 < pi2), P(pi1 > pi2)
+prop.test(c(498, 316), c(674, 468), correct=FALSE) # data c(y1, y2), c(n1, n2) 
+# X-squared = chi-squared statistic = square of z test stat; doesn't show direction
+```
+
+The R output also shows the result of the frequentist significance test
+of $H_0: \pi_1 = \pi_2$. It is a chi-squared statistic that is the
+square of the $z$ test statistic.
+
+## Multiple Comparisons of Several Binomial Parameters
+
+In practice, the number of groups to be compared often exceeds two. We
+can construct the inferences so that the error probability applies to
+the entire family of inferences rather than to each individual one. The
+method for constructing simultaneous posterior intervals is called the
+Bonferroni method. To illustrate, for the 2018 General Social Survey
+responses to “Do you believe in hell?” by education level, the (yes, no)
+totals were (538, 189) for those with at most a high-school education,
+(213, 91) for those with a junior college or bachelor’s degree, and (63,
+48) for those with a graduate degree. When we use posterior probability
+0.98 for each of the 3 comparisons of pairs of education levels, the
+entire set of 3 posterior intervals holds with probability at least
+1-3(0.02) = 0.94. We next simulate percentile intervals to do this,
+using the posterior distributions generated with uniform prior
+distributions:
+
+```{r}
+pi1 <- rbeta(5000000, 600+1, 1635-600+1) # posterior dist. with uniform prior for white
+pi2 <- rbeta(5000000, 100+1, 368-100+1)  # posterior dist. with uniform prior for black
+pi3 <- rbeta(5000000, 54+1, 277-54+1)    # posterior dist. with uniform prior for other
+quantile(pi1 - pi2, c(0.01, 0.99)) # posterior probability = 0.99 - 0.01 = 0.98
+quantile(pi1 - pi3, c(0.01, 0.99))
+quantile(pi2 - pi3, c(0.01, 0.99))
+```
+
+At this probability level, we conclude that belief in hell is less
+common for those with a graduate degree than for the other two education
+levels, because the posterior intervals for $\pi_1 - \pi_3$ and for
+$\pi_2 - \pi_3$ contain only positive values. For example, we infer that
+the population proportion believing in hell is between 0.06 and 0.29
+higher for those with at most a high school degree than for those with a
+graduate degree. The intervals are wide, and belief in hell could be
+substantially less common for those with a graduate degree. However, it
+is plausible that the proportions believing in hell are equal for the
+first two education levels, because the posterior interval for
+$\pi_1 - \pi_2$ contains 0.
+
+### Example: What percentage of people are very happy?
+
+The 2021 General Social Survey asked respondents whether they considered
+themselves to be very happy, pretty happy, or not too happy. The sample
+counts of the 4003 respondents in the (very happy, pretty happy, not too
+happy) categories were (778, 2304, 921), for percentages (19.4, 57.6,
+23.0). We shall find posterior intervals for the proportions of adults
+in the U.S. who characterize themselves in each category.
+
+With such a large sample size and the small values of $\{\alpha_{j}\}$
+typically selected, the prior distribution has little impact. We use a
+uniform Dirichlet distribution over the probability simplex, for which
+$\alpha_1 = \alpha_2 =\alpha_3 = 1$ and
+$\alpha_{0} = \sum_{k=1}^{3}\alpha_{k} = 3$. The beta posterior
+distribution of $\pi_1$ for the very happy category has hyperparameters
+$y_{1} + \alpha_{1} = 779$ and
+$(y_{2} + y_{3}) + (\alpha_{2} + \alpha_{3}) = (2304 + 921) + (1 + 1) = 3227$.
+Similarly, hyperparameters are (2305, 1701) for the pretty happy
+category and (922, 3084) for the not too happy category. Here are 99%
+equal-tail percentile intervals for $\pi_{1}$, $\pi_{2}$, and $\pi_{3}$:
+
+```{r}
+qbeta(c(0.005, 0.995), 779, 3227)  # quantiles, beta hyperparameters for very happy  
+#   99% posterior percentile interval
+
+qbeta(c(0.005, 0.995), 2305, 1701) # quantiles, beta hyperparameters for pretty happy  
+#   99% posterior percentile interval
+
+qbeta(c(0.005, 0.995), 922, 3084)  # quantiles, beta hyperparameters for not too happy  
+#   99% posterior percentile interval
+```
+
+For example, the probability is 0.99 that the population proportion who
+would report being very happy is between 0.179 and 0.211. By the
+Bonferroni method, all three posterior intervals contain the true
+population proportion values with probability at least 1-3(0.01) = 0.97.
+
+### Frequentist Test of Independence of Two Categorical Variables
+
+Another topic for which the multinomial distribution applies is the
+study of association between two categorical variables. Besides asking
+about happiness, the 2021 General Social Survey asked respondents about
+their relative family income. How can we analyze whether an association
+exists between happiness and family income, that is, whether the chance
+of being in a particular happiness category such as *very happy* depends
+on the family income level?
+
+Column are Very happy & Pretty happy & Not too happy. While rows here
+are showing their incomes, as above average, average and below average.
+
+```{r}
+data <- matrix(c(282,324,172,670,966,668,198,301,422),c(3,3)) # 3 rows and 3 columns
+data
+chisq.test(data) # Pearson chi-squared test
+```
+
+### Bayes Factor for Evaluating Plausibility of Independence
+
+Bayesian methods also apply for evaluating $H_0$: independence. The
+Bayes factor is the ratio $m_{1}(y)/m_{0}(y)$ of the marginal
+probability functions of the observed data under the two hypotheses,
+which is the likelihood ratio. We can use a Bayes factor to compare the
+evidence supporting the hypothesis $H_0$ of statistical independence of
+two categorical variables with the general alternative hypothesis $H_1$
+that permits the categorical variables to be statistically dependent. We
+do this based on models expressed in terms of Dirichlet distributions
+for the joint probabilities.
+
+For the assumption of joint multinomial sampling over the 9 cells, one
+model permitting statistical dependence assumes a joint uniform
+Dirichlet prior distribution over the space of $rc$ cell probabilities
+$\{P(X = i, \, Y=j)\}$ that sum to 1. An independence model assumes a
+marginal uniform Dirichlet prior distribution for $\{P(X=i)\}$ that sum
+to 1 and another independent marginal uniform Dirichlet prior
+distribution for $\{P(Y=j)\}$. The Bayes factor in favor of the
+statistical dependence model over the independence one has a complex
+expression involving several gamma functions. Its formula does not
+provide intuition and we omit it, but it is provided by **R** as shown
+in the following code:
+
+```{r}
+#install.packages("BayesFactor")
+library(BayesFactor)
+BF <- contingencyTableBF(data, priorConcentration = 1, sampleType = "jointMulti")
+# priorConcentration = 1 is default uniform Dirichlet dist's encoding independence
+# use sampleType = "indepMulti" for independent multinomial sampling in the rows
+BF
+```
+
+We estimate that the data would be 3.3 $\times 10^{23}$ times more
+likely under the dependence model than under the independence one. This
+is extremely strong evidence against the hypothesis that happiness and
+income are statistically independent. This Bayes factor approach, unlike
+the frequentist chi-squared test, has differing results when we instead
+assume independent multinomial samples in the three rows:
+
+```{r}
+ contingencyTableBF(data, sampleType = "indepMulti", fixedMargin = "rows")
+```
+
+In practice, neither these Bayes factors nor the frequentist chi-squared
+test are sufficient to give us the sort of information that is
+especially informative. We rarely expect a null hypothesis of
+independence to be plausible, and whether we obtain a small $P$-value
+and a large Bayes factor mainly reflects whether $n$ is sufficiently
+large to have good power. Of greater interest in most practical
+applications is the nature and the strength of the association between
+the variables. For example, we could focus on the difference in the
+population proportions that are very happy between those with family
+income above average and those with family income below average. We next
+find a Bayesian posterior interval for this difference, using simulation
+for the beta posterior distributions implied by binomial counts of (very
+happy, not very happy) and uniform prior distributions for the
+population proportions:
+
+```{r}
+piVH1 <- rbeta(50000000, shape1 = 282 + 1, shape2 = 670 + 198 + 1) 
+ # simulating posterior beta dist. for P(very happy) for above average income
+# for above average income, 282 very happy, 670 + 198 not in very happy category
+# adding + 1 for each posterior beta hyperparameter results from uniform prior dist.
+piVH3 <- rbeta(50000000, shape1 = 172 + 1, shape2 = 668 + 422 + 1) 
+# simulating posterior beta dist. for P(very happy) for below average income
+quantile(piVH1 - piVH3, c(0.025,0.975))
+```
+
+We estimate that the probability of being very happy is between 0.08 and
+0.14 higher for the above average income group than the below average
+income group.
+
+### Example: Estimating Biden/Trump Presidential Election Results
+
+This example simulates a sample of 1000 people to mimic a poll taken
+before the 2020 U.S. presidential election, in which the Democratic
+candidate Joseph Biden faced the Republican candidate Donald Trump. Let
+$\pi_i$ be the population proportion in the actual election that voted
+for Biden in state $i$ ($i = 1, \dots , 51$, where $i = 8$ is District
+of Columbia), out of those that voted for Biden or Trump. We take the
+number of observations $n_i$ in the simulated sample from state i
+proportional to the number of people in state i who voted in that
+election, subject to $\sum_i n_i = 1000$. The simulated number $y_i$
+voting for Biden is the outcome of a Binom($n_i,\pi_i$) random variable.
+
+Many states have small $n_i$, and we can obtain better estimates by
+borrowing from the whole data set. The essence of the empirical Bayes
+approach with a beta prior distribution is that we regard the data as
+being generated in the following way: 51 randomly generated values from
+a Beta($\alpha_1,\alpha_2$) distribution determine the population
+proportions $\{\pi_i\}$ voting for Biden. Then, a randomly generated
+value from the Binom($n_i,\pi_i$) distribution yields the number $y_i$
+in the sample of size $n_i$ from state $i$ voting for Biden,
+$i = 1, \dots , 51$. The sample proportions $\{\hat{\pi}_i = y_i/n_i\}$
+exhibit greater variability than if the $\{y_i\}$ came from outcomes of
+{Binom($n_i,\pi$)} binomial random variables that all had the same
+success probability $\pi$. We do not know $\alpha_1$ and $\alpha_2$ for
+the beta distribution that generated the $\{\pi_j\}$, but once we
+observe the counts $\{y_i\}$ and sample size indices $\{n_i\}$, software
+can use iterative methods to find marginal ML estimates $\alpha_1$ and
+$\alpha_2$ by maximizing the beta-binomial likelihood function for the
+data. Then we perform ordinary Bayesian inference using the
+Beta($\hat{\alpha}_1,\hat{\alpha}_2$) prior distribution. The posterior
+mean estimate of a population proportion $\pi_i$ is a weighted average
+of the sample proportion $\hat{\pi}_i$ and the mean
+$\hat{\alpha}_1/(\hat{\alpha}_1+\hat{\alpha}_2)$ of the estimated beta
+prior distribution.
+
+For the election polling data, the following R code shows that
+maximizing the marginal beta-binomial likelihood yields estimated
+hyperparameters for the beta distribution of $\hat{\alpha}_1 = 32.49$
+and $\hat{\alpha}_2 = 29.39$. The following code shows results for the
+first five states in the list.
+
+```{r}
+Election <- read.table("https://bayes4ds.rwth-aachen.de/data/Election2020.dat", header=TRUE)
+head(Election, 5)
+#install.packages("VGAM")
+library(VGAM)                  # package that can find ML fit of beta-binomial dist.
+fit.bb <- vglm(cbind(y, n-y) ~ 1, betabinomialff, data=Election) # Fits beta binomial
+Coef(fit.bb)                   #    to find marginal ML estimates of beta hyperpara's
+#   for empirical Bayes approach
+#Estimated beta hyperparameters
+Popul.prop <- Election$pi; State <- Election$state
+Sample.prop <- Election$y/Election$n
+Emp.Bayes.est <- (Election$y+Coef(fit.bb)[1])/(Election$n+Coef(fit.bb)[1]+Coef(fit.bb)[2])
+Results <- data.frame(State, Popul.prop, Sample.prop, Emp.Bayes.est)
+head(Results, 5)
+sqrt((sum(Election$n*(Sample.prop - Popul.prop)^2))/1000)
+#root mean square of sample proportions around population proportions
+sqrt((sum(Election$n*(Emp.Bayes.est - Popul.prop)^2))/1000)
+#root mean square of empirical Bayes estimates around population prop's
+
+```
+
+### Normal Distribution for Logit Transformation of a Probability (Example: Do you believe in hell? - continued Part 2)
+
+The normal distribution has a bell-shaped pdf that is symmetric. We
+denote the normal distribution with mean $\mu$ and variance $\sigma^2$
+by $N(\mu,\sigma^2)$, where $\mu$ can be any real number and
+$\sigma > 0$. When we use the normal distribution as a prior
+distribution for $\log[\pi/(1 - \pi)]$, we refer to the distribution for
+$\pi$ itself as the logit-normal distribution. When we take $\mu = 0$
+for the normal distribution, the corresponding logit-normal distribution
+on the $\pi$ scale has pdf with a symmetric shape around 0.50. It is
+unimodal when $\sigma^2 \leq 2$ and bimodal when $\sigma^2 > 2$, but
+always tapering off toward 0 as $\pi$ approaches 0 or 1. Specifically,
+it is mound-shaped for $\sigma = 1$, roughly uniform except near the
+boundaries when $\sigma \approx 1.5$, and with more pronounced peaks for
+the modes when $\sigma$ is about 2 or larger.
+
+We will not consider here the methodology for finding the posterior
+distribution for the logit parameter, $L = \log[\pi/(1 - \pi)]$,.
+However, it is simple to construct it using software. Once we do this, a
+posterior interval for $L$ yields a posterior interval for $\pi$ using
+the inverse transformation, $$
+\pi = e^L/(1 + e^L).
+$$
+
+To illustrate, the same GSS that asked about belief in hell also asked
+respondents if they believed in an afterlife. Of 1129 respondents, 904
+said yes and 225 said no. We next find posterior intervals for the
+population proportion $\pi$ saying yes using Bayesian approaches with
+(i) a uniform prior distribution for $\pi$, and (ii) a $N(0,\sigma^2)$
+prior distribution for $\log[\pi/(1 - \pi)]$ with $\sigma = 2$. Here, we
+first use the binom package in R with the uniform prior, and then the
+brms (Bayesian Regression Models using ’Stan’) package. The brms package
+uses ‘bernoulli’ to specify the binomial with a single trial and uses
+‘normal(mu, sigma)’ to specify a normal distribution, with the standard
+deviation rather than the variance in the second argument.
+
+```{r}
+library(binom)
+binom.bayes(904, 1129, conf.level=0.95, type="central", alpha1=1, alpha2=1)
+# 95% posterior interval for pi for uniform prior
+
+y <- c(rep(1, 904), rep(0, 225)) # the sample of 904 `yes' and 225 `no' outcomes 
+Results <- data.frame(y) 
+library(brms)
+fit.bayes <- brm(y ~ 1, family=bernoulli(link=identity), refresh = 0, data=Results, prior = prior(uniform(0,1), lb=0, ub=1, class=Intercept), silent = 2)
+print(fit.bayes, digits=3)
+# 95% post. int. for pi for uniform prior
+```
+
+With the $\mathcal{N}(0, 2^2)$ prior distribution for the logit, the
+posterior probability is 0.95 that $L = \log[\pi/(1 - \pi)]$ falls
+between 1.249 and 1.544. These endpoints yield the corresponding
+endpoints % $$
+\bigg(\frac{e^{1.249}}{1 + e^{1.249}}, \ \frac{e^{1.544}}{1 + e^{1.544}}\bigg) = (0.777, \, 0.824) 
+$$ % for $\pi$. These endpoints are very similar to those of (0.776,
+0.823) for the 95% equal-tail percentile interval using a uniform prior
+distribution for $\pi$. In fact, we can also use the {\ttfamily brms}
+package to obtain the posterior interval for a uniform prior
+distribution:
+
+```{r}
+fit.bayes2 <- brm(y ~ 1, family=bernoulli(link=logit), refresh = 0, data=Results, prior = prior(normal(0,2), class=Intercept), silent = 2)
+print(fit.bayes2, digits=3)
+# 95% posterior interval for logit using normal prior
+
+exp(fixef(fit.bayes2))/(1 + exp(fixef(fit.bayes2)))
+# 95% post. interval for proportion using normal prior for logit
+
+```
+
+### Example: Election - continued
+
+Rather than use noninformative normal priors with large $\sigma$, we
+could select a relatively small $\sigma$ based on historical
+information. Past elections suggest that all (or nearly all) states tend
+to have proportion $\pi_i$ favoring the Democratic candidate between
+about 0.25 and 0.75, for which logit($\pi_i$) falls between -1.1 and
++1.1. Since nearly the entire normal distribution falls within 3
+standard deviations of its mean, we could take the normal prior to have
+$\mu \pm 3\sigma$ equal to $\pm1.1$, or $\mu = 0$ and
+$\sigma \approx 1.1/3 = 0.37$. To obtain posterior intervals, we use the
+brms package in R to model the logit transform of $\pi$ in terms of the
+state identification.
+
+```{r}
+Election <- read.table("https://bayes4ds.rwth-aachen.de/data/Election2020ungrouped.dat", header=TRUE)
+head(Election)
+library(brms)
+fit.bayes <- brm(y ~ -1 + factor(state), family=bernoulli(link=logit), data=Election,
+                 refresh = 0, prior = prior(normal(0,0.37), class=b))
+print(fit.bayes, digits=3) # Alaska posterior mean logit = -0.129
+exp(fixef(fit.bayes))/(1 + exp(fixef(fit.bayes)))# Alaska estimated Biden proportion = 0.468
+```
+
+The posterior means $\{L_{i}^{*}\}$ for the logits transform to the
+Bayesian proportion estimates
+$\{\pi_{i}^{*}= \exp(L_{i}^{*})/[1 + \exp(L_{i}^{*})]\}$, such as shown
+here. The Bayesian estimates tend to be closer than the sample
+proportions to the true values. The square root of the MSE about the
+true proportions, weighted by the per-state sample sizes, is 0.078 for
+the Bayesian estimates and 0.097 for the sample proportions.

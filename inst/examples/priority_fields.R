@@ -10,43 +10,50 @@ col_classes <- c("character", rep(NA, column_count - 1))
 # Read the file with the specified colClasses
 df.orig <- read.csv(url, skip = 2, header = TRUE, sep = "\t", colClasses = col_classes)
 
-df.orig <- df.orig %>%
-  dplyr::rename(
-    melinda_id = 1,            # ("001", "-")
-    leader = 2,                # ("leader", "-")
-    `008` = 3,                 # ("008", "-")
-    author_name = 4,           # ("100", "a")
-    author_date = 5,           # ("100", "d")
-    author_id = 6,             # ("100", "0")
-    # author_110 = 7,          # ("110", "a")
-    # author_111 = 8,          # ("111", "a")
-    language = 7,            # ("041", "a")
-    language_original = 8,   # ("041", "h")
-    title_uniform = 9,       # ("240", "a")
-    title = 10,               # ("245", "a")
-    title_remainder = 11,     # ("245", "b")
-    `245n` = 12,              # ("245", "n")
-    publication_place = 13,   # ("260", "a")
-    publisher = 14,           # ("260", "b")
-    physical_dimensions = 15,# ("300", "c")
-    physical_extent = 16,     # ("300", "a")
-    publication_frequency = 17,# ("310", "a")
-    publication_interval = 18,# ("362", "a")
-    UDK = 19,                 # ("080", "a")
-    UDK_aux = 20,             # ("080", "x")
-    genre_655 = 21,           # ("655", "a")
-    un650 = 22,
-    un500 = 22,
-    author_700a = 23,                # ("700", "a")
-    author_id_700 = 24,              # ("700", "0")
-    unknowm1 = 25, 
-    un264 = 26
-  )
+names(df.orig) <- c(
+  "melinda_id","leader","008","author_name","author_date","author_id",
+  "language","language_original","title_uniform","title","title_remainder",
+  "245n","publication_place","publisher","physical_dimensions",
+  "physical_extent","publication_frequency","publication_interval",
+  "UDK","UDK_aux","genre_655","un650","un500",
+  "author_700a","author_id_700","un264"
+)
+
+# df.orig <- df.orig %>%
+#   dplyr::rename(
+#     melinda_id = 1,            # ("001", "-")
+#     leader = 2,                # ("leader", "-")
+#     `008` = 3,                 # ("008", "-")
+#     author_name = 4,           # ("100", "a")
+#     author_date = 5,           # ("100", "d")
+#     author_id = 6,             # ("100", "0")
+#     language = 7,            # ("041", "a")
+#     language_original = 8,   # ("041", "h")
+#     title_uniform = 9,       # ("240", "a")
+#     title = 10,               # ("245", "a")
+#     title_remainder = 11,     # ("245", "b")
+#     `245n` = 12,              # ("245", "n")
+#     publication_place = 13,   # ("260", "a")
+#     publisher = 14,           # ("260", "b")
+#     physical_dimensions = 15,# ("300", "c")
+#     physical_extent = 16,     # ("300", "a")
+#     publication_frequency = 17,# ("310", "a")
+#     publication_interval = 18,# ("362", "a")
+#     UDK = 19,                 # ("080", "a")
+#     UDK_aux = 20,             # ("080", "x")
+#     genre_655 = 21,           # ("655", "a")
+#     un650 = 22,
+#     un500 = 23,
+#     author_700a = 24,                # ("700", "a")
+#     author_id_700 = 25,              # ("700", "0")
+#     un264 = 26
+#   )
 
 # Remove duplicate rows
 df.orig <- df.orig %>% distinct()
 df.orig$title2 <- paste(df.orig$title, "|" ,df.orig$title_remainder)
-# 
+#
+
 # source("priority_fields_kanto.R")
 # df.orig$author_name_kanto1 <- df.kanto$prefLabel
 # df.orig$author_name_kanto2 <- df.kanto$altLabel

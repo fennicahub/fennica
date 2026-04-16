@@ -2,6 +2,7 @@ field <- "author_name"
 
 # Full author name (Last, First, Full)
 author <- polish_author(df.orig[[field]], verbose = TRUE)
+df.orig$author_name[df.orig$author_name == ""] <- NA
 
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id, 
@@ -10,11 +11,6 @@ df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      first = author$first, 
                      last= author$last)
 
-df.tmp$first[df.tmp$first == ""] <- NA
-df.tmp$first[df.tmp$first == "NA"] <- NA
-
-df.tmp$last[df.tmp$last == ""] <- NA
-df.tmp$last[df.tmp$last == "NA"] <- NA
 ################################################################
 
 # Store the title field data
@@ -40,26 +36,47 @@ s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE)
 
 message("Discarded entries in the original data")
 
-# NA values in the final harmonized data #add other fields as well 
-inds <- which(is.na(df.tmp[[field]])) 
-# Original entries that were converted into NA 
-original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field] 
-# .. ie. those are "discarded" cases; list them in a table 
-tmp <- write_xtable(original.na, file_discarded, count = TRUE)
+# add duplicate-order index within each melinda_id
+df.orig2 <- df.orig %>%
+  group_by(melinda_id) %>%
+  mutate(.id_in_group = row_number()) %>%
+  ungroup()
 
-# Match those rows to original data
-matched_inds <- match(df.tmp$melinda_id[inds], df.orig$melinda_id)
-# Keep only cases that were NOT NA originally (i.e., became NA)
-became_na <- !is.na(df.orig[[field]][matched_inds])
-# Select rows that became NA
-discarded_rows <- df.orig[matched_inds[became_na], c("melinda_id", "author_name")]
-# Write the table with count
-tmp <- write.table(discarded_rows, 
-                   file = paste0(output.folder, "author_name_100a_discraded.csv"),
-                   sep = "\t",
-                   row.names=FALSE, 
-                   quote = FALSE,
-                   fileEncoding = "UTF-8")  
+df.tmp2 <- df.tmp %>%
+  group_by(melinda_id) %>%
+  mutate(.id_in_group = row_number()) %>%
+  ungroup()
+
+# join harmonized data to original data row-by-row within melinda_id
+tmp_compare <- df.tmp2 %>%
+  dplyr::select(melinda_id, .id_in_group, harmonized_value = all_of(field)) %>%
+  left_join(
+    df.orig2 %>%
+      dplyr::select(melinda_id, .id_in_group, original_value = all_of(field)),
+    by = c("melinda_id", ".id_in_group")
+  )
+
+# keep only cases where harmonized value is NA,
+# but original value was not NA and not empty
+discarded_rows <- tmp_compare %>%
+  filter(
+    is.na(harmonized_value),
+    !is.na(original_value),
+    original_value != ""
+  )
+
+# frequency table of discarded original values
+tmp <- write_xtable(discarded_rows$original_value, file_discarded, count = TRUE)
+
+# save detailed discarded rows
+write.table(
+  discarded_rows,
+  file = paste0(output.folder, field, "author_name_100a_discraded.csv"),
+  sep = "\t",
+  row.names = FALSE,
+  quote = FALSE,
+  fileEncoding = "UTF-8"
+)
 
 # ------------------------------------------------------------
 

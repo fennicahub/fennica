@@ -7,33 +7,46 @@ import os
 from tqdm import tqdm
 
 #%%
-path_csvs = "/mnt/trial/csvs"
+path_csvs = "/mnt/trial/csvs_holdingsit"
 
 #%%
+
+columns_to_pick = [("004", "-"), ("852", "a"), ("852", "b"), ("852", "c"), 
+                   ("852", "d"), ("852", "e"), ("852", "f"), ("852", "g"), ("852", "u"), 
+                   ("852", "h"), ("852", "i"), ("852", "j"), ("852", "k"), ("852", "l"), 
+                   ("852", "m"), ("852", "x"), ("852", "z")]
+
+"""
 columns_to_pick = [
-    ("001", "-"), ("LDR", "-"), ("008", "-"),
+    ("001", "-"), ("LDR", "-"), ("008", "-"), ("035", "a"),
     ("100", "a"), ("100", "d"), ("100", "0"),
     ("041", "a"), ("041", "h"),
     ("240", "a"),
     ("245", "a"), ("245", "b"), ("245", "n"),
     ("260", "a"), ("260", "b"),
+    ("264", "a"),
     ("300", "c"), ("300", "a"),
     ("310", "a"),
     ("362", "a"),
     ("080", "a"), ("080", "x"),
     ("655", "a"), ("650", "a"), ("500", "a"),
-    ("700", "a"), ("700", "0"),
-    ("264", "a")
+    ("700", "a"), ("700", "0"), 
+    ("336", "a"),  # content type
+    ("505", "a"),  # contents
+    ("520", "a"),  # summary
+    ("246", "a"),  # variant title
+    ("490", "a"),  # series
+    ("502", "a"),  # dissertation
+    ("130", "a"),  # uniform title main
+    ("110", "a"),  # corporate author
+    ("111", "a"),  # event author
 ]
+"""
 
 #%%
-output_folder = "fields_picked"
-output_folder_priority = "../output.tables"
-
-#%%
+output_folder = "field_picking"
 folder = f"{path_csvs}/pivoted_csvs"
 csv_filenames = list(os.walk(folder))[0][2]
-
 print(csv_filenames)
 
 #%%
@@ -62,7 +75,7 @@ df = pd.concat(dfs, ignore_index=True)
 
 #%%
 # Save priority_fields file
-filename = "priority_fields"
-df.to_csv(f"{output_folder_priority}/{filename}.csv", sep="\t", index=False)
+filename = "holdingsit_042026"
+df.to_csv(f"{filename}.csv", sep="\t", index=False)
 
 # %%

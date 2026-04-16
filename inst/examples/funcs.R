@@ -5908,7 +5908,9 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
     x[inds] <- NA
     warning(paste("Removed ", length(inds), "publication year entries that are suspiciously long (over 200 characters) and include tabs"))
   }
-
+  x <- trimws(x)
+  x <- gsub("^[,.]+|[,.]+$", "", x)
+  x <- trimws(x)
   x <- gsub("\\.$", "", x)
   x <- gsub("\\[blank\\]", "?", x)
   x <- gsub("\\[sic\\.\\]", "", x)
@@ -5916,6 +5918,7 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
   x <- gsub("&gt;$", "", x)
   x <- gsub("&gt;-$", "", x)
   x <- gsub(", *\\[*[0-9]\\]*$", "", x)
+  x <- trimws(x)
   x <- gsub("\\[\u0302", "[", x) # "[\u0302 = square bracket with circumflex
   x <- gsub("(^|[-[])[0-9]{3}[?]", "\\1", x)
   x <- gsub("(^|[-[])[0-9]{2}[?][?]", "\\1", x)
@@ -5925,6 +5928,7 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
   x <- gsub("[\\^]", "", x)
   x <- gsub("[\\|]", "", x)
   x <- gsub("[u]", "", x)
+  x <- trimws(x)
 
   inds <- grep("\\[*[M,C,D,X,L,\\.]*\\]*", x)
   if (length(inds) > 0) {
@@ -5966,13 +5970,14 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
   } else {
     x <- gsub("\\.", "", x)
   }
-
+  x <- trimws(x)
   # "Printed in the Yeare,;1648."
   inds <- grep(";", x)
   x[inds] <- unlist(sapply(x[inds], function (x) {x <- unlist(strsplit(x, ";")); paste(x[grep("[0-9]", x)], collapse = ", ")}), use.names = FALSE)
   x <- gsub("\\.", " ", x)
   x <- gsub(" or later", " ", x)
   x <- gsub("0[0-9]*;m[a-z]*terio [a-z]*\\.* pauli", " ", x)
+  x <- trimws(x)
 
   # 18th century (remove separately before removing other letters)
   x <- gsub("[0-9]{1,4}th", "", x)
@@ -6040,6 +6045,7 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
       x[[i]] <- paste0(substr(x[[i]], 1, 3), substr(x[[i]], 6, 6))
     }
   }
+  x <- trimws(x)
 
   clean2 <- function (x) {
 
@@ -6060,7 +6066,7 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
     x <- paste(start, end, "-")
 
   }
-
+  x <- trimws(x)
 
   # "[1900?]-[190-?]"
   inds <- grep("\\]-\\[", x)
@@ -6086,7 +6092,7 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
   if (length(inds) > 0) {
     x[inds] <- sapply(x[inds], function (xx) {clean1(xx)})
   }
-
+  x <- trimws(x)
   # 1966 [=1971]  -> 1971
   x <- gsub("[0-9]{4}  ?[[][=]([0-9]{4})[]]", "\\1", x)
 
@@ -6130,7 +6136,7 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
   if (length(inds) > 0) {
     x[inds] <- num[inds]
   }
-
+  x <- trimws(x)
   # Map back to original indices and make unique again. To speedup further.
   xorig <- x[match(xorig, xuniq)]
   xuniq <- unique(xorig)
@@ -7635,20 +7641,21 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
   }
   
   s <- str_trim(s)
-  s <- gsub("[\\.|\\,]+$", "", s)
+  s <- gsub(",+$", "", s)
   message("Manual name curation")
   s <- apply_manual_curation(s)
   # Remove numerics
   s <- gsub("[0-9]", "", s) 
   
-  # Remove brackets and ending commas / periods
-  # Cannot be merged into one regexp ?
+  s <- str_trim(s)
+  # Remove brackets and ending commas
   s <- gsub("\\[", "", s)
   s <- gsub("\\]", "", s)
   s <- gsub("\\(", "", s)
   s <- gsub("\\)", "", s)
   s <- gsub("\\?", "", s)
-  s <- gsub("-+", "-", s)      
+  s <- gsub("-+", "-", s)   
+  s <- str_trim(s)
 
   # Map back to original indices, then make unique again. Helps to further reduce cases.
   sorig <- s[match(sorig, suniq)]
@@ -7727,24 +7734,32 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
                         stringsAsFactors = FALSE
   )
   rownames(nametab) <- NULL
-  
-  message("Remove single letter last names")
-  nametab$last[nchar(as.character(nametab$last)) == 1] <- NA   
+
   
   if (verbose) { message("Capitalize names")}
   nametab$last  <- capitalize(nametab$last, "all.words")
   nametab$first <- capitalize(nametab$first, "all.words")
   
-  message("Remove periods")
+  message("Clean first and last names separately")
   nametab$first <- condense_spaces(gsub("\\.", " ", nametab$first))
-  nametab$last  <- condense_spaces(gsub("\\.", " ", nametab$last))  
+  nametab$last  <- condense_spaces(gsub("\\.", " ", nametab$last))
+  
+  nametab$first <- str_trim(gsub("[,.]+$", "", nametab$first))
+  nametab$last  <- str_trim(gsub("[,.]+$", "", nametab$last))
+  
+  nametab$first[nametab$first == ""] <- NA
+  nametab$first[nametab$first == "NA"] <- NA
+  nametab$last[nametab$last == ""] <- NA
+  nametab$last[nametab$last == "NA"] <- NA
   
   if (verbose) { message("Collapse accepted names to the form: Last, First") }
   full.name <- apply(nametab, 1, function (x) { paste(x, collapse = ", ") })
   full.name <- unname(full.name)
+  full.name <- gsub(",+$", "", full.name)
   full.name[full.name == "NA, NA"] <- NA
   full.name <- gsub("\\, NA$", "", full.name) # "Tolonen, NA" -> "Tolonen"
   full.name <- gsub("^NA, ", "", full.name) # "NA, Mikael" -> "Mikael"
+  
   
   if (verbose) { message("Map to the original indices and return a data frame") }
   

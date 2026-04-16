@@ -62,7 +62,7 @@ original.na <- unlist(
 
 original.na <- original.na[!is.na(original.na) & original.na != ""]
 
-tmp2 <- write_xtable(
+tmp_unrecognized <- write_xtable(
   original.na,
   file_discarded,
   count = TRUE,

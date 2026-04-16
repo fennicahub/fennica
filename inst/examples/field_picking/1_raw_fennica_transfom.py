@@ -4,9 +4,11 @@ import math
 from tqdm import tqdm
 import numpy as np
 #%%
-path_csvs = "/mnt/trial/csvs" 
+#make sure you use a correct folder to store pivoted csvs not to loose data 
+path_csvs = "/mnt/trial/csvs_holdingsit" 
+full_path = "/home/ubuntu/git/fennica/inst/examples/field_picking/fennica_holdingsit.csv"
 #https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/full.csv
-full_path = f"{path_csvs}/fennica_full_20260204.csv"
+#full_path = f"{path_csvs}/yourcsv.csv"
 # df = pd.read_csv(full_path, engine='c', low_memory=False)
 # df = pd.read_csv(full_path, engine='pyarrow', dtype=str)
 #%%

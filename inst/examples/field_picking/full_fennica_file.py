@@ -3,9 +3,9 @@ import os
 import pandas as pd
 from tqdm import tqdm
 #%%
-output_fname = "full_fennica_1024.csv"
+output_fname = "full_fennica_20260413.csv"
 #%%
-chunkfiles = [f"/mnt/trial/csvs/pivoted_callnumbered_csvs/piv_callnum_chunk_{n}.csv" for n in range(0,24)]
+chunkfiles = [f"/mnt/trial/csvs/pivoted_csvs/pivoted_chunk_{n}.csv" for n in range(0,132)]
 chunkfiles
 #%%
 # get header from 0th file and write it in the output file

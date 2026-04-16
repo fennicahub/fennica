@@ -1,7 +1,8 @@
 
 field <- "author_date"
+df.orig[[field]][df.orig[[field]] == ""] <- NA #add to priority fields 
 # TODO make a tidy cleanup function to shorten the code here
-df.tmp <- polish_years(df.orig[[field]], check = TRUE, verbose = TRUE)
+df.tmp <- polish_years(df.orig[[field]], check = TRUE)
 
 df.tmp <- df.tmp %>%
   dplyr::rename(author_birth = from) %>%
@@ -9,9 +10,18 @@ df.tmp <- df.tmp %>%
   mutate(author_age = author_death-author_birth) %>% # Add author age
   mutate(author_age = na_if(author_age, 0))          # Replace 0 age with NA
 
+harm <- paste0(
+  ifelse(is.na(df.tmp$author_birth), "", df.tmp$author_birth),
+  "-",
+  ifelse(is.na(df.tmp$author_death), "", df.tmp$author_death)
+)
+
+harm[harm == ""] <- NA
+
 # Add melinda id info as first column
 df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
-                    date_orig = df.orig$author_date, # add field column
+                    author_date = df.orig$author_date, # add field column
+                    harm = harm,
                     df.tmp)
 rownames(df.tmp) <- NULL
 
@@ -28,17 +38,17 @@ write.table(df, file = paste0(output.folder, paste0(field, ".csv")),
  
 
 # Generate data summaries for the whole data set
+
 o <- as.character(df.orig[[field]])
 x <- as.character(df.tmp[["author_birth"]])
 y <- as.character(df.tmp[["author_death"]])
 
 # -------------------
-
+accept.file <- paste0(output.folder, field, "_accepted.csv")
+discard.file <- paste0(output.folder, field, "_discarded.csv")
 message("Accepted entries in the preprocessed data")
 inds <- !is.na(x) & !is.na(y)
-accept.file <- paste0(output.folder, field, "_accepted.csv")
 tmp <- write_xtable(o[inds],file = accept.file,count = TRUE)
-
 
 n <- rev(sort(table(o[inds])))
 tab <- as.data.frame(n);
@@ -51,7 +61,7 @@ write.table(tab, file = accept.file, quote = FALSE, row.names = FALSE, col.names
 
 message("Discarded entries in the original data")
 inds1 <- is.na(x) & is.na(y)
-discard.file <- paste0(output.folder, field, "_discarded.csv")
+
 n <- rev(sort(table(o[inds1])))
 tab <- as.data.frame(n);
 tab$Frequency <- round(100 * tab$Freq/sum(tab$Freq), 1)

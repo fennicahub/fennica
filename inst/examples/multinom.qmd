@@ -89,6 +89,71 @@ df_fiction$genre              <- fct_na_value_to_level(factor(df_fiction$genre),
 nrow(df_fiction)
 ```
 
+
+```{r}
+library(tidyr)
+library(ggplot2)
+library(scales)
+library(forcats)
+library(patchwork)
+
+# ----------------------------
+# 1) FREQUENTIST: same layout as Bayes
+#    (Observed proportions + 95% CI) within (gender x language)
+# ----------------------------
+
+df_f <- df_fiction %>%
+  mutate(
+    gender = factor(gender_primary, levels = c("male","female")),
+    language = factor(language_primary, levels = c("Finnish","Swedish")),
+    genre = factor(genre)
+  ) %>%
+  filter(!is.na(genre), !is.na(gender), !is.na(language)) %>%
+  droplevels()
+
+# order genres once, use same ordering for both plots
+genre_order <- df_f %>% count(genre, name = "N") %>% arrange(desc(N)) %>% pull(genre)
+df_f <- df_f %>% mutate(genre = factor(genre, levels = genre_order))
+
+freq_df <- df_f %>%
+  count(language, gender, genre, name = "k") %>%
+  group_by(language, gender) %>%
+  mutate(
+    n = sum(k),
+    p = k / n,
+    se = sqrt(p * (1 - p) / n),
+    lo = pmax(0, p - 1.96 * se),
+    hi = pmin(1, p + 1.96 * se),
+    method = "Frequentist"
+  ) %>%
+  ungroup() %>%
+  transmute(method, language, gender, genre, probability = p, lo, hi)
+
+plot_prob_ci <- function(dat, title) {
+  ggplot(dat, aes(x = genre, y = probability, color = gender, group = gender)) +
+    geom_point(position = position_dodge(width = 0.6), size = 2) +
+    geom_errorbar(
+      aes(ymin = lo, ymax = hi),
+      position = position_dodge(width = 0.6),
+      width = 0.2
+    ) +
+    facet_wrap(~ language) +
+    scale_y_continuous(labels = percent_format(), limits = c(0, 1)) +
+    labs(
+      title = title,
+      x = "Genre",
+      y = "Probability",
+      color = "Gender"
+    ) +
+    theme_minimal(base_size = 13) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+}
+
+p_freq  <- plot_prob_ci(freq_df,  "Frequentist: osuudet + 95% luottamusvälit")
+
+```
+
+
 ```{r}
 gp <- get_prior(
     genre ~ gender_primary + language,
@@ -221,4 +286,128 @@ Overall, the results indicate a clear gendered pattern in genre specialization, 
 
 
 
+
+```{r}
+# side-by-side (best for slides)
+p_freq + p_bayes + plot_layout(guides = "collect")
+```
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(scales)
+
+# --- BAYES: make a df with Estimate + credible interval ---
+plot_df <- as.data.frame(as.table(fit_prob[, c("Estimate", "Q0.5", "Q99.5"), ]))
+colnames(plot_df) <- c("group", "stat", "genre", "value")
+
+plot_df <- plot_df %>%
+  pivot_wider(names_from = stat, values_from = value) %>%
+  transmute(
+    group,
+    genre = genre,
+    probability = as.numeric(Estimate),
+    lo = as.numeric(Q0.5),
+    hi = as.numeric(Q99.5)
+  ) %>%
+  separate(group, into = c("gender", "language"), sep = " \\| ") %>%
+  filter(gender != "Unknown", language != "Unknown") %>%
+  mutate(
+    gender = factor(gender, levels = c("male", "female")),
+    language = factor(language, levels = c("Finnish", "Swedish")),
+    # clean labels: "P(Y = Draama)" -> "Draama"
+    genre = gsub("^P\\(Y = ", "", genre),
+    genre = gsub("\\)$", "", genre),
+    genre = factor(genre)
+  )
+
+# --- (optional) order genres by average probability (nice for slides) ---
+genre_order <- plot_df %>%
+  group_by(genre) %>%
+  summarise(m = mean(probability), .groups = "drop") %>%
+  arrange(desc(m)) %>%
+  pull(genre)
+
+plot_df <- plot_df %>%
+  mutate(genre = factor(genre, levels = genre_order))
+
+# --- BAYES plot (same visual style as your frequentist plot should use) ---
+p_bayes <- ggplot(plot_df, aes(x = genre, y = probability, fill = gender)) +
+  geom_col(position = position_dodge(width = 0.9), width = 0.8) +
+  geom_errorbar(
+    aes(ymin = lo, ymax = hi),
+    position = position_dodge(width = 0.9),
+    width = 0.2
+  ) +
+  facet_wrap(~ language) +
+  scale_y_continuous(
+  limits = c(0, 0.65),
+  labels = scales::percent_format(),
+  breaks = seq(0, 0.75, by = 0.15)
+) +
+  labs(
+    x = "Genre",
+    y = "Predicted probability",
+    fill = "Gender",
+    title = "Bayes: ennustetut genre-todennäköisyydet (Q0.5–Q99.5)"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+p_bayes
+```
+
+```{r}
+df_f <- df_fiction %>%
+  mutate(
+    gender = factor(gender_primary, levels = c("male","female")),
+    language = factor(language_primary, levels = c("Finnish","Swedish")),
+    genre = factor(genre, levels = levels(plot_df$genre))
+  ) %>%
+  filter(!is.na(gender), !is.na(language), !is.na(genre)) %>%
+  droplevels()
+
+freq_df <- df_f %>%
+  count(language, gender, genre, name = "k") %>%
+  group_by(language, gender) %>%
+  mutate(
+    n = sum(k),
+    probability = k / n,
+    se = sqrt(probability * (1 - probability) / n),
+    lo = pmax(0, probability - 2.576 * se),
+    hi = pmin(1, probability + 2.576 * se)
+  ) %>%
+  ungroup()
+
+p_freq <- ggplot(freq_df, aes(x = genre, y = probability, fill = gender)) +
+  geom_col(position = position_dodge(width = 0.9), width = 0.8) +
+  geom_errorbar(
+    aes(ymin = lo, ymax = hi),
+    position = position_dodge(width = 0.9),
+    width = 0.2
+  ) +
+  facet_wrap(~ language) +
+  scale_y_continuous(
+  limits = c(0, 0.65),
+  labels = scales::percent_format(),
+  breaks = seq(0, 0.75, by = 0.15)
+) +
+  labs(
+    x = "Genre",
+    y = "Observed proportion",
+    fill = "Gender",
+    title = "Frequentist: havaitut osuudet (99% luottamusvälit)"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+p_freq
+
+```
+
+
+```{r}
+p_freq + p_bayes + plot_layout(guides = "collect")
+```
 

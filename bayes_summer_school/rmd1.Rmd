@@ -18,7 +18,7 @@ These examples and code are taken from the upcoming book Bayesian Statistics: A 
 
 ## Chapter 1
 
-One item in the 2021 General Social Survey in the U.S. asked whether a woman should be able to get an abortion if she wants it for any reason. Of 1328 subjects who responded, 749 said *yes* and 579 said *no*. The sampling conducted for the GSS is more complex than a simple random sample, incorporating multiple stages and clustering to make the survey easier to implement, but we will treat it as such for purposes of illustrating frequentist and Bayesian estimation of the population proportion $\pi$ who would answer *yes*.
+One item in the 2021 General Social Survey in the U.S. asked whether a woman should be able to get an abortion if she wants it for any reason. Of 1328 subjects who responded, 749 said *yes* and 579 said *no*. The sampling conducted for the GSS is more complex than a simple random sample, incorporating multiple stages and clustering to make the survey easier to implement, but we will treat it as such for purposes of illustrating frequentist and Bayesian estimation of the population proportion $\pi$ who would answer *yes*. 
 
 In this survey, the binomial outcome is $y = 749$ in $n = 1328$ observations. The sample proportion is $y/n = 749/1328 = 0.5640$. With the uniform prior distribution, for $y=749$ and $n-y = 579$, the Bayesian posterior *pdf* $g(\pi \mid y)$ of $\pi$ is beta with hyperparameters $\alpha_{1} = y + 1 = 750$ and $\alpha_{2} = n - y + 1 = 580$. It has mean $(y+1)/(n+2) = 750/1330 = 0.5639$, very close to the sample proportion. Figure below shows this beta *pdf*. According to this posterior distribution, the range of plausible values for $\pi$ is narrow, with 95% of the distribution falling between 0.537 and 0.590. The posterior $P(\pi < 0.50) = 0.0000015$.
 
@@ -28,6 +28,9 @@ qbeta(0.975, 750, 580)# 0.975 quantile of beta distribution
 
 pbeta(0.50, 750, 580) # cumulative probability at 0.50 for beta distribution 
 #    with hyperparameters 750, 580 is 0.0000015
+```
+```{r}
+curve(dbeta(x,10,2))
 ```
 
 Code for the plot of the Beta posterior *pdf* with hyperparameters $\alpha_{1} = 750$ and $\alpha_{2} = 580$ for U.S. population proportion who believe a woman should be able to get an abortion for any reason. The ML estimate is located at the red diamond.
@@ -83,6 +86,7 @@ If the posterior distribution had not been a standard one available in software,
 postvalues <- rbeta(50000000,750,580) # simulate 50 million observations from posterior
 quantile(postvalues, c(0.025, 0.975)) #beta distribution
 #approximate Bayesian 95% percentile interval
+quantile(postvalues, 0.5) 
 
 hist(postvalues)# histogram of posterior dist.
 ```

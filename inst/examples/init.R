@@ -32,6 +32,8 @@ if (!file.exists(output.folder)) {
   dir.create(output.folder)
 }
 
+#enrich with kanto when priority_fields.R changes
+#source("kanto_enrichment.R")
 #load the data
 source("priority_fields.R") #includes kanto files
 

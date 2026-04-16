@@ -5,6 +5,7 @@ field <- "genre_008"
 df.orig$publication_decade <- df_pubtime$publication_decade
 # Filter rows where data_element_008 == "Kirjat" and converted_00_33 is NA
 df_genre_008 <- df.orig %>% filter(data_element_008 == "Kirjat")
+# create polish_genre_655 - if converted have smth that not suppossed to be in Kirjat. then it should be discarded, for now all clear, but for the futire
 
 file_discarded <- paste0(output.folder, field, "_discarded.csv")
 file_accepted <- paste0(output.folder, field, "_accepted.csv")

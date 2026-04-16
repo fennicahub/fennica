@@ -1,31 +1,16 @@
 field <- "author_profession"
-df.orig$author_700e[df.orig$author_700e == ""] <- NA
+
 df.orig$author_profession[df.orig$author_profession == ""] <- NA
 
-df.prep <- data.frame(
+df <- as.data.frame(
   melinda_id = df.orig$melinda_id,
-  prof_700e  = df.orig$author_700e,
-  prof_kanto = df.orig$author_profession,
-  prof_merge = {
-    a <- df.orig$author_700e
-    b <- df.orig$author_profession
-    
-    a[is.na(a)] <- ""
-    b[is.na(b)] <- ""
-    
-    m <- paste(a, b, sep = ",")
-    m <- gsub("^,+|,+$", "", m)   # drop leading/trailing comma if one side empty
-    m[m == ""] <- NA              # if both were missing -> NA
-    m
-  },
-  stringsAsFactors = FALSE
+  prof_kanto = df.orig$author_profession
 )
 
-tmp <- polish_profession(df.prep$prof_merge)
+tmp <- polish_profession(df$prof_kanto)
 
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id, 
-                     orig_700e = df.orig$author_700e, 
                      orig_kanto = df.orig$author_profession, 
                      author_profession = tmp$profession_clean, 
                      profession_primary = tmp$prof_primary)
