@@ -4,7 +4,7 @@ field <- "title2"
 # Harmonize the raw data
 # merge title and remainder of title 
 x <- polish_title(df.orig[[field]])
-#x$title_harmonized <- str_to_sentence(x$title_harmonized)
+x$title_harmonized <- str_to_sentence(x$title_harmonized)
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      original_title2 = x$title_original,
@@ -28,7 +28,7 @@ s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE, add.percentages 
 message("Discarded entries in the original data")
 
 o <- as.character(df.orig[[field]])
-x <- as.character(df.tmp[["title_harmonized"]])
+x <- as.character(df.tmp[[field]])
 inds <- which(is.na(x))
 tmp <- write_xtable(o[inds],
                     file_discarded,
@@ -36,11 +36,10 @@ tmp <- write_xtable(o[inds],
                     add.percentages = TRUE)
 
 message("Error list")
-## IDs for rows whose harmonized title is NA (i.e., discarded)
-melinda_ids_discarded <- df.orig$melinda_id[inds]
 
 ## If you also want the (id, original title) pairs:
 df_discarded <- data.frame(melinda_id = df.orig$melinda_id[inds],
+                           other_id = df.orig$other_system_id[inds],
                           original   = df.orig[[field]][inds],
                           stringsAsFactors = FALSE)
 
@@ -59,7 +58,7 @@ saveRDS(df.tmp, file = data.file)
 #Load the RDS file
 df <- readRDS(data.file)
 # Convert to CSV and store in the data.files folder
-write.table(df, file = paste0(output.folder, paste0(field, "2.csv")))
+write.table(df, file = paste0(output.folder, paste0(field, ".csv")))
 
 # Subset 1809-1917 
 # ------------------------------------------------------------
@@ -102,7 +101,7 @@ saveRDS(df_19, file = data.file.19)
 df_19 <- readRDS(data.file.19)
 
 # Convert to CSV and store in the output.tables folder
-write.table(df_19, file = paste0(output.folder, paste0(field, "2_19", ".csv")))
+write.table(df_19, file = paste0(output.folder, paste0(field, "_19", ".csv")))
 
 #load to allas
 #source("allas.R")

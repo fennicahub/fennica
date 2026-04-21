@@ -5,7 +5,7 @@ x <- polish_title(df.orig[[field]])
 
 
 # Collect the results into a data.frame
-df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
+df.tmp <- data.frame(id = df.orig$melinda_id,
                      original = x$title_original,
                      title = x$title_harmonized,
                      title_length = x$title_length,
@@ -27,7 +27,7 @@ s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE, add.percentages 
 message("Discarded entries in the original data")
 
 o <- as.character(df.orig[[field]])
-x <- as.character(df.tmp[["title"]])
+x <- as.character(df.tmp[[field]])
 inds <- which(is.na(x))
 discard.file <- paste0(output.folder, field, "_discarded.csv")
 tmp <- write_xtable(o[inds],
@@ -36,23 +36,21 @@ tmp <- write_xtable(o[inds],
                     add.percentages = TRUE)
 
 message("Error list")
-## IDs for rows whose harmonized title is NA (i.e., discarded)
-melinda_ids_discarded <- df.orig$melinda_id[inds]
 
 ## If you also want the (id, original title) pairs:
 df_discarded <- data.frame(
-  melinda_id = df.orig$melinda_id[inds],
+  id = df.orig$melinda_id[inds],
+  other_id = df.orig$other_system_id[inds],
   original   = df.orig[[field]][inds],
   stringsAsFactors = FALSE
 )
-tmp <- write.csv(df_discarded, 
+
+disc <- write.csv(df_discarded, 
                  file = error_list,
                  row.names=FALSE, 
                  quote = FALSE,
                  fileEncoding = "UTF-8")
 
-
-df.tmp$title[df.tmp$title == " "] <- NA
 # ------------------------------------------------------------
 
 # Store the title field data

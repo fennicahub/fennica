@@ -3704,21 +3704,28 @@ generate_summary_tables <- function (df.preprocessed, df.orig, output.folder = "
 #' @param add.percentages Add percentage information to the table. This indicates the total fraction of the count, calculated from all input entries if na.rm is FALSE, and from non-NA entries if na.rm is TRUE.
 #' @return Table indicating the count for each unique entry in the input  vector or matrix. The function writes the statistics in the file.
 #' @export
-#' @author Leo Lahti \email{leo.lahti@@iki.fi}
+#' @author Leo Lahti \email{leo.lahti@@iki.fi}, Julia Matveeva \email{yulmat@@utu.fi},
 #' @examples \dontrun{tab <- write_xtable(x, "tmp.tab")}
 #' @keywords utilities
 write_xtable <- function (x, filename = NULL, count = FALSE, sort.by = "Count", na.rm = TRUE, add.percentages = FALSE) {
-
+  
   xorig <- x
-
+  
   if (is.data.frame(x) && ncol(x) == 1) {
     x <- as.vector(x[,1])
   }
-
+  
   if (is.factor(x)) {
     x <- as.character(x)
   }
-
+  
+  # Total before removing NAs
+  if (is.null(dim(xorig))) {
+    ntotal <- length(xorig)
+  } else {
+    ntotal <- nrow(xorig)
+  }
+  
   # Remove NAs
   if (na.rm) {
     if (is.null(dim(x))) {
@@ -3726,141 +3733,115 @@ write_xtable <- function (x, filename = NULL, count = FALSE, sort.by = "Count", 
     } else {
       keep <- which(rowMeans(is.na(x)) < 1)
       if (length(keep) > 0) {
-        x <- x[keep,]
+        x <- x[keep, , drop = FALSE]
       } else {
         x <- NULL
       }
     }
   }
-
-  #if (length(x) == 0) {
-  #  message("The input to write_table is empty.")
-  #  write("The input list is empty.", file = filename)
-  #  return(NULL)
-  #}
-
+  
   tab <- NULL
+  
   if (is.vector(x)) {
-
-    # Original number of entries (before removing NAs)
-    ntotal <- length(x)
-
+    
     if (length(x) == 0 && !is.null(filename)) {
       write("The input list is empty.", file = filename)
       return(NULL)
     }
-
+    
     if (count) {
       counts <- rev(sort(table(x)))
-      tab <- data.frame(list(Name = names(counts), Count = as.vector(counts)))
+      tab <- data.frame(Name = names(counts), Count = as.vector(counts))
     }
-
-    if (is.null(filename)) {return(tab)}
-
+    
+    if (is.null(filename)) {
+      return(tab)
+    }
+    
   } else if (is.matrix(x) || is.data.frame(x)) {
-
-    # Original number of entries (before removing NAs)
-    ntotal <- nrow(x)
-
+    
     if (is.null(colnames(x))) {
-      colnames(x) <- paste("X", 1:ncol(x), sep = "")
+      colnames(x) <- paste0("X", 1:ncol(x))
     }
-
-    # Proceed
-    id <- apply(x, 1, function (x) { paste(x, collapse = "-") })
+    
+    id <- apply(x, 1, function(x) paste(x, collapse = "-"))
     ido <- rev(sort(table(id)))
-
+    
     tab <- as.data.frame(x)
-
+    
     if (count) {
       idn <- ido[match(id, names(ido))]
       tab[, "Count"] <- idn
     }
-
-    tab <- tab[!duplicated(tab),]
-
-    if (is.null(filename) & count) {
-      tab <- tab[rev(order(tab[, "Count"])),]
+    
+    tab <- tab[!duplicated(tab), , drop = FALSE]
+    
+    if (is.null(filename) && count) {
+      tab <- tab[rev(order(tab[, "Count"])), , drop = FALSE]
       rownames(tab) <- NULL
       return(tab)
     }
-
-    if (length(tab) > 0) {
-      tab <- as.matrix(tab, nrow = nrow(x))
-      if (ncol(tab) == 1) { tab <- t(tab) }
-      # HR: Fixing a bug: "Count" had been tried to add twice as a column name
-      if (count & !"Count" %in% colnames(tab)) {
+    
+    if (nrow(tab) > 0) {
+      if (count && !"Count" %in% colnames(tab)) {
         colnames(tab) <- c(colnames(tab), "Count")
       }
       rownames(tab) <- NULL
     } else {
       tab <- NULL
-
-
     }
+  } else {
+    stop("Unsupported input type for write_xtable().")
   }
-
+  
+  if (is.null(tab)) {
+    if (!is.null(filename)) {
+      write("The input list is empty.", file = filename)
+    }
+    return(NULL)
+  }
+  
   # Arrange
-  if (!sort.by %in% c("Count", colnames(x))) {
-    sort.by <- "Name"
+  if (!sort.by %in% c("Count", colnames(tab))) {
+    sort.by <- if ("Name" %in% colnames(tab)) "Name" else colnames(tab)[1]
   }
-
+  
   s <- as.character(tab[, sort.by])
   n <- suppressWarnings(as.numeric(s))
+  
   if (all(!is.na(n[!is.na(s)]))) {
-    # If all !NAs are numeric
     o <- rev(order(n))
   } else {
-    # Consider as char
     o <- order(s)
   }
-  tab <- tab[o,]
-
+  
+  tab <- tab[o, , drop = FALSE]
+  
   # Add fraction
-  if (add.percentages & count) {
-    tab <- cbind(tab,
-      Percentage = round(100 * as.numeric(condense_spaces(tab[, "Count"]))/ntotal, 2))
+  if (add.percentages && count) {
+    tab <- cbind(
+      tab,
+      Percentage = round(100 * as.numeric(tab[, "Count"]) / ntotal, 2)
+    )
   }
-
+  
   if (count) {
-
-    if (is.null(dim(tab)) && !is.null(tab)) {
-      tab <- t(as.matrix(tab, nrow = 1))
-    }
-
     if (!is.null(tab) && nrow(tab) > 1) {
-      tab <- apply(tab, 2, as.character)
+      tab <- as.data.frame(apply(tab, 2, as.character), stringsAsFactors = FALSE)
     }
-
-    #n <- sum(as.numeric(tab[, "Count"]), na.rm = TRUE)
-    #ntxt <- n
-    #if (is.matrix(tab)) {
-    #  suppressWarnings(tab <- rbind(rep("", ncol(tab)), tab))
-    #  tab[1, 1] <- paste("Total count (na.rm ", na.rm, "): ", sep = "")
-    #  tab[1, 2] <- ntxt
-    #  if (ncol(tab)>2) {
-    #    tab[1, 3:ncol(tab)] <- rep("", ncol(tab) - 2)
-    #  }
-    #} else {
-    #  tab <- c(paste("Total count:", ntxt), tab)
-    #}
-
   }
-
+  
   if (!is.null(filename)) {
     message(paste("Writing", filename))
     write.table(tab, file = filename, quote = FALSE, sep = "\t", row.names = FALSE)
   }
-
+  
   if (!count && ("Count" %in% names(tab))) {
-    tab <- tab[, -ncol(tab)]
+    tab <- tab[, -ncol(tab), drop = FALSE]
   }
-
+  
   tab
-
 }
-
-
 
 #' @title Remove Volume Info
 #' @description Remove volume info from the string start.
@@ -6756,53 +6737,53 @@ polish_languages <- function(x) {
 # Modified polish_title function
 
 polish_title <- function(x) {
-  # Save the original titles
+  
   title_original <- as.character(x)
-
-  # Perform the harmonization
-  x0 <- x
-  x <- as.character(x)
-  x <- unique(x)
+  x0 <- as.character(x)
+  x <- unique(x0)
   xinds <- match(x0, x)
-
-  # Cleaning and formatting
+  
+  x <- trimws(x)
   x <- gsub("\\.+$", "", x)
-  x <- gsub("\\. $", "", x)
   x <- gsub("^\\.+", "", x)
-  x <- gsub("\\,$", "", x)
+  x <- gsub(",$", "", x)
   x <- gsub("[ ]+$", "", x)
   x <- gsub("\\(|\\)", "", x)
-  x <- gsub("\\]$", "", x)
   x <- gsub("^\\[", "", x)
+  x <- gsub("\\]$", "", x)
   x <- gsub("^\\(", "", x)
-  x <- gsub("\\:+$", "", x)
-  x <- gsub("^\\:", "", x)
-  x <- gsub("\\;+$", "", x)
+  x <- gsub(":+$", "", x)
+  x <- gsub("^:", "", x)
+  x <- gsub(";+$", "", x)
   x <- gsub("/", "", x)
   x <- gsub("=", "", x)
-  x <- str_replace_all(x, "\\|", "")
-  x <- str_replace_all(x, "\\/", "")
-  x <- gsub("\\s+$", "", x)
+  x <- gsub("\\|", "", x)
   x <- gsub('"', "", x, fixed = TRUE)
-
-  # Capitalization adjustments
+  x <- trimws(x)
+  
   x <- gsub("^a", "A", x)
   x <- gsub("^the", "The", x)
-
+  
+  x <- trimws(x)
+  x <- gsub("/+$", "", x)
+  x <- gsub("\\]+$", "", x)
+  x <- gsub("\\.+$", "", x)
+  x <- gsub("\\|+$", "", x)
+  x <- trimws(x)
+  
   x[x == ""] <- NA
-
-  # Map back to original indices
+  
   title_harmonized <- x[xinds]
-  
   title_harmonized <- trimws(title_harmonized)
-  title_harmonized <- gsub("^[\\s\\.,\\(\\)\\[\\]\\{\\}:;!\\?-]+", "", title_harmonized)
+  title_harmonized <- gsub("\\]+$", "", title_harmonized)
+  title_harmonized <- trimws(title_harmonized)
   
-  # Calculate the length of harmonized titles
   title_length <- nchar(title_harmonized)
-
-  title_word_count <- ifelse(is.na(title_harmonized), NA, sapply(strsplit(title_harmonized, "\\s+"), length))
-
-  # Create the result dataframe
+  
+  title_word_count <- rep(NA_integer_, length(title_harmonized))
+  ok <- !is.na(title_harmonized)
+  title_word_count[ok] <- lengths(strsplit(title_harmonized[ok], "\\s+"))
+  
   df <- data.frame(
     title_original = title_original,
     title_harmonized = title_harmonized,
@@ -6810,7 +6791,7 @@ polish_title <- function(x) {
     title_word_count = title_word_count,
     stringsAsFactors = FALSE
   )
-
+  
   return(df)
 }
 

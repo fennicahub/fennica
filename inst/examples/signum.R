@@ -1,6 +1,7 @@
-field <- "signum"
+field <- "call_number"
 
 x <- polish_signum(df.orig[[field]])
+x$x_harmonized <- str_to_sentence(x$x_harmonized)
 
 # Add melinda id info as first column
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
@@ -24,18 +25,18 @@ file_discarded <- paste0(output.folder, field, "_discarded.csv")
 # Generate data summaries
 
 message("Accepted entries in the preprocessed data")
-s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE)
+s <- write_xtable(df.tmp$signum_harmonized, file_accepted, count = TRUE, add.percentages = FALSE)
 
 message("Discarded entries in the original data")
 
 # NA values in the final harmonized data
-inds <- which(is.na(df.tmp[[field]]))
+inds <- which(is.na(df.tmp$signum_harmonized))
 
 # Original entries that were converted into NA
 original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
 
 # .. ie. those are "discarded" cases; list them in a table
-tmp <- write_xtable(original.na, file_discarded, count = TRUE)
+tmp <- write_xtable(original.na, file_discarded, count = TRUE, add.percentages = FALSE)
 
 # ------------------------------------------------------------
 
@@ -51,7 +52,7 @@ df <- readRDS(data.file)
 
 df_19 <- as.data.frame(df.tmp[df.tmp$melinda_id %in% melindas_19,])
 
-field <- "signum"
+field <- "call_number"
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV

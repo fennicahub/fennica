@@ -21,7 +21,7 @@ f <- system.file("extdata/all_mapped_places_2020-06-15.csv", package = "fennica"
 geo_data <-  read.csv(f,fileEncoding = "UTF-8")
 
 # Collect the results into a data.frame
-df.tmp <- data.frame(melinda_id=df.orig[field_2],publication_place = tab,country=tab_country) %>% left_join(.,geo_data)
+df.tmp <- data.frame(melinda_id=df.orig[field_2], publication_place = tab,country=tab_country) %>% left_join(.,geo_data)
 colnames(df.tmp) <- c("melinda_id","publication_place","publication_country","longitude","latitude","chosen_id")
 
 ####################################################################################

@@ -11,7 +11,7 @@ source("author_name.R")
 ```
 
 
-## Author name Fennica
+## Author name for Language material (books) in 100,a - field. 
 
 MARC: [100a](https://www.loc.gov/marc/bibliographic/bd100.html)
 
@@ -25,7 +25,7 @@ Author's name section's summary tables offer insights into the dataset's integri
 -   Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
 
 
-### Author's name (100a) - Top 10
+### Author's name (100a) - Top 20
 ```{r}
 #| label = "summarytitle-author-name",
 #| echo = FALSE,
@@ -38,11 +38,11 @@ library(ggplot2)
 
 theme_set(theme_bw(base_size = 12))
 p <- top_plot(df, "author_name", ntop = ntop, log10 = TRUE)+
-  labs(y = "Entries (n)", title = "Top titles")
+  labs(y = "Entries (n)", title = "Top titles (Log values)")
 print(p)
 ```
 
-### Subset Analysis: 1809-1917
+### Subset Analysis: 1809-1917 100,a for "Language material"
 
 -   [Unique accepted entries for for 1809-1917 years](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_accepted_19.csv): `r length(unique(df_19[[field]]))`
 
@@ -64,7 +64,7 @@ library(ggplot2)
 
 theme_set(theme_bw(base_size = 12))
 p <- top_plot(df_19, "author_name", ntop = ntop, log10 = TRUE)+
-  labs(y = "Entries (n)", title = "Top titles")
+  labs(y = "Entries (n)", title = "Top titles (Log values)")
 print(p)
 ```
 

@@ -44,7 +44,8 @@ tmp <- write_xtable(o[inds],
 #create a file for discarded with melindas
 message("Discarded publication year with melinda ids")
 discard.file.id <- paste0(output.folder, field, "_discarded_id.csv")
-xx1 <- data.frame(melinda_id = df_pubtime$melinda_id, original = df_pubtime$original,publication_year = df_pubtime$publication_year)
+xx1 <- data.frame(melinda_id = df_pubtime$melinda_id,id2 = df.orig$other_system_id, element = df.orig$data_element_008,
+                  original = df_pubtime$original,publication_year = df_pubtime$publication_year)
 xx1 <- xx1 %>% filter(is.na(publication_year))%>% filter(!is.na(original))
 write.table(xx1,file = discard.file.id,
             sep = "\t",
@@ -68,10 +69,8 @@ write.table(df,
 # ------------------------------------------------------------
 
 #Create subsection for the 19th century only and 
-df_pubtime$original <- df.orig[[field]]
-df_pubtime19 <- df_pubtime %>% filter(publication_year > 1808 & publication_year < 1918)
-melindas_19 <- df_pubtime19$melinda_id
 
+df_pubtime19 <- df_pubtime[df_pubtime$melinda_id %in% melindas_19,]
 
 message("Write conversions: publication year for 1809-1917")
 
