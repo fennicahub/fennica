@@ -5,8 +5,8 @@ description: ""
 ---
 
 ```{r}
-#| label = "source-index",
-#| include = FALSE
+#| label: "source-index"
+#| include: FALSE
 source("init.R")
 #source("content_type.R")
 ```

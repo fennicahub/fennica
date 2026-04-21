@@ -5,8 +5,9 @@ description: ""
 ---
 
 ```{r}
-#| include = FALSE,
-#| warning = FALSE
+#| include: FALSE
+#| warning: FALSE
+#| message: FALSE
 source("init.R")
 source("publication_time.R")
 source("008_33.R")

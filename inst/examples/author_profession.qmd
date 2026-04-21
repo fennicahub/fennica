@@ -5,7 +5,7 @@ description: ""
 ---
 
 ```{r}
-#| include = FALSE
+#| include: FALSE
 source("init.R")
 source("publication_time.R")
 source("author_profession.R")
