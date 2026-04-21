@@ -18,6 +18,7 @@ slides_201606_Krakow
 *.pdf
 *.csv
 *.xml
+*.parquet
 *publication_time.csv
 *publication_time_19.csv
 *language.csv
