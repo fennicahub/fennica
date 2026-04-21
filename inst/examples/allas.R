@@ -4,8 +4,8 @@ library(dplyr)
 library(curl)
 library(httr)
 
-Sys.setenv("AWS_ACCESS_KEY_ID" = "287f06cd41b44ef58e135ea32849d3f4",
-           "AWS_SECRET_ACCESS_KEY" = "b03af58501684cbd83eb1dc32e39bd71",
+Sys.setenv("AWS_ACCESS_KEY_ID" = "xxx",
+           "AWS_SECRET_ACCESS_KEY" = "xxx",
            "AWS_S3_ENDPOINT" = "a3s.fi")
 
 

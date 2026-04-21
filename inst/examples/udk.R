@@ -28,12 +28,7 @@ file_accepted <- paste0(output.folder, field, "_accepted.csv")
 # Generate data summaries for the whole data set 
 
 message("UDK accepted")
-tab <- cbind(melinda_id = df.tmp$melinda_id, 
-             original = df.tmp$original, 
-             converted = df.tmp$converted, 
-             primary = df.tmp$primary)
-
-tmp <- write_xtable(tab, file_accepted, 
+tmp <- write_xtable(as.character(df.tmp$converted), file_accepted, 
                     count = TRUE,
                     add.percentages = TRUE)
 
@@ -97,8 +92,7 @@ file_accepted <- paste0(output.folder, field, "_accepted_19.csv")
 # Generate data summaries for the whole data set 
 
 message("UDK accepted")
-tab_19 <- cbind(melinda_id = df.tmp_19$melinda_id, original = df.tmp_19$original, converted = df.tmp_19$converted, primary = df.tmp_19$primary)
-tmp_19 <- write_xtable(tab_19, paste(output.folder, field, "_accepted_19.csv", sep = ""), 
+tmp_19 <- write_xtable(as.character(df.tmp_19$converted), paste(output.folder, field, "_accepted_19.csv", sep = ""), 
                     count = TRUE,
                     add.percentages = TRUE, 
                     na.rm = TRUE)
