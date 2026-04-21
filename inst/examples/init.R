@@ -19,8 +19,8 @@ library(brms)
 library(rnaturalearth)
 
 # Install latest version from Github
-# install_github("fennicahub/fennica") # or
-#devtools::load_all() # if you are working from the clone and modifying it
+install_github("fennicahub/fennica") # or
+devtools::load_all() # if you are working from the clone and modifying it
 library(fennica)
 
 # Load misc functions needed for harmonization
