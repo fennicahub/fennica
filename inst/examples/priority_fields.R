@@ -1,5 +1,5 @@
 # # Download the csv file
-url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/priority_fields.csv"
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/priority_fields_042026.csv"
 # 
 # Read the CSV file, explicitly setting the first column to character
 # Count the number of columns in the file
@@ -11,65 +11,60 @@ col_classes <- c("character", rep(NA, column_count - 1))
 df.orig <- read.csv(url, skip = 2, header = TRUE, sep = "\t", colClasses = col_classes)
 
 names(df.orig) <- c(
-  "melinda_id","leader","008","author_name","author_date","author_id",
-  "language","language_original","title_uniform","title","title_remainder",
-  "245n","publication_place","publisher","physical_dimensions",
-  "physical_extent","publication_frequency","publication_interval",
-  "UDK","UDK_aux","genre_655","un650","un500",
-  "author_700a","author_id_700","un264"
+  "melinda_id",            # 001
+  "leader",                # LDR
+  "field_008",             # 008
+  "other_system_id",       # 035a
+  
+  "author_name",           # 100a
+  "author_date",          # 100d
+  "author_id",             # 1000
+  
+  "language",              # 041a
+  "language_original",     # 041h
+  
+  "title_uniform",         # 240a
+  
+  "title",                 # 245a
+  "title_remainder",       # 245b
+  "title_part_number",     # 245n
+  
+  "publication_place", # 260a
+  "publisher",         # 260b
+  
+  "publication_place_264", # 264a
+  
+  "physical_size",         # 300c
+  "extent",                # 300a
+  
+  "publication_frequency", # 310a
+  "publication_dates",     # 362a
+  
+  "UDC",                   # 080a
+  "UDC_aux",               # 080x
+  
+  "genre_655",             # 655a
+  "subject_650",           # 650a
+  "note_500",              # 500a
+  
+  "added_author_name",     # 700a
+  "added_author_id",       # 7000 
+  
+  "content_type_336",      # 336a
+  "contents_505",          # 505a
+  "summary_520",           # 520a
+  "variant_title_246",     # 246a
+  "series_490",            # 490a
+  "dissertation_note_502", # 502a
+  "uniform_title_130",     # 130a
+  "corporate_author_110",  # 110a
+  "event_author_111"       # 111a
 )
 
-# df.orig <- df.orig %>%
-#   dplyr::rename(
-#     melinda_id = 1,            # ("001", "-")
-#     leader = 2,                # ("leader", "-")
-#     `008` = 3,                 # ("008", "-")
-#     author_name = 4,           # ("100", "a")
-#     author_date = 5,           # ("100", "d")
-#     author_id = 6,             # ("100", "0")
-#     language = 7,            # ("041", "a")
-#     language_original = 8,   # ("041", "h")
-#     title_uniform = 9,       # ("240", "a")
-#     title = 10,               # ("245", "a")
-#     title_remainder = 11,     # ("245", "b")
-#     `245n` = 12,              # ("245", "n")
-#     publication_place = 13,   # ("260", "a")
-#     publisher = 14,           # ("260", "b")
-#     physical_dimensions = 15,# ("300", "c")
-#     physical_extent = 16,     # ("300", "a")
-#     publication_frequency = 17,# ("310", "a")
-#     publication_interval = 18,# ("362", "a")
-#     UDK = 19,                 # ("080", "a")
-#     UDK_aux = 20,             # ("080", "x")
-#     genre_655 = 21,           # ("655", "a")
-#     un650 = 22,
-#     un500 = 23,
-#     author_700a = 24,                # ("700", "a")
-#     author_id_700 = 25,              # ("700", "0")
-#     un264 = 26
-#   )
 
 # Remove duplicate rows
 df.orig <- df.orig %>% distinct()
 df.orig$title2 <- paste(df.orig$title, "|" ,df.orig$title_remainder)
-#
 
-# source("priority_fields_kanto.R")
-# df.orig$author_name_kanto1 <- df.kanto$prefLabel
-# df.orig$author_name_kanto2 <- df.kanto$altLabel
-# df.orig$author_name_kantoVAR <- df.kanto$variantName
-# df.orig$hidden_kanto <- df.kanto$hiddenLabel
-# df.orig$access_kanto <- df.kanto$authorizedAccessPoint
-# df.orig$note_kanto <- df.kanto$note
-# df.orig$fuller_first <- df.kanto$fullerFormOfName
-# df.orig$related_person <- df.kanto$relatedPersonOfPerson_prefLabel
-# 
-# df.orig$author_birth_date_kanto <- df.kanto$birthDate
-# df.orig$author_death_date_kanto <- df.kanto$deathDate
-# df.orig$author_profession <- df.kanto$author_profession_kanto_fi
-# df.orig <- df.orig %>%
-#   mutate(
-#     author_id = na_if(author_id, ""),           # Convert "" to NA
-#     author_id_700 = na_if(author_id_700, ""),   # Convert "" to NA
-#     asteri = coalesce(author_id, author_id_700) # Use author_id, fallback to author_id_700
-#   )
+
+

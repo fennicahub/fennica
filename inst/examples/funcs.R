@@ -8061,105 +8061,175 @@ name_search <- function(df,
 }
 
 polish_udk <- function(x, chunk_size = 10000) {
-  x0 <- x  # Save the original input for later use
-  # Replace '|' with ';' in the input
+  x0 <- x
+  
+  # make sure input is character
+  x <- as.character(x)
+  x0 <- as.character(x0)
+  
+  # Replace separators / remove parentheses
   x <- gsub("\\|", ";", x)
   x <- gsub("\\(|\\)", "", x)
   
   # Load UDK synonyms and names
   url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk.csv"
-  udk <- read.csv(url, sep = ";", header = FALSE, encoding = "UTF-8", stringsAsFactors = FALSE)
-  colnames(udk) <- c("synonyme", "name")  # Rename columns correctly
+  udk <- read.csv(
+    url,
+    sep = ";",
+    header = FALSE,
+    encoding = "UTF-8",
+    stringsAsFactors = FALSE
+  )
+  colnames(udk) <- c("synonyme", "name")
   
-  # Create a named vector for mapping
+  # Create mapping vector
   mapping <- setNames(udk$name, udk$synonyme)
   
-  # Function to map values with fallback truncation
+  # Map value with fallback truncation
   map_with_fallback <- function(value) {
-    if (value == "" | is.na(value)) return(NA)  # Handle empty values
+    if (is.na(value) || value == "") return(NA_character_)
+    
+    value <- trimws(value)
+    
     while (nchar(value) > 0) {
       if (!is.na(mapping[value])) {
-        return(mapping[value])  # Return the matched name
+        return(mapping[value])
       }
-      value <- substr(value, 1, nchar(value) - 1)  # Remove last character
+      value <- substr(value, 1, nchar(value) - 1)
     }
-    return("Undetermined")  # If no match found, return "Undetermined"
+    
+    return("Undetermined")
   }
   
-  # Function to keep unique values in each string
+  # Safe split helper
+  safe_split <- function(value) {
+    if (is.na(value) || value == "") return(character(0))
+    trimws(unlist(strsplit(as.character(value), ";", fixed = TRUE)))
+  }
+  
+  # Process one chunk
   process_chunk <- function(chunk, chunk_index) {
     cleaned_values <- lapply(seq_along(chunk), function(i) {
       row <- chunk[i]
-      if (is.na(row) | row == "") return(c(original = NA, cleaned = NA, converted = NA))  # Handle empty rows
-      split_values <- unique(unlist(strsplit(row, ";")))  # Split and remove duplicates
-      cleaned_str <- paste(split_values, collapse = ";")    # Recombine cleaned values with ;
-      converted_values <- sapply(split_values, map_with_fallback)  # Convert values
-      converted_str <- paste(converted_values, collapse = ";")  # Recombine converted values with ;
-      return(c(original = x0[(chunk_index - 1) * chunk_size + i], cleaned = cleaned_str, converted = converted_str))
+      
+      if (is.na(row) || row == "") {
+        return(c(
+          original = x0[(chunk_index - 1) * chunk_size + i],
+          cleaned = NA_character_,
+          converted = NA_character_
+        ))
+      }
+      
+      split_values <- unique(safe_split(row))
+      split_values <- split_values[split_values != ""]
+      
+      if (length(split_values) == 0) {
+        return(c(
+          original = x0[(chunk_index - 1) * chunk_size + i],
+          cleaned = NA_character_,
+          converted = NA_character_
+        ))
+      }
+      
+      cleaned_str <- paste(split_values, collapse = ";")
+      converted_values <- vapply(split_values, map_with_fallback, character(1))
+      converted_str <- paste(converted_values, collapse = ";")
+      
+      c(
+        original = x0[(chunk_index - 1) * chunk_size + i],
+        cleaned = cleaned_str,
+        converted = converted_str
+      )
     })
-    return(do.call(rbind, cleaned_values))  # Return processed chunk as a dataframe
+    
+    do.call(rbind, cleaned_values)
   }
   
-  # Split data into chunks
+  # Split into chunks
   num_chunks <- ceiling(length(x) / chunk_size)
   chunks <- split(x, ceiling(seq_along(x) / chunk_size))
   
-  # Process chunks in parallel
-  result_chunks <- mclapply(seq_along(chunks), function(i) process_chunk(chunks[[i]], i), mc.cores = detectCores() - 1)
+  # Parallel processing
+  result_chunks <- parallel::mclapply(
+    seq_along(chunks),
+    function(i) process_chunk(chunks[[i]], i),
+    mc.cores = max(1, parallel::detectCores() - 1)
+  )
   
-  # Combine results into a final dataframe
+  # Combine results
   result_df <- do.call(rbind, result_chunks)
-  
-  # Convert to data frame
   result_df <- as.data.frame(result_df, stringsAsFactors = FALSE)
   
-  # Function to find the first UDK that is not "Undetermined"
+  # force character columns
+  result_df$original <- as.character(result_df$original)
+  result_df$cleaned <- as.character(result_df$cleaned)
+  result_df$converted <- as.character(result_df$converted)
+  
+  # Find first non-Undetermined mapped value
   find_primary_udk <- function(value) {
-    if (is.na(value)) return(NA)
+    if (is.na(value) || value == "") return(NA_character_)
     
-    split_value <- unlist(strsplit(value, ";"))  # Split into separate UDKs
-    
-    # Find the first non-"Undetermined" UDK
+    split_value <- safe_split(value)
     primary <- split_value[split_value != "Undetermined"]
     
-    # If there are no non-"Undetermined" UDKs, return "Undetermined"
     if (length(primary) == 0) {
       return("Undetermined")
     } else {
-      return(primary[1])  # Return the first valid UDK
+      return(primary[1])
     }
   }
   
-  # Apply the function to determine the primary UDK
-  result_df$primary <- sapply(result_df$converted, find_primary_udk)
+  result_df$primary <- vapply(result_df$converted, find_primary_udk, character(1))
   
-  # Count UDKs
-  len <- sapply(strsplit(result_df$cleaned, ";"), length)
+  # Count UDKs safely
+  len <- vapply(
+    result_df$cleaned,
+    function(z) {
+      if (is.na(z) || z == "") return(NA_integer_)
+      length(safe_split(z))
+    },
+    integer(1)
+  )
   
-  # Ensure udk_count is NA if converted is NA
   result_df$udk_count <- ifelse(is.na(result_df$converted), NA, len)
-  
-  # Identify multiple UDKs
   result_df$multi_udk <- ifelse(is.na(result_df$converted), NA, len > 1)
   
-  ####################################################################
-  # Split values for further processing
-  split_cleaned <- unlist(strsplit(result_df$cleaned, ";"))
-  split_converted <- unlist(strsplit(result_df$converted, ";"))
+  # Split values for accepted / undetermined tables
+  split_cleaned_list <- Map(function(a, b) {
+    if (is.na(a) || is.na(b) || a == "" || b == "") return(NULL)
+    
+    aa <- safe_split(a)
+    bb <- safe_split(b)
+    
+    n <- min(length(aa), length(bb))
+    if (n == 0) return(NULL)
+    
+    data.frame(
+      udk = aa[seq_len(n)],
+      explanation = bb[seq_len(n)],
+      stringsAsFactors = FALSE
+    )
+  }, result_df$cleaned, result_df$converted)
   
-  # Create a data frame for UDK and explanation
-  f <- data.frame(udk = split_cleaned, explanation = split_converted, stringsAsFactors = FALSE)
+  f <- do.call(rbind, split_cleaned_list)
   
-  # Filter for undetermined and accepted values
+  if (is.null(f)) {
+    f <- data.frame(
+      udk = character(0),
+      explanation = character(0),
+      stringsAsFactors = FALSE
+    )
+  }
+  
   undetermined <- subset(f, explanation == "Undetermined")
   accepted <- subset(f, explanation != "Undetermined")
   
-  
-  return(list(full = result_df, undetermined = undetermined, accepted = accepted))
+  list(
+    full = result_df,
+    undetermined = undetermined,
+    accepted = accepted
+  )
 }
-
-
-
 polish_udk_aux <- function(x) {
   x0 <- x
 

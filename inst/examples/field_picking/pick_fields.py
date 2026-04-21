@@ -16,7 +16,7 @@ columns_to_pick = [("004", "-"), ("852", "a"), ("852", "b"), ("852", "c"),
                    ("852", "h"), ("852", "i"), ("852", "j"), ("852", "k"), ("852", "l"), 
                    ("852", "m"), ("852", "x"), ("852", "z")]
 
-"""
+#%%
 columns_to_pick = [
     ("001", "-"), ("LDR", "-"), ("008", "-"), ("035", "a"),
     ("100", "a"), ("100", "d"), ("100", "0"),
@@ -41,7 +41,7 @@ columns_to_pick = [
     ("110", "a"),  # corporate author
     ("111", "a"),  # event author
 ]
-"""
+
 
 #%%
 output_folder = "field_picking"
@@ -75,7 +75,6 @@ df = pd.concat(dfs, ignore_index=True)
 
 #%%
 # Save priority_fields file
-filename = "holdingsit_042026"
+filename = "priority_fields_holdingsit_042026"
 df.to_csv(f"{filename}.csv", sep="\t", index=False)
 
-# %%

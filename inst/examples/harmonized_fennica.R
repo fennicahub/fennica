@@ -11,15 +11,15 @@ df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
                             publication_status = df.orig$publication_status)
 
 source("author_name.R")
-df.harmonized$author_name <- df.tmp$author_name
+df.harmonized$author_name <- df$author_name
 
 source("author_name_enriched.R")
-df.harmonized$author_name_enriched <- df.tmp$full_name
+df.harmonized$author_name_enriched <- df$full_name
 
 
 source("gender.R")
 df.harmonized$gender <- df.tmp$gender
-df.harmonized$gender_primary <- df.tmp$gender_primary
+df.harmonized$gender_primary <- df$gender_primary
 
 source("author_date.R")
 #add harmonized fields to df
@@ -28,7 +28,7 @@ df.harmonized$author_birth <- df.tmp$author_death
 df.harmonized$author_birth <- df.tmp$author_age
 
 source("author_profession.R")
-df.harmonized$author_profession <- df.prep$prof_harm
+df.harmonized$author_profession <- df$author_profession
 
 source("title2.R")
 
@@ -69,11 +69,11 @@ df.harmonized$publisher <- df.tmp$publisher
 
 # source("signum.R")
 # 
-# df.harmonized$signum <- df.tmp$signum_harmonized
+df.harmonized$signum <- df.orig$call_number
 
 source("udk.R")
 
-df.harmonized$udk_orig <- df.orig$UDK 
+df.harmonized$udk_orig <- df.orig$UDC 
 df.harmonized$udk_harm <- df.tmp$cleaned
 df.harmonized$udk_aux <- df.tmp$udk_aux
 df.harmonized$udk <- df.tmp$converted
@@ -103,7 +103,7 @@ write.table(df.processed,
 ###############################################################################
 
 
-df.processed19_new <- df.processed[df.processed$melinda_id %in% melindas_19,] 
+df.processed19 <- df.processed[df.processed$melinda_id %in% melindas_19,] 
 
 # Store the data
 data.file <- paste0(field, ".Rds")

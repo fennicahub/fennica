@@ -3,16 +3,7 @@
 #source("author_name_for_gender.R"): get all names that exist in fennica and create fennica_all_names.csv
 field <- "gender"
 
-url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/fennica_all_names.csv"
-df.tmp <- read.delim(
-  url,
-  header = TRUE,
-  sep = "\t",
-  quote = "",
-  fileEncoding = "UTF-8",
-  colClasses = "character",  # all columns as character
-  check.names = FALSE
-)
+df.tmp <- fennica_all_names
 
 # Only replace gender if it's currently NA
 df.tmp$gender <- assign_gender(as.character(df.tmp$first))

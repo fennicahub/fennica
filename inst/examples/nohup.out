@@ -89949,3 +89949,6 @@ Requesting URL: https://api.finto.fi/rest/v1/data?uri=http%3A%2F%2Furn.fi%2FURN%
 
 
 Execution halted
+Error in polish_udk(df.orig[[field]], chunk_size = 1000) : 
+  could not find function "polish_udk"
+Execution halted

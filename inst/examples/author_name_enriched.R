@@ -1,16 +1,8 @@
 field <- "author_name_enriched"
 #source("author_name_for_gender.R") to run the code if needed 
-#or just read the file which is big
-url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/fennica_all_names.csv"
-df.tmp <- read.delim(
-  url,
-  header = TRUE,
-  sep = "\t",
-  quote = "",
-  fileEncoding = "UTF-8",
-  colClasses = "character",  # all columns as character
-  check.names = FALSE
-)
+
+df.tmp <- fennica_all_names
+
 df.tmp$first[df.tmp$first == ""] <- NA
 df.tmp$first[df.tmp$first == "NA"] <- NA
 
@@ -90,3 +82,4 @@ df_19 <- readRDS(data.file)
 # 
 # # .. ie. those are "discarded" cases; list them in a table
 # tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
+

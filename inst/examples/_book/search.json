@@ -2,61 +2,351 @@
   {
     "objectID": "publication_time.html",
     "href": "publication_time.html",
-    "title": "8  Publication time",
+    "title": "11  Publication time",
     "section": "",
-    "text": "8.1 Complete Data Overview\nPublication year conversions\nPublication year discarded. 737 records are discarded where the publication date is not coded or unknown or contain ambiguous dates, such as non-numeric characters. Error list is for librarians’ use.\nDownload publication time harmonized dataset\nPublication years is available for 1029818 documents (100%). The publication years span is 0-2026.",
+    "text": "11.1 Complete Data Overview\nPublication year conversions\nPublication year discarded. 1105 records are discarded where the publication date is not coded or unknown or contain ambiguous dates, such as non-numeric characters. Error list is for librarians’ use.\nDownload publication time harmonized dataset\nPublication years is available for 1265305 documents (96%). The publication years span is 0-2026.",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Publication time</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Publication time</span>"
     ]
   },
   {
     "objectID": "publication_time.html#complete-data-overview",
     "href": "publication_time.html#complete-data-overview",
-    "title": "8  Publication time",
+    "title": "11  Publication time",
     "section": "",
-    "text": "8.1.1 Title count per decade (log values)\n\n\n\n8.1.2 Publication status summaries\nThу visualization of publication status field enhances understanding of how publication years are recorded. The harmonization process depended on the publication status field due to its nuanced information, which doesn’t always directly signify the start or end of publication.\n\n\n\nPublication Status\nEntries (n)\nFraction (%)\n\n\n\n\nSingle known date/probable date\n924423\n89.7\n\n\nContinuing resource ceased publication\n39484\n3.8\n\n\nPublication date and copyright date\n37803\n3.7\n\n\nContinuing resource currently published\n18549\n1.8\n\n\nQuestionable date\n6530\n0.6\n\n\nMultiple dates\n2003\n0.2\n\n\nReprint/reissue date and original date\n1557\n0.2\n\n\nContinuing resource status unknown\n444\n0\n\n\nDate of distribution etc\n89\n0\n\n\nNo attempt to code\n59\n0\n\n\nInclusive dates of collection\n57\n0\n\n\nDates unknown\n25\n0\n\n\nNo dates given; B.C. date involved\n11\n0",
+    "text": "11.1.1 Title count per decade (log values)\n\n\n\n11.1.2 Publication status summaries\nThу visualization of publication status field enhances understanding of how publication years are recorded. The harmonization process depended on the publication status field due to its nuanced information, which doesn’t always directly signify the start or end of publication.\n\n\n\nPublication Status\nEntries (n)\nFraction (%)\n\n\n\n\nSingle known date/probable date\n1143812\n86.8\n\n\nContinuing resource ceased publication\n51230\n3.9\n\n\nPublication date and copyright date\n45436\n3.4\n\n\nReprint/reissue date and original date\n35740\n2.7\n\n\nContinuing resource currently published\n25455\n1.9\n\n\nQuestionable date\n8432\n0.6\n\n\nInclusive dates of collection\n4760\n0.4\n\n\nMultiple dates\n2231\n0.2\n\n\nContinuing resource status unknown\n489\n0\n\n\nNo dates given; B.C. date involved\n125\n0\n\n\nDate of distribution etc\n91\n0\n\n\nNo attempt to code\n88\n0\n\n\nDetailed date\n76\n0\n\n\nDates unknown\n38\n0",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Publication time</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Publication time</span>"
     ]
   },
   {
     "objectID": "publication_time.html#subset-analysis-1809-1917",
     "href": "publication_time.html#subset-analysis-1809-1917",
-    "title": "8  Publication time",
-    "section": "8.2 Subset Analysis: 1809-1917",
-    "text": "8.2 Subset Analysis: 1809-1917\nIn this segment we concentrate on the so called “long 19th century”: literary production during the years 1809-1917, when the Grand Duchy of Finland was an autonomous part of the Russian Empire.\nPublication year conversions (1809-1917)\nPublication year discarded (1809-1917)\nDownload publication time harmonized dataset (1809-1917)\n\n8.2.1 Title count per decade\nA plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period.",
+    "title": "11  Publication time",
+    "section": "11.2 Subset Analysis: 1809-1917",
+    "text": "11.2 Subset Analysis: 1809-1917\nIn this segment we concentrate on the so called “long 19th century”: literary production during the years 1809-1917, when the Grand Duchy of Finland was an autonomous part of the Russian Empire.\nPublication year conversions (1809-1917)\nPublication year discarded (1809-1917)\nDownload publication time harmonized dataset (1809-1917)\n\n11.2.1 Title count per decade\nA plot depicting title counts per decade from 1809 to 1917 enriches the analysis by visually capturing the trends and fluctuations in literary output over this historical period.",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Publication time</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Publication time</span>"
+    ]
+  },
+  {
+    "objectID": "publication_place.html",
+    "href": "publication_place.html",
+    "title": "Universal Decimal Classification",
+    "section": "",
+    "text": "10.1 Complete Dataset Overview",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+  },
+  {
+    "objectID": "publication_place.html#complete-dataset-overview",
+    "href": "publication_place.html#complete-dataset-overview",
+    "title": "Universal Decimal Classification",
+    "section": "",
+    "text": "5769 unique publication places; available for 1224286 documents (93%).\nambiguous publication places; some of these can be possibly resolved by checking that the the synonyme list does not contain multiple versions of the final name (case sensitive).\nunknown place names These terms do not map to any known place on the synonyme list; either because they require further cleaning or have not yet been encountered in the analyses. Terms that are clearly not place names can be added to stopwords; borderline cases that are not accepted as place names can be added as NA on the synonyme list.\ndiscarded place names These terms are potential place names but with a closer check have been explicitly rejected on the synonyme list\nConversions from the original to the accepted place names",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+  },
+  {
+    "objectID": "publication_place.html#publication-countries",
+    "href": "publication_place.html#publication-countries",
+    "title": "Universal Decimal Classification",
+    "section": "10.2 Publication countries",
+    "text": "10.2 Publication countries\n\n46 unique publication countries; available for 1139847 documents (86%).\n5032 places with unknown publication country (87.2% of the unique places; can be added to country mappings)\npotentially ambiguous region-country mappings (these may occur in the data in various synonymes and the country is not always clear when multiple countries have a similar place name; the default country is listed first). NOTE: possible improvements should not be done in this output summary but instead in the country mapping file.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+  },
+  {
+    "objectID": "publication_place.html#geocoordinates",
+    "href": "publication_place.html#geocoordinates",
+    "title": "Universal Decimal Classification",
+    "section": "10.3 Geocoordinates",
+    "text": "10.3 Geocoordinates\n\n86.2% of the documents were matched to geographic coordinates (based on COMHIS geomapping process).\n5095 unique places (88.3% of all unique places and 13.84% of all documents) are missing geocoordinates. See list of places missing geocoordinate information.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+  },
+  {
+    "objectID": "publication_place.html#subset-analysis-1809-1917",
+    "href": "publication_place.html#subset-analysis-1809-1917",
+    "title": "Universal Decimal Classification",
+    "section": "10.4 Subset Analysis: 1809-1917",
+    "text": "10.4 Subset Analysis: 1809-1917\n\n549 unique publication places; available for 73544 documents (97%).\nUnique publication country for a period 1809-1917: 32; available for 71630 documents (94%).\ndiscarded place names\n\nTop-20 publication places are shown together with the number of documents.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCountry\nDocuments (n)\nFraction (%)\n\n\n\n\nFinland\n64535\n84.8\n\n\nRussia\n2595\n3.4\n\n\nSweden\n1811\n2.4\n\n\nUSA\n1112\n1.5\n\n\nGermany\n648\n0.9\n\n\nFrance\n188\n0.2\n\n\n\n\n\n#| include = FALSE\nsource(\"init.R\")\nsource(\"udk.R\")\nMARC: 080a\nPolish_udk.R is a function designed to harmonize the ‘Universal Decimal Classification’ field. Currently, it only harmonizes entries categorized under the bibliography level of Monograph/Item.\nIn total, there are r length(df.orig$UDK) entries in Fennica, with r sum(is.na(df.orig$UDK) | df.orig$UDK == \"\") missing UDC values in our dataset.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+  },
+  {
+    "objectID": "publication_place.html#complete-dataset-overview-1",
+    "href": "publication_place.html#complete-dataset-overview-1",
+    "title": "Universal Decimal Classification",
+    "section": "10.5 Complete Dataset Overview",
+    "text": "10.5 Complete Dataset Overview\nUnique accepted UDC: r length(unique(unlist(strsplit(as.character(df$converted), \";\"))))-1\nUDC is available for r sum(!is.na(df$cleaned)) documents (r round(100*mean(!is.na(df$cleaned)))%).\nr sum((df$multi_udk == FALSE), na.rm = TRUE) single UDC entries (r round(100 * mean(df$multi_udk == FALSE, na.rm = TRUE), 2)%)\nr sum(df$multi_udk == TRUE, na.rm = TRUE) multiple UDC entries (r round(100 * mean(df$multi_udk == TRUE, na.rm = TRUE), 2)%)\nr sum(is.na(df$cleaned)) missing/NA entries (r round(mean(is.na(df$cleaned)) * 100)%)\nThere are r sum(df$primary == \"Undetermined\", na.rm = TRUE) entries where the primary UDK is “Undetermined” (r round(mean(df$primary == \"Undetermined\", na.rm = TRUE) * 100)%).\nList of Unrecognized UDC with count: r length(unique(df.tmp1$udk))\nUnrecognized UDC with Melinda ID: Error list\nDownload UDC harmonized dataset\nUDC codes are from The National Library of Finland; new custom abbreviations can be added in this table.\n#| label = \"summaryudk1\",\n#| echo = FALSE,\n#| results = \"asis\"\nx &lt;- top(df, \"primary\")\ntab &lt;- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))\ncolnames(tab) &lt;- c(\"UDC\", \"Entries (n)\", \"Fraction (%)\")\nkable(head(tab, 20))",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+  },
+  {
+    "objectID": "publication_place.html#subset-analysis-1809-1917-1",
+    "href": "publication_place.html#subset-analysis-1809-1917-1",
+    "title": "Universal Decimal Classification",
+    "section": "10.6 Subset Analysis: 1809-1917",
+    "text": "10.6 Subset Analysis: 1809-1917\nUnique UDC (1809-1917): r length(unique(unlist(strsplit(as.character(df_19$converted), \";\"))))-1\nr sum((df_19$multi_udk == FALSE), na.rm = TRUE) single UDC entries (r round(100 * mean(df_19$multi_udk == FALSE, na.rm = TRUE), 2)%)\nr sum(df_19$multi_udk == TRUE, na.rm = TRUE) multiple UDC entries (r round(100 * mean(df_19$multi_udk == TRUE, na.rm = TRUE), 2)%)\nr sum(is.na(df_19$cleaned)) missing/NA entries (r round(mean(is.na(df_19$cleaned)) * 100)%)\nThere are r sum(df_19$primary == \"Undetermined\", na.rm = TRUE) entries where the primary UDK is “Undetermined” (r round(mean(df_19$primary == \"Undetermined\", na.rm = TRUE) * 100)%)\nDownload UDC harmonized dataset (1809-1917)\n\n10.6.1 Top UDC for 1809-1917\nNumber of titles assigned with each UDC (top-10). For a complete list, see accepted UDC (1809-1917).\n#| label = \"summaryudk3\",\n#| echo = FALSE,\n#| results = \"asis\"\nx &lt;- top(df_19, \"primary\")\ntab &lt;- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))\ncolnames(tab) &lt;- c(\"UDC\", \"Entries (n)\", \"Fraction (%)\")\nkable(head(tab, 20))",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Publication place</span>"
     ]
   },
   {
     "objectID": "udk.html",
     "href": "udk.html",
-    "title": "11  Universal Decimal Classification",
+    "title": "15  Universal Decimal Classification",
     "section": "",
-    "text": "11.1 Complete Dataset Overview\nUnique accepted UDC: 812\nUDC is available for 755945 documents (73%).\n470441 single UDC entries (62.23%)\n285504 multiple UDC entries (37.77%)\n275133 missing/NA entries (27%)\nThere are 11 entries where the primary UDK is “Undetermined” (0%).\nList of Unrecognized UDC with count: 26\nUnrecognized UDC with Melinda ID: Error list\nDownload UDC harmonized dataset\nUDC codes are from The National Library of Finland; new custom abbreviations can be added in this table.",
+    "text": "15.1 Complete Dataset Overview\nUnique accepted UDC: 824\nUDC is available for 859587 documents (65%).\n537675 single UDC entries (62.55%)\n321912 multiple UDC entries (37.45%)\n458469 missing/NA entries (35%)\nThere are 9 entries where the primary UDK is “Undetermined” (0%).\nList of Unrecognized UDC with count: 17\nUnrecognized UDC with Melinda ID: Error list\nDownload UDC harmonized dataset\nUDC codes are from The National Library of Finland; new custom abbreviations can be added in this table.",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Universal Decimal Classification</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Universal Decimal Classification</span>"
     ]
   },
   {
     "objectID": "udk.html#complete-dataset-overview",
     "href": "udk.html#complete-dataset-overview",
-    "title": "11  Universal Decimal Classification",
+    "title": "15  Universal Decimal Classification",
     "section": "",
-    "text": "UDC\nEntries (n)\nFraction (%)\n\n\n\n\nSuomenkielinen kirjallisuus\n79534\n7.7\n\n\nEnglanninkielinen kirjallisuus\n46144\n4.5\n\n\nHenkilöhistoria. Elämäkerrat. Muistelmat. Matrikkelit\n21821\n2.1\n\n\nSosiaaliturva. Sosiaalihuolto. Sosiaalityö. Sosiaalipalvelut. Sosiaaliavustukset. Kansanterveys. Sairaalat\n14676\n1.4\n\n\nSuomenruotsalainen kirjallisuus\n13114\n1.3\n\n\nMatematiikka\n12699\n1.2\n\n\nPatologia. Tautioppi\n10326\n1\n\n\nFysiikka\n9837\n1\n\n\nTietotekniikka. Tietojenkäsittely. Atk\n9364\n0.9\n\n\nSarjakuvat\n9358\n0.9\n\n\nRuotsinkielinen kirjallisuus\n9076\n0.9\n\n\nKristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset\n9064\n0.9\n\n\nLuonto. Luonnonsuojelu. Ympäristönsuojelu. Ympäristötieteet. Ympäristön tila\n8911\n0.9\n\n\nPaikallishistoriat. Kotiseutu\n8860\n0.9\n\n\nLiiketalous\n8460\n0.8\n\n\nSotataito. Sotatiede. Maanpuolustus\n8240\n0.8\n\n\nLiikunta. Urheilu. Voimistelu. Liikuntavälineet. Urheiluvälineet. Retkeily\n8094\n0.8\n\n\nBiologiset tieteet. Biologia\n7407\n0.7\n\n\nKristillinen kirkko. Kirkon hallinto. Kirkko ja yhteiskunta. Ekumenia. Liturgiikka. Sakramentit. Kristillinen kasvatus. Kristilliset järjestöt. Diakonia. Lähetystyö\n6168\n0.6\n\n\nAmmatillinen koulutus. Ammattikoulutus\n6066\n0.6",
+    "text": "UDC\nEntries (n)\nFraction (%)\n\n\n\n\nSuomenkielinen kirjallisuus\n88778\n6.7\n\n\nEnglanninkielinen kirjallisuus\n48184\n3.7\n\n\nHenkilöhistoria. Elämäkerrat. Muistelmat. Matrikkelit\n23549\n1.8\n\n\nSosiaaliturva. Sosiaalihuolto. Sosiaalityö. Sosiaalipalvelut. Sosiaaliavustukset. Kansanterveys. Sairaalat\n16415\n1.2\n\n\nSuomenruotsalainen kirjallisuus\n14793\n1.1\n\n\nMatematiikka\n13524\n1\n\n\nPatologia. Tautioppi\n12866\n1\n\n\nKristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset\n11964\n0.9\n\n\nLuonto. Luonnonsuojelu. Ympäristönsuojelu. Ympäristötieteet. Ympäristön tila\n11306\n0.9\n\n\nFysiikka\n11033\n0.8\n\n\nTietotekniikka. Tietojenkäsittely. Atk\n10704\n0.8\n\n\nRuotsinkielinen kirjallisuus\n10102\n0.8\n\n\nSarjakuvat\n9938\n0.8\n\n\nSotataito. Sotatiede. Maanpuolustus\n9934\n0.8\n\n\nPaikallishistoriat. Kotiseutu\n9515\n0.7\n\n\nLiiketalous\n9514\n0.7\n\n\nBiologiset tieteet. Biologia\n9480\n0.7\n\n\nLiikunta. Urheilu. Voimistelu. Liikuntavälineet. Urheiluvälineet. Retkeily\n8843\n0.7\n\n\nLiikenne. Liikenneturvallisuus. Liikenneonnettomuudet. Postilaitos\n7125\n0.5\n\n\nKristillinen kirkko. Kirkon hallinto. Kirkko ja yhteiskunta. Ekumenia. Liturgiikka. Sakramentit. Kristillinen kasvatus. Kristilliset järjestöt. Diakonia. Lähetystyö\n7101\n0.5",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Universal Decimal Classification</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Universal Decimal Classification</span>"
     ]
   },
   {
     "objectID": "udk.html#subset-analysis-1809-1917",
     "href": "udk.html#subset-analysis-1809-1917",
-    "title": "11  Universal Decimal Classification",
-    "section": "11.2 Subset Analysis: 1809-1917",
-    "text": "11.2 Subset Analysis: 1809-1917\nUnique UDC (1809-1917): 349\n15594 single UDC entries (83.78%)\n3018 multiple UDC entries (16.22%)\n39929 missing/NA entries (68%)\nThere are 1 entries where the primary UDK is “Undetermined” (0%)\nDownload UDC harmonized dataset (1809-1917)\n\n11.2.1 Top UDC for 1809-1917\nNumber of titles assigned with each UDC (top-10). For a complete list, see accepted UDC (1809-1917).\n\n\n\n\n\n\n\n\nUDC\nEntries (n)\nFraction (%)\n\n\n\n\nSuomenkielinen kirjallisuus\n3464\n0.3\n\n\nSuomenruotsalainen kirjallisuus\n1979\n0.2\n\n\nEnglanninkielinen kirjallisuus\n777\n0.1\n\n\nSaksankielinen kirjallisuus. Jiddišinkielinen kirjallisuus\n581\n0.1\n\n\nKristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset\n557\n0.1\n\n\nRuotsinkielinen kirjallisuus\n506\n0\n\n\nSuomen historia\n443\n0\n\n\nYliopistot\n390\n0\n\n\nRanskankielinen kirjallisuus\n364\n0\n\n\nLehdistö. Journalismi. Sanomalehdet\n361\n0\n\n\nVenäjänkielinen kirjallisuus\n345\n0\n\n\nVirkistys. Viihde. Pelit. Urheilu\n291\n0\n\n\nKansanperinne tiukasti määriteltynä\n285\n0\n\n\nAntiikin kirjallisuus. Latinankielinen kirjallisuus. Kreikankielinen kirjallisuus\n250\n0\n\n\nHenkilöhistoria. Elämäkerrat. Muistelmat. Matrikkelit\n247\n0\n\n\nPatologia. Tautioppi\n228\n0\n\n\nRaamattu\n207\n0\n\n\nPaikallishistoriat. Kotiseutu\n207\n0\n\n\nSuomen kieli\n196\n0\n\n\nSotataito. Sotatiede. Maanpuolustus\n195\n0",
+    "title": "15  Universal Decimal Classification",
+    "section": "15.2 Subset Analysis: 1809-1917",
+    "text": "15.2 Subset Analysis: 1809-1917\nUnique UDC (1809-1917): 362\n25710 single UDC entries (79.72%)\n6541 multiple UDC entries (20.28%)\n43812 missing/NA entries (58%)\nThere are 0 entries where the primary UDK is “Undetermined” (0%)\nDownload UDC harmonized dataset (1809-1917)\n\n15.2.1 Top UDC for 1809-1917\nNumber of titles assigned with each UDC (top-10). For a complete list, see accepted UDC (1809-1917).\n\n\n\n\n\n\n\n\nUDC\nEntries (n)\nFraction (%)\n\n\n\n\nSuomenkielinen kirjallisuus\n5136\n0.4\n\n\nSuomenruotsalainen kirjallisuus\n2813\n0.2\n\n\nKristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset\n1607\n0.1\n\n\nBibliografiat. Julkaisuluettelot\n1484\n0.1\n\n\nYliopistot\n991\n0.1\n\n\nEnglanninkielinen kirjallisuus\n949\n0.1\n\n\nSaksankielinen kirjallisuus. Jiddišinkielinen kirjallisuus\n876\n0.1\n\n\nRuotsinkielinen kirjallisuus\n745\n0.1\n\n\nSuomen historia\n708\n0.1\n\n\nLehdistö. Journalismi. Sanomalehdet\n686\n0.1\n\n\nVirkistys. Viihde. Pelit. Urheilu\n647\n0\n\n\nPerinnetieteet. Etnologia. Kansatiede. Kansanrunous. Folkloristiikka\n626\n0\n\n\nAntiikin kirjallisuus. Latinankielinen kirjallisuus. Kreikankielinen kirjallisuus\n532\n0\n\n\nPatologia. Tautioppi\n452\n0\n\n\nKansanperinne tiukasti määriteltynä\n442\n0\n\n\nRanskankielinen kirjallisuus\n437\n0\n\n\nRaamattu\n426\n0\n\n\nSuomen kieli\n416\n0\n\n\nHenkilöhistoria. Elämäkerrat. Muistelmat. Matrikkelit\n406\n0\n\n\nVenäjänkielinen kirjallisuus\n376\n0",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Universal Decimal Classification</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Universal Decimal Classification</span>"
+    ]
+  },
+  {
+    "objectID": "content_type.html",
+    "href": "content_type.html",
+    "title": "14  Types of record",
+    "section": "",
+    "text": "14.1 Types of record\nTitle count per type of record (note the log10 scale):",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Types of record</span>"
+    ]
+  },
+  {
+    "objectID": "content_type.html#types-of-record",
+    "href": "content_type.html#types-of-record",
+    "title": "14  Types of record",
+    "section": "",
+    "text": "Type of Record\nDocuments (n)\nFraction (%)\n\n\n\n\nLanguage material\n1201788\n91.2\n\n\nCartographic material\n62676\n4.8\n\n\nNonmusical sound recording\n47199\n3.6\n\n\nKit\n1888\n0.1\n\n\nComputer file\n1245\n0.1\n\n\nThree-dimensional artifact or naturally occurring object\n904\n0.1\n\n\nProjected medium\n603\n0\n\n\nNotated music\n526\n0\n\n\nTwo-dimensional nonprojectable graphic\n428\n0\n\n\nManuscript language material\n422\n0\n\n\nMixed materials\n186\n0\n\n\nMusical sound recording\n185\n0\n\n\nManuscript cartographic material\n5\n0",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Types of record</span>"
+    ]
+  },
+  {
+    "objectID": "content_type.html#bibliographic-level",
+    "href": "content_type.html#bibliographic-level",
+    "title": "14  Types of record",
+    "section": "14.2 Bibliographic level",
+    "text": "14.2 Bibliographic level\n\n\n\nBibliographic level\nDocuments (n)\nFraction (%)\n\n\n\n\nMonograph/Item\n1227808\n93.2\n\n\nSerial\n77869\n5.9\n\n\nSubunit\n6547\n0.5\n\n\nSerial component part\n4613\n0.3\n\n\nIntegrating resource\n483\n0\n\n\nCollection\n459\n0\n\n\nMonographic component part\n276\n0",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Types of record</span>"
+    ]
+  },
+  {
+    "objectID": "title2.html",
+    "href": "title2.html",
+    "title": "Genre 008/33",
+    "section": "",
+    "text": "13.0.1 Complete Dataset Overview\nOriginal documents with titles: 1318052 / 1318056 (100%)\nOriginal documents with missing (NA) titles 4 / 1318056 documents (0%)\nUnique discarded entries in original data: 0\nDownload title field harmonized dataset\nError list",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Title (Remainder incl.)</span>"
+    ]
+  },
+  {
+    "objectID": "title2.html#subset-analysis-1809-1917",
+    "href": "title2.html#subset-analysis-1809-1917",
+    "title": "Genre 008/33",
+    "section": "13.1 Subset Analysis: 1809-1917",
+    "text": "13.1 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 54083\nOriginal documents with non-NA titles: 76063 / 76063 (100%)\nOriginal documents with missing (NA) titles 0 / 76063 documents (0%)\nDownload title2 field harmonized dataset(1809-1917)\n\n13.1.1 Top-20 title for years 1809-1917\n\n\n\n\n\n\n\n\ntitle2\nEntries (n)\nFraction (%)\n\n\n\n\nTopografičeskaâ karta 1:42000].\n1318\n1.7\n\n\nTheses\n144\n0.2\n\n\nHomeri Odyssea svethice reddita.\n114\n0.1\n\n\nKalmbergin kartasto].\n87\n0.1\n\n\nLäsning för barn.\n70\n0.1\n\n\nDikter\n67\n0.1\n\n\nHandlingar rörande Finlands historia kring medlet af 17:de århundradet.\n64\n0.1\n\n\nDissertatio entomologica insecta Fennica enumerans.\n64\n0.1\n\n\nKertomuksia Suomen historiasta.\n62\n0.1\n\n\nFänrik Ståls sägner : en samling sånger\n59\n0.1\n\n\nFältskärns berättelser.\n55\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder : ny följd\n52\n0.1\n\n\nLähetysrukoushetkiä warten sowitettuja kertomuksia lähetystoimesta : uusi jakso\n52\n0.1\n\n\nCommentarii in scriptores graecos et latinos : commentarii in Sallustium\n52\n0.1\n\n\nSuomen yleiskartta Generalkarta öfver Finland\n49\n0.1\n\n\nPrincipia grammatices Neo-persicae.\n48\n0.1\n\n\nLukemisia lapsille.\n48\n0.1\n\n\nKungörelse.\n47\n0.1\n\n\nSuomen virallinen tilasto.\n46\n0.1\n\n\nSamlade arbeten.\n40\n0.1\n\n\n\n\n\n13.1.2 Top-20 title2s for years 1809-1917 period / “Language material” content type\n\n\n\n\n\n\n\n\ntitle2\nEntries (n)\nFraction (%)\n\n\n\n\nTheses\n144\n0.2\n\n\nHomeri Odyssea svethice reddita.\n114\n0.1\n\n\nLäsning för barn.\n70\n0.1\n\n\nDikter\n67\n0.1\n\n\nHandlingar rörande Finlands historia kring medlet af 17:de århundradet.\n64\n0.1\n\n\nDissertatio entomologica insecta Fennica enumerans.\n64\n0.1\n\n\nKertomuksia Suomen historiasta.\n62\n0.1\n\n\nFänrik Ståls sägner : en samling sånger\n59\n0.1\n\n\nFältskärns berättelser.\n55\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder : ny följd\n52\n0.1\n\n\nLähetysrukoushetkiä warten sowitettuja kertomuksia lähetystoimesta : uusi jakso\n52\n0.1\n\n\nCommentarii in scriptores graecos et latinos : commentarii in Sallustium\n52\n0.1\n\n\nPrincipia grammatices Neo-persicae.\n48\n0.1\n\n\nLukemisia lapsille.\n48\n0.1\n\n\nKungörelse.\n47\n0.1\n\n\nSuomen virallinen tilasto.\n46\n0.1\n\n\nSamlade arbeten.\n40\n0.1\n\n\nJohan Ludvig Runebergs samlade skrifter.\n40\n0.1\n\n\nUtrum Comitia ordinum Fenniae habita sint Arctopoli anno MDCII, an non.\n36\n0\n\n\nEvankelinen Lähetys Afrikassa : katsastettu lähetysrukous-hetkinä\n36\n0\n\n\n\n\n\n#| include = FALSE,\n#| warning = FALSE\nsource(\"init.R\")\nsource(\"publication_time.R\")\nsource(\"008_33.R\")\nMARC: 008",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Title (Remainder incl.)</span>"
+    ]
+  },
+  {
+    "objectID": "title2.html#description",
+    "href": "title2.html#description",
+    "title": "Genre 008/33",
+    "section": "13.2 Description",
+    "text": "13.2 Description\nMARC21 field 008 contains fixed-length data elements that encode various bibliographic details. In this context, we focus specifically on books—that is, records where the Type of Record is language material. From this field, we extract and interpret the genre information as encoded in position 33 of the 008 field.\nThis analysis is based on r sum(nrow(df)) book records in the Fennica database.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Title (Remainder incl.)</span>"
+    ]
+  },
+  {
+    "objectID": "title2.html#complete-dataset-overview-1",
+    "href": "title2.html#complete-dataset-overview-1",
+    "title": "Genre 008/33",
+    "section": "13.3 Complete Dataset Overview",
+    "text": "13.3 Complete Dataset Overview\nUnique genre 008: r length(unique(unlist(strsplit(as.character(df$converted_008_33), \";\"))))-1.\nThere are r sum(is.na(df$converted_008_33)) missing values in the dataset, accounting for (r round(100*mean(is.na(df$converted_008_33)), 2)%) of the total. Also, there r sum(df$converted_008_33 == \"Ei koodattu\", na.rm = TRUE) “Not coded” genres in the field 008/33, accounting for (r round(100*mean(df$converted_008_33 == \"Ei koodattu\", na.rm = TRUE), 2)%) of the total.\nUnrecognized genre 088 provides details of Genre 008 that were discarded, in total: r sum(!is.na(tmp)).\n\n13.3.1 Top r ntop Genre Count in Fennica\n#| label = \"genre008_full\",\n#| echo = FALSE,\n#| results = \"asis\"\n\n# Remove \"Ei koodattu\" before tabulation\ndf_filtered &lt;- df[df$converted_008_33 != \"Ei koodattu\", ]\n\nx &lt;- top(df_filtered, \"converted_008_33\")\ntab &lt;- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))\ncolnames(tab) &lt;- c(\"Genre for Books\", \"Entries (n)\", \"Fraction (%)\")\nntop &lt;- 15\nkable(head(tab, ntop))\n\n\n13.3.2 Fiction VS Non-Fiction over Time (log10)\n#| label = \"summary_title_remainder_word_count_pic\",\n#| echo = FALSE,\n#| warning = FALSE,\n# Join publication_decade from df_pubtime to df by melinda_id\ndf$publication_decade &lt;- df_pubtime$publication_decade[match(df$melinda_id, df_pubtime$melinda_id)]\n\n# Define the genres you're interested in\nselected_genres &lt;- c(\"Tietokirjallisuus\", \"Kaunokirjallisuus\", \"Draama\", \"Runot\", \"Romaanit\", \"Novellit, kertomukset\", \"Puheet, esitelmät\", \"Kirjeet\", \"Esseet\", \"Huumori, satiiri\")\n\nfiction_genres &lt;- c(\"Kaunokirjallisuus\", \"Draama\", \"Runot\", \"Romaanit\",\n  \"Novellit, kertomukset\", \"Puheet, esitelmät\", \"Kirjeet\", \"Esseet\", \"Huumori, satiiri\")\n\ndf_selected &lt;- df %&gt;% filter(converted_008_33 %in% c(fiction_genres, \"Tietokirjallisuus\")) %&gt;% mutate( genre_group = ifelse(converted_008_33 == \"Tietokirjallisuus\", \"Non-Fiction\", \"Fiction\") )\n\n\n# Plot\nggplot(df_selected, aes(x = publication_decade, fill = genre_group)) +\n  geom_bar(position = \"stack\", width = 8) +\n   scale_y_log10() +\n  labs(x = \"Publication Decade\", y = \"Number of Books (log10)\", fill = \"Genre Group\") +\n  scale_fill_manual(values = c(\"Fiction\" = \"blue\", \"Non-Fiction\" = \"lightblue\")) +  # Optional: custom colors\n  scale_x_continuous(breaks = seq(1500, 2030, by = 100)) +\n  theme_minimal()",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Title (Remainder incl.)</span>"
+    ]
+  },
+  {
+    "objectID": "title2.html#subset-analysis-1809-1917-1",
+    "href": "title2.html#subset-analysis-1809-1917-1",
+    "title": "Genre 008/33",
+    "section": "13.4 Subset Analysis: 1809-1917",
+    "text": "13.4 Subset Analysis: 1809-1917\nUnique genre 008: r length(unique(unlist(strsplit(as.character(df_19$converted_008_33), \";\"))))-1.\nThere are r sum(is.na(df_19$converted_008_33)) missing values in the dataset, accounting for (r round(100*mean(is.na(df_19$converted_008_33)), 2)%) of the total. Also, there r sum(df_19$converted_008_33 == \"Ei koodattu\", na.rm = TRUE) “Not coded” genres in the field 008/33, accounting for (r round(100*mean(df_19$converted_008_33 == \"Ei koodattu\", na.rm = TRUE), 2)%) of the total.\n\n13.4.1 Top r ntop Genre Count in Fennica (1809-1917)\n#| label = \"genre008_19\",\n#| echo = FALSE,\n#| results = \"asis\"\n\n# Remove \"Ei koodattu\" before tabulation\ndf_filtered1 &lt;- df_19[df_19$converted_008_33 != \"Ei koodattu\", ]\n\nx &lt;- top(df_filtered1, \"converted_008_33\")\ntab &lt;- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))\ncolnames(tab) &lt;- c(\"Genre for Books (1809-1917)\", \"Entries (n)\", \"Fraction (%)\")\nntop &lt;- 15\nkable(head(tab, ntop))\n\n\n13.4.2 Certain Genres over Time\n#| label = \"summary_title_remainder_word_count_pic1\",\n#| echo = FALSE,\n#| warning = FALSE,\n# Join publication_decade from df_pubtime to df by melinda_id\ndf_19$publication_decade &lt;- df_pubtime19$publication_decade[match(df_19$melinda_id, df_pubtime19$melinda_id)]\n\n# Define the genres you're interested in\nselected_genres &lt;- c(\"Draama\", \"Runot\", \"Romaanit\", \"Novellit, kertomukset\", \"Puheet, esitelmät\", \"Kirjeet\", \"Esseet\", \"Huumori, satiiri\")\n\n# Filter your data to only include those genres\ndf_selected &lt;- df_19 %&gt;%\n  filter(!is.na(publication_decade), \n         !is.na(converted_008_33),\n         publication_decade &lt;= 1920,\n         converted_008_33 %in% selected_genres)\n\n# Summarize counts by decade and genre\ndf_summary &lt;- df_selected %&gt;%\n  group_by(publication_decade, converted_008_33) %&gt;%\n  summarise(n = n(), .groups = \"drop\")\n\nggplot(df_summary, aes(x = publication_decade,y = n, fill = converted_008_33)) +\n  geom_col(position = \"stack\", width = 8) +  # width makes bars a bit narrower\n  labs(x = \"Publication Decade\", y = \"Number of Books\", fill = \"Genre\") +\n  scale_fill_brewer(palette = \"Set2\") +\n  scale_x_continuous(limits = c(1790, 1930),breaks = seq(1800, 1920, by = 10)) +\n  theme_minimal()",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Title (Remainder incl.)</span>"
+    ]
+  },
+  {
+    "objectID": "genre_008.html",
+    "href": "genre_008.html",
+    "title": "7  Genre 008/33",
+    "section": "",
+    "text": "7.1 Description\nMARC21 field 008 contains fixed-length data elements that encode various bibliographic details. In this context, we focus specifically on books—that is, records where the Type of Record is language material. From this field, we extract and interpret the genre information as encoded in position 33 of the 008 field.\nThis analysis is based on 1119652 book records in the Fennica database.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Genre 008/33</span>"
+    ]
+  },
+  {
+    "objectID": "genre_008.html#complete-dataset-overview",
+    "href": "genre_008.html#complete-dataset-overview",
+    "title": "7  Genre 008/33",
+    "section": "7.2 Complete Dataset Overview",
+    "text": "7.2 Complete Dataset Overview\nUnique genre 008: 13.\nThere are 848 missing values in the dataset, accounting for (0.08%) of the total. Also, there 76847 “Not coded” genres in the field 008/33, accounting for (6.87%) of the total.\nUnrecognized genre 088 provides details of Genre 008 that were discarded, in total: 0.\n\n7.2.1 Top 20 Genre Count in Fennica\n\n\n\nGenre for Books\nEntries (n)\nFraction (%)\n\n\n\n\nTietokirjallisuus\n783282\n70\n\n\nRomaanit\n136818\n12.2\n\n\nKaunokirjallisuus\n53661\n4.8\n\n\nRunot\n33691\n3\n\n\nNovellit, kertomukset\n14530\n1.3\n\n\nDraama\n8792\n0.8\n\n\nYhdistelmä\n6518\n0.6\n\n\nPuheet, esitelmät\n2469\n0.2\n\n\nEsseet\n1275\n0.1\n\n\nKirjeet\n757\n0.1\n\n\nHuumori, satiiri\n142\n0\n\n\nTuntematon\n22\n0\n\n\n\n\n\n7.2.2 Fiction VS Non-Fiction over Time (log10)",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Genre 008/33</span>"
+    ]
+  },
+  {
+    "objectID": "genre_008.html#subset-analysis-1809-1917",
+    "href": "genre_008.html#subset-analysis-1809-1917",
+    "title": "7  Genre 008/33",
+    "section": "7.3 Subset Analysis: 1809-1917",
+    "text": "7.3 Subset Analysis: 1809-1917\nUnique genre 008: 12.\nThere are 1 missing values in the dataset, accounting for (0%) of the total. Also, there 6775 “Not coded” genres in the field 008/33, accounting for (10.32%) of the total.\n\n7.3.1 Top 15 Genre Count in Fennica (1809-1917)\n\n\n\nGenre for Books (1809-1917)\nEntries (n)\nFraction (%)\n\n\n\n\nTietokirjallisuus\n43268\n3.9\n\n\nRomaanit\n6049\n0.5\n\n\nRunot\n4104\n0.4\n\n\nNovellit, kertomukset\n2607\n0.2\n\n\nDraama\n1965\n0.2\n\n\nYhdistelmä\n365\n0\n\n\nKaunokirjallisuus\n275\n0\n\n\nPuheet, esitelmät\n227\n0\n\n\nKirjeet\n15\n0\n\n\nHuumori, satiiri\n12\n0\n\n\nEsseet\n9\n0\n\n\n\n\n\n7.3.2 Certain Genres over Time",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Genre 008/33</span>"
+    ]
+  },
+  {
+    "objectID": "publisher.html",
+    "href": "publisher.html",
+    "title": "9  Publisher",
+    "section": "",
+    "text": "9.1 Complete Dataset Overview",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publisher</span>"
+    ]
+  },
+  {
+    "objectID": "publisher.html#complete-dataset-overview",
+    "href": "publisher.html#complete-dataset-overview",
+    "title": "9  Publisher",
+    "section": "",
+    "text": "130234 unique publishers\n949153 documents have unambiguous publisher information (72%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\nConversions from original to final names (only non-trivial conversions shown)",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publisher</span>"
+    ]
+  },
+  {
+    "objectID": "publisher.html#subset-analysis-1809-1917",
+    "href": "publisher.html#subset-analysis-1809-1917",
+    "title": "9  Publisher",
+    "section": "9.2 Subset Analysis: 1809-1917",
+    "text": "9.2 Subset Analysis: 1809-1917\n\n8620 unique publishers\n52505 documents have unambiguous publisher information (69%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\n\nThe 20 most common publishers from 1809 to 1917 are shown with the number of documents.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publisher</span>"
+    ]
+  },
+  {
+    "objectID": "language.html",
+    "href": "language.html",
+    "title": "8  Language",
+    "section": "",
+    "text": "8.1 Description\nThe polish_languages function is designed to standardize and harmonize language information in a dataset. The process starts by isolating unique language entries, ensuring that each distinct combination of languages is processed only once, which improves efficiency and avoids redundant computations. A MARC reference list of recognized language abbreviations and names is then used to map language codes to their standardized forms. Each language entry is analyzed to identify multiple languages and to detect any unrecognized terms.\nThe entries are standardized by converting them to their recognized forms while eliminating duplicates and filtering out unrecognized languages. Empty cells in the dataset are marked as NA to indicate missing information. Once standardized, all valid languages are aggregated to create a structured data frame. This data frame includes the total number of languages in each entry, a flag (TRUE/FALSE) indicating whether the entry contains multiple languages (including those that are originally coded as mul = Multiple language), the cleaned and harmonized list of languages, and the primary language, which is defined as the first listed language in each entry. The result is a cleaned and standardized dataset that facilitates accurate analysis of multilingual data.\nAdditionally, an error list is generated, consisting of unrecognized language information and the corresponding IDs. This error list helps librarians identify mistakes in the original data and provides context to either correct the errors or explain why certain entries were discarded by the function.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Language</span>"
+    ]
+  },
+  {
+    "objectID": "language.html#complete-dataset-overview",
+    "href": "language.html#complete-dataset-overview",
+    "title": "8  Language",
+    "section": "8.2 Complete Dataset Overview",
+    "text": "8.2 Complete Dataset Overview\nUnique languages: 190\nUnique primary languages: 159\n1173738 single-language entries (93.41%)\n82803 multilingual entries , accounting for 6.59% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.\nThere are 297 single-language entries marked as only “Undetermined”, coded as “und”, accounting for (0.02%) of the total.\nThere are 61515 missing values in the dataset,accounting for (4.67%) of the total.\nUnrecognized languages provides details of languages that were discarded, in total: 18. Additionally, the Error list contains ID numbers of entries associated with these discarded languages, intended for librarian review.\nConversions from raw to preprocessed language entries\nNew custom abbreviations can be added in this table.\nDownload language harmonized dataset",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Language</span>"
+    ]
+  },
+  {
+    "objectID": "language.html#subset-analysis-1809-1917",
+    "href": "language.html#subset-analysis-1809-1917",
+    "title": "8  Language",
+    "section": "8.3 Subset Analysis: 1809-1917",
+    "text": "8.3 Subset Analysis: 1809-1917\nUnique languages (1809-1917): 58\nUnique primary languages (1809-1917): 42\n69951 single-language entries (93.83%)\n4598 multilingual entries , accounting for 6.17% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.\nThere are 15 entries marked as “Undetermined”.\nThere are 1514 missing values in the dataset,accounting for (1.99%) of the total.\nDownload language harmonized dataset (1809-1917)\n\n8.3.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages (1809-1917).\n\n\n\nLanguage\nEntries (n)\nFraction (%)\n\n\n\n\nFinnish\n38263\n50.3\n\n\nSwedish\n22753\n29.9\n\n\nLatin\n2512\n3.3\n\n\nGerman\n2314\n3\n\n\nRussian\n2211\n2.9\n\n\nFinnish;Swedish\n2198\n2.9\n\n\nFrench\n737\n1\n\n\nEnglish\n529\n0.7\n\n\nSwedish;Finnish\n255\n0.3\n\n\nSwedish;Latin\n203\n0.3\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Language</span>"
+    ]
+  },
+  {
+    "objectID": "genre_655.html",
+    "href": "genre_655.html",
+    "title": "6  Genre/form 655",
+    "section": "",
+    "text": "6.1 Description",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Genre/form 655</span>"
+    ]
+  },
+  {
+    "objectID": "genre_655.html#complete-dataset-overview",
+    "href": "genre_655.html#complete-dataset-overview",
+    "title": "6  Genre/form 655",
+    "section": "6.2 Complete Dataset Overview",
+    "text": "6.2 Complete Dataset Overview\nUnique genre/form: 1256\nThere are 1069779 missing values in the dataset,accounting for (81.16%) of the total.\nUnrecognized genre_655s provides details of Genre/Form that were discarded, in total: 0.\n\n\n\nGenre/Form\nEntries (n)\nFraction (%)\n\n\n\n\nVäitöskirjat\n75774\n99.6\n\n\nÄänikirjat\n32977\n43.4\n\n\nMuistelmat\n12597\n16.6\n\n\nTiedotuslehdet\n9010\n11.8\n\n\nKartat\n8337\n11\n\n\nElämäkerrat\n4937\n6.5\n\n\nOppaat\n4095\n5.4\n\n\nSukukirjat\n3772\n5\n\n\nAsiakaslehdet\n3663\n4.8\n\n\nHenkilöstölehdet\n2751\n3.6\n\n\n\nDownload genre_655 harmonized dataset",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Genre/form 655</span>"
+    ]
+  },
+  {
+    "objectID": "genre_655.html#subset-analysis-1809-1917",
+    "href": "genre_655.html#subset-analysis-1809-1917",
+    "title": "6  Genre/form 655",
+    "section": "6.3 Subset Analysis: 1809-1917",
+    "text": "6.3 Subset Analysis: 1809-1917\nUnique genre_655s (1809-1917): 388\nThere are 57225 missing values in the dataset,accounting for (75.23%) of the total.\nDownload genre_655 harmonized dataset (1809-1917)\n\n6.3.1 Top Genre/Form for 1809-1917\nAccepted Genre/Form (1809-1917).\n\n\n\nGenre/Form\nEntries (n)\nFraction (%)\n\n\n\n\nVäitöskirjat\n4854\n6.4\n\n\nKartat\n1738\n2.3\n\n\nLuettelot\n1476\n1.9\n\n\nVirret; Arkkiveisut\n794\n1\n\n\nEsitteet\n743\n1\n\n\nSanomalehdet\n563\n0.7\n\n\nArkkiveisut\n492\n0.6\n\n\nHartauskirjat\n297\n0.4\n\n\nKokousjulkaisut\n295\n0.4\n\n\nUskonnolliset lehdet\n268\n0.4",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Genre/form 655</span>"
+    ]
+  },
+  {
+    "objectID": "gender.html",
+    "href": "gender.html",
+    "title": "4  Author’s info: gender",
+    "section": "",
+    "text": "4.1 Author’s Gender\nGender information is not originally included in Fennica. We enriched the data by linking author names with gender information from various sources, including the HENKO project, the Genderize dataset, manual curation and search, and additional records provided by the National Library of Finland. The full list of names and genders can be found here.\nIn total N = 1318056 records. After enrichment in total there are records 996414 / (75.6%) with assigned gender. There are 359512 (36.1%) female names, 636902 (63.9%) male names.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Author's info: gender</span>"
+    ]
+  },
+  {
+    "objectID": "gender.html#authors-gender",
+    "href": "gender.html#authors-gender",
+    "title": "4  Author’s info: gender",
+    "section": "",
+    "text": "4.1.1 Gender over Time (1600-2000)\n\n\n\n\n\n\n\n\n\n\n\n4.1.2 Gender over Time (1809-1917)\nIn total N = 76058 records. After enrichment in total there are records 46995 / (61.8%) with assigned gender. There are 4570 (9.7%) female names, 42425 (90.3%) male names.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Author's info: gender</span>"
     ]
   }
 ]

@@ -1,12 +1,12 @@
 #080 - Universal Decimal Classification Number (R)
 
-field <- "UDK"
+field <- "UDC"
 
 # Harmonize the raw data
 out <- polish_udk(df.orig[[field]], chunk_size = 1000)
 df.tmp <- out$full
 df.tmp$melinda_id <- df.orig$melinda_id
-df.tmp$udk_aux <- polish_udk_aux(df.orig$UDK_aux)
+df.tmp$udk_aux <- polish_udk_aux(df.orig$UDC_aux)
 df.tmp <- dplyr::select(df.tmp, melinda_id, everything())
 
 
@@ -59,7 +59,7 @@ errors <- df.tmp %>%
   # keep only the rows where converted == "Undetermined"
   filter(str_detect(converted, regex("^Undetermined\\.?$", ignore_case = TRUE)))
 
-errors <- data.frame(melimda_id = errors$melinda_id, original = errors$original, 
+errors <- data.frame(melinda_id = errors$melinda_id, original = errors$original, 
                      harmonized = errors$cleaned, unknown_udk = errors$unknown)
 
 tmp1 <- write.csv(errors, 

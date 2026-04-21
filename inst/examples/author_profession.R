@@ -2,12 +2,8 @@ field <- "author_profession"
 
 df.orig$author_profession[df.orig$author_profession == ""] <- NA
 
-df <- as.data.frame(
-  melinda_id = df.orig$melinda_id,
-  prof_kanto = df.orig$author_profession
-)
 
-tmp <- polish_profession(df$prof_kanto)
+tmp <- polish_profession(df.orig[[field]])
 
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id, 
@@ -28,7 +24,7 @@ file_discarded <- paste0(output.folder, field, "_discarded.csv")
 file_unique <- paste0(output.folder, field, "_unique.csv")
 ################################################################
 
-message("Accepted languages")
+message("Accepted profession")
 tmp <- write_xtable(df.tmp$author_profession, file_accepted, 
                       count = TRUE, 
                       add.percentages = TRUE)
@@ -39,8 +35,8 @@ tmp1 <- write_xtable(unique_prof, file_unique,
 
 message("Discarded entries in the original data")
 
-# Define non-missing input rows (had something in prof_merge)
-input_nonmissing <- !is.na(df.prep$prof_merge) & df.prep$prof_merge != ""
+# Define non-missing input rows
+input_nonmissing <- !is.na(df.orig[[field]]) & df.orig[[field]] != ""
 
 # Rows that were converted to NA by polishing: input existed, output is NA
 inds_converted <- which(input_nonmissing & is.na(df.tmp$author_profession))
@@ -54,7 +50,7 @@ message("Converted to NA in df.tmp$author_profession: ", n_converted)
 message("Proportion converted: ", round(p_converted, 4))
 
 # Original entries that were converted into NA (from df.prep, not df.orig)
-original_converted <- df.prep$prof_merge[inds_converted]
+original_converted <- df.orig[[field]][inds_converted]
 
 # Write discarded table
 tmp2 <- write_xtable(original_converted, file_discarded, count = TRUE)

@@ -5,8 +5,8 @@ field_2 <- "melinda_id"
 df.orig_p <- df.orig %>%
   mutate(publication_place = ifelse(
     (is.na(publication_place) | publication_place == "") & 
-      !(is.na(df.orig$`264a`) | df.orig$`264a` == ""),
-    df.orig$`264a`,
+      !(is.na(df.orig$publication_place_264) | df.orig$publication_place_264 == ""),
+    df.orig$publication_place_264,
     publication_place
   ))
 
