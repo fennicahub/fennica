@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>11&nbsp; Publication time</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -34,19 +37,18 @@ ul.task-list li input[type="checkbox"] {
 <link href="./publication_place.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-bd65fb41fbc573298954e329ec99a5d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-6f4d832a72efc277c3584b0722a3fb9a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-bd65fb41fbc573298954e329ec99a5d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-27d124a5ab7fc71fdc7442402eae297b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-67441a58243a82cbe31331f3082b8580.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-27d124a5ab7fc71fdc7442402eae297b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -447,14 +449,14 @@ ul.task-list li input[type="checkbox"] {
 <p>MARC field: <a href="https://www.loc.gov/marc/bibliographic/bd008.html">008/07-14</a></p>
 <p>The publication years section offers a comprehensive summary of the dataset’s years of publication, providing an understanding of the temporal distribution of titles. The inclusion of links to uniquely accepted and discarded output tables adds a layer of transparency, allowing for detailed exploration of the refined and excluded data.</p>
 <p>Data harmonization was performed using the <strong>polish_years_008</strong> function. It processes and harmonizes temporal data, splitting it into columns such as <strong>publication_year</strong>, <strong>publication_from</strong>, <strong>publication_till</strong> (for serials), and <strong>publication_decade</strong> (for visualization). Links to the converted data are provided below.</p>
-<p>The dataset includes information on missing values, represented as NA in the refined data. There are 69522 empty rows in the field 008. Discarded values, such as invalid entries coded as characters (e.g., “uuuu”, “||||”) or inconsistent data (e.g., years beyond the current year or mismatched date ranges), are excluded. This does not imply that the discarded values are incorrect; rather, they are excluded because they cannot be utilized for statistical analysis.</p>
+<p>The dataset includes information on missing values, represented as NA in the refined data. There are 51646 empty rows in the field 008. Discarded values, such as invalid entries coded as characters (e.g., “uuuu”, “||||”) or inconsistent data (e.g., years beyond the current year or mismatched date ranges), are excluded. This does not imply that the discarded values are incorrect; rather, they are excluded because they cannot be utilized for statistical analysis.</p>
 <p>The summary also accounts for publication statuses (field <a href="https://marc21.kansalliskirjasto.fi/bib/008.htm">008/06</a>). For accurate temporal distribution, these statuses and their implications must be carefully considered to ensure only valid dates are selected that represent the publication year and not something else.</p>
 <section id="complete-data-overview" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="complete-data-overview"><span class="header-section-number">11.1</span> Complete Data Overview</h2>
 <p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time_conversion.csv">Publication year conversions</a></p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time_discarded.csv">Publication year discarded</a>. 483 records are discarded where the publication date is not coded or unknown or contain ambiguous dates, such as non-numeric characters. <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time_discarded_id.csv">Error list</a> is for librarians’ use.</p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time_discarded.csv">Publication year discarded</a>. 1105 records are discarded where the publication date is not coded or unknown or contain ambiguous dates, such as non-numeric characters. <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time_discarded_id.csv">Error list</a> is for librarians’ use.</p>
 <p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time.csv">Download publication time harmonized dataset</a></p>
-<p>Publication years is available for 1159777 documents (94%). The publication years span is 1300-2025.</p>
+<p>Publication years is available for 1265305 documents (96%). The publication years span is 0-2026.</p>
 <section id="title-count-per-decade-log-values" class="level3" data-number="11.1.1">
 <h3 data-number="11.1.1" class="anchored" data-anchor-id="title-count-per-decade-log-values"><span class="header-section-number">11.1.1</span> Title count per decade (log values)</h3>
 <p><img src="publication_time_files/figure-html/publication_timeseries-1.png" class="img-fluid" width="960"></p>
@@ -473,72 +475,72 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Single known date/probable date</td>
-<td style="text-align: left;">1099621</td>
-<td style="text-align: left;">89.4</td>
+<td style="text-align: left;">1143812</td>
+<td style="text-align: left;">86.8</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Continuing resource ceased publication</td>
-<td style="text-align: left;">45120</td>
-<td style="text-align: left;">3.7</td>
+<td style="text-align: left;">51230</td>
+<td style="text-align: left;">3.9</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Publication date and copyright date</td>
-<td style="text-align: left;">39650</td>
-<td style="text-align: left;">3.2</td>
+<td style="text-align: left;">45436</td>
+<td style="text-align: left;">3.4</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Continuing resource currently published</td>
-<td style="text-align: left;">25331</td>
-<td style="text-align: left;">2.1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Questionable date</td>
-<td style="text-align: left;">8393</td>
-<td style="text-align: left;">0.7</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Inclusive dates of collection</td>
-<td style="text-align: left;">4735</td>
-<td style="text-align: left;">0.4</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Reprint/reissue date and original date</td>
-<td style="text-align: left;">4110</td>
-<td style="text-align: left;">0.3</td>
+<td style="text-align: left;">35740</td>
+<td style="text-align: left;">2.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Continuing resource currently published</td>
+<td style="text-align: left;">25455</td>
+<td style="text-align: left;">1.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Questionable date</td>
+<td style="text-align: left;">8432</td>
+<td style="text-align: left;">0.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inclusive dates of collection</td>
+<td style="text-align: left;">4760</td>
+<td style="text-align: left;">0.4</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Multiple dates</td>
-<td style="text-align: left;">1997</td>
+<td style="text-align: left;">2231</td>
 <td style="text-align: left;">0.2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Continuing resource status unknown</td>
-<td style="text-align: left;">486</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Date of distribution etc</td>
-<td style="text-align: left;">106</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Detailed date</td>
-<td style="text-align: left;">82</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">No attempt to code</td>
-<td style="text-align: left;">66</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Dates unknown</td>
-<td style="text-align: left;">27</td>
+<td style="text-align: left;">489</td>
 <td style="text-align: left;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">No dates given; B.C. date involved</td>
-<td style="text-align: left;">4</td>
+<td style="text-align: left;">125</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Date of distribution etc</td>
+<td style="text-align: left;">91</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">No attempt to code</td>
+<td style="text-align: left;">88</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Detailed date</td>
+<td style="text-align: left;">76</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dates unknown</td>
+<td style="text-align: left;">38</td>
 <td style="text-align: left;">0</td>
 </tr>
 </tbody>
