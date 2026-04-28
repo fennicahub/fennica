@@ -8541,242 +8541,221 @@ polish_physext_help <- function (s, page.harmonize) {
 #' @references See citation("fennica")
 #' @keywords utilities
 
-polish_publisher <- function (x) {
-
-  # Lowercase early
-  x <- trimws(x)
-  x <- tolower(x)
+polish_publisher <- function(x) {
   
-  # Handle Latin cataloging abbreviations
-  # cataloging abbreviations (Latin "sine" forms)
-  x <- gsub("\\[\\s*s\\s*\\.?\\s*n\\s*\\.?\\s*\\]", "kustantaja tuntematon", x, ignore.case = TRUE, perl = TRUE)
-  x <- gsub("\\[\\s*s\\s*\\.?\\s*l\\s*\\.?\\s*\\]", "", x, ignore.case = TRUE, perl = TRUE)
-  x <- gsub("\\[\\s*s\\s*\\.?\\s*a\\s*\\.?\\s*\\]", "", x, ignore.case = TRUE, perl = TRUE)
-  x <- gsub("\\bjakelu\\b", "jakelija", x)
-  x <- gsub("\\bjakaja\\b", "jakelija", x)
-  x <- gsub("\\bdistr\\b", "jakelija", x)
-  x <- gsub("\\bdistributor\\b", "jakelija", x)
-  x <- gsub("\\bdistribution\\b", "jakelija", x)
-  x <- gsub("\\bdistributed by\\b", "jakelija", x)
-  
-  # Normalize some common publisher patterns
-  x <- gsub("c:o", "co", x)       # Replace 'C:o' → 'co'
-  x <- gsub("a/b", "ab", x)       # Replace 'A/B' → 'ab'
-  x <- gsub("a\\.b\\.", "ab", x)  # Replace 'A.B.' → 'ab'
-  
-  # Handle separators
-  x <- gsub("\\|", ";", x)        # Replace vertical bar with semicolon
-  x <- gsub(":", " ", x)          # Remove colons
-  x <- trimws(x)
-  
-  # Remove specific punctuation marks except semicolon
-  x <- gsub("\\.", "", x)        # Remove dots
-  x <- gsub(",", " ", x)          # Remove commas
-  x <- gsub("\\(", "", x)
-  x <- gsub("\\)", "", x)
-  x <- gsub("\\[", "", x)
-  x <- gsub("\\]", "", x)
-  x <- gsub("'", "", x)
-  x <- gsub("\"", " ", x)
-  x <- gsub("!", "", x)
-  x <- gsub("-", " ", x)
-  x <- gsub("\\+", " and ", x)
-  x <- gsub("\\?", "", x)
-  x <- trimws(x)
-  x <- gsub("\\\\", "", x)
-  x <- gsub("=", " ", x)
-  x <- gsub("_", " ", x)
-  x <- gsub("\\*", "", x)
-  x <- gsub("#", "", x)
-  x <- gsub("@", "", x)
-  x <- gsub("%", "", x)
-  x <- gsub("§", "", x)
-  x <- gsub("\\$", "", x)
-  x <- gsub("<", "", x)
-  x <- gsub("&", " ", x)
-  x <- gsub(">", "", x)
-  x <- gsub("\\^", "", x)
-  x <- trimws(x)
-  x <- gsub("`", "", x)
-  x <- gsub("~", "", x)
-  x <- gsub("\\{", "", x)
-  x <- gsub("\\}", "", x)
-  x <- gsub("\\s+", " ", x, perl = TRUE)
-  x <- gsub(";;", ";", x)
-  x <- gsub(" ;", ";", x)
-  
-  
-  # Trim leading/trailing spaces
-  x <- trimws(x)
-  
-  x[grepl("johan winterildä", x, ignore.case = TRUE)] <- "johan winter"
-  x[grepl("frenckell", x, ignore.case = TRUE)] <- "frenckell"
-  x <- gsub("\\bförfattaren\\b|\\bförfattare\\b|\\bförf\\b|\\bförfattarens\\s+förlag\\b", "tekijä", x)
-  x <- gsub("\\btekijät\\b", "tekijä", x, ignore.case = TRUE)
-  x <- gsub("\\bsöderstöm\\b", "söderström", x, ignore.case = TRUE)
-  x <- gsub("\\bsöderstörm\\b", "söderström", x, ignore.case = TRUE)
-  x <- gsub("\\bsödeström\\b", "söderström", x, ignore.case = TRUE)
-  x <- gsub("\\bsödesrtröm\\b", "söderström", x, ignore.case = TRUE)
-  x <- gsub("\\bgummerrus\\b", "gummerus", x, perl = TRUE)   # double-r → single-r
-  x <- gsub("\\bgummerruksen\\b", "gummeruksen", x, perl = TRUE) 
-  x <- gsub("nats", "nordisk avisteknisk samarbetsnämnd", x, ignore.case = TRUE)
-  x <- gsub("vtt", "valtion teknillinen tutkimuskeskus", x, ignore.case = TRUE)
-  x <- gsub("\\bws\\b", "wsoy", x)
-  x <- gsub("\\bwsoy yhtymä\\b", "wsoy", x)
-  x <- gsub("\\bwsoy weilin\\b", "wsoy;weilin", x)
-  x <- gsub("werner söderström osakeyhtiö", "wsoy", x, ignore.case = TRUE) 
-  canon <- rep(NA_character_, length(x))
-  
-  #weilin+göös
-  # normalize connectors to a plus
-  x <- gsub("\\bweilin\\s*(?:ja|and|och|&|\\+|-)\\s*g[öo]ös\\b", "weilin and göös", x, perl = TRUE)
-  # common shorthand
-  x <- gsub("\\bw\\s*ja\\s*g\\b", "weilin and göös", x, perl = TRUE)   # "w ja g"
-  # also collapse duplicated spaces around 'and'
-  x <- gsub("\\s*\\and\\s*", "and", x, perl = TRUE)
-  
-  # u. w. telen and variations
-  x <- gsub("\\bu\\.?\\s*w\\.?\\s*tel(?:en|én)\\b", "u w telen", x, perl = TRUE)
-  # lone 'u telen' (19th-c style)
-  x <- gsub("\\bu\\.?\\s*tel(?:en|én)\\b", "u w telen", x, perl = TRUE)
-  # collapse multiple spaces
-  x <- gsub("\\s+", " ", x, perl = TRUE)
-  x <- trimws(x)
-  
-  x <- gsub("\\bsuomalaisen\\s+kirjallisuuden\\s+seuran\\s+kirjapaino\\b",
-            "suomalaisen kirjallisuuden seura", x, perl = TRUE)
-  # --- SKS abbreviation normalization ---
-  x <- gsub("\\bsks\\b", "suomalaisen kirjallisuuden seura", x, perl = TRUE)
-  
-  x <- gsub("\\bosakeyhti[öo]\\b", "oy", x, perl = TRUE)
-  x <- gsub("\\baktiebolag\\b", "ab", x, perl = TRUE)
-  
-  x <- gsub("\\bfinska\\s+vetenskapssocieteten\\b", "f vetenskapssocieteten", x, perl = TRUE)
-  
-  # --- Yleisradio / YLE ---
-  x[grepl("yleisradio", x, perl = TRUE)] <- "yle"
-  x[grepl("\\byle\\b", x, perl = TRUE)] <- "yle"   # keep uppercase variants consistent
-  
-  # --- Londicer family ---
-  x[grepl("londicer", x, perl = TRUE)] <- "londicer"
-  
-  # --- Holm (K.E. Holm, E.K. Holm, K Holm) ---
-  x[grepl("\\b(k\\.?\\s*e\\.?|e\\.?\\s*k\\.?)\\s*holm\\b", x, perl = TRUE)] <- "holm"
-  x[grepl("\\bk\\.?\\s*holm\\b", x, perl = TRUE)] <- "holm"
-
-  # --- Söderström family (Werner/Verner Söderström, Söderström & Co, etc.) ---
-  hit_soderstrom <- (
-    grepl("\\bsöderstr(?:ö|o)m\\b", x, perl = TRUE) |                                  # söderström
-      grepl("\\bsöderstr(?:ö|o)ms\\b", x, perl = TRUE) |                                 # söderströms (possessive)
-      grepl("\\bsöderstr(?:ö|o)min\\b", x, perl = TRUE) |                                # söderströmin (genitive)
-      grepl("\\b(w|v)erner\\s+söderstr", x, perl = TRUE) |                               # verner / werner söderström
-      (grepl("\\bsöderstr", x, perl = TRUE) & grepl("\\bs[\\s&]*co\\b", x, perl = TRUE)) | # söderström & co / s & co
-      grepl("\\bsöderstr(?:ö|o)m.*(förlag|förlagsaktiebolag|ab|oy|distr|suku)", x, perl = TRUE) # söderström förlag, distr, suku
-  )
-  x[is.na(canon) & hit_soderstrom] <- "söderström"
-  
-  x <- trimws(x) 
-  x <- gsub("^[\\.,;\\s]+|[\\.,;\\s]+$", "", x, perl = TRUE) #trim dots, commas, ;
-  
-  map <- list(
-    # Frenckell (J. C. Frenckell; Joh. Christoph.; widow forms)
-    list(pattern = "(viduam\\s+[^;]*\\bfrenckell\\b)|\\bj\\.?\\s*c\\.?\\s*frenckell\\b|\\b(joh|ioh)\\w*\\s*christoph\\w*\\s+frenckell\\b|\\bfrenckell\\b",
-         label   = "frenckell"),
+  clean_basic <- function(z) {
+    z <- trimws(z)
+    z <- tolower(z)
     
-    # Waldius family (Joh./Petrus Waldius; Waldio/Waldium; widow)
-    list(pattern = "\\bwald(?:ius|io|ium|i)?\\b|\\bpetr(?:us|um)\\s+wald\\b|\\bjoh\\w*\\s+wald\\b|viduam\\s+wald",
-         label   = "waldius"),
+    # separators
+    z <- gsub("\\|", ";", z, perl = TRUE)
+    z <- gsub("\\s*:\\s*", ";", z, perl = TRUE)
     
-    # Wallius (Johanne Laurentius Wallius; Wallio/Wallium; widow)
-    # use 'walli' (double 'l' + i) to avoid catching 'wald'
-    list(pattern = "\\bwalli(?:us|o|um|i)\\b|\\b(joh|ioh)\\w*\\s*(l\\.|laur)\\w*\\s+wall",
-         label   = "johanne laurentius wallius ac"),
+    # Latin cataloguing abbreviations before removing brackets/dots
+    z <- gsub("\\[\\s*s\\s*\\.?\\s*n\\s*\\.?\\s*\\]", "kustantaja tuntematon", z, perl = TRUE)
+    z <- gsub("\\[\\s*s\\s*\\.?\\s*l\\s*\\.?\\s*\\]", "", z, perl = TRUE)
+    z <- gsub("\\[\\s*s\\s*\\.?\\s*a\\s*\\.?\\s*\\]", "", z, perl = TRUE)
     
-    # Winter (Joh. / Ioh. Winter; widow)
-    list(pattern = "\\bwinter\\b|viduam\\s+winter",
-         label   = "johan winter"),
+    # remove brackets and punctuation
+    z <- gsub("[\\[\\]\\(\\)\\.?,!'\"]", "", z, perl = TRUE)
+    z <- gsub("\\\\", "", z, perl = TRUE)
+    z <- gsub("[`~\\{\\}\\*#@%§\\$<>\\^]", "", z, perl = TRUE)
+    z <- gsub("[=_&]", " ", z, perl = TRUE)
+    z <- gsub("[-–—]", " ", z, perl = TRUE)
+    z <- gsub("\\+", " and ", z, perl = TRUE)
     
-    # Hansonio/Hansson (incl. widow; odd OCR variants)
-    list(pattern = "\\bhans(?:on|oni|onio|onius|son|sonii|onium)\\b|viduam\\s+hans",
-         label   = "petro hansonio"),
-    
-    # Syngman (Syngmanni; widow)
-    list(pattern = "\\bsyngman\\w*\\b|viduam\\s+syng",
-         label   = "matthaeus syngman"),
-    
-    # Horrn (appears in your list once; optional but included)
-    list(pattern = "\\bhorrn\\b|\\bhornn\\b",
-         label   = "johanne laurentius horrn")
-  )
-  
-  # apply first-match mapping
-  for (rule in map) {
-    hit <- is.na(canon) & grepl(rule$pattern, x, perl = TRUE)
-    canon[hit] <- rule$label
+    # spaces and semicolons
+    z <- gsub("\\s+", " ", z, perl = TRUE)
+    z <- gsub("\\s*;\\s*", ";", z, perl = TRUE)
+    z <- gsub(";+", ";", z, perl = TRUE)
+    z <- gsub("^[[:space:][:punct:]]+|[[:space:][:punct:]]+$", "", z, perl = TRUE)
+    trimws(z)
   }
-  # keep originals where no rule matched (already cleaned text)
-  x <- ifelse(is.na(canon), x, canon)
-  
-  x[grepl("frenckellildä", x, ignore.case = TRUE)] <- "frenckell"
-  x[grepl("frenckellin", x, ignore.case = TRUE)] <- "frenckell"
-  x[grepl("frenckellska", x, ignore.case = TRUE)] <- "frenckell"
-  x[grepl("frenckells", x, ignore.case = TRUE)] <- "frenckell"
-  x[grepl("frenckellanis", x, ignore.case = TRUE)] <- "frenckell"
-  
-  # --- Holger Schildt family (covers: schildt, schildts, schildtin, shildts) ---
-  hit_hs <- grepl("\\bholger\\b[^;]*\\bsch(i)?ldt", x, perl = TRUE) |
-    grepl("\\bsch(i)?ldts?\\b", x, perl = TRUE) |     # schildt / schildts / shildts
-    grepl("\\bsch(i)?ldtin\\b", x, perl = TRUE)       # Finnish genitive: schildtin
-  
-  x[is.na(canon) & hit_hs] <- "holger schildt"
-  
-  # --- G. W. Edlund family (Edlund, Edlunds, Edlundin, Edlundska …) ---
-  hit_edlund <- (
-    grepl("\\bg\\.?\\s*w\\.?\\s*edlund(?:in|s)?\\b", x, perl = TRUE) |                        # g. w. edlund / edlundin / edlunds
-      grepl("\\bedlund(?:s|in)?\\b", x, perl = TRUE) |                                          # edlund / edlunds / edlundin
-      grepl("\\bedlundska\\b", x, perl = TRUE) |                                                # edlundska
-      grepl("\\bedlundska\\s+bokhandel(n)?\\b", x, perl = TRUE) |                               # edlundska bokhandel(n)
-      grepl("\\bedlundska\\s+bokhandel\\s+i\\s+distr\\b", x, perl = TRUE) |                     # ... i distr.
-      grepl("\\bedlund(?:s|in)?\\s+(förlag|förlags(ab|aktiebolag)?|förl\\.?|kustannus(?:[- ]?oy)?|kustannuksella|ab|oy|bokhandel(n)?)\\b",
-            x, perl = TRUE) |                                                                   # förlag… / kustannus / kustannuksella …
-      grepl("\\bedlund\\b.*\\b(jakaja|i\\s*distr\\.?|distribut(?:ör|ion))\\b", x, perl = TRUE)  # distributor notes
-  )
-  
-  x[is.na(canon) & hit_edlund] <- "g w edlund"
-  
-  # --- Gummerus family (K. J. Gummerus, oy/ab, kustannus, kirjapaino, KJG) ---
-  hit_gummerus <- (
-    grepl("\\bgummerus\\b", x, perl = TRUE) |                                                   # plain gummerus
-      grepl("\\bgummeruksen\\b", x, perl = TRUE) |
-      grepl("\\b(k\\.?\\s*j\\.?|j\\.?\\s*k\\.?)\\s*gummerus\\b", x, perl = TRUE) |                # k. j. gummerus / j. k. gummerus
-      grepl("\\bgummerus\\s+(oy|ab|osakeyhtiö|aktiebolag|förlag|bokförlag|kustannus(osakeyhtiö)?|kirjapaino|tryckeri)\\b",
-            x, perl = TRUE) |                                                                     # company/role words
-      grepl("\\b(kj\\s*g\\b|kjg\\b)\\b", x, perl = TRUE) |                                        # kj g / kjg acronym
-      grepl("\\b(k\\s*j|j\\s*k)\\s*gummerus\\b", x, perl = TRUE)                                  # k j gummerus (no dots)
-  )
-  
-  # If you keep a 'canon' guard:
-  hit <- is.na(canon) & hit_gummerus
-  canon[hit] <- "gummerus"
-  x[hit] <- canon[hit]
-  
-  
-  x <- condense_spaces(x)
-  x[!nzchar(trimws(x))] <- NA
   
   dedup_sc <- function(s) {
-    if (is.na(s) || !nzchar(s)) return(NA_character_)
+    if (is.na(s) || !nzchar(trimws(s))) return(NA_character_)
+    
     parts <- unlist(strsplit(s, ";", fixed = TRUE))
     parts <- trimws(parts)
     parts <- parts[nzchar(parts)]
+    
     if (!length(parts)) return(NA_character_)
-    parts <- parts[!duplicated(parts)]            # order-preserving
-    paste(parts, collapse = ";")                  # paste back after cleaning
+    
+    parts <- parts[!duplicated(parts)]
+    paste(parts, collapse = ";")
   }
+  
+  x <- as.character(x)
+  x <- clean_basic(x)
+  
+  # values that become empty/noise after cleaning
+  x[x %in% c("", "?", "sn", "s n")] <- NA_character_
+  x[x %in% c("kustantaja tuntematon")] <- "kustantaja tuntematon"
+  
+  # distributor / role normalization
+  x <- gsub("\\bjakelu\\b", "jakelija", x, perl = TRUE)
+  x <- gsub("\\bjakaja\\b", "jakelija", x, perl = TRUE)
+  x <- gsub("\\bdistr\\b", "jakelija", x, perl = TRUE)
+  x <- gsub("\\bdistributor\\b", "jakelija", x, perl = TRUE)
+  x <- gsub("\\bdistribution\\b", "jakelija", x, perl = TRUE)
+  x <- gsub("\\bdistributed by\\b", "jakelija", x, perl = TRUE)
+  
+  # common company forms
+  x <- gsub("\\bc:o\\b", "co", x, perl = TRUE)
+  x <- gsub("\\ba/b\\b", "ab", x, perl = TRUE)
+  x <- gsub("\\ba\\s*b\\b", "ab", x, perl = TRUE)
+  x <- gsub("\\bosakeyhti[öo]\\b", "oy", x, perl = TRUE)
+  x <- gsub("\\baktiebolag\\b", "ab", x, perl = TRUE)
+  
+  # author/self-published forms
+  x <- gsub(
+    "\\bförfattaren\\b|\\bförfattare\\b|\\bförf\\b|\\bförfattarens\\s+förlag\\b|\\btekijät\\b",
+    "tekijä",
+    x,
+    perl = TRUE
+  )
+  
+  # typo fixes
+  x <- gsub("\\bsöderstöm\\b", "söderström", x, perl = TRUE)
+  x <- gsub("\\bsöderstörm\\b", "söderström", x, perl = TRUE)
+  x <- gsub("\\bsödeström\\b", "söderström", x, perl = TRUE)
+  x <- gsub("\\bsödesrtröm\\b", "söderström", x, perl = TRUE)
+  x <- gsub("\\bgummerrus\\b", "gummerus", x, perl = TRUE)
+  x <- gsub("\\bgummerruksen\\b", "gummeruksen", x, perl = TRUE)
+  
+  # abbreviations
+  x <- gsub("\\bnats\\b", "nordisk avisteknisk samarbetsnämnd", x, perl = TRUE)
+  x <- gsub("\\bvtt\\b", "valtion teknillinen tutkimuskeskus", x, perl = TRUE)
+  x <- gsub("\\bws\\b", "wsoy", x, perl = TRUE)
+  x <- gsub("\\bwsoy yhtymä\\b", "wsoy", x, perl = TRUE)
+  x <- gsub("\\bwsoy weilin\\b", "wsoy;weilin", x, perl = TRUE)
+  x <- gsub("\\bwerner söderström oy\\b", "wsoy", x, perl = TRUE)
+  x <- gsub("\\bwerner söderström osakeyhtiö\\b", "wsoy", x, perl = TRUE)
+  
+  # Weilin & Göös
+  x <- gsub(
+    "\\bweilin\\s*(ja|and|och|&|\\+|-)\\s*g[öo]ös\\b",
+    "weilin and göös",
+    x,
+    perl = TRUE
+  )
+  x <- gsub("\\bw\\s*ja\\s*g\\b", "weilin and göös", x, perl = TRUE)
+  x <- gsub("\\s*\\band\\b\\s*", " and ", x, perl = TRUE)
+  
+  # U. W. Telen
+  x <- gsub("\\bu\\.?\\s*w\\.?\\s*tel(?:en|én)\\b", "u w telen", x, perl = TRUE)
+  x <- gsub("\\bu\\.?\\s*tel(?:en|én)\\b", "u w telen", x, perl = TRUE)
+  
+  # SKS
+  x <- gsub(
+    "\\bsuomalaisen\\s+kirjallisuuden\\s+seuran\\s+kirjapaino\\b",
+    "suomalaisen kirjallisuuden seura",
+    x,
+    perl = TRUE
+  )
+  x <- gsub("\\bsks\\b", "suomalaisen kirjallisuuden seura", x, perl = TRUE)
+  
+  # other direct normalizations
+  x <- gsub("\\bfinska\\s+vetenskapssocieteten\\b", "f vetenskapssocieteten", x, perl = TRUE)
+  
+  x[grepl("\\byleisradio\\b|\\byle\\b", x, perl = TRUE)] <- "yle"
+  x[grepl("\\blondicer\\b", x, perl = TRUE)] <- "londicer"
+  x[grepl("\\b(k\\.?\\s*e\\.?|e\\.?\\s*k\\.?)\\s*holm\\b", x, perl = TRUE)] <- "holm"
+  x[grepl("\\bk\\.?\\s*holm\\b", x, perl = TRUE)] <- "holm"
+  
+  canon <- rep(NA_character_, length(x))
+  
+  # rule-based canonical mappings
+  map <- list(
+    list(
+      pattern = "(viduam\\s+[^;]*\\bfrenckell\\b)|\\bj\\.?\\s*c\\.?\\s*frenckell\\b|\\b(joh|ioh)\\w*\\s*christoph\\w*\\s+frenckell\\b|\\bfrenckell\\b",
+      label = "frenckell"
+    ),
+    list(
+      pattern = "\\bwald(?:ius|io|ium|i)?\\b|\\bpetr(?:us|um)\\s+wald\\b|\\bjoh\\w*\\s+wald\\b|viduam\\s+wald",
+      label = "waldius"
+    ),
+    list(
+      pattern = "\\bwalli(?:us|o|um|i)\\b|\\b(joh|ioh)\\w*\\s*(l\\.?|laur)\\w*\\s+wall",
+      label = "johanne laurentius wallius ac"
+    ),
+    list(
+      pattern = "\\bwinter\\b|viduam\\s+winter|johan winterildä",
+      label = "johan winter"
+    ),
+    list(
+      pattern = "\\bhans(?:on|oni|onio|onius|son|sonii|onium)\\b|viduam\\s+hans",
+      label = "petro hansonio"
+    ),
+    list(
+      pattern = "\\bsyngman\\w*\\b|viduam\\s+syng",
+      label = "matthaeus syngman"
+    ),
+    list(
+      pattern = "\\bhorrn\\b|\\bhornn\\b",
+      label = "johanne laurentius horrn"
+    )
+  )
+  
+  for (rule in map) {
+    hit <- is.na(canon) & !is.na(x) & grepl(rule$pattern, x, perl = TRUE)
+    canon[hit] <- rule$label
+  }
+  
+  # Söderström
+  hit_soderstrom <- !is.na(x) & (
+    grepl("\\bsöderstr(?:ö|o)m\\b", x, perl = TRUE) |
+      grepl("\\bsöderstr(?:ö|o)ms\\b", x, perl = TRUE) |
+      grepl("\\bsöderstr(?:ö|o)min\\b", x, perl = TRUE) |
+      grepl("\\b(w|v)erner\\s+söderstr", x, perl = TRUE) |
+      grepl("\\bsöderstr(?:ö|o)m.*(förlag|förlagsaktiebolag|ab|oy|jakelija|suku)", x, perl = TRUE)
+  )
+  canon[is.na(canon) & hit_soderstrom] <- "söderström"
+  
+  # Holger Schildt
+  hit_hs <- !is.na(x) & (
+    grepl("\\bholger\\b[^;]*\\bsch(i)?ldt", x, perl = TRUE) |
+      grepl("\\bsch(i)?ldts?\\b", x, perl = TRUE) |
+      grepl("\\bsch(i)?ldtin\\b", x, perl = TRUE)
+  )
+  canon[is.na(canon) & hit_hs] <- "holger schildt"
+  
+  # G. W. Edlund
+  hit_edlund <- !is.na(x) & (
+    grepl("\\bg\\.?\\s*w\\.?\\s*edlund(?:in|s)?\\b", x, perl = TRUE) |
+      grepl("\\bedlund(?:s|in)?\\b", x, perl = TRUE) |
+      grepl("\\bedlundska\\b", x, perl = TRUE) |
+      grepl("\\bedlundska\\s+bokhandel(n)?\\b", x, perl = TRUE) |
+      grepl("\\bedlund(?:s|in)?\\s+(förlag|förlags(ab|aktiebolag)?|förl|kustannus(?: oy)?|kustannuksella|ab|oy|bokhandel(n)?)\\b", x, perl = TRUE) |
+      grepl("\\bedlund\\b.*\\b(jakelija|i\\s*distr|distribut(?:ör|ion))\\b", x, perl = TRUE)
+  )
+  canon[is.na(canon) & hit_edlund] <- "g w edlund"
+  
+  # Gummerus
+  hit_gummerus <- !is.na(x) & (
+    grepl("\\bgummerus\\b", x, perl = TRUE) |
+      grepl("\\bgummeruksen\\b", x, perl = TRUE) |
+      grepl("\\b(k\\.?\\s*j\\.?|j\\.?\\s*k\\.?)\\s*gummerus\\b", x, perl = TRUE) |
+      grepl("\\bgummerus\\s+(oy|ab|osakeyhtiö|aktiebolag|förlag|bokförlag|kustannus(osakeyhtiö)?|kirjapaino|tryckeri)\\b", x, perl = TRUE) |
+      grepl("\\b(kj\\s*g|kjg)\\b", x, perl = TRUE) |
+      grepl("\\b(k\\s*j|j\\s*k)\\s*gummerus\\b", x, perl = TRUE)
+  )
+  canon[is.na(canon) & hit_gummerus] <- "gummerus"
+  
+  x <- ifelse(is.na(canon), x, canon)
+  
+  # Final cleanup after all substitutions
+  x <- clean_basic(x)
+  x[x %in% c("sn", "s n")] <- "kustantaja tuntematon"
+  x[x %in% c("", "?", "sn", "s n")] <- NA_character_
+  
+  # Optional: remove fully meaningless punctuation-only values
+  x[!is.na(x) & !grepl("[[:alpha:]]", x, perl = TRUE)] <- NA_character_
   
   x <- vapply(x, dedup_sc, character(1L))
   x
 }
+
 
 #' @title Assign gender.
 #' @description Gender assign based on a first name.

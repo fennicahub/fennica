@@ -124,7 +124,7 @@
     "href": "genre_008.html",
     "title": "7  Genre 008/33",
     "section": "",
-    "text": "7.1 Description\nMARC: 008\nMARC21 field 008 contains fixed-length data elements that encode various bibliographic details. In this context, we focus specifically on books—that is, records where the Type of Record is language material. From this field, we extract and interpret the genre information as encoded in position 33 of the 008 field.\nThis analysis is based on 1119652 book records in the Fennica database.",
+    "text": "7.1 Description\nMARC21 field 008 contains fixed-length data elements that encode various bibliographic details. In this context, we focus specifically on books—that is, records where the Type of Record is language material. From this field, we extract and interpret the genre information as encoded in position 33 of the 008 field.\nThis analysis is based on 1119652 book records in the Fennica database.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Genre 008/33</span>"
     ]
@@ -184,7 +184,7 @@
     "href": "publisher.html",
     "title": "9  Publisher",
     "section": "",
-    "text": "9.1 Complete Dataset Overview\nMARC: 260b",
+    "text": "9.1 Publisher field preprocessing\nThe publisher field (MARC 260b) has been harmonized through a rule-based cleaning pipeline to address substantial variation in cataloging practices across time. The raw data contain inconsistent formatting, multiple languages, abbreviations, punctuation noise, and compound entries combining publishers, distributors, and institutional bodies.\nThe preprocessing consists of several stages. First, all entries are normalized to lowercase and stripped of extraneous punctuation, brackets, and formatting artifacts (e.g., OCR noise, delimiters and inconsistent separators). Multi-value entries are standardized using a semicolon (;) as a separator to preserve cases where multiple publishers or institutional collaborators are listed.\nSecond, common cataloging abbreviations are resolved. In particular, sine nomine ([s.n.]) is mapped to “kustantaja tuntematon” (unknown publisher), while other Latin abbreviations such as sine loco and sine anno are removed as they do not describe publisher identity. Variants introduced during cleaning (e.g., sn) are also normalized.\nThird, semantic normalization is applied. Distributor-related expressions (e.g., “distributed by”, “jakaja”, “distr.”) are harmonized to a consistent label (“jakelija”). Self-published works are identified through patterns such as “författaren” or “tekijä” and recoded accordingly. Common institutional and corporate forms (e.g., osakeyhtiö, aktiebolag) are standardized, and frequent abbreviations (e.g., WSOY, VTT, SKS) are expanded or unified.\nFourth, historically variable publisher names and OCR variants are mapped to canonical forms using pattern-based rules (e.g., Söderström, Gummerus, Frenckell). This step reduces fragmentation caused by spelling variation, language differences, and inconsistent cataloging.\nFinally, entries that cannot be interpreted as meaningful publisher information after cleaning (e.g., empty strings, punctuation-only values) are set to missing (NA). For transparency, all discarded original values are recorded separately, allowing inspection of what was removed during preprocessing.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publisher</span>"
     ]
@@ -193,8 +193,8 @@
     "objectID": "publisher.html#complete-dataset-overview",
     "href": "publisher.html#complete-dataset-overview",
     "title": "9  Publisher",
-    "section": "",
-    "text": "130234 unique publishers\n949153 documents have unambiguous publisher information (72%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\nConversions from original to final names (only non-trivial conversions shown)",
+    "section": "9.2 Complete Dataset Overview",
+    "text": "9.2 Complete Dataset Overview\n\n130431 accepted unique publishers\n49977 records contain multiple publishers.\n28421 records are marked as unknown publisher.\n8853 records are identified as self-published / author-published.\n949058 documents have unambiguous publisher information (72%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publisher</span>"
     ]
@@ -203,8 +203,8 @@
     "objectID": "publisher.html#subset-analysis-1809-1917",
     "href": "publisher.html#subset-analysis-1809-1917",
     "title": "9  Publisher",
-    "section": "9.2 Subset Analysis: 1809-1917",
-    "text": "9.2 Subset Analysis: 1809-1917\n\n8509 unique publishers\n51682 documents have unambiguous publisher information (70.8%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\nDiscarded publisher entries\n\nThe 20 most common publishers from 1809 to 1917 are shown with the number of documents.",
+    "section": "9.3 Subset Analysis: 1809-1917",
+    "text": "9.3 Subset Analysis: 1809-1917\n\n8554 accepted unique publishers\n691 records contain multiple publishers.\n8019 records are marked as unknown publisher.\n2110 records are identified as self-published / author-published.\n51681 documents have unambiguous publisher information (70.8%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\n\nThe 20 most common publishers from 1809 to 1917 are shown with the number of documents.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publisher</span>"
     ]

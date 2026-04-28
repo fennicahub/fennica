@@ -47,7 +47,7 @@ kable(head(tab, ntop))
 
 ### Fiction VS Non-Fiction over Time (log10)
 ```{r}
-#| label = "summary_title_remainder_word_count_pic",
+#| label = "summary_008_genre_pic",
 #| echo = FALSE,
 #| warning = FALSE,
 # Join publication_decade from df_pubtime to df by melinda_id
@@ -98,14 +98,24 @@ kable(head(tab, ntop))
 
 ### Certain Genres over Time
 ```{r}
-#| label = "summary_title_remainder_word_count_pic1",
+#| label = "summary_008_genre_pic2",
 #| echo = FALSE,
 #| warning = FALSE,
 # Join publication_decade from df_pubtime to df by melinda_id
 df_19$publication_decade <- df_pubtime19$publication_decade[match(df_19$melinda_id, df_pubtime19$melinda_id)]
 
 # Define the genres you're interested in
-selected_genres <- c("Draama", "Runot", "Romaanit", "Novellit, kertomukset", "Puheet, esitelmät", "Kirjeet", "Esseet", "Huumori, satiiri")
+selected_genres <- c(
+  "Kaunokirjallisuus"= "Fiction",
+  "Draama" = "Drama",
+  "Runot" = "Poetry",
+  "Romaanit" = "Novels",
+  "Novellit, kertomukset" = "Short stories",
+  "Puheet, esitelmät" = "Speeches & lectures",
+  "Kirjeet" = "Letters",
+  "Esseet" = "Essays",
+  "Huumori, satiiri" = "Humor & satire"
+)
 
 # Filter your data to only include those genres
 df_selected <- df_19 %>%
@@ -123,7 +133,8 @@ ggplot(df_summary, aes(x = publication_decade,y = n, fill = converted_008_33)) +
   geom_col(position = "stack", width = 8) +  # width makes bars a bit narrower
   labs(x = "Publication Decade", y = "Number of Books", fill = "Genre") +
   scale_fill_brewer(palette = "Set2") +
-  scale_x_continuous(limits = c(1790, 1930),breaks = seq(1800, 1920, by = 10)) +
+  scale_x_continuous(limits = c(1790, 1930),breaks = seq(1800, 1910, by = 10)) +
   theme_minimal()
 
 ```
+

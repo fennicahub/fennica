@@ -82,6 +82,8 @@ df.harmonized$udk_multi <- df.tmp$multi_udk
 source("genre_655.R")
 df.harmonized$genre_655 <- df.tmp$harmonized
 
+
+df.harmonized$id2 <- df.orig$other_system_id
 df.harmonized <- unique(df.harmonized)
 
 df.processed <- df.harmonized
@@ -120,5 +122,13 @@ write.table(df.processed19,
 
 ###############################################################################
 
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/harmonized_fennica19.csv"
+# 
+# Read the CSV file, explicitly setting the first column to character
+# Count the number of columns in the file
+column_count <- ncol(read.csv(url, nrows = 1, sep = "\t"))
+#Create colClasses with 'character' for the first column and 'default' for the rest
+col_classes <- c("character", rep(NA, column_count - 1))
 
+df.processed19 <- read.csv(url, skip = 0, header = TRUE, sep = "\t", colClasses = col_classes)
 

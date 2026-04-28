@@ -6,6 +6,7 @@ x <- polish_publisher(df.orig[[field]])
 
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
+                     id2 = df.orig$other_system_id,
                      original = df.orig$publisher,
                      publisher = x)
 
@@ -29,22 +30,19 @@ file_discarded <- paste0(output.folder, field, "_discarded.csv")
 message("Accepted entries in the preprocessed data")
 s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE)
 
+
 message("Discarded entries in the original data")
 
-# Identify rows that became NA in the cleaned data
-inds <- which(is.na(df.tmp[[field]]))
+discarded <- df.tmp[is.na(df.tmp$publisher) &
+                      !is.na(df.tmp$original) &
+                      nzchar(trimws(df.tmp$original)), ]
 
-# Match those rows in the original data
-original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
-
-# --- Keep only those that had content originally (not NA or blank) ---
-keep <- !is.na(original.na) & nzchar(trimws(original.na))
-original.na <- original.na[keep]
-
-# Only write if any true discarded values remain
-if (length(original.na) > 0) {
-  tmp <- write_xtable(original.na, file_discarded, count = TRUE)
-}
+write.csv(
+  discarded,
+  file = file_discarded,
+  quote = FALSE,
+  row.names = FALSE
+)
 
 # ------------------------------------------------------------
 
@@ -68,20 +66,9 @@ file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 # # Generate data summaries for 1809-1917
 # 
 # message("Accepted entries in the preprocessed data")
-# s19 <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
-# 
-# message("Discarded entries in the original data")
-# 
-# # NA values in the final harmonized data
-# inds <- which(is.na(df_19[[field]]))
-# 
-# # Original entries that were converted into NA
-# original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
-# 
-# # .. ie. those are "discarded" cases; list them in a table
-# tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)
-# 
-# # ------------------------------------------------------------
+s19 <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
+
 
 # Convert to CSV and store in the output.tables folder
 write.csv(df_19, file = paste0(output.folder, paste0(field, "_19", ".csv")),, quote = FALSE, row.names = FALSE)
+

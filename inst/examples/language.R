@@ -76,9 +76,10 @@ matching_rows <- which(
 )
 
 id <- data.frame(
-  Melinda_ID = df.orig$melinda_id[matching_rows],
-  Language = df.orig[[field]][matching_rows],
-  Discarded = sapply(matching_rows, function(i) {
+  id1 = df.orig$melinda_id[matching_rows],
+  id2 = df.orig$other_system_id[matching_rows],
+  language = df.orig[[field]][matching_rows],
+  discarded = sapply(matching_rows, function(i) {
     bad_idx <- which(trimws(full_split[[i]]) == "Unrecognized")
     paste(trimws(orig_split[[i]][bad_idx]), collapse = ";")
   }),

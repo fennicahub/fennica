@@ -44,7 +44,8 @@ tmp <- write_xtable(o[inds],
 #create a file for discarded with melindas
 message("Discarded publication year with melinda ids")
 discard.file.id <- paste0(output.folder, field, "_discarded_id.csv")
-xx1 <- data.frame(melinda_id = df_pubtime$melinda_id,id2 = df.orig$other_system_id, element = df.orig$data_element_008,
+ps <- substr(df.orig$field_008, 7, 7)
+xx1 <- data.frame(melinda_id = df_pubtime$melinda_id,id2 = df.orig$other_system_id, field008_6 = ps, publication_status = df.orig$publication_status,
                   original = df_pubtime$original,publication_year = df_pubtime$publication_year)
 xx1 <- xx1 %>% filter(is.na(publication_year))%>% filter(!is.na(original))
 write.table(xx1,file = discard.file.id,

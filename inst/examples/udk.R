@@ -8,6 +8,7 @@ df.tmp <- out$full
 df.tmp$melinda_id <- df.orig$melinda_id
 df.tmp$udk_aux <- polish_udk_aux(df.orig$UDC_aux)
 df.tmp <- dplyr::select(df.tmp, melinda_id, everything())
+df.tmp$id2 <- df.orig$other_system_id
 
 
 df.tmp1 <- out$undetermined
@@ -39,6 +40,7 @@ tmp2 <- write_xtable(df.tmp1, file_discarded,
                      add.percentages = TRUE)
 
 message("Error list")
+
 errors <- df.tmp %>%
   # remove rows with missing data
   filter(!is.na(cleaned), !is.na(converted)) %>%
@@ -54,7 +56,7 @@ errors <- df.tmp %>%
   # keep only the rows where converted == "Undetermined"
   filter(str_detect(converted, regex("^Undetermined\\.?$", ignore_case = TRUE)))
 
-errors <- data.frame(melinda_id = errors$melinda_id, original = errors$original, 
+errors <- data.frame(id1 = errors$melinda_id, id2 = errors$id2, original = errors$original, 
                      harmonized = errors$cleaned, unknown_udk = errors$unknown)
 
 tmp1 <- write.csv(errors, 
