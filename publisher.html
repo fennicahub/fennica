@@ -445,7 +445,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="9.1" class="anchored" data-anchor-id="publisher-field-preprocessing"><span class="header-section-number">9.1</span> Publisher field preprocessing</h2>
 <p>The publisher field (MARC 260b) has been harmonized through a rule-based cleaning pipeline to address substantial variation in cataloging practices across time. The raw data contain inconsistent formatting, multiple languages, abbreviations, punctuation noise, and compound entries combining publishers, distributors, and institutional bodies.</p>
 <p>The preprocessing consists of several stages. First, all entries are normalized to lowercase and stripped of extraneous punctuation, brackets, and formatting artifacts (e.g., OCR noise, delimiters and inconsistent separators). Multi-value entries are standardized using a semicolon (<code>;</code>) as a separator to preserve cases where multiple publishers or institutional collaborators are listed.</p>
-<p>Second, common cataloging abbreviations are resolved. In particular, <em>sine nomine</em> (<code>[s.n.]</code>) is mapped to <strong>“kustantaja tuntematon”</strong> (unknown publisher), while other Latin abbreviations such as <em>sine loco</em> and <em>sine anno</em> are removed as they do not describe publisher identity. Variants introduced during cleaning (e.g., <code>sn</code>) are also normalized.</p>
+<p>Second, common cataloging abbreviations are resolved. In particular, <em>sine nomine</em> (<code>[s.n.]</code>) is mapped to <strong>“kustantaja tuntematon”</strong> (unknown publisher), while other Latin abbreviations such as <em>sine loco</em> and <em>sine anno</em> are removed as they do not describe publisher identity.</p>
 <p>Third, semantic normalization is applied. Distributor-related expressions (e.g., “distributed by”, “jakaja”, “distr.”) are harmonized to a consistent label (“jakelija”). Self-published works are identified through patterns such as “författaren” or “tekijä” and recoded accordingly. Common institutional and corporate forms (e.g., <em>osakeyhtiö</em>, <em>aktiebolag</em>) are standardized, and frequent abbreviations (e.g., WSOY, VTT, SKS) are expanded or unified.</p>
 <p>Fourth, historically variable publisher names and OCR variants are mapped to canonical forms using pattern-based rules (e.g., Söderström, Gummerus, Frenckell). This step reduces fragmentation caused by spelling variation, language differences, and inconsistent cataloging.</p>
 <p>Finally, entries that cannot be interpreted as meaningful publisher information after cleaning (e.g., empty strings, punctuation-only values) are set to missing (<code>NA</code>). For transparency, all discarded original values are recorded separately, allowing inspection of what was removed during preprocessing.</p>
@@ -464,11 +464,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="subset-analysis-1809-1917" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="subset-analysis-1809-1917"><span class="header-section-number">9.3</span> Subset Analysis: 1809-1917</h2>
 <ul>
-<li><p>8554 <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publisher_accepted_19.csv">accepted unique publishers</a></p></li>
+<li><p>8557 <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publisher_accepted_19.csv">accepted unique publishers</a></p></li>
 <li><p>691 records contain multiple publishers.</p></li>
 <li><p>8019 records are marked as unknown publisher.</p></li>
 <li><p>2110 records are identified as self-published / author-published.</p></li>
-<li><p>51681 documents have unambiguous publisher information (70.8%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).</p></li>
+<li><p>51686 documents have unambiguous publisher information (70.8%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).</p></li>
 </ul>
 <p>The 20 most common publishers from 1809 to 1917 are shown with the number of documents.</p>
 <div class="cell">

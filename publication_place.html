@@ -441,16 +441,22 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>MARC: <a href="https://www.loc.gov/marc/bibliographic/bd260.html">260a</a></p>
+<p>MARC: <a href="https://www.loc.gov/marc/bibliographic/bd260.html">260a</a> and <a href="https://www.loc.gov/marc/bibliographic/bd264.html">264a</a></p>
+<p>Publication place information is primarily derived from MARC21 fields 260a and 264a, which record the location of publication. These fields exhibit substantial variation in spelling, language, and formatting, requiring systematic harmonization to enable consistent geographic analysis. The processing pipeline integrates normalization, synonym resolution, and external mappings to standardize place names and link them to countries and geocoordinates, while preserving traceability of ambiguous and discarded cases.</p>
+<p>The publication place field is enriched by using 264a when 260a is missing, after which the raw place strings are harmonized with polish_place(). The harmonized place names are then linked to countries with get_country() and joined with existing geocoding data to add longitude, latitude, and mapping identifiers. The workflow saves the processed table, creates accepted and discarded summaries, records discarded non-empty original values with IDs, and produces separate accepted summaries for the 1809–1917 subset.</p>
 <section id="complete-dataset-overview" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="complete-dataset-overview"><span class="header-section-number">10.1</span> Complete Dataset Overview</h2>
 <ul>
 <li><p>5769 <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_accepted.csv">unique publication places</a>; available for 1224286 documents (93%).</p></li>
-<li><p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_ambiguous.csv">ambiguous publication places</a>; some of these can be possibly resolved by checking that the the <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/PublicationPlaceSynonymes.csv">synonyme list</a> does not contain multiple versions of the final name (case sensitive).</p></li>
-<li><p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_todo.csv">unknown place names</a> These terms do not map to any known place on the <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/PublicationPlaceSynonymes.csv">synonyme list</a>; either because they require further cleaning or have not yet been encountered in the analyses. Terms that are clearly not place names can be added to <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/stopwords_for_place.csv">stopwords</a>; borderline cases that are not accepted as place names can be added as NA on the <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/PublicationPlaceSynonymes.csv">synonyme list</a>.</p></li>
-<li><p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_discarded.csv">discarded place names</a> These terms are potential place names but with a closer check have been explicitly rejected on the <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/PublicationPlaceSynonymes.csv">synonyme list</a></p></li>
+<li><p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_ambiguous.csv">Ambiguous publication places</a>;</p></li>
+<li><p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_todo.csv">Unknown place names</a></p></li>
+</ul>
+<p>Terms that are clearly not place names can be added to <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/stopwords_for_place.csv">stopwords</a>;</p>
+<ul>
+<li><p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_discarded.csv">Discarded place names</a></p></li>
 <li><p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_conversion_nontrivial.csv">Conversions from the original to the accepted place names</a></p></li>
 </ul>
+<p>The <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/PublicationPlaceSynonymes.csv">synonyme list</a> contains candidate place names that were identified during processing but ultimately rejected, rather than valid variants of accepted names. These entries typically reflect ambiguous, malformed, or non-standardized strings that could not be reliably matched to a canonical location. Some may be recoverable with additional context or external authority matching, but are conservatively excluded in the current workflow.</p>
 </section>
 <section id="publication-countries" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="publication-countries"><span class="header-section-number">10.2</span> Publication countries</h2>
@@ -470,9 +476,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="subset-analysis-1809-1917" class="level2" data-number="10.4">
 <h2 data-number="10.4" class="anchored" data-anchor-id="subset-analysis-1809-1917"><span class="header-section-number">10.4</span> Subset Analysis: 1809-1917</h2>
 <ul>
-<li><p>544 <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_accepted_19.csv">unique publication places</a>; available for 70890 documents (97%).</p></li>
-<li><p>Unique publication country for a period 1809-1917: 32; available for 69109 documents (95%).</p></li>
-<li><p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_discarded_19.csv">discarded place names</a></p></li>
+<li><p>545 <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_accepted_19.csv">unique publication places</a>; available for 70897 documents (97%).</p></li>
+<li><p>Unique publication country for a period 1809-1917: 32; available for 69115 documents (95%).</p></li>
 </ul>
 <p>Top-20 publication places are shown together with the number of documents.</p>
 <div class="cell">
@@ -502,7 +507,7 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Finland</td>
-<td style="text-align: right;">63447</td>
+<td style="text-align: right;">63453</td>
 <td style="text-align: right;">86.9</td>
 </tr>
 <tr class="even">
