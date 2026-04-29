@@ -34,17 +34,27 @@
     "href": "author_date.html",
     "title": "3  Author’s info: lifespan",
     "section": "",
-    "text": "3.0.1 Author lifetime (MARC 100d)\nMARC field [100$d] records the author’s lifetime (typically birth and death years) in free-text form. In the Fennica data, this field exhibits substantial heterogeneity in formatting, including approximate dates, alternative values, historical notations (e.g. BCE/CE), and non-standard textual descriptions.\nTo enable quantitative analysis, the field is processed through a multi-step cleaning and harmonization workflow. The procedure combines information from the original Fennica records and the Kanto authority data, prioritizing structured Kanto values where available. The harmonization includes:\nThe outcome is divided into two categories:\nIn addition, a separate set of source conflicts is identified, where cleaned values derived from Fennica and Kanto disagree. These cases are retained for further inspection and potential feedback to the data providers.",
+    "text": "3.0.1 Author lifetime (MARC 100d)\nMARC: 100d\nMARC field [100$d] records the author’s lifetime (typically birth and death years) in free-text form. In the Fennica data, this field exhibits substantial heterogeneity in formatting, including approximate dates, alternative values, historical notations (e.g. BCE/CE), and non-standard textual descriptions.\nTo enable quantitative analysis, the field is processed through a multi-step cleaning and harmonization workflow. The procedure combines information from the original Fennica records and the Kanto authority data, prioritizing structured Kanto values where available. The harmonization includes:\nThe outcome is divided into two categories:\nIn addition, a separate set of source conflicts is identified, where cleaned values derived from Fennica and Kanto disagree. These cases are retained for further inspection and potential feedback to the data providers.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Author's info: lifespan</span>"
     ]
   },
   {
-    "objectID": "author_date.html#subset-analysis-1809-1917",
-    "href": "author_date.html#subset-analysis-1809-1917",
+    "objectID": "author_date.html#complete-dataset-overview",
+    "href": "author_date.html#complete-dataset-overview",
     "title": "3  Author’s info: lifespan",
-    "section": "3.2 Subset Analysis: 1809-1917",
-    "text": "3.2 Subset Analysis: 1809-1917\nAuthor date accepted for 1809-1917\nAuthor date discarded for 1809-1917",
+    "section": "3.1 Complete Dataset Overview",
+    "text": "3.1 Complete Dataset Overview\nThe field has 467691 / (35.5%) non-missing values and 850365 / (64.5%) with missing lifetime information.\nAuthor age is available for 191166 records / (14.5%). Author age range is 15–108.\nAuthor date accepted for the complete Fennica\nAuthor date discarded for the complete Fennica\nAuthor date source conflicts for the complete Fennica and Kanto\nHarmonized dataset for author dates",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Author's info: lifespan</span>"
+    ]
+  },
+  {
+    "objectID": "author_date.html#subset-1809-1917",
+    "href": "author_date.html#subset-1809-1917",
+    "title": "3  Author’s info: lifespan",
+    "section": "3.2 Subset 1809-1917",
+    "text": "3.2 Subset 1809-1917\nThe field has 31686 / (43.4%) non-missing values and 41363 / (56.6%) with missing lifetime information.\nAuthor date accepted for the complete Fennica\nHarmonized dataset for author dates 1809-1917",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Author's info: lifespan</span>"
     ]
@@ -64,7 +74,7 @@
     "href": "gender.html#authors-gender",
     "title": "4  Author’s info: gender",
     "section": "",
-    "text": "4.1.1 Gender over Time (1600-2000)\n\n\n\n\n\n\n\n\n\n\n\n4.1.2 Gender over Time (1809-1917)\nIn total N = 73042 records. After enrichment in total there are records 46533 / (63.7%) with assigned gender. There are 4555 (9.8%) female names, 41978 (90.2%) male names.",
+    "text": "4.1.1 Gender over Time (1600-2000)\n\n\n\n\n\n\n\n\n\n\n\n4.1.2 Gender over Time (1809-1917)\nIn total N = 73049 records. After enrichment in total there are records 46534 / (63.7%) with assigned gender. There are 4555 (9.8%) female names, 41979 (90.2%) male names.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Author's info: gender</span>"
     ]
@@ -114,7 +124,7 @@
     "href": "genre_655.html#subset-analysis-1809-1917",
     "title": "6  Genre/form 655",
     "section": "6.3 Subset Analysis: 1809-1917",
-    "text": "6.3 Subset Analysis: 1809-1917\nUnique genre_655s (1809-1917): 380\nThere are 55996 missing values in the dataset,accounting for (76.66%) of the total.\nDownload genre_655 harmonized dataset (1809-1917)\n\n6.3.1 Top Genre/Form for 1809-1917\nAccepted Genre/Form (1809-1917).\n\n\n\nGenre/Form\nEntries (n)\nFraction (%)\n\n\n\n\nVäitöskirjat\n4853\n6.6\n\n\nLuettelot\n1476\n2\n\n\nVirret; Arkkiveisut\n794\n1.1\n\n\nEsitteet\n743\n1\n\n\nSanomalehdet\n563\n0.8\n\n\nArkkiveisut\n492\n0.7\n\n\nHartauskirjat\n297\n0.4\n\n\nKokousjulkaisut\n295\n0.4\n\n\nUskonnolliset lehdet\n268\n0.4\n\n\nHuumorilehdet; Kausijulkaisut\n256\n0.4",
+    "text": "6.3 Subset Analysis: 1809-1917\nUnique genre_655s (1809-1917): 380\nThere are 56000 missing values in the dataset,accounting for (76.66%) of the total.\nDownload genre_655 harmonized dataset (1809-1917)\n\n6.3.1 Top Genre/Form for 1809-1917\nAccepted Genre/Form (1809-1917).\n\n\n\nGenre/Form\nEntries (n)\nFraction (%)\n\n\n\n\nVäitöskirjat\n4853\n6.6\n\n\nLuettelot\n1476\n2\n\n\nVirret; Arkkiveisut\n794\n1.1\n\n\nEsitteet\n743\n1\n\n\nSanomalehdet\n564\n0.8\n\n\nArkkiveisut\n492\n0.7\n\n\nHartauskirjat\n297\n0.4\n\n\nKokousjulkaisut\n295\n0.4\n\n\nUskonnolliset lehdet\n268\n0.4\n\n\nHuumorilehdet; Kausijulkaisut\n256\n0.4",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Genre/form 655</span>"
     ]
@@ -124,7 +134,7 @@
     "href": "genre_008.html",
     "title": "7  Genre 008/33",
     "section": "",
-    "text": "7.1 Description\nMARC21 field 008 contains fixed-length data elements that encode various bibliographic details. In this context, we focus specifically on books—that is, records where the Type of Record is language material. From this field, we extract and interpret the genre information as encoded in position 33 of the 008 field.\nThis analysis is based on 1119652 book records in the Fennica database.",
+    "text": "7.1 Description\nMARC: 008\nMARC21 field 008 contains fixed-length data elements that encode various bibliographic details. In this context, we focus specifically on books—that is, records where the Type of Record is language material. From this field, we extract and interpret the genre information as encoded in position 33 of the 008 field.\nThis analysis is based on 1119652 book records in the Fennica database.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Genre 008/33</span>"
     ]
@@ -174,7 +184,7 @@
     "href": "language.html#subset-analysis-1809-1917",
     "title": "8  Language",
     "section": "8.3 Subset Analysis: 1809-1917",
-    "text": "8.3 Subset Analysis: 1809-1917\nUnique languages (1809-1917): 57\nUnique primary languages (1809-1917): 41\n67773 single-language entries (94.53%)\n3923 multilingual entries , accounting for 5.47% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.\nThere are 15 entries marked as “Undetermined”.\nThere are 1346 missing values in the dataset,accounting for (1.84%) of the total.\nDownload language harmonized dataset (1809-1917)\n\n8.3.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages (1809-1917).\n\n\n\nLanguage\nEntries (n)\nFraction (%)\n\n\n\n\nFinnish\n37991\n52\n\n\nSwedish\n22290\n30.5\n\n\nLatin\n2509\n3.4\n\n\nGerman\n2289\n3.1\n\n\nFinnish;Swedish\n1748\n2.4\n\n\nRussian\n850\n1.2\n\n\nFrench\n703\n1\n\n\nEnglish\n510\n0.7\n\n\nSwedish;Finnish\n252\n0.3\n\n\nSwedish;Latin\n203\n0.3\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
+    "text": "8.3 Subset Analysis: 1809-1917\nUnique languages (1809-1917): 57\nUnique primary languages (1809-1917): 41\n67780 single-language entries (94.53%)\n3923 multilingual entries , accounting for 5.47% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.\nThere are 15 entries marked as “Undetermined”.\nThere are 1346 missing values in the dataset,accounting for (1.84%) of the total.\nDownload language harmonized dataset (1809-1917)\n\n8.3.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages (1809-1917).\n\n\n\nLanguage\nEntries (n)\nFraction (%)\n\n\n\n\nFinnish\n37996\n52\n\n\nSwedish\n22293\n30.5\n\n\nLatin\n2509\n3.4\n\n\nGerman\n2289\n3.1\n\n\nFinnish;Swedish\n1748\n2.4\n\n\nRussian\n850\n1.2\n\n\nFrench\n703\n1\n\n\nEnglish\n509\n0.7\n\n\nSwedish;Finnish\n252\n0.3\n\n\nSwedish;Latin\n203\n0.3\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Language</span>"
     ]
@@ -184,7 +194,7 @@
     "href": "publisher.html",
     "title": "9  Publisher",
     "section": "",
-    "text": "9.1 Publisher field preprocessing\nThe publisher field (MARC 260b) has been harmonized through a rule-based cleaning pipeline to address substantial variation in cataloging practices across time. The raw data contain inconsistent formatting, multiple languages, abbreviations, punctuation noise, and compound entries combining publishers, distributors, and institutional bodies.\nThe preprocessing consists of several stages. First, all entries are normalized to lowercase and stripped of extraneous punctuation, brackets, and formatting artifacts (e.g., OCR noise, delimiters and inconsistent separators). Multi-value entries are standardized using a semicolon (;) as a separator to preserve cases where multiple publishers or institutional collaborators are listed.\nSecond, common cataloging abbreviations are resolved. In particular, sine nomine ([s.n.]) is mapped to “kustantaja tuntematon” (unknown publisher), while other Latin abbreviations such as sine loco and sine anno are removed as they do not describe publisher identity. Variants introduced during cleaning (e.g., sn) are also normalized.\nThird, semantic normalization is applied. Distributor-related expressions (e.g., “distributed by”, “jakaja”, “distr.”) are harmonized to a consistent label (“jakelija”). Self-published works are identified through patterns such as “författaren” or “tekijä” and recoded accordingly. Common institutional and corporate forms (e.g., osakeyhtiö, aktiebolag) are standardized, and frequent abbreviations (e.g., WSOY, VTT, SKS) are expanded or unified.\nFourth, historically variable publisher names and OCR variants are mapped to canonical forms using pattern-based rules (e.g., Söderström, Gummerus, Frenckell). This step reduces fragmentation caused by spelling variation, language differences, and inconsistent cataloging.\nFinally, entries that cannot be interpreted as meaningful publisher information after cleaning (e.g., empty strings, punctuation-only values) are set to missing (NA). For transparency, all discarded original values are recorded separately, allowing inspection of what was removed during preprocessing.",
+    "text": "9.1 Publisher field preprocessing\nMARC: 260b\nThe publisher field (MARC 260b) has been harmonized through a rule-based cleaning pipeline to address substantial variation in cataloging practices across time. The raw data contain inconsistent formatting, multiple languages, abbreviations, punctuation noise, and compound entries combining publishers, distributors, and institutional bodies.\nThe preprocessing consists of several stages. First, all entries are normalized to lowercase and stripped of extraneous punctuation, brackets, and formatting artifacts (e.g., OCR noise, delimiters and inconsistent separators). Multi-value entries are standardized using a semicolon (;) as a separator to preserve cases where multiple publishers or institutional collaborators are listed.\nSecond, common cataloging abbreviations are resolved. In particular, sine nomine ([s.n.]) is mapped to “kustantaja tuntematon” (unknown publisher), while other Latin abbreviations such as sine loco and sine anno are removed as they do not describe publisher identity.\nThird, semantic normalization is applied. Distributor-related expressions (e.g., “distributed by”, “jakaja”, “distr.”) are harmonized to a consistent label (“jakelija”). Self-published works are identified through patterns such as “författaren” or “tekijä” and recoded accordingly. Common institutional and corporate forms (e.g., osakeyhtiö, aktiebolag) are standardized, and frequent abbreviations (e.g., WSOY, VTT, SKS) are expanded or unified.\nFourth, historically variable publisher names and OCR variants are mapped to canonical forms using pattern-based rules (e.g., Söderström, Gummerus, Frenckell). This step reduces fragmentation caused by spelling variation, language differences, and inconsistent cataloging.\nFinally, entries that cannot be interpreted as meaningful publisher information after cleaning (e.g., empty strings, punctuation-only values) are set to missing (NA). For transparency, all discarded original values are recorded separately, allowing inspection of what was removed during preprocessing.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publisher</span>"
     ]
@@ -204,7 +214,7 @@
     "href": "publisher.html#subset-analysis-1809-1917",
     "title": "9  Publisher",
     "section": "9.3 Subset Analysis: 1809-1917",
-    "text": "9.3 Subset Analysis: 1809-1917\n\n8554 accepted unique publishers\n691 records contain multiple publishers.\n8019 records are marked as unknown publisher.\n2110 records are identified as self-published / author-published.\n51681 documents have unambiguous publisher information (70.8%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\n\nThe 20 most common publishers from 1809 to 1917 are shown with the number of documents.",
+    "text": "9.3 Subset Analysis: 1809-1917\n\n8557 accepted unique publishers\n691 records contain multiple publishers.\n8019 records are marked as unknown publisher.\n2110 records are identified as self-published / author-published.\n51686 documents have unambiguous publisher information (70.8%). This includes documents identified as self-published; the author name is used as the publisher in those cases (if known).\n\nThe 20 most common publishers from 1809 to 1917 are shown with the number of documents.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publisher</span>"
     ]
@@ -214,7 +224,7 @@
     "href": "publication_place.html",
     "title": "10  Publication place",
     "section": "",
-    "text": "10.1 Complete Dataset Overview\nTerms that are clearly not place names can be added to stopwords;\nThe synonyme list contains candidate place names that were identified during processing but ultimately rejected, rather than valid variants of accepted names. These entries typically reflect ambiguous, malformed, or non-standardized strings that could not be reliably matched to a canonical location. Some may be recoverable with additional context or external authority matching, but are conservatively excluded in the current workflow.",
+    "text": "10.1 Complete Dataset Overview\nMARC: 260a and 264a\nPublication place information is primarily derived from MARC21 fields 260a and 264a, which record the location of publication. These fields exhibit substantial variation in spelling, language, and formatting, requiring systematic harmonization to enable consistent geographic analysis. The processing pipeline integrates normalization, synonym resolution, and external mappings to standardize place names and link them to countries and geocoordinates, while preserving traceability of ambiguous and discarded cases.\nThe publication place field is enriched by using 264a when 260a is missing, after which the raw place strings are harmonized with polish_place(). The harmonized place names are then linked to countries with get_country() and joined with existing geocoding data to add longitude, latitude, and mapping identifiers. The workflow saves the processed table, creates accepted and discarded summaries, records discarded non-empty original values with IDs, and produces separate accepted summaries for the 1809–1917 subset.\nTerms that are clearly not place names can be added to stopwords;\nThe synonyme list contains candidate place names that were identified during processing but ultimately rejected, rather than valid variants of accepted names. These entries typically reflect ambiguous, malformed, or non-standardized strings that could not be reliably matched to a canonical location. Some may be recoverable with additional context or external authority matching, but are conservatively excluded in the current workflow.",
     "crumbs": [
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Publication place</span>"
     ]
@@ -314,7 +324,7 @@
     "href": "signum.html#subset-analysis-1809-1917",
     "title": "12  Signum",
     "section": "12.2 Subset Analysis: 1809-1917",
-    "text": "12.2 Subset Analysis: 1809-1917\nOriginal documents with titles: 2227 / 1318056 (3%)\nOriginal documents with missing (NA) titles 70815 / 1318056 documents (99.6%)\nSignum accepted for 1809-1917\nSignum discarded for 1809-1917\n\n12.2.1 Top-20 signum for 1809-1917\n\n\n\nSignum\nEntries (n)\nFraction (%)\n\n\n\n\nDiss. HY\n1277\n0.1\n\n\nDiss. HY -1972\n156\n0\n\n\nKäsifilmistö - filmikortit\n64\n0\n\n\nRv Oikeus- ja valtiotieteet 5\n58\n0\n\n\nVierask. kaunokirj. 1\n36\n0\n\n\nRv Diss. dupl.\n31\n0\n\n\nSuom. kaunokirj. 3\n30\n0\n\n\nRv Asetukset\n23\n0\n\n\nHelsingin yliopisto 7\n22\n0\n\n\nMf.\n18\n0",
+    "text": "12.2 Subset Analysis: 1809-1917\nOriginal documents with titles: 2227 / 1318056 (3%)\nOriginal documents with missing (NA) titles 70822 / 1318056 documents (99.6%)\nSignum accepted for 1809-1917\nSignum discarded for 1809-1917\n\n12.2.1 Top-20 signum for 1809-1917\n\n\n\nSignum\nEntries (n)\nFraction (%)\n\n\n\n\nDiss. HY\n1277\n0.1\n\n\nDiss. HY -1972\n156\n0\n\n\nKäsifilmistö - filmikortit\n64\n0\n\n\nRv Oikeus- ja valtiotieteet 5\n58\n0\n\n\nVierask. kaunokirj. 1\n36\n0\n\n\nRv Diss. dupl.\n31\n0\n\n\nSuom. kaunokirj. 3\n30\n0\n\n\nRv Asetukset\n23\n0\n\n\nHelsingin yliopisto 7\n22\n0\n\n\nMf.\n18\n0",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Signum</span>"
     ]
@@ -334,7 +344,7 @@
     "href": "title2.html#subset-analysis-1809-1917",
     "title": "13  Title (Remainder incl.)",
     "section": "13.1 Subset Analysis: 1809-1917",
-    "text": "13.1 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 52236\nOriginal documents with non-NA titles: 73042 / 73042 (100%)\nOriginal documents with missing (NA) titles 0 / 73042 documents (0%)\nDownload title2 field harmonized dataset(1809-1917)\n\n13.1.1 Top-20 title for years 1809-1917\n\n\n\n\n\n\n\n\ntitle2\nEntries (n)\nFraction (%)\n\n\n\n\nTheses\n146\n0.2\n\n\nHomeri odyssea svethice reddita\n114\n0.2\n\n\nDikter\n86\n0.1\n\n\nLäsning för barn\n71\n0.1\n\n\nFänrik ståls sägner : en samling sånger\n66\n0.1\n\n\nHandlingar rörande finlands historia kring medlet af 17:de århundradet\n64\n0.1\n\n\nDissertatio entomologica insecta fennica enumerans\n64\n0.1\n\n\nKertomuksia suomen historiasta\n62\n0.1\n\n\nFältskärns berättelser\n57\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder : ny följd\n52\n0.1\n\n\nLähetysrukoushetkiä warten sowitettuja kertomuksia lähetystoimesta : uusi jakso\n52\n0.1\n\n\nCommentarii in scriptores graecos et latinos : commentarii in sallustium\n52\n0.1\n\n\nPrincipia grammatices neo-persicae\n48\n0.1\n\n\nLukemisia lapsille\n48\n0.1\n\n\nKungörelse\n47\n0.1\n\n\nSuomen virallinen tilasto\n46\n0.1\n\n\nJohan ludvig runebergs samlade skrifter\n41\n0.1\n\n\nSamlade arbeten\n40\n0.1\n\n\nUtrum comitia ordinum fenniae habita sint arctopoli anno mdcii, an non\n36\n0\n\n\nEvankelinen lähetys afrikassa : katsastettu lähetysrukous-hetkinä\n36\n0\n\n\n\n\n\n13.1.2 Top-20 title2s for years 1809-1917 period / “Language material” content type\n\n\n\n\n\n\n\n\ntitle2\nEntries (n)\nFraction (%)\n\n\n\n\nTheses\n146\n0.2\n\n\nHomeri odyssea svethice reddita\n114\n0.2\n\n\nDikter\n86\n0.1\n\n\nLäsning för barn\n71\n0.1\n\n\nFänrik ståls sägner : en samling sånger\n66\n0.1\n\n\nHandlingar rörande finlands historia kring medlet af 17:de århundradet\n64\n0.1\n\n\nDissertatio entomologica insecta fennica enumerans\n64\n0.1\n\n\nKertomuksia suomen historiasta\n62\n0.1\n\n\nFältskärns berättelser\n57\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder : ny följd\n52\n0.1\n\n\nLähetysrukoushetkiä warten sowitettuja kertomuksia lähetystoimesta : uusi jakso\n52\n0.1\n\n\nCommentarii in scriptores graecos et latinos : commentarii in sallustium\n52\n0.1\n\n\nPrincipia grammatices neo-persicae\n48\n0.1\n\n\nLukemisia lapsille\n48\n0.1\n\n\nKungörelse\n47\n0.1\n\n\nSuomen virallinen tilasto\n46\n0.1\n\n\nJohan ludvig runebergs samlade skrifter\n41\n0.1\n\n\nSamlade arbeten\n40\n0.1\n\n\nUtrum comitia ordinum fenniae habita sint arctopoli anno mdcii, an non\n36\n0\n\n\nEvankelinen lähetys afrikassa : katsastettu lähetysrukous-hetkinä\n36\n0",
+    "text": "13.1 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 52241\nOriginal documents with non-NA titles: 73049 / 73049 (100%)\nOriginal documents with missing (NA) titles 0 / 73049 documents (0%)\nDownload title2 field harmonized dataset(1809-1917)\n\n13.1.1 Top-20 title for years 1809-1917\n\n\n\n\n\n\n\n\ntitle2\nEntries (n)\nFraction (%)\n\n\n\n\nTheses\n146\n0.2\n\n\nHomeri odyssea svethice reddita\n114\n0.2\n\n\nDikter\n86\n0.1\n\n\nLäsning för barn\n71\n0.1\n\n\nFänrik ståls sägner : en samling sånger\n66\n0.1\n\n\nHandlingar rörande finlands historia kring medlet af 17:de århundradet\n64\n0.1\n\n\nDissertatio entomologica insecta fennica enumerans\n64\n0.1\n\n\nKertomuksia suomen historiasta\n62\n0.1\n\n\nFältskärns berättelser\n57\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder : ny följd\n52\n0.1\n\n\nLähetysrukoushetkiä warten sowitettuja kertomuksia lähetystoimesta : uusi jakso\n52\n0.1\n\n\nCommentarii in scriptores graecos et latinos : commentarii in sallustium\n52\n0.1\n\n\nPrincipia grammatices neo-persicae\n48\n0.1\n\n\nLukemisia lapsille\n48\n0.1\n\n\nKungörelse\n47\n0.1\n\n\nSuomen virallinen tilasto\n46\n0.1\n\n\nJohan ludvig runebergs samlade skrifter\n41\n0.1\n\n\nSamlade arbeten\n40\n0.1\n\n\nUtrum comitia ordinum fenniae habita sint arctopoli anno mdcii, an non\n36\n0\n\n\nEvankelinen lähetys afrikassa : katsastettu lähetysrukous-hetkinä\n36\n0\n\n\n\n\n\n13.1.2 Top-20 title2s for years 1809-1917 period / “Language material” content type\n\n\n\n\n\n\n\n\ntitle2\nEntries (n)\nFraction (%)\n\n\n\n\nTheses\n146\n0.2\n\n\nHomeri odyssea svethice reddita\n114\n0.2\n\n\nDikter\n86\n0.1\n\n\nLäsning för barn\n71\n0.1\n\n\nFänrik ståls sägner : en samling sånger\n66\n0.1\n\n\nHandlingar rörande finlands historia kring medlet af 17:de århundradet\n64\n0.1\n\n\nDissertatio entomologica insecta fennica enumerans\n64\n0.1\n\n\nKertomuksia suomen historiasta\n62\n0.1\n\n\nFältskärns berättelser\n57\n0.1\n\n\nMissionsberättelser lämpade för missionsbönstunder : ny följd\n52\n0.1\n\n\nLähetysrukoushetkiä warten sowitettuja kertomuksia lähetystoimesta : uusi jakso\n52\n0.1\n\n\nCommentarii in scriptores graecos et latinos : commentarii in sallustium\n52\n0.1\n\n\nPrincipia grammatices neo-persicae\n48\n0.1\n\n\nLukemisia lapsille\n48\n0.1\n\n\nKungörelse\n47\n0.1\n\n\nSuomen virallinen tilasto\n46\n0.1\n\n\nJohan ludvig runebergs samlade skrifter\n41\n0.1\n\n\nSamlade arbeten\n40\n0.1\n\n\nUtrum comitia ordinum fenniae habita sint arctopoli anno mdcii, an non\n36\n0\n\n\nEvankelinen lähetys afrikassa : katsastettu lähetysrukous-hetkinä\n36\n0",
     "crumbs": [
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Title (Remainder incl.)</span>"
     ]
@@ -394,7 +404,7 @@
     "href": "udk.html#subset-analysis-1809-1917",
     "title": "15  Universal Decimal Classification",
     "section": "15.2 Subset Analysis: 1809-1917",
-    "text": "15.2 Subset Analysis: 1809-1917\nUnique UDC (1809-1917): 359\n25589 single UDC entries (79.84%)\n6460 multiple UDC entries (20.16%)\n40993 missing/NA entries (56%)\nThere are 0 entries where the primary UDK is “Undetermined” (0%)\nDownload UDC harmonized dataset (1809-1917)\n\n15.2.1 Top UDC for 1809-1917\nNumber of titles assigned with each UDC (top-10). For a complete list, see accepted UDC (1809-1917).\n\n\n\n\n\n\n\n\nUDC\nEntries (n)\nFraction (%)\n\n\n\n\nSuomenkielinen kirjallisuus\n5136\n0.4\n\n\nSuomenruotsalainen kirjallisuus\n2813\n0.2\n\n\nKristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset\n1606\n0.1\n\n\nBibliografiat. Julkaisuluettelot\n1484\n0.1\n\n\nYliopistot\n990\n0.1\n\n\nEnglanninkielinen kirjallisuus\n949\n0.1\n\n\nSaksankielinen kirjallisuus. Jiddišinkielinen kirjallisuus\n876\n0.1\n\n\nRuotsinkielinen kirjallisuus\n745\n0.1\n\n\nSuomen historia\n707\n0.1\n\n\nLehdistö. Journalismi. Sanomalehdet\n680\n0.1\n\n\nVirkistys. Viihde. Pelit. Urheilu\n647\n0\n\n\nPerinnetieteet. Etnologia. Kansatiede. Kansanrunous. Folkloristiikka\n626\n0\n\n\nAntiikin kirjallisuus. Latinankielinen kirjallisuus. Kreikankielinen kirjallisuus\n532\n0\n\n\nPatologia. Tautioppi\n452\n0\n\n\nKansanperinne tiukasti määriteltynä\n442\n0\n\n\nRanskankielinen kirjallisuus\n437\n0\n\n\nRaamattu\n426\n0\n\n\nSuomen kieli\n416\n0\n\n\nHenkilöhistoria. Elämäkerrat. Muistelmat. Matrikkelit\n406\n0\n\n\nVenäjänkielinen kirjallisuus\n376\n0",
+    "text": "15.2 Subset Analysis: 1809-1917\nUnique UDC (1809-1917): 359\n25593 single UDC entries (79.84%)\n6463 multiple UDC entries (20.16%)\n40993 missing/NA entries (56%)\nThere are 0 entries where the primary UDK is “Undetermined” (0%)\nDownload UDC harmonized dataset (1809-1917)\n\n15.2.1 Top UDC for 1809-1917\nNumber of titles assigned with each UDC (top-10). For a complete list, see accepted UDC (1809-1917).\n\n\n\n\n\n\n\n\nUDC\nEntries (n)\nFraction (%)\n\n\n\n\nSuomenkielinen kirjallisuus\n5136\n0.4\n\n\nSuomenruotsalainen kirjallisuus\n2813\n0.2\n\n\nKristillinen etiikka. Kristillinen taide. Hymnologia. Hartaus. Mystiikka. Askeesi. Uskonnolliset kokemukset\n1606\n0.1\n\n\nBibliografiat. Julkaisuluettelot\n1484\n0.1\n\n\nYliopistot\n990\n0.1\n\n\nEnglanninkielinen kirjallisuus\n949\n0.1\n\n\nSaksankielinen kirjallisuus. Jiddišinkielinen kirjallisuus\n876\n0.1\n\n\nRuotsinkielinen kirjallisuus\n745\n0.1\n\n\nSuomen historia\n707\n0.1\n\n\nLehdistö. Journalismi. Sanomalehdet\n681\n0.1\n\n\nVirkistys. Viihde. Pelit. Urheilu\n647\n0\n\n\nPerinnetieteet. Etnologia. Kansatiede. Kansanrunous. Folkloristiikka\n626\n0\n\n\nAntiikin kirjallisuus. Latinankielinen kirjallisuus. Kreikankielinen kirjallisuus\n532\n0\n\n\nPatologia. Tautioppi\n452\n0\n\n\nKansanperinne tiukasti määriteltynä\n443\n0\n\n\nRanskankielinen kirjallisuus\n437\n0\n\n\nRaamattu\n426\n0\n\n\nSuomen kieli\n416\n0\n\n\nHenkilöhistoria. Elämäkerrat. Muistelmat. Matrikkelit\n406\n0\n\n\nVenäjänkielinen kirjallisuus\n376\n0",
     "crumbs": [
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>Universal Decimal Classification</span>"
     ]
@@ -429,26 +439,6 @@
     "crumbs": [
       "Appendices",
       "Technical information"
-    ]
-  },
-  {
-    "objectID": "author_date.html#complete-dataset-overview",
-    "href": "author_date.html#complete-dataset-overview",
-    "title": "3  Author’s info: lifespan",
-    "section": "3.1 Complete Dataset Overview",
-    "text": "3.1 Complete Dataset Overview\nThe field has 467691 / (35.5%) non-missing values and 850365 / (64.5%) with missing lifetime information.\nAuthor age is available for 191166 records / (14.5%). Author age range is 15–108.\nAuthor date accepted for the complete Fennica\nAuthor date discarded for the complete Fennica\nAuthor date source conflicts for the complete Fennica and Kanto\nHarmonized dataset for author dates",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Author's info: lifespan</span>"
-    ]
-  },
-  {
-    "objectID": "author_date.html#subset-1809-1917",
-    "href": "author_date.html#subset-1809-1917",
-    "title": "3  Author’s info: lifespan",
-    "section": "3.2 Subset 1809-1917",
-    "text": "3.2 Subset 1809-1917\nThe field has 31686 / (43.4%) non-missing values and 41363 / (56.6%) with missing lifetime information.\nAuthor date accepted for the complete Fennica\nHarmonized dataset for author dates 1809-1917",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Author's info: lifespan</span>"
     ]
   }
 ]
