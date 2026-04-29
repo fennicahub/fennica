@@ -34,7 +34,7 @@
     "href": "author_date.html",
     "title": "3  Author’s info: lifespan",
     "section": "",
-    "text": "3.1 Complete Dataset Overview\nMARC: 100d\nThe author’s lifetime section furnishes concise summaries following an extensive cleaning process, delineating the accepted and discarded years pertaining to each author.The accepted years signify the refined and validated data, while insights into the discarded years offer valuable context, shedding light on the challenges encountered and decisions made during the cleaning procedure.\nThe field has 482406 / (36.6%) missing values and 835650 / (63.4%) with non-missing lifetime information.\nAuthor date accepted for the complete Fennica\nAuthor date discarded for the complete Fennica",
+    "text": "3.0.1 Author lifetime (MARC 100d)\nMARC field [100$d] records the author’s lifetime (typically birth and death years) in free-text form. In the Fennica data, this field exhibits substantial heterogeneity in formatting, including approximate dates, alternative values, historical notations (e.g. BCE/CE), and non-standard textual descriptions.\nTo enable quantitative analysis, the field is processed through a multi-step cleaning and harmonization workflow. The procedure combines information from the original Fennica records and the Kanto authority data, prioritizing structured Kanto values where available. The harmonization includes:\nThe outcome is divided into two categories:\nIn addition, a separate set of source conflicts is identified, where cleaned values derived from Fennica and Kanto disagree. These cases are retained for further inspection and potential feedback to the data providers.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Author's info: lifespan</span>"
     ]
@@ -124,7 +124,7 @@
     "href": "genre_008.html",
     "title": "7  Genre 008/33",
     "section": "",
-    "text": "7.1 Description\nMARC: 008\nMARC21 field 008 contains fixed-length data elements that encode various bibliographic details. In this context, we focus specifically on books—that is, records where the Type of Record is language material. From this field, we extract and interpret the genre information as encoded in position 33 of the 008 field.\nThis analysis is based on 1119652 book records in the Fennica database.",
+    "text": "7.1 Description\nMARC21 field 008 contains fixed-length data elements that encode various bibliographic details. In this context, we focus specifically on books—that is, records where the Type of Record is language material. From this field, we extract and interpret the genre information as encoded in position 33 of the 008 field.\nThis analysis is based on 1119652 book records in the Fennica database.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Genre 008/33</span>"
     ]
@@ -184,7 +184,7 @@
     "href": "publisher.html",
     "title": "9  Publisher",
     "section": "",
-    "text": "9.1 Publisher field preprocessing\nMARC: 260b\nThe publisher field (MARC 260b) has been harmonized through a rule-based cleaning pipeline to address substantial variation in cataloging practices across time. The raw data contain inconsistent formatting, multiple languages, abbreviations, punctuation noise, and compound entries combining publishers, distributors, and institutional bodies.\nThe preprocessing consists of several stages. First, all entries are normalized to lowercase and stripped of extraneous punctuation, brackets, and formatting artifacts (e.g., OCR noise, delimiters and inconsistent separators). Multi-value entries are standardized using a semicolon (;) as a separator to preserve cases where multiple publishers or institutional collaborators are listed.\nSecond, common cataloging abbreviations are resolved. In particular, sine nomine ([s.n.]) is mapped to “kustantaja tuntematon” (unknown publisher), while other Latin abbreviations such as sine loco and sine anno are removed as they do not describe publisher identity. Variants introduced during cleaning (e.g., sn) are also normalized.\nThird, semantic normalization is applied. Distributor-related expressions (e.g., “distributed by”, “jakaja”, “distr.”) are harmonized to a consistent label (“jakelija”). Self-published works are identified through patterns such as “författaren” or “tekijä” and recoded accordingly. Common institutional and corporate forms (e.g., osakeyhtiö, aktiebolag) are standardized, and frequent abbreviations (e.g., WSOY, VTT, SKS) are expanded or unified.\nFourth, historically variable publisher names and OCR variants are mapped to canonical forms using pattern-based rules (e.g., Söderström, Gummerus, Frenckell). This step reduces fragmentation caused by spelling variation, language differences, and inconsistent cataloging.\nFinally, entries that cannot be interpreted as meaningful publisher information after cleaning (e.g., empty strings, punctuation-only values) are set to missing (NA). For transparency, all discarded original values are recorded separately, allowing inspection of what was removed during preprocessing.",
+    "text": "9.1 Publisher field preprocessing\nThe publisher field (MARC 260b) has been harmonized through a rule-based cleaning pipeline to address substantial variation in cataloging practices across time. The raw data contain inconsistent formatting, multiple languages, abbreviations, punctuation noise, and compound entries combining publishers, distributors, and institutional bodies.\nThe preprocessing consists of several stages. First, all entries are normalized to lowercase and stripped of extraneous punctuation, brackets, and formatting artifacts (e.g., OCR noise, delimiters and inconsistent separators). Multi-value entries are standardized using a semicolon (;) as a separator to preserve cases where multiple publishers or institutional collaborators are listed.\nSecond, common cataloging abbreviations are resolved. In particular, sine nomine ([s.n.]) is mapped to “kustantaja tuntematon” (unknown publisher), while other Latin abbreviations such as sine loco and sine anno are removed as they do not describe publisher identity. Variants introduced during cleaning (e.g., sn) are also normalized.\nThird, semantic normalization is applied. Distributor-related expressions (e.g., “distributed by”, “jakaja”, “distr.”) are harmonized to a consistent label (“jakelija”). Self-published works are identified through patterns such as “författaren” or “tekijä” and recoded accordingly. Common institutional and corporate forms (e.g., osakeyhtiö, aktiebolag) are standardized, and frequent abbreviations (e.g., WSOY, VTT, SKS) are expanded or unified.\nFourth, historically variable publisher names and OCR variants are mapped to canonical forms using pattern-based rules (e.g., Söderström, Gummerus, Frenckell). This step reduces fragmentation caused by spelling variation, language differences, and inconsistent cataloging.\nFinally, entries that cannot be interpreted as meaningful publisher information after cleaning (e.g., empty strings, punctuation-only values) are set to missing (NA). For transparency, all discarded original values are recorded separately, allowing inspection of what was removed during preprocessing.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publisher</span>"
     ]
@@ -214,7 +214,7 @@
     "href": "publication_place.html",
     "title": "10  Publication place",
     "section": "",
-    "text": "10.1 Complete Dataset Overview\nMARC: 260a",
+    "text": "10.1 Complete Dataset Overview\nTerms that are clearly not place names can be added to stopwords;\nThe synonyme list contains candidate place names that were identified during processing but ultimately rejected, rather than valid variants of accepted names. These entries typically reflect ambiguous, malformed, or non-standardized strings that could not be reliably matched to a canonical location. Some may be recoverable with additional context or external authority matching, but are conservatively excluded in the current workflow.",
     "crumbs": [
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Publication place</span>"
     ]
@@ -224,7 +224,7 @@
     "href": "publication_place.html#complete-dataset-overview",
     "title": "10  Publication place",
     "section": "",
-    "text": "5769 unique publication places; available for 1224286 documents (93%).\nambiguous publication places; some of these can be possibly resolved by checking that the the synonyme list does not contain multiple versions of the final name (case sensitive).\nunknown place names These terms do not map to any known place on the synonyme list; either because they require further cleaning or have not yet been encountered in the analyses. Terms that are clearly not place names can be added to stopwords; borderline cases that are not accepted as place names can be added as NA on the synonyme list.\ndiscarded place names These terms are potential place names but with a closer check have been explicitly rejected on the synonyme list\nConversions from the original to the accepted place names",
+    "text": "5769 unique publication places; available for 1224286 documents (93%).\nAmbiguous publication places;\nUnknown place names\n\n\n\nDiscarded place names\nConversions from the original to the accepted place names",
     "crumbs": [
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Publication place</span>"
     ]
@@ -254,7 +254,7 @@
     "href": "publication_place.html#subset-analysis-1809-1917",
     "title": "10  Publication place",
     "section": "10.4 Subset Analysis: 1809-1917",
-    "text": "10.4 Subset Analysis: 1809-1917\n\n544 unique publication places; available for 70890 documents (97%).\nUnique publication country for a period 1809-1917: 32; available for 69109 documents (95%).\ndiscarded place names\n\nTop-20 publication places are shown together with the number of documents.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCountry\nDocuments (n)\nFraction (%)\n\n\n\n\nFinland\n63447\n86.9\n\n\nSweden\n1782\n2.4\n\n\nRussia\n1222\n1.7\n\n\nUSA\n1110\n1.5\n\n\nGermany\n636\n0.9\n\n\nFrance\n182\n0.2",
+    "text": "10.4 Subset Analysis: 1809-1917\n\n545 unique publication places; available for 70897 documents (97%).\nUnique publication country for a period 1809-1917: 32; available for 69115 documents (95%).\n\nTop-20 publication places are shown together with the number of documents.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCountry\nDocuments (n)\nFraction (%)\n\n\n\n\nFinland\n63453\n86.9\n\n\nSweden\n1782\n2.4\n\n\nRussia\n1222\n1.7\n\n\nUSA\n1110\n1.5\n\n\nGermany\n636\n0.9\n\n\nFrance\n182\n0.2",
     "crumbs": [
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Publication place</span>"
     ]
@@ -429,6 +429,26 @@
     "crumbs": [
       "Appendices",
       "Technical information"
+    ]
+  },
+  {
+    "objectID": "author_date.html#complete-dataset-overview",
+    "href": "author_date.html#complete-dataset-overview",
+    "title": "3  Author’s info: lifespan",
+    "section": "3.1 Complete Dataset Overview",
+    "text": "3.1 Complete Dataset Overview\nThe field has 467691 / (35.5%) non-missing values and 850365 / (64.5%) with missing lifetime information.\nAuthor age is available for 191166 records / (14.5%). Author age range is 15–108.\nAuthor date accepted for the complete Fennica\nAuthor date discarded for the complete Fennica\nAuthor date source conflicts for the complete Fennica and Kanto\nHarmonized dataset for author dates",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Author's info: lifespan</span>"
+    ]
+  },
+  {
+    "objectID": "author_date.html#subset-1809-1917",
+    "href": "author_date.html#subset-1809-1917",
+    "title": "3  Author’s info: lifespan",
+    "section": "3.2 Subset 1809-1917",
+    "text": "3.2 Subset 1809-1917\nThe field has 31686 / (43.4%) non-missing values and 41363 / (56.6%) with missing lifetime information.\nAuthor date accepted for the complete Fennica\nHarmonized dataset for author dates 1809-1917",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Author's info: lifespan</span>"
     ]
   }
 ]

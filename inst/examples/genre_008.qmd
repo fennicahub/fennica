@@ -59,7 +59,19 @@ selected_genres <- c("Tietokirjallisuus", "Kaunokirjallisuus", "Draama", "Runot"
 fiction_genres <- c("Kaunokirjallisuus", "Draama", "Runot", "Romaanit",
   "Novellit, kertomukset", "Puheet, esitelmät", "Kirjeet", "Esseet", "Huumori, satiiri")
 
-df_selected <- df %>% filter(converted_008_33 %in% c(fiction_genres, "Tietokirjallisuus")) %>% mutate( genre_group = ifelse(converted_008_33 == "Tietokirjallisuus", "Non-Fiction", "Fiction") )
+df_selected <- df %>%
+  filter(
+    converted_008_33 %in% c(fiction_genres, "Tietokirjallisuus"),
+    !is.na(publication_decade),
+    publication_decade >= 1500
+  ) %>%
+  mutate(
+    genre_group = ifelse(
+      converted_008_33 == "Tietokirjallisuus",
+      "Non-Fiction",
+      "Fiction"
+    )
+  )
 
 
 # Plot
@@ -67,7 +79,7 @@ ggplot(df_selected, aes(x = publication_decade, fill = genre_group)) +
   geom_bar(position = "stack", width = 8) +
    scale_y_log10() +
   labs(x = "Publication Decade", y = "Number of Books (log10)", fill = "Genre Group") +
-  scale_fill_manual(values = c("Fiction" = "blue", "Non-Fiction" = "lightblue")) +  # Optional: custom colors
+  scale_fill_manual(values = c("Fiction" = "darkgray", "Non-Fiction" = "lightgrey")) +  # Optional: custom colors
   scale_x_continuous(breaks = seq(1500, 2030, by = 100)) +
   theme_minimal()
 
@@ -117,24 +129,45 @@ selected_genres <- c(
   "Huumori, satiiri" = "Humor & satire"
 )
 
-# Filter your data to only include those genres
 df_selected <- df_19 %>%
-  filter(!is.na(publication_decade), 
-         !is.na(converted_008_33),
-         publication_decade <= 1920,
-         converted_008_33 %in% selected_genres)
+  filter(
+    !is.na(publication_decade), 
+    !is.na(converted_008_33),
+    publication_decade <= 1920,
+    converted_008_33 %in% names(selected_genres)
+  ) %>%
+  mutate(
+    genre_en = selected_genres[converted_008_33]
+  )
 
-# Summarize counts by decade and genre
 df_summary <- df_selected %>%
-  group_by(publication_decade, converted_008_33) %>%
+  group_by(publication_decade, genre_en) %>%
   summarise(n = n(), .groups = "drop")
 
-ggplot(df_summary, aes(x = publication_decade,y = n, fill = converted_008_33)) +
-  geom_col(position = "stack", width = 8) +  # width makes bars a bit narrower
-  labs(x = "Publication Decade", y = "Number of Books", fill = "Genre") +
-  scale_fill_brewer(palette = "Set2") +
-  scale_x_continuous(limits = c(1790, 1930),breaks = seq(1800, 1910, by = 10)) +
-  theme_minimal()
+grey_vals <- grDevices::grey.colors(
+  n = length(unique(df_summary$genre_en)),
+  start = 0.85,   # lightest, not white
+  end = 0.15      # darkest
+)
+
+ggplot(df_summary, aes(x = publication_decade, y = n + 1, fill = genre_en)) +
+  geom_col(position = "stack", width = 8, color = "grey70", linewidth = 0.2) +
+  scale_y_log10() +
+  scale_fill_manual(values = grey_vals) +
+  labs(
+    x = "Publication decade",
+    y = "Number of books (log10)",
+    fill = "Genre"
+  ) +
+  scale_x_continuous(
+    limits = c(1790, 1930),
+    breaks = seq(1800, 1910, by = 10)
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, vjust = 0.5, hjust = 1),
+    axis.title.x = element_text(margin = margin(t = 15))
+  )
 
 ```
 

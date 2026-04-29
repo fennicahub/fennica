@@ -5866,6 +5866,226 @@ sheet_area <- function (x = NULL, sheet.dimension.table = NULL, verbose = FALSE)
 
 }
 
+normalize_author_years <- function(x) {
+  x <- as.character(x)
+  x <- stringr::str_squish(x)
+  
+  # Non-lifespan fields
+  x[grepl("toiminta[- ]aika", x, ignore.case = TRUE)] <- NA
+  x[grepl("-luku", x, ignore.case = TRUE)] <- NA
+  
+  # Finnish textual cases
+  x <- gsub(
+    "syntynyt\\s+ehkä\\s+([0-9]{4})-luvulla[,\\.]?\\s+kuollut\\s+([0-9]{4})[,\\.]?",
+    "\\1-\\2",
+    x,
+    ignore.case = TRUE
+  )
+  
+  # death-only
+  x <- gsub("kuollut\\s+([0-9]{4})/([0-9]{4})", "-\\1", x, ignore.case = TRUE)
+  x <- gsub("kuollut\\s+([0-9]{4})", "-\\1", x, ignore.case = TRUE)
+  
+  # alternatives: keep first
+  x <- gsub("([0-9]{1,4})\\s+tai\\s+[0-9]{1,4}\\??", "\\1", x, ignore.case = TRUE)
+  
+  # BCE / CE
+  x <- gsub("\\beaa\\.?\\b|\\bekr\\.?\\b|\\be\\.kr\\.?\\b|\\bbc\\.?\\b", "BCE", x, ignore.case = TRUE)
+  x <- gsub("\\bjaa\\.?\\b|\\bjkr\\.?\\b|\\bj\\.kr\\.?\\b", "CE", x, ignore.case = TRUE)
+  
+  x <- gsub("\\bnoin\\b", "", x, ignore.case = TRUE)
+  x <- gsub("~", "", x)
+  
+  # [ -0524,-0523 ]-[ -0455,-0454 ] -> -0524--0455
+  x <- gsub(
+    "\\[\\s*(-?0*[0-9]+)\\s*,\\s*-?0*[0-9]+\\s*\\]-\\[\\s*(-?0*[0-9]+)\\s*,\\s*-?0*[0-9]+\\s*\\]",
+    "\\1-\\2",
+    x
+  )
+  
+  # [1955,1955]- -> 1955-
+  x <- gsub("\\[\\s*(-?0*[0-9]+)\\s*,[^\\]]+\\]", "\\1", x)
+  
+  # EDTF interval: -0629/-0611 -> -0629
+  x <- gsub("(-?[0-9]+)/(-?[0-9]+)", "\\1", x)
+  
+  # BCE ranges
+  x <- gsub(
+    "^\\s*([0-9]+)\\s*BCE\\s*-\\s*([0-9]+)\\s*BCE\\s*$",
+    "-\\1--\\2",
+    x,
+    ignore.case = TRUE
+  )
+  
+  # BCE to CE
+  x <- gsub(
+    "^\\s*([0-9]+)\\s*BCE\\s*-\\s*([0-9]+)\\s*CE\\s*$",
+    "-\\1-\\2",
+    x,
+    ignore.case = TRUE
+  )
+  
+  # single BCE
+  x <- gsub("^\\s*([0-9]+)\\s*BCE\\s*$", "-\\1", x, ignore.case = TRUE)
+  
+  # Remove punctuation/noise
+  x <- gsub("\\[blank\\]", "?", x)
+  x <- gsub("\\[sic\\.\\]", "", x)
+  x <- gsub("^&lt;|&gt;$|&gt;-$", "", x)
+  x <- gsub("[\\^\\|]", "", x)
+  x <- gsub("\\?$", "", x)
+  x <- gsub("^[,.]+|[,.]+$", "", x)
+  x <- gsub("\\.$", "", x)
+  
+  # full dates / long numerics: 19600209 -> 1960
+  x <- gsub("\\b([0-9]{4})[0-9]{2,4}\\b", "\\1", x)
+  
+  # remove leading zeros but keep minus
+  x <- gsub("(?<![0-9])(-?)0+([0-9]+)", "\\1\\2", x, perl = TRUE)
+  
+  stringr::str_squish(x)
+}
+
+parse_author_year_direct <- function(xi) {
+  xi <- stringr::str_squish(as.character(xi))
+  
+  if (is.na(xi) || xi == "") {
+    return(c(NA_real_, NA_real_))
+  }
+  
+  # -383--321
+  if (grepl("^-[0-9]+--[0-9]+$", xi)) {
+    nums <- regmatches(xi, gregexpr("-?[0-9]+", xi))[[1]]
+    return(as.numeric(nums[1:2]))
+  }
+  
+  # -20-40 = BCE to CE
+  if (grepl("^-[0-9]+-[0-9]+$", xi)) {
+    nums <- regmatches(xi, gregexpr("-?[0-9]+", xi))[[1]]
+    return(as.numeric(nums[1:2]))
+  }
+  
+  # 85-165
+  if (grepl("^[0-9]{1,4}-[0-9]{1,4}$", xi)) {
+    nums <- as.numeric(strsplit(xi, "-", fixed = TRUE)[[1]])
+    return(nums[1:2])
+  }
+  
+  # 1955-
+  if (grepl("^[0-9]{1,4}-$", xi)) {
+    return(c(as.numeric(sub("-", "", xi)), NA_real_))
+  }
+  
+  # -1694 = death only
+  if (grepl("^-[0-9]{1,4}$", xi)) {
+    return(c(NA_real_, abs(as.numeric(xi))))
+  }
+  
+  # single year
+  if (grepl("^[0-9]{1,4}$", xi)) {
+    return(c(as.numeric(xi), NA_real_))
+  }
+  
+  NULL
+}
+
+polish_author_years <- function(x,
+                         start_synonyms = NULL,
+                         end_synonyms = NULL,
+                         verbose = TRUE,
+                         check = FALSE,
+                         min.year = -3000,
+                         max.year = as.numeric(format(Sys.time(), "%Y")) + 50) {
+  
+  x0 <- as.character(x)
+  
+  # Remove suspicious long strings
+  inds <- which(nchar(x0) > 200 & grepl("\t", x0))
+  if (length(inds) > 0) {
+    x0[inds] <- NA
+    warning(paste(
+      "Removed",
+      length(inds),
+      "suspiciously long year entries"
+    ))
+  }
+  
+  x_clean <- normalize_author_years(x0)
+  
+  xuniq <- unique(tolower(x_clean))
+  
+  if (verbose) {
+    message(paste("Polishing years:", length(xuniq), "unique cases"))
+  }
+  
+  f <- "months.csv"
+  months <- as.character(read.csv(f, header = TRUE)[, 1])
+  months <- unique(c(months, tolower(months)))
+  months <- months[rev(order(nchar(months)))]
+  
+  res <- lapply(xuniq, function(xi) {
+    
+    direct <- parse_author_year_direct(xi)
+    if (!is.null(direct)) {
+      return(direct)
+    }
+    
+    a <- try(
+      polish_year(
+        xi,
+        start_synonyms = start_synonyms,
+        end_synonyms = end_synonyms,
+        months,
+        verbose
+      ),
+      silent = TRUE
+    )
+    
+    if (inherits(a, "try-error")) {
+      c(NA_real_, NA_real_)
+    } else {
+      as.numeric(a[1:2])
+    }
+  })
+  
+  res <- do.call(rbind, res)
+  
+  start_year <- res[, 1]
+  end_year   <- res[, 2]
+  
+  if (check) {
+    bad <- which(!is.na(start_year) & !is.na(end_year) & start_year > end_year)
+    if (length(bad) > 0) {
+      start_year[bad] <- NA
+      end_year[bad] <- NA
+    }
+  }
+  
+  start_year[is.infinite(start_year)] <- NA
+  end_year[is.infinite(end_year)] <- NA
+  
+  start_year[start_year < min.year | start_year > max.year] <- NA
+  end_year[end_year < min.year | end_year > max.year] <- NA
+  
+  out_unique <- data.frame(
+    key = xuniq,
+    from = start_year,
+    till = end_year
+  )
+  
+  out <- out_unique[match(tolower(x_clean), out_unique$key), c("from", "till")]
+  rownames(out) <- NULL
+  
+  message(paste(
+    "Checking that the years are within the accepted range:",
+    min.year,
+    "-",
+    max.year
+  ))
+  
+  out
+}
+
 #' @title Polish Years
 #' FIXME: UNIT TESTS MISSING NOW!
 #' @description Pick and polish the year interval (start and end years) from a time field which is of the form 1800 or 1823-1845 etc.
@@ -5881,17 +6101,100 @@ sheet_area <- function (x = NULL, sheet.dimension.table = NULL, verbose = FALSE)
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
 #' @examples \dontrun{df <- polish_years(c("1746", "1745-1750"))}
 #' @keywords utilities
-polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TRUE, check = FALSE, min.year = -3000, max.year = as.numeric(format(Sys.time(), "%Y")) + 50) {
-
+polish_years <- function(x,
+                         start_synonyms = NULL,
+                         end_synonyms = NULL,
+                         verbose = TRUE,
+                         check = FALSE,
+                         min.year = -3000,
+                         max.year = as.numeric(format(Sys.time(), "%Y")) + 50) {
+  
+  # --- normalize difficult patterns ---
+  
+  x <- gsub("~", "", x)  # remove uncertainty
+  
+  # [-0524,-0523]-[-0455,-0454] -> -524--455
+  x <- gsub(
+    "\\[\\s*(-?0*[0-9]+)\\s*,\\s*-?0*[0-9]+\\s*\\]-\\[\\s*(-?0*[0-9]+)\\s*,\\s*-?0*[0-9]+\\s*\\]",
+    "\\1-\\2",
+    x
+  )
+  # REMOVE LEADING ZEROS HERE
+  x <- gsub("\\b0+([0-9]{2,4})\\b", "\\1", x)
+  x <- gsub("\\bnoin\\b", "", x, ignore.case = TRUE)
+  # Drop "toiminta-aika" (activity period, not a birth-death date)
+  x[grepl("toiminta[- ]aika", x, ignore.case = TRUE)] <- NA
+  # Drop century / "-luku" expressions (not exact years)
+  x[grepl("-luku", x, ignore.case = TRUE)] <- NA
+  
+  x <- gsub(
+    "kuollut\\s+([0-9]{4})/([0-9]{4})",
+    "-\\1",
+    x,
+    ignore.case = TRUE
+  )
+  x <- gsub(
+    "([0-9]{4})\\s*tai\\s*[0-9]{4}",
+    "\\1",
+    x,
+    ignore.case = TRUE
+  )
+  
+  # take first value in bracket lists
+  x <- gsub("\\[(-?[0-9]+),[^\\]]+\\]", "\\1", x)
+  
+  # handle EDTF intervals
+  x <- gsub("(-?[0-9]+)/(-?[0-9]+)", "\\1", x)
+  
+  # extract year from long numeric dates
+  x <- gsub("^([0-9]{4})[0-9]+", "\\1", x)
+  
+  # clean spaces
+  x <- stringr::str_squish(x)
+  
+  clean_bce_dates <- function(x) {
+    x <- as.character(x)
+    
+    # Normalize Finnish/Latin BCE markers, with or without dots
+    x <- gsub("\\beaa\\.?\\b", "BCE", x, ignore.case = TRUE)
+    x <- gsub("\\bekr\\.?\\b", "BCE", x, ignore.case = TRUE)
+    x <- gsub("\\be\\.kr\\.?\\b", "BCE", x, ignore.case = TRUE)
+    x <- gsub("\\bbc\\.?\\b", "BCE", x, ignore.case = TRUE)
+    
+    # 100 BCE - 44 BCE -> -100--44
+    x <- gsub(
+      "^\\s*([0-9]+)\\s*BCE\\s*-\\s*([0-9]+)\\s*BCE\\s*$",
+      "-\\1--\\2",
+      x,
+      ignore.case = TRUE
+    )
+    
+    # 100 BCE -> -100
+    x <- gsub(
+      "^\\s*([0-9]+)\\s*BCE\\s*$",
+      "-\\1",
+      x,
+      ignore.case = TRUE
+    )
+    
+    x
+  }
+  
   # Delete suspiciously long strings
   inds <- which(nchar(x) > 200 & grepl("\t", x))
   if (length(inds) > 0) {
     x[inds] <- NA
-    warning(paste("Removed ", length(inds), "publication year entries that are suspiciously long (over 200 characters) and include tabs"))
+    warning(paste(
+      "Removed",
+      length(inds),
+      "publication year entries that are suspiciously long (over 200 characters) and include tabs"
+    ))
   }
+  
   x <- trimws(x)
   x <- gsub("^[,.]+|[,.]+$", "", x)
   x <- trimws(x)
+  x <- gsub("~", "", x)
   x <- gsub("\\.$", "", x)
   x <- gsub("\\[blank\\]", "?", x)
   x <- gsub("\\[sic\\.\\]", "", x)
@@ -5900,50 +6203,52 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
   x <- gsub("&gt;-$", "", x)
   x <- gsub(", *\\[*[0-9]\\]*$", "", x)
   x <- trimws(x)
-  x <- gsub("\\[\u0302", "[", x) # "[\u0302 = square bracket with circumflex
+  x <- gsub("\\[\u0302", "[", x)
+  
   x <- gsub("(^|[-[])[0-9]{3}[?]", "\\1", x)
   x <- gsub("(^|[-[])[0-9]{2}[?][?]", "\\1", x)
   x <- gsub("I([0-9]{3})([^0-9]|$)", "1\\1", x)
+
+  
   # 1974 [p.o. 1976] -> 1976
   x <- gsub("[0-9]{4} ?[[]p[.]?o[.]? ?([0-9]{4})[]]", "\\1", x)
+  
   x <- gsub("[\\^]", "", x)
   x <- gsub("[\\|]", "", x)
-  x <- gsub("[u]", "", x)
   x <- trimws(x)
-
+  
   inds <- grep("\\[*[M,C,D,X,L,\\.]*\\]*", x)
   if (length(inds) > 0) {
-    x[inds] <- sapply(x[inds], function (x) {gsub("\\.", "", x)})
+    x[inds] <- sapply(x[inds], function(x) gsub("\\.", "", x))
   }
-
+  
   inds <- intersect(grep("^--", x), grep("--$", x))
   x[inds] <- gsub("--$", "", gsub("^--", "", x[inds]))
-
+  
   inds <- grep("^\\[*l[0-9]{3}\\.*\\]*$", x)
   if (length(inds) > 0) {
-    x[inds] <- sapply(x[inds], function (x) {gsub("l", "1", x)})
+    x[inds] <- sapply(x[inds], function(x) gsub("l", "1", x))
   }
-
+  
   f <- "months.csv"
-  months <- as.character(read.csv(f, header = TRUE)[,1])
+  months <- as.character(read.csv(f, header = TRUE)[, 1])
   months <- unique(c(months, tolower(months)))
-  # Handle from longest to shortest to avoid problems
   months <- months[rev(order(nchar(months)))]
-
-  # These seem unnecessary assignments.
+  
   xorig <- tolower(as.character(x))
   xuniq <- unique(xorig)
   x <- xuniq
-
+  
   if (verbose) {
     message(paste("Polishing years:", length(xuniq), "unique cases"))
   }
-
+  
   # "[1.12.1584 jalkeen]" -> 1584 jalkeen
   inds <- grep("[0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{4}", x)
   x[inds] <- gsub("[0-9]{1,2}\\.[0-9]{1,2}\\.", "", x[inds])
+  
   x <- gsub(",", ".", x)
-
+  
   # 23.1967 -> 1967 excluding 1.5.6.7
   if (length(grep("[0-9]\\.[0-9]\\.[0-9]\\.[0-9]", x)) == 0) {
     x <- gsub(" [0-9]{1,2}\\.", "", x)
@@ -5951,43 +6256,61 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
   } else {
     x <- gsub("\\.", "", x)
   }
+  
+  
+  # syntynyt ehkä 1620-luvulla, kuollut 1694 -> 1620~-1694
+  x <- gsub(
+    "syntynyt ehkä ([0-9]{4})-luvulla,? kuollut ([0-9]{4}),?",
+    "\\1-\\2",
+    x,
+    ignore.case = TRUE
+  )
+  
   x <- trimws(x)
+  
   # "Printed in the Yeare,;1648."
   inds <- grep(";", x)
-  x[inds] <- unlist(sapply(x[inds], function (x) {x <- unlist(strsplit(x, ";")); paste(x[grep("[0-9]", x)], collapse = ", ")}), use.names = FALSE)
+  x[inds] <- unlist(
+    sapply(x[inds], function(x) {
+      x <- unlist(strsplit(x, ";"))
+      paste(x[grep("[0-9]", x)], collapse = ", ")
+    }),
+    use.names = FALSE
+  )
+  
   x <- gsub("\\.", " ", x)
   x <- gsub(" or later", " ", x)
   x <- gsub("0[0-9]*;m[a-z]*terio [a-z]*\\.* pauli", " ", x)
   x <- trimws(x)
-
-  # 18th century (remove separately before removing other letters)
+  
+  # 18th century
   x <- gsub("[0-9]{1,4}th", "", x)
-
-  # Map back to original indices and make unique again. To speedup further.
+  
   xorig <- x[match(xorig, xuniq)]
-
   x <- xuniq <- unique(xorig)
+  
   x <- harmonize_ie(x)
-
-  x <- gsub("-a", "- a", x) # -approximately
+  x <- gsub("-a", "- a", x)
   x <- remove_print_statements(x)
-
-  # Map back to original indices and make unique again. To speedup further.
+  
   xorig <- x[match(xorig, xuniq)]
   x <- xuniq <- unique(xorig)
-
-  x <- sapply(x, function (xi) {handle_ie(xi, harmonize = FALSE)}, USE.NAMES = FALSE)
+  
+  x <- sapply(
+    x,
+    function(xi) handle_ie(xi, harmonize = FALSE),
+    USE.NAMES = FALSE
+  )
+  
   x <- condense_spaces(gsub("\\.", " ", x))
-
-  x <- remove_time_info(x, verbose = F, months)
-
-  # Map back to original indices and make unique again. To speedup further.
+  x <- remove_time_info(x, verbose = FALSE, months)
+  
   xorig <- x[match(xorig, xuniq)]
   x <- xuniq <- unique(xorig)
-
+  
   # 1642 [1643] -> 1643
-  if (length(grep("^[0-9]* \\[[0-9]*\\]$", x)) > 0) {
-    inds <- grep("^[0-9]* \\[[0-9]*\\]$", x)
+  inds <- grep("^[0-9]* \\[[0-9]*\\]$", x)
+  if (length(inds) > 0) {
     for (i in inds) {
       spl <- unlist(strsplit(x[[i]], " "))
       if (length(spl) > 1) {
@@ -5997,20 +6320,18 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
       }
     }
   }
-
-
-
+  
   # 1642[1643] -> 1643
-  if (length(grep("^[0-9]{4}\\[[0-9]{4}\\]$", x)) > 0) {
-    inds <- grep("^[0-9]{4}\\[[0-9]{4}\\]$", x)
+  inds <- grep("^[0-9]{4}\\[[0-9]{4}\\]$", x)
+  if (length(inds) > 0) {
     for (i in inds) {
       x[[i]] <- substr(x[[i]], 6, 9)
     }
   }
-
+  
   # 1642[1643]-45 -> 1643-1645
-  if (length(grep("^[0-9]{4}\\[[0-9]{4}\\]-[0-9]{2}$", x)) > 0) {
-    inds <- grep("^[0-9]{4}\\[[0-9]{4}\\]-[0-9]{2}$", x)
+  inds <- grep("^[0-9]{4}\\[[0-9]{4}\\]-[0-9]{2}$", x)
+  if (length(inds) > 0) {
     for (i in inds) {
       spl <- strsplit(x[[i]], "-")[[1]]
       start <- pick_year(spl[[1]])
@@ -6018,7 +6339,7 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
       x[[i]] <- paste(start, end, sep = "-")
     }
   }
-
+  
   # 1642[3] -> 1643
   inds <- grep("^[0-9]{4}\\[[0-9]{1}\\]$", x)
   if (length(inds) > 0) {
@@ -6026,81 +6347,90 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
       x[[i]] <- paste0(substr(x[[i]], 1, 3), substr(x[[i]], 6, 6))
     }
   }
+  
   x <- trimws(x)
-
-  clean2 <- function (x) {
-
+  
+  clean2 <- function(x) {
     x <- strsplit(x, "\\]-\\[")[[1]]
-
     start <- polish_year(x[[1]])[[1]]
-
     end <- NA
+    
     if (length(x) > 1) {
       end <- polish_year(x[[2]])
-      if (length(end) > 0) {end <- end[[1]]}
+      if (length(end) > 0) {
+        end <- end[[1]]
+      }
     }
-
+    
     if (!is.na(start) & !is.na(end) & end < start) {
       end <- ""
     }
-
-    x <- paste(start, end, "-")
-
+    
+    paste(start, end, sep = "-")
   }
-  x <- trimws(x)
-
+  
   # "[1900?]-[190-?]"
   inds <- grep("\\]-\\[", x)
   if (length(inds) > 0) {
-    x[inds] <- sapply(x[inds], function (xx) {clean2(xx)})
+    x[inds] <- sapply(x[inds], clean2)
   }
-
-  # "[1900?]-190-?"
-  clean1 <- function (x) {
+  
+  clean1 <- function(x) {
     x <- strsplit(x, "\\]-")[[1]]
-
     start <- polish_year(x[[1]])
-
+    
     end <- ""
     if (length(x) > 1) {
       end <- polish_year(x[[2]])
     }
-
-    x <- paste(start, end, "-")
+    
+    paste(start, end, sep = "-")
   }
-
+  
+  # "[1900?]-190-?"
   inds <- grep("\\]-[?]*", x)
   if (length(inds) > 0) {
-    x[inds] <- sapply(x[inds], function (xx) {clean1(xx)})
+    x[inds] <- sapply(x[inds], clean1)
   }
+  
   x <- trimws(x)
-  # 1966 [=1971]  -> 1971
+  
+  # 1966 [=1971] -> 1971
   x <- gsub("[0-9]{4}  ?[[][=]([0-9]{4})[]]", "\\1", x)
-
+  
   # Remove some other info
   x <- gsub("price [0-9] d", "", x)
   x <- gsub("-[0-9]{2,3}\\?{1,2}$", "", x)
   x <- gsub("\\?", "", x)
   x <- gsub("\\!", " ", x)
   x <- gsub("^& ", "", x)
-
+  
   x <- condense_spaces(gsub("\\[\\]", " ", x))
   x <- gsub(" -", "-", gsub("- ", "-", x))
-  x <- gsub("-+", "-", x)
-  x <- gsub("1\u0302", "1", x) #1\u0302 = 1 with circumflex
-
+  
+  # Do NOT use gsub("-+", "-", x), because it breaks BCE ranges:
+  # -100--44 must stay -100--44
+  x <- gsub("(?<![0-9])-{2,}(?![0-9])", "-", x, perl = TRUE)
+  
+  x <- gsub("1\u0302", "1", x)
   x <- gsub("\\[[a-z| ]*\\]", "", x)
-
   x <- gsub("[[]", "", x)
   x <- gsub("[]]", "", x)
+  
   x <- harmonize_christian(x)
-
+  
+  # Important: after dots were removed earlier, eaa. is now usually eaa
+  x <- clean_bce_dates(x)
+  
   inds <- grep(" or ", x)
-  if (length(inds)>0) {
-    x[inds] <- sapply(x[inds], function (x) unlist(strsplit(x, " or "), use.names = FALSE)[[2]])
+  if (length(inds) > 0) {
+    x[inds] <- sapply(
+      x[inds],
+      function(x) unlist(strsplit(x, " or "), use.names = FALSE)[[2]]
+    )
+    x[inds] <- stringr::str_trim(x[inds])
   }
-  x[inds] <- stringr::str_trim(x[inds])
-
+  
   # Convert romans
   x <- gsub("m\\.d", "md", x)
   x <- gsub("m\\.d\\.", "md", x)
@@ -6111,45 +6441,51 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
   x <- gsub("md x", "mdx", x)
   x <- gsub("md l", "mdl", x)
   x <- gsub("ij$", "ii", x)
-
+  
   num <- suppressWarnings(as.numeric(as.roman(gsub(" ", "", x))))
   inds <- which(!is.na(num))
   if (length(inds) > 0) {
     x[inds] <- num[inds]
   }
+  
   x <- trimws(x)
-  # Map back to original indices and make unique again. To speedup further.
+  
   xorig <- x[match(xorig, xuniq)]
   xuniq <- unique(xorig)
   x <- xuniq
-
-  if (length(grep("[0-9]{4}\\[[0-9]", x))>1) {
+  
+  if (length(grep("[0-9]{4}\\[[0-9]", x)) > 1) {
     x <- substr(x, 1, 4)
   }
-
+  
   res <- suppressWarnings(
-    lapply(x,
-           function (xi) {
-             a <- try(polish_year(xi,
-                                  start_synonyms = start_synonyms,
-                                  end_synonyms = end_synonyms,
-                                  months,
-                                  verbose)
-             )
-
-             if (inherits(a, "try-error")) {
-               return(c(NA, NA))
-             } else {
-               return(a)
-             }
-           }
+    lapply(
+      x,
+      function(xi) {
+        a <- try(
+          polish_year(
+            xi,
+            start_synonyms = start_synonyms,
+            end_synonyms = end_synonyms,
+            months,
+            verbose
+          )
+        )
+        
+        if (inherits(a, "try-error")) {
+          return(c(NA, NA))
+        } else {
+          return(a)
+        }
+      }
     )
   )
-
+  
   res <- do.call("rbind", res)
-  start_year <- res[,1]
-  end_year   <- res[,2]
-
+  
+  start_year <- res[, 1]
+  end_year <- res[, 2]
+  
   if (check) {
     inds <- which(start_year > end_year)
     if (length(inds) > 0) {
@@ -6157,41 +6493,31 @@ polish_years <- function(x, start_synonyms=NULL, end_synonyms=NULL, verbose = TR
       end_year[inds] <- NA
     }
   }
-
+  
   start_year[is.infinite(start_year)] <- NA
   end_year[is.infinite(end_year)] <- NA
-
-  # Do not accept years below and above these values
-  print(min.year)
-  print(max.year)
-
+  
   start_year[start_year < min.year | start_year > max.year] <- NA
   end_year[end_year < min.year | end_year > max.year] <- NA
-
-
-
-  df <- data.frame(from = as.numeric(as.character(start_year)),
-                   till = as.numeric(as.character(end_year)))
-
-  message(paste("Checking that the years are within the accepted range:", min.year, "-", max.year))
-  # Manually checked for Fennica - 3 publications before 1400;
-  # FIXME make more explicit in the final reports; maybe with a separate enrich function as earlier
-  # in all cases it seems that this is misspelling and the original year cant be inferred from the entry
-  df$from[which(df$from > max.year)] <- NA
-  df$from[which(df$from < min.year)] <- NA
-  df$till[which(df$till > max.year)] <- NA
-  df$till[which(df$year < min.year)] <- NA
-
-  # Not yet incorporated in main function so that it would work
-  # df<-polish_years_helper(df)
-  # Match the unique cases to the original indices
-  # before returning the df
-
-
-  #print(max(match(xorig, xuniq)))
-  #print(nrow(df))
+  
+  df <- data.frame(
+    from = as.numeric(as.character(start_year)),
+    till = as.numeric(as.character(end_year))
+  )
+  
+  message(paste(
+    "Checking that the years are within the accepted range:",
+    min.year,
+    "-",
+    max.year
+  ))
+  
+  df$from[df$from > max.year] <- NA
+  df$from[df$from < min.year] <- NA
+  df$till[df$till > max.year] <- NA
+  df$till[df$till < min.year] <- NA
+  
   return(df[match(xorig, xuniq), c("from", "till")])
-
 }
 
 

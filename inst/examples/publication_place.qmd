@@ -11,18 +11,28 @@ source("init.R")
 source("publication_place.R")
 ```
 
-MARC: [260a](https://www.loc.gov/marc/bibliographic/bd260.html)
+MARC: [260a](https://www.loc.gov/marc/bibliographic/bd260.html) and [264a](https://www.loc.gov/marc/bibliographic/bd264.html)
 
+Publication place information is primarily derived from MARC21 fields 260a and 264a, which record the location of publication. These fields exhibit substantial variation in spelling, language, and formatting, requiring systematic harmonization to enable consistent geographic analysis. The processing pipeline integrates normalization, synonym resolution, and external mappings to standardize place names and link them to countries and geocoordinates, while preserving traceability of ambiguous and discarded cases.
+
+The publication place field is enriched by using 264a when 260a is missing, after which the raw place strings are harmonized with polish_place(). The harmonized place names are then linked to countries with get_country() and joined with existing geocoding data to add longitude, latitude, and mapping identifiers. The workflow saves the processed table, creates accepted and discarded summaries, records discarded non-empty original values with IDs, and produces separate accepted summaries for the 1809–1917 subset.
 
 ## Complete Dataset Overview
 
 -   `r length(unique(str_trim(unlist(strsplit(as.character(df$publication_place), ";")))))` [unique publication places](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_accepted.csv); available for `r sum(!is.na(df$publication_place))` documents (`r round(100*mean(!is.na(df$publication_place)))`%).
 
--   [ambiguous publication places](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_ambiguous.csv); some of these can be possibly resolved by checking that the the [synonyme list](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/PublicationPlaceSynonymes.csv) does not contain multiple versions of the final name (case sensitive).
--    [unknown place names](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_todo.csv) These terms do not map to any known place on the [synonyme list](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/PublicationPlaceSynonymes.csv); either because they require further cleaning or have not yet been encountered in the analyses. Terms that are clearly not place names can be added to [stopwords](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/stopwords_for_place.csv); borderline cases that are not accepted as place names can be added as NA on the [synonyme list](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/PublicationPlaceSynonymes.csv).
-- [discarded place names](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_discarded.csv) These terms are potential place names but with a closer check have been explicitly rejected on the [synonyme list](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/PublicationPlaceSynonymes.csv)
--   [Conversions from the original to the accepted place names](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_conversion_nontrivial.csv) 
+-   [Ambiguous publication places](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_ambiguous.csv);
 
+-   [Unknown place names](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_todo.csv) 
+
+Terms that are clearly not place names can be added to [stopwords](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/stopwords_for_place.csv);
+
+- [Discarded place names](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_discarded.csv) 
+
+- [Conversions from the original to the accepted place names](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_conversion_nontrivial.csv) 
+
+The [synonyme list](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/PublicationPlaceSynonymes.csv) contains candidate place names that were identified during processing but ultimately rejected, rather than valid variants of accepted names. These entries typically reflect ambiguous, malformed, or non-standardized strings that could not be reliably matched to a canonical location. Some may be recoverable with additional context or external authority matching, but are conservatively excluded in the current workflow.
+  
 ## Publication countries
 
 -   `r length(unique(df$publication_country))` [unique publication countries](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_country_accepted.csv); available for `r sum(!is.na(df$publication_country))` documents (`r round(100*mean(!is.na(df$publication_country)))`%).
@@ -40,8 +50,6 @@ MARC: [260a](https://www.loc.gov/marc/bibliographic/bd260.html)
 
 -   Unique publication country for a period 1809-1917: `r length(unique(df_19$publication_country))`; available for `r sum(!is.na(df_19$publication_country))` documents (`r round(100*mean(!is.na(df_19$publication_country)))`%).
 
--   [discarded place names](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_place_discarded_19.csv)
-
 Top-`r ntop` publication places are shown together with the number of documents.
 
 ```{r}
@@ -53,13 +61,13 @@ Top-`r ntop` publication places are shown together with the number of documents.
 #| fig.width = 9,
 #| fig.height = 6
 p <- top_plot(df_19, "publication_place", ntop)
-p <- p + ggtitle(paste("Top publication places"))
+p <- p + ggtitle(paste("Top publication places (log10)"))
 p <- p + scale_y_log10()
 p <- p + ylab("Title count")
 print(p)
 
 p <- top_plot(df_19, "publication_country", ntop)
-p <- p + ggtitle(paste("Top publication countries"))
+p <- p + ggtitle(paste("Top publication countries (log10)"))
 p <- p + scale_y_log10()
 p <- p + ylab("Title count")
 print(p)

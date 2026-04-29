@@ -19,7 +19,7 @@ The publisher field (MARC 260b) has been harmonized through a rule-based cleanin
 
 The preprocessing consists of several stages. First, all entries are normalized to lowercase and stripped of extraneous punctuation, brackets, and formatting artifacts (e.g., OCR noise, delimiters and inconsistent separators). Multi-value entries are standardized using a semicolon (`;`) as a separator to preserve cases where multiple publishers or institutional collaborators are listed.
 
-Second, common cataloging abbreviations are resolved. In particular, *sine nomine* (`[s.n.]`) is mapped to **“kustantaja tuntematon”** (unknown publisher), while other Latin abbreviations such as *sine loco* and *sine anno* are removed as they do not describe publisher identity. Variants introduced during cleaning (e.g., `sn`) are also normalized.
+Second, common cataloging abbreviations are resolved. In particular, *sine nomine* (`[s.n.]`) is mapped to **“kustantaja tuntematon”** (unknown publisher), while other Latin abbreviations such as *sine loco* and *sine anno* are removed as they do not describe publisher identity. 
 
 Third, semantic normalization is applied. Distributor-related expressions (e.g., “distributed by”, “jakaja”, “distr.”) are harmonized to a consistent label (“jakelija”). Self-published works are identified through patterns such as “författaren” or “tekijä” and recoded accordingly. Common institutional and corporate forms (e.g., *osakeyhtiö*, *aktiebolag*) are standardized, and frequent abbreviations (e.g., WSOY, VTT, SKS) are expanded or unified.
 
@@ -66,7 +66,7 @@ The `r ntop` most common publishers from 1809 to 1917 are shown with the number 
 #| fig.width = 12,
 #| fig.height = 9
 p <- top_plot(df_19, "publisher", ntop)
-p <- p + ggtitle(paste("Top publishers"))
+p <- p + ggtitle(paste("Top publishers (log10)"))
 p <- p + scale_y_log10()
 p <- p + ylab("Documents")
 print(p)

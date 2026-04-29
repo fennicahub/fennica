@@ -7,30 +7,49 @@ description: ""
 ```{r}
 #| include: FALSE
 source("init.R")
-source("publication_time.R")
-source("author_name.R")
-```
-
-```{r}
-#| include = FALSE
-author_df <- df
-author_df$publication_year <- df_pubtime$publication_year
-author_df$publication_decade <- df_pubtime$publication_decade
+source("author_date.R")
+df$author_age <- as.numeric(df$author_age)
 ```
 
 MARC: [100d](https://www.loc.gov/marc/bibliographic/bd100.html)
 
-The author's lifetime section furnishes concise summaries following an extensive cleaning process, delineating the accepted and discarded years pertaining to each author.The accepted years signify the refined and validated data, while insights into the discarded years offer valuable context, shedding light on the challenges encountered and decisions made during the cleaning procedure.
+### Author lifetime (MARC 100d)
+
+MARC field [100$d] records the author’s lifetime (typically birth and death years) in free-text form. In the Fennica data, this field exhibits substantial heterogeneity in formatting, including approximate dates, alternative values, historical notations (e.g. BCE/CE), and non-standard textual descriptions.
+
+To enable quantitative analysis, the field is processed through a multi-step cleaning and harmonization workflow. The procedure combines information from the original Fennica records and the Kanto authority data, prioritizing structured Kanto values where available. The harmonization includes:
+
+* normalization of textual expressions (e.g. *“noin”*, *“tai”*, *“kuollut”*)
+* resolution of alternative dates by selecting a consistent representative value
+* conversion of historical notation (e.g. BCE/CE) into numeric form
+* simplification of complex patterns (e.g. bracketed values, Extended Date/Time Format)
+* removal of non-lifespan information (e.g. *“toiminta-aika”*, centuries such as *“1700-luku”*)
+* standardization into numeric birth (`from`) and death (`till`) years
+
+The outcome is divided into two categories:
+
+* **Accepted entries**: records where at least one valid year (birth or death) could be reliably extracted and represented numerically
+* **Discarded entries**: records where the information could not be interpreted as a valid lifespan, or where ambiguity or format complexity prevented reliable extraction
+
+In addition, a separate set of **source conflicts** is identified, where cleaned values derived from Fennica and Kanto disagree. These cases are retained for further inspection and potential feedback to the data providers.
+
 
 ## Complete Dataset Overview
-The field has `r sum(is.na(df[[field]]))` / (`r round(100*mean(is.na(df[[field]])), 1)`%) missing values and  `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df[[field]])), 1)`%) with non-missing lifetime information.
+The field has `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df[[field]])), 1)`%) non-missing values and  `r sum(is.na(df[[field]]))` / (`r round(100*mean(is.na(df[[field]])), 1)`%) with missing lifetime information.
+
+Author age is available for `r sum(!is.na(df$author_age))` records / (`r round(100 * mean(!is.na(df$author_age)), 1)`%). Author age range is `r paste0(min(df$author_age, na.rm = TRUE), "–", max(df$author_age, na.rm = TRUE))`.
 
 [Author date accepted for the complete Fennica](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_accepted.csv)
 
 [Author date discarded for the complete Fennica](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_discarded.csv)
 
-## Subset Analysis: 1809-1917
+[Author date source conflicts for the complete Fennica and Kanto](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_virhelista.csv)
 
-[Author date accepted for 1809-1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_accepted_19.csv)
+[Harmonized dataset for author dates](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date.csv)
 
-[Author date discarded for 1809-1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_discarded_19.csv)
+## Subset 1809-1917
+The field has `r sum(!is.na(df_19[[field]]))` / (`r round(100*mean(!is.na(df_19[[field]])), 1)`%) non-missing values and  `r sum(is.na(df_19[[field]]))` / (`r round(100*mean(is.na(df_19[[field]])), 1)`%) with missing lifetime information.
+
+[Author date accepted for the complete Fennica](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_accepted_19.csv)
+
+[Harmonized dataset for author dates 1809-1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_date_19.csv)
