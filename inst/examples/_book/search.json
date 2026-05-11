@@ -104,7 +104,7 @@
     "href": "genre_655.html",
     "title": "6  Genre/form 655",
     "section": "",
-    "text": "6.1 Description\nMARC: 655,a",
+    "text": "6.1 Description",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Genre/form 655</span>"
     ]
@@ -113,8 +113,8 @@
     "objectID": "genre_655.html#complete-dataset-overview",
     "href": "genre_655.html#complete-dataset-overview",
     "title": "6  Genre/form 655",
-    "section": "6.2 Complete Dataset Overview",
-    "text": "6.2 Complete Dataset Overview\nUnique genre/form: 1256\nThere are 1069779 missing values in the dataset,accounting for (81.16%) of the total.\nUnrecognized genre_655s provides details of Genre/Form that were discarded, in total: 0.\n\n\n\nGenre/Form\nEntries (n)\nFraction (%)\n\n\n\n\nVäitöskirjat\n75774\n103.7\n\n\nÄänikirjat\n32977\n45.1\n\n\nMuistelmat\n12597\n17.2\n\n\nTiedotuslehdet\n9010\n12.3\n\n\nKartat\n8337\n11.4\n\n\nElämäkerrat\n4937\n6.8\n\n\nOppaat\n4095\n5.6\n\n\nSukukirjat\n3772\n5.2\n\n\nAsiakaslehdet\n3663\n5\n\n\nHenkilöstölehdet\n2751\n3.8\n\n\n\nDownload genre_655 harmonized dataset",
+    "section": "6.3 Complete Dataset Overview",
+    "text": "6.3 Complete Dataset Overview\nUnique genre/form: 1213\nThere are 1070036 missing values in the dataset,accounting for (81.18%) of the total.\nUnrecognized genre_655s provides details of Genre/Form that were discarded, in total: 0.\n\n\n\nGenre/Form\nEntries (n)\nFraction (%)\n\n\n\n\nväitöskirjat\n75774\n5.7\n\n\näänikirjat\n32976\n2.5\n\n\nmuistelmat\n12565\n1\n\n\ntiedotuslehdet\n9010\n0.7\n\n\nkartat\n8323\n0.6\n\n\nelämäkerrat\n4920\n0.4\n\n\noppaat\n4094\n0.3\n\n\nsukukirjat\n3770\n0.3\n\n\nasiakaslehdet\n3663\n0.3\n\n\nhenkilöstölehdet\n2751\n0.2\n\n\n\nDownload genre_655 harmonized dataset",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Genre/form 655</span>"
     ]
@@ -123,8 +123,8 @@
     "objectID": "genre_655.html#subset-analysis-1809-1917",
     "href": "genre_655.html#subset-analysis-1809-1917",
     "title": "6  Genre/form 655",
-    "section": "6.3 Subset Analysis: 1809-1917",
-    "text": "6.3 Subset Analysis: 1809-1917\nUnique genre_655s (1809-1917): 380\nThere are 56000 missing values in the dataset,accounting for (76.66%) of the total.\nDownload genre_655 harmonized dataset (1809-1917)\n\n6.3.1 Top Genre/Form for 1809-1917\nAccepted Genre/Form (1809-1917).\n\n\n\nGenre/Form\nEntries (n)\nFraction (%)\n\n\n\n\nVäitöskirjat\n4853\n6.6\n\n\nLuettelot\n1476\n2\n\n\nVirret; Arkkiveisut\n794\n1.1\n\n\nEsitteet\n743\n1\n\n\nSanomalehdet\n564\n0.8\n\n\nArkkiveisut\n492\n0.7\n\n\nHartauskirjat\n297\n0.4\n\n\nKokousjulkaisut\n295\n0.4\n\n\nUskonnolliset lehdet\n268\n0.4\n\n\nHuumorilehdet; Kausijulkaisut\n256\n0.4",
+    "section": "6.4 Subset Analysis: 1809-1917",
+    "text": "6.4 Subset Analysis: 1809-1917\nUnique genre_655s (1809-1917): 376\nThere are 56002 missing values in the dataset,accounting for (76.66%) of the total.\nDownload genre_655 harmonized dataset (1809-1917)\n\n6.4.1 Top Genre/Form for 1809-1917\nAccepted Genre/Form (1809-1917).\n\n\n\nGenre/Form\nEntries (n)\nFraction (%)\n\n\n\n\nväitöskirjat\n4853\n6.6\n\n\nluettelot\n1476\n2\n\n\nvirret; arkkiveisut\n794\n1.1\n\n\nesitteet\n743\n1\n\n\nsanomalehdet\n564\n0.8\n\n\narkkiveisut\n492\n0.7\n\n\nhartauskirjat\n297\n0.4\n\n\nkokousjulkaisut\n295\n0.4\n\n\nhuumorilehdet; kausijulkaisut\n256\n0.4\n\n\nuskonnolliset lehdet\n253\n0.3",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Genre/form 655</span>"
     ]
@@ -439,6 +439,16 @@
     "crumbs": [
       "Appendices",
       "Technical information"
+    ]
+  },
+  {
+    "objectID": "genre_655.html#description-1",
+    "href": "genre_655.html#description-1",
+    "title": "6  Genre/form 655",
+    "section": "6.2 Description",
+    "text": "6.2 Description\nField 655 (Genre/Form) contains genre and form descriptors recorded as free text in the bibliographic metadata. These entries are heterogeneous: multiple values may occur within a single record (typically separated by delimiters such as |), and labels vary in spelling, formatting, and level of standardization.\nTo enable consistent analysis, the field was harmonized using a controlled vocabulary:\n\nControlled vocabulary matching: extracted values were matched against a curated list derived from SLM – Suomalainen lajityyppi- ja muotosanasto, a Finnish genre and form thesaurus maintained within the Finto ontology service. This provides a standardized set of genre terms in Finnish.\nFiltering of unmatched values: only values that could be directly matched to SLM labels were retained. All other entries were classified as unrecognized and excluded from the harmonized field. These discarded values are reported separately for transparency and quality assessment.\nReconstruction of harmonized field: validated labels were recombined into a semicolon-separated string (harmonized) per record. As SLM is a Finnish-language vocabulary, all retained genre labels are treated as Finnish, and no additional language assignment was required.\nMissing data handling: records without valid matches were set to NA. The proportion of missing values reflects both absence of genre information and limitations in mapping to the controlled vocabulary.\n\nThis workflow produces a standardized and reproducible representation of genre/form information, enabling reliable aggregation and comparison across records while preserving information about discarded and ambiguous cases.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Genre/form 655</span>"
     ]
   }
 ]

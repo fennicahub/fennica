@@ -1,5 +1,5 @@
 
-field <- "author_date_kanto"
+field <- "author_date_knato"
 # TODO make a tidy cleanup function to shorten the code here
 df.tmp <- polish_years(df.orig[[field]], check = TRUE, verbose = TRUE)
 
@@ -15,11 +15,7 @@ df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
                     df.tmp)
 rownames(df.tmp) <- NULL
 
-#add harmonized fields to df
-df.harmonized <- cbind(df.harmonized,
-                       author_birth_kanto = df.tmp$author_birth,
-                       author_death_kanto = df.tmp$author_death,
-                       author_age_kanto = df.tmp$author_age)
+
 
 
 # ------------------------------------------------------------

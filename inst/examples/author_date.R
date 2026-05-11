@@ -68,6 +68,7 @@ df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
                     df.tmp)
 rownames(df.tmp) <- NULL
 
+df_date <-df.tmp
 
 # ------------------------------------------------------------
 # Store the title field data
@@ -219,4 +220,4 @@ write.table(df_19, file = paste0(output.folder, paste0(field, "_19.csv")),
 
 
 
-#source("allas.R")
+source("allas.R")

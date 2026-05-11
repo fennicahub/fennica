@@ -2,13 +2,10 @@
 
 field <- "genre_655"
 
-df.tmp <- polish_genre_655(df.orig[[field]], chunk_size = 1000)
+df.tmp <- polish_genre_655(df.orig[[field]])
 df.tmp$melinda_id <- df.orig$melinda_id
 df.tmp <- select(df.tmp, melinda_id, everything())
-df.tmp <- df.tmp %>%
-  mutate(genre_655 = ifelse(!is.na(finnish), finnish,
-                    ifelse(!is.na(swedish), swedish,
-                              english)))
+
 
 # Ensure the column is character
 df.tmp$harmonized <- as.character(df.tmp$harmonized)
@@ -44,8 +41,8 @@ s <- write_xtable(as.character(df.tmp$harmonized), file_accepted, count = TRUE)
 message("Discarded entries in the original data")
 
 unique_655 <- unique(trimws(unlist(strsplit(df.tmp$harmonized, ";"))))
-genre_lang_df <- read.csv("genre_655.csv", sep = ";", stringsAsFactors = FALSE)
-difference_unique <- na.omit(setdiff(unique_655, genre_lang_df$genre))
+genre_lang_df <- read.csv("unique_slm_labels_fi.csv", stringsAsFactors = FALSE)
+difference_unique <- na.omit(setdiff(unique_655, genre_lang_df$label))
 
 # .. ie. those are "discarded" cases; list them in a table
 tmp <- write_xtable(as.character(difference_unique), file_discarded, count = TRUE)

@@ -4,9 +4,11 @@ field <- "UDC"
 
 # Harmonize the raw data
 out <- polish_udk(df.orig[[field]], chunk_size = 1000)
+
+                   
 df.tmp <- out$full
 df.tmp$melinda_id <- df.orig$melinda_id
-df.tmp$udk_aux <- polish_udk_aux(df.orig$UDC_aux)
+df.tmp$udk_aux <- polish_udk1(df.orig$UDC_aux, chunk_size = 1000)
 df.tmp <- dplyr::select(df.tmp, melinda_id, everything())
 df.tmp$id2 <- df.orig$other_system_id
 

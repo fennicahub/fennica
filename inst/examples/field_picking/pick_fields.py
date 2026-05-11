@@ -7,7 +7,7 @@ import os
 from tqdm import tqdm
 
 #%%
-path_csvs = "/mnt/trial/csvs_holdingsit"
+path_csvs = "/mnt/trial/csvs"
 
 #%%
 
@@ -30,7 +30,6 @@ columns_to_pick = [
     ("362", "a"),
     ("080", "a"), ("080", "x"),
     ("655", "a"), ("650", "a"), ("500", "a"),
-    ("700", "a"), ("700", "0"), 
     ("336", "a"),  # content type
     ("505", "a"),  # contents
     ("520", "a"),  # summary
@@ -75,6 +74,8 @@ df = pd.concat(dfs, ignore_index=True)
 
 #%%
 # Save priority_fields file
-filename = "priority_fields_holdingsit_042026"
+filename = "priority_fields_042026"
 df.to_csv(f"{filename}.csv", sep="\t", index=False)
 
+
+# %%
