@@ -42,13 +42,15 @@ message("Error list")
 melinda_ids_discarded <- df.orig$melinda_id[inds]
 
 ## If you also want the (id, original title) pairs:
-df_discarded <- data.frame(
+error_list <- data.frame(
   melinda_id = df.orig$melinda_id[inds],
   original   = df.orig[[field]][inds],
   stringsAsFactors = FALSE
 )
-tmp <- write.csv(df_discarded, 
-                 file = error_list,
+
+errors <- paste0(output.folder, field, "_errors.csv")
+tmp <- write.table(error_list, 
+                 file = errors,
                  row.names=FALSE, 
                  quote = FALSE,
                  fileEncoding = "UTF-8")
@@ -83,17 +85,17 @@ file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 
 message("Accepted entries in the preprocessed data")
 s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE, add.percentages = TRUE)
-
-message("Discarded entries in the original data")
-
-# NA values in the final harmonized data
-inds <- which(is.na(df_19[[field]]))
-
-# Original entries that were converted into NA
-original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
-
-# .. ie. those are "discarded" cases; list them in a table
-tmp <- write_xtable(original.na, file_discarded_19, count = TRUE, add.percentages = TRUE)
+# 
+# message("Discarded entries in the original data")
+# 
+# # NA values in the final harmonized data
+# inds <- which(is.na(df_19[[field]]))
+# 
+# # Original entries that were converted into NA
+# original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
+# 
+# # .. ie. those are "discarded" cases; list them in a table
+# tmp <- write_xtable(original.na, file_discarded_19, count = TRUE, add.percentages = TRUE)
 
 # ------------------------------------------------------------
 # Store the title field data

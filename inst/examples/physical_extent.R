@@ -1,8 +1,7 @@
 
 field <- "physical_extent"
 
- 
-#df.tmp <- polish_physical_extent(df.orig[[field]], verbose = TRUE)
+df.tmp <- polish_physical_extent(df.orig[[field]], verbose = TRUE)
 
 x <- df.orig[df.orig$melinda_id %in% melindas_early,]
 
@@ -38,9 +37,6 @@ df.tmp$pagecount <- ifelse(!is.na(df.tmp$pagecount), df.tmp$pagecount - 1, df.tm
 df.tmp$pagecount <- gsub("-", "", df.tmp$pagecount)
 
 
-df.harmonized_14_17 <- cbind(df.harmonized_14_17,
-                       pagecount = df.tmp$pagecount, 
-                       pagecount_orig = x$physical_extent)
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV
@@ -78,8 +74,7 @@ df <- readRDS(data.file)
 
 # ------------------------------------------------------------
 
-# Run publication_time.R file to get the melindas needed for the 19th century slicing
-source("publication_time.R")
+# get the melindas needed for the 19th century slicing
 
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
 field <- "physical_extent"
@@ -100,18 +95,18 @@ file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 message("Accepted entries in the preprocessed data")
 s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
 
-message("Discarded entries in the original data")
-
-# NA values in the final harmonized data
-inds <- which(is.na(df_19[[field]]))
-
-# Original entries that were converted into NA
-original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
-
-# .. ie. those are "discarded" cases; list them in a table
-tmp <- write_xtable(original.na, file_discarded_19, count = TRUE)
-
-# ------------------------------------------------------------
+# message("Discarded entries in the original data")
+# 
+# # NA values in the final harmonized data
+# inds <- which(is.na(df_19[[field]]))
+# 
+# # Original entries that were converted into NA
+# original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
+# 
+# # .. ie. those are "discarded" cases; list them in a table
+# tmp <- write_xtable(original.na, file_discarded_19, count = TRUE)
+# 
+# # ------------------------------------------------------------
 
 # Generate markdown summary in note_source.md
 df_19 <- readRDS(data.file)

@@ -1,3 +1,19 @@
+
+# NOTE:
+# The priority fields dataset used here (priority_fields_30042026.csv)
+# is generated through a series of preprocessing scripts located in the
+# "field_picking" folder.
+#
+# The main script responsible for producing the final CSV file is:
+# pick_fields.py. It extracts, selects, and structures MARC fields into
+# a tabular format suitable for downstream analysis.
+#
+# This R script only reads the prepared CSV and performs additional
+# cleaning and harmonisation steps.
+#
+# Commenting and explanatory notes were generated with the assistance
+# of AI and further refined and validated by Julia Matveeva.
+
 # # Download the csv file
 url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/priority_fields_30042026.csv"
 # 
@@ -18,7 +34,7 @@ names(df.orig) <- c(
   
   "author_name",           # 100a
   "author_date",          # 100d
-  "author_id",             # 1000
+  "asteri_id",             # 1000
   
   "language",              # 041a
   "language_original",     # 041h
@@ -35,7 +51,7 @@ names(df.orig) <- c(
   "publication_place_264", # 264a
   
   "physical_size",         # 300c
-  "extent",                # 300a
+  "physical_extent",       # 300a
   
   "publication_frequency", # 310a
   "publication_dates",     # 362a
@@ -66,5 +82,11 @@ names(df.orig) <- c(
 df.orig <- df.orig %>% distinct()
 df.orig$title2 <- paste(df.orig$title, "|" ,df.orig$title_remainder)
 
-
+df.orig <- df.orig %>%
+  mutate(
+    asteri_id = str_trim(asteri_id),
+    asteri_id = na_if(asteri_id, ""),
+    asteri_id = str_remove(asteri_id, "^\\(FI-ASTERI-N\\)\\s*"),
+    asteri_id = str_extract(asteri_id, "\\d{9}")
+  )
 

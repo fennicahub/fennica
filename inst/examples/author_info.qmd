@@ -20,11 +20,14 @@ author_df$publication_decade <- df_pubtime$publication_decade
 
 ## Author name Fennica
 
-MARC: [100a](https://www.loc.gov/marc/bibliographic/bd100.html)
+MARC21: [100a](https://www.loc.gov/marc/bibliographic/bd100.html) and [700a](https://www.loc.gov/marc/bibliographic/bd700.html)
+[KANTO database](https://finto.fi/finaf/en/)
 
 Author's name section's summary tables offer insights into the dataset's integrity, illustrating the accepted and discarded author names. An examination of missing values in the original dataset provides transparency regarding data completeness. The inclusion of information on name variants and pseudonyms enriches the analysis, addressing nuances in authorship representation. This comprehensive approach ensures a thorough understanding of the dataset's composition and the intricacies associated with author identification.
 
-### Complete Dataset Overview
+In total there are XXX unique auhtors in fennica (asteri + name + date, NA + name + date, asteri + name + name). so many auhtrors have id and so many dont have them. in total there are so many records wihtout a name. gender is assigned to auhtors who created until 1917. auhtor birth date is avaiable for som many, auhtor date is available for so many. both for so many and consequnrtly age is available for the same amount. others with the most records in fennica are here. profession is availble for this many people and the most poular profession on fennica are. discraded rcords are show for each separate fields tgether with error lists. we have two databases record based and id and asteri based it. 
+
+datatables: unique names with their dates, with gender, number of records, profession, other infp
 
 -   [Unique accepted entries in original data](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_accepted.csv): `r length(unique(df[[field]]))`
 -   [Unique discarded entries in original data](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
@@ -55,12 +58,7 @@ p <- top_plot(df, "author_name", ntop = ntop, log10 = TRUE)+
   labs(y = "Entries (n)", title = "Top titles")
 print(p)
 ```
-#### Auxiliary files
 
--   [Author synonyme table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/ambiguous-authors.csv)
--   [Stopwords for names](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/stopwords_for_names.csv)
--   [Stopwords for titles](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/stopwords_titles.csv)
--   [Custom pseudonyme lists](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/custom_pseudonymes.csv)
 
 ### Subset Analysis: 1809-1917
 

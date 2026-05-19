@@ -1,29 +1,13 @@
-library(dplyr)
-library(readr)
-library(stringr)
-library(finto)
-library(arrow)
-
 
 # Step 1. load author_id from df.orig 
-source("priority_fields.R")
+# source("priority_fields.R")
 
-library(dplyr)
-library(tidyr)
-library(stringr)
-library(arrow)
 
-# 1. collect all Asteri IDs from 100 and 700 fields
-fennica_asteri <- df.orig %>%
-  transmute(
-    author_id = as.character(author_id),
-    added_author_id = as.character(added_author_id)
-  ) %>%
-  pivot_longer(
-    cols = c(author_id, added_author_id),
-    names_to = "source_field",
-    values_to = "asteri_raw"
-  ) %>%
+# collect all Asteri IDs from both df.orig and df_700
+fennica_asteri <- bind_rows(
+  df.orig %>% transmute(asteri_raw = as.character(asteri_id)),
+  df_700   %>% transmute(asteri_raw = as.character(asteri_id))
+) %>%
   filter(!is.na(asteri_raw), asteri_raw != "") %>%
   separate_rows(asteri_raw, sep = "\\|") %>%
   mutate(
@@ -33,6 +17,7 @@ fennica_asteri <- df.orig %>%
   ) %>%
   filter(!is.na(author_ID), author_ID != "") %>%
   distinct(author_ID, .keep_all = TRUE)
+
 
 # 2. IDs only for Kanto
 author_ids_clean <- fennica_asteri %>%

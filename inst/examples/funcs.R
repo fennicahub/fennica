@@ -59,7 +59,7 @@ polish_dimensions <- function (x, fill = TRUE, dimtab = NULL, verbose = FALSE, s
     if (verbose) {
       message("dimtab dimension mapping table not provided, using the default table dimension_table()")
     }
-    dimtab <- comhis::dimension_table()
+    dimtab <- dimension_table()
 
   }
 
@@ -4296,145 +4296,176 @@ harmonize_dimension <- function (x, synonyms = NULL) {
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
 #' @examples # polish_dimension("4")
 #' @keywords internal
-polish_dimension <- function (x, synonyms) {
-
+polish_dimension <- function(x, synonyms) {
+  
+  s <- sorig <- as.character(x)
+  
   # Harmonize terms
-  s <- sorig <- x
-
-  # "small"
   small <- FALSE
   if (length(grep("sm", s)) > 0) {
-    s <- gsub("sm ", "", gsub("sm.", "", s))
+    s <- gsub("sm ", "", gsub("sm\\.", "", s))
     small <- TRUE
   }
-
-  # Obl: height < width
+  
   obl <- FALSE
-  if (length(grep("obl", s))>0) {
+  if (length(grep("obl", s)) > 0) {
     s <- gsub("obl", "", s)
     obl <- TRUE
   }
-
-  # Handle long
+  
   long <- FALSE
   if (length(grep("long", s)) > 0 || length(grep("\\+", s)) > 0) {
     long <- TRUE
     s <- gsub("long", "", s)
     s <- gsub("\\+", "", s)
   }
-
-  # Pick all dimension info
+  
   vol <- width <- height <- NA
   s <- condense_spaces(s)
-
-  # No units given. Assume the number refers to the gatherings (not cm)
-  x <- unique(stringr::str_trim(unlist(strsplit(s, " "), use.names = FALSE)))
-  x[x == "NA"]   <- NA
-  x[x == "NAto"] <- NA
-
-  if (length(grep("cm", x)) == 0 && length(grep("[0-9]?o", x)) == 0) {
-    if (length(x) == 1 && !is.na(x)) {
-      x <- paste(as.numeric(x), "to", sep = "")
+  
+  # No units given: assume number refers to gatherings, not cm
+  xx <- unique(stringr::str_trim(unlist(strsplit(s, " "), use.names = FALSE)))
+  xx[xx == "NA"] <- NA
+  xx[xx == "NAto"] <- NA
+  
+  if (length(grep("cm", xx)) == 0 && length(grep("[0-9]?o", xx)) == 0) {
+    if (length(xx) == 1 && !is.na(xx)) {
+      xx_num <- suppressWarnings(as.numeric(xx))
+      if (!is.na(xx_num)) {
+        xx <- paste0(xx_num, "to")
+      }
     }
   } else {
-    # Pick gatherings measures separately
-    x <- stringr::str_trim(unlist(strsplit(s, " "), use.names = FALSE))
+    xx <- stringr::str_trim(unlist(strsplit(s, " "), use.names = FALSE))
   }
-
-  hits <- unique(c(grep("[0-9]+[a-z]o", x), grep("bs", x)))
-
+  
+  hits <- unique(c(grep("[0-9]+[a-z]o", xx), grep("bs", xx)))
+  
   gatherings <- NA
   if (length(hits) > 0) {
-    x <- gsub(";;", "", x[hits])
-
-    x <- unique(x)
-    if (!length(x) == 1) {
-      # Ambiguous gatherings info
-      gatherings <- x
+    g <- gsub(";;", "", xx[hits])
+    g <- unique(g)
+    
+    if (length(g) != 1) {
+      gatherings <- g
     } else {
-      gatherings <- x
+      gatherings <- g
+      
       if (long) {
         a <- unlist(strsplit(gatherings, ""), use.names = FALSE)
-	ind <- min(which(is.na(as.numeric(a))))-1
-	if (is.na(ind)) {ind <- length(a)}
-	gatherings <- paste(paste(a[1:ind], collapse = ""), "long", sep = "")
+        ind <- min(which(is.na(suppressWarnings(as.numeric(a))))) - 1
+        if (is.na(ind)) ind <- length(a)
+        gatherings <- paste0(paste(a[1:ind], collapse = ""), "long")
+        
       } else if (small) {
         a <- unlist(strsplit(gatherings, ""), use.names = FALSE)
-	ind <- min(which(is.na(as.numeric(a))))-1
-	if (is.na(ind)) {ind <- length(a)}
-	gatherings <- paste(paste(a[1:ind], collapse = ""), "small", sep = "")
+        ind <- min(which(is.na(suppressWarnings(as.numeric(a))))) - 1
+        if (is.na(ind)) ind <- length(a)
+        gatherings <- paste0(paste(a[1:ind], collapse = ""), "small")
       }
     }
   }
-
+  
   gatherings <- harmonize_dimension(gatherings, synonyms)
-
-  if ( length(gatherings) == 0 ) { gatherings <- NA }
-  if ( length(unique(gatherings)) > 1 ) { gatherings <- NA }
-
+  
+  if (length(gatherings) == 0) gatherings <- NA
+  if (length(unique(gatherings)) > 1) gatherings <- NA
+  
   # 4to-4to / 4to-2fo
-  inds <- c(grep("^[0-9]+.o-[0-9]+.o$", gatherings),
-            grep("^[0-9]+.o-[0-9]+.o-[0-9]+.o$", gatherings))
-
+  inds <- c(
+    grep("^[0-9]+.o-[0-9]+.o$", gatherings),
+    grep("^[0-9]+.o-[0-9]+.o-[0-9]+.o$", gatherings)
+  )
+  
   if (length(inds) > 0) {
-    li <- lapply(gatherings[inds], function (x) {unique(unlist(strsplit(x, "-"), use.names = FALSE))})
-    inds3 <- na.omit(inds[sapply(li, length) == 1])
-    if (length(inds3) > 0) {
-      gatherings[inds3] <- unlist(li[inds3], use.names = FALSE)
-      gatherings[setdiff(inds, inds3)] <- NA
-    } else {
-      gatherings[inds] <- NA
+    li <- lapply(gatherings[inds], function(z) {
+      unique(unlist(strsplit(z, "-"), use.names = FALSE))
+    })
+    
+    same_inds <- inds[sapply(li, length) == 1]
+    
+    if (length(same_inds) > 0) {
+      gatherings[same_inds] <- unlist(li[sapply(li, length) == 1], use.names = FALSE)
+    }
+    
+    diff_inds <- setdiff(inds, same_inds)
+    if (length(diff_inds) > 0) {
+      gatherings[diff_inds] <- NA
     }
   }
+  
   gatherings <- unlist(gatherings, use.names = FALSE)
+  
   inds <- grep("^[0-9]+.o, [0-9]+.o$", gatherings)
   gatherings[inds] <- gsub("\\.;", "-", gatherings[inds])
-
-  # Ambiguous CM information
-  x <- unique(stringr::str_trim(unlist(strsplit(s, " "), use.names = FALSE)))
-  if (length(grep("x", x)) > 1) {
-    width <- height <- NA
+  
+  # Pick cm dimensions
+  xx <- unique(stringr::str_trim(unlist(strsplit(s, " "), use.names = FALSE)))
+  
+  if (length(grep("x", xx)) > 1) {
+    width <- NA
+    height <- NA
   }
-
-  # Pick CM x CM format separately when it is unambiguous
-  if (length(grep("cm", x)) > 0 && length(grep("x", x)) == 1) {
-      # Then pick the dimensions
-      x <- unlist(strsplit(x, "cm"), use.names = FALSE)
-      x <- stringr::str_trim(unlist(strsplit(x, " "), use.names = FALSE))
-      i <- which(x == "x")
-      if (is.numeric(stringr::str_trim(x[i+1])) && is.numeric(stringr::str_trim(x[i-1]))) {
-        height <- as.numeric(stringr::str_trim(x[i+1]))
-        width <- as.numeric(stringr::str_trim(x[i-1]))
+  
+  if (length(grep("cm", xx)) > 0 && length(grep("x", xx)) == 1) {
+    
+    parts <- unlist(strsplit(xx, "cm"), use.names = FALSE)
+    parts <- stringr::str_trim(unlist(strsplit(parts, " "), use.names = FALSE))
+    
+    i <- which(parts == "x")
+    
+    if (length(i) == 1 && i > 1 && i < length(parts)) {
+      left  <- suppressWarnings(as.numeric(stringr::str_trim(parts[i - 1])))
+      right <- suppressWarnings(as.numeric(stringr::str_trim(parts[i + 1])))
+      
+      if (length(left) == 1 && length(right) == 1 &&
+          !is.na(left) && !is.na(right)) {
+        width  <- left
+        height <- right
       }
-  } else if (length(grep("cm", x)) > 0 && length(grep("x", x)) == 0) {
-      # Pick CM format (single value) separately when it is unambiguous
-      # Then pick the dimensions
-      x <- stringr::str_trim(unlist(strsplit(x, " "), use.names = FALSE))
-      i <- which(x == "cm")
-      height <- as.numeric(stringr::str_trim(x[i-1]))
-      width <- NA
+    }
+    
+  } else if (length(grep("cm", xx)) > 0 && length(grep("x", xx)) == 0) {
+    
+    parts <- stringr::str_trim(unlist(strsplit(xx, " "), use.names = FALSE))
+    i <- which(parts == "cm")
+    
+    if (length(i) == 1 && i > 1) {
+      h <- suppressWarnings(as.numeric(stringr::str_trim(parts[i - 1])))
+      
+      if (length(h) == 1 && !is.na(h)) {
+        height <- h
+      }
+    }
+    
+    width <- NA
   }
-
+  
+  # Force scalar width/height
+  if (length(width) != 1) width <- NA
+  if (length(height) != 1) height <- NA
+  
   # Obl: height < width
   if (!is.na(width) && !is.na(height)) {
     dims <- c(height, width)
+    
     if (obl) {
-      # NOTE: sort width and height and reverse their order if and only if
-      # obl is stated; otherwise assume that the dimensions are given as height x width
-      dims <- sort(dims)
-      dims <- rev(dims)
+      dims <- rev(sort(dims))
     }
-    width <- dims[[1]]
-    height <- dims[[2]]
+    
+    height <- dims[[1]]
+    width  <- dims[[2]]
   }
-
-  # If gatherings length > 1 then collapse
+  
   gatherings <- paste(gatherings, collapse = ";")
-
-  # Return
-  list(original = sorig, gatherings = gatherings,
-       width = width, height = height, obl = obl)
-
+  
+  list(
+    original = sorig,
+    gatherings = gatherings,
+    width = width,
+    height = height,
+    obl = obl
+  )
 }
 
 
@@ -4534,8 +4565,17 @@ fill_dimensions <- function (x, dimension.table = NULL, sheet.dimension.table = 
     if (!any("obl" == names(x))) {x[["obl"]] <- NA}
     obl <- x[["obl"]]
 
-    e <- estimate_document_dimensions(gatherings = g, height = h, width = w, obl = obl, dimension.table, sheet.dimension.table)
+    
+    e <- estimate_document_dimensions(
+      gatherings = g,
+      height = h,
+      width = w,
+      obl = obl,
+      dimension.table = dimension.table,
+      sheet.dimension.table = sheet.dimension.table
+    )
 
+    
     w <- e$width
     h <- e$height
     g <- e$gatherings
@@ -4559,168 +4599,204 @@ fill_dimensions <- function (x, dimension.table = NULL, sheet.dimension.table = 
 #' @author Leo Lahti \email{leo.lahti@@iki.fi}
 #' @examples # estimate_document_dimensions(gatherings = 2, height = 44)
 #' @keywords utilities
-estimate_document_dimensions <- function (gatherings = NA, height = NA, width = NA, obl = NULL, dimension.table = NULL, sheet.dimension.table = NULL) {
-
-  if (is.null(gatherings) || length(gatherings) == 0) { gatherings <- NA }
-  if (is.null(height) || length(height) == 0) { height <- NA }
-  if (is.null(width) || length(width) == 0)  { width <- NA }
-
-  # Ensure the inputs are of right format
-  gatherings <- as.character(gatherings)
-  width <- as.numeric(as.character(width))
-  height <- as.numeric(as.character(height))
-
-  if (length(grep("NA", gatherings)) > 0) { gatherings <- NA }
-  if (length(grep("NA", width)) > 0)  { width <- NA }
-  if (length(grep("NA", height)) > 0) { height <- NA }
-
-  if (all(is.na(c(gatherings, height, width)))) {
-    return(list(gatherings = gatherings, height = height, width = width))
+estimate_document_dimensions <- function(
+    gatherings = NA,
+    height = NA,
+    width = NA,
+    obl = NULL,
+    dimension.table = NULL,
+    sheet.dimension.table = NULL
+) {
+  
+  first_or_na <- function(z, type = "character") {
+    if (is.null(z) || length(z) == 0) {
+      if (type == "numeric") return(NA_real_)
+      return(NA_character_)
+    }
+    z <- z[1]
+    if (length(z) == 0 || is.na(z)) {
+      if (type == "numeric") return(NA_real_)
+      return(NA_character_)
+    }
+    z
   }
-
+  
+  gatherings <- first_or_na(as.character(gatherings), "character")
+  height <- suppressWarnings(as.numeric(first_or_na(height, "numeric")))
+  width  <- suppressWarnings(as.numeric(first_or_na(width, "numeric")))
+  
+  if (is.null(obl) || length(obl) == 0) {
+    obl <- NA
+  } else {
+    obl <- obl[1]
+  }
+  
+  if (is.null(dimension.table)) {
+    dimension.table <- dimension_table()
+  }
+  
+  if (is.null(sheet.dimension.table)) {
+    sheet.dimension.table <- sheet_area(verbose = FALSE)
+  }
+  
+  if (is.na(gatherings) || gatherings == "NA") {
+    gatherings <- NA_character_
+  }
+  
+  if (all(is.na(c(gatherings, height, width)))) {
+    return(list(gatherings = gatherings, height = height, width = width, obl = obl))
+  }
+  
   # Height and gatherings given
   if (is.na(width) && !is.na(height) && !is.na(gatherings)) {
-
-    if (any(gatherings == colnames(dimension.table))) {
-
+    
+    if (gatherings %in% colnames(dimension.table)) {
+      
       s <- dimension.table[dimension.table$height == round(height), gatherings]
-      width <- as.numeric(as.character(s))
-
+      width <- suppressWarnings(as.numeric(as.character(s[1])))
+      
       if (length(width) == 0 || is.na(width)) {
-
-        message(paste("Height (", height,") does not correspond to the gatherings (", gatherings, ") and width is not provided: trying to match width instead", sep = ""))
+        message(
+          paste0(
+            "Height (", height, ") does not correspond to the gatherings (",
+            gatherings, ") and width is not provided: trying to match width instead"
+          )
+        )
+        
         width <- height
-        height <- median(na.omit(as.numeric(as.character(dimension.table[which(as.character(dimension.table[, gatherings]) == round(width)), "height"]))))
-       }
-
-       if (is.na(height) || is.na(width)) {
-         # warning("Height and width could not be estimated from the dimension table. Using the default gatherings size instead.")
-    	 ind <- which(as.character(sheet.dimension.table$gatherings) == gatherings)
-    	 width <- sheet.dimension.table[ind, "width"]
-    	 height <- sheet.dimension.table[ind, "height"]
-       }
-
-    } else {
-      # warning(paste("gatherings", gatherings, "not available in conversion table!"))
-    }
-  } else if (!is.na(width) && is.na(height) && !is.na(gatherings)) {
-    # Else if width and gatherings given
-    # warning("Only width and gatherings given, height is estimated from table !")
-    g <- gatherings
-
-    if (any(g == colnames(dimension.table))) {
-      height <- median(na.omit(as.numeric(as.character(dimension.table[which(as.character(dimension.table[, g]) == round(width)), "height"]))))
-    } else {
-      # warning(paste("gatherings", g, "not available in conversion table!"))
-    }
-
-  } else if (is.na(width) && !is.na(height) && is.na(gatherings)) {
-
-    # Only height given
-    # pick the closest matches from the table
-    hh <- abs(as.numeric(as.character(dimension.table$height)) - height)
-
-    ind <- which(hh == min(hh, na.rm = TRUE))
-    width <- as.numeric(as.character(dimension.table[ind, "NA"]))
-
-    if (is.na(width)) {
-      # warning(paste("No width found for height ", height, " and gatherings ", gatherings, sep = ""))
-      return(
-        list(gatherings = unname(gatherings),
-       	     height = unname(height),
-       	     width = unname(width),
-       	     obl = unname(obl))
-         )
-    }
-
-    # if multiple hits, pick the closest
-    width <- mean(width, na.rm = TRUE)
-
-    # Estimate gatherings
-    gatherings <- estimate_document_dimensions(gatherings = NA, height = round(height), width = round(width), dimension.table = dimension.table, sheet.dimension.table = sheet.dimension.table)$gatherings
-
-  } else if (is.na(width) && is.na(height) && !is.na(gatherings)) {
-
-    # Only gatherings given
-    ind <- which(as.character(sheet.dimension.table$gatherings) == gatherings)
-
-    width <- sheet.dimension.table[ind, "width"]
-    height <- sheet.dimension.table[ind, "height"]
-
-  } else if (!is.na(width) && !is.na(height) && is.na(gatherings)) {
-
-    # width and height given; estimate gatherings
-    # The closest matched for height
-    hs <- as.numeric(as.character(dimension.table$height))
-
-    hdif <- abs(hs - height)
-
-    inds <- which(hdif == min(hdif, na.rm = TRUE))
-
-    # corresponding widths
-    ws <- dimension.table[inds, ]
-    ginds <- c()
-
-    for (wi in 1:nrow(ws)) {
-      d <- abs(as.numeric(as.character(unlist(ws[wi,], use.names = FALSE))) - width)
-      ginds <- c(ginds, setdiff(which(d == min(d, na.rm = TRUE)), 1:2))
-    }
-    gs <- unique(colnames(dimension.table)[unique(ginds)])
-
-    # If gatherings is uniquely determined
-    if (length(gs) == 1) {
-      gatherings <- gs
-    } else {
-      # warning(paste("Ambiguous gatherings - not determined for width / height ", width, height, paste(gs, collapse = "/")))
-    }
-  } else if (!is.na(width) && is.na(height) && is.na(gatherings)) {
-    # Only width given
-    height <- as.numeric(dimension.table[which.min(abs(as.numeric(dimension.table[, "NA"]) - as.numeric(width))), "NA"])
-
-    # If multiple heights match, then use average
-    height <- mean(height, na.rm = TRUE)
-
-    # Estimate gatherings
-    gatherings <- estimate_document_dimensions(gatherings = NA, height = height, width = width, dimension.table = dimension.table)$gatherings
-  }
-
-
-  if (length(width) == 0) {width <- NA}
-  if (length(height) == 0) {height <- NA}
-  if (length(gatherings) == 0) {gatherings <- NA}
-
-  if (is.na(width)) {width <- NA}
-  if (is.na(height)) {height <- NA}
-  if (is.na(gatherings)) {gatherings <- NA}
-
-  height <- as.numeric(height)
-  width <- as.numeric(width)
-
-  # In obl width > height
-
-  if (length(obl) > 0 && !is.na(obl) && any(obl)) {
-
-    hw <- cbind(height = height, width = width)
-    inds <- 1
-
-    if (length(obl) > 1) {
-      inds <- which(obl)
-    }
-
-    for (i in inds) {
-      xx <- hw[i, ]
-      if (sum(is.na(xx)) == 0) {
-        hw[i, ] <- sort(xx)
+        
+        h2 <- dimension.table[
+          which(as.character(dimension.table[, gatherings]) == round(width)),
+          "height"
+        ]
+        
+        height <- suppressWarnings(median(na.omit(as.numeric(as.character(h2)))))
+      }
+      
+      if (is.na(height) || is.na(width)) {
+        ind <- which(as.character(sheet.dimension.table$gatherings) == gatherings)
+        
+        width <- suppressWarnings(as.numeric(as.character(sheet.dimension.table[ind[1], "width"])))
+        height <- suppressWarnings(as.numeric(as.character(sheet.dimension.table[ind[1], "height"])))
       }
     }
-    height <- hw[, "height"]
-    width <- hw[, "width"]
+    
+  } else if (!is.na(width) && is.na(height) && !is.na(gatherings)) {
+    
+    # Width and gatherings given
+    if (gatherings %in% colnames(dimension.table)) {
+      h2 <- dimension.table[
+        which(as.character(dimension.table[, gatherings]) == round(width)),
+        "height"
+      ]
+      
+      height <- suppressWarnings(median(na.omit(as.numeric(as.character(h2)))))
+    }
+    
+  } else if (is.na(width) && !is.na(height) && is.na(gatherings)) {
+    
+    # Only height given
+    hh <- abs(as.numeric(as.character(dimension.table$height)) - height)
+    ind <- which(hh == min(hh, na.rm = TRUE))
+    
+    width <- suppressWarnings(as.numeric(as.character(dimension.table[ind[1], "NA"])))
+    
+    if (length(width) == 0 || is.na(width)) {
+      return(list(
+        gatherings = unname(gatherings),
+        height = unname(height),
+        width = unname(width),
+        obl = unname(obl)
+      ))
+    }
+    
+    width <- mean(width, na.rm = TRUE)
+    
+    gatherings <- estimate_document_dimensions(
+      gatherings = NA,
+      height = round(height),
+      width = round(width),
+      obl = obl,
+      dimension.table = dimension.table,
+      sheet.dimension.table = sheet.dimension.table
+    )$gatherings
+    
+  } else if (is.na(width) && is.na(height) && !is.na(gatherings)) {
+    
+    # Only gatherings given
+    ind <- which(as.character(sheet.dimension.table$gatherings) == gatherings)
+    
+    width <- suppressWarnings(as.numeric(as.character(sheet.dimension.table[ind[1], "width"])))
+    height <- suppressWarnings(as.numeric(as.character(sheet.dimension.table[ind[1], "height"])))
+    
+  } else if (!is.na(width) && !is.na(height) && is.na(gatherings)) {
+    
+    # Width and height given; estimate gatherings
+    hs <- suppressWarnings(as.numeric(as.character(dimension.table$height)))
+    hdif <- abs(hs - height)
+    
+    inds <- which(hdif == min(hdif, na.rm = TRUE))
+    
+    ws <- dimension.table[inds, , drop = FALSE]
+    ginds <- c()
+    
+    for (wi in seq_len(nrow(ws))) {
+      d <- abs(suppressWarnings(as.numeric(as.character(unlist(ws[wi, ], use.names = FALSE)))) - width)
+      ginds <- c(ginds, setdiff(which(d == min(d, na.rm = TRUE)), 1:2))
+    }
+    
+    gs <- unique(colnames(dimension.table)[unique(ginds)])
+    
+    if (length(gs) == 1) {
+      gatherings <- gs
+    }
+    
+  } else if (!is.na(width) && is.na(height) && is.na(gatherings)) {
+    
+    # Only width given
+    height <- suppressWarnings(as.numeric(
+      dimension.table[
+        which.min(abs(as.numeric(dimension.table[, "NA"]) - as.numeric(width))),
+        "NA"
+      ]
+    ))
+    
+    height <- mean(height, na.rm = TRUE)
+    
+    gatherings <- estimate_document_dimensions(
+      gatherings = NA,
+      height = height,
+      width = width,
+      obl = obl,
+      dimension.table = dimension.table,
+      sheet.dimension.table = sheet.dimension.table
+    )$gatherings
   }
-
-  list(gatherings = unname(gatherings),
-       height = unname(height),
-       width = unname(width),
-       obl = unname(obl))
+  
+  # Final scalar cleanup
+  width <- suppressWarnings(as.numeric(first_or_na(width, "numeric")))
+  height <- suppressWarnings(as.numeric(first_or_na(height, "numeric")))
+  gatherings <- first_or_na(as.character(gatherings), "character")
+  
+  if (is.na(gatherings) || gatherings == "NA") {
+    gatherings <- NA_character_
+  }
+  
+  # In obl, width > height
+  if (length(obl) == 1 && !is.na(obl) && isTRUE(as.logical(obl))) {
+    if (!is.na(height) && !is.na(width)) {
+      vals <- sort(c(height, width))
+      height <- vals[1]
+      width <- vals[2]
+    }
+  }
+  
+  list(
+    gatherings = unname(gatherings),
+    height = unname(height),
+    width = unname(width),
+    obl = unname(obl)
+  )
 }
 
 
@@ -7859,152 +7935,83 @@ manual_name_replace <- function(s, verbose = FALSE) {
   s
 }
 
-#' @title Polish author
-#' @description Polish author.
-#' @param s Vector of author names
-#' @param stopwords Stopwords
-#' @param verbose verbose 
-#' @return Polished vector
-#' @export
-#' @author Leo Lahti \email{leo.lahti@@iki.fi}
-#' @references See citation("fennica")
-#' @examples # s2 <- polish_author("Smith, William")
-#' @keywords utilities
-polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
-  
-  s <- manual_name_replace(s)
 
-  if (is.null(stopwords)) {
-    message("No stopwords provided for authors. Using ready-made stopword lists")
-    
-    # TODO Use instead the notnames function here ?
-    
-    f <- system.file("extdata/stopwords.csv", package = "fennica")
-    stopwords.general <- as.character(read.csv(f, sep = "\t")[,1])
-    stopwords.general <- c(stopwords.general, stopwords(kind = "en"))
-    
-    f <- system.file("extdata/stopwords_for_names.csv", package = "fennica")
-    stopwords.names <- as.character(read.csv(f, sep = "\t")[,1])
-    
-    f <- system.file("extdata/organizations.csv", package = "fennica")
-    stopwords.organizations <- as.character(read.csv(f, sep = "\t")[,1])
-    
-    f <- system.file("extdata/stopwords_titles.csv", package = "fennica")
-    stopwords.titles <- as.character(read.csv(f, sep = "\t")[,1])
-    stopwords <- unique(c(stopwords.general, stopwords.organizations, stopwords.names, stopwords.titles))
-  }
+#' @title Polish author 
+#' @description Polish author. 
+#' @param s Vector of author names 
+#' @param stopwords Stopwords 
+#' @param verbose verbose 
+#' @return Polished vector 
+#' @author Leo Lahti \email{leo.lahti@@iki.fi} 
+#' @references See citation("fennica") 
+#' @examples # s2 <- polish_author("Smith, William") 
+#' @keywords utilities
+#' 
+polish_author <- function(s, verbose = FALSE) {
   
-  # Accept some names that may be on the stopword lists
-  # TODO add here all known names
-  f <- system.file("extdata/author_accepted.csv", package = "fennica")
-  author.accepted <- as.character(read.csv(f, sep = "\t")[,1])
+  s <- as.character(s)
+  s <- stringi::stri_trans_nfc(s)
+  s <- trimws(s)
+  s[s == ""] <- NA
+  s <- tolower(s)
   
-  pseudo <- get_pseudonymes()
-  
-  accept.names <- unique(c(pseudo, author.accepted))
-  
-  # Also add individual terms in these names on the list
-  accept.names <- c(accept.names, unique(unlist(strsplit(accept.names, " "))))
-  # Remove special chars and make lowercase to harmonize
-  accept.names <- unique(condense_spaces(gsub("\\,", " ", gsub("\\.", "", tolower(accept.names)))))
-  
-  
-  # Then remove those in stopwords (ie accept these in names)
-  # Exclude some names and pseudonyms from assumed stopwords
-  stopwords <- setdiff(stopwords, accept.names)
-  
-  # -------------------------------------------------------------
-  s <- tolower(as.character(s))
-  
-  # Only handle unique entries, in the end map back to original indices
+  # Keep original order for mapping back
   sorig <- s
-  suniq <- unique(s)
+  suniq <- unique(sorig)
   s <- suniq
   
   if (verbose) {
-    message(paste("Polishing author field: ", length(suniq), "unique entries"))
+    message(paste("Polishing author field:", length(suniq), "unique entries"))
   }
   
-  s <- str_trim(s)
+  # Basic cleaning
+  s <- stringr::str_trim(s)
   s <- gsub(",+$", "", s)
-  message("Manual name curation")
-  s <- apply_manual_curation(s)
-  # Remove numerics
-  s <- gsub("[0-9]", "", s) 
+  s <- gsub("[0-9]", "", s)
+  s <- gsub("[\\[\\]\\(\\)\\?]", "", s)
+  s <- gsub("-+", "-", s)
+  s <- stringr::str_trim(s)
+  s[s == ""] <- NA
   
-  s <- str_trim(s)
-  # Remove brackets and ending commas
-  s <- gsub("\\[", "", s)
-  s <- gsub("\\]", "", s)
-  s <- gsub("\\(", "", s)
-  s <- gsub("\\)", "", s)
-  s <- gsub("\\?", "", s)
-  s <- gsub("-+", "-", s)   
-  s <- str_trim(s)
 
-  # Map back to original indices, then make unique again. Helps to further reduce cases.
-  sorig <- s[match(sorig, suniq)]
-  s <- suniq <- unique(sorig)
+  s_clean <- s
   
-  # ----------------------------------------------------------------
+  first <- last <- rep(NA_character_, length(s_clean))
   
-  if (verbose) {
-    message("Separating names")
-  }
-  # Assume names are of format Last, First
-  # TODO O. K. Humble, Verner -> First: Verner O K Last: Humble
-  # pseudonymes are taken as such
-  # convert to character type
-  first <- last <- as.character(rep(NA, length(s)))
-  
-  pseudo.inds <- which(s %in% pseudo)
-  
-  inds <- inds1 <- setdiff(grep(",", s), pseudo.inds)
-  if (length(inds) > 0) {
-    first[inds] <- pick_firstname(s[inds], format = "last, first")
-    last[inds]  <-  pick_lastname(s[inds], format = "last, first")
+  inds1 <- grep(",", s_clean)
+  if (length(inds1) > 0) {
+    first[inds1] <- pick_firstname(s_clean[inds1], format = "last, first")
+    last[inds1]  <- pick_lastname(s_clean[inds1], format = "last, first")
   }
   
-  
-  inds <- inds2 <- setdiff(setdiff(grep(" ", s), inds1), pseudo.inds)
-  if (length(inds) > 0) {
-    first[inds] <- pick_firstname(s[inds], format = "first last")
-    last[inds]  <-  pick_lastname(s[inds], format = "first last")
+  inds2 <- setdiff(grep(" ", s_clean), inds1)
+  if (length(inds2) > 0) {
+    first[inds2] <- pick_firstname(s_clean[inds2], format = "first last")
+    last[inds2]  <- pick_lastname(s_clean[inds2], format = "first last")
   }
-  # Where the name did not match the assumed formats, use the complete form as
-  # the last name
-  inds <- inds3 <- setdiff(which(is.na(first) & is.na(last)), pseudo.inds)
-  if (length(inds) > 0) {
-    last[inds] <- as.character(s[inds])
+  
+  inds3 <- which(is.na(first) & is.na(last) & !is.na(s_clean))
+  if (length(inds3) > 0) {
+    last[inds3] <- as.character(s_clean[inds3])
   }
-  # Mark pseudonymes as first names
-  inds <- inds4 <- pseudo.inds
-  if (length(pseudo.inds) > 0) {
-    first[inds] <- as.character(s[inds])
-  }  
   
-  # ------------------------------------------------------------
-  
-  if (verbose) { message("Formatting names") }
   inds <- which(!is.na(first) | !is.na(last))
+  
   for (i in inds) {
-    
     fi <- first[[i]]
     la <- last[[i]]
     
-    # tokenize safely
     fi <- if (!is.na(fi)) unlist(strsplit(fi, " "), use.names = FALSE) else character(0)
     la <- if (!is.na(la)) unlist(strsplit(la, " "), use.names = FALSE) else character(0)
     
     if (length(fi) == 0) fi <- NA_character_
     if (length(la) == 0) la <- NA_character_
     
-    # only proceed if both sides are “present”
     if (!all(is.na(fi)) && !all(is.na(la))) {
       fi_last <- tail(fi, 1)
       la_str  <- paste(la, collapse = " ")
+      
       if (!is.na(fi_last) && !is.na(la_str) && fi_last == la_str) {
-        # drop duplicated last token from first names
         fi <- fi[-length(fi)]
       }
     }
@@ -8013,53 +8020,78 @@ polish_author <- function (s, stopwords = NULL, verbose = FALSE) {
     last[[i]]  <- paste(la, collapse = " ")
   }
   
-  message("Name table")
-  nametab <- data.frame(last = unname(last),
-                        first = unname(first),
-                        stringsAsFactors = FALSE
+  nametab <- data.frame(
+    last = unname(last),
+    first = unname(first),
+    stringsAsFactors = FALSE
   )
-  rownames(nametab) <- NULL
-
   
-  if (verbose) { message("Capitalize names")}
   nametab$last  <- capitalize(nametab$last, "all.words")
   nametab$first <- capitalize(nametab$first, "all.words")
   
-  message("Clean first and last names separately")
   nametab$first <- condense_spaces(gsub("\\.", " ", nametab$first))
   nametab$last  <- condense_spaces(gsub("\\.", " ", nametab$last))
   
-  nametab$first <- str_trim(gsub("[,.]+$", "", nametab$first))
-  nametab$last  <- str_trim(gsub("[,.]+$", "", nametab$last))
+  nametab$first <- stringr::str_trim(gsub("[,.]+$", "", nametab$first))
+  nametab$last  <- stringr::str_trim(gsub("[,.]+$", "", nametab$last))
   
-  nametab$first[nametab$first == ""] <- NA
-  nametab$first[nametab$first == "NA"] <- NA
-  nametab$last[nametab$last == ""] <- NA
-  nametab$last[nametab$last == "NA"] <- NA
+  nametab$first <- sub(",\\s*-$", "", nametab$first)
+  nametab$last  <- sub(",\\s*-$", "", nametab$last)
   
-  if (verbose) { message("Collapse accepted names to the form: Last, First") }
-  full.name <- apply(nametab, 1, function (x) { paste(x, collapse = ", ") })
+  nametab$first[nametab$first %in% c("", "NA")] <- NA
+  nametab$last[nametab$last %in% c("", "NA")] <- NA
+  
+  nametab$first <- vapply(nametab$first, clean_name_cell, character(1))
+  nametab$last  <- vapply(nametab$last, clean_name_cell, character(1))
+  
+  full.name <- paste(nametab$last, nametab$first, sep = ", ")
   full.name <- unname(full.name)
   full.name <- gsub(",+$", "", full.name)
   full.name[full.name == "NA, NA"] <- NA
-  full.name <- gsub("\\, NA$", "", full.name) # "Tolonen, NA" -> "Tolonen"
-  full.name <- gsub("^NA, ", "", full.name) # "NA, Mikael" -> "Mikael"
+  full.name <- gsub("\\, NA$", "", full.name)
+  full.name <- gsub("^NA, ", "", full.name)
+  full.name <- sub(",\\s*-$", "", full.name)
+  full.name <- vapply(full.name, clean_name_cell, character(1))
   
-  
-  if (verbose) { message("Map to the original indices and return a data frame") }
-  
-  # indices that map unique entries back to original order (including duplicates)
   idx <- match(sorig, suniq)
   
-  # Build the output in original order
   out <- data.frame(
-    full_name = full.name[idx],     # "Last, First" (with NA handling already applied)
-    first = nametab$first[idx], # First name(s)
+    full_name = full.name[idx],
+    first = nametab$first[idx],
     last = nametab$last[idx],
     stringsAsFactors = FALSE
   )
   
-  return(out)
+  rownames(out) <- NULL
+  out
+}
+
+clean_name_cell <- function(x) {
+  if (is.na(x) || x == "") return(NA_character_)
+  
+  x <- stringi::stri_trans_nfc(x)
+  
+  parts <- unlist(strsplit(x, ";", fixed = TRUE))
+  parts <- trimws(parts)
+  parts <- parts[parts != ""]
+  
+  parts <- gsub(",+$", "", parts)
+  
+  parts <- gsub(
+    "\\b(Kääntäjä|Oppikirjailija|Kirjoittaja|Toimittaja|Suomentaja)\\b",
+    "",
+    parts,
+    ignore.case = TRUE
+  )
+  
+  parts <- stringr::str_squish(parts)
+  parts <- gsub(",+$", "", parts)
+  parts <- trimws(parts)
+  parts <- parts[parts != ""]
+  parts <- unique(parts)
+  
+  if (length(parts) == 0) return(NA_character_)
+  paste(parts, collapse = "; ")
 }
 
 
@@ -8550,294 +8582,393 @@ get_pseudonymes <- function (...) {
 
 }
 
-estimate_pages <- function (x) {
-
-  # Initialize
-  pagecount.info <- list(page.info = 0, multiplier = 1, squarebracket = 0, plate = 0, arabic = 0, roman = 0, sheet = 0, volcount = 0)
-
-  if (all(is.na(x))) {
+estimate_pages <- function(x) {
+  
+  pagecount.info <- list(
+    page.info     = 0,
+    multiplier    = 1,
+    squarebracket = 0,
+    plate         = 0,
+    arabic        = 0,
+    roman         = 0,
+    sheet         = 0,
+    volcount      = 0
+  )
+  
+  if (length(x) == 0 || all(is.na(x))) {
     return(pagecount.info)
-  } else if (!is.na(suppressWarnings(as.numeric(x)))) {
-    pagecount.info$sheet <- as.numeric(x)
+  }
+  
+  x <- as.character(x[1])
+  x <- stringr::str_trim(x)
+  
+  if (is.na(x) || x == "") {
     return(pagecount.info)
-  } else if (str_detect(x, "^[IVXLCDM]+$")) {
+  }
+  
+  # Plain number
+  num_x <- suppressWarnings(as.numeric(x))
+  if (!is.na(num_x)) {
+    pagecount.info$sheet <- num_x
+    return(pagecount.info)
+  }
+  
+  # Plain roman numeral
+  if (is.roman(x) &&
+      length(unlist(strsplit(x, ","), use.names = FALSE)) == 1 &&
+      length(grep("-", x)) == 0) {
     pagecount.info$roman <- suppressWarnings(as.numeric(as.roman(x)))
     return(pagecount.info)
-  } else if (str_detect(x, "^\\[[0-9]+ {0,1}[p|s]{0,1}\\]$")) {
-    pagecount.info$squarebracket <- suppressWarnings(as.numeric(stringr::str_trim(gsub("\\[", "", gsub("\\]", "", gsub(" [p|s]", "", x))))))
+  }
+  
+  # [3] or [3 p]
+  if (length(grep("^\\[[0-9]+ {0,1}[ps]{0,1}\\]$", x)) > 0) {
+    pagecount.info$squarebracket <- suppressWarnings(
+      as.numeric(
+        stringr::str_trim(
+          gsub("\\[|\\]| [ps]", "", x)
+        )
+      )
+    )
     return(pagecount.info)
-  } else if (str_detect(x, "^[0-9]+ sheets$")) {
-    pagecount.info$sheet <- 2 * as.numeric(as.roman(stringr::str_trim(unlist(strsplit(x, "sheet"), use.names = FALSE)[[1]])))
+  }
+  
+  # 3 sheets = 6 pages
+  if (length(grep("^[0-9]+ sheets*$", x)) > 0) {
+    sheet_n <- suppressWarnings(
+      as.numeric(
+        stringr::str_trim(
+          unlist(strsplit(x, "sheet"), use.names = FALSE)[[1]]
+        )
+      )
+    )
+    pagecount.info$sheet <- 2 * sheet_n
     return(pagecount.info)
-  } else if (str_detect(x, "\\[{0,1}[0-9]* \\]{0,1} leaves")) {
-    pagecount.info$squarebracket <- stringr::str_trim(gsub("\\[", "", gsub("\\]", "", x)))
+  }
+  
+  # [50] leaves
+  if (length(grep("\\[{0,1}[0-9]+ *\\]{0,1} leaves", x)) > 0) {
+    leaf_n <- suppressWarnings(
+      as.numeric(
+        stringr::str_trim(
+          gsub("\\[|\\]|leaves", "", x)
+        )
+      )
+    )
+    pagecount.info$squarebracket <- leaf_n
     return(pagecount.info)
-  } else if (str_detect(x, "[0-9]+ \\+ [0-9]+")) {
-    pagecount.info$sheet <- sum(as.numeric(stringr::str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))
+  }
+  
+  # 9 + 15
+  if (length(grep("^[0-9]+ *\\+ *[0-9]+$", x)) > 0) {
+    pagecount.info$sheet <- sum(
+      suppressWarnings(
+        as.numeric(
+          stringr::str_trim(
+            unlist(strsplit(x, "\\+"), use.names = FALSE)
+          )
+        )
+      ),
+      na.rm = TRUE
+    )
     return(pagecount.info)
-  } else if (!is.na(sum(as.numeric(roman2arabic(stringr::str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))))) {
+  }
+  
+  # IX + 313 -> IX, 313
+  plus_parts <- stringr::str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))
+  plus_nums <- suppressWarnings(as.numeric(roman2arabic(plus_parts)))
+  
+  if (length(plus_parts) > 1 && any(!is.na(plus_nums))) {
     x <- gsub("\\+", ",", x)
-  } else if (str_detect(x, "^p") && !str_detect(x, "-")) {
-    if (is.numeric(stringr::str_trim(gsub("^p", "", x)))) {
+  }
+  
+  # p66 -> one sheet/page reference
+  if (length(grep("^p", x)) > 0 && length(grep("-", x)) == 0) {
+    pnum <- suppressWarnings(as.numeric(stringr::str_trim(gsub("^p", "", x))))
+    if (!is.na(pnum)) {
       pagecount.info$sheet <- 1
       return(pagecount.info)
-    } else if (str_detect(x, "^p") && str_detect(x, "-")) {
-      x <- gsub("^p", "", x)
     }
-  } else if (str_detect(x, "^1 sheet \\[*[0-9+]\\]*")) {
+  }
+  
+  # p5-8 -> 5-8
+  if (length(grep("^p", x)) > 0 && length(grep("-", x)) > 0) {
+    x <- gsub("^p", "", x)
+  }
+  
+  # 1 sheet [166]
+  if (length(grep("^1 sheet \\[*[0-9+]+\\]*", x)) > 0) {
     x <- gsub("1 sheet", "", x)
     x <- gsub("\\[1\\]", "2", x)
-  } else if (str_detect(x, "^[0-9]+ sheets* [0-9]+ pages*$")) {
-    x <- gsub("^s", "", unlist(strsplit(x, "sheet"), use.names = FALSE)[[2]])
   }
-
-
-  if (all(is.na(x))) {
-    # "NA"
-    return(pagecount.info)
-  } else if (!is.na(suppressWarnings(as.numeric(x)))) {
-    # "3"
-    pagecount.info$sheet <- as.numeric(x)
-    return(pagecount.info)
-  } else if ((is.roman(x) && length(unlist(strsplit(x, ","), use.names = FALSE)) == 1 && length(grep("-", x)) == 0)) {
-    # "III" but not "ccclxxiii-ccclxxiv"
-    pagecount.info$roman <- suppressWarnings(as.numeric(as.roman(x)))
-    return(pagecount.info)
-  } else if (length(grep("^\\[[0-9]+ {0,1}[p|s]{0,1}\\]$", x)>0)) {
-    # "[3]" or [3 p]
-    pagecount.info$squarebracket <- suppressWarnings(as.numeric(stringr::str_trim(gsub("\\[", "", gsub("\\]", "", gsub(" [p|s]", "", x))))))
-    return(pagecount.info)
-  } else if (length(grep("^[0-9]+ sheets$", x)) == 1) {
-    # "1 sheet is 2 pages"
-    pagecount.info$sheet <- 2 * as.numeric(as.roman(stringr::str_trim(unlist(strsplit(x, "sheet"), use.names = FALSE)[[1]])))
-    return(pagecount.info)
-  } else if (length(grep("\\[{0,1}[0-9]* \\]{0,1} leaves", x)) > 0) {
-    # "[50 ] leaves"
-    pagecount.info$squarebracket <- stringr::str_trim(gsub("\\[", "", gsub("\\]", "", x)))
-    return(pagecount.info)
-  } else if (length(grep("[0-9]+ \\+ [0-9]+", x))>0) {
-    # 9 + 15
-    pagecount.info$sheet <- sum(as.numeric(stringr::str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))
-    return(pagecount.info)
-  } else if (!is.na(sum(as.numeric(roman2arabic(stringr::str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE))))))) {
-    # IX + 313
-    x <- gsub("\\+", ",", x)
-    sum(as.numeric(roman2arabic(stringr::str_trim(unlist(strsplit(x, "\\+"), use.names = FALSE)))))
-    return(pagecount.info)
-  } else if (length(grep("^p", x)) > 0 && length(grep("-", x)) == 0) {
-    # p66 -> 1
-    if (is.numeric(stringr::str_trim(gsub("^p", "", x)))) {
-      pagecount.info$sheet <- 1
-      return(pagecount.info)
-    } else if (length(grep("^p", x)) > 0 && length(grep("-", x)) > 0) {
-      # p5-8 -> 5-8
-      x <- gsub("^p", "", x)
-    }
-  } else if (length(grep("^1 sheet \\[*[0-9+]\\]*", x))>0) {
-    # "1 sheet [166]"
-    x <- gsub("1 sheet", "", x)
-    # 1 sheet ([1+] p.)
-    x <- gsub("\\[1\\]", "2", x)
-  } else if (length(grep("^[0-9]+ sheets* [0-9]+ pages*$", x))>0) {
-    # 3 sheets 3 pages
-    x <- gsub("^s", "", unlist(strsplit(x, "sheet"), use.names = FALSE)[[2]])
+  
+  # 3 sheets 3 pages -> 3 pages
+  if (length(grep("^[0-9]+ sheets* [0-9]+ pages*$", x)) > 0) {
+    x <- stringr::str_trim(
+      unlist(strsplit(x, "sheet"), use.names = FALSE)[[2]]
+    )
   }
-
+  
   # --------------------------------------------
-
-  # Then proceeding to the more complex cases...
-  # Harmonize the items within commas
-
-  # Remove plus now
+  # Complex cases
+  
   x <- gsub("\\+", "", x)
   x <- gsub("pages*$", "", x)
-
-  # "[52] plates between [58] blank sheets"
+  
   x <- gsub("plates between ", "plates, ", x)
-  # 6 sheets + 2 sheets
   x <- gsub("sheets", "sheets,", x)
-
-  # Handle comma-separated elements separately
+  
   spl <- condense_spaces(unlist(strsplit(x, ","), use.names = FALSE))
-
+  spl <- spl[!is.na(spl)]
+  spl <- spl[spl != ""]
+  
+  if (length(spl) == 0) {
+    return(pagecount.info)
+  }
+  
   # 13 [1] -> 13, [1]
-  if (length(grep("^[0-9]+ \\[[0-9]+\\]$", spl))>0) {
+  if (any(grepl("^[0-9]+ \\[[0-9]+\\]$", spl))) {
     spl <- gsub(" ", ", ", spl)
   }
+  
   spl <- condense_spaces(unlist(strsplit(spl, ","), use.names = FALSE))
-
-  # Harmonize pages within each comma
-  x <- sapply(spl, function (x) { harmonize_pages_by_comma(x) }, USE.NAMES = FALSE)
-
-  # Remove empty items
-  x <- as.vector(na.omit(x))
-  if (length(x) == 0) {x <- ""}
-
-  if (length(grep("^ff", x[[1]]))==1) {
-    # Document is folios - double the page count!
+  spl <- spl[!is.na(spl)]
+  spl <- spl[spl != ""]
+  
+  if (length(spl) == 0) {
+    return(pagecount.info)
+  }
+  
+  x <- sapply(
+    spl,
+    function(xi) harmonize_pages_by_comma(xi),
+    USE.NAMES = FALSE
+  )
+  
+  x <- as.vector(stats::na.omit(x))
+  x <- x[!is.na(x)]
+  x <- x[x != ""]
+  
+  if (length(x) == 0) {
+    return(pagecount.info)
+  }
+  
+  if (length(x) > 0 &&
+      !is.na(x[[1]]) &&
+      length(grep("^ff", x[[1]])) == 1) {
     pagecount.info$multiplier <- 2
   }
-
-  # Fix romans
+  
   x[x == "vj"] <- "vi"
-
-  # Identify (potentially overlapping) attribute positions for
-  # "arabic", "roman", "squarebracket", "dash", "sheet", "plate"
-  # attributes x positions table 0/1
-  # NOTE this has to come after harmonize_per_comma function !
+  
   pagecount.attributes <- attribute_table(x)
-
-  # If dashes are associated with square brackets,
-  # consider and convert them to arabic. Otherwise not.
-  # ie. [3]-5 becomes 3-5
+  
   dash <- pagecount.attributes["dash", ]
   sqb  <- pagecount.attributes["squarebracket", ]
+  
   inds <- which(dash & sqb)
-  pagecount.attributes["arabic", inds] <- TRUE
-  pagecount.attributes["squarebracket", inds] <- FALSE
-
-  # Page count can't be roman and arabic at the same time.
-  # or pages will double
+  if (length(inds) > 0) {
+    pagecount.attributes["arabic", inds] <- TRUE
+    pagecount.attributes["squarebracket", inds] <- FALSE
+  }
+  
   pagecount.attributes["roman", pagecount.attributes["arabic", ]] <- FALSE
-
-  # Remove square brackets
+  
   x <- gsub("\\[", "", x)
   x <- gsub("\\]", "", x)
-
-  # Convert romans to arabics (entries separated by spaces possibly)
-  # also 3-iv -> 3-4
+  
   inds <- pagecount.attributes["roman", ] | pagecount.attributes["arabic", ]
   if (any(inds)) {
     x[inds] <- roman2arabic(x[inds])
   }
-
-  # Convert plates to arabics
+  
   inds <- pagecount.attributes["plate", ]
   if (any(inds)) {
-    x[inds] <- as.numeric(stringr::str_trim(gsub("pages calculated from plates", "", x[inds])))
+    x[inds] <- suppressWarnings(
+      as.numeric(
+        stringr::str_trim(
+          gsub("pages calculated from plates", "", x[inds])
+        )
+      )
+    )
   }
-
-  # ----------------------------------------------
-
+  
+  # --------------------------------------------
   # Start page counting
-
-  # Sum square brackets: note the sum rule does not concern roman numerals
-  inds <- pagecount.attributes["squarebracket",] & !pagecount.attributes["roman",]
+  
+  inds <- pagecount.attributes["squarebracket", ] &
+    !pagecount.attributes["roman", ]
+  
   pagecount.info$squarebracket <- sumrule(x[inds])
-
-  # Sum plates
-  # FIXME: at the moment these all go to sheets already
-  inds <- pagecount.attributes["plate",]
-  pagecount.info$plate <- sum(na.omit(suppressWarnings(as.numeric(x[inds]))))
-
-  # Count pages according to the type
+  
+  inds <- pagecount.attributes["plate", ]
+  pagecount.info$plate <- sum(
+    stats::na.omit(
+      suppressWarnings(as.numeric(x[inds]))
+    )
+  )
+  
   for (type in c("arabic", "roman")) {
-    pagecount.info[[type]] <- count_pages(x[pagecount.attributes[type,]])
+    inds <- pagecount.attributes[type, ]
+    pagecount.info[[type]] <- count_pages(x[inds])
   }
-
-  # Sum sheets
-  inds <- pagecount.attributes["sheet",]
-  xx <- NA
+  
+  inds <- pagecount.attributes["sheet", ]
   xinds <- x[inds]
-  xinds <- gsub("^sheets*$", "1 sheet", xinds)
-
-  if (length(grep("sheet", xinds))>0) {
-    # 1 sheet = 2 pages
-    xinds <- sapply(xinds, function (xi) {stringr::str_trim(unlist(strsplit(xi, "sheet"), use.names = FALSE)[[1]])}, USE.NAMES = FALSE)
-    xx <- suppressWarnings(2 * as.numeric(as.roman(xinds)))
+  xinds <- xinds[!is.na(xinds)]
+  
+  if (length(xinds) > 0) {
+    xinds <- gsub("^sheets*$", "1 sheet", xinds)
+    
+    if (any(grepl("sheet", xinds))) {
+      xinds <- sapply(
+        xinds,
+        function(xi) {
+          stringr::str_trim(
+            unlist(strsplit(xi, "sheet"), use.names = FALSE)[[1]]
+          )
+        },
+        USE.NAMES = FALSE
+      )
+      
+      xx <- suppressWarnings(2 * as.numeric(xinds))
+    } else {
+      xx <- suppressWarnings(as.numeric(xinds))
+    }
+    
+    pagecount.info$sheet <- sumrule(xx)
   }
-  pagecount.info$sheet <- sumrule(xx)
-
-  # Return pagecount components
+  
   pagecount.info
-
 }
 
 
-polish_physext_help <- function (s, page.harmonize) {
-
-  # Return NA if conversion fails
-  if (length(s) == 1 && is.na(s)) {
-    #return(rep(NA, 11))
+polish_physext_help <- function(s, page.harmonize) {
+  
+  # Return NA-safe default if conversion fails
+  if (length(s) == 0 || all(is.na(s))) {
     s <- ""
   }
-
+  
+  s <- as.character(s[1])
+  s <- stringr::str_trim(s)
+  
   # 141-174. [2] -> "141-174, [2]"
-  if (grepl("[0-9]+\\.", s)) {
+  if (!is.na(s) && grepl("[0-9]+\\.", s)) {
     s <- gsub("\\.", ",", s)
   }
-
-  # Shortcut for easy cases: "24p."
-  if (length(grep("^[0-9]+ *p\\.*$",s))>0) {
-    #return(c(as.numeric(stringr::str_trim(gsub(" {0,1}p\\.{0,1}$", "", s))), rep(NA, 9)))
-    s <- as.numeric(stringr::str_trim(gsub(" {0,1}p\\.{0,1}$", "", s)))
+  
+  # Shortcut: "24p." -> "24"
+  if (!is.na(s) && grepl("^[0-9]+ *p\\.*$", s)) {
+    s <- stringr::str_trim(gsub(" {0,1}p\\.{0,1}$", "", s))
   }
-
+  
   # Pick volume number
   voln <- pick_volume(s)
-
-  # Volume count FIX needed
+  
+  # Pick volume count
   vols <- unname(pick_multivolume(s))
-
-  # Parts count
+  if (length(vols) == 0 || all(is.na(vols))) {
+    vols <- NA
+  } else {
+    vols <- vols[1]
+  }
+  
+  # Pick parts count
   parts <- pick_parts(s)
-
-  # "2 pts (96, 110 s.)" = 96 + 110s
-  if (length(grep("[0-9]+ pts (*)", s)) > 0 && length(grep(";", s)) == 0) {
+  if (length(parts) == 0 || all(is.na(parts))) {
+    parts <- NA
+  } else {
+    parts <- parts[1]
+  }
+  
+  # "2 pts (96, 110 s.)" -> "96; 110 s."
+  if (!is.na(s) &&
+      grepl("[0-9]+ pts", s) &&
+      !grepl(";", s)) {
     s <- gsub(",", ";", s)
   }
-
-  # Now remove volume info
+  
+  # Remove volume info
   s <- suppressWarnings(remove_volume_info(s))
-
+  
+  if (length(s) == 0 || all(is.na(s))) {
+    s <- ""
+  }
+  
+  s <- as.character(s[1])
+  
   # Cleanup
   s <- gsub("^;*\\(", "", s)
   s <- gsub(" s\\.*$", "", s)
   s <- condense_spaces(s)
-
-  # If number of volumes is the same than number of comma-separated units
-  # and there are no semicolons, then consider the comma-separated units as
-  # individual volumes and mark this by replacing commas by semicolons
-  # ie. 2v(130, 115) -> 130;115
-  if (!is.na(s) && !is.na(vols) && length(unlist(strsplit(s, ","), use.names = FALSE)) == vols && !grepl(";", s)) {
+  
+  # If number of volumes equals number of comma-separated units,
+  # interpret comma-separated units as separate volumes.
+  comma_units <- unlist(strsplit(s, ","), use.names = FALSE)
+  
+  if (!is.na(s) &&
+      !is.na(vols) &&
+      length(comma_units) == vols &&
+      !grepl(";", s)) {
     s <- gsub(",", ";", s)
   }
-
-  # Estimate pages for each document separately via a for loop
-  # Vectorization would be faster but we prefer simplicity and modularity here
-
-  if (length(grep(";", s)) > 0) {
+  
+  # Estimate pages
+  if (!is.na(s) && grepl(";", s)) {
+    
     spl <- unlist(strsplit(s, ";"), use.names = FALSE)
-    page.info <- sapply(spl, function (x) {polish_physext_help2(x, page.harmonize)})
-    page.info <- apply(page.info, 1, function (x) {sum(as.numeric(x), na.rm = TRUE)})
-    page.info[[1]] <- 1 # Not used anymore after summing up
+    spl <- stringr::str_trim(spl)
+    spl <- spl[!is.na(spl) & spl != ""]
+    
+    if (length(spl) == 0) {
+      page.info <- polish_physext_help2("", page.harmonize)
+    } else {
+      page.info.list <- lapply(
+        spl,
+        function(xi) polish_physext_help2(xi, page.harmonize)
+      )
+      
+      page.info.mat <- do.call(cbind, page.info.list)
+      
+      page.info <- apply(
+        page.info.mat,
+        1,
+        function(xi) sum(suppressWarnings(as.numeric(xi)), na.rm = TRUE)
+      )
+      
+      page.info[["pagecount"]] <- sum(
+        suppressWarnings(as.numeric(page.info.mat["pagecount", ])),
+        na.rm = TRUE
+      )
+    }
+    
   } else {
     page.info <- polish_physext_help2(s, page.harmonize)
   }
-
-  s <- page.info[["pagecount"]]
-  page.info <- page.info[-7]
-  s[s == ""] <- NA
-  s[s == "NA"] <- NA
-  s <- as.numeric(s)
-  s[is.infinite(s)] = NA
-
-  # Return
+  
+  # Extract final pagecount
+  pagecount <- page.info[["pagecount"]]
+  
+  pagecount[pagecount == ""] <- NA
+  pagecount[pagecount == "NA"] <- NA
+  
+  pagecount <- suppressWarnings(as.numeric(pagecount))
+  pagecount[is.infinite(pagecount)] <- NA
+  
+  # Remove original pagecount component before renaming detailed components
+  page.info <- page.info[names(page.info) != "pagecount"]
+  
   names(page.info) <- paste0("pagecount.", names(page.info))
-  # Add fields to page.info
-  vols <- vols[1:length(pagecount.info[["volcount"]])]
-  page.info[["pagecount"]] <- as.vector(s)
-  page.info[["volnumber"]] <- as.vector(voln)
-  #FIX below
-  vols <- vols[1:length(pagecount.info[["volcount"]])]
-  page.info[["volcount"]] <- as.vector(vols)
-  page.info[["parts"]] <- as.vector(parts)
-  page.info <- unlist(page.info)
-
-  page.info
-
+  
+  # Add metadata fields
+  page.info[["pagecount"]] <- as.vector(pagecount)
+  page.info[["volnumber"]] <- as.vector(voln[1])
+  page.info[["volcount"]]  <- as.vector(vols[1])
+  page.info[["parts"]]     <- as.vector(parts[1])
+  
+  unlist(page.info)
 }
-
 #' @title Polish Publisher Generic
 #' @description Generic cleanup of the publisher field.
 #' @param x Character vector of publisher names
@@ -9213,13 +9344,13 @@ clean_empty <- function(x) {
 split_values <- function(x) {
   x <- clean_empty(x)
   
-  if (is.na(x)) {
+  if (length(x) == 0 || is.na(x)) {
     return(NA_character_)
   }
   
-  values <- unlist(strsplit(x, ";", fixed = TRUE))
+  values <- unlist(strsplit(x, "\\||;", perl = TRUE))
   values <- str_trim(values)
-  values[values == ""] <- NA
+  values[values == ""] <- NA_character_
   values
 }
 
@@ -9243,3 +9374,90 @@ make_author_pairs <- function(names, ids, dates) {
   )
 }
 
+make_author_pairs_700 <- function(names, ids) {
+  
+  names <- split_values(names)
+  ids   <- split_values(ids)
+  
+  max_len <- max(length(names), length(ids))
+  
+  length(names) <- max_len
+  length(ids)   <- max_len
+  
+  data.frame(
+    author_name = names,
+    author_id = ids,
+    author_date = NA_character_,
+    stringsAsFactors = FALSE
+  )
+}
+
+plot_gatherings <- function(df, top_n = 10) {
+  
+  plot_df <- df %>%
+    transmute(
+      original = gatherings.original,
+      final = gatherings
+    ) %>%
+    pivot_longer(
+      cols = everything(),
+      names_to = "type",
+      values_to = "gatherings"
+    ) %>%
+    mutate(
+      gatherings = trimws(as.character(gatherings)),
+      gatherings = na_if(gatherings, ""),
+      gatherings = na_if(gatherings, "NA")
+    ) %>%
+    filter(!is.na(gatherings))
+  
+  # keep only most common gatherings
+  top_levels <- plot_df %>%
+    filter(type == "final") %>%
+    count(gatherings, sort = TRUE) %>%
+    slice_head(n = top_n) %>%
+    pull(gatherings)
+  
+  plot_df <- plot_df %>%
+    mutate(
+      gatherings = ifelse(
+        gatherings %in% top_levels,
+        gatherings,
+        "Other"
+      )
+    ) %>%
+    count(type, gatherings) %>%
+    group_by(type) %>%
+    mutate(
+      prop = n / sum(n),
+      gatherings = fct_reorder(gatherings, prop)
+    )
+  
+  ggplot(plot_df,
+         aes(x = prop,
+             y = gatherings)) +
+    
+    geom_col(width = 0.7) +
+    
+    facet_wrap(~type, ncol = 2) +
+    
+    scale_x_continuous(
+      labels = percent_format(accuracy = 1)
+    ) +
+    
+    labs(
+      x = "Share of documents",
+      y = NULL,
+      title = "Distribution of document gatherings",
+      subtitle = "Original vs estimated values"
+    ) +
+    
+    theme_minimal(base_size = 13) +
+    
+    theme(
+      legend.position = "none",
+      panel.grid.minor = element_blank(),
+      strip.text = element_text(face = "bold"),
+      plot.title = element_text(face = "bold")
+    )
+}

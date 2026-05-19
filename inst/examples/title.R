@@ -5,7 +5,7 @@ x <- polish_title(df.orig[[field]])
 
 
 # Collect the results into a data.frame
-df.tmp <- data.frame(id = df.orig$melinda_id,
+df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      original = x$title_original,
                      title = x$title_harmonized,
                      title_length = x$title_length,
@@ -70,7 +70,7 @@ df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,] # publication time has df.h
 field <- "title"
 
 # # Define output files
-# file_accepted_19  <- paste0(output.folder, field, "_accepted_19.csv")
+file_accepted_19  <- paste0(output.folder, field, "_accepted_19.csv")
 # file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 # 
 # # ------------------------------------------------------------
@@ -78,7 +78,7 @@ field <- "title"
 # # Generate data summaries for the 19th century
 # 
 # message("Accepted entries in the preprocessed data")
-# s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE, add.percentages = TRUE)
+ s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE, add.percentages = TRUE)
 # 
 # message("Discarded entries in the original data")
 # 
@@ -96,13 +96,13 @@ field <- "title"
 # # ------------------------------------------------------------
 # # Store the title field data
 # 
-# data.file.19 <- paste0(field, ".Rds")
-# saveRDS(df_19, file = data.file.19)
+data.file.19 <- paste0(field, ".Rds")
+saveRDS(df_19, file = data.file.19)
 # # Load the RDS file
-# df_19 <- readRDS(data.file.19)
+df_19 <- readRDS(data.file.19)
 # 
 # # Convert to CSV and store in the output.tables folder
-# write.table(df_19, file = paste0(output.folder, paste0(field, "_19", ".csv")))
+write.table(df_19, file = paste0(output.folder, paste0(field, "_19", ".csv")))
 # 
 # #load to allas
 # #source("allas.R")

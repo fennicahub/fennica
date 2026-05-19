@@ -144,30 +144,6 @@ colnames(tab) <- c("Title", "Entries (n)", "Fraction (%)")
 kable(head(tab, 10))
 ```
 
-
-### Top-`r ntop` titles for years 1809-1917 / "Language material" content type 
-
-```{r}
-#| label = "summary_title_table3",
-#| echo = FALSE,
-#| results = "asis"
-
-#pick melindas for language material content types
-df_lang_material <- df.orig %>%
-  filter(type_of_record == "Language material") %>%
-  select(melinda_id)
-
-#filter language material melindas for 1809-1917 years 
-df_19_language_mat <- df_19 %>%
-  filter(melinda_id %in% df_lang_material$melinda_id)
-
-x <- top(df_19_language_mat, "title")
-tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df_19)), 1))
-colnames(tab) <- c("Title", "Entries (n)", "Fraction (%)")
-kable(head(tab, 10))
-```
-
-
 ### Title Length Over Time (1809-1917)
 This plot visualizes the variation in title lengths across publication years from 1809 to 1917. The title lengths range from  `r min(df_19$title_length, na.rm = TRUE)` to`r max(df_19$title_length, na.rm = TRUE)`. N = `r nrow(df_19)`.
 
