@@ -3,20 +3,11 @@
 #source("author_name_for_gender.R"): get all names that exist in fennica and create fennica_all_names.csv
 field <- "gender"
 
-df.tmp <- fennica_all_names
+df.tmp <- author_database
 
 # Only replace gender if it's currently NA
 df.tmp$gender <- assign_gender(as.character(df.tmp$first))
 
-##add to author_name_for_gender.R
-df.tmp$note <- gsub(
-  "Koko nimi|Syntymänimi|Aiempi nimi|Tunnetaan myös nimellä|entinen nimi|Kirjoitti myös nimimerkillä|maallikkonimi|Maanmittari|nimi vuoteen|vuodesta|nimi vuodesta|professori|senaattori|valtioneuvos|Ruotsin tiedeakatemian jäsen|Aateloitu 1809|maantieteilijä",
-  "",
-  df.tmp$note,
-  ignore.case = TRUE
-)
-
-df.tmp$note <- trimws(df.tmp$note) 
 ###########
 
 missing_idx <- is.na(df.tmp$gender)

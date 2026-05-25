@@ -3,39 +3,10 @@ field <- "physical_extent"
 
 df.tmp <- polish_physical_extent(df.orig[[field]], verbose = TRUE)
 
-x <- df.orig[df.orig$melinda_id %in% melindas_early,]
-
-
-x <- x %>%
-  mutate(physical_extent = case_when(
-    physical_extent == "" ~ NA_character_,
-    TRUE ~ str_replace_all(physical_extent, c(
-      "sivua" = "s", 
-      "sivu" = "s", 
-      "numeroimatonta" = "", 
-      "numeroimaton" = "", 
-      "[?] s." = "", 
-      "1 verkkoaineisto" = "", 
-      "verkkoaineisto" = "", 
-      "(puutteellinen)" = "", 
-      "Kollaatio avoin" = "",
-      "(verso tyhjä)" = ""
-    ))
-  )) %>%
-  mutate(physical_extent = str_trim(str_replace(physical_extent, "[:;]+$", "")))
-
-df.tmp <- polish_physical_extent(x$physical_extent, verbose = TRUE)
 
 # Add melinda id info as first column
-df.tmp <- bind_cols(melinda_id = x$melinda_id,
-                    physical_extent = x$physical_extent, # add field column
+df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
                     df.tmp)
-
-df.tmp <- df.tmp %>%
-  mutate(pagecount = ifelse(is.na(physical_extent), NA, pagecount))
-df.tmp$pagecount <- ifelse(!is.na(df.tmp$pagecount), df.tmp$pagecount - 1, df.tmp$pagecount)
-df.tmp$pagecount <- gsub("-", "", df.tmp$pagecount)
-
 
 
 # Store the title field data

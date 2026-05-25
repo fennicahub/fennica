@@ -24,7 +24,7 @@ column_count <- ncol(read.csv(url, nrows = 1, sep = "\t"))
 col_classes <- c("character", rep(NA, column_count - 1))
 
 # Read the file with the specified colClasses
-df.orig <- read.csv(url, skip = 2, header = TRUE, sep = "\t", colClasses = col_classes)
+df.orig <- read.csv(url, skip = 3, header = TRUE, sep = "\t", colClasses = col_classes)
 
 names(df.orig) <- c(
   "melinda_id",            # 001
@@ -82,6 +82,8 @@ names(df.orig) <- c(
 df.orig <- df.orig %>% distinct()
 df.orig$title2 <- paste(df.orig$title, "|" ,df.orig$title_remainder)
 
+df.orig$asteri_id <- clean_id(df.orig$asteri_id)
+
 df.orig <- df.orig %>%
   mutate(
     asteri_id = str_trim(asteri_id),
@@ -89,4 +91,4 @@ df.orig <- df.orig %>%
     asteri_id = str_remove(asteri_id, "^\\(FI-ASTERI-N\\)\\s*"),
     asteri_id = str_extract(asteri_id, "\\d{9}")
   )
-
+names(df.orig) <- ifelse(names(df.orig) == "", NA, names(df.orig))

@@ -23,17 +23,15 @@ df_700 <- read.csv("authors_700_long.csv")
 # The goal is to keep only the 9-digit numeric Asteri identifier.
 df_700 <- df_700 %>%
   mutate(
-    asteri_id = str_trim(author_id),                         # remove extra spaces
-    asteri_id = na_if(asteri_id, ""),                        # empty strings become NA
-    asteri_id = str_remove(asteri_id, "^\\(FI-ASTERI-N\\)\\s*"), # remove prefix
-    asteri_id = str_extract(asteri_id, "\\d{9}")             # keep only 9-digit ID
-  )
+    asteri_id = clean_id(author_id))
 
 # Harmonise / clean author names using your polish_author() function.
 # The function returns a structured object; here only full_name is kept.
 name <- polish_author(df_700$author_name)
 
 df_700$author_name <- name$full_name
+
+
 
 # Make sure df_700 is a normal data frame.
 df_700 <- as.data.frame(df_700)
@@ -42,19 +40,19 @@ df_700 <- as.data.frame(df_700)
 # df.kanto contains authority-data dates: from = birth, till = death.
 idx <- match(df_700$asteri_id, df.kanto$asteri_id)
 
-df_700[["birth"]] <- df.kanto[["from"]][idx]
-df_700[["death"]] <- df.kanto[["till"]][idx]
+df_700[["from"]] <- df.kanto[["birthDate"]][idx]
+df_700[["till"]] <- df.kanto[["deathDate"]][idx]
 
 # Check whether the same combination of author_name + birth
 # maps to one or several Asteri IDs.
 name_birth_ids <- df_700 %>%
   transmute(
-    author_name = author_name,
-    birth = birth,
-    asteri_id = asteri_id
+    author_name = .data$author_name,
+    from = .data$from,
+    asteri_id = .data$asteri_id
   ) %>%
-  filter(!is.na(author_name), !is.na(birth)) %>%
-  group_by(author_name, birth) %>%
+  filter(!is.na(author_name), !is.na(from)) %>%
+  group_by(author_name, from) %>%
   summarise(
     n_ids = n_distinct(asteri_id, na.rm = TRUE),
     ids = paste(sort(unique(na.omit(asteri_id))), collapse = "; "),
@@ -80,19 +78,19 @@ name_birth_unique <- name_birth_ids %>%
 # if author_name + birth has exactly one Asteri ID,
 # use that ID as a safe candidate for missing IDs.
 lookup_nb <- df_700 %>%
-  filter(!is.na(author_name), !is.na(birth)) %>%
-  group_by(author_name, birth) %>%
+  filter(!is.na(author_name), !is.na(from)) %>%
+  group_by(author_name, from) %>%
   summarise(
     n_ids = n_distinct(asteri_id, na.rm = TRUE),
     id_unique = ifelse(n_ids == 1, first(na.omit(asteri_id)), NA_character_),
     .groups = "drop"
   ) %>%
   filter(n_ids == 1) %>%
-  select(author_name, birth, id_unique)
+  select(author_name, from, id_unique)
 
 # Create matching keys for lookup and df_700.
-key_lookup <- paste(lookup_nb$author_name, lookup_nb$birth)
-key_700    <- paste(df_700$author_name, df_700$birth)
+key_lookup <- paste(lookup_nb$author_name, lookup_nb$from)
+key_700    <- paste(df_700$author_name, df_700$from)
 
 idx <- match(key_700, key_lookup)
 
@@ -131,10 +129,31 @@ sum(missing_id & !is.na(df_700$asteri_id))
 # Collapse the long 700 table back to one row per bibliographic record.
 # id1 is the record identifier.
 # Multiple 700 authors and IDs are pasted together with "; ".
-df_700_by_record <- df_700 %>%
-  group_by(id1) %>%
-  summarise(
-    author_name_700 = paste(author_name, collapse = "; "),
-    asteri_id_700   = paste(asteri_id, collapse = "; "),
-    .groups = "drop"
-  )
+
+# Identify mismatched rows and set them to NA
+df_700_by_record <- df_700_by_record %>%
+  mutate(
+    n_names = str_count(author_name_700, ";") + 1,
+    n_ids   = str_count(asteri_id_700, ";") + 1,
+    
+    author_name_700 = ifelse(
+      n_names != n_ids,
+      NA,
+      author_name_700
+    ),
+    
+    asteri_id_700 = ifelse(
+      n_names != n_ids,
+      NA,
+      asteri_id_700
+    )
+  ) %>%
+  select(-n_names, -n_ids)
+
+df_700_mismatch <- df_700_by_record %>%
+  mutate(
+    n_names = str_count(author_name_700, ";") + 1,
+    n_ids   = str_count(asteri_id_700, ";") + 1
+  ) %>%
+  filter(n_names != n_ids)
+

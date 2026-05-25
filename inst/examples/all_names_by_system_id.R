@@ -26,6 +26,7 @@ library(stringr)
 # Start from the original Fennica data
 df <- df.orig
 
+df$asteri_id <- clean_id(df$asteri_id)
 
 # Keep only the columns needed for the MARC 100 author database
 df_100_raw <- data.frame(
@@ -101,20 +102,29 @@ df_100_filled <- df_100 %>%
 
 
 # Build the final names database from MARC 100
+# Build the final names database from cleaned MARC 100 data
 names_database <- data.frame(
-  id1         = df_100_filled$id1,
+  id1         = as.character(df_100_filled$id1),
   author_name = df_100_filled$author_name,
   asteri_id   = df_100_filled$asteri_id,
   date        = df_100_filled$date,
   stringsAsFactors = FALSE
 )
 
+# Add aggregated MARC 700 author information
+# by matching records using field 001 / Melinda ID
+names_database <- merge(
+  names_database,
+  
+  df_700_by_record %>%
+    transmute(
+      id1 = as.character(id1),
+      author_name_700,
+      asteri_id_700
+    ),
+  
+  by = "id1",
+  all.x = TRUE,
+  sort = FALSE
+)
 
-# Add MARC 700 author information by matching record ID
-names_database$id1 <- as.character(names_database$id1)
-df_700_by_record$id1 <- as.character(df_700_by_record$id1)
-
-idx <- match(names_database$id1, df_700_by_record$id1)
-
-names_database$author_name_700 <- df_700_by_record$author_name_700[idx]
-names_database$asteri_id_700   <- df_700_by_record$asteri_id_700[idx]

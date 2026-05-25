@@ -1,31 +1,10 @@
 field <- "author_date"
-field1 <- "author_birth_date_kanto"
-field2 <- "author_death_date_kanto"
-field3 <- "author_date_enriched"
 
 # Empty strings to NA
 df.orig[[field]][df.orig[[field]] == ""] <- NA
-df.orig[[field1]][df.orig[[field1]] == ""] <- NA
-df.orig[[field2]][df.orig[[field2]] == ""] <- NA
-
-# Build Kanto date field: birth-death
-df.orig$author_date_kanto <- paste0(
-  ifelse(is.na(df.orig[[field1]]), "", df.orig[[field1]]),
-  "-",
-  ifelse(is.na(df.orig[[field2]]), "", df.orig[[field2]])
-)
-
-# Clean impossible empty forms
-df.orig$author_date_kanto[df.orig$author_date_kanto %in% c("-", "")] <- NA
-
-# Use Kanto first, fallback to original author_date
-df.orig[[field3]] <- dplyr::coalesce(
-  df.orig$author_date_kanto,
-  df.orig[[field]]
-)
 
 # TODO make a tidy cleanup function to shorten the code here
-df.tmp <- polish_author_years(df.orig[[field3]], check = TRUE)
+df.tmp <- polish_author_years(df.orig[[field]], check = TRUE)
 
 df.tmp <- df.tmp %>%
   dplyr::rename(
@@ -99,7 +78,7 @@ s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE)
 
 message("Discarded entries in the original data")
 
-o <- as.character(df.orig[[field3]])
+o <- as.character(df.orig[[field]])
 x <- as.character(df.tmp[["author_birth"]])
 y <- as.character(df.tmp[["author_death"]])
 
@@ -220,4 +199,4 @@ write.table(df_19, file = paste0(output.folder, paste0(field, "_19.csv")),
 
 
 
-source("allas.R")
+#source("allas.R")

@@ -133,6 +133,84 @@ The estimated dimensions are based on the following auxiliary information sheets
 #| fig.width=20, 
 #| fig.height=6
 
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(forcats)
+library(scales)
+
+plot_gatherings <- function(df, top_n = 10) {
+  
+  plot_df <- df %>%
+    transmute(
+      original = gatherings.original,
+      final = gatherings
+    ) %>%
+    pivot_longer(
+      cols = everything(),
+      names_to = "type",
+      values_to = "gatherings"
+    ) %>%
+    mutate(
+      gatherings = trimws(as.character(gatherings)),
+      gatherings = na_if(gatherings, ""),
+      gatherings = na_if(gatherings, "NA")
+    ) %>%
+    filter(!is.na(gatherings))
+  
+  # keep only most common gatherings
+  top_levels <- plot_df %>%
+    filter(type == "final") %>%
+    count(gatherings, sort = TRUE) %>%
+    slice_head(n = top_n) %>%
+    pull(gatherings)
+  
+  plot_df <- plot_df %>%
+    mutate(
+      gatherings = ifelse(
+        gatherings %in% top_levels,
+        gatherings,
+        "Other"
+      )
+    ) %>%
+    count(type, gatherings) %>%
+    group_by(type) %>%
+    mutate(
+      prop = n / sum(n),
+      gatherings = fct_reorder(gatherings, prop)
+    )
+  
+  ggplot(plot_df,
+         aes(x = prop,
+             y = gatherings)) +
+    
+    geom_col(width = 0.7) +
+    
+    facet_wrap(~type, ncol = 2) +
+    
+    scale_x_continuous(
+      labels = percent_format(accuracy = 1)
+    ) +
+    
+    labs(
+      x = "Share of documents",
+      y = NULL,
+      title = "Distribution of document gatherings",
+      subtitle = "Original vs estimated values"
+    ) +
+    
+    theme_minimal(base_size = 13) +
+    
+    theme(
+      legend.position = "none",
+      panel.grid.minor = element_blank(),
+      strip.text = element_text(face = "bold"),
+      plot.title = element_text(face = "bold")
+    )
+}
+
+
+
 plot_gatherings(df.tmp)
 
 ```

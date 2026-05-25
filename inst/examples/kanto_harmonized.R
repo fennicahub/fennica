@@ -9,15 +9,15 @@ for (field in kanto_fields) {
     function(x) paste(unique(na.omit(x)), collapse = "; ")
   )
   # assign to author_df using match-like indexing
-  author_database[[field]] <- map_vec[author_df$asteri_id]
+  authors_df[[field]] <- map_vec[authors_df$id]
 }
 
-f_preflabel <- polish_author(author_df$prefLabel)
-f_altLabel <- polish_author(author_df$altLabel)
-f_variantName <- polish_author(author_df$variantName)
-f_fullerFormOfName <- polish_author(author_df$fullerFormOfName)
-f_hiddenLabel <- polish_author(author_df$hiddenLabel)
-f_authorizedAccessPoint <- polish_author(author_df$authorizedAccessPoint)
+f_preflabel <- polish_author(authors_df$prefLabel)
+f_altLabel <- polish_author(authors_df$altLabel)
+f_variantName <- polish_author(authors_df$variantName)
+f_fullerFormOfName <- polish_author(authors_df$fullerFormOfName)
+f_hiddenLabel <- polish_author(authors_df$hiddenLabel)
+f_authorizedAccessPoint <- polish_author(authors_df$authorizedAccessPoint)
 
 polished_list <- list(
   prefLabel = f_preflabel,
@@ -33,14 +33,14 @@ for (field in names(polished_list)) {
   # rename columns to keep origin
   names(tmp) <- paste0(field, "_", names(tmp))
   # bind column-wise (same row order assumed)
-  author_database <- cbind(author_database, tmp)
+  authors_df <- cbind(authors_df, tmp)
 }
 
 
 # collect all *_author_name, *_first, *_last columns
-name_cols  <- grep("_full_name$", names(author_database), value = TRUE)
-first_cols <- grep("_first$", names(author_database), value = TRUE)
-last_cols  <- grep("_last$", names(author_database), value = TRUE)
+name_cols  <- grep("_full_name$", names(authors_df), value = TRUE)
+first_cols <- grep("_first$", names(authors_df), value = TRUE)
+last_cols  <- grep("_last$", names(authors_df), value = TRUE)
 
 # helper to collapse unique values per row
 collapse_unique <- function(x) {
@@ -51,10 +51,10 @@ collapse_unique <- function(x) {
 
 # build final names df
 names_df <- data.frame(
-  asteri_id = author_database$asteri_id,
-  author_name = apply(author_database[name_cols], 1, collapse_unique),
-  first       = apply(author_database[first_cols], 1, collapse_unique),
-  last        = apply(author_database[last_cols], 1, collapse_unique),
+  asteri_id = authors_df$id,
+  author_name = apply(authors_df[name_cols], 1, collapse_unique),
+  first       = apply(authors_df[first_cols], 1, collapse_unique),
+  last        = apply(authors_df[last_cols], 1, collapse_unique),
   stringsAsFactors = FALSE
 )
 
@@ -72,33 +72,60 @@ df.orig$asteri_id <- as.character(df.orig$asteri_id)
 idx <- match(names_df$asteri_id, df.kanto$asteri_id)
 idx1 <- match(names_df$asteri_id, df.orig$asteri_id)
 
+source("author_date.R")
 # assign columns
 names_df$author_birth <- df.kanto$birthDate[idx]
 names_df$author_death <- df.kanto$deathDate[idx]
-names_df$author_date <- df.orig$author_date[idx1]
+names_df$author_birth_100 <- df_date$author_birth[idx1]
+names_df$author_death_100 <- df_date$author_death[idx1]
 names_df$note <- df.kanto$note[idx]
 
 
-df.tmp <- polish_author_years(names_df$author_date, check = TRUE)
-names_df$author_from1 <- df.tmp$from
-names_df$author_till1 <- df.tmp$till
-
 names_df <- names_df %>%
   mutate(
-    from = if_else(!is.na(author_from1),
-                   as.character(author_from1),
-                   as.character(author_birth)),
-    till = if_else(!is.na(author_till1),
-                   as.character(author_till1),
-                   as.character(author_death))
+    from = coalesce(
+      as.character(author_birth),
+      as.character(author_birth_100)
+    ),
+    till = coalesce(
+      as.character(author_death),
+      as.character(author_death_100)
+    )
   )
 
 names_df$kanto_all <- names_df$author_name
+
+names_df <- names_df %>%
+  mutate(
+    from_num = as.numeric(from),
+    till_num = as.numeric(till),
+    
+    author_age = till_num - from_num,
+    
+    author_age = ifelse(
+      !is.na(from_num) & !is.na(till_num) &
+        from_num < 0 & till_num > 0,
+      author_age - 1,
+      author_age
+    ),
+    
+    author_age = ifelse(
+      author_age < 10 | author_age > 110,
+      NA,
+      author_age
+    ),
+    
+    author_age = na_if(author_age, 0)
+  ) %>%
+  select(-from_num, -till_num)
+
+
 names_df <- names_df %>%
   select(-author_birth,
          -author_death,
          -author_date,
-         -author_from1,
-         -author_till1, 
-         -author_name)
+         -author_birth_100,
+         -author_death_100)
+
+kanto_harmonized <- names_df
 

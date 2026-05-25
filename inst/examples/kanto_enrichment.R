@@ -1,19 +1,43 @@
+library(devtools)
+library(dplyr)
+library(tidyr)
+library(tm)
+library(stringr)
+library(knitr)
+library(R.utils)
+library(ggplot2)
+library(Cairo)
+library(purrr)
+library(stringi)
+library(parallel)
+library(qdapRegex)
+library(readxl)
+library(arrow)
+library(textutils)
+library(data.table)
+library(brms)
+library(rnaturalearth)
 
+# Install latest version from Github
+# install_github("fennicahub/fennica") # or
+# devtools::load_all() # if you are working from the clone and modifying it
+library(fennica)
+
+# Load misc functions needed for harmonization
+source("funcs.R")
 # Step 1. load author_id from df.orig 
-# source("priority_fields.R")
-
+source("priority_fields.R")
 
 # collect all Asteri IDs from both df.orig and df_700
 fennica_asteri <- bind_rows(
   df.orig %>% transmute(asteri_raw = as.character(asteri_id)),
-  df_700   %>% transmute(asteri_raw = as.character(asteri_id))
+  df.orig %>% transmute(asteri_row = as.character(added_id))
 ) %>%
   filter(!is.na(asteri_raw), asteri_raw != "") %>%
   separate_rows(asteri_raw, sep = "\\|") %>%
   mutate(
-    asteri_id = str_trim(asteri_raw),
-    asteri_id = str_remove(asteri_id, "^\\(FI-ASTERI-N\\)\\s*"),
-    author_ID = str_extract(asteri_id, "\\d{9}")
+    asteri_id = clean_id(asteri_raw),
+    author_ID = str_extract(asteri_id, "\\d+")
   ) %>%
   filter(!is.na(author_ID), author_ID != "") %>%
   distinct(author_ID, .keep_all = TRUE)
