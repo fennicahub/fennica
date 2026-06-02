@@ -72,7 +72,7 @@ names(df.orig) <- c(
   "variant_title_246",     # 246a
   "series_490",            # 490a
   "dissertation_note_502", # 502a
-  "uniform_title_130",     # 130a
+  "title_uniform_130",     # 130a
   "corporate_author_110",  # 110a
   "event_author_111"       # 111a
 )
@@ -92,3 +92,18 @@ df.orig <- df.orig %>%
     asteri_id = str_extract(asteri_id, "\\d{9}")
   )
 names(df.orig) <- ifelse(names(df.orig) == "", NA, names(df.orig))
+
+# >  df_orig_duplicates <- df.orig %>%
+#   +    group_by(melinda_id) %>%
+#   +    filter(n() > 1) %>%
+#   +    arrange(melinda_id)
+# > View(df_orig_duplicates)
+# > df_orig_duplicates <- df_orig_duplicates %>%
+#   +     rename(id1 = melinda_id)
+# > write.table(
+#   +     df_orig_duplicates,
+#   +     file = "df_orig_duplicates.tsv",
+#   +     sep = "\t",
+#   +     row.names = FALSE,
+#   +     quote = FALSE,
+#   +     na = ""

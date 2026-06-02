@@ -123,7 +123,6 @@ names_df <- names_df %>%
 names_df <- names_df %>%
   select(-author_birth,
          -author_death,
-         -author_date,
          -author_birth_100,
          -author_death_100)
 

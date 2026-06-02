@@ -1,8 +1,8 @@
 field <- "author_name"
-
+df.orig$author_name[df.orig$author_name == ""] <- NA
 # Full author name (Last, First, Full)
 author <- polish_author(df.orig[[field]], verbose = TRUE)
-df.orig$author_name[df.orig$author_name == ""] <- NA
+
 
 # Collect the results into a data.frame
 df.tmp <- data.frame(melinda_id = df.orig$melinda_id, 
@@ -10,6 +10,19 @@ df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
                      author_name = author$full_name, 
                      first = author$first, 
                      last= author$last)
+
+df.tmp$author_name[trimws(df.tmp$author_name) == ""] <- NA
+df.tmp$author_name[trimws(df.tmp$author_name) == "NA"] <- NA
+df.tmp$author_name[trimws(df.tmp$author_name) == "-"] <- NA
+
+df.tmp$first[trimws(df.tmp$first) == ""] <- NA
+df.tmp$first[trimws(df.tmp$first) == "-"] <- NA
+df.tmp$first[trimws(df.tmp$first) == "NA"] <- NA
+
+
+df.tmp$last[trimws(df.tmp$last) == ""] <- NA
+df.tmp$last[trimws(df.tmp$last) == "-"] <- NA
+df.tmp$last[trimws(df.tmp$last) == "NA"] <- NA
 
 ################################################################
 
@@ -36,37 +49,17 @@ s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE)
 
 message("Discarded entries in the original data")
 
-# add duplicate-order index within each melinda_id
-df.orig2 <- df.orig %>%
-  group_by(melinda_id) %>%
-  mutate(.id_in_group = row_number()) %>%
-  ungroup()
+message("Discarded entries in the original data")
 
-df.tmp2 <- df.tmp %>%
-  group_by(melinda_id) %>%
-  mutate(.id_in_group = row_number()) %>%
-  ungroup()
+# NA values in the final harmonized data
+inds <- which(is.na(df.tmp[[field]]))
 
-# join harmonized data to original data row-by-row within melinda_id
-tmp_compare <- df.tmp2 %>%
-  dplyr::select(melinda_id, .id_in_group, harmonized_value = all_of(field)) %>%
-  left_join(
-    df.orig2 %>%
-      dplyr::select(melinda_id, .id_in_group, original_value = all_of(field)),
-    by = c("melinda_id", ".id_in_group")
-  )
+# Original entries that were converted into NA
+original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
 
-# keep only cases where harmonized value is NA,
-# but original value was not NA and not empty
-discarded_rows <- tmp_compare %>%
-  filter(
-    is.na(harmonized_value),
-    !is.na(original_value),
-    original_value != ""
-  )
+# .. ie. those are "discarded" cases; list them in a table
+tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 
-# frequency table of discarded original values
-tmp <- write_xtable(discarded_rows$original_value, file_discarded, count = TRUE)
 
 # save detailed discarded rows
 write.table(

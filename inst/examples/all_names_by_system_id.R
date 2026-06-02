@@ -118,7 +118,7 @@ names_database <- merge(
   
   df_700_by_record %>%
     transmute(
-      id1 = as.character(id1),
+      id1 = as.character(field_001),
       author_name_700,
       asteri_id_700
     ),

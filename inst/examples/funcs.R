@@ -2350,37 +2350,36 @@ pick_firstname <- function (x, format = "last, first", keep.single = FALSE) {
 
 
 
-
-
-
-is.roman <- function (x) {
-
+is.roman <- function(x) {
+  
   x <- gsub("\\.", NA, x)
-
-  check.roman <- function (x) {
-
-    if (x == "" || is.na(x)) {return(FALSE)}
-
-    xs <- unlist(strsplit(x, "-"), use.names = FALSE)
-    isr <- c()
-
-    for (i in 1:length(xs)) {
-      x <- xs[[i]]
-      tmp <- suppressWarnings(as.numeric(x))
-      tmp2 <- suppressWarnings(as.numeric(as.roman(x)))
-      not.numeric <- length(na.omit(tmp)) > 0
-      roman.numeric <- is.numeric(tmp2)
-
-      isr[[i]] <- !(not.numeric && roman.numeric) && !is.na(tmp2)
+  
+  check.roman <- function(x) {
+    
+    if (is.na(x) || x == "") {
+      return(FALSE)
     }
-    # iii-7 TRUE; iii-iv TRUE; 4-7 FALSE
-    any(isr)
+    
+    xs <- unlist(strsplit(x, "-"), use.names = FALSE)
+    isr <- logical(length(xs))
+    
+    for (i in seq_along(xs)) {
+      xi <- xs[[i]]
+      
+      tmp <- suppressWarnings(as.numeric(xi))
+      tmp2 <- suppressWarnings(as.numeric(as.roman(xi)))
+      
+      is_numeric <- !is.na(tmp)
+      is_roman_numeric <- !is.na(tmp2)
+      
+      isr[i] <- !is_numeric && is_roman_numeric
+    }
+    
+    any(isr, na.rm = TRUE)
   }
-
-  sapply(x, check.roman, USE.NAMES = FALSE)
-
+  
+  vapply(x, check.roman, logical(1), USE.NAMES = FALSE)
 }
-
 
 
 
@@ -5443,76 +5442,51 @@ replace_pattern <- function(x, pattern, replacement) {
   gsub(pattern, replacement, x)
 }
 
-# Use `case_when` to replace multiple `if` conditions
-polish_physext_help2 <- function (x, page.harmonize) {
-
-  x <- as.character(map(x, page.harmonize, mode = "recursive"))
-
-  x <- case_when(
-    any(grepl("i\\.e", x)) ~ replace_pattern(x, ",", " "),
-    any(grepl("\\[[0-9]+\\] p \\(p \\[[0-9]+\\] blank\\)", x)) ~ replace_pattern(x, " \\(p \\[[0-9]+\\] blank\\)", ""),
-    any(grepl("^1 score \\([0-9]+ p\\)", x)) ~ replace_pattern(x, "1 score", ""),
-    any(grepl("^[0-9]+ p \\[[0-9]+\\]$", x)) ~ replace_pattern(x, "\\[", ",["),
-    any(grepl("^\\[[0-9]+\\] p \\[[0-9]+\\]$", x)) ~ {
-      split_result <- strsplit(x, "p")
-      if (length(split_result[[1]]) > 0) {
-        unlist(split_result)[[1]]
-      } else {
-        x
-      }
-    },
-    any(grepl("\\[[0-9]+\\] [0-9]+", x)) ~ replace_pattern(x, " ", ","),
-    any(grepl("^[0-9]+ \\[[0-9]+\\]", x)) ~ replace_pattern(x, "\\[", ",["),
-    any(grepl("[0-9]+p",x)) ~ replace_pattern(x, "p", " p"),
+polish_physext_help2 <- function(x, page.harmonize) {
+  
+  na_out <- c(
+    page.info     = NA_real_,
+    multiplier    = NA_real_,
+    squarebracket = NA_real_,
+    plate         = NA_real_,
+    arabic        = NA_real_,
+    roman         = NA_real_,
+    sheet         = NA_real_,
+    volcount      = NA_real_,
+    pagecount     = NA_real_
+  )
+  
+  x <- map(x, page.harmonize, mode = "recursive")
+  x <- unlist(x, use.names = FALSE)
+  x <- as.character(x[1])
+  x <- stringr::str_trim(x)
+  
+  if (length(x) == 0 || is.na(x) || x == "") {
+    return(na_out)
+  }
+  
+  x <- dplyr::case_when(
+    grepl("i\\.e", x) ~ replace_pattern(x, ",", " "),
+    grepl("\\[[0-9]+\\] p \\(p \\[[0-9]+\\] blank\\)", x) ~ replace_pattern(x, " \\(p \\[[0-9]+\\] blank\\)", ""),
+    grepl("^1 score \\([0-9]+ p\\)", x) ~ replace_pattern(x, "1 score", ""),
+    grepl("^[0-9]+ p \\[[0-9]+\\]$", x) ~ replace_pattern(x, "\\[", ",["),
+    grepl("^\\[[0-9]+\\] p \\[[0-9]+\\]$", x) ~ unlist(strsplit(x, "p"))[1],
+    grepl("\\[[0-9]+\\] [0-9]+", x) ~ replace_pattern(x, " ", ","),
+    grepl("^[0-9]+ \\[[0-9]+\\]", x) ~ replace_pattern(x, "\\[", ",["),
+    grepl("[0-9]+p", x) ~ replace_pattern(x, "p", " p"),
     TRUE ~ x
   )
-
-  # Continue with the rest of your function...
-
-  # Remove endings
+  
   x <- gsub("[ |\\.|\\,|\\;|\\:]+$", "", x)
-
-  # Remove spaces around dashes
   x <- gsub(" {0,1}- {0,1}", "-", x)
   x <- condense_spaces(x)
-
-  # Remove parentheses
+  
   x <- gsub("\\(", " ", x)
   x <- gsub("\\)", " ", x)
   x <- condense_spaces(x)
   x <- condense_spaces(gsub(" p p ", " p ", x))
-
-  # 2 p [1] = 2, [1]
-  if (any(grepl("^[0-9]+ p \\[[0-9]+\\]$", x))) {
-    x <- condense_spaces(gsub("\\[", ",[", gsub("p", "", x)))
-  }
-
-  # [4] p [4] = [4], [4]
-  if (any(grepl("^\\[[0-9]+\\] p \\[[0-9]+\\]$", x))) {
-    split_result <- strsplit(x, "p")
-    if (length(split_result[[1]]) > 0) {
-      unlist(split_result)[[1]]
-    } else {
-      x
-    }
-  }
-
-  # "[2] 4" -> "[2], 4"
-  if (any(grepl("\\[[0-9]+\\] [0-9]+", x))) {
-    x <- gsub(" ", ",", x)
-  }
-
-  # "4 [2]" -> 4, [2]
-  if (any(grepl("^[0-9]+ \\[[0-9]+\\]", x))) {
-    x <- gsub("\\[", ",[", x)
-  }
-
-  if (any(grepl("[0-9]+p",x))) {
-    x <- condense_spaces(gsub("p", " p", x))
-  }
-
+  
   x <- gsub("p\\.*$", "", x)
-  # [4] p 2:o -> 4
   x <- gsub("[0-9]:o$", "", x)
   x <- gsub("=$", "", x)
   x <- gsub("^[c|n]\\.", "", x)
@@ -5521,22 +5495,23 @@ polish_physext_help2 <- function (x, page.harmonize) {
   x <- condense_spaces(x)
   x <- gsub(" ,", ",", x)
   x <- gsub("^,", "", x)
-
   x <- condense_spaces(x)
-
+  
   page.info <- estimate_pages(x)
-
-  # Take into account multiplier
-  # (for instance when page string starts with Ff the document is folios
-  # and page count will be multiplied by two - in most cases multiplier is 1)
-  # Total page count; assuming the multiplier is index 1
-  s <- unlist(page.info[-1], use.names = FALSE)
-  page.info[["pagecount"]] <- page.info[["multiplier"]] * sum(s, na.rm = TRUE)
-
+  page.info <- unlist(page.info)
+  
+  if (length(page.info) != length(na_out) - 1 ||
+      !all(names(na_out)[names(na_out) != "pagecount"] %in% names(page.info))) {
+    return(na_out)
+  }
+  
+  page.info <- page.info[names(na_out)[names(na_out) != "pagecount"]]
+  
+  s <- suppressWarnings(as.numeric(page.info[names(page.info) != "multiplier"]))
+  page.info[["pagecount"]] <- as.numeric(page.info[["multiplier"]]) * sum(s, na.rm = TRUE)
+  
   page.info
-
 }
-
 
 
 #' @title Polish signature statements
@@ -5722,33 +5697,32 @@ polish_physext_help <- function (s, page.harmonize) {
 #' @references See citation("bibliographica")
 #' @examples tab <- polish_physical_extent("4p.", verbose = TRUE)
 #' @keywords utilities
-polish_physical_extent <- function (x, verbose = FALSE, rm.dim.file = NULL) {
-
-  # Summary of abbreviations
-  # http://ac.bslw.com/community/wiki/index.php5/RDA_4.5
+polish_physical_extent <- function(x, verbose = FALSE, rm.dim.file = NULL) {
+  
   sorig <- tolower(as.character(x))
+  sorig[sorig == ""] <- NA_character_
   suniq <- unique(sorig)
-
+  
   if (verbose) {
-    message(paste("Polishing physical extent field:",
-                  length(suniq),
-                  "unique cases"))
+    message("Polishing physical extent field: ", length(suniq), " unique cases")
   }
-
+  
   s <- suniq
-  if (verbose) {message("Signature statements")}
+  
+  if (verbose) message("Signature statements")
   inds <- grep("sup", s)
-  if (length(inds)>0) {
+  if (length(inds) > 0) {
     pc <- polish_signature_statement_pagecount(s[inds])
     s[inds] <- unname(pc)
   }
-
-  if (verbose) {message("Remove commonly used volume formats")}
-  f <- read.csv("remove_dimension.csv", sep = ";", row.names=NULL)
-
-  li <- f [,1]
-  terms <- as.character(li)
+  
+  if (verbose) message("Remove commonly used volume formats")
+  f <- read.csv("remove_dimension.csv", sep = ";", row.names = NULL)
+  
+  terms <- as.character(f[, 1])
   s <- remove_dimension(s, terms)
+  s <- as.character(unlist(s, use.names = FALSE))
+  
   s <- gsub("^na ", "", s)
   s <- gsub("\\.s$", " s", s)
   s <- gsub("\\. s", " s", s)
@@ -5756,138 +5730,194 @@ polish_physical_extent <- function (x, verbose = FALSE, rm.dim.file = NULL) {
   s <- gsub("\\*", " ", s)
   s <- gsub("\\{", "[", s)
   s <- gsub("\\}", "]", s)
-  s[grep("^[ |;|:|!|?]*$", s)] <- NA
-
-  if (verbose) {
-    message("Remove dimension info")
-  }
+  s[grep("^[ |;|:|!|?]*$", s)] <- NA_character_
+  
+  if (verbose) message("Remove dimension info")
   s <- gsub("^[0-9]+.o ", "", s)
-
-  if (verbose) {
-    message("In Finnish texts s. is used instead of p.")
-  }
-
-  # Broken
-  f <- read.csv("translation_fi_en_pages.csv", sep = ";", row.names=NULL)
-  if (verbose) {
-    message(paste("Reading", f))
-  }
-
-  #page.synonyms <- read_mapping(file = f, sep = ";", mode = "table", fast = TRUE)
-  s <- map(s, f, mode="match")
-  #rm(page.synonyms)
-
-  if (verbose) {
-    message("numbers_finnish")
-  }
-
+  
+  if (verbose) message("In Finnish texts s. is used instead of p.")
+  f <- read.csv("translation_fi_en_pages.csv", sep = ";", row.names = NULL)
+  s <- map(s, f, mode = "match")
+  s <- as.character(unlist(s, use.names = FALSE))
+  
+  if (verbose) message("numbers_finnish")
   f <- read.csv("numbers_finnish.csv", sep = ",")
-  #char2num <- read_mapping(f, sep = ",", mode = "table", from = "character", to = "numeric")
   s <- map(s, synonymes = f, from = "character", to = "numeric", mode = "match")
-
-
-  if (verbose) {message("Harmonize volume info")}
-  inds <- setdiff(1:length(s), grep("^v\\.$", s))
-  if (length(inds)>0) {
+  s <- as.character(unlist(s, use.names = FALSE))
+  
+  if (verbose) message("Harmonize volume info")
+  inds <- setdiff(seq_along(s), grep("^v\\.$", s))
+  if (length(inds) > 0) {
     s[inds] <- remove_trailing_periods(s[inds])
   }
-
-  # Harmonize volume info
+  
   s <- unname(harmonize_volume(s))
-
-  # Back to original indices and new unique reduction
+  s <- as.character(unlist(s, use.names = FALSE))
+  
+  # project current unique values back to original length
   sorig <- s[match(sorig, suniq)]
-  s <- suniq <- unique(sorig)
-
-  if (verbose) {message("Harmonize ie")}
-  s <- harmonize_ie(s)
-
-  s[s == ""] <- NA
-
-  if (verbose) {message("Read the mapping table for sheets")}
-  f <- read.csv("harmonize_sheets.csv", sep = ";")
-
-  #sheet.harmonize <- read_mapping(f, sep = ";", mode = "table", fast = TRUE)
-  s <- harmonize_sheets(s, f)
-  #rm(sheet.harmonize)
-
-  # Just read page harmonization here to be used later
-  if (verbose) {message("Read the mapping table for pages")}
-  page.harmonize <- read.csv("harmonize_pages.csv", sep = "\t")
-  #page.harmonize <- read_mapping(f, sep = "\t", mode = "table", fast = FALSE)
-
-  # Back to original indices and new unique reduction
-  s <- s[match(sorig, suniq)]
-  sorig <- s
   suniq <- unique(sorig)
   s <- suniq
-
-  if (verbose) {message("Read the mapping table for romans")}
+  
+  if (verbose) message("Harmonize ie")
+  s <- harmonize_ie(s)
+  s <- as.character(unlist(s, use.names = FALSE))
+  s[s == ""] <- NA_character_
+  
+  if (verbose) message("Read the mapping table for sheets")
+  f <- read.csv("harmonize_sheets.csv", sep = ";")
+  s <- harmonize_sheets(s, f)
+  s <- as.character(unlist(s, use.names = FALSE))
+  
+  if (verbose) message("Read the mapping table for pages")
+  page.harmonize <- read.csv("harmonize_pages.csv", sep = "\t")
+  
+  # project again
+  sorig <- s[match(sorig, suniq)]
+  suniq <- unique(sorig)
+  s <- suniq
+  
+  if (verbose) message("Read the mapping table for romans")
   f <- read.csv("harmonize_romans.csv", sep = "\t")
-  #romans.harm <- read_mapping(f, sep = "\t", mode = "table", fast = TRUE)
   s <- map(s, f, mode = "recursive")
-
-  if (verbose) {message("Page harmonization part 2")}
+  s <- as.character(unlist(s, use.names = FALSE))
+  
+  if (verbose) message("Page harmonization part 2")
   f <- read.csv("harmonize_pages2.csv", sep = "|")
-  #harm2 <- read_mapping(f, sep = "|", mode = "table", fast = TRUE)
   s <- map(s, f, mode = "recursive")
-  #rm(harm2)
-
-  # Trimming
-  # p3 -> p 3
+  s <- as.character(unlist(s, use.names = FALSE))
+  
   inds <- grep("p[0-9]+", s)
-  if (length(inds)>0) {
+  if (length(inds) > 0) {
     s[inds] <- gsub("p", "p ", s[inds])
   }
+  
   s <- condense_spaces(s)
-  s[s == "s"] <- NA
-
-  # 1 score (144 p.) -> 144 pages
-  if (length(grep("[0-9]* *scores* \\([0-9]+ p\\.*\\)", s))>0) {
+  s[s == "s"] <- NA_character_
+  
+  if (length(grep("[0-9]* *scores* \\([0-9]+ p\\.*\\)", s)) > 0) {
     s <- gsub("[0-9]* *scores*", " ", s)
   }
+  
   s <- condense_spaces(s)
-
-  if (verbose) {message("Polish unique pages separately for each volume")}
-
-  # Back to original indices and new unique reduction
+  
+  if (verbose) message("Polish unique pages separately for each volume")
+  
+  # final projection before parsing
   sorig <- s[match(sorig, suniq)]
-  s <- suniq <- unique(sorig)
-
-  # English
+  suniq <- unique(sorig)
+  s <- suniq
+  
+  if (verbose) message("numbers_english")
   f <- read.csv("numbers_english.csv", sep = ",")
-  #char2num <- read_mapping(f, sep = ",", mode = "table", from = "character", to = "numeric")
   s <- map(s, synonymes = f, from = "character", to = "numeric", mode = "match")
-
-  if (verbose) {message(paste("Polishing physical extent field 3:",
-                               length(suniq), "unique cases"))}
-  ret <- lapply(s, function (s) {
-     a <- try(polish_physext_help(s, page.harmonize));
-     if (class(a) == "try-error") {
-       message(paste("Error in polish_physext_help:", s)); return(NA)} else {return(a)}
-   })
-
-  nainds <- which(is.na(ret))
-   for (i in nainds) {
-     message(paste("Before polish_physext_help:", i, s[[i]]))
-     # NA vector of same length than the other entries
-     ret[[i]] <- rep(NA, length(ret[[1]]))
-   }
-
-   if (verbose) {message("Make data frame")}
-   ret <- as.data.frame(t(sapply(ret, identity)))
-
-   if (verbose) {message("Set zero page counts to NA")}
-   ret$pagecount <- as.numeric(ret$pagecount)
-   ret$pagecount[ret$pagecount == 0] <- NA
-
-   if (verbose) { message("Project to original list: indices") }
-   inds <- match(sorig, suniq)
-
-   if (verbose) { message("Project to original list: mapping") }
-   ret[inds, ]
-
+  s <- as.character(unlist(s, use.names = FALSE))
+  
+  # final projection after English numbers
+  sorig <- s[match(sorig, suniq)]
+  suniq <- unique(sorig)
+  s <- suniq
+  
+  if (verbose) {
+    message("Polishing physical extent field 3: ", length(suniq), " unique cases")
+  }
+  
+  # parse only non-NA unique values
+  s_parse <- suniq[!is.na(suniq) & suniq != ""]
+  
+  
+  
+  failed_values <- character()
+  
+  ret <- lapply(s_parse, function(si) {
+    
+    a <- try(polish_physext_help(si, page.harmonize), silent = TRUE)
+    
+    if (inherits(a, "try-error")) {
+      
+      failed_values <<- c(failed_values, si)
+      
+      message("ERROR: ", si)
+      return(NULL)
+    }
+    
+    if (length(a) == 0 || (length(a) == 1 && is.na(a))) {
+      
+      failed_values <<- c(failed_values, si)
+      
+      message("NA/EMPTY: ", si)
+      return(NULL)
+    }
+    
+    unlist(a)
+  })
+  
+  failed_values
+  
+  ok <- which(!vapply(ret, is.null, logical(1)))
+  
+  if (length(ok) == 0) {
+    stop("polish_physext_help() failed for all non-NA values")
+  }
+  
+  expected_names <- names(ret[[ok[1]]])
+  expected_len <- length(expected_names)
+  
+  na_out <- rep(NA_character_, expected_len)
+  names(na_out) <- expected_names
+  
+  ret <- lapply(seq_along(ret), function(i) {
+    z <- ret[[i]]
+    
+    if (
+      is.null(z) ||
+      length(z) != expected_len ||
+      is.null(names(z)) ||
+      !all(expected_names %in% names(z))
+    ) {
+      message("Before polish_physext_help: ", i, " ", s_parse[[i]])
+      return(na_out)
+    }
+    
+    z[expected_names]
+  })
+  
+  if (verbose) message("Make data frame")
+  
+  ret <- do.call(
+    rbind.data.frame,
+    c(lapply(ret, as.character), stringsAsFactors = FALSE)
+  )
+  
+  rownames(ret) <- NULL
+  names(ret) <- expected_names
+  
+  if (verbose) message("Set zero page counts to NA")
+  
+  ret$pagecount <- suppressWarnings(as.numeric(ret$pagecount))
+  ret$pagecount[ret$pagecount == 0] <- NA_real_
+  
+  # add NA row for original NA/empty values
+  ret_full <- as.data.frame(
+    matrix(NA_character_, nrow = length(suniq), ncol = length(expected_names)),
+    stringsAsFactors = FALSE
+  )
+  names(ret_full) <- expected_names
+  
+  inds <- match(s_parse, suniq)
+  ret_full[inds, ] <- ret
+  
+  ret_full$pagecount <- suppressWarnings(as.numeric(ret_full$pagecount))
+  
+  if (verbose) message("Project to original list")
+  
+  inds <- match(sorig, suniq)
+  out <- ret_full[inds, , drop = FALSE]
+  rownames(out) <- NULL
+  
+  out
 }
+
 
 #' @title Sheet Area
 #' @description Sheet area in cm2.
@@ -8016,8 +8046,17 @@ polish_author <- function(s, verbose = FALSE) {
       }
     }
     
-    first[[i]] <- paste(fi, collapse = " ")
-    last[[i]]  <- paste(la, collapse = " ")
+    first[[i]] <- if (length(fi) == 0 || all(is.na(fi))) {
+      NA_character_
+    } else {
+      paste(fi[!is.na(fi)], collapse = " ")
+    }
+    
+    last[[i]] <- if (length(la) == 0 || all(is.na(la))) {
+      NA_character_
+    } else {
+      paste(la[!is.na(la)], collapse = " ")
+    }
   }
   
   nametab <- data.frame(
@@ -8047,16 +8086,15 @@ polish_author <- function(s, verbose = FALSE) {
   nametab$first <- clean_name_col(nametab$first)
   nametab$last <- clean_name_col(nametab$last)
   
-  full.name <- paste(nametab$last, nametab$first, sep = ", ")
-  full.name <- unname(full.name)
-  full.name <- gsub(",+$", "", full.name)
-  full.name[full.name == "NA, NA"] <- NA
-  full.name <- gsub("\\, NA$", "", full.name)
-  full.name <- gsub("^NA, ", "", full.name)
+  full.name <- dplyr::case_when(
+    !is.na(nametab$last) & !is.na(nametab$first) ~ paste(nametab$last, nametab$first, sep = ", "),
+    !is.na(nametab$last) ~ nametab$last,
+    !is.na(nametab$first) ~ nametab$first,
+    TRUE ~ NA_character_
+  )
+  
   full.name <- sub(",\\s*-$", "", full.name)
-  #full.name <- vapply(full.name, clean_name_cell, character(1))
-
-  full.name  <- clean_name_col(full.name)
+  full.name <- clean_name_col(full.name)
   
   idx <- match(sorig, suniq)
   
@@ -8075,11 +8113,18 @@ clean_name_col <- function(x) {
   x <- as.character(x)
   x <- stringi::stri_trans_nfc(x)
   x <- stringi::stri_trim_both(x)
-  x[x == ""] <- NA_character_
+  x[x %in% c("", "NA", "Na", "na", "NaN", "nan") | is.na(x)] <- NA_character_
   
-  out <- lapply(strsplit(x, ";", fixed = TRUE), function(parts) {
+  out <- lapply(x, function(one) {
+    
+    if (is.na(one)) {
+      return(NA_character_)
+    }
+    
+    parts <- unlist(strsplit(one, ";", fixed = TRUE), use.names = FALSE)
+    
     parts <- stringi::stri_trim_both(parts)
-    parts <- parts[parts != ""]
+    parts <- parts[parts != "" & !is.na(parts)]
     
     parts <- stringi::stri_replace_all_regex(parts, ",+$", "")
     parts <- stringi::stri_replace_all_regex(
@@ -8094,16 +8139,18 @@ clean_name_col <- function(x) {
     parts <- stringi::stri_replace_all_regex(parts, ",+$", "")
     parts <- stringi::stri_trim_both(parts)
     
-    parts <- parts[parts != ""]
+    parts <- parts[parts != "" & !is.na(parts)]
     parts <- unique(parts)
     
-    if (length(parts) == 0) NA_character_ else paste(parts, collapse = "; ")
+    if (length(parts) == 0) {
+      NA_character_
+    } else {
+      paste(parts, collapse = "; ")
+    }
   })
   
   unlist(out, use.names = FALSE)
 }
-
-
 
 #' @title Polish multiple author
 #' @description Polish author names
@@ -8814,7 +8861,17 @@ estimate_pages <- function(x) {
 
 polish_physext_help <- function(s, page.harmonize) {
   
-  na_out <- rep(NA, 11)
+  na_out <- c(
+    page.info     = NA_real_,
+    multiplier    = NA_real_,
+    squarebracket = NA_real_,
+    plate         = NA_real_,
+    arabic        = NA_real_,
+    roman         = NA_real_,
+    sheet         = NA_real_,
+    volcount      = NA_real_,
+    pagecount     = NA_real_
+  )
   
   # normalize NA and empty strings immediately
   if (length(s) == 0 || all(is.na(s))) {

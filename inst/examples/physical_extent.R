@@ -23,12 +23,12 @@ file_discarded <- paste0(output.folder, field, "_discarded.csv")
 # Generate data summaries
 
 message("Accepted entries in the preprocessed data")
-s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE)
+s <- write_xtable(df.tmp$pagecount, file_accepted, count = TRUE)
 
 message("Discarded entries in the original data")
 
 # NA values in the final harmonized data
-inds <- which(is.na(df.tmp[[field]]))
+inds <- which(is.na(df.tmp$pagecount))
 
 # Original entries that were converted into NA
 original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
@@ -64,7 +64,7 @@ file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 # Generate data summaries for 1809-1917
 
 message("Accepted entries in the preprocessed data")
-s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
+s <- write_xtable(df_19$pagecount, file_accepted_19, count = TRUE)
 
 # message("Discarded entries in the original data")
 # 

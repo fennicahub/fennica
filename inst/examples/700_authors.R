@@ -131,29 +131,29 @@ sum(missing_id & !is.na(df_700$asteri_id))
 # Multiple 700 authors and IDs are pasted together with "; ".
 
 # Identify mismatched rows and set them to NA
-df_700_by_record <- df_700_by_record %>%
+df_700_by_record <- df_700%>%
   mutate(
-    n_names = str_count(author_name_700, ";") + 1,
-    n_ids   = str_count(asteri_id_700, ";") + 1,
+    n_names = str_count(author_name, ";") + 1,
+    n_ids   = str_count(asteri_id, ";") + 1,
     
     author_name_700 = ifelse(
       n_names != n_ids,
       NA,
-      author_name_700
+      author_name
     ),
     
     asteri_id_700 = ifelse(
       n_names != n_ids,
       NA,
-      asteri_id_700
+      asteri_id
     )
   ) %>%
   select(-n_names, -n_ids)
 
 df_700_mismatch <- df_700_by_record %>%
   mutate(
-    n_names = str_count(author_name_700, ";") + 1,
-    n_ids   = str_count(asteri_id_700, ";") + 1
+    n_names = str_count(author_name, ";") + 1,
+    n_ids   = str_count(asteri_id, ";") + 1
   ) %>%
   filter(n_names != n_ids)
 

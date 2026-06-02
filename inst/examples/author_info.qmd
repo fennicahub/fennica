@@ -3,38 +3,37 @@ title: "Author's info: name, dates, gender, profession"
 hide-description: false
 description: ""
 ---
-```{r}
-#| include = FALSE
 
-library(devtools)
+
+```{r}
+#| include: false
+#| echo: false
+#| message: false
+#| warning: false
+
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+
 library(dplyr)
 library(tidyr)
-library(tm)
 library(stringr)
 library(knitr)
-library(R.utils)
-library(ggplot2)
-library(Cairo)
-library(purrr)
-library(stringi)
-library(parallel)
-library(qdapRegex)
-library(readxl)
-library(arrow)
-library(textutils)
-library(data.table)
-library(brms)
-library(rnaturalearth)
 
-# source("author_info_data-scripts.R") run this to construct the author_database from scratch
-# or read existing one 
 
 author_database <- read.delim(
   "author_database.csv",
   stringsAsFactors = FALSE
 )
 
+author_database_19 <- read.delim(
+  "author_database_19.csv",
+  stringsAsFactors = FALSE
+)
 ```
+
 # Author Database
 
 ## Description
@@ -71,235 +70,187 @@ Authors with country information: `r sum(!is.na(author_database$country))`.
 
 Authors with place information: `r sum(!is.na(author_database$place))`.
 
-### Metadata Coverage
+
+
+# Top Authors' names
 
 ```{r}
-summary_table <- tibble(
-  metric = c(
-    "Unique authors",
-    "Authors with Asteri ID",
-    "Authors without Asteri ID",
-    "Authors with birth year",
-    "Authors with death year",
-    "Authors with age",
-    "Authors with gender",
-    "Authors with profession",
-    "Authors with field of activity",
-    "Authors with place",
-    "Authors with language"
-  ),
-  n = c(
-    nrow(author_database),
-    sum(!is.na(author_database$asteri_id)),
-    sum(is.na(author_database$asteri_id)),
-    sum(!is.na(author_database$from)),
-    sum(!is.na(author_database$till)),
-    sum(!is.na(author_database$author_age)),
-    sum(!is.na(author_database$gender)),
-    sum(!is.na(author_database$profession)),
-    sum(!is.na(author_database$field_activity)),
-    sum(!is.na(author_database$place)),
-    sum(!is.na(author_database$language))
-  )
-)
+#| label: top_authors
+#| echo: false
+#| results: asis
 
-summary_table
-```
+author_database$n_records <- as.numeric(author_database$n_records)
 
-### Top 20 Authors by Number of Associated Records
-
-```{r}
-  ## 2. Top authors by number of records
-  
-  top_authors <- author_database %>%
+tab <- author_database %>%
   arrange(desc(n_records)) %>%
-  select(author_name, n_records) %>%
-  slice_head(n = 20)
-
-top_authors
-```
-
-### Authority Control Coverage
-
-```{r}
-  ## 3. Authors with and without authority control
-  
-
-author_database %>%
-  summarise(
-    with_asteri = sum(!is.na(asteri_id)),
-    without_asteri = sum(is.na(asteri_id))
-  )
-
-author_database %>%
-  summarise(
-    pct_with_asteri =
-      round(mean(!is.na(asteri_id))*100,1)
-  )
-```
-
-### Gender Distribution
-
-```{r}
-
-  ## 4. Gender distribution
-  
-
-gender_table <- author_database %>%
-  count(gender, sort = TRUE) %>%
-  mutate(
-    pct = round(100*n/sum(n),1)
-  )
-
-gender_table
-
-```
-
-### Age Statistics
-
-```{r}
-  ## 5. Age statistics
-  
-
-author_database %>%
-  summarise(
-    n = sum(!is.na(author_age)),
-    mean = mean(author_age, na.rm=TRUE),
-    median = median(author_age, na.rm=TRUE),
-    min = min(author_age, na.rm=TRUE),
-    max = max(author_age, na.rm=TRUE)
-  )
-
-```
-
-### Birth Decades
-
-```{r}
-  ## 6. Birth year coverage
-  
-
-author_database %>%
-  mutate(
-    birth_decade = floor(as.numeric(from)/10)*10
-  ) %>%
-  count(birth_decade, sort=TRUE)
-```
-
-### Most Common Professions
-
-```{r}
-professions <- author_database %>%
-  separate_rows(profession, sep=",\\s*") %>%
-  filter(!is.na(profession)) %>%
-  count(profession, sort=TRUE)
-
-head(professions,20)
-```
-
-### Most Common Fields of Activity
-
-```{r}
-activities <- author_database %>%
-  separate_rows(field_activity, sep=";\\s*") %>%
-  filter(!is.na(field_activity)) %>%
-  count(field_activity, sort=TRUE)
-
-head(activities,20)
-```
-
-### Languages
-
-```{r}
-languages <- author_database %>%
-  separate_rows(language, sep=";\\s*") %>%
-  filter(!is.na(language)) %>%
-  count(language, sort=TRUE)
-
-head(languages,20)
-```
-
-### Countries
-
-```{r}
- ## 10. Countries
-  
-
-countries <- author_database %>%
-  separate_rows(country, sep=";\\s*") %>%
-  filter(!is.na(country)) %>%
-  count(country, sort=TRUE)
-
-head(countries,20)
-```
-
-### Places Associated with Authors
-
-```{r}
-places <- author_database %>%
-  separate_rows(place, sep=";\\s*") %>%
-  filter(!is.na(place)) %>%
-  count(place, sort=TRUE)
-
-head(places,20)
-```
-
-### Metadata Completeness by Authority Status
-
-```{r}
-author_database %>%
-  mutate(
-    authority =
-      ifelse(is.na(asteri_id),
-             "No Asteri",
-             "Asteri")
-  ) %>%
-  group_by(authority) %>%
-  summarise(
-    birth = mean(!is.na(from))*100,
-    age = mean(!is.na(author_age))*100,
-    gender = mean(!is.na(gender))*100,
-    profession = mean(!is.na(profession))*100,
-    language = mean(!is.na(language))*100,
-    activity = mean(!is.na(field_activity))*100
-  )
-```
-
-### Record Count Distribution
-
-```{r}
-author_database %>%
-  mutate(
-    records_group = case_when(
-      n_records == 1 ~ "1",
-      n_records <= 5 ~ "2-5",
-      n_records <= 10 ~ "6-10",
-      n_records <= 20 ~ "11-20",
-      TRUE ~ "20+"
+  transmute(
+    Author = author_name_fen,
+    `Records (n)` = n_records,
+    `Fraction (%)` = round(
+      100 * n_records / sum(author_database$n_records, na.rm = TRUE),
+      2
     )
   ) %>%
-  count(records_group)
+  slice_head(n = 20)
+
+kable(tab)
 ```
 
-### Authors with Richest Metadata
+## Authors by gender
 
 ```{r}
-author_database %>%
+
+#| label: gender_table
+#| echo: false
+#| results: asis
+
+tab <- author_database %>%
   mutate(
-    metadata_score =
-      rowSums(!is.na(across(
-        c(
-          gender,
-          profession,
-          language,
-          country,
-          field_activity,
-          place,
-          from,
-          till
-        )
-      )))
+    gender = ifelse(is.na(gender) | gender == "", "Unknown", gender)
   ) %>%
-  arrange(desc(metadata_score))
+  count(gender, sort = TRUE) %>%
+  mutate(
+    `Fraction (%)` = round(100 * n / sum(n), 1)
+  )
+
+colnames(tab) <- c(
+  "Gender",
+  "Entries (n)",
+  "Fraction (%)"
+)
+
+kable(tab)
 ```
 
+## Authors by profession
 
+```{r}
+#| label: profession_table
+#| echo: false
+#| results: asis
+
+tab <- author_database %>%
+  filter(!is.na(profession), profession != "") %>%
+  separate_rows(profession, sep = ";\\s*|,\\s*") %>%
+  filter(profession != "") %>%
+  count(profession, sort = TRUE) %>%
+  mutate(
+    `Fraction (%)` = round(100 * n / sum(n), 1)
+  )
+
+colnames(tab) <- c(
+  "Profession",
+  "Entries (n)",
+  "Fraction (%)"
+)
+
+kable(head(tab, 20))
+```
+
+[Download author database dataset for all authors in Fennica](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_database.csv)
+
+
+
+## Authors 1809-1917
+
+Unique authors 1809-1917: `r nrow(author_database)`.
+
+Authors with Asteri identifier 1809-1917: `r sum(!is.na(author_database$asteri_id))` (`r round(mean(!is.na(author_database$asteri_id))*100,1)`%).
+
+Authors without Asteri identifier 1809-1917: `r sum(is.na(author_database$asteri_id))` (`r round(mean(is.na(author_database$asteri_id))*100,1)`%).
+
+Authors with birth year information 1809-1917: `r sum(!is.na(author_database$from))`.
+
+Authors with death year information 1809-1917: `r sum(!is.na(author_database$till))`.
+
+Authors with calculated age 1809-1917: `r sum(!is.na(author_database$author_age))`.
+
+Authors with gender information 1809-1917: `r sum(!is.na(author_database$gender))`.
+
+Authors with profession information 1809-1917: `r sum(!is.na(author_database$profession))`.
+
+Authors with field of activity information 1809-1917: `r sum(!is.na(author_database$field_activity))`.
+
+Authors with language information 1809-1917: `r sum(!is.na(author_database$language))`.
+
+Authors with country information 1809-1917: `r sum(!is.na(author_database$country))`.
+
+Authors with place information 1809-1917: `r sum(!is.na(author_database$place))`.
+
+
+
+### Top-Authors' names 1809-1917
+
+```{r}
+#| label: top_authors_1809_1917
+#| echo: false
+#| results: asis
+
+author_database_19$n_records <- as.numeric(author_database_19$n_records)
+
+tab <- author_database_19 %>%
+  arrange(desc(n_records)) %>%
+  transmute(
+    Author = author_name_fen,
+    `Records (n)` = n_records,
+    `Fraction (%)` = round(
+      100 * n_records / sum(author_database_19$n_records, na.rm = TRUE),
+      2
+    )
+  ) %>%
+  slice_head(n = 20)
+
+kable(tab)
+```
+
+# Auhtors by gender 1809-1917
+
+```{r}
+#| label: gender_table_19
+#| echo: false
+#| results: asis
+
+tab <- author_database_19 %>%
+  mutate(
+    gender = ifelse(is.na(gender) | gender == "", "Unknown", gender)
+  ) %>%
+  count(gender, sort = TRUE) %>%
+  mutate(
+    `Fraction (%)` = round(100 * n / sum(n), 1)
+  )
+
+colnames(tab) <- c(
+  "Gender",
+  "Entries (n)",
+  "Fraction (%)"
+)
+
+kable(tab)
+```
+
+## Authors by profession 1809-1917
+
+```{r}
+#| label: profession_table_19
+#| echo: false
+#| results: asis
+
+tab <- author_database_19 %>%
+  filter(!is.na(profession), profession != "") %>%
+  separate_rows(profession, sep = ";\\s*|,\\s*") %>%
+  filter(profession != "") %>%
+  count(profession, sort = TRUE) %>%
+  mutate(
+    `Fraction (%)` = round(100 * n / sum(n), 1)
+  )
+
+colnames(tab) <- c(
+  "Profession",
+  "Entries (n)",
+  "Fraction (%)"
+)
+
+kable(head(tab, 20))
+```
+
+[Download author database dataset for authors in Fennica for years 1809-1917 ](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_database_19.csv)

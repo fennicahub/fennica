@@ -10,9 +10,6 @@ df.tmp$gender <- assign_gender(as.character(df.tmp$first))
 
 ###########
 
-missing_idx <- is.na(df.tmp$gender)
-df.tmp$gender[missing_idx] <- assign_gender(df.tmp$note[missing_idx])
-
 df.tmp$gender <- trimws(df.tmp$gender)
 df.tmp$gender <- tolower(df.tmp$gender)
 df.tmp$gender <- gsub("fmale", "female", df.tmp$gender)
