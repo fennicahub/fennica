@@ -26,7 +26,7 @@ book:
   chapters:
   - index.qmd
   - author_info.qmd
-  - auhtor_name.qmd
+  - author_name.qmd
   - author_date.qmd
  #- corporate.qmd
   - genre_655.qmd

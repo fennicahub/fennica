@@ -39,7 +39,6 @@ source("priority_fields.R")
 source("leader.R")
 
 #extract from 008 -> date_entered, publication_status, publication_time,
-#genre_book and add to data
 source("008_field.R")
 
 # enrich with signum information

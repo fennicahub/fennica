@@ -19,3 +19,4 @@ Harmonize physical extent data function: [polish_physical_extent.R](https://gith
 
 Render physical extent field: [physical_extent.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/physical extent.qmd)
 
+

@@ -65,7 +65,7 @@ field <- "author_name"
 # Store the title field data
 # FIXME: convert to feather or plain CSV
 data.file <- paste0(field, ".Rds")
-saveRDS(df_700_19, file = data.file)
+saveRDS(df700_19, file = data.file)
 
 # Generate markdown summary 
 df700_19 <- readRDS(data.file)

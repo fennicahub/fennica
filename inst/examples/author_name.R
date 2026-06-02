@@ -61,15 +61,15 @@ original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field
 tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 
 
-# save detailed discarded rows
-write.table(
-  discarded_rows,
-  file = paste0(output.folder, field, "author_name_100a_discraded.csv"),
-  sep = "\t",
-  row.names = FALSE,
-  quote = FALSE,
-  fileEncoding = "UTF-8"
-)
+# # save detailed discarded rows
+# write.table(
+#   tmp,
+#   file = paste0(output.folder, field, "author_name_100a_discraded.csv"),
+#   sep = "\t",
+#   row.names = FALSE,
+#   quote = FALSE,
+#   fileEncoding = "UTF-8"
+# )
 
 # ------------------------------------------------------------
 

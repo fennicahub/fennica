@@ -1,0 +1,102 @@
+[
+  {
+    "objectID": "author_name.html",
+    "href": "author_name.html",
+    "title": "2  Author’s info: name",
+    "section": "",
+    "text": "2.1 Author name for Language material (books) in 100,a - field.\nMARC: 100a and 700a\nAuthor’s name section’s summary tables offer insights into the dataset’s integrity, illustrating the accepted and discarded author names. An examination of missing values in the original dataset provides transparency regarding data completeness. The inclusion of information on name variants and pseudonyms enriches the analysis, addressing nuances in authorship representation. This comprehensive approach ensures a thorough understanding of the dataset’s composition and the intricacies associated with author identification.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name</span>"
+    ]
+  },
+  {
+    "objectID": "author_name.html#author-name-for-language-material-books-in-100a---field.",
+    "href": "author_name.html#author-name-for-language-material-books-in-100a---field.",
+    "title": "2  Author’s info: name",
+    "section": "",
+    "text": "2.1.1 Complete Dataset Overview for 100 field\n\nUnique accepted entries in original data: 209942\nUnique discarded entries in original data (excluding NA cases): 140\nOriginal documents with non-NA titles 835649 / 1318055 (63.4%)\nOriginal documents with missing (NA) titles 482406 / 1318055 documents (36.6%)\n\n\n\n2.1.2 Author’s name (100a) - Top 20\n\n\n\n\n\n\n\n\n\n\n\n2.1.3 Complete Dataset Overview for 700 field\n\nUnique accepted entries in original data: 226879\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles 1004530 / 1004549 (100%)\nOriginal documents with missing (NA) titles 19 / 1004549 documents (0%)\n\n\n\n2.1.4 Author’s name (700a) - Top 20\n\n\n\n\n\n\n\n\n\n\n\n2.1.5 Subset Analysis: 1809-1917 100,a\n\nUnique accepted entries for for 1809-1917 years: 10713\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.\n\n\n\n\n\n\n\n\n\n\n\n2.1.6 Subset Analysis: 1809-1917 700,a\n\nUnique accepted entries for for 1809-1917 years: 7606\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name</span>"
+    ]
+  },
+  {
+    "objectID": "author_date.html",
+    "href": "author_date.html",
+    "title": "3  Author’s info: lifespan",
+    "section": "",
+    "text": "3.0.1 Author lifetime (MARC 100d)\nMARC field [100$d] records the author’s lifetime (typically birth and death years) in free-text form. In the Fennica data, this field exhibits substantial heterogeneity in formatting, including approximate dates, alternative values, historical notations (e.g. BCE/CE), and non-standard textual descriptions.\nTo enable quantitative analysis, the field is processed through a multi-step cleaning and harmonization workflow. The procedure combines information from the original Fennica records and the Kanto authority data, prioritizing structured Kanto values where available. The harmonization includes:\nThe outcome is divided into two categories:\nIn addition, a separate set of source conflicts is identified, where cleaned values derived from Fennica and Kanto disagree. These cases are retained for further inspection and potential feedback to the data providers.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Author's info: lifespan</span>"
+    ]
+  },
+  {
+    "objectID": "author_date.html#complete-dataset-overview",
+    "href": "author_date.html#complete-dataset-overview",
+    "title": "3  Author’s info: lifespan",
+    "section": "3.1 Complete Dataset Overview",
+    "text": "3.1 Complete Dataset Overview\nThe field has 467080 / (35.4%) non-missing values and 850975 / (64.6%) with missing lifetime information.\nAuthor age is available for 190554 records / (14.5%). Author age range is 15–108.\nAuthor date accepted for the complete Fennica\nAuthor date discarded for the complete Fennica\nAuthor date source conflicts for the complete Fennica and Kanto\nHarmonized dataset for author dates",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Author's info: lifespan</span>"
+    ]
+  },
+  {
+    "objectID": "author_date.html#subset-1809-1917",
+    "href": "author_date.html#subset-1809-1917",
+    "title": "3  Author’s info: lifespan",
+    "section": "3.2 Subset 1809-1917",
+    "text": "3.2 Subset 1809-1917\nThe field has 31528 / (43.2%) non-missing values and 41521 / (56.8%) with missing lifetime information.\nAuthor date accepted for the complete Fennica\nHarmonized dataset for author dates 1809-1917",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Author's info: lifespan</span>"
+    ]
+  },
+  {
+    "objectID": "physical_extent.html",
+    "href": "physical_extent.html",
+    "title": "8  Physical extent / pagecount",
+    "section": "",
+    "text": "MARC: 300a\nPolish physical extent field: physical_extent.R\nHarmonize physical extent data function: polish_physical_extent.R\nRender physical extent field: physical_extent.qmd",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Physical extent / pagecount</span>"
+    ]
+  },
+  {
+    "objectID": "author_info.html",
+    "href": "author_info.html",
+    "title": "2  Author’s info: name, dates, gender, profession",
+    "section": "",
+    "text": "3 Author Database",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name, dates, gender, profession</span>"
+    ]
+  },
+  {
+    "objectID": "author_info.html#description",
+    "href": "author_info.html#description",
+    "title": "2  Author’s info: name, dates, gender, profession",
+    "section": "3.1 Description",
+    "text": "3.1 Description\nThe author database was created by combining author information from MARC 100 (main authors) and MARC 700 (added authors) fields. Authors were identified primarily through Asteri authority identifiers when available. Records lacking authority identifiers were retained using harmonized author names.\nThe resulting database represents unique authors appearing in the Fennica dataset and serves as a foundation for author-level analyses and metadata enrichment. Author records were enriched using information obtained from Kanto authority data, including birth and death years, profession, language, country, field of activity, place associations, and related persons. Additional variables include inferred gender, publication activity measures, and the number of Fennica records associated with each author.\nPublication activity was calculated from publication years recorded in Fennica and includes the first observed publication year, last observed publication year, mean publication year, and activity span.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name, dates, gender, profession</span>"
+    ]
+  },
+  {
+    "objectID": "author_info.html#complete-dataset-overview",
+    "href": "author_info.html#complete-dataset-overview",
+    "title": "2  Author’s info: name, dates, gender, profession",
+    "section": "3.2 Complete Dataset Overview",
+    "text": "3.2 Complete Dataset Overview\nUnique authors: 144127.\nAuthors with Asteri identifier: 51094 (35.5%).\nAuthors without Asteri identifier: 93033 (64.5%).\nAuthors with birth year information: 42753.\nAuthors with death year information: 9088.\nAuthors with calculated age: 8187.\nAuthors with gender information: 133848.\nAuthors with profession information: 24569.\nAuthors with field of activity information: 28804.\nAuthors with language information: 17668.\nAuthors with country information: 5369.\nAuthors with place information: 5478.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name, dates, gender, profession</span>"
+    ]
+  },
+  {
+    "objectID": "author_info.html#authors-1809-1917",
+    "href": "author_info.html#authors-1809-1917",
+    "title": "2  Author’s info: name, dates, gender, profession",
+    "section": "4.1 Authors 1809-1917",
+    "text": "4.1 Authors 1809-1917\nUnique authors 1809-1917: 10763.\nAuthors with Asteri identifier 1809-1917: 4634 (35.5%).\nAuthors without Asteri identifier 1809-1917: 6129 (64.5%).\nAuthors with birth year information 1809-1917: 3576.\nAuthors with death year information 1809-1917: 3277.\nAuthors with calculated age 1809-1917: 3218.\nAuthors with gender information 1809-1917: 7981.\nAuthors with profession information 1809-1917: 2668.\nAuthors with field of activity information 1809-1917: 1482.\nAuthors with language information 1809-1917: 1192.\nAuthors with country information 1809-1917: 572.\nAuthors with place information 1809-1917: 43.\n\n4.1.1 Top-Authors’ names 1809-1917\n\n\n\nAuthor\nRecords (n)\nFraction (%)\n\n\n\n\nTopelius, Zacharias\n1645\n1.29\n\n\nRintamäki, Raija\n1119\n0.88\n\n\nRuneberg, Johan Ludvig\n1047\n0.82\n\n\nAho, Juhani\n803\n0.63\n\n\nSvenonius, Enevaldus Svenonis\n739\n0.58\n\n\nAndersen, H C\n639\n0.50\n\n\nLeino, Eino\n629\n0.49\n\n\nPetraeus, Aeschillus Olai\n614\n0.48\n\n\nKivi, Aleksis\n613\n0.48\n\n\nTalvio, Maila\n578\n0.45\n\n\nKurenniemi, Marjatta\n558\n0.44\n\n\nPorthan, Henrik Gabriel\n553\n0.43\n\n\nAchrelius, Daniel Erici\n505\n0.40\n\n\nKalm, Pehr\n484\n0.38\n\n\nKokkonen, Jüri\n467\n0.37\n\n\nKrohn, Helmi\n463\n0.36\n\n\nPekkanen, Hilkka\n446\n0.35\n\n\nParpola, Inka\n428\n0.34\n\n\nKapari-jatta, Jaana\n424\n0.33\n\n\nTarkiainen, Viljo\n423\n0.33",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name, dates, gender, profession</span>"
+    ]
+  }
+]

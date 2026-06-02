@@ -21,17 +21,16 @@ library(dplyr)
 library(tidyr)
 library(stringr)
 library(knitr)
+```
 
+```{r}
+# # Download the csv file
+url1 <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/author_database.csv"
+url2 <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/author_database_19.csv"
+# 
 
-author_database <- read.delim(
-  "author_database.csv",
-  stringsAsFactors = FALSE
-)
-
-author_database_19 <- read.delim(
-  "author_database_19.csv",
-  stringsAsFactors = FALSE
-)
+author_database <- read.delim(url1,  stringsAsFactors = FALSE)
+author_database_19 <- read.delim(url2,  stringsAsFactors = FALSE)
 ```
 
 # Author Database
@@ -96,56 +95,7 @@ tab <- author_database %>%
 kable(tab)
 ```
 
-## Authors by gender
 
-```{r}
-
-#| label: gender_table
-#| echo: false
-#| results: asis
-
-tab <- author_database %>%
-  mutate(
-    gender = ifelse(is.na(gender) | gender == "", "Unknown", gender)
-  ) %>%
-  count(gender, sort = TRUE) %>%
-  mutate(
-    `Fraction (%)` = round(100 * n / sum(n), 1)
-  )
-
-colnames(tab) <- c(
-  "Gender",
-  "Entries (n)",
-  "Fraction (%)"
-)
-
-kable(tab)
-```
-
-## Authors by profession
-
-```{r}
-#| label: profession_table
-#| echo: false
-#| results: asis
-
-tab <- author_database %>%
-  filter(!is.na(profession), profession != "") %>%
-  separate_rows(profession, sep = ";\\s*|,\\s*") %>%
-  filter(profession != "") %>%
-  count(profession, sort = TRUE) %>%
-  mutate(
-    `Fraction (%)` = round(100 * n / sum(n), 1)
-  )
-
-colnames(tab) <- c(
-  "Profession",
-  "Entries (n)",
-  "Fraction (%)"
-)
-
-kable(head(tab, 20))
-```
 
 [Download author database dataset for all authors in Fennica](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_database.csv)
 
@@ -153,29 +103,29 @@ kable(head(tab, 20))
 
 ## Authors 1809-1917
 
-Unique authors 1809-1917: `r nrow(author_database)`.
+Unique authors 1809-1917: `r nrow(author_database_19)`.
 
-Authors with Asteri identifier 1809-1917: `r sum(!is.na(author_database$asteri_id))` (`r round(mean(!is.na(author_database$asteri_id))*100,1)`%).
+Authors with Asteri identifier 1809-1917: `r sum(!is.na(author_database_19$asteri_id))` (`r round(mean(!is.na(author_database$asteri_id))*100,1)`%).
 
-Authors without Asteri identifier 1809-1917: `r sum(is.na(author_database$asteri_id))` (`r round(mean(is.na(author_database$asteri_id))*100,1)`%).
+Authors without Asteri identifier 1809-1917: `r sum(is.na(author_database_19$asteri_id))` (`r round(mean(is.na(author_database$asteri_id))*100,1)`%).
 
-Authors with birth year information 1809-1917: `r sum(!is.na(author_database$from))`.
+Authors with birth year information 1809-1917: `r sum(!is.na(author_database_19$from))`.
 
-Authors with death year information 1809-1917: `r sum(!is.na(author_database$till))`.
+Authors with death year information 1809-1917: `r sum(!is.na(author_database_19$till))`.
 
-Authors with calculated age 1809-1917: `r sum(!is.na(author_database$author_age))`.
+Authors with calculated age 1809-1917: `r sum(!is.na(author_database_19$author_age))`.
 
-Authors with gender information 1809-1917: `r sum(!is.na(author_database$gender))`.
+Authors with gender information 1809-1917: `r sum(!is.na(author_database_19$gender))`.
 
-Authors with profession information 1809-1917: `r sum(!is.na(author_database$profession))`.
+Authors with profession information 1809-1917: `r sum(!is.na(author_database_19$profession))`.
 
-Authors with field of activity information 1809-1917: `r sum(!is.na(author_database$field_activity))`.
+Authors with field of activity information 1809-1917: `r sum(!is.na(author_database_19$field_activity))`.
 
-Authors with language information 1809-1917: `r sum(!is.na(author_database$language))`.
+Authors with language information 1809-1917: `r sum(!is.na(author_database_19$language))`.
 
-Authors with country information 1809-1917: `r sum(!is.na(author_database$country))`.
+Authors with country information 1809-1917: `r sum(!is.na(author_database_19$country))`.
 
-Authors with place information 1809-1917: `r sum(!is.na(author_database$place))`.
+Authors with place information 1809-1917: `r sum(!is.na(author_database_19$place))`.
 
 
 
@@ -228,29 +178,6 @@ colnames(tab) <- c(
 kable(tab)
 ```
 
-## Authors by profession 1809-1917
 
-```{r}
-#| label: profession_table_19
-#| echo: false
-#| results: asis
-
-tab <- author_database_19 %>%
-  filter(!is.na(profession), profession != "") %>%
-  separate_rows(profession, sep = ";\\s*|,\\s*") %>%
-  filter(profession != "") %>%
-  count(profession, sort = TRUE) %>%
-  mutate(
-    `Fraction (%)` = round(100 * n / sum(n), 1)
-  )
-
-colnames(tab) <- c(
-  "Profession",
-  "Entries (n)",
-  "Fraction (%)"
-)
-
-kable(head(tab, 20))
-```
 
 [Download author database dataset for authors in Fennica for years 1809-1917 ](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_database_19.csv)
