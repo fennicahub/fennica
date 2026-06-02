@@ -1,5 +1,7 @@
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/author_database_19.csv"
 
-df700 <- read.csv("authors_700_long.csv")
+
+df700 <- read.delim(url,  stringsAsFactors = FALSE)
 
 field <- "author_name"
 
