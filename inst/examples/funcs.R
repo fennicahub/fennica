@@ -7854,12 +7854,13 @@ polish_080x <- function(x) {
 }
 
 
-polish_genre_655 <- function(x, slm_file = "unique_slm_labels_fi.csv") {
+polish_genre_655 <- function(x) {
+  url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/unique_slm_labels_fi.csv"
 
   x0 <- as.character(x)
   
   slm_labels <- read.csv(
-    slm_file,
+    url,
     stringsAsFactors = FALSE
   ) %>%
     pull(label) %>%        # name of the column 
