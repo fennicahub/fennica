@@ -7854,36 +7854,52 @@ polish_080x <- function(x) {
 }
 
 
-polish_genre_655 <- function(x) {
-  url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/unique_slm_labels_fi.csv"
-
+polish_genre_655 <- function(
+    x,
+    url = "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/unique_slm_labels_fi.csv"
+) {
+  
   x0 <- as.character(x)
   
-  slm_labels <- read.csv(
-    url,
-    stringsAsFactors = FALSE
-  ) %>%
-    pull(label) %>%        # name of the column 
+  slm_table <- read.csv(
+    file = url,
+    stringsAsFactors = FALSE,
+    fileEncoding = "UTF-8"
+  )
+  
+  if (!"label" %in% names(slm_table)) {
+    stop("Column 'label' not found in SLM labels file. Available columns: ",
+         paste(names(slm_table), collapse = ", "))
+  }
+  
+  slm_labels <- slm_table %>%
+    dplyr::pull(label) %>%
     as.character() %>%
-    str_trim() %>%
+    stringr::str_trim() %>%
     na.omit() %>%
     unique()
   
   clean_one <- function(value) {
-    if (is.na(value) || value == "") return(NA_character_)
+    
+    if (is.na(value) || stringr::str_trim(value) == "") {
+      return(NA_character_)
+    }
     
     values <- value %>%
-      str_replace_all("\\.", "") %>%
-      str_split("\\|") %>%   # split input field only
-      unlist() %>%
-      str_trim()
+      stringr::str_replace_all("\\.", "") %>%
+      stringr::str_split("\\|") %>%
+      unlist(use.names = FALSE) %>%
+      stringr::str_trim()
     
     values <- unique(values[values != ""])
     
     matched <- values[values %in% slm_labels]
     
-    if (length(matched) == 0) NA_character_
-    else paste(matched, collapse = "; ")
+    if (length(matched) == 0) {
+      NA_character_
+    } else {
+      paste(matched, collapse = "; ")
+    }
   }
   
   harmonized <- vapply(x0, clean_one, character(1))
@@ -7895,7 +7911,6 @@ polish_genre_655 <- function(x) {
     stringsAsFactors = FALSE
   )
 }
-
 
 #' @title Manual name replacements
 #' @description Replace known pseudonyms or abbreviations in author names with full names.

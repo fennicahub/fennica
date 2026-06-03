@@ -11,14 +11,9 @@ path_csvs = "/mnt/trial/csvs"
 
 #%%
 
-columns_to_pick = [("004", "-"), ("852", "a"), ("852", "b"), ("852", "c"), 
-                   ("852", "d"), ("852", "e"), ("852", "f"), ("852", "g"), ("852", "u"), 
-                   ("852", "h"), ("852", "i"), ("852", "j"), ("852", "k"), ("852", "l"), 
-                   ("852", "m"), ("852", "x"), ("852", "z")]
-
 #%%
 columns_to_pick = [
-    ("001", "-"), ("LDR", "-"), ("008", "-"), ("035", "a"),
+    ("001", "-"),("999", "a"), ("LDR", "-"), ("008", "-"), ("035", "a"),
     ("100", "a"), ("100", "d"), ("100", "0"),
     ("041", "a"), ("041", "h"),
     ("240", "a"),
@@ -74,7 +69,7 @@ df = pd.concat(dfs, ignore_index=True)
 
 #%%
 # Save priority_fields file
-filename = "priority_fields_042026"
+filename = "priority_fields_062026"
 df.to_csv(f"{filename}.csv", sep="\t", index=False)
 
 

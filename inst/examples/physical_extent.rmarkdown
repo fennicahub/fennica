@@ -11,6 +11,10 @@ source("init.R")
 source("physical_extent.R")
 ```
 
+
+
+
+
 MARC: [300a](https://www.loc.gov/marc/bibliographic/bd300.html)
 
 Polish physical extent field: [physical_extent.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/physical_extent.R)
@@ -22,6 +26,10 @@ Render physical extent field: [physical_extent.qmd](https://github.com/fennicahu
 * [Conversions from raw data to final page count estimates](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/physical_extent_accepted.csv)
 
 * [Discarded entries](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/physical_extent_discarded.csv)
+
+
+
+
 
 ```{r}
 library(dplyr)
@@ -57,6 +65,10 @@ pagecount_summary <- df_pagecount %>%
 pagecount_summary %>%
   kable()
 ```
+
+
+
+
 ## Page counts
 
 * Page count available for `r pagecount_summary$pagecount_available` documents in total (`r pagecount_summary$pagecount_available_percent`%).
@@ -66,6 +78,10 @@ pagecount_summary %>%
 * Volume count available for `r pagecount_summary$volcount_available` documents.
 
 * Volume count missing for `r pagecount_summary$volcount_missing` documents.
+
+
+
+
 
 ```{r}
 df_pagecount %>%
@@ -99,6 +115,10 @@ df_pagecount %>%
   ) %>%
   kable()
 ```
+
+
+
+
 
 
 
@@ -450,3 +470,4 @@ Same for documents that have a sufficient number of pages:
 ## ✖ object 'pagecount.orig' not found
 ## ℹ Input `..1` is `&...`.
 ```
+
