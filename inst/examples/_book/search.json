@@ -2,21 +2,21 @@
   {
     "objectID": "author_name.html",
     "href": "author_name.html",
-    "title": "2  Author’s info: name",
+    "title": "3  Author’s info: name",
     "section": "",
-    "text": "2.1 Author name for Language material (books) in 100,a - field.\nMARC: 100a and 700a\nAuthor’s name section’s summary tables offer insights into the dataset’s integrity, illustrating the accepted and discarded author names. An examination of missing values in the original dataset provides transparency regarding data completeness. The inclusion of information on name variants and pseudonyms enriches the analysis, addressing nuances in authorship representation. This comprehensive approach ensures a thorough understanding of the dataset’s composition and the intricacies associated with author identification.",
+    "text": "3.1 Author name for Language material (books) in 100,a - field.\nMARC: 100a and 700a\nAuthor’s name section’s summary tables offer insights into the dataset’s integrity, illustrating the accepted and discarded author names. An examination of missing values in the original dataset provides transparency regarding data completeness. The inclusion of information on name variants and pseudonyms enriches the analysis, addressing nuances in authorship representation. This comprehensive approach ensures a thorough understanding of the dataset’s composition and the intricacies associated with author identification.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Author's info: name</span>"
     ]
   },
   {
     "objectID": "author_name.html#author-name-for-language-material-books-in-100a---field.",
     "href": "author_name.html#author-name-for-language-material-books-in-100a---field.",
-    "title": "2  Author’s info: name",
+    "title": "3  Author’s info: name",
     "section": "",
-    "text": "2.1.1 Complete Dataset Overview for 100 field\n\nUnique accepted entries in original data: 209942\nUnique discarded entries in original data (excluding NA cases): 140\nOriginal documents with non-NA titles 835649 / 1318055 (63.4%)\nOriginal documents with missing (NA) titles 482406 / 1318055 documents (36.6%)\n\n\n\n2.1.2 Author’s name (100a) - Top 20\n\n\n\n\n\n\n\n\n\n\n\n2.1.3 Complete Dataset Overview for 700 field\n\nUnique accepted entries in original data: 226879\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles 1004530 / 1004549 (100%)\nOriginal documents with missing (NA) titles 19 / 1004549 documents (0%)\n\n\n\n2.1.4 Author’s name (700a) - Top 20\n\n\n\n\n\n\n\n\n\n\n\n2.1.5 Subset Analysis: 1809-1917 100,a\n\nUnique accepted entries for for 1809-1917 years: 10713\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.\n\n\n\n\n\n\n\n\n\n\n\n2.1.6 Subset Analysis: 1809-1917 700,a\n\nUnique accepted entries for for 1809-1917 years: 7606\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.",
+    "text": "3.1.1 Complete Dataset Overview for 100 field\n\nUnique accepted entries in original data: 209942\nUnique discarded entries in original data (excluding NA cases): 140\nOriginal documents with non-NA titles 835649 / 1318055 (63.4%)\nOriginal documents with missing (NA) titles 482406 / 1318055 documents (36.6%)\n\n\n\n3.1.2 Author’s name (100a) - Top 20\n\n\n\n\n\n\n\n\n\n\n\n3.1.3 Complete Dataset Overview for 700 field\n\nUnique accepted entries in original data: 226879\nUnique discarded entries in original data (excluding NA cases): 0\nOriginal documents with non-NA titles 1004530 / 1004549 (100%)\nOriginal documents with missing (NA) titles 19 / 1004549 documents (0%)\n\n\n\n3.1.4 Author’s name (700a) - Top 20\n\n\n\n\n\n\n\n\n\n\n\n3.1.5 Subset Analysis: 1809-1917 100,a\n\nUnique accepted entries for for 1809-1917 years: 10713\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.\n\n\n\n\n\n\n\n\n\n\n\n3.1.6 Subset Analysis: 1809-1917 700,a\n\nUnique accepted entries for for 1809-1917 years: 7606\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Author's info: name</span>"
     ]
   },
   {
