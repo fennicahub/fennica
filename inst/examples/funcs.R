@@ -7854,19 +7854,17 @@ polish_080x <- function(x) {
 }
 
 
-polish_genre_655 <- function(
-    x,
-    url = "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/unique_slm_labels_fi.csv"
-) {
+polish_genre_655 <- function(x) {
   
   x0 <- as.character(x)
   
+  url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/unique_slm_labels_fi.csv"
+            
   slm_table <- read.csv(
     file = url,
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8"
   )
-  
   if (!"label" %in% names(slm_table)) {
     stop("Column 'label' not found in SLM labels file. Available columns: ",
          paste(names(slm_table), collapse = ", "))

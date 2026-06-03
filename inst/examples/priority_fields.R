@@ -24,7 +24,7 @@ column_count <- ncol(read.csv(url, nrows = 1, sep = "\t"))
 col_classes <- c("character", rep(NA, column_count - 1))
 
 # Read the file with the specified colClasses
-df.orig <- read.csv(url, skip = 3, header = TRUE, sep = "\t", colClasses = col_classes)
+df.orig <- read.csv(url, skip = 4, header = TRUE, sep = "\t", colClasses = col_classes)
 
 names(df.orig) <- c(
   "melinda_id",            # 001

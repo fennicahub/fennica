@@ -1,6 +1,7 @@
 #Genre/form data or focus term (NR)
 
 field <- "genre_655"
+df.orig[[field]][df.orig[[field]] == ""] <- NA
 
 df.tmp <- polish_genre_655(df.orig[[field]])
 df.tmp$melinda_id <- df.orig$melinda_id
@@ -8,7 +9,8 @@ df.tmp <- select(df.tmp, melinda_id, everything())
 
 
 # Ensure the column is character
-df.tmp$harmonized <- as.character(df.tmp$harmonized)
+df.tmp$harmonized <- as.character(trimws(df.tmp$harmonized))
+df.tmp$harmonized[df.tmp$harmonized == ""] <- NA
 
 # Reset the index to convert it into a single-index DataFrame
 row.names(df.tmp) <- NULL
@@ -40,36 +42,27 @@ s <- write_xtable(as.character(df.tmp$harmonized), file_accepted, count = TRUE)
 ###############
 message("Discarded entries in the original data")
 
-unique_655 <- unique(trimws(unlist(strsplit(df.tmp$harmonized, ";"))))
-genre_lang_df <- read.csv("unique_slm_labels_fi.csv", stringsAsFactors = FALSE)
-difference_unique <- na.omit(setdiff(unique_655, genre_lang_df$label))
+# NA values in the final harmonized data
+inds <- which(is.na(df.tmp$harmonized))
+
+# Original entries that were converted into NA
+original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
 
 # .. ie. those are "discarded" cases; list them in a table
-tmp <- write_xtable(as.character(difference_unique), file_discarded, count = TRUE)
+tmp <- write_xtable(original.na, file_discarded, count = TRUE)
+
 
 message("Error list")
 
-# split harmonized by ";" and trim, handling NA safely
-harm <- df.tmp$harmonized
-genres_list <- strsplit(ifelse(is.na(harm), "", harm), ";", fixed = TRUE)
-genres_list <- lapply(genres_list, function(x) {
-  x <- trimws(x)
-  x[x != ""]
-})
+errors <-  tibble(
+  melinda_id = df.tmp$melinda_id[inds],
+  original_value = df.orig[[field]][
+    match(df.tmp$melinda_id[inds], df.orig$melinda_id)
+  ]
+) %>%
+  filter(!is.na(original_value))
 
-# 3) per-row: tokens NOT in difference_unique
-wrong_list <- lapply(genres_list, function(x) x[(x %in% difference_unique)])
-
-# 4) flag rows with at least one wrong token
-has_wrong <- vapply(wrong_list, function(x) length(x) > 0, logical(1))
-
-# 5) build output with the exact wrong tokens
-errors <- cbind(
-  df.tmp[has_wrong, c("melinda_id", "original"), drop = FALSE],
-  wrong_tokens = vapply(wrong_list[has_wrong], function(x) paste(x, collapse = "; "), "")
-)
-
-tmp <- write.csv(errors, 
+tmp1 <- write.csv(errors, 
           file = error_list,
           row.names=FALSE, 
           quote = FALSE,

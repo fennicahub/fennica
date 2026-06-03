@@ -49,8 +49,6 @@ s <- write_xtable(df.tmp[[field]], file_accepted, count = TRUE)
 
 message("Discarded entries in the original data")
 
-message("Discarded entries in the original data")
-
 # NA values in the final harmonized data
 inds <- which(is.na(df.tmp[[field]]))
 
