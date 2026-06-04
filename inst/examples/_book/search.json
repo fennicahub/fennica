@@ -208,5 +208,35 @@
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Physical extent / pagecount</span>"
     ]
+  },
+  {
+    "objectID": "title_remainder.html",
+    "href": "title_remainder.html",
+    "title": "15  Remainder of title",
+    "section": "",
+    "text": "15.1 Complete Dataset Overview\nOriginal documents with title_remainders: 505080 / 1318054 (38.3%)\nOriginal documents with missing (NA) title_remainders 812974 / 1318054 documents (61.7%)\nUnique discarded entries in original data: 0\nDownload title_remainder field harmonized dataset",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Remainder of title</span>"
+    ]
+  },
+  {
+    "objectID": "title_remainder.html#complete-dataset-overview",
+    "href": "title_remainder.html#complete-dataset-overview",
+    "title": "15  Remainder of title",
+    "section": "",
+    "text": "15.1.1 Top-20 title_remainders\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n7506\n0.6\n\n\nsuunnistuskartta\n3550\n0.3\n\n\nrunoja\n3463\n0.3\n\n\nperuskartta 1:20000 = grundkarta 1:20000\n2977\n0.2\n\n\nroman\n1698\n0.1\n\n\ngrundkarta 1:25000 = basic map 1:25000\n1271\n0.1\n\n\ngrundkarta 1:20000\n1241\n0.1\n\n\nerotisk novell\n1137\n0.1\n\n\njännitysromaani\n1112\n0.1\n\n\neroottinen novelli\n1047\n0.1\n\n\n\n\n\n15.1.2 Top-20 remainders of title for “Language material” content type\nIn the Fennica dataset, language material makes up the majority of the content, comprising 91.6% of the entire dataset. This includes written texts, documents, books, articles, and any other content primarily composed of language. The remaining 8.4% consists of non-language material, such as maps, music, computer files, and other types of content that do not primarily rely on language. For a more detailed breakdown of the different types of content within the dataset.\n\n\n\nRemainder of Title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n7415\n0.6\n\n\nrunoja\n3432\n0.3\n\n\nroman\n1694\n0.1\n\n\njännitysromaani\n1081\n0.1\n\n\nloppuraportti\n962\n0.1\n\n\nkuunnelma\n743\n0.1\n\n\nsalapoliisiromaani\n658\n0\n\n\nnovelleja\n604\n0\n\n\nerotisk novell\n591\n0\n\n\nkertomus\n520\n0\n\n\n\n\n\n15.1.3 Remainder of Title Length Over Time (1488-2020)\nThis plot visualizes the variation in title_remainder lengths across publication decades from 1488 to 2020. The title_remainder lengths range from 1 to855 , highlighting how the length of title_remainders has evolved over time.N = 1318054.\n\n\n\n\n\n\n\n\n\n\n\n15.1.4 Remainder of Title Word Count Over Time (1488-2020)\nThis plot visualizes the variation in title_remainder word counts across publication decades from 1488 to 2020. The title_remainder lengths range from 1 to124 , highlighting how the length of title_remainders has evolved over time.N = 1318054.",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Remainder of title</span>"
+    ]
+  },
+  {
+    "objectID": "title_remainder.html#subset-analysis-1809-1917",
+    "href": "title_remainder.html#subset-analysis-1809-1917",
+    "title": "15  Remainder of title",
+    "section": "15.2 Subset Analysis: 1809-1917",
+    "text": "15.2 Subset Analysis: 1809-1917\nUnique accepted entries (1809-1917): 16996\nOriginal documents with non-NA title_remainders: 26706 / 73049 (36.6%)\nOriginal documents with missing (NA) title_remainders 46343 / 73049 documents (63.4%)\nDownload title_remainder field harmonized dataset(1809-1917)\n\n15.2.1 Top-20 title_remainders for years 1809-1917\n\n\n\nRemainder of title\nEntries (n)\nFraction (%)\n\n\n\n\nromaani\n247\n0.3\n\n\nkertomus\n170\n0.2\n\n\nroman\n163\n0.2\n\n\nberättelse\n96\n0.1\n\n\nesitelmä\n95\n0.1\n\n\nyksinäytöksinen huvinäytelmä\n90\n0.1\n\n\nrunoja\n90\n0.1\n\n\nkansakouluja varten\n85\n0.1\n\n\nen samling sånger\n67\n0.1\n\n\nnovell\n66\n0.1\n\n\n\n\n\n15.2.2 Remainder of Title Length Over Time (1809-1917)\nThis plot visualizes the variation in title_remainder lengths across publication years from 1809 to 1917. The title_remainder lengths range from 1 to735. N = 73049.\n\n\n\n\n\n\n\n\n\n\n\n15.2.3 Remainder of Title Word Count (1809-1917)\nThis plot visualizes the variation in title_remainder lengths across publication years from 1809 to 1917. The title_remainder lengths range from 1 to92. N = 73049.",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Remainder of title</span>"
+    ]
   }
 ]
