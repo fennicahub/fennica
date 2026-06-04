@@ -7877,27 +7877,25 @@ polish_genre_655 <- function(x) {
     na.omit() %>%
     unique()
   
+  
   clean_one <- function(value) {
-    
-    if (is.na(value) || stringr::str_trim(value) == "") {
-      return(NA_character_)
-    }
+    if (is.na(value) || value == "") return(NA_character_)
     
     values <- value %>%
+      stringi::stri_trans_nfc() %>%
+      stringr::str_replace_all("\\u00A0", " ") %>%
       stringr::str_replace_all("\\.", "") %>%
       stringr::str_split("\\|") %>%
-      unlist(use.names = FALSE) %>%
-      stringr::str_trim()
+      unlist() %>%
+      stringr::str_squish()
     
     values <- unique(values[values != ""])
     
     matched <- values[values %in% slm_labels]
     
-    if (length(matched) == 0) {
-      NA_character_
-    } else {
-      paste(matched, collapse = "; ")
-    }
+    
+    if (length(matched) == 0) NA_character_
+    else paste(matched, collapse = "; ")
   }
   
   harmonized <- vapply(x0, clean_one, character(1))

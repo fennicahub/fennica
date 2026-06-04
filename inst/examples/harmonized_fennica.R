@@ -30,18 +30,23 @@ df.harmonized$author_birth <- df.tmp$author_age
 source("author_profession.R")
 df.harmonized$author_profession <- df$author_profession
 
+source("title.R")
+
+df.harmonized$title <- df.tmp$title
+df.harmonized$title_length <- df.tmp$title_length
+df.harmonized$title_word <- df.tmp$title_word_count
+
+source("title_remainder.R")
+
+df.harmonized$title_remainder <- df.tmp$title_remainder
+df.harmonized$title_remainder_length <- df.tmp$title_remainder_length
+df.harmonized$title_remainder_word <- df.tmp$title_remainder_word_count
+
 source("title2.R")
 
-df.harmonized$title <- df.tmp$title2
-df.harmonized$title_length <- df.tmp$title2_length
-df.harmonized$title_word <- df.tmp$title2_word_count
-
-
-# source("title_remainder.R")
-# df.harmonized <- cbind(df.harmonized,
-#                        title_remainder = df.tmp$title_remainder, 
-#                        title_remainder_length = df.tmp$title_remainder_length,
-#                        title_remainder_word = df.tmp$title_remainder_word_count)
+df.harmonized$title2 <- df.tmp$title2
+df.harmonized$title2_length <- df.tmp$title2_length
+df.harmonized$title2_word <- df.tmp$title2_word_count
 
 source("language.R")
 #add harmonized fields to df
@@ -71,6 +76,13 @@ df.harmonized$publisher <- df.tmp$publisher
 # 
 df.harmonized$signum <- df.orig$call_number
 
+source("physical_dimensions.R")
+
+df.harmonized$signum <- df.orig$call_number
+
+source("physical_extent.R")
+df.harmonized$signum <- df.orig$call_number
+
 source("udk.R")
 
 df.harmonized$udk_orig <- df.orig$UDC 
@@ -79,7 +91,9 @@ df.harmonized$udk_aux <- df.tmp$udk_aux
 df.harmonized$udk <- df.tmp$converted
 df.harmonized$udk_primary <- df.tmp$primary 
 df.harmonized$udk_multi <- df.tmp$multi_udk
+
 source("genre_655.R")
+
 df.harmonized$genre_655 <- df.tmp$harmonized
 
 
