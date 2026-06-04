@@ -1,7 +1,9 @@
 #Genre/form data or focus term (NR)
 
 field <- "genre_655"
+
 df.orig[[field]][df.orig[[field]] == ""] <- NA
+df.orig[[field]][df.orig[[field]] == " "] <- NA
 
 df.tmp <- polish_genre_655(df.orig[[field]])
 df.tmp$melinda_id <- df.orig$melinda_id
