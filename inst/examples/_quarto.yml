@@ -47,13 +47,13 @@ book:
   - title.qmd
   - title_remainder.qmd
   - title2.qmd
-  - content_type.qmd
-  - udk.qmd
   - title_uniform.qmd
+  - udk.qmd
+  - content_type.qmd
   #- subject_topic.qmd
   #- successor.qmd
   #- uncontrolled.qmd
-  - harmonized_fennica.qmd
+  #- harmonized_fennica.qmd
   appendices :
     - acknowledgments.qmd
     - technical_information.qmd

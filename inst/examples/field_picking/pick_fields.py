@@ -10,10 +10,10 @@ from tqdm import tqdm
 path_csvs = "/mnt/trial/csvs"
 
 #%%
-columns_to_pick = [("999", "a")]
+columns_to_pick = [("099", "a")]
 #%%
 columns_to_pick = [
-    ("001", "-"),("999", "a"), ("LDR", "-"), ("008", "-"), ("035", "a"),
+    ("001", "-"),("099", "a"), ("LDR", "-"), ("008", "-"), ("035", "a"),
     ("100", "a"), ("100", "d"), ("100", "0"),
     ("041", "a"), ("041", "h"),
     ("240", "a"),
@@ -69,7 +69,7 @@ df = pd.concat(dfs, ignore_index=True)
 
 #%%
 # Save priority_fields file
-filename = "field_999a"
+filename = "field_099a"
 df.to_csv(f"{filename}.csv", sep="\t", index=False)
 
 

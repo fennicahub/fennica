@@ -13,4 +13,80 @@ Within the [FIN-CLARIAH](https://www.kielipankki.fi/organization/fin-clariah/) M
 
 Currently, the bookdown project comprises a few distinct chapters. Notably, the harmonization process has been executed through the establishment of dual pipelines: **Complete FNB Pipeline** and **1809 to 1917 Period Pipeline** These chapters are dedicated to the specific metadata categories.
 
+You could include something like this in the dataset documentation.
+
+### Dataset variables
+
+The choice of fields to harmonize is guided by the needs of the [Digital History for Literature in Finland (2022-2026)](https://sites.utu.fi/digital-history-literature-finland/) project funded by the Research Council of Finland. The project aims to use digital collections and methods to significantly expand the prevailing understanding of Finnish literature history.
+
+The harmonized Fennica dataset contains bibliographic metadata, harmonized classifications, publication information, author information, and physical description fields. The variables are:
+
+| Variable                 | Description                                              |
+| ------------------------ | -------------------------------------------------------- |
+| `melinda_id`             | Unique Melinda record identifier                         |
+| `data_element`           | MARC 008 data element values                             |
+| `genre_008`              | Harmonized genre classification derived from MARC 008/33 |
+| `record_type`            | MARC record type                                         |
+| `biblio_level`           | Bibliographic level                                      |
+| `publication_status`     | Publication status code                                  |
+| `author_name`            | Harmonized author name                                   |
+| `author_birth`           | Author birth year                                        |
+| `author_death`           | Author death year                                        |
+| `author_age`             | Author lifespan or age information                       |
+| `title`                  | Harmonized title                                         |
+| `title_length`           | Number of characters in the title                        |
+| `title_word`             | Number of words in the title                             |
+| `title_remainder`        | Remainder of title (subtitle information)                |
+| `title_remainder_length` | Number of characters in the remainder of title           |
+| `title_remainder_word`   | Number of words in the remainder of title                |
+| `title2`                 | Combined title and remainder of title                    |
+| `title2_length`          | Number of characters in the combined title               |
+| `title2_word`            | Number of words in the combined title                    |
+| `language`               | Harmonized language name(s)                              |
+| `language_primary`       | Primary publication language                             |
+| `language_multi`         | Indicator for multilingual publications                  |
+| `lang_orig`              | Original language field from source metadata             |
+| `publication_year_from`  | Earliest publication year extracted from the record      |
+| `publication_year_till`  | Latest publication year extracted from the record        |
+| `publication_year`       | Harmonized publication year                              |
+| `publication_decade`     | Publication decade                                       |
+| `publication_place`      | Harmonized place of publication                          |
+| `publication_country`    | Country of publication                                   |
+| `publisher`              | Harmonized publisher name                                |
+| `signum`                 | Library call number                                      |
+| `udk_orig`               | Original UDC notation                                    |
+| `udk_harm`               | Harmonized UDC notation                                  |
+| `udk_aux`                | UDC auxiliary notation                                   |
+| `udk`                    | Converted UDC classification                             |
+| `udk_primary`            | Primary UDC class                                        |
+| `udk_multi`              | Indicator for multiple UDC classes                       |
+| `genre_655`              | Harmonized genre/form terms derived from MARC 655        |
+| `id2`                    | Other system identifier(s)                               |
+
+In addition, the dataset includes physical description variables extracted from MARC 300 fields:
+
+| Variable                  | Description                            |
+| ------------------------- | -------------------------------------- |
+| `physical_dimension`      | Physical dimensions of the publication |
+| `pagecount`               | Total page count                       |
+| `volcount`                | Number of volumes                      |
+| `volnumber`               | Volume number                          |
+| `parts`                   | Number of parts                        |
+| `pagecount_arabic`        | Arabic numeral pages                   |
+| `pagecount_roman`         | Roman numeral pages                    |
+| `pagecount_sheet`         | Sheet count                            |
+| `pagecount_plate`         | Plate count                            |
+| `pagecount_squarebracket` | Pages reported in square brackets      |
+| `pagecount_multiplier`    | Page multiplier information            |
+| `pagecount_page_info`     | Original page count statement          |
+
+
+[Download harmonized_fennica.csv](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/harmonized_fennica.csv).
+
+Harmonized data is also available for a subset of years 1809-1917:
+
+[Download harmonized_fennica19.csv](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/harmonized_fennica19.csv).
+
+For more information contact Julia Matveeva (yulmat\@utu.fi).
+
 [How to reproduce the workflow](https://github.com/fennicahub/fennica/blob/master/README.md)
