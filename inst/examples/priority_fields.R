@@ -14,8 +14,48 @@
 # Commenting and explanatory notes were generated with the assistance
 # of AI and further refined and validated by Julia Matveeva.
 
-# # Download the csv file
 url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/priority_fields_042026.csv"
+
+options(timeout = 600)
+
+tmp_file <- tempfile(fileext = ".csv")
+
+ok <- FALSE
+
+for (i in 1:3) {
+  ok <- tryCatch({
+    download.file(
+      url,
+      destfile = tmp_file,
+      mode = "wb",
+      method = "libcurl"
+    )
+    
+    file.exists(tmp_file) &&
+      file.info(tmp_file)$size > 0
+    
+  }, error = function(e) {
+    message("Download failed, attempt ", i, ": ", e$message)
+    FALSE
+  })
+  
+  if (ok) break
+  
+  Sys.sleep(5)
+}
+
+if (!ok) {
+  stop("Failed to download file: ", url)
+}
+
+df.orig <- read.csv(
+  tmp_file,
+  skip = 1,
+  header = TRUE,
+  sep = "\t",
+  colClasses = col_classes,
+  stringsAsFactors = FALSE
+)
 # 
 # Read the CSV file, explicitly setting the first column to character
 # Count the number of columns in the file
@@ -116,3 +156,5 @@ names(df.orig) <- ifelse(names(df.orig) == "", NA, names(df.orig))
 #   +     row.names = FALSE,
 #   +     quote = FALSE,
 #   +     na = ""
+
+rm(tmp_file)
