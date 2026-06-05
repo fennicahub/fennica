@@ -48,14 +48,6 @@ if (!ok) {
   stop("Failed to download file: ", url)
 }
 
-df.orig <- read.csv(
-  tmp_file,
-  skip = 1,
-  header = TRUE,
-  sep = "\t",
-  colClasses = col_classes,
-  stringsAsFactors = FALSE
-)
 # 
 # Read the CSV file, explicitly setting the first column to character
 # Count the number of columns in the file
@@ -64,8 +56,14 @@ column_count <- ncol(read.csv(url, nrows = 1, sep = "\t"))
 col_classes <- c("character", rep(NA, column_count - 1))
 
 # Read the file with the specified colClasses
-df.orig <- read.csv(url, skip = 1, header = TRUE, sep = "\t", colClasses = col_classes)
-# Remove rows where all columns are NA or empty strings
+df.orig <- read.csv(
+  tmp_file,
+  skip = 1,
+  header = TRUE,
+  sep = "\t",
+  colClasses = col_classes,
+  stringsAsFactors = FALSE
+)
 
 df.orig <- df.orig[
   !apply(df.orig, 1, function(x) {
