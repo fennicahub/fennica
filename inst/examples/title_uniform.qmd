@@ -52,7 +52,6 @@ print(p)
 MARC: [130a](https://www.loc.gov/marc/bibliographic/bd130.html)
 
 ```{r}
-#| label = "source-index",
 #| include = FALSE
 source("title_uniform_130.R")
 ```
@@ -97,7 +96,6 @@ print(p)
 MARC: [246a](https://www.loc.gov/marc/bibliographic/bd240.html)
 
 ```{r}
-#| label = "source-index",
 #| include = FALSE
 source("variant_title_246.R")
 ```
