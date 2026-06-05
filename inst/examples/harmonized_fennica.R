@@ -13,22 +13,14 @@ df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
 source("author_name.R")
 df.harmonized$author_name <- df$author_name
 
-source("author_name_enriched.R")
-df.harmonized$author_name_enriched <- df$full_name
-
-
-source("gender.R")
-df.harmonized$gender <- df.tmp$gender
-df.harmonized$gender_primary <- df$gender_primary
-
 source("author_date.R")
 #add harmonized fields to df
 df.harmonized$author_birth <- df.tmp$author_birth
 df.harmonized$author_birth <- df.tmp$author_death
 df.harmonized$author_birth <- df.tmp$author_age
 
-source("author_profession.R")
-df.harmonized$author_profession <- df$author_profession
+# source("author_profession.R")
+# df.harmonized$author_profession <- df$author_profession
 
 source("title.R")
 

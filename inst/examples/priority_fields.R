@@ -24,7 +24,16 @@ column_count <- ncol(read.csv(url, nrows = 1, sep = "\t"))
 col_classes <- c("character", rep(NA, column_count - 1))
 
 # Read the file with the specified colClasses
-df.orig <- read.csv(url, skip = 4, header = TRUE, sep = "\t", colClasses = col_classes)
+df.orig <- read.csv(url, skip = 1, header = TRUE, sep = "\t", colClasses = col_classes)
+# Remove rows where all columns are NA or empty strings
+
+df.orig <- df.orig[
+  !apply(df.orig, 1, function(x) {
+    all(is.na(x) | trimws(as.character(x)) == "")
+  }),
+  ,
+  drop = FALSE
+]
 
 names(df.orig) <- c(
   "melinda_id",            # 001
