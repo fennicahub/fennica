@@ -1,11 +1,11 @@
-source("init.R")
+#source("init.R")
 
 # create df.orig
-source("priority_fields.R")
+#source("priority_fields.R")
 
 # get_kanto() and create "fennica_enriched.parquet"
 # it takes a long time to run this code, do it when you need to update only
-# source("kanto_enrichment.R")
+source("kanto_enrichment.R")
 
 #create df.kanto 
 source("priority_fields_kanto.R")
@@ -22,17 +22,7 @@ source("kanto_harmonized.R")
 #create dataframe with all names for each record 
 source("all_names_by_system_id.R")
 
-arrow::write_parquet(
-  names_database,
-  "all_names_fennica.parquet",
-  compression = "zstd"
-)
-
 #create database of all unique auhtors and info
 source("author_database.R")
 
-arrow::write_parquet(
-  author_database,
-  "author_database.parquet",
-  compression = "zstd"
-)
+

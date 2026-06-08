@@ -1,7 +1,7 @@
 
-field <- "physical_size"
+field <- "physical_dimensions"
 synonyms <- read.csv("translation_fi_en_pages.csv", sep = ";")
-df.orig$physical_size <- map(df.orig$physical_size,
+df.orig$physical_dimensions <- map(df.orig$physical_dimensions,
           synonyms, mode = "recursive")
 
 # Fill in missing entries where estimates can be obtained:
@@ -12,7 +12,7 @@ df.tmp <- polish_dimensions(df.orig[[field]], fill = TRUE, verbose = TRUE)
 
 # Add melinda id info as first column
 df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
-                    physical_size = df.orig$physical_size, # add field column
+                    physical_dimensions = df.orig$physical_dimensions, # add field column
                     df.tmp)
 
 # Store the title field data
@@ -67,7 +67,7 @@ df <- readRDS(data.file)
 # 1809-1917
 
 df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
-field <- "physical_size"
+field <- "physical_dimensions"
 
 # Store the title field data
 # FIXME: convert to feather or plain CSV

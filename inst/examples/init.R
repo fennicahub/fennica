@@ -1,3 +1,6 @@
+# in terminal nohup Rscript init.R > render.log 2>&1 &
+
+
 library(devtools)
 library(dplyr)
 library(tidyr)
@@ -47,11 +50,13 @@ source("holdings_add.R")
 #for subset analysis
 source("melindas_19.R")
 
-
+# uncomment when you need to update 
+#source("author_info_data_scripts.R")
 #create csv and save to output_tables
 #source("harmonized_fennica.R")
 #load all csvs to allas
 #source("allas.R")
+#source("render_quarto.R")
 ntop <- 20
 book_author <- "Turku Data Science Group"
 

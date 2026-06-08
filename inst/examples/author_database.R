@@ -166,6 +166,14 @@ author_database$kanto_all <- NULL
 # Only replace gender if it's currently NA
 author_database$gender <- assign_gender(as.character(author_database$first))
 author_database$gender <- sapply(strsplit(author_database$gender, "\\|"), `[`, 1)
+# obvious non-persons -> keep NA
+author_database$gender[
+  grepl(
+    "ab$|oy$|ry$|liitto|kirjat|kääntöpiiri|seura|yhdistys|tuote",
+    tolower(author_database$author_name_fen)
+  )
+] <- NA
+
 
 
 #activity years for each author in fennica 
@@ -176,7 +184,9 @@ df_time <- df_pubtime %>%
   rename(id1 = melinda_id) %>%
   distinct(id1, publication_year)
 
- 
+df_time <- df_time %>%
+  mutate(id1 = as.character(id1))
+
 record_authors_years <- record_authors %>%
   left_join(
     df_time %>%
@@ -206,6 +216,17 @@ author_database <- author_database %>%
   ))) %>%
   left_join(author_activity, by = "author_key")
 
+author_database_na_gender <- author_database_1809_1917 %>%
+  filter(is.na(gender))
+
+write.table(
+  author_database_na_gender,
+  file = "author_database_gender_na.csv",
+  quote = FALSE,
+  row.names = FALSE,
+  col.names = TRUE,
+  sep = "\t"
+)
 
 ###########
 idx <- match(author_database$asteri_id,
@@ -232,7 +253,7 @@ author_database_1809_1917 <- author_database %>%
 
 write.table(
   author_database,
-  file = "author_database.csv",
+  file = paste0(output.folder, "author_database.csv"),
   quote = FALSE,
   row.names = FALSE,
   col.names = TRUE,
@@ -241,7 +262,7 @@ write.table(
 
 write.table(
   author_database_1809_1917,
-  file = "author_database_19.csv",
+  file = paste0(output.folder, "author_database_19.csv"),
   quote = FALSE,
   row.names = FALSE,
   col.names = TRUE,

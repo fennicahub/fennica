@@ -9,7 +9,7 @@ authors_100 <- df.orig %>%
 authors_700 <- df_700 %>%
   transmute(
     source = "700",
-    id = as.character(clean_id(author_id))
+    id = as.character(clean_id(asteri_id))
   ) %>%
   filter(!is.na(id), id != "")
 

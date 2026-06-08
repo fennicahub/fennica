@@ -17,11 +17,11 @@ Polish physical extent field: [physical_extent.R](https://github.com/fennicahub/
 
 Harmonize physical extent data function: [polish_physical_extent.R](https://github.com/fennicahub/fennica/blob/master/R/polish_physical_extent.R)
 
-Render physical extent field: [physical_extent.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/physical extent.qmd)
+Render physical extent field: [physical_extent.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/physical_extent.qmd)
 
 * [Conversions from raw data to final page count estimates](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/physical_extent_accepted.csv)
 
-* [Discarded entries](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/physical_extent_discarded_.csv)
+* [Discarded entries](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/physical_extent_discarded.csv)
 
 ```{r}
 #| include = FALSE

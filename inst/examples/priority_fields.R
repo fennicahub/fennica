@@ -14,7 +14,7 @@
 # Commenting and explanatory notes were generated with the assistance
 # of AI and further refined and validated by Julia Matveeva.
 
-url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/priority_fields_042026.csv"
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/priority_fields_062026.csv"
 
 options(timeout = 600)
 
@@ -74,7 +74,8 @@ df.orig <- df.orig[
 ]
 
 names(df.orig) <- c(
-  "melinda_id",            # 001
+  "id",            # 001
+  "melinda_id",             #999
   "leader",                # LDR
   "field_008",             # 008
   "other_system_id",       # 035a
@@ -97,7 +98,7 @@ names(df.orig) <- c(
   
   "publication_place_264", # 264a
   
-  "physical_size",         # 300c
+  "physical_dimensions",         # 300c
   "physical_extent",       # 300a
   
   "publication_frequency", # 310a
@@ -109,9 +110,6 @@ names(df.orig) <- c(
   "genre_655",             # 655a
   "subject_650",           # 650a
   "note_500",              # 500a
-  
-  "added_author_name",     # 700a
-  "added_author_id",       # 7000 
   
   "content_type_336",      # 336a
   "contents_505",          # 505a

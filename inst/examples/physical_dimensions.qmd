@@ -12,17 +12,17 @@ source("physical_dimensions.R")
 
 MARC: [300c](https://www.loc.gov/marc/bibliographic/bd300.html)
 
-Polish physical dimensions field: [physical_dimensions.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/physical dimensions.R)
+Polish physical dimensions field: [physical_dimensions.R](https://github.com/fennicahub/fennica/blob/master/inst/examples/physical_dimensions.R)
 
 Harmonize physical attributes data function: [polish_dimensions.R](https://github.com/fennicahub/fennica/blob/master/R/polish_dimensions.R)
 
-Render physical dimensions field: [physical_dimensions.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/physical dimensions.qmd)
+Render physical dimensions field: [physical_dimensions.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/physical_dimensions.qmd)
 
 ## Complete Dataset Overview
 
--   [Accepted dimension info](dataTable/data_table.html?path=../output.tables/physical_size_accepted.csv)
+-   [Accepted dimension info](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/physical_dimensions_accepted.csv)
 
--   [Discarded dimension info](dataTable/data_table.html?path=../output.tables/physical_size_discarded.csv)
+-   [Discarded dimension info](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables//physical_dimensions_discarded.csv)
 
 
 ```{r}
@@ -30,7 +30,7 @@ Render physical dimensions field: [physical_dimensions.qmd](https://github.com/f
 
 library(dplyr)
 
-field <- "physical_size"
+field <- "physical_dimensions"
 
 is_nonempty <- function(x) {
   !is.na(x) & trimws(as.character(x)) != "" & trimws(as.character(x)) != "NA"
@@ -98,11 +98,11 @@ ds <- dimension_summary(df.tmp)
 ```
 
 
-## Document size comparisons
+## Document dimensions comparisons
 
 - Some dimension info is provided in the original raw data for altogether `r ds$n_original` documents (`r ds$p_original`%) but could not be interpreted for `r ds$n_uninterpreted_from_nonempty` documents, i.e. dimension info was successfully estimated for `r ds$p_interpreted_from_nonempty`% of the documents where this field was not empty.
 
-- Document size (area) info was obtained in the final preprocessed data for altogether `r ds$n_area` documents (`r ds$p_area`%). For the remaining `r ds$n_area_missing` documents, critical dimension information was not available or could not be interpreted: [List of entries where document surface could not be estimated](https://github.com/fennicahub/fennica/inst/extdata/physical_dimension_incomplete.csv)
+- Document dimensions (area) info was obtained in the final preprocessed data for altogether `r ds$n_area` documents (`r ds$p_area`%). For the remaining `r ds$n_area_missing` documents, critical dimension information was not available or could not be interpreted: [List of entries where document surface could not be estimated](https://github.com/fennicahub/fennica/inst/extdata/physical_dimension_incomplete.csv)
 
 - Document gatherings info is originally available for `r ds$n_gatherings_original` documents (`r ds$p_gatherings_original`%), and further estimated up to `r ds$n_gatherings_final` documents (`r ds$p_gatherings_final`%) in the final preprocessed data.
 
@@ -119,9 +119,9 @@ These tables can be used to verify the accuracy of the conversions from the raw 
 
 The estimated dimensions are based on the following auxiliary information sheets:
 
--   [Document dimension abbreviations](https://github.com/fennicahub/fennica/inst/extdata/document_size_abbreviations.csv)
+-   [Document dimension abbreviations](https://github.com/fennicahub/fennica/inst/extdata/document_dimensions_abbreviations.csv)
 
--   [Standard sheet size estimates](https://github.com/fennicahub/fennica/inst/extdata/sheetsizes.csv)
+-   [Standard sheet dimensions estimates](https://github.com/fennicahub/fennica/inst/extdata/sheetdimensionss.csv)
 
 -   [Document dimension estimates](https://github.com/fennicahub/fennica/inst/extdata/documentdimensions.csv) (used when information is partially missing)
 
@@ -199,7 +199,7 @@ plot_gatherings <- function(df, top_n = 10) {
       subtitle = "Original vs estimated values"
     ) +
     
-    theme_minimal(base_size = 13) +
+    theme_minimal(base_dimensions = 13) +
     
     theme(
       legend.position = "none",

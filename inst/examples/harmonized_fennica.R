@@ -11,7 +11,17 @@ df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
                             publication_status = df.orig$publication_status)
 
 source("author_name.R")
-df.harmonized$author_name <- df$author_name
+df.harmonized$author_name_100 <- df$author_name
+df.harmonized$first_100 <- df$first
+df.harmonized$last_100 <- df$author_name
+
+
+source("author_name_700.R")
+df.harmonized <- df.harmonized %>%
+  left_join(df700_harm, by = "melinda_id")
+
+# source("gender.R")
+# df.harmonized$gender <- df$gender_primary
 
 source("author_date.R")
 #add harmonized fields to df

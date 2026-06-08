@@ -17,24 +17,61 @@ library(stringr)
 # Each row should represent one added/contributing author from field 700.
 
 
-df_700 <- read.csv("authors_700_long.csv")
+df_700 <- read.csv("authors_700.csv")
 
 # Clean Asteri IDs from the original author_id column.
 # The goal is to keep only the 9-digit numeric Asteri identifier.
 df_700 <- df_700 %>%
   mutate(
-    asteri_id = clean_id(author_id))
+    asteri_id = clean_id(author_7000))
 
 # Harmonise / clean author names using your polish_author() function.
 # The function returns a structured object; here only full_name is kept.
-name <- polish_author(df_700$author_name)
+name <- polish_author(df_700$author_700a)
 
 df_700$author_name <- name$full_name
 
+author_700e_unique <- df_700$author_700e %>%
+  as.character() %>%
+  strsplit("\\|") %>%
+  unlist(use.names = FALSE) %>%
+  trimws() %>%
+  gsub("^[\\.\\s]+|[\\.\\s]+$", "", ., perl = TRUE) %>%
+  (\(x) x[x != "" & !is.na(x)])() %>%
+  unique()
+
+print(author_700e_unique)
 
 
 # Make sure df_700 is a normal data frame.
 df_700 <- as.data.frame(df_700)
+
+roles_keep <- c(
+  "kirjoittaja",
+  "kirjailija",
+  "tekijä",
+  "författare",
+  "author",
+  "runoilija",
+  "käsikirjoittaja",
+  "sanoittaja",
+  "libretisti",
+  "alkuperäisteoksen kirjoittaja",
+  "alkuteoksen kirjoittaja",
+  "alkuperäistarinan kirjoittaja",
+  "alkuperäistekstin kirjoittaja"
+)
+
+keep <- sapply(strsplit(as.character(df_700$author_700e), "\\|"), function(x) {
+  if (all(is.na(x)) || all(trimws(x) == "")) return(TRUE)
+  
+  x <- trimws(x)
+  x <- gsub("^[[:punct:] ]+|[[:punct:] ]+$", "", x)
+  
+  any(tolower(x) %in% roles_keep)
+})
+
+df_700 <- df_700[keep, ]
 
 # Match cleaned 700 Asteri IDs with df.kanto.
 # df.kanto contains authority-data dates: from = birth, till = death.

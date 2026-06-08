@@ -127,4 +127,3 @@ names_database <- merge(
   all.x = TRUE,
   sort = FALSE
 )
-
