@@ -10,6 +10,8 @@ row.names(df.tmp) <- NULL
 # Collect the results into a data.frame
 df.tmp$melinda_id <- df.orig$melinda_id
 
+df.tmp <- df.tmp %>%
+  dplyr::rename(language = full_language_name)
 
 
 # Define output files
@@ -22,7 +24,7 @@ file_accepted <- paste0(output.folder, field, "_accepted.csv")
 # Generate data summaries for the whole data set 
 
 message("Accepted languages")
-for (myfield in c("full_language_name", "language_primary")) {
+for (myfield in c("language", "language_primary")) {
   tmp <- write_xtable(
     df.tmp[[myfield]],
     paste(output.folder, myfield, "_accepted.csv", sep = ""),
@@ -43,11 +45,11 @@ tmp1 <- write_xtable(
 message("Language discarded")
 
 orig_split <- strsplit(df.tmp$language_original, ";")
-full_split <- strsplit(df.tmp$full_language_name, ";")
+full_split <- strsplit(df.tmp$language, ";")
 
 original.na <- unlist(
   sapply(seq_along(orig_split), function(i) {
-    if (is.na(df.tmp$language_original[i]) || is.na(df.tmp$full_language_name[i])) {
+    if (is.na(df.tmp$language_original[i]) || is.na(df.tmp$language[i])) {
       return(character(0))
     }
     bad_idx <- which(trimws(full_split[[i]]) == "Unrecognized")
@@ -114,7 +116,7 @@ field <- "language"
 # Generate data summaries for the subset data set 
 
 message("Accepted languages 19th century")
-for (myfield in c("full_language_name", "language_primary")) {
+for (myfield in c("language", "language_primary")) {
   tmp <- write_xtable(df_19[[myfield]], paste(output.folder, myfield, "_accepted_19.csv", sep = ""), 
                       count = TRUE, 
                       add.percentages = TRUE)

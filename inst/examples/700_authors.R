@@ -16,20 +16,11 @@ library(stringr)
 # Read the long-format table extracted from MARC 700 fields.
 # Each row should represent one added/contributing author from field 700.
 
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/authors_700_long.csv"
 
-df_700 <- read.csv("authors_700.csv")
 
-# Clean Asteri IDs from the original author_id column.
-# The goal is to keep only the 9-digit numeric Asteri identifier.
-df_700 <- df_700 %>%
-  mutate(
-    asteri_id = clean_id(author_7000))
+df_700 <- read.csv(url,stringsAsFactors = FALSE)
 
-# Harmonise / clean author names using your polish_author() function.
-# The function returns a structured object; here only full_name is kept.
-name <- polish_author(df_700$author_700a)
-
-df_700$author_name <- name$full_name
 
 author_700e_unique <- df_700$author_700e %>%
   as.character() %>%
@@ -72,6 +63,18 @@ keep <- sapply(strsplit(as.character(df_700$author_700e), "\\|"), function(x) {
 })
 
 df_700 <- df_700[keep, ]
+
+# Clean Asteri IDs from the original author_id column.
+# The goal is to keep only the 9-digit numeric Asteri identifier.
+df_700 <- df_700 %>%
+  mutate(
+    asteri_id = clean_id(author_7000))
+
+# Harmonise / clean author names using your polish_author() function.
+# The function returns a structured object; here only full_name is kept.
+name <- polish_author(df_700$author_700a)
+
+df_700$author_name <- name$full_name
 
 # Match cleaned 700 Asteri IDs with df.kanto.
 # df.kanto contains authority-data dates: from = birth, till = death.

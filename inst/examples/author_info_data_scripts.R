@@ -1,7 +1,7 @@
-#source("init.R")
+source("init.R")
 
 # create df.orig
-#source("priority_fields.R")
+source("priority_fields.R")
 
 # get_kanto() and create "fennica_enriched.parquet"
 # it takes a long time to run this code, do it when you need to update only

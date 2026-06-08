@@ -3,10 +3,52 @@
 #source("author_name_for_gender.R"): get all names that exist in fennica and create fennica_all_names.csv
 field <- "gender"
 
-df.tmp <- author_database
 
 # Only replace gender if it's currently NA
-df.tmp$gender <- assign_gender(as.character(df.tmp$first))
+df.tmp$gender <- assign_gender(as.character(author$first))
+
+gender_fix <- c(
+  "000082550" = "female",  # Tekla Renfors
+  "000113874" = "male",    # Johan Fredrik Galetski
+  "000100931" = "male",    # Ferdinand Augustinus Sainio
+  "000113858" = "female",  # Anna Edelheim
+  "000117480" = "female",  # Fredrika Runeberg
+  "000091150" = "male",    # Georg Fraser
+  "000101671" = "male",    # Martti Bergh-Wuori
+  "000131538" = "male",    # Kaarle Jaakko Gummerus
+  "000096230" = "male",    # Antti Mäkinen
+  "000100856" = "male",    # Into Konrad Inha
+  "000096233" = "male",    # Volmar Lindman
+  "000096461" = "female",  # Anna Lilius
+  "000100855" = "male",    # Johan Gustaf Nordlund
+  "000091857" = "male",    # Jebets Jesiel Judi Säilä
+  "000094323" = "male",    # Arvi Aleksanteri Karisto
+  "000091050" = "female",  # Alma Hongell
+  "000084618" = "female",  # Alma Suppanen
+  "000091184" = "male",    # Axel Alfthan
+  "000097594" = "female",  # Aleksandra Gripenberg
+  "000077619" = "male",    # Einar Reuter
+  "000091987" = "female",  # Edith Theodora Forssman
+  "000089826" = "female",  # Lilli Lilius
+  "000091891" = "female",  # Nanny Cedercreutz
+  "000091259" = "male",    # Nino Runeberg
+  "000085988" = "male",    # Antti Mäkinen
+  "000091315" = "female",  # Hedvig Gebhard
+  "000113243" = "male",    # Karl August Andelin
+  "000091262" = "male",    # Hjalmar Neiglick
+  "000132972" = "male",    # Hugo Alfred Josef Grönstrand
+  "000073637" = "male",    # Otto Arvid Lydecken
+  "000091115" = "female",  # Adéle Weman
+  "000091619" = "female",  # Aura Jurva
+  "000132837" = "male",    # Oiva Johannes Tuulio/Tallgren
+  "000091726" = "male",    # Johan Albert Bergman
+  "000096569" = "male"     # Mathias Bergman
+)
+
+df.tmp$gender <- dplyr::coalesce(
+  df.tmp$gender,
+  unname(gender_fix[df.tmp$asteri_id])
+)
 
 ###########
 

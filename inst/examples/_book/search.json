@@ -48,5 +48,55 @@
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author's info: name, dates, gender, profession</span>"
     ]
+  },
+  {
+    "objectID": "author_name.html",
+    "href": "author_name.html",
+    "title": "3  Author’s info: name",
+    "section": "",
+    "text": "3.1 Author name for Language material (books) in 100,a - field.\nMARC: 100a and 700a\nAuthor’s name section’s summary tables offer insights into the dataset’s integrity, illustrating the accepted and discarded author names. An examination of missing values in the original dataset provides transparency regarding data completeness. The inclusion of information on name variants and pseudonyms enriches the analysis, addressing nuances in authorship representation. This comprehensive approach ensures a thorough understanding of the dataset’s composition and the intricacies associated with author identification.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Author's info: name</span>"
+    ]
+  },
+  {
+    "objectID": "author_name.html#author-name-for-language-material-books-in-100a---field.",
+    "href": "author_name.html#author-name-for-language-material-books-in-100a---field.",
+    "title": "3  Author’s info: name",
+    "section": "",
+    "text": "3.1.1 Complete Dataset Overview for 100 field\n\nUnique accepted entries in original data: 0\nUnique discarded entries in original data (excluding NA cases): 9\nOriginal documents with non-NA titles 0 / 1318063 (NaN%)\nOriginal documents with missing (NA) titles 0 / 1318063 documents (NaN%)\n\n\n\n3.1.2 Author’s name (100a) - Top 20\n\n\n\n\n\n\n\n\n\n\n\n3.1.3 Complete Dataset Overview for 700 field\n\nUnique accepted entries in original data: 193893\nOriginal documents with non-NA titles 393139 / 393139 (100%)\nOriginal documents with missing (NA) titles 0 / 393139 documents (0%)\n\n\n\n3.1.4 Author’s name (700a) - Top 20\n\n\n\n\n\n\n\n\n\n\n\n3.1.5 Subset Analysis: 1809-1917 100,a\n\nUnique accepted entries for for 1809-1917 years: 0\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.\n\n\n\n\n\n\n\n\n\n\n\n3.1.6 Subset Analysis: 1809-1917 700,a\n\nUnique accepted entries for for 1809-1917 years: 5316\n\nTop-20 titles and their title counts for period 1809-1917.\nThe accompanying plot visually underscores the prominence of these authors, emphasizing the metric of the number of unique titles published by each author.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Author's info: name</span>"
+    ]
+  },
+  {
+    "objectID": "language.html",
+    "href": "language.html",
+    "title": "7  Language",
+    "section": "",
+    "text": "7.1 Description\nThe polish_languages function is designed to standardize and harmonize language information in a dataset. The process starts by isolating unique language entries, ensuring that each distinct combination of languages is processed only once, which improves efficiency and avoids redundant computations. A MARC reference list of recognized language abbreviations and names is then used to map language codes to their standardized forms. Each language entry is analyzed to identify multiple languages and to detect any unrecognized terms.\nThe entries are standardized by converting them to their recognized forms while eliminating duplicates and filtering out unrecognized languages. Empty cells in the dataset are marked as NA to indicate missing information. Once standardized, all valid languages are aggregated to create a structured data frame. This data frame includes the total number of languages in each entry, a flag (TRUE/FALSE) indicating whether the entry contains multiple languages (including those that are originally coded as mul = Multiple language), the cleaned and harmonized list of languages, and the primary language, which is defined as the first listed language in each entry. The result is a cleaned and standardized dataset that facilitates accurate analysis of multilingual data.\nAdditionally, an error list is generated, consisting of unrecognized language information and the corresponding IDs. This error list helps librarians identify mistakes in the original data and provides context to either correct the errors or explain why certain entries were discarded by the function.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Language</span>"
+    ]
+  },
+  {
+    "objectID": "language.html#complete-dataset-overview",
+    "href": "language.html#complete-dataset-overview",
+    "title": "7  Language",
+    "section": "7.2 Complete Dataset Overview",
+    "text": "7.2 Complete Dataset Overview\nUnique languages: 190\nUnique primary languages: 159\n1173745 single-language entries (93.41%)\n82803 multilingual entries , accounting for 6.59% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.\nThere are 297 single-language entries marked as only “Undetermined”, coded as “und”, accounting for (0.02%) of the total.\nThere are 61515 missing values in the dataset,accounting for (4.67%) of the total.\nUnrecognized languages provides details of languages that were discarded, in total: 18. Additionally, the Error list contains ID numbers of entries associated with these discarded languages, intended for librarian review.\nConversions from raw to preprocessed language entries\nNew custom abbreviations can be added in this table.\nDownload language harmonized dataset",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Language</span>"
+    ]
+  },
+  {
+    "objectID": "language.html#subset-analysis-1809-1917",
+    "href": "language.html#subset-analysis-1809-1917",
+    "title": "7  Language",
+    "section": "7.3 Subset Analysis: 1809-1917",
+    "text": "7.3 Subset Analysis: 1809-1917\nUnique languages (1809-1917): 55\nUnique primary languages (1809-1917): 40\n67393 single-language entries (94.53%)\n3903 multilingual entries , accounting for 5.47% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.\nThere are 15 entries marked as “Undetermined”.\nThere are 1330 missing values in the dataset,accounting for (1.83%) of the total.\nDownload language harmonized dataset (1809-1917)\n\n7.3.1 Top languages for 1809-1917\nNumber of titles assigned with each language (top-10). For a complete list, see accepted languages (1809-1917).\n\n\n\nLanguage\nEntries (n)\nFraction (%)\n\n\n\n\nFinnish\n37707\n51.9\n\n\nSwedish\n22270\n30.7\n\n\nLatin\n2506\n3.5\n\n\nGerman\n2283\n3.1\n\n\nFinnish;Swedish\n1740\n2.4\n\n\nRussian\n848\n1.2\n\n\nFrench\n702\n1\n\n\nEnglish\n452\n0.6\n\n\nSwedish;Finnish\n252\n0.3\n\n\nSwedish;Latin\n203\n0.3\n\n\n\nTitle count per language (including multi-language documents; note the log10 scale):",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Language</span>"
+    ]
   }
 ]

@@ -40,6 +40,7 @@ url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-co
 
 df700 <- read.csv(url,stringsAsFactors = FALSE)
 
+
 author_700e_unique <- df700$author_700e %>%
   as.character() %>%
   strsplit("\\|") %>%
@@ -52,6 +53,7 @@ author_700e_unique <- df700$author_700e %>%
 
 # Make sure df_700 is a normal data frame.
 df700 <- as.data.frame(df700)
+df700$author_name_700 <- df700$author_700a
 
 roles_keep <- c(
   "kirjoittaja",
@@ -146,11 +148,15 @@ error_700 <- paste0(output.folder, field, "_error.csv")
 message("Accepted entries in the preprocessed data")
 s <- write_xtable(df700_harm$author_name_700, file_accepted_700, count = TRUE)
 
-message("Discarded entries in the original data")
-
-# Find rows where harmonized 700 author name is NA
-inds <- which(is.na(df700_harm[[field]]))
-
+# message("Discarded entries in the original data")
+# 
+# inds <- which(is.na(df700_harm[[field]]))
+# 
+# original.na <- df700[[field]][
+#   match(df700_harm$melinda_id[inds], df700$melinda_id)
+# ]
+# 
+# tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 
 
 # ------------------------------------------------------------
