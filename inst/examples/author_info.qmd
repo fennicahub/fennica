@@ -17,11 +17,10 @@ knitr::opts_chunk$set(
   warning = FALSE
 )
 
-library(dplyr)
-library(tidyr)
-library(stringr)
-library(knitr)
+source("init.R")
 ```
+
+
 
 ```{r}
 # # Download the csv file
@@ -111,7 +110,84 @@ tab <- author_database %>%
 kable(tab)
 ```
 
+```{r}
+#| label = "adb_profession",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
+library(ggplot2)
+#library(comhis)
 
+theme_set(theme_bw(base_size = 12))
+p <- top_plot(author_database, "profession", ntop = ntop, log10 = TRUE)+
+  labs(y = "Entries (n)", title = "Top author professions (Log values)")
+print(p)
+```
+
+
+```{r}
+#| label = "adb_title",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
+library(ggplot2)
+#library(comhis)
+
+theme_set(theme_bw(base_size = 12))
+p <- top_plot(author_database, "title", ntop = ntop, log10 = TRUE)+
+  labs(y = "Entries (n)", title = "Top author title (Log values)")
+print(p)
+```
+
+```{r}
+#| label = "adb_language",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
+library(ggplot2)
+#library(comhis)
+
+theme_set(theme_bw(base_size = 12))
+p <- top_plot(author_database, "language", ntop = ntop, log10 = TRUE)+
+  labs(y = "Entries (n)", title = "Top  author language (Log values)")
+print(p)
+```
+```{r}
+#| label = "adb_field_activity",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
+library(ggplot2)
+#library(comhis)
+
+theme_set(theme_bw(base_size = 12))
+p <- top_plot(author_database, "field_activity", ntop = ntop, log10 = TRUE)+
+  labs(y = "Entries (n)", title = "Top  author field activity (Log values)")
+print(p)
+```
+```{r}
+#| label = "adb_country",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
+library(ggplot2)
+#library(comhis)
+
+theme_set(theme_bw(base_size = 12))
+p <- top_plot(author_database, "country", ntop = ntop, log10 = TRUE)+
+  labs(y = "Entries (n)", title = "Top  author country (Log values)")
+print(p)
+```
 
 [Download author database dataset for all authors in Fennica](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_database.csv)
 
@@ -194,6 +270,35 @@ colnames(tab) <- c(
 kable(tab)
 ```
 
+```{r}
+#| label = "adb_profession19",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
+library(ggplot2)
+#library(comhis)
 
+theme_set(theme_bw(base_size = 12))
+p <- top_plot(author_database_19, "profession", ntop = ntop, log10 = TRUE)+
+  labs(y = "Entries (n)", title = "Top  author professions 1809-1917 (Log values)")
+print(p)
+```
+```{r}
+#| label = "adb_language19",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
+library(ggplot2)
+#library(comhis)
+
+theme_set(theme_bw(base_size = 12))
+p <- top_plot(author_database, "language", ntop = ntop, log10 = TRUE)+
+  labs(y = "Entries (n)", title = "Top  author language 1809-1917 (Log values)")
+print(p)
+```
 
 [Download author database dataset for authors in Fennica for years 1809-1917 ](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_database_19.csv)

@@ -5,19 +5,14 @@ Moving one field at a time from main_in_transfer.R to main.R
 
 
 ### Technical
+- change melinda_id name to id everywhere because it is not technically melinda id now
 
 - Use feather instead of Rds?
 
 - Move many key functions from funcs.R to R/ folder and package
 
-- Check data/unified/polished/ & ~/data/comhis/Fennica/unified & gitlab@gitlab.utu.fi:leolahti/comhis.git
-
 - Paikkatiedot: Billnäs -> Karjaa?
 
-- Onko primaarikieli luotettava; näitä voisi testata joko
-  manuaalisesti, tai sitten vertaamalla otsikon kieleen tms.
-
-- Self published: add summaries also for these to publisher.Rmd
 
 - Gender: putsattu top-20 female mukaan. (F + K). Gender-mäppien
   viimeistely. After Krakow.
@@ -26,16 +21,12 @@ Moving one field at a time from main_in_transfer.R to main.R
 
 - Vieläkin näyttäs olevan negatiivisia pagecountteja
 
-- Gender: putsattu top-20 female mukaan. (F + K)
-
 - Use corporate field for NA publishers ?
    #if ("corporate" %in% names(df.orig)) {
    #  message("Augmenting missing publisher entries with the corporate field")
    #  inds <- which(is.na(df.orig$publisher))
    #  df.orig$publisher[inds] <- df.orig$corporate[inds]
    #}
-
-- Auktoridata saatiin käyttöön ja pitäisi integroida Fennicaan.
 
 - Lisää 6to kokoarviot tauluihin
 

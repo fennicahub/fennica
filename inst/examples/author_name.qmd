@@ -20,10 +20,10 @@ Author's name section's summary tables offer insights into the dataset's integri
 
 ### Complete Dataset Overview for 100 field
 
--   [Unique accepted entries in original data](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_accepted.csv): `r length(unique(df[[field]]))`
+-   [Unique accepted entries in original data](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_accepted.csv): `r length(unique(df$author_name))`
 -   [Unique discarded entries in original data](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_name_discarded.csv) (excluding NA cases): `r as.vector(countLines(file_discarded) - 1)`
--   Original documents with non-NA titles `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
--   Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
+-   Original documents with non-NA titles `r sum(!is.na(df$author_name))` / `r nrow(df)` (`r round(100*mean(!is.na(df$author_name)), 1)`%)
+-   Original documents with missing (NA) titles `r sum(is.na(df$author_name))` / `r nrow(df)` documents (`r round(100*mean(is.na(df$author_name)), 1)`%)
 
 
 ### Author's name (100a) - Top 20

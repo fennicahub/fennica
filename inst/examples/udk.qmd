@@ -14,7 +14,7 @@ MARC: [080a](https://www.loc.gov/marc/bibliographic/bd080.html)
 
 Polish_udk.R is a function designed to harmonize the 'Universal Decimal Classification' field. Currently, it only harmonizes entries categorized under the bibliography level of Monograph/Item.
 
-In total, there are `r length(df.orig$UDK)` entries in Fennica, with `r sum(is.na(df.orig$UDK) | df.orig$UDK == "")` missing UDC values in our dataset.
+In total, there are `r length(df.orig$UDC)` entries in Fennica, with `r sum(is.na(df.orig$UDC) | df.orig$UDC == "")` missing UDC values in our dataset.
 
 ## Complete Dataset Overview
 
@@ -36,7 +36,7 @@ There are `r sum(df$primary == "Undetermined", na.rm = TRUE)` entries where the 
 
 [Download UDC harmonized dataset](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK.csv)
 
-UDC codes are from [The National Library of Finland](https://www.kiwi.fi/spaces/Kansallisbibliografiapalvelut/pages/57836458/Monografia-aineiston+UDK-luokituskaavio); new custom abbreviations can be added in [this table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/udk_monografia.csv).
+UDC codes are from [the National Library of Finland](https://www.kiwi.fi/spaces/Kansallisbibliografiapalvelut/pages/57836458/Monografia-aineiston%2BUDK-luokituskaavio); new custom abbreviations can be added in [this table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/udk.csv).
 
 ```{r}
 #| label = "summaryudk1",
@@ -58,7 +58,7 @@ kable(head(tab, 20))
 
 `r sum(is.na(df_19$cleaned))` missing/NA entries (`r round(mean(is.na(df_19$cleaned)) * 100)`%)
 
-There are `r sum(df_19$primary == "Undetermined", na.rm = TRUE)` entries where the primary UDK is "Undetermined" (`r round(mean(df_19$primary == "Undetermined", na.rm = TRUE) * 100)`%)
+There are `r sum(df_19$primary == "Undetermined", na.rm = TRUE)` entries where the primary UDC is "Undetermined" (`r round(mean(df_19$primary == "Undetermined", na.rm = TRUE) * 100)`%)
 
 [Download UDC harmonized dataset (1809-1917)](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK_19.csv)
 

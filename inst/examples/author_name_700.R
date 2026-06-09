@@ -1,39 +1,3 @@
-# in terminal nohup Rscript init.R > render.log 2>&1 &
-
-
-library(devtools)
-library(dplyr)
-library(tidyr)
-library(tm)
-library(stringr)
-library(knitr)
-library(R.utils)
-library(ggplot2)
-library(Cairo)
-library(purrr)
-library(stringi)
-library(parallel)
-library(qdapRegex)
-library(readxl)
-library(arrow)
-library(textutils)
-library(data.table)
-library(brms)
-library(rnaturalearth)
-
-# Install latest version from Github
-# install_github("fennicahub/fennica") # or
-# devtools::load_all() # if you are working from the clone and modifying it
-library(fennica)
-
-# Load misc functions needed for harmonization
-source("funcs.R")
-
-# Define create the output folder
-output.folder <- "output.tables/"
-if (!file.exists(output.folder)) {
-  dir.create(output.folder)
-}
 
 url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/authors_700_long.csv"
 
