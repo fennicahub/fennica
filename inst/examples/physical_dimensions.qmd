@@ -102,7 +102,7 @@ ds <- dimension_summary(df.tmp)
 
 - Some dimension info is provided in the original raw data for altogether `r ds$n_original` documents (`r ds$p_original`%) but could not be interpreted for `r ds$n_uninterpreted_from_nonempty` documents, i.e. dimension info was successfully estimated for `r ds$p_interpreted_from_nonempty`% of the documents where this field was not empty.
 
-- Document dimensions (area) info was obtained in the final preprocessed data for altogether `r ds$n_area` documents (`r ds$p_area`%). For the remaining `r ds$n_area_missing` documents, critical dimension information was not available or could not be interpreted: [List of entries where document surface could not be estimated](https://github.com/fennicahub/fennica/inst/extdata/physical_dimension_incomplete.csv)
+- Document dimensions (area) info was obtained in the final preprocessed data for altogether `r ds$n_area` documents (`r ds$p_area`%). For the remaining `r ds$n_area_missing` documents, critical dimension information was not available or could not be interpreted: [List of entries where document surface could not be estimated](https://github.com/fennicahub/fennica/blob/master/inst/extdata/physical_dimension_incomplete.csv)
 
 - Document gatherings info is originally available for `r ds$n_gatherings_original` documents (`r ds$p_gatherings_original`%), and further estimated up to `r ds$n_gatherings_final` documents (`r ds$p_gatherings_final`%) in the final preprocessed data.
 
@@ -110,20 +110,6 @@ ds <- dimension_summary(df.tmp)
 
 - Document width info is originally available for `r ds$n_width_original` documents (`r ds$p_width_original`%), and further estimated up to `r ds$n_width_final` documents (`r ds$p_width_final`%) in the final preprocessed data.
 
-
-These tables can be used to verify the accuracy of the conversions from the raw data to final estimates:
-
--   [Dimension conversions from raw data to final estimates](https://github.com/fennicahub/fennica/inst/extdata/conversions_physical_dimension.csv)
-
--   [Automated tests for dimension conversions](https://github.com/fennicahub/fennica/inst/extdata/tests_dimension_polish.csv)
-
-The estimated dimensions are based on the following auxiliary information sheets:
-
--   [Document dimension abbreviations](https://github.com/fennicahub/fennica/inst/extdata/document_dimensions_abbreviations.csv)
-
--   [Standard sheet dimensions estimates](https://github.com/fennicahub/fennica/inst/extdata/sheetdimensionss.csv)
-
--   [Document dimension estimates](https://github.com/fennicahub/fennica/inst/extdata/documentdimensions.csv) (used when information is partially missing)
 
 ```{r}
 #| label = "dimensions",

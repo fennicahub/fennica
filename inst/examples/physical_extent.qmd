@@ -28,15 +28,18 @@ Render physical extent field: [physical_extent.qmd](https://github.com/fennicahu
 library(dplyr)
 library(knitr)
 
-df_pagecount <- df.tmp %>%
-  mutate(
-    pagecount = suppressWarnings(as.numeric(pagecount)),
-    volcount  = suppressWarnings(as.numeric(volcount)),
-    pagecount_original_missing = is.na(pagecount.page.info) | pagecount.page.info == "",
-    pagecount_final_missing = is.na(pagecount),
-    volcount_missing = is.na(volcount)
-  )
 
+df_pagecount %>%
+  summarise(
+    arabic_pages = sum(!is.na(arabic)),
+    roman_pages = sum(!is.na(roman)),
+    sheets = sum(!is.na(sheet)),
+    plates = sum(!is.na(plate)),
+    square_brackets = sum(!is.na(squarebracket)),
+    multipliers = sum(!is.na(multiplier)),
+    volume_count_info = sum(!is.na(volcount))
+  ) %>%
+  kable()
 n_total <- nrow(df_pagecount)
 
 pagecount_summary <- df_pagecount %>%
@@ -45,14 +48,10 @@ pagecount_summary <- df_pagecount %>%
     pagecount_available = sum(!is.na(pagecount)),
     pagecount_missing = sum(is.na(pagecount)),
     pagecount_available_percent = round(100 * pagecount_available / documents, 1),
-    mean_pagecount = round(mean(pagecount, na.rm = TRUE), 1),
-    median_pagecount = median(pagecount, na.rm = TRUE),
     min_pagecount = min(pagecount, na.rm = TRUE),
     max_pagecount = max(pagecount, na.rm = TRUE),
     volcount_available = sum(!is.na(volcount)),
-    volcount_missing = sum(is.na(volcount)),
-    mean_volcount = round(mean(volcount, na.rm = TRUE), 1),
-    median_volcount = median(volcount, na.rm = TRUE)
+    volcount_missing = sum(is.na(volcount))
   )
 
 pagecount_summary %>%
