@@ -36,7 +36,7 @@ There are `r sum(df$primary == "Undetermined", na.rm = TRUE)` entries where the 
 
 [Download UDC harmonized dataset](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/UDK.csv)
 
-UDC codes are from [the National Library of Finland](https://www.kiwi.fi/spaces/Kansallisbibliografiapalvelut/pages/57836458/Monografia-aineiston%2BUDK-luokituskaavio); new custom abbreviations can be added in [this table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/udk.csv).
+UDC codes are from the National Library of Finland available at  https://www.kiwi.fi/spaces/Kansallisbibliografiapalvelut/pages/57836458/Monografia-aineiston%2BUDK-luokituskaavio; new custom abbreviations can be added in [this table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/udk.csv).
 
 ```{r}
 #| label = "summaryudk1",
