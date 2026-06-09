@@ -33,7 +33,7 @@ book:
   - genre_008.qmd
   - language.qmd
   - physical_dimensions.qmd
-  - physical_extent.qmd
+  #- physical_extent.qmd
   #- holder.qmd
   #- note_dissertation.qmd
   #- note_granter.qmd

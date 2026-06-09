@@ -177,7 +177,20 @@ author_database$gender[
 
 
 #activity years for each author in fennica 
-source("publication_time.R")
+field <- "publication_time"
+
+#polish full data
+tmp  <- polish_years_008(df.orig[[field]])
+
+# Make data.frame
+# Make sure if it called df_pubtime for publication_time, other fields have df.tmp 
+# because publication_time field is sourced in other field processing files 
+df_pubtime <- data.frame(melinda_id = df.orig$melinda_id,
+                         original = tmp$original,
+                         publication_year_from = tmp$from,
+                         publication_year_till = tmp$till, 
+                         publication_year = tmp$publication_year, 
+                         publication_decade = tmp$decade)
 df_time <- df_pubtime
 
 df_time <- df_pubtime %>%
@@ -216,17 +229,6 @@ author_database <- author_database %>%
   ))) %>%
   left_join(author_activity, by = "author_key")
 
-author_database_na_gender <- author_database_1809_1917 %>%
-  filter(is.na(gender))
-
-write.table(
-  author_database_na_gender,
-  file = "author_database_gender_na.csv",
-  quote = FALSE,
-  row.names = FALSE,
-  col.names = TRUE,
-  sep = "\t"
-)
 
 ###########
 idx <- match(author_database$asteri_id,
@@ -476,3 +478,7 @@ write.table(
 #   ) %>%
 #   arrange(desc(metadata_score))
 # 
+
+
+
+message("auhtor_database.R: DONE")

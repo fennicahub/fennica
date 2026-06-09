@@ -127,3 +127,6 @@ names_database <- merge(
   all.x = TRUE,
   sort = FALSE
 )
+
+
+message("all_names_by_system_id.R: DONE")

@@ -47,7 +47,7 @@ df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
                     df.tmp)
 rownames(df.tmp) <- NULL
 
-df_date <-df.tmp
+df_date <- df.tmp
 
 # ------------------------------------------------------------
 # Store the title field data

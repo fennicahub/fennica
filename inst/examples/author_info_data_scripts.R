@@ -1,7 +1,7 @@
 source("init.R")
 
 # create df.orig
-source("priority_fields.R")
+#source("priority_fields.R")
 
 # get_kanto() and create "fennica_enriched.parquet"
 # it takes a long time to run this code, do it when you need to update only
@@ -25,4 +25,6 @@ source("all_names_by_system_id.R")
 #create database of all unique auhtors and info
 source("author_database.R")
 
+#load database to allas
+source("allas.R")
 

@@ -31,7 +31,6 @@ author_700e_unique <- df_700$author_700e %>%
   (\(x) x[x != "" & !is.na(x)])() %>%
   unique()
 
-print(author_700e_unique)
 
 
 # Make sure df_700 is a normal data frame.
@@ -197,3 +196,4 @@ df_700_mismatch <- df_700_by_record %>%
   ) %>%
   filter(n_names != n_ids)
 
+message("df_700.R: done")

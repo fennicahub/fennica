@@ -21,3 +21,5 @@ authors_df <- bind_rows(authors_100, authors_700) %>%
     .groups = "drop"
   ) %>%
   arrange(id)
+
+message("author_by_id: DONE")

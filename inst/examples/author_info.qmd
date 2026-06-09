@@ -25,12 +25,28 @@ library(knitr)
 
 ```{r}
 # # Download the csv file
-url1 <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/author_database.csv"
-url2 <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/author_database_19.csv"
-# 
+url1 <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_database.csv"
 
-author_database <- read.delim(url1,  stringsAsFactors = FALSE)
-author_database_19 <- read.delim(url2,  stringsAsFactors = FALSE)
+author_database <- read.delim(
+  url1,
+  quote = "",
+  fill = TRUE,
+  stringsAsFactors = FALSE,
+  check.names = FALSE
+)
+```
+
+
+```{r}
+url2 <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_database_19.csv"
+
+author_database_19 <- read.table(
+  url2,
+  header = TRUE,
+  sep = "\t",
+  quote = "",
+  stringsAsFactors = FALSE
+)
 ```
 
 # Author Database
@@ -153,7 +169,7 @@ tab <- author_database_19 %>%
 kable(tab)
 ```
 
-# Auhtors by gender 1809-1917
+# Authors by gender 1809-1917
 
 ```{r}
 #| label: gender_table_19

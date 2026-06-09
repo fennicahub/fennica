@@ -71,8 +71,60 @@ df.orig$asteri_id <- as.character(df.orig$asteri_id)
 # match index
 idx <- match(names_df$asteri_id, df.kanto$asteri_id)
 idx1 <- match(names_df$asteri_id, df.orig$asteri_id)
+################
+#create df_date from author_date.R
+field <- "author_date"
 
-source("author_date.R")
+# Empty strings to NA
+df.orig[[field]][df.orig[[field]] == ""] <- NA
+
+# TODO make a tidy cleanup function to shorten the code here
+df.tmp <- polish_author_years(df.orig[[field]], check = TRUE)
+
+df.tmp <- df.tmp %>%
+  dplyr::rename(
+    author_birth = from,
+    author_death = till
+  ) %>%
+  mutate(
+    author_age = author_death - author_birth,
+    
+    # fix BCE→CE crossing (no year 0)
+    author_age = ifelse(
+      !is.na(author_birth) & !is.na(author_death) &
+        author_birth < 0 & author_death > 0,
+      author_age - 1,
+      author_age
+    ),
+    
+    # remove impossible / implausible ages
+    author_age = ifelse(
+      author_age < 10 | author_age > 110,
+      NA,
+      author_age
+    ),
+    
+    # remove zero just in case
+    author_age = na_if(author_age, 0)
+  )         # Replace 0 age with NA
+
+harm <- paste0(
+  ifelse(is.na(df.tmp$author_birth), "", df.tmp$author_birth),
+  "-",
+  ifelse(is.na(df.tmp$author_death), "", df.tmp$author_death)
+)
+harm <- dplyr::na_if(trimws(harm), "")
+harm <- dplyr::na_if(harm, "-")
+
+# Add melinda id info as first column
+df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
+                    author_date = harm,
+                    df.tmp)
+rownames(df.tmp) <- NULL
+
+df_date <- df.tmp
+######################
+ 
 # assign columns
 names_df$author_birth <- df.kanto$birthDate[idx]
 names_df$author_death <- df.kanto$deathDate[idx]
@@ -128,3 +180,4 @@ names_df <- names_df %>%
 
 kanto_harmonized <- names_df
 
+message("kanto_harmonized.R: DONE")
