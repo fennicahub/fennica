@@ -12,7 +12,7 @@ path_csvs = "/mnt/trial/csvs"
 #%%
 columns_to_pick = [
     ("001", "-"),("999", "c"), ("LDR", "-"), ("008", "-"), ("035", "a"),
-    ("100", "a"), ("100", "d"), ("100", "0"),
+    ("100", "a"), ("100", "d"), ("100", "l"), ("100", "0"),
     ("041", "a"), ("041", "h"),
     ("240", "a"),
     ("245", "a"), ("245", "b"), ("245", "n"),
@@ -67,7 +67,7 @@ df = pd.concat(dfs, ignore_index=True)
 
 #%%
 # Save priority_fields file
-filename = "field_099a"
+filename = "priority_fields_062026"
 df.to_csv(f"{filename}.csv", sep="\t", index=False)
 
 

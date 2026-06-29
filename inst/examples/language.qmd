@@ -10,7 +10,7 @@ source("init.R")
 source("language.R")
 ```
 
-MARC: [041,a](https://www.loc.gov/marc/bibliographic/bd041.html)
+MARC: [041,a,h](https://www.loc.gov/marc/bibliographic/bd041.html),  [008](https://www.loc.gov/marc/bibliographic/bd008.html)
 
 ## Description
 
@@ -20,7 +20,9 @@ The entries are standardized by converting them to their recognized forms while 
 
 Additionally, an error list is generated, consisting of unrecognized language information and the corresponding IDs. This error list helps librarians identify mistakes in the original data and provides context to either correct the errors or explain why certain entries were discarded by the function. 
 
-## Complete Dataset Overview
+## Field 041,a
+
+### Complete Dataset Overview
 
 [Unique languages](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/languages_accepted.csv):  `r length(unique(unlist(strsplit(as.character(df$language_original), ";"))))-1` 
 
@@ -38,15 +40,25 @@ There are `r sum(is.na(df$language_original))` missing values in the dataset,acc
 [Unrecognized languages](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_discarded.csv) provides details of languages that were discarded, in total: `r sum(!is.na(original.na))`. 
 Additionally, the [Error list](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_discarded_id.csv) contains ID numbers of entries associated with these discarded languages, intended for librarian review.
 
-[Conversions from raw to preprocessed language entries](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_accepted.csv)
-
-New custom abbreviations can be added in [this table](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_abbreviations.csv).
+[Conversions from raw to preprocessed language entries](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_conversions.csv)
 
 [Download language harmonized dataset](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language.csv)
 
-## Subset Analysis: 1809-1917
+```{r}
+#| label = "summarylang",
+#| echo = FALSE,
+#| results = "asis"
+x <- top(df, "language")
+tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
+colnames(tab) <- c("Language", "Entries (n)", "Fraction (%)")
+kable(head(tab, 10))
+```
 
-[Unique languages (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/languages_accepted_19.csv): `r length(unique(unlist(strsplit(as.character(df_19$language_original), ";"))))-1`
+
+
+### Subset Analysis: 1809-1917
+
+[Unique languages (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_accepted_19.csv): `r length(unique(unlist(strsplit(as.character(df_19$language_original), ";"))))-1`
 
 [Unique primary languages  (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_primary_accepted_19.csv): `r length(unique(df_19$language_primary))-1` 
 
@@ -60,12 +72,11 @@ There are `r sum(df_19$language == "Undetermined",na.rm = TRUE)` entries marked 
 There are `r sum(is.na(df_19$language_original))` missing values in the dataset,accounting for (`r round(100*mean(is.na(df_19$language_original)), 2)`%) of the total. 
 
 
-
 [Download language harmonized dataset (1809-1917)](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_19.csv)
 
 ### Top languages for 1809-1917
 
-Number of titles assigned with each language (top-10). For a complete list, see [accepted languages (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/languages_accepted_19.csv).
+Number of titles assigned with each language (top-10). For a complete list, see [accepted languages (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_accepted_19.csv).
 
 ```{r}
 #| label = "summarylang2",
@@ -80,7 +91,98 @@ kable(head(tab, 10))
 Title count per language (including multi-language documents; note the log10 scale):
 
 ```{r}
-#| label = "summarylang",
+#| label = "summarylang3",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 10,
+#| fig.height = 7
+
+top_plot(df_19, "language", ntop = ntop, log10 = TRUE) + labs(y = "Entries (n)")
+```
+
+
+
+## Field 008
+
+MARC field 008 contains a fixed-position language code for the language of the item. In this workflow, the language information extracted from field 008 is harmonized into the same language categories used for MARC 041,a. Both 008 and 041,a describe the language of the publication itself, not the original language of a translated work. Original-language information for translations is reported separately under 041,h.
+
+Field 008 usually provides one coded language value per record and can therefore be treated as a primary language indicator. In contrast, 041,a may contain more detailed or repeated language information, especially for multilingual publications. The 008-based language harmonization is therefore useful as a compact, record-level language summary.
+
+```{r}
+#| include = FALSE
+source("language_008.R")
+```
+
+### Complete Dataset Overview
+
+[Unique languages](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008_accepted.csv):  `r length(unique(unlist(strsplit(as.character(df$language_original), ";"))))-1` 
+
+[Unique primary languages](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_primary_008_accepted.csv): `r length(unique(df$language_primary))-1` 
+
+`r sum(!df$multiple & df$language != "Multiple languages", na.rm = TRUE)` single-language entries (`r round(100 * mean(!df$multiple & df$language != "Multiple languages", na.rm = TRUE), 2)`%)
+
+
+`r sum(df$multiple | df$language == "Multiple languages" , na.rm = TRUE)` multilingual entries , accounting for `r round(100 * mean(df$multiple | df$language == "Multiple languages", na.rm = TRUE), 2)`% of the total. This includes entries explicitly coded as "mul" (Multiple languages) as well as those with more than one language listed for a single book.
+
+There are `r sum(df$language == "Undetermined",na.rm = TRUE)` single-language entries marked as only "Undetermined", coded as "und", accounting for (`r round(100*mean(df$language == "Undetermined",na.rm = TRUE), 2)`%) of the total. 
+ 
+There are `r sum(is.na(df$language_original))` missing values in the dataset,accounting for (`r round(100*mean(is.na(df$language_original)), 2)`%) of the total. 
+
+[Unrecognized languages](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008_discarded.csv) provides details of languages that were discarded, in total: `r sum(!is.na(original.na))`. 
+Additionally, the [Error list](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008_discarded_id.csv) contains ID numbers of entries associated with these discarded languages, intended for librarian review.
+
+[Conversions from raw to preprocessed language entries](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008_conversions.csv)
+
+
+```{r}
+#| label = "summarylang008",
+#| echo = FALSE,
+#| results = "asis"
+x <- top(df, "language")
+tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))
+colnames(tab) <- c("Language", "Entries (n)", "Fraction (%)")
+kable(head(tab, 10))
+```
+
+[Download language harmonized dataset](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008.csv)
+
+### Subset Analysis: 1809-1917
+
+[Unique languages (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008_accepted_19.csv): `r length(unique(unlist(strsplit(as.character(df_19$language_original), ";"))))-1`
+
+[Unique primary languages  (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_primary_008_accepted_19.csv): `r length(unique(df_19$language_primary))-1` 
+
+`r sum(!df_19$multiple & df_19$language != "Multiple languages", na.rm = TRUE)` single-language entries (`r round(100 * mean(!df_19$multiple & df_19$language != "Multiple languages", na.rm = TRUE), 2)`%)
+
+
+`r sum(df_19$multiple | df_19$language == "Multiple languages" , na.rm = TRUE)` multilingual entries , accounting for `r round(100 * mean(df_19$multiple | df_19$language == "Multiple languages", na.rm = TRUE), 2)`% of the total. This includes entries explicitly coded as "mul" (Multiple languages) as well as those with more than one language listed for a single book.
+
+There are `r sum(df_19$language == "Undetermined",na.rm = TRUE)` entries marked as "Undetermined".
+
+There are `r sum(is.na(df_19$language_original))` missing values in the dataset,accounting for (`r round(100*mean(is.na(df_19$language_original)), 2)`%) of the total. 
+
+
+[Download language harmonized dataset (1809-1917)](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008_19.csv)
+
+### Top languages for 1809-1917
+
+Number of titles assigned with each language (top-10). For a complete list, see [accepted languages (1809-1917)](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008_accepted_19.csv).
+
+```{r}
+#| label = "summarylang0082",
+#| echo = FALSE,
+#| results = "asis"
+x <- top(df_19, "language")
+tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df_19)), 1))
+colnames(tab) <- c("Language", "Entries (n)", "Fraction (%)")
+kable(head(tab, 10))
+```
+
+Title count per language (including multi-language documents; note the log10 scale):
+
+```{r}
+#| label = "summarylang0083",
 #| echo = FALSE,
 #| message = FALSE,
 #| warning = FALSE,
@@ -88,7 +190,145 @@ Title count per language (including multi-language documents; note the log10 sca
 #| fig.height = 7
 
 top_plot(df_19, "language", ntop = ntop, log10 = TRUE) + labs(y = "Entries (n)")
-
 ```
 
+
+
+## Field 041,h: Original Language of Translations
+
+MARC field 041 subfield h records the original language of a work when the bibliographic record describes a translation.
+
+This field should be interpreted as translation-related metadata: records with a value in `language_original` are records for which Fennica contains information about the original language of the work. However, the absence of 041,h does not necessarily prove that the record is not a translation; it only means that no original-language information was recorded or extracted from this field.
+
+```{r}
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE
+
+source("language_original.R")
+
+has_original <- function(x) {
+  !is.na(x) & trimws(as.character(x)) != ""
+}
+
+is_multiple_original <- function(x) {
+  x <- as.character(x)
+  has_original(x) & (grepl(";", x, fixed = TRUE) | x == "Multiple languages")
+}
+
+is_undetermined_original <- function(x) {
+  x <- as.character(x)
+  has_original(x) & x == "Undetermined"
+}
+
+pct <- function(n, d) {
+  ifelse(d > 0, round(100 * n / d, 2), NA_real_)
+}
+
+unique_original_languages <- function(x) {
+  x <- as.character(x[has_original(x)])
+  vals <- trimws(unlist(strsplit(x, ";", fixed = TRUE)))
+  vals <- vals[vals != "" & vals != "Undetermined"]
+  length(unique(vals))
+}
+
+valid_primary_original <- function(x) {
+  x <- trimws(as.character(x))
+  x[!is.na(x) & x != "" & x != "Undetermined"]
+}
+
+n_original <- function(dat) {
+  sum(has_original(dat$language_original))
+}
+```
+
+### Complete Dataset Overview
+
+[Unique original languages](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_original_accepted.csv): `r unique_original_languages(df$language_original)`
+
+[Unique primary original languages](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_primary_original_accepted.csv): `r length(unique(valid_primary_original(df$language_primary_original)))`
+
+There are `r n_original(df)` records with original-language information in 041$h, accounting for `r pct(n_original(df), nrow(df))`% of the complete dataset. These records can be treated as translation records with recorded original-language metadata.
+
+There are `r sum(!has_original(df$language_original))` records without original-language information in 041$h, accounting for `r pct(sum(!has_original(df$language_original)), nrow(df))`% of the complete dataset. These records should not automatically be interpreted as non-translations; they only lack recorded 041$h information.
+
+`r sum(has_original(df$language_original) & !is_multiple_original(df$language_original), na.rm = TRUE)` records have one original language recorded. This corresponds to `r pct(sum(has_original(df$language_original) & !is_multiple_original(df$language_original), na.rm = TRUE), n_original(df))`% of records with 041$h information.
+
+`r sum(is_multiple_original(df$language_original), na.rm = TRUE)` records have multiple original languages recorded, accounting for `r pct(sum(is_multiple_original(df$language_original), na.rm = TRUE), n_original(df))`% of records with 041$h information. This includes entries explicitly coded as "Multiple languages" as well as records where more than one original language is listed.
+
+There are `r sum(is_undetermined_original(df$language_original), na.rm = TRUE)` records where the original language is marked as "Undetermined", coded as "und". This accounts for `r pct(sum(is_undetermined_original(df$language_original), na.rm = TRUE), n_original(df))`% of records with 041$h information.
+
+[Unrecognized original languages](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_original_discarded.csv) provides details of language values that were discarded during harmonization, in total: `r sum(!is.na(original.na))`.
+
+Additionally, the [error list](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_original_discarded_id.csv) contains record IDs associated with discarded original-language values. These records are intended for librarian review.
+
+[Conversions from raw to preprocessed original-language entries](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_original_conversions.csv)
+
+```{r}
+#| label = "summarylangorig",
+#| echo = FALSE,
+#| results = "asis"
+
+x <- top(df, "language_original")
+tab <- cbind(
+  names(x),
+  unname(x),
+  round(100 * unname(x) / n_original(df), 1)
+)
+colnames(tab) <- c("Original language", "Entries (n)", "Fraction of records with 041$h (%)")
+kable(head(tab, 10))
+```
+
+[Download original-language harmonized dataset](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_original.csv)
+
+### Subset Analysis: 1809–1917
+
+[Unique original languages, 1809–1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_original_accepted_19.csv): `r unique_original_languages(df_19$language_original)`
+
+[Unique primary original languages, 1809–1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_primary_original_accepted_19.csv): `r length(unique(valid_primary_original(df_19$language_primary_original)))`
+
+There are `r n_original(df_19)` records with original-language information in 041$h in the 1809–1917 subset, accounting for `r pct(n_original(df_19), nrow(df_19))`% of the subset.
+
+There are `r sum(!has_original(df_19$language_original))` records without original-language information in 041$h, accounting for `r pct(sum(!has_original(df_19$language_original)), nrow(df_19))`% of the 1809–1917 subset.
+
+`r sum(has_original(df_19$language_original) & !is_multiple_original(df_19$language_original), na.rm = TRUE)` records have one original language recorded. This corresponds to `r pct(sum(has_original(df_19$language_original) & !is_multiple_original(df_19$language_original), na.rm = TRUE), n_original(df_19))`% of records with 041$h information in the 1809–1917 subset.
+
+`r sum(is_multiple_original(df_19$language_original), na.rm = TRUE)` records have multiple original languages recorded, accounting for `r pct(sum(is_multiple_original(df_19$language_original), na.rm = TRUE), n_original(df_19))`% of records with 041$h information.
+
+There are `r sum(is_undetermined_original(df_19$language_original), na.rm = TRUE)` records where the original language is marked as "Undetermined".
+
+[Download original-language harmonized dataset, 1809–1917](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_original_19.csv)
+
+### Top Original Languages for 1809–1917
+
+The following table shows the most common original languages recorded in 041$h for the 1809–1917 subset. Counts include records with multiple original languages. For a complete list, see [accepted original languages, 1809–1917](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_original_accepted_19.csv).
+
+```{r}
+#| label = "summarylangorig2",
+#| echo = FALSE,
+#| results = "asis"
+
+x <- top(df_19, "language_original")
+tab <- cbind(
+  names(x),
+  unname(x),
+  round(100 * unname(x) / n_original(df_19), 1)
+)
+colnames(tab) <- c("Original language", "Entries (n)", "Fraction of records with 041$h (%)")
+kable(head(tab, 10))
+```
+
+Title count per original language, including records with multiple original languages. Note the log10 scale:
+
+```{r}
+#| label = "summarylangorig3",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 9,
+#| fig.height = 7
+
+top_plot(df_19, "language_original", ntop = ntop, log10 = TRUE) +
+  labs(y = "Entries (n)")
+```
 

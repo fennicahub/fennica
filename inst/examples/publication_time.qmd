@@ -44,7 +44,52 @@ if (max_year > current_year) {
 }
 ```
 
+
+
+```{r}
+#| include = FALSE
+library(dplyr)
+library(knitr)
+
+df_pubtime$publication_year_num <- as.numeric(df_pubtime$publication_year)
+
+pre1488 <- df_pubtime |>
+  filter(!is.na(publication_year_num)) |>
+  filter(publication_year_num < 1488) |>
+  select(melinda_id, publication_year_num)
+
+pre1488 <- pre1488 |>
+  left_join(
+    df.orig |>
+      select(melinda_id, title, author_name),
+    by = "melinda_id"
+  )
+
+n_before_1488 <- nrow(pre1488)
+
+n_year_zero <- sum(pre1488$publication_year_num == 0, na.rm = TRUE)
+```
+
+
 Publication years is available for `r sum(!is.na(df_pubtime$publication_year))` documents (`r round(100*mean(!is.na(df_pubtime$publication_year)))`%). The publication years span is `r paste(min_year, max_year, sep = "-")`.
+
+Although Fennica is officially described as starting from 1488, the harmonized data contains `r n_before_1488` records of records with an available publication year) with publication years earlier than 1488. Of these, `r n_year_zero` records have publication year 0. These records were checked against the original metadata by system ID, including title and author name. 
+
+```{r}
+#| echo: false
+
+pre1488 |>
+  select(
+    `System ID` = melinda_id,
+    `Publication year` = publication_year_num,
+    Title = title,
+    Author = author_name
+  ) |>
+  kable(
+    caption = "Records with publication years earlier than 1488"
+  )
+```
+
 
 ### Title count per decade (log values)
 

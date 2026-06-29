@@ -1,13 +1,9 @@
 ###########################################################################
 #source("harmonized_fennica.R")
-df.harmonized <- df.processed
 
-df.harmonized$title_2 <- ifelse(is.na(df.harmonized$title), df.harmonized$title_remainder, 
-                                ifelse(is.na(df.harmonized$title_remainder), df.harmonized$title, 
-                                       paste(df.harmonized$title, df.harmonized$title_remainder, sep = " ")))
+df.harmonized <- df2
 
-df.harmonized$title_2 <- ifelse(is.na(df.orig$`245n`), df.harmonized$title_2, 
-                                paste(df.harmonized$title_2, df.orig$`245n`, sep = " "))
+
 df.harmonized$language_original <- df.orig$language_original
 
 
@@ -33,20 +29,20 @@ df.harmonized <- df.harmonized %>%
 df.harmonized$title_3 <- gsub("/", "",df.harmonized$title_3)
 df.harmonized$title_3 <- trimws(as.character(df.harmonized$title_3))
 
-df.harmonized19 <- df.harmonized[df.harmonized$melinda_id %in% melindas_19,]
+#df.harmonized19 <- df.harmonized[df.harmonized$melinda_id %in% melindas_19,]
 
 df.harmonized <- unique(df.harmonized)
-# Store the data
-data.file <- paste0(field, ".Rds")
-saveRDS(df.harmonized, file = data.file)
-#Load the RDS file
-df.harmonized <- readRDS(data.file)
-# Convert to CSV and store in the output.tables folder
-write.csv(df.harmonized,
-           file = "for_automated_subset_selection.csv",
-           row.names=FALSE,
-           quote = FALSE,
-       fileEncoding = "UTF-8")
+# # Store the data
+# data.file <- paste0(field, ".Rds")
+# saveRDS(df.harmonized, file = data.file)
+# #Load the RDS file
+# df.harmonized <- readRDS(data.file)
+# # Convert to CSV and store in the output.tables folder
+# write.csv(df.harmonized,
+#            file = "for_automated_subset_selection.csv",
+#            row.names=FALSE,
+#            quote = FALSE,
+#        fileEncoding = "UTF-8")
 ##########################
 #Apply criteria 
 #1. 1809-1917
@@ -63,8 +59,17 @@ list <- list %>%
 # Keep only rows where `language` contains "fin" or "swe", or is NA
 list <- list[grepl("Finnish|Swedish", list$language) | is.na(list$language), ]
 
+list <- list[
+  sapply(strsplit(list$language, ";"), function(x) {
+    langs <- trimws(x)
+    all(langs %in% c("Finnish", "Swedish"))
+  }) | is.na(list$language),
+]
+
 list <- list %>%
   filter(language_original == "")
+
+prim <- list 
 
 #4. Genre
 
@@ -76,8 +81,8 @@ ruots\\.\\s*kaunokirj\\.\\s*3|ruots\\.\\s*kaunokirj\\.\\s*4",
   tolower(list$signum)
 )
 # 
- # list <- list %>%
- #     filter(kauno_rows)
+exclusion <- list %>%
+     filter(kauno_rows)
 
 # Identify rows where `udk` matches specific classification codes
 udk_rows <- grepl("839\\.79|894\\.541", list$udk_orig)
@@ -117,9 +122,9 @@ list[list == ""] <- NA
 
 
 list <- list %>%
-  group_by(title, author_name) %>%
+  group_by(title, author_name_100) %>%
   filter(publication_year == min(publication_year)) %>%
-  distinct(title, author_name, .keep_all = TRUE) %>%
+  distinct(title, author_name_100, .keep_all = TRUE) %>%
   arrange(publication_year)
 
 # Count how many signums are empty
@@ -139,7 +144,7 @@ ruots\\.\\s*kaunokirj\\.\\s*3|ruots\\.\\s*kaunokirj\\.\\s*4",
 
 num_non_matching_kauno_rows <- sum(!kauno_rows1)
 
-
+num_non_matching_kauno_rows
 
 ##################################################################################################
 
@@ -151,7 +156,7 @@ data <- data.frame(
                     levels = c("Primary", "Exclusion", "Enrichment")),
   ListType = factor(c("Manual", "Automated", "Manual", "Automated", "Manual", "Automated"), 
                     levels = c("Manual", "Automated")),
-  Count = c(9211, 5278, 4468, 3652, 2788, 4868)
+  Count = c(9211, nrow(prim), 4468, nrow(exclusion), 2788, nrow(list))
 )
 
 # Create the horizontal grouped bar chart

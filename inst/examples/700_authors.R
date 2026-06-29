@@ -53,15 +53,18 @@ roles_keep <- c(
 )
 
 keep <- sapply(strsplit(as.character(df_700$author_700e), "\\|"), function(x) {
-  if (all(is.na(x)) || all(trimws(x) == "")) return(TRUE)
-  
   x <- trimws(x)
   x <- gsub("^[[:punct:] ]+|[[:punct:] ]+$", "", x)
+  
+  # do NOT keep tyhjät or NA
+  x <- x[!is.na(x) & x != ""]
+  
+  if (length(x) == 0) return(FALSE)
   
   any(tolower(x) %in% roles_keep)
 })
 
-df_700 <- df_700[keep, ]
+df_700f <- df_700[keep, ]
 
 # Clean Asteri IDs from the original author_id column.
 # The goal is to keep only the 9-digit numeric Asteri identifier.
