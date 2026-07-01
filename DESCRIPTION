@@ -3,10 +3,11 @@ Type: Package
 Title: Finnish National Bibliography Fennica Toolkit
 Version: 0.2.9
 Authors@R: c(
-    person("Lahti", "Leo", email = "leo.lahti@iki.fi", role = c("aut", "cre")),
-    person("Roivainen", "Hege", role = "aut"),        
-    person("Tolonen", "Mikko", role = "aut"), 
-    person("Matveeva", "Julia", email = "yulmat@utu.fi", role = "aut"))
+    person("Leo", "Lahti", email = "leo.lahti@iki.fi", role = c("aut", "cre")),
+    person("Hege", "Roivainen", role = "aut"),        
+    person("Mikko", "Tolonen", role = "aut"), 
+    person("Julia", "Matveeva", email = "yulmat@utu.fi", role = "aut")
+)
 MailingList: comhis <comhis-forum@googlegroups.com>
 Description: Algorithms for Finnish Library Data.
 License: BSD_2_clause + file LICENSE
