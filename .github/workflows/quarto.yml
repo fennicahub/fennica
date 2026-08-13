@@ -19,6 +19,7 @@ name: renderbook-quarto
 jobs:
   render-book:
     runs-on: ubuntu-latest
+    timeout-minutes: 10 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
