@@ -1,157 +1,50 @@
+library(arrow)
+library(dplyr)
+library(stringr)
 
 # NOTE:
-# The priority fields dataset used here (priority_fields_30042026.csv)
-# is generated through a series of preprocessing scripts located in the
-# "field_picking" folder.
-#
-# The main script responsible for producing the final CSV file is:
-# pick_fields.py. It extracts, selects, and structures MARC fields into
-# a tabular format suitable for downstream analysis.
-#
-# This R script only reads the prepared CSV and performs additional
-# cleaning and harmonisation steps.
-#
-# Commenting and explanatory notes were generated with the assistance
-# of AI and further refined and validated by Julia Matveeva.
+# The priority fields dataset (priority_fields_062026.parquet) is generated
+# through preprocessing scripts in the "field_picking" folder. The main script,
+# pick_fields.py, extracts and structures MARC fields for downstream analysis.
+# This script reads the prepared Parquet file and performs further cleaning
+# and harmonisation. Comments were generated with AI assistance and validated
+# by Julia Matveeva.
 
-url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/priority_fields_062026.csv"
+library(arrow)
+library(dplyr)
 
-options(timeout = 600)
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/priority_fields_062026.parquet"
 
-tmp_file <- tempfile(fileext = ".csv")
-
-ok <- FALSE
-
-for (i in 1:3) {
-  ok <- tryCatch({
-    download.file(
-      url,
-      destfile = tmp_file,
-      mode = "wb",
-      method = "libcurl"
-    )
-    
-    file.exists(tmp_file) &&
-      file.info(tmp_file)$size > 0
-    
-  }, error = function(e) {
-    message("Download failed, attempt ", i, ": ", e$message)
-    FALSE
-  })
-  
-  if (ok) break
-  
-  Sys.sleep(5)
-}
-
-if (!ok) {
-  stop("Failed to download file: ", url)
-}
-
-# 
-# Read the CSV file, explicitly setting the first column to character
-# Count the number of columns in the file
-column_count <- ncol(read.csv(url, nrows = 1, sep = "\t"))
-#Create colClasses with 'character' for the first column and 'default' for the rest
-col_classes <- c("character", rep(NA, column_count - 1))
-
-# Read the file with the specified colClasses
-df.orig <- read.csv(
-  tmp_file,
-  skip = 1,
-  header = TRUE,
-  sep = "\t",
-  colClasses = col_classes,
-  stringsAsFactors = FALSE
-)
-
-df.orig <- df.orig[
-  !apply(df.orig, 1, function(x) {
-    all(is.na(x) | trimws(as.character(x)) == "")
-  }),
-  ,
-  drop = FALSE
-]
+df.orig <- arrow::read_parquet(url)
 
 names(df.orig) <- c(
-  "fikka_id",            # 001
-  "id",             #999
-  "leader",                # LDR
-  "field_008",             # 008
-  "other_system_id",       # 035a
-  
-  "author_name",           # 100a
-  "author_date",           # 100d
-  "asteri_id",             # 1000
-  
-  "language_041",          # 041a
-  "language_original",     # 041h
-  
-  "title_uniform",         # 240a
-  
-  "title",                 # 245a
-  "title_remainder",       # 245b
-  "title_part_number",     # 245n
-  
-  "publication_place", # 260a
-  "publisher",         # 260b
-  
-  "publication_place_264", # 264a
-  
-  "physical_dimensions",    # 300c
-  "physical_extent",       # 300a
-  
-  "publication_frequency", # 310a
-  "publication_dates",     # 362a
-  
-  "UDC",                   # 080a
-  "UDC_aux",               # 080x
-  
-  "genre_655",             # 655a
-  "subject_650",           # 650a
-  "note_500",              # 500a
-  
-  "content_type_336",      # 336a
-  "contents_505",          # 505a
-  "summary_520",           # 520a
-  "variant_title_246",     # 246a
-  "series_490",            # 490a
-  "dissertation_note_502", # 502a
-  "title_uniform_130",     # 130a
-  "corporate_author_110",  # 110a
-  "event_author_111"       # 111a
+  "fikka_id", "id", "leader", "field_008", "other_system_id",
+  "author_name", "author_date", "asteri_id",
+  "language_041", "language_original",
+  "title_uniform", "title", "title_remainder", "title_part_number",
+  "publication_place", "publisher", "publication_place_264",
+  "physical_dimensions", "physical_extent",
+  "publication_frequency", "publication_dates",
+  "UDC", "UDC_aux", "genre_655", "subject_650", "note_500",
+  "content_type_336", "contents_505", "summary_520",
+  "variant_title_246", "series_490", "dissertation_note_502",
+  "title_uniform_130", "corporate_author_110", "event_author_111"
 )
-
-
-# Remove duplicate rows
-df.orig <- df.orig %>% distinct()
-df.orig$title2 <- paste(df.orig$title, "|" ,df.orig$title_remainder)
-df.orig$physical_dimensions[trimws(df.orig$physical_dimensions) == ""] <- NA
-
-df.orig$asteri_id <- clean_id(df.orig$asteri_id)
+df.orig <- df.orig[, !is.na(names(df.orig)), drop = FALSE]
+df.orig <- slice(df.orig, -(1:2))
 
 df.orig <- df.orig %>%
+  filter(!if_all(everything(), ~ is.na(.) | trimws(as.character(.)) == "")) %>%
+  distinct() %>%
   mutate(
+    fikka_id = as.character(fikka_id),
+    id = as.character(id),
+    title2 = paste(title, "|", title_remainder),
+    physical_dimensions = na_if(trimws(physical_dimensions), ""),
+    asteri_id = clean_id(asteri_id),
     asteri_id = str_trim(asteri_id),
     asteri_id = na_if(asteri_id, ""),
     asteri_id = str_remove(asteri_id, "^\\(FI-ASTERI-N\\)\\s*"),
     asteri_id = str_extract(asteri_id, "\\d{9}")
   )
-names(df.orig) <- ifelse(names(df.orig) == "", NA, names(df.orig))
 
-# >  df_orig_duplicates <- df.orig %>%
-#   +    group_by(id) %>%
-#   +    filter(n() > 1) %>%
-#   +    arrange(id)
-# > View(df_orig_duplicates)
-# > df_orig_duplicates <- df_orig_duplicates %>%
-#   +     rename(id1 = id)
-# > write.table(
-#   +     df_orig_duplicates,
-#   +     file = "df_orig_duplicates.tsv",
-#   +     sep = "\t",
-#   +     row.names = FALSE,
-#   +     quote = FALSE,
-#   +     na = ""
-
-rm(tmp_file)
