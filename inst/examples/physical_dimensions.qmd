@@ -18,6 +18,8 @@ Harmonize physical attributes data function: [polish_dimensions.R](https://githu
 
 Render physical dimensions field: [physical_dimensions.qmd](https://github.com/fennicahub/fennica/blob/master/inst/examples/physical_dimensions.qmd)
 
+
+
 ## Complete Dataset Overview
 
 -   [Accepted dimension info](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/physical_dimensions_accepted.csv)
@@ -44,22 +46,47 @@ dimension_summary <- function(df) {
 
   n_total <- nrow(df)
 
-  original_nonempty <- is_nonempty(df[[field]])
+  original_nonempty <- is_nonempty(df$original)
+
+  any_harmonized <-
+    is_nonempty(df$gatherings) |
+    is_nonempty(df$width) |
+    is_nonempty(df$height) 
+
+  complete_dimensions <-
+    is_nonempty(df$width) &
+    is_nonempty(df$height)
+
+  partial_dimensions <- xor(
+    is_nonempty(df$width),
+    is_nonempty(df$height)
+  )
 
   n_original <- sum(original_nonempty)
 
-  n_area <- sum(!is.na(df$area))
+  n_any_harmonized <- sum(any_harmonized)
+
+  n_interpreted_from_nonempty <- sum(
+    original_nonempty & any_harmonized
+  )
+
+  n_uninterpreted_from_nonempty <- sum(
+    original_nonempty & !any_harmonized
+  )
+
+  n_area <- sum(is_nonempty(df$area))
+
+  n_complete_dimensions <- sum(complete_dimensions)
+  n_partial_dimensions <- sum(partial_dimensions)
+
   n_gatherings_original <- sum(is_nonempty(df$gatherings.original))
   n_gatherings_final <- sum(is_nonempty(df$gatherings))
 
-  n_height_original <- sum(!is.na(df$height.original))
-  n_height_final <- sum(!is.na(df$height))
+  n_height_original <- sum(is_nonempty(df$height.original))
+  n_height_final <- sum(is_nonempty(df$height))
 
-  n_width_original <- sum(!is.na(df$width.original))
-  n_width_final <- sum(!is.na(df$width))
-
-  n_interpreted_from_nonempty <- sum(original_nonempty & !is.na(df$area))
-  n_uninterpreted_from_nonempty <- n_original - n_interpreted_from_nonempty
+  n_width_original <- sum(is_nonempty(df$width.original))
+  n_width_final <- sum(is_nonempty(df$width))
 
   list(
     n_total = n_total,
@@ -67,30 +94,45 @@ dimension_summary <- function(df) {
     n_original = n_original,
     p_original = pct(n_original, n_total),
 
-    n_uninterpreted_from_nonempty = n_uninterpreted_from_nonempty,
+    n_any_harmonized = n_any_harmonized,
+    p_any_harmonized = pct(n_any_harmonized, n_total),
 
     n_interpreted_from_nonempty = n_interpreted_from_nonempty,
-    p_interpreted_from_nonempty = pct(n_interpreted_from_nonempty, n_original),
+    p_interpreted_from_nonempty = pct(
+      n_interpreted_from_nonempty,
+      n_original
+    ),
+
+    n_uninterpreted_from_nonempty = n_uninterpreted_from_nonempty,
+
+    n_complete_dimensions = n_complete_dimensions,
+    p_complete_dimensions = pct(n_complete_dimensions, n_total),
+
+    n_partial_dimensions = n_partial_dimensions,
+    p_partial_dimensions = pct(n_partial_dimensions, n_total),
 
     n_area = n_area,
     p_area = pct(n_area, n_total),
-
     n_area_missing = n_total - n_area,
 
     n_gatherings_original = n_gatherings_original,
     p_gatherings_original = pct(n_gatherings_original, n_total),
     n_gatherings_final = n_gatherings_final,
     p_gatherings_final = pct(n_gatherings_final, n_total),
+    n_gatherings_gain = n_gatherings_final - n_gatherings_original,
 
     n_height_original = n_height_original,
     p_height_original = pct(n_height_original, n_total),
     n_height_final = n_height_final,
     p_height_final = pct(n_height_final, n_total),
+    n_height_gain = n_height_final - n_height_original,
 
     n_width_original = n_width_original,
     p_width_original = pct(n_width_original, n_total),
     n_width_final = n_width_final,
-    p_width_final = pct(n_width_final, n_total)
+    p_width_final = pct(n_width_final, n_total),
+    n_width_gain = n_width_final - n_width_original
+
   )
 }
 
@@ -98,6 +140,33 @@ ds <- dimension_summary(df.tmp)
 ```
 
 
+The original physical-dimensions field is available for `r ds$n_original` records (`r ds$p_original`%) and missing for `r ds$n_total - ds$n_original` records. It contains `r dplyr::n_distinct(df.tmp$original[is_nonempty(df.tmp$original)])` unique non-missing values.
+
+Gatherings information is available in the extracted original data for `r ds$n_gatherings_original` records (`r ds$p_gatherings_original`%) and in the harmonized data for `r ds$n_gatherings_final` records (`r ds$p_gatherings_final`%). Harmonization therefore added gatherings information for `r ds$n_gatherings_gain` records. The original and harmonized variables contain `r dplyr::n_distinct(df.tmp$gatherings.original[is_nonempty(df.tmp$gatherings.original)])` and `r dplyr::n_distinct(df.tmp$gatherings[is_nonempty(df.tmp$gatherings)])` unique non-missing values, respectively.
+
+Height information is available in the extracted original data for `r ds$n_height_original` records (`r ds$p_height_original`%) and in the harmonized data for `r ds$n_height_final` records (`r ds$p_height_final`%). Harmonization therefore added height information for `r ds$n_height_gain` records. The original and harmonized variables contain `r dplyr::n_distinct(df.tmp$height.original[is_nonempty(df.tmp$height.original)])` and `r dplyr::n_distinct(df.tmp$height[is_nonempty(df.tmp$height)])` unique non-missing values, respectively.
+
+Width information is available in the extracted original data for `r ds$n_width_original` records (`r ds$p_width_original`%) and in the harmonized data for `r ds$n_width_final` records (`r ds$p_width_final`%). Harmonization therefore added width information for `r ds$n_width_gain` records. The original and harmonized variables contain `r dplyr::n_distinct(df.tmp$width.original[is_nonempty(df.tmp$width.original)])` and `r dplyr::n_distinct(df.tmp$width[is_nonempty(df.tmp$width)])` unique non-missing values, respectively.
+
+
+## Harmonization outcomes
+
+Both height and width are available for `r ds$n_complete_dimensions` records (`r ds$p_complete_dimensions`%), allowing document area to be calculated. Only one of these two measurements is available for `r ds$n_partial_dimensions` records (`r ds$p_partial_dimensions`%).
+
+Document area was calculated for `r ds$n_area` records (`r ds$p_area`%). Area remains unavailable for `r ds$n_area_missing` records because height, width, or both could not be reliably interpreted. These cases are listed in the [entries where document surface could not be estimated](https://github.com/fennicahub/fennica/blob/master/inst/extdata/physical_dimension_incomplete.csv). The harmonized area variable contains `r dplyr::n_distinct(df.tmp$area[is_nonempty(df.tmp$area)])` unique non-missing values.
+
+
+- The complete original physical-dimensions field contains `r sum(is.na(df.tmp$original) | trimws(as.character(df.tmp$original)) %in% c("", "NA"))` missing values and `r length(unique(df.tmp$original[!is.na(df.tmp$original) & !trimws(as.character(df.tmp$original)) %in% c("", "NA")]))` unique non-missing values.
+
+- Original gatherings contain `r sum(is.na(df.tmp$gatherings.original) | trimws(as.character(df.tmp$gatherings.original)) %in% c("", "NA"))` missing values and `r length(unique(df.tmp$gatherings.original[!is.na(df.tmp$gatherings.original) & !trimws(as.character(df.tmp$gatherings.original)) %in% c("", "NA")]))` unique non-missing values. Harmonized gatherings contain `r sum(is.na(df.tmp$gatherings) | trimws(as.character(df.tmp$gatherings)) %in% c("", "NA"))` missing values and `r length(unique(df.tmp$gatherings[!is.na(df.tmp$gatherings) & !trimws(as.character(df.tmp$gatherings)) %in% c("", "NA")]))` unique non-missing values.
+
+- Original width values contain `r sum(is.na(df.tmp$width.original) | trimws(as.character(df.tmp$width.original)) %in% c("", "NA"))` missing values and `r length(unique(df.tmp$width.original[!is.na(df.tmp$width.original) & !trimws(as.character(df.tmp$width.original)) %in% c("", "NA")]))` unique non-missing values. Harmonized width values contain `r sum(is.na(df.tmp$width) | trimws(as.character(df.tmp$width)) %in% c("", "NA"))` missing values and `r length(unique(df.tmp$width[!is.na(df.tmp$width) & !trimws(as.character(df.tmp$width)) %in% c("", "NA")]))` unique non-missing values.
+
+- Original height values contain `r sum(is.na(df.tmp$height.original) | trimws(as.character(df.tmp$height.original)) %in% c("", "NA"))` missing values and `r length(unique(df.tmp$height.original[!is.na(df.tmp$height.original) & !trimws(as.character(df.tmp$height.original)) %in% c("", "NA")]))` unique non-missing values. Harmonized height values contain `r sum(is.na(df.tmp$height) | trimws(as.character(df.tmp$height)) %in% c("", "NA"))` missing values and `r length(unique(df.tmp$height[!is.na(df.tmp$height) & !trimws(as.character(df.tmp$height)) %in% c("", "NA")]))` unique non-missing values.
+
+- The harmonized oblong-format indicator classifies `r sum(df.tmp$obl %in% TRUE, na.rm = TRUE)` documents (`r round(100 * mean(df.tmp$obl %in% TRUE, na.rm = TRUE), 1)`%) as oblong and `r sum(df.tmp$obl %in% FALSE, na.rm = TRUE)` documents (`r round(100 * mean(df.tmp$obl %in% FALSE, na.rm = TRUE), 1)`%) as not oblong.
+
+- Harmonized document area contains `r sum(is.na(df.tmp$area) | trimws(as.character(df.tmp$area)) %in% c("", "NA"))` missing values and `r length(unique(df.tmp$area[!is.na(df.tmp$area) & !trimws(as.character(df.tmp$area)) %in% c("", "NA")]))` unique non-missing values.
 ## Document dimensions comparisons
 
 - Some dimension info is provided in the original raw data for altogether `r ds$n_original` documents (`r ds$p_original`%) but could not be interpreted for `r ds$n_uninterpreted_from_nonempty` documents, i.e. dimension info was successfully estimated for `r ds$p_interpreted_from_nonempty`% of the documents where this field was not empty.
@@ -181,8 +250,8 @@ plot_gatherings <- function(df, top_n = 10) {
     labs(
       x = "Share of documents",
       y = NULL,
-      title = "Distribution of document gatherings",
-      subtitle = "Original vs estimated values"
+      title = "",
+      subtitle = "Original and harmonized distributions among non-missing values"
     ) +
     
     theme_minimal(base_size = 13) +

@@ -50,11 +50,11 @@ In the Fennica dataset, language material makes up the majority of the content, 
 #pick melindas for language material content types
 df_lang_material <- df.orig %>%
   filter(type_of_record == "Language material") %>%
-  select(melinda_id)
+  select(id)
 
 #filter language material melindas 
 df_language_mat <- df %>%
-  filter(melinda_id %in% df_lang_material$melinda_id)
+  filter(id %in% df_lang_material$id)
 
 x <- top(df_language_mat, "title_remainder")
 tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))

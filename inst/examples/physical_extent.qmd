@@ -6,7 +6,10 @@ description: ""
 
 ```{r}
 #| label = "source-index",
-#| include = FALSE
+#| include = FALSE, 
+#| message = FALSE
+
+
 source("init.R")
 source("physical_extent.R")
 ```
@@ -24,67 +27,68 @@ Render physical extent field: [physical_extent.qmd](https://github.com/fennicahu
 * [Discarded entries](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/physical_extent_discarded.csv)
 
 ```{r}
-#| include = FALSE
-library(dplyr)
-library(knitr)
+#| include = FALSE, 
+#| message = FALSE
+#
+pagecount_summary <- data.frame(
+  total_documents = nrow(df.tmp),
 
+  original_available = sum(!is.na(df.orig$physical_extent) & df.orig$physical_extent != ""),
+  original_missing = sum(is.na(df.orig$physical_extent) | df.orig$physical_extent == ""),
 
-df_pagecount %>%
-  summarise(
-    arabic_pages = sum(!is.na(arabic)),
-    roman_pages = sum(!is.na(roman)),
-    sheets = sum(!is.na(sheet)),
-    plates = sum(!is.na(plate)),
-    square_brackets = sum(!is.na(squarebracket)),
-    multipliers = sum(!is.na(multiplier)),
-    volume_count_info = sum(!is.na(volcount))
-  ) %>%
-  kable()
-n_total <- nrow(df_pagecount)
+  pagecount_available = sum(!is.na(df.tmp$pagecount)),
+  pagecount_missing = sum(is.na(df.tmp$pagecount)),
 
-pagecount_summary <- df_pagecount %>%
-  summarise(
-    documents = n(),
-    pagecount_available = sum(!is.na(pagecount)),
-    pagecount_missing = sum(is.na(pagecount)),
-    pagecount_available_percent = round(100 * pagecount_available / documents, 1),
-    min_pagecount = min(pagecount, na.rm = TRUE),
-    max_pagecount = max(pagecount, na.rm = TRUE),
-    volcount_available = sum(!is.na(volcount)),
-    volcount_missing = sum(is.na(volcount))
+  volcount_available = sum(!is.na(df.tmp$volcount)),
+  volcount_missing = sum(is.na(df.tmp$volcount))
+)
+
+pagecount_summary <- pagecount_summary %>%
+  mutate(
+    original_available_percent = round(100 * original_available / total_documents, 1),
+    original_missing_percent = round(100 * original_missing / total_documents, 1),
+    pagecount_available_percent = round(100 * pagecount_available / total_documents, 1),
+    pagecount_missing_percent = round(100 * pagecount_missing / total_documents, 1),
+    volcount_available_percent = round(100 * volcount_available / total_documents, 1)
   )
-
-pagecount_summary %>%
-  kable()
 ```
+
+
 ## Page counts
 
-* Page count available for `r pagecount_summary$pagecount_available` documents in total (`r pagecount_summary$pagecount_available_percent`%).
+- The original physical-extent field is available for `r pagecount_summary$original_available` documents (`r pagecount_summary$original_available_percent`%) and missing for `r pagecount_summary$original_missing` documents (`r pagecount_summary$original_missing_percent`%).
 
-* Page count missing for `r pagecount_summary$pagecount_missing` documents.
+- A harmonized page-count estimate is available for `r pagecount_summary$pagecount_available` documents (`r pagecount_summary$pagecount_available_percent`%) and missing for `r pagecount_summary$pagecount_missing` documents (`r pagecount_summary$pagecount_missing_percent`%).
 
-* Volume count available for `r pagecount_summary$volcount_available` documents.
-
-* Volume count missing for `r pagecount_summary$volcount_missing` documents.
+- Volume-count information is available for `r pagecount_summary$volcount_available` documents (`r pagecount_summary$volcount_available_percent`%) and missing for `r pagecount_summary$volcount_missing` documents.
 
 ```{r}
-#| include = FALSE
-df_pagecount %>%
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| error = FALSE,
+
+df_pagecount <- df.tmp %>%
   summarise(
-    arabic_pages = sum(!is.na(pagecount.arabic)),
-    roman_pages = sum(!is.na(pagecount.roman)),
-    sheets = sum(!is.na(pagecount.sheet)),
-    plates = sum(!is.na(pagecount.plate)),
-    square_brackets = sum(!is.na(pagecount.squarebracket)),
-    multipliers = sum(!is.na(pagecount.multiplier)),
-    volume_count_info = sum(!is.na(pagecount.volcount))
-  ) %>%
-  kable()
+    arabic_pages = sum(pagecount.arabic > 0, na.rm = TRUE),
+    roman_pages = sum(pagecount.roman > 0, na.rm = TRUE),
+    sheets = sum(pagecount.sheet > 0, na.rm = TRUE),
+    plates = sum(pagecount.plate > 0, na.rm = TRUE),
+    square_brackets = sum(pagecount.squarebracket > 0, na.rm = TRUE),
+    multiplier_applied = sum(pagecount.multiplier > 1, na.rm = TRUE),
+    volume_count_info = sum(!is.na(volcount)),
+    parts_info = sum(!is.na(parts))
+  )
+
+kable(df_pagecount)
 ```
 
 ```{r}
-#| include = FALSE
-df_pagecount %>%
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| error = FALSE,
+df_volume_summary <- df.tmp %>%
   mutate(
     volume_type = case_when(
       is.na(volcount) ~ "Missing volume count",
@@ -98,9 +102,97 @@ df_pagecount %>%
     mean_pagecount = round(mean(pagecount, na.rm = TRUE), 1),
     median_pagecount = median(pagecount, na.rm = TRUE),
     .groups = "drop"
-  ) %>%
-  kable()
+  )
+
+kable(df_volume_summary)
 ```
 
+```{r}
+#| include = FALSE,
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| error = FALSE,
+pagecount_conversion <- data.frame(
+  original_available = sum(!is.na(df.orig$physical_extent) & df.orig$physical_extent != ""),
 
+  successfully_converted = sum(
+    !is.na(df.orig$physical_extent) &
+    df.orig$physical_extent != "" &
+    !is.na(df.tmp$pagecount)
+  ),
+
+  original_but_no_pagecount = sum(
+    !is.na(df.orig$physical_extent) &
+    df.orig$physical_extent != "" &
+    is.na(df.tmp$pagecount)
+  )
+) %>%
+  mutate(
+    conversion_percent = round(
+      100 * successfully_converted / original_available,
+      1
+    )
+  )
+```
+
+Of records containing original physical-extent information, `r pagecount_conversion$successfully_converted` (`r pagecount_conversion$conversion_percent`%) yielded a harmonized page-count estimate, while `r pagecount_conversion$original_but_no_pagecount` records contained physical-extent information but did not yield a page-count estimate.
+
+```{r}
+#| label = "physext2",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| error = FALSE,
+#| fig.width = 9,
+#| fig.height = 6
+
+df_pagecount_groups <- df.tmp %>%
+  mutate(
+    pagecount_group = case_when(
+      is.na(pagecount) ~ "Missing",
+      pagecount <= 10 ~ "1–10",
+      pagecount <= 50 ~ "11–50",
+      pagecount <= 100 ~ "51–100",
+      pagecount <= 200 ~ "101–200",
+      pagecount <= 300 ~ "201–300",
+      pagecount <= 500 ~ "301–500",
+      pagecount <= 1000 ~ "501–1,000",
+      pagecount > 1000 ~ ">1,000"
+    ),
+    pagecount_group = factor(
+      pagecount_group,
+      levels = c(
+        "1–10", "11–50", "51–100", "101–200",
+        "201–300", "301–500", "501–1,000",
+        ">1,000", "Missing"
+      )
+    )
+  ) %>%
+  count(pagecount_group) %>%
+  mutate(
+    percent = round(100 * n / sum(n), 1)
+  )
+
+
+f <- ggplot(
+  df_pagecount_groups,
+  aes(x = pagecount_group, y = n)
+) +
+  geom_col() +
+  labs(
+    x = "Estimated page count",
+    y = "Number of documents",
+    title = "Documents by estimated page count"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(
+      angle = 45,
+      hjust = 1
+    )
+  )
+
+print(f)
+```
 

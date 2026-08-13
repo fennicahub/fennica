@@ -50,8 +50,8 @@ kable(head(tab, ntop))
 #| label = "summary_008_genre_pic",
 #| echo = FALSE,
 #| warning = FALSE,
-# Join publication_decade from df_pubtime to df by melinda_id
-df$publication_decade <- df_pubtime$publication_decade[match(df$melinda_id, df_pubtime$melinda_id)]
+# Join publication_decade from df_pubtime to df by _id
+df$publication_decade <- df_pubtime$publication_decade[match(df$id, df_pubtime$id)]
 
 # Define the genres you're interested in
 selected_genres <- c("Tietokirjallisuus", "Kaunokirjallisuus", "Draama", "Runot", "Romaanit", "Novellit, kertomukset", "Puheet, esitelmät", "Kirjeet", "Esseet", "Huumori, satiiri")
@@ -113,8 +113,8 @@ kable(head(tab, ntop))
 #| label = "summary_008_genre_pic2",
 #| echo = FALSE,
 #| warning = FALSE,
-# Join publication_decade from df_pubtime to df by melinda_id
-df_19$publication_decade <- df_pubtime19$publication_decade[match(df_19$melinda_id, df_pubtime19$melinda_id)]
+# Join publication_decade from df_pubtime to df by id
+df_19$publication_decade <- df_pubtime19$publication_decade[match(df_19$id, df_pubtime19$id)]
 
 # Define the genres you're interested in
 selected_genres <- c(

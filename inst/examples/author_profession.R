@@ -1,7 +1,7 @@
 field <- "author_profession"
 
 df.orig$author_profession[df.orig$author_profession == ""] <- NA
-
+df_merged1$[df.orig$author_profession == ""] <- NA
 
 tmp <- polish_profession(df.orig[[field]])
 

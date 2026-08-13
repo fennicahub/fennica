@@ -6,8 +6,8 @@ df.orig[[field]][df.orig[[field]] == ""] <- NA
 df.orig[[field]][df.orig[[field]] == " "] <- NA
 
 df.tmp <- polish_genre_655(df.orig[[field]])
-df.tmp$melinda_id <- df.orig$melinda_id
-df.tmp <- select(df.tmp, melinda_id, everything())
+df.tmp$id <- df.orig$id
+df.tmp <- select(df.tmp, id, everything())
 
 
 # Ensure the column is character
@@ -48,7 +48,7 @@ message("Discarded entries in the original data")
 inds <- which(is.na(df.tmp$harmonized))
 
 # Original entries that were converted into NA
-original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
+original.na <- df.orig[match(df.tmp$id[inds], df.orig$id), field]
 
 # .. ie. those are "discarded" cases; list them in a table
 tmp <- write_xtable(original.na, file_discarded, count = TRUE)
@@ -57,9 +57,9 @@ tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 message("Error list")
 
 errors <-  tibble(
-  melinda_id = df.tmp$melinda_id[inds],
+  id = df.tmp$id[inds],
   original_value = df.orig[[field]][
-    match(df.tmp$melinda_id[inds], df.orig$melinda_id)
+    match(df.tmp$id[inds], df.orig$id)
   ]
 ) %>%
   filter(!is.na(original_value))
@@ -71,10 +71,10 @@ tmp1 <- write.csv(errors,
           fileEncoding = "UTF-8")
 # ------------------------------------------------------------
 
-# Run publication_time.R file to get the melindas needed for the 19th century slicing
-#source("melindas_19.R")
+# Run publication_time.R file to get the ids needed for the 19th century slicing
+#source("ids_19.R")
 
-df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
+df_19 <- df.tmp[df.tmp$id %in% ids_19,]
 field <- "genre_655"
 
 # Store the title field data
@@ -104,7 +104,7 @@ message("Discarded entries for 1809-1917")
 inds <- which(is.na(df_19[[field]]))
 
 # Original entries that were converted into NA
-original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
+original.na <- df.orig[match(df_19$id[inds], df.orig$id), field]
 
 # .. ie. those are "discarded" cases; list them in a table
 tmp19 <- write_xtable(as.character(original.na), file_discarded_19, count = TRUE)

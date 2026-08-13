@@ -33,7 +33,7 @@ message("Discarded entries in the original data")
 inds <- which(is.na(df_genre_008$converted_008_33))
 
 # Original entries that were converted into NA
-original.na <- df.orig[match(df_genre_008$melinda_id[inds], df.orig$melinda_id), field]
+original.na <- df.orig[match(df_genre_008$id[inds], df.orig$id), field]
 
 # .. ie. those are "discarded" cases; list them in a table
 tmp <- write_xtable(as.character(original.na), file_discarded, count = TRUE)
@@ -41,9 +41,9 @@ tmp <- write_xtable(as.character(original.na), file_discarded, count = TRUE)
 
 # ------------------------------------------------------------
 
-# Run publication_time.R file to get the melindas needed for the 19th century slicing
+# Run publication_time.R file to get the ids needed for the 19th century slicing
 
-df_19 <- df_genre_008[df_genre_008$melinda_id %in% melindas_19,]
+df_19 <- df_genre_008[df_genre_008$id %in% ids_19,]
 field <- "genre_008"
 
 # Store the title field data
@@ -73,7 +73,7 @@ write.table(df_19, file = paste0(output.folder, paste0(field, "_19.csv")), quote
 # inds <- which(is.na(df_19[[field]]))
 # 
 # # Original entries that were converted into NA
-# original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
+# original.na <- df.orig[match(df_19$id[inds], df.orig$id), field]
 # 
 # # .. ie. those are "discarded" cases; list them in a table
 # tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)

@@ -3,7 +3,7 @@ field <- "publication_interval"
 tmp <- polish_years(df.orig[[field]], check = TRUE)
       
 # Add to data.frame
-df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
+df.tmp <- data.frame(id = df.orig$id,
                      publication_interval_from = tmp$from,
               	     publication_interval_till = tmp$till)
 
@@ -49,7 +49,7 @@ message("Discarded entries in the original data")
 inds <- which(is.na(df.tmp[[field]]))
 
 # Original entries that were converted into NA
-original.na <- df.orig[match(df.tmp$melinda_fi[inds], df.orig$melinda_fi), field]
+original.na <- df.orig[match(df.tmp$fi[inds], df.orig$fi), field]
 
 # .. ie. those are "discarded" cases; list them in a table
 tmp <- write_xtable(original.na, file_discarded, count = TRUE)

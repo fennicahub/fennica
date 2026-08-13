@@ -27,6 +27,8 @@ Fourth, historically variable publisher names and OCR variants are mapped to can
 
 Finally, entries that cannot be interpreted as meaningful publisher information after cleaning (e.g., empty strings, punctuation-only values) are set to missing (`NA`). For transparency, all discarded original values are recorded separately, allowing inspection of what was removed during preprocessing.
 
+There are `r sum(is.na(df.orig[[field]]))` records with missing author name information in the original raw data.
+
 
 
 ## Complete Dataset Overview

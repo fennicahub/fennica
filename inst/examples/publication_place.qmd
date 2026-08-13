@@ -16,6 +16,8 @@ MARC: [260a](https://www.loc.gov/marc/bibliographic/bd260.html) and [264a](https
 Publication place information is primarily derived from MARC21 fields 260a and 264a, which record the location of publication. These fields exhibit substantial variation in spelling, language, and formatting, requiring systematic harmonization to enable consistent geographic analysis. The processing pipeline integrates normalization, synonym resolution, and external mappings to standardize place names and link them to countries and geocoordinates, while preserving traceability of ambiguous and discarded cases.
 
 The publication place field is enriched by using 264a when 260a is missing, after which the raw place strings are harmonized with polish_place(). The harmonized place names are then linked to countries with get_country() and joined with existing geocoding data to add longitude, latitude, and mapping identifiers. The workflow saves the processed table, creates accepted and discarded summaries, records discarded non-empty original values with IDs, and produces separate accepted summaries for the 1809–1917 subset.
+There are `r sum(is.na(df.orig[[field]]))` records with missing author name information in the original raw data.
+
 
 ## Complete Dataset Overview
 
@@ -83,3 +85,146 @@ colnames(tab) <- c("Country", "Documents (n)", "Fraction (%)")
 library(knitr)
 kable(head(tab))
 ```
+
+
+
+```{r}
+#| label = "publication-country-world-map",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 12,
+#| fig.height = 7
+
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(ggplot2)
+library(sf)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(countrycode)
+library(scales)
+library(viridis)
+
+
+
+# Count publications by country
+country_counts <- df %>%
+  filter(!is.na(publication_country), str_trim(publication_country) != "") %>%
+  count(publication_country, name = "n") %>%
+  mutate(
+    iso3 = countrycode(
+      publication_country,
+      origin = "country.name",
+      destination = "iso3c",
+      warn = FALSE
+    )
+  )
+
+# World map
+world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
+
+world_map_df <- world %>%
+  left_join(country_counts, by = c("iso_a3" = "iso3"))
+
+p <- ggplot(world_map_df) +
+  geom_sf(aes(fill = n), color = "grey70", linewidth = 0.15) +
+  scale_fill_viridis_c(
+    option = "plasma",
+    trans = "log10",
+    na.value = "grey95",
+    labels = comma,
+    name = "Documents (log scale)"
+  ) +
+  labs(
+    title = "Publication countries in the complete dataset"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.grid.major = element_line(color = "transparent"),
+    axis.text = element_blank(),
+    axis.title = element_blank()
+  )
+print(p)
+```
+
+
+```{r}
+#| label = "publication-finland-map-19",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 15,
+#| fig.height = 10
+
+# Aggregate publication places in the 1809–1917 subset
+finland_places_19 <- df_19 %>%
+  filter(
+    !is.na(publication_place),
+    !is.na(latitude),
+    !is.na(longitude)
+  ) %>%
+  mutate(
+    publication_place = str_trim(publication_place)
+  ) %>%
+  count(publication_place, latitude, longitude, name = "n") %>%
+  arrange(desc(n))
+
+# Finland base map
+finland <- rnaturalearth::ne_countries(
+  country = "Finland",
+  scale = "medium",
+  returnclass = "sf"
+)
+
+h <- ggplot() +
+  geom_sf(
+    data = finland,
+    fill = "grey97",
+    color = "grey50",
+    linewidth = 0.3
+  ) +
+  geom_point(
+    data = finland_places_19,
+    aes(
+      x = as.numeric(longitude),
+      y = as.numeric(latitude),
+      size = n,
+      color = n
+    ),
+    alpha = 0.8
+  ) +
+  scale_size_continuous(
+    range = c(2, 12),
+    labels = scales::comma,
+    name = "Documents"
+  ) +
+  scale_color_viridis_c(
+    option = "magma",
+    trans = "log10",
+    labels = scales::comma,
+    name = "Documents"
+  ) +
+  coord_sf(
+    crs = sf::st_crs(4326),
+    default_crs = sf::st_crs(4326),
+    xlim = c(19, 32),
+    ylim = c(59, 71),
+    expand = FALSE,
+    datum = NA
+  ) +
+  labs(
+    title = "Publishing in Finland, 1809–1917",
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.grid = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    axis.title = element_blank()
+  )
+
+print(h)
+```
+

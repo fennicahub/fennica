@@ -26,14 +26,14 @@ book:
   chapters:
   - index.qmd
   - author_info.qmd
-  - author_name.qmd
-  - author_date.qmd
+ # - author_name.qmd
+ # - author_date.qmd
  #- corporate.qmd
   - genre_655.qmd
   - genre_008.qmd
   - language.qmd
   - physical_dimensions.qmd
-  #- physical_extent.qmd
+  - physical_extent.qmd
   #- holder.qmd
   #- note_dissertation.qmd
   #- note_granter.qmd

@@ -6,7 +6,7 @@ tmp  <- polish_years_008(df.orig[[field]])
 # Make data.frame
 # Make sure if it called df_pubtime for publication_time, other fields have df.tmp 
 # because publication_time field is sourced in other field processing files 
-df_pubtime <- data.frame(melinda_id = df.orig$melinda_id,
+df_pubtime <- data.frame(id = df.orig$id,
                             original = tmp$original,
                             publication_year_from = tmp$from,
                             publication_year_till = tmp$till, 
@@ -41,11 +41,11 @@ tmp <- write_xtable(o[inds],
                     add.percentages = TRUE)
 
 
-#create a file for discarded with melindas
+#create a file for discarded with ids
 message("Discarded publication year with melinda ids")
 discard.file.id <- paste0(output.folder, field, "_discarded_id.csv")
 ps <- substr(df.orig$field_008, 7, 7)
-xx1 <- data.frame(melinda_id = df_pubtime$melinda_id,id2 = df.orig$other_system_id, field008_6 = ps, publication_status = df.orig$publication_status,
+xx1 <- data.frame(id = df_pubtime$id,id2 = df.orig$other_system_id, field008_6 = ps, publication_status = df.orig$publication_status,
                   original = df_pubtime$original,publication_year = df_pubtime$publication_year)
 xx1 <- xx1 %>% filter(is.na(publication_year))%>% filter(!is.na(original))
 write.table(xx1,file = discard.file.id,
@@ -71,7 +71,7 @@ write.table(df,
 
 #Create subsection for the 19th century only and 
 
-df_pubtime19 <- df_pubtime[df_pubtime$melinda_id %in% melindas_19,]
+df_pubtime19 <- df_pubtime[df_pubtime$id %in% ids_19,]
 
 message("Write conversions: publication year for 1809-1917")
 

@@ -16,7 +16,7 @@ MARC: [655,a](https://www.loc.gov/marc/bibliographic/bd655.html)
 
 ## Description
 
-Field 655 (Genre/Form) contains genre and form descriptors recorded as free text in the bibliographic metadata. These entries are heterogeneous: multiple values may occur within a single record (typically separated by delimiters such as `|`), and labels vary in spelling, formatting, and level of standardization.
+Field 655 (Genre/Form) contains genre and form descriptors recorded as free text in the bibliographic metadata. These entries are heterogeneous: multiple values may occur within a single record (typically separated by delimiters such as `|`), and labels vary in spelling, formatting, and level of standardization. There are 'r sum(is.na(df.orig[[field]]))' records with missing 'r print(field)' information in the original raw data.
 
 To enable consistent analysis, the field was harmonized using a controlled vocabulary:
 

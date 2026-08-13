@@ -5,7 +5,7 @@ df.tmp <- polish_physical_extent(df.orig[[field]], verbose = TRUE)
 
 
 # Add melinda id info as first column
-df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
+df.tmp <- bind_cols(id = df.orig$id,
                     df.tmp)
 
 
@@ -31,7 +31,7 @@ message("Discarded entries in the original data")
 inds <- which(is.na(df.tmp$pagecount))
 
 # Original entries that were converted into NA
-original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
+original.na <- df.orig[match(df.tmp$id[inds], df.orig$id), field]
 
 # .. ie. those are "discarded" cases; list them in a table
 tmp <- write_xtable(original.na, file_discarded, count = TRUE)
@@ -45,9 +45,9 @@ df <- readRDS(data.file)
 
 # ------------------------------------------------------------
 
-# get the melindas needed for the 19th century slicing
+# get the ids needed for the 19th century slicing
 
-df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
+df_19 <- df.tmp[df.tmp$id %in% ids_19,]
 field <- "physical_extent"
 
 # Store the title field data
@@ -72,7 +72,7 @@ s <- write_xtable(df_19$pagecount, file_accepted_19, count = TRUE)
 # inds <- which(is.na(df_19[[field]]))
 # 
 # # Original entries that were converted into NA
-# original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
+# original.na <- df.orig[match(df_19$id[inds], df.orig$id), field]
 # 
 # # .. ie. those are "discarded" cases; list them in a table
 # tmp <- write_xtable(original.na, file_discarded_19, count = TRUE)

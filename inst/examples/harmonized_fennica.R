@@ -3,7 +3,8 @@ source("init.R")
 
 
 # #initialize df.harmonized
-df.harmonized <- data.frame(melinda_id = df.orig$melinda_id,
+df.harmonized <- data.frame(id = df.orig$id,
+                            id2 = df.orig$other_system_id,
                             data_element = df.orig$data_element_008,
                             genre_008 = df.orig$converted_008_33,
                             record_type = df.orig$type_of_record,
@@ -16,9 +17,9 @@ df.harmonized$first_100 <- df$first
 df.harmonized$last_100 <- df$author_name
 
 
-source("author_name_700.R")
-df.harmonized <- df.harmonized %>%
-  left_join(df700_harm, by = "melinda_id")
+# source("author_name_700.R")
+# df.harmonized <- df.harmonized %>%
+#   left_join(df700_harm, by = "id")
 
 # source("gender.R")
 # df.harmonized$gender <- df$gender_primary
@@ -26,8 +27,8 @@ df.harmonized <- df.harmonized %>%
 source("author_date.R")
 #add harmonized fields to df
 df.harmonized$author_birth <- df.tmp$author_birth
-df.harmonized$author_birth <- df.tmp$author_death
-df.harmonized$author_birth <- df.tmp$author_age
+df.harmonized$author_death <- df.tmp$author_death
+df.harmonized$author_age <- df.tmp$author_age
 
 # source("author_profession.R")
 # df.harmonized$author_profession <- df$author_profession
@@ -50,13 +51,38 @@ df.harmonized$title2 <- df.tmp$title2
 df.harmonized$title2_length <- df.tmp$title2_length
 df.harmonized$title2_word <- df.tmp$title2_word_count
 
-source("language.R")
+source("language_full.R")
+#add harmonized 041a and 008 together
+
+df.harmonized$language_full <- df.tmp$full_language_name
+df.harmonized$language_full_primary <- df.tmp$language_primary
+df.harmonized$language_full_multi <- df.tmp$multiple
+df.harmonized$lang_full_orig <- df.orig$language_original
+
+source("language_041a.R")
 #add harmonized fields to df
 
-df.harmonized$language <- df.tmp$full_language_name
-df.harmonized$language_primary <- df.tmp$language_primary
-df.harmonized$language_multi <- df.tmp$multiple
-df.harmonized$lang_orig <- df.orig$language_original
+df.harmonized$language_041 <- df.tmp$full_language_name
+df.harmonized$language_041_primary <- df.tmp$language_primary
+df.harmonized$language_041_multi <- df.tmp$multiple
+df.harmonized$lang_041_orig <- df.orig$language_original
+
+source("language_008.R")
+#add harmonized fields to df
+
+df.harmonized$language_008 <- df.tmp$full_language_name
+df.harmonized$language_008_primary <- df.tmp$language_primary
+df.harmonized$language_008_multi <- df.tmp$multiple
+df.harmonized$lang_008_orig <- df.orig$language_original
+
+source("language_original.R")
+#add harmonized fields to df
+
+df.harmonized$language_original <- df.tmp$full_language_name
+df.harmonized$language_original_primary <- df.tmp$language_primary
+df.harmonized$language_original_multi <- df.tmp$multiple
+df.harmonized$lang_original_orig <- df.orig$language_original
+
 
 source("publication_time.R")
 
@@ -96,7 +122,7 @@ source("physical_dimensions.R")
 df.harmonized <- merge(
   df.harmonized,
   df.tmp,
-  by = "melinda_id"
+  by = "id"
 )
 
 source("physical_extent.R")
@@ -104,11 +130,10 @@ source("physical_extent.R")
 df.harmonized <- merge(
   df.harmonized,
   df.tmp,
-  by = "melinda_id"
+  by = "id"
 )
 
 
-df.harmonized$id2 <- df.orig$other_system_id
 df.harmonized <- unique(df.harmonized)
 
 df.processed <- df.harmonized
@@ -130,7 +155,7 @@ write.table(df.processed,
 ###############################################################################
 
 
-df.processed19 <- df.processed[df.processed$melinda_id %in% melindas_19,] 
+df.processed19 <- df.processed[df.processed$id %in% ids_19,] 
 
 # Store the data
 data.file <- paste0(field, ".Rds")
@@ -157,5 +182,5 @@ col_classes <- c("character", rep(NA, column_count - 1))
 
 df.processed <- read.csv(url, skip = 0, header = TRUE, sep = "\t", colClasses = col_classes)
 
-df.processed19 <- df.processed[df.processed$melinda_id %in% melindas_19,] 
+df.processed19 <- df.processed[df.processed$id %in% ids_19,] 
 

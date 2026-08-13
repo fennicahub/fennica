@@ -43,7 +43,7 @@ df.holdingsit_unique <- df.holdingsit[!duplicated(df.holdingsit$record_id_004), 
 df.merged <- merge(
   df.orig,
   df.holdingsit_unique,
-  by.x = "melinda_id",
+  by.x = "id",
   by.y = "record_id_004",
   all.x = TRUE
 )

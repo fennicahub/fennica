@@ -7,9 +7,9 @@ out <- polish_udk(df.orig[[field]])
 
                    
 df.tmp <- out$full
-df.tmp$melinda_id <- df.orig$melinda_id
+df.tmp$id <- df.orig$id
 df.tmp$udk_aux <- polish_udk_aux(df.orig$UDC_aux)
-df.tmp <- dplyr::select(df.tmp, melinda_id, everything())
+df.tmp <- dplyr::select(df.tmp, id, everything())
 df.tmp$id2 <- df.orig$other_system_id
 
 
@@ -58,7 +58,7 @@ errors <- df.tmp %>%
   # keep only the rows where converted == "Undetermined"
   filter(str_detect(converted, regex("^Undetermined\\.?$", ignore_case = TRUE)))
 
-errors <- data.frame(id1 = errors$melinda_id, id2 = errors$id2, original = errors$original, 
+errors <- data.frame(id1 = errors$id, id2 = errors$id2, original = errors$original, 
                      harmonized = errors$cleaned, unknown_udk = errors$unknown)
 
 tmp1 <- write.csv(errors, 
@@ -78,9 +78,9 @@ write.table(df, file = paste0(output.folder, field, ".csv"), quote = FALSE, sep 
 
 # ------------------------------------------------------------
 
-#Run melindas_19.R to get melindas for 1809-1917
-#source("melindas_19.R")
-df.tmp_19 <- df.tmp %>% filter(melinda_id %in% melindas_19)
+#Run ids_19.R to get ids for 1809-1917
+#source("ids_19.R")
+df.tmp_19 <- df.tmp %>% filter(id %in% ids_19)
 
 
 # Reset the index to convert it into a single-index DataFrame

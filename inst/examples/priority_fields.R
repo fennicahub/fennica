@@ -74,17 +74,17 @@ df.orig <- df.orig[
 ]
 
 names(df.orig) <- c(
-  "id",            # 001
-  "melinda_id",             #999
+  "fikka_id",            # 001
+  "id",             #999
   "leader",                # LDR
   "field_008",             # 008
   "other_system_id",       # 035a
   
   "author_name",           # 100a
-  "author_date",          # 100d
+  "author_date",           # 100d
   "asteri_id",             # 1000
   
-  "language",              # 041a
+  "language_041",          # 041a
   "language_original",     # 041h
   
   "title_uniform",         # 240a
@@ -98,7 +98,7 @@ names(df.orig) <- c(
   
   "publication_place_264", # 264a
   
-  "physical_dimensions",         # 300c
+  "physical_dimensions",    # 300c
   "physical_extent",       # 300a
   
   "publication_frequency", # 310a
@@ -126,6 +126,7 @@ names(df.orig) <- c(
 # Remove duplicate rows
 df.orig <- df.orig %>% distinct()
 df.orig$title2 <- paste(df.orig$title, "|" ,df.orig$title_remainder)
+df.orig$physical_dimensions[trimws(df.orig$physical_dimensions) == ""] <- NA
 
 df.orig$asteri_id <- clean_id(df.orig$asteri_id)
 
@@ -139,12 +140,12 @@ df.orig <- df.orig %>%
 names(df.orig) <- ifelse(names(df.orig) == "", NA, names(df.orig))
 
 # >  df_orig_duplicates <- df.orig %>%
-#   +    group_by(melinda_id) %>%
+#   +    group_by(id) %>%
 #   +    filter(n() > 1) %>%
-#   +    arrange(melinda_id)
+#   +    arrange(id)
 # > View(df_orig_duplicates)
 # > df_orig_duplicates <- df_orig_duplicates %>%
-#   +     rename(id1 = melinda_id)
+#   +     rename(id1 = id)
 # > write.table(
 #   +     df_orig_duplicates,
 #   +     file = "df_orig_duplicates.tsv",

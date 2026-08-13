@@ -35,7 +35,8 @@ In addition, a separate set of **source conflicts** is identified, where cleaned
 
 
 ## Complete Dataset Overview
-The field has `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df[[field]])), 1)`%) non-missing values and  `r sum(is.na(df[[field]]))` / (`r round(100*mean(is.na(df[[field]])), 1)`%) with missing lifetime information.
+The field has `r sum(!is.na(df[[field]]))` / (`r round(100*mean(!is.na(df[[field]])), 1)`%) non-missing values and  `r sum(is.na(df[[field]]))` / (`r round(100*mean(is.na(df[[field]])), 1)`%) with missing lifetime information. There are `r sum(is.na(df.orig[[field]]))` records with missing author name information in the original raw data.
+
 
 Author age is available for `r sum(!is.na(df$author_age))` records / (`r round(100 * mean(!is.na(df$author_age)), 1)`%). Author age range is `r paste0(min(df$author_age, na.rm = TRUE), "–", max(df$author_age, na.rm = TRUE))`.
 

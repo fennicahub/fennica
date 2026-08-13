@@ -1,68 +1,69 @@
 Name	Count	Percentage
-Finnish	901055	68.36
-English	150411	11.41
-Swedish	139881	10.61
-Latin	 17426	 1.32
-German	 16550	 1.26
-Russian	  6445	 0.49
-Multiple languages	  5127	 0.39
-French	  4721	 0.36
-Danish	  1787	 0.14
-Estonian	  1765	 0.13
-Norwegian	  1387	 0.11
-Spanish	  1284	 0.10
-Italian	   954	 0.07
-Sami	   942	 0.07
-Hungarian	   700	 0.05
-Dutch	   535	 0.04
-Polish	   435	 0.03
-Japanese	   412	 0.03
-Karelian	   407	 0.03
-Czech	   358	 0.03
+Finnish	942038	71.47
+English	154998	11.76
+Swedish	147700	11.21
+Latin	 17697	 1.34
+German	 16922	 1.28
+Russian	  6588	 0.50
+Unrecognized	  6246	 0.47
+Multiple languages	  5210	 0.40
+French	  4880	 0.37
+Danish	  1796	 0.14
+Estonian	  1785	 0.14
+Spanish	  1399	 0.11
+Norwegian	  1397	 0.11
+Italian	   993	 0.08
+Sami	   962	 0.07
+Hungarian	   706	 0.05
+Dutch	   536	 0.04
+Polish	   440	 0.03
+Karelian	   425	 0.03
+Japanese	   418	 0.03
+Czech	   363	 0.03
 Undetermined	   303	 0.02
+Northern Sami	   234	 0.02
 Latvian	   230	 0.02
-Northern Sami	   228	 0.02
-Afroasiatic (Other)	   197	 0.01
-Lithuanian	   180	 0.01
-Esperanto	   176	 0.01
-Portuguese	   163	 0.01
-Finno-Ugrian (Other)	   155	 0.01
-Chinese	   143	 0.01
+Afroasiatic (Other)	   198	 0.02
+Lithuanian	   181	 0.01
+Esperanto	   177	 0.01
+Portuguese	   172	 0.01
+No linguistic content	   158	 0.01
+Finno-Ugrian (Other)	   156	 0.01
+Chinese	   148	 0.01
 Icelandic	   138	 0.01
-Turkish	   118	 0.01
+Turkish	   124	 0.01
 Romanian	   113	 0.01
-Bulgarian	   107	 0.01
+Bulgarian	   108	 0.01
 Tatar	   107	 0.01
-Arabic	   101	 0.01
+Arabic	   102	 0.01
+Greek, Ancient (to 1453)	    97	 0.01
 Slovenian	    97	 0.01
-Greek, Ancient (to 1453)	    95	 0.01
-Greek, Modern (1453-)	    83	 0.01
+Greek, Modern (1453-)	    86	 0.01
+Hebrew	    83	 0.01
 Slovak	    83	 0.01
-Ukrainian	    80	 0.01
-Hebrew	    79	 0.01
-Croatian	    66	 0.01
-Somali	    63	 0.00
+Ukrainian	    81	 0.01
+Croatian	    67	 0.01
+Somali	    64	 0.00
 Persian	    56	 0.00
 Ndonga	    55	 0.00
 Albanian	    46	 0.00
 Vietnamese	    45	 0.00
+Inari Sami	    42	 0.00
 Afrikaans	    41	 0.00
-Inari Sami	    40	 0.00
 Serbian	    36	 0.00
 Mari	    33	 0.00
 Korean	    27	 0.00
 Swahili	    25	 0.00
 Faroese	    22	 0.00
 Bantu (Other)	    21	 0.00
+Skolt Sami	    21	 0.00
 Komi	    20	 0.00
-Skolt Sami	    20	 0.00
 Romani	    19	 0.00
 Catalan	    18	 0.00
-Unrecognized	    18	 0.00
-Kurdish	    16	 0.00
+Kurdish	    17	 0.00
+Thai	    13	 0.00
 Udmurt	    13	 0.00
 Moksha	    12	 0.00
-Thai	    12	 0.00
 Belarusian	    11	 0.00
 Galician	    10	 0.00
 Armenian	     9	 0.00
@@ -84,6 +85,7 @@ Basque	     4	 0.00
 Filipino	     4	 0.00
 French, Old (ca. 842-1300)	     4	 0.00
 Malay	     4	 0.00
+Tibetan	     4	 0.00
 Xhosa	     4	 0.00
 Yiddish	     4	 0.00
 Aramaic	     3	 0.00
@@ -142,7 +144,7 @@ Kru (Other)	     1	 0.00
 Low German	     1	 0.00
 Marathi	     1	 0.00
 Nepali	     1	 0.00
-No linguistic content	     1	 0.00
+North American Indian (Other)	     1	 0.00
 Oriya	     1	 0.00
 Ossetic	     1	 0.00
 Semitic (Other)	     1	 0.00
@@ -154,7 +156,6 @@ Slavic (Other)	     1	 0.00
 Sumerian	     1	 0.00
 Tagalog	     1	 0.00
 Tai (Other)	     1	 0.00
-Tibetan	     1	 0.00
 Tigré	     1	 0.00
 Uzbek	     1	 0.00
 Zulu	     1	 0.00

@@ -1,5 +1,5 @@
 field <- "publication_place"
-field_2 <- "melinda_id"
+field_2 <- "id"
 
 #enrich 260a with 264a 
 df.orig_p <- df.orig %>%
@@ -23,8 +23,8 @@ f <- system.file("extdata/all_mapped_places_2020-06-15.csv", package = "fennica"
 geo_data <-  read.csv(f,fileEncoding = "UTF-8")
 
 # Collect the results into a data.frame
-df.tmp <- data.frame(melinda_id=df.orig[field_2], publication_place = tab,country=tab_country) %>% left_join(.,geo_data)
-colnames(df.tmp) <- c("melinda_id","publication_place","publication_country","longitude","latitude","chosen_id")
+df.tmp <- data.frame(id=df.orig[field_2], publication_place = tab,country=tab_country) %>% left_join(.,geo_data)
+colnames(df.tmp) <- c("id","publication_place","publication_country","longitude","latitude","chosen_id")
 df.tmp$id2 <- df.orig$other_system_id
 df.tmp$publication_place[df.tmp$publication_place == ""] <-NA
 df.tmp$publication_country[df.tmp$publication_country == ""] <-NA
@@ -49,7 +49,7 @@ message("Discarded entries in the original data")
 inds <- which(is.na(df.tmp[[field]]))
 
 # Get corresponding original values
-original_vals <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
+original_vals <- df.orig[match(df.tmp$id[inds], df.orig$id), field]
 
 # Keep only truly discarded: originally NOT NA and NOT empty
 original.discarded <- original_vals[!(is.na(original_vals) | original_vals == "")]
@@ -65,10 +65,10 @@ message("Discarded entries in the original data")
 inds <- which(is.na(df.tmp[[field]]))
 
 # Match original values + IDs
-orig_idx <- match(df.tmp$melinda_id[inds], df.orig$melinda_id)
+orig_idx <- match(df.tmp$id[inds], df.orig$id)
 
 error_df <- data.frame(
-  id1 = df.tmp$melinda_id[inds],
+  id1 = df.tmp$id[inds],
   id2 = df.tmp$id2[inds],
   original_value = df.orig[[field]][orig_idx],
   stringsAsFactors = FALSE
@@ -87,7 +87,7 @@ write.csv(
 
 # ------------------------------------------------------------
 
-df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
+df_19 <- df.tmp[df.tmp$id %in% ids_19,]
 field <- "publication_place"
 
 # Store the title field data

@@ -16,6 +16,7 @@ library(arrow)
 library(textutils)
 library(data.table)
 library(brms)
+library(finto)
 library(rnaturalearth)
 
 # Install latest version from Github
@@ -31,7 +32,7 @@ source("priority_fields.R")
 # collect all Asteri IDs from both df.orig and df_700
 fennica_asteri <- bind_rows(
   df.orig %>% transmute(asteri_raw = as.character(asteri_id)),
-  df.orig %>% transmute(asteri_row = as.character(added_id))
+  df_700 %>% transmute(asteri_row = as.character(asteri_id))
 ) %>%
   filter(!is.na(asteri_raw), asteri_raw != "") %>%
   separate_rows(asteri_raw, sep = "\\|") %>%
@@ -47,9 +48,11 @@ fennica_asteri <- bind_rows(
 author_ids_clean <- fennica_asteri %>%
   select(author_ID) %>%
   distinct()
+test <- finto::get_kanto(head(author_ids_clean, 50))
 
 # 3. get Kanto metadata
 authors_df <- finto::get_kanto(author_ids_clean)
+
 
 # 4. remove duplicate Kanto rows if needed
 authors_df_clean <- authors_df %>%

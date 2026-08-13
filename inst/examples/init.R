@@ -23,7 +23,7 @@ library(rnaturalearth)
 
 # Install latest version from Github
 # install_github("fennicahub/fennica") # or
-# devtools::load_all() # if you are working from the clone and modifying it
+devtools::load_all() # if you are working from the clone and modifying it
 library(fennica)
 
 # Load misc functions needed for harmonization
@@ -38,6 +38,8 @@ if (!file.exists(output.folder)) {
 #load the data
 source("priority_fields.R") 
 
+source("priority_fields_kanto.R") 
+
 #extract from leader-> type_of_record and bibliographic_level and add to data
 source("leader.R")
 
@@ -48,7 +50,7 @@ source("008_field.R")
 source("holdings_add.R")
 
 #for subset analysis
-source("melindas_19.R")
+source("ids_19.R")
 
 # uncomment when you need to update 
 #source("author_info_data_scripts.R")

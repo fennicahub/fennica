@@ -5,7 +5,7 @@ author <- polish_author(df.orig[[field]], verbose = TRUE)
 
 
 # Collect the results into a data.frame
-df.tmp <- data.frame(melinda_id = df.orig$melinda_id, 
+df.tmp <- data.frame(id = df.orig$id, 
                      orig = df.orig$author_name,
                      author_name = author$full_name, 
                      first = author$first, 
@@ -53,7 +53,7 @@ message("Discarded entries in the original data")
 inds <- which(is.na(df.tmp[[field]]))
 
 # Original entries that were converted into NA
-original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
+original.na <- df.orig[match(df.tmp$id[inds], df.orig$id), field]
 
 # .. ie. those are "discarded" cases; list them in a table
 tmp <- write_xtable(original.na, file_discarded, count = TRUE)
@@ -73,7 +73,7 @@ tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 
 # Run publication_time.R file to get the melindas needed for the 19th century slicing
 
-df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
+df_19 <- df.tmp[df.tmp$id %in% ids_19,]
 field <- "author_name"
 
 # Store the title field data
@@ -102,7 +102,7 @@ message("Discarded entries for 1809-1917")
 inds <- which(is.na(df_19[[field]]))
 
 # Original entries that were converted into NA
-original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
+original.na <- df.orig[match(df_19$id[inds], df.orig$id), field]
 
 # .. ie. those are "discarded" cases; list them in a table
 tmp19 <- write_xtable(original.na, file_discarded_19, count = TRUE)

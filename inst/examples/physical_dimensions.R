@@ -11,8 +11,7 @@ df.orig$physical_dimensions <- map(df.orig$physical_dimensions,
 df.tmp <- polish_dimensions(df.orig[[field]], fill = TRUE, verbose = TRUE)
 
 # Add melinda id info as first column
-df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
-                    physical_dimensions = df.orig$physical_dimensions, # add field column
+df.tmp <- bind_cols(id = df.orig$id,
                     df.tmp)
 
 # Store the title field data
@@ -28,20 +27,15 @@ file_discarded <- paste0(output.folder, field, "_discarded.csv")
 
 # Generate data summaries
 
-message("Accepted entries in the preprocessed data")
-x <- df.tmp[[field]]
+message("Accepted gatheries entries in the preprocessed data")
+x <- df.tmp
+x <- x %>%
+  select(original, gatherings, width, height, obl, area) %>%
+  mutate(across(everything(), ~na_if(trimws(as.character(.)), ""))) %>%
+  filter(if_any(everything(), ~!is.na(.))) %>%
+  count(original, gatherings, width, height, obl, area, sort = TRUE)
 
-x <- x[
-  !is.na(x) &
-    trimws(x) != "" &
-    trimws(x) != "NA"
-]
-
-s <- write_xtable(
-  x,
-  file_accepted,
-  count = TRUE
-)
+s <- write_xtable(x, file_accepted, count = FALSE, sort.by = "n")
 
 message("Discarded entries in the original data")
 
@@ -49,7 +43,7 @@ message("Discarded entries in the original data")
 inds <- which(is.na(df.tmp[[field]]))
 
 # Original entries that were converted into NA
-original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
+original.na <- df.orig[match(df.tmp$id[inds], df.orig$id), field]
 
 # .. ie. those are "discarded" cases; list them in a table
 tmp <- write_xtable(original.na, file_discarded, count = TRUE)
@@ -66,7 +60,7 @@ df <- readRDS(data.file)
 
 # 1809-1917
 
-df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
+df_19 <- df.tmp[df.tmp$id %in% ids_19,]
 field <- "physical_dimensions"
 
 # Store the title field data
@@ -83,7 +77,7 @@ file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 # Generate data summaries for 1809-1917
 
 message("Accepted entries in the preprocessed data")
-s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
+#s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
 
 # message("Discarded entries in the original data")
 # 
@@ -91,7 +85,7 @@ s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
 # inds <- which(is.na(df_19[[field]]))
 # 
 # # Original entries that were converted into NA
-# original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
+# original.na <- df.orig[match(df_19$id[inds], df.orig$id), field]
 # 
 # # .. ie. those are "discarded" cases; list them in a table
 # tmp <- write_xtable(original.na, file_discarded_19, count = TRUE)

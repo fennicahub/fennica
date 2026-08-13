@@ -14,14 +14,16 @@ source("title.R")
 
 MARC: [245a](https://www.loc.gov/marc/bibliographic/bd245.html)
 
+There are `r sum(is.na(df.orig[[field]]))` records with missing author name information in the original raw data.
+
 
 ## Complete Dataset Overview
 
 [Unique accepted entries]: `r length(unique(df[[field]]))`
 
-Original documents with titles: `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
+Harmonized records with titles: `r sum(!is.na(df[[field]]))` / `r nrow(df)` (`r round(100*mean(!is.na(df[[field]])), 1)`%)
 
-Original documents with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
+Harmonized records with missing (NA) titles `r sum(is.na(df[[field]]))` / `r nrow(df)` documents (`r round(100*mean(is.na(df[[field]])), 1)`%)
 
 [Unique discarded entries in original data](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/title_discarded.csv): `r as.vector(countLines(file_discarded) - 1)`
 
@@ -52,11 +54,11 @@ In the Fennica dataset, language material makes up the majority of the content, 
 #pick melindas for language material content types
 df_lang_material <- df.orig %>%
   filter(type_of_record == "Language material") %>%
-  select(melinda_id)
+  select(id)
 
 #filter language material melindas 
 df_language_mat <- df %>%
-  filter(melinda_id %in% df_lang_material$melinda_id)
+  filter(id %in% df_lang_material$id)
 
 x <- top(df_language_mat$title, "title")
 tab <- cbind(names(x), unname(x), round(100 * unname(x/nrow(df)), 1))

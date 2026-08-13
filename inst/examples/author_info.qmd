@@ -24,29 +24,41 @@ source("init.R")
 
 ```{r}
 # # Download the csv file
-url1 <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_database.csv"
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/all_author_info.csv"
 
 author_database <- read.delim(
-  url1,
+  url,
   quote = "",
   fill = TRUE,
   stringsAsFactors = FALSE,
   check.names = FALSE
 )
+
+author_database <- author_database %>%
+  mutate(
+    across(
+      where(is.character),
+      ~ {
+        x <- trimws(.x)
+        x[x %in% c("", "NA", "N/A", "NULL", "-")] <- NA_character_
+        x
+      }
+    )
+  )
+
+author_database <- author_database %>%
+  mutate(
+    gender = trimws(gender),
+    gender = na_if(gender, ""),
+    gender = na_if(gender, "Unknown"),
+
+    # Take the first value from semicolon-separated gender values
+    gender_primary = trimws(sub("[|/].*$", "", gender)),
+    gender_primary = na_if(gender_primary, ""),
+    gender_primary = na_if(gender_primary, "Unknown")
+  )
 ```
 
-
-```{r}
-url2 <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_database_19.csv"
-
-author_database_19 <- read.table(
-  url2,
-  header = TRUE,
-  sep = "\t",
-  quote = "",
-  stringsAsFactors = FALSE
-)
-```
 
 # Author Database
 
@@ -60,54 +72,47 @@ Publication activity was calculated from publication years recorded in Fennica a
 
 ## Complete Dataset Overview
 
-Unique authors: `r nrow(author_database)`.
+Unique authors: `r unique(author_database$all_names)` (`r round(mean(!is.na(author_database$all_names)) * 100, 1)`%)
 
-Authors with Asteri identifier: `r sum(!is.na(author_database$asteri_id))` (`r round(mean(!is.na(author_database$asteri_id))*100,1)`%).
+Authors with Asteri identifier: `r sum(!is.na(author_database$all_asteri))` (`r round(mean(!is.na(author_database$all_asteri)) * 100, 1)`%).
 
-Authors without Asteri identifier: `r sum(is.na(author_database$asteri_id))` (`r round(mean(is.na(author_database$asteri_id))*100,1)`%).
+Authors with birth year information: `r sum(!is.na(author_database$all_dates))` (`r round(mean(!is.na(author_database$all_dates)) * 100, 1)`%).
 
-Authors with birth year information: `r sum(!is.na(author_database$from))`.
+Authors with death year information: `r sum(!is.na(author_database$till))` (`r round(mean(!is.na(author_database$till)) * 100, 1)`%).
 
-Authors with death year information: `r sum(!is.na(author_database$till))`.
+Authors with calculated age: `r sum(!is.na(author_database$author_age))` (`r round(mean(!is.na(author_database$author_age)) * 100, 1)`%).
 
-Authors with calculated age: `r sum(!is.na(author_database$author_age))`.
+Authors with gender information: `r sum(!is.na(author_database$gender_primary))` (`r round(mean(!is.na(author_database$gender_primary)) * 100, 1)`%).
 
-Authors with gender information: `r sum(!is.na(author_database$gender))`.
+Authors with profession information: `r sum(!is.na(author_database$profession))` (`r round(mean(!is.na(author_database$profession)) * 100, 1)`%).
 
-Authors with profession information: `r sum(!is.na(author_database$profession))`.
+Authors with field of activity information: `r sum(!is.na(author_database$fieldOfActivityOfPerson))` (`r round(mean(!is.na(author_database$fieldOfActivityOfPerson)) * 100, 1)`%).
 
-Authors with field of activity information: `r sum(!is.na(author_database$field_activity))`.
+Authors with language information: `r sum(!is.na(author_database$language))` (`r round(mean(!is.na(author_database$language)) * 100, 1)`%).
 
-Authors with language information: `r sum(!is.na(author_database$language))`.
+Authors with country information: `r sum(!is.na(author_database$country))` (`r round(mean(!is.na(author_database$country)) * 100, 1)`%).
 
-Authors with country information: `r sum(!is.na(author_database$country))`.
+Authors with place information: `r sum(!is.na(author_database$place))` (`r round(mean(!is.na(author_database$place)) * 100, 1)`%).
 
-Authors with place information: `r sum(!is.na(author_database$place))`.
 
 
 
 # Top Authors' names
 
 ```{r}
-#| label: top_authors
-#| echo: false
-#| results: asis
+#| label = "top_author_name",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
+library(ggplot2)
+#library(comhis)
 
-author_database$n_records <- as.numeric(author_database$n_records)
-
-tab <- author_database %>%
-  arrange(desc(n_records)) %>%
-  transmute(
-    Author = author_name_fen,
-    `Records (n)` = n_records,
-    `Fraction (%)` = round(
-      100 * n_records / sum(author_database$n_records, na.rm = TRUE),
-      2
-    )
-  ) %>%
-  slice_head(n = 20)
-
-kable(tab)
+theme_set(theme_bw(base_size = 12))
+p <- top_plot(author_database, "all_names", ntop = ntop, log10 = TRUE)+
+  labs(y = "Entries (n)", title = "Top author names (Log values)")
+print(p)
 ```
 
 ```{r}
@@ -148,7 +153,7 @@ print(p)
 #| echo = FALSE,
 #| message = FALSE,
 #| warning = FALSE,
-#| fig.width = 8,
+#| fig.width = 12,
 #| fig.height = 6
 library(ggplot2)
 #library(comhis)
@@ -163,13 +168,13 @@ print(p)
 #| echo = FALSE,
 #| message = FALSE,
 #| warning = FALSE,
-#| fig.width = 8,
+#| fig.width = 12,
 #| fig.height = 6
 library(ggplot2)
 #library(comhis)
 
 theme_set(theme_bw(base_size = 12))
-p <- top_plot(author_database, "field_activity", ntop = ntop, log10 = TRUE)+
+p <- top_plot(author_database, "fieldOfActivityOfPerson", ntop = ntop, log10 = TRUE)+
   labs(y = "Entries (n)", title = "Top  author field activity (Log values)")
 print(p)
 ```
@@ -178,7 +183,7 @@ print(p)
 #| echo = FALSE,
 #| message = FALSE,
 #| warning = FALSE,
-#| fig.width = 8,
+#| fig.width = 12,
 #| fig.height = 6
 library(ggplot2)
 #library(comhis)
@@ -191,33 +196,36 @@ print(p)
 
 [Download author database dataset for all authors in Fennica](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_database.csv)
 
+```{r}
+author_database <- author_database[author_database$id %in% ids_19,]
+```
 
 
 ## Authors 1809-1917
 
-Unique authors 1809-1917: `r nrow(author_database_19)`.
+Unique authors: `r unique(author_database$all_names)` (`r round(mean(!is.na(author_database$all_names)) * 100, 1)`%)
 
-Authors with Asteri identifier 1809-1917: `r sum(!is.na(author_database_19$asteri_id))` (`r round(mean(!is.na(author_database$asteri_id))*100,1)`%).
+Authors with Asteri identifier: `r sum(!is.na(author_database$all_asteri))` (`r round(mean(!is.na(author_database$all_asteri)) * 100, 1)`%).
 
-Authors without Asteri identifier 1809-1917: `r sum(is.na(author_database_19$asteri_id))` (`r round(mean(is.na(author_database$asteri_id))*100,1)`%).
+Authors without Asteri identifier: `r sum(is.na(author_database$all_dates))` (`r round(mean(is.na(author_database$all_dates)) * 100, 1)`%).
 
-Authors with birth year information 1809-1917: `r sum(!is.na(author_database_19$from))`.
+Authors with birth year information: `r sum(!is.na(author_database$from))` (`r round(mean(!is.na(author_database$from)) * 100, 1)`%).
 
-Authors with death year information 1809-1917: `r sum(!is.na(author_database_19$till))`.
+Authors with death year information: `r sum(!is.na(author_database$till))` (`r round(mean(!is.na(author_database$till)) * 100, 1)`%).
 
-Authors with calculated age 1809-1917: `r sum(!is.na(author_database_19$author_age))`.
+Authors with calculated age: `r sum(!is.na(author_database$author_age))` (`r round(mean(!is.na(author_database$author_age)) * 100, 1)`%).
 
-Authors with gender information 1809-1917: `r sum(!is.na(author_database_19$gender))`.
+Authors with gender information: `r sum(!is.na(author_database$gender_primary))` (`r round(mean(!is.na(author_database$gender_primary)) * 100, 1)`%).
 
-Authors with profession information 1809-1917: `r sum(!is.na(author_database_19$profession))`.
+Authors with profession information: `r sum(!is.na(author_database$profession))` (`r round(mean(!is.na(author_database$profession)) * 100, 1)`%).
 
-Authors with field of activity information 1809-1917: `r sum(!is.na(author_database_19$field_activity))`.
+Authors with field of activity information: `r sum(!is.na(author_database$field_activity))` (`r round(mean(!is.na(author_database$field_activity)) * 100, 1)`%).
 
-Authors with language information 1809-1917: `r sum(!is.na(author_database_19$language))`.
+Authors with language information: `r sum(!is.na(author_database$language))` (`r round(mean(!is.na(author_database$language)) * 100, 1)`%).
 
-Authors with country information 1809-1917: `r sum(!is.na(author_database_19$country))`.
+Authors with country information: `r sum(!is.na(author_database$country))` (`r round(mean(!is.na(author_database$country)) * 100, 1)`%).
 
-Authors with place information 1809-1917: `r sum(!is.na(author_database_19$place))`.
+Authors with place information: `r sum(!is.na(author_database$place))` (`r round(mean(!is.na(author_database$place)) * 100, 1)`%).
 
 
 
@@ -228,44 +236,22 @@ Authors with place information 1809-1917: `r sum(!is.na(author_database_19$place
 #| echo: false
 #| results: asis
 
-author_database_19$n_records <- as.numeric(author_database_19$n_records)
-
-tab <- author_database_19 %>%
-  arrange(desc(n_records)) %>%
-  transmute(
-    Author = author_name_fen,
-    `Records (n)` = n_records,
-    `Fraction (%)` = round(
-      100 * n_records / sum(author_database_19$n_records, na.rm = TRUE),
-      2
-    )
-  ) %>%
-  slice_head(n = 20)
-
-kable(tab)
+theme_set(theme_bw(base_size = 12))
+p <- top_plot(author_database, "all_names", ntop = ntop, log10 = TRUE)+
+  labs(y = "Entries (n)", title = "Top  author names 1809-1917 (Log values)")
+print(p)
 ```
 
 # Authors by gender 1809-1917
 
 ```{r}
-#| label: gender_table_19
-#| echo: false
-#| results: asis
 
-tab <- author_database_19 %>%
-  mutate(
-    gender = ifelse(is.na(gender) | gender == "", "Unknown", gender)
-  ) %>%
-  count(gender, sort = TRUE) %>%
+tab <- author_database %>%
+  filter(!is.na(gender_primary)) %>%
+  count(gender_primary, sort = TRUE) %>%
   mutate(
     `Fraction (%)` = round(100 * n / sum(n), 1)
   )
-
-colnames(tab) <- c(
-  "Gender",
-  "Entries (n)",
-  "Fraction (%)"
-)
 
 kable(tab)
 ```
@@ -281,7 +267,7 @@ library(ggplot2)
 #library(comhis)
 
 theme_set(theme_bw(base_size = 12))
-p <- top_plot(author_database_19, "profession", ntop = ntop, log10 = TRUE)+
+p <- top_plot(author_database, "profession", ntop = ntop, log10 = TRUE)+
   labs(y = "Entries (n)", title = "Top  author professions 1809-1917 (Log values)")
 print(p)
 ```
@@ -290,7 +276,7 @@ print(p)
 #| echo = FALSE,
 #| message = FALSE,
 #| warning = FALSE,
-#| fig.width = 8,
+#| fig.width = 12,
 #| fig.height = 6
 library(ggplot2)
 #library(comhis)
@@ -302,3 +288,5 @@ print(p)
 ```
 
 [Download author database dataset for authors in Fennica for years 1809-1917 ](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_database_19.csv)
+
+

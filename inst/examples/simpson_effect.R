@@ -1,5 +1,5 @@
 # # Download the csv file
-url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/harmonized_fennica.csv"
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/harmonized_fennica19.csv"
 # 
 # Read the CSV file, explicitly setting the first column to character
 # Count the number of columns in the file
@@ -9,18 +9,33 @@ col_classes <- c("character", rep(NA, column_count - 1))
 
 # Read the file with the specified colClasses
 df  <- read.csv(url, header = TRUE, sep = "\t", quote = "", stringsAsFactors = FALSE, colClasses = col_classes)
+field <- "gender"
+# Only replace gender if it's currently NA
+gender_100 <- assign_gender(as.character(df$first_100))
+gender_700 <- assign_gender(as.character(df$first_700))
+df$gender_100 <- gender_100
+df$gender_700 <- gender_700
+df$gender <- paste(df$gender_100, df$gender_700, sep = "|")
+df$gender <- gsub("NA", "", df$gender)
+df$gender <- gsub("^\\|+", "", df$gender)
+df$gender <- gsub("\\|+$", "", df$gender)
+df$gender <- trimws(df$gender)
+df$gender_primary <- sub("\\|.*$", "", df$gender)
+df$gender_primary <- trimws(df$gender_primary)
+df$gender[df$gender == ""] <- NA
+df$gender_primary[df$gender_primary == ""] <- NA
 
+df_gender <- subset(df, select = c(melinda_id, data_element, genre_008, author_name_100, first_100, last_100, gender_100, 
+                                   author_name_700, first_700, last_700, gender_700, gender, gender_primary, language_primary, publication_year, 
+                                   publication_decade, publisher, signum, udk_primary))
 df2 <- df
 
-df1 <- df %>% filter(publication_year >= 1809 & publication_year <= 1917)
-
-library(dplyr)
-library(forcats)
+df1 <- df_gender 
 
 df1 <- df1 %>%
   mutate(
-    gender_primary = fct_na_value_to_level(gender_primary, "Unknown"),
-    language = fct_na_value_to_level(language_primary, "Unknown"),
+    gender_primary = fct_na_value_to_level(gender_primary, NA),
+    language = fct_na_value_to_level(language_primary, NA),
     publication_decade = as.factor(publication_decade),
     publication_year = as.factor(publication_year),
     genre_008 = as.factor(genre_008)
@@ -111,29 +126,12 @@ library(readr)
 library(broom)
 
 # ------------------------------------------------------------
-# 1. Read data
-# ------------------------------------------------------------
-
-url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/harmonized_fennica.csv"
-
-column_count <- ncol(read.csv(url, nrows = 1, sep = "\t"))
-
-col_classes <- c("character", rep(NA, column_count - 1))
-
-df <- read.csv(
-  url,
-  header = TRUE,
-  sep = "\t",
-  quote = "",
-  stringsAsFactors = FALSE,
-  colClasses = col_classes
-)
 
 # ------------------------------------------------------------
 # 2. Prepare 1809-1917 data
 # ------------------------------------------------------------
 
-df1 <- df %>%
+df3 <- df_gender %>%
   mutate(
     publication_year = suppressWarnings(as.numeric(publication_year)),
     publication_decade = suppressWarnings(as.numeric(publication_decade))
@@ -149,7 +147,7 @@ df1 <- df %>%
   )
 
 # For Simpson analysis: remove missing/unknown gender and missing genre
-df_simpson <- df1 %>%
+df_simpson <- df3 %>%
   filter(
     gender_primary %in% c("female", "male"),
     !is.na(genre_008),
@@ -299,6 +297,20 @@ ggplot(
   ) +
   theme_bw()
 
+glm(
+  is_target ~ gender_primary + publication_decade,
+  family = binomial,
+  data = df_simpson
+)
+
+glm(
+  is_target ~ gender_primary +
+    publication_decade +
+    language_primary,
+  family = binomial,
+  data = df_simpson
+)
+
 #Model-based check
 model_unadjusted <- glm(
   is_target ~ gender_primary,
@@ -319,11 +331,11 @@ model_decade_language <- glm(
 )
 
 model_results <- bind_rows(
-  tidy(model_unadjusted, exponentiate = TRUE, conf.int = TRUE) %>%
+  purr::tidy(model_unadjusted, exponentiate = TRUE, conf.int = TRUE) %>%
     mutate(model = "Unadjusted"),
-  tidy(model_decade, exponentiate = TRUE, conf.int = TRUE) %>%
+  purr::tidy(model_decade, exponentiate = TRUE, conf.int = TRUE) %>%
     mutate(model = "Adjusted for decade"),
-  tidy(model_decade_language, exponentiate = TRUE, conf.int = TRUE) %>%
+  purr::tidy(model_decade_language, exponentiate = TRUE, conf.int = TRUE) %>%
     mutate(model = "Adjusted for decade + language")
 ) %>%
   filter(term == "gender_primaryfemale") %>%

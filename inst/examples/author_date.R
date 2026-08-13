@@ -42,7 +42,7 @@ harm <- dplyr::na_if(trimws(harm), "")
 harm <- dplyr::na_if(harm, "-")
 
 # Add melinda id info as first column
-df.tmp <- bind_cols(melinda_id = df.orig$melinda_id,
+df.tmp <- bind_cols(id = df.orig$id,
                     author_date = harm,
                     df.tmp)
 rownames(df.tmp) <- NULL
@@ -101,7 +101,7 @@ write.table(
 message("Discarded entries with Melinda IDs")
 
 discard_rows <- data.frame(
-  id1 = df.orig$melinda_id[inds.discard],
+  id1 = df.orig$id[inds.discard],
   id2 = df.orig$other_system_id[inds.discard],
   orig_100d = df.orig$author_date[inds.discard],
   original_value_kanto = o[inds.discard],
@@ -139,7 +139,7 @@ write.table(
 # 
 # # Compare cleaned values
 # date_conflicts_clean <- bind_cols(
-#   id1 = df.orig$melinda_id,
+#   id1 = df.orig$id,
 #   id2 = df.orig$other_system_id,
 #   date_100d_orig = df.orig[[field]],
 #   birth_kanto_orig = df.orig$author_birth_date_kanto,
@@ -179,7 +179,7 @@ write.table(
 
 #Suset analysis 1809-1917
 file_accepted  <- paste0(output.folder, field, "_accepted_19.csv")
-df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
+df_19 <- df.tmp[df.tmp$id %in% ids_19,]
 field <- "author_date"
 
 
@@ -200,3 +200,4 @@ write.table(df_19, file = paste0(output.folder, paste0(field, "_19.csv")),
 
 
 #source("allas.R")
+

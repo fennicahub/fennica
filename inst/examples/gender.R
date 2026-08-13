@@ -5,7 +5,10 @@ field <- "gender"
 
 
 # Only replace gender if it's currently NA
-df.tmp$gender <- assign_gender(as.character(author$first))
+gender_100 <- assign_gender(as.character(df2$first_100))
+gender_700 <- assign_gender(as.character(df2$first_700))
+
+gender <- assign_gender(as.character(df_long1$first))
 
 gender_fix <- c(
   "000082550" = "female",  # Tekla Renfors
@@ -100,7 +103,7 @@ tmp <- write_xtable(original.na, file_discarded, count = TRUE)
 
 # Run publication_time.R file to get the melindas needed for the 19th century slicing
 
-df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
+df_19 <- df.tmp[df.tmp$id %in% ids_19,]
 field <- "gender"
 
 write.table(df_19, file = paste0(output.folder, paste0(field, "_19.csv")), quote = FALSE, sep = ";", row.names = FALSE)
@@ -113,7 +116,7 @@ write.table(df_19, file = paste0(output.folder, paste0(field, "_19.csv")), quote
 
 # # Generate data summaries for 1809-1917
 #message("Accepted entries in the preprocessed data for 1809-1917")
-#s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
+s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE)
 # 
 # message("Discarded entries for 1809-1917")
 # 

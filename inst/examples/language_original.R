@@ -8,7 +8,7 @@ df.tmp <- out
 row.names(df.tmp) <- NULL
 
 # Collect the results into a data.frame
-df.tmp$melinda_id <- df.orig$melinda_id
+df.tmp$id <- df.orig$id
 
 df.tmp <- df.tmp %>%
   dplyr::rename(language = full_language_name)
@@ -78,7 +78,7 @@ matching_rows <- which(
 )
 
 id <- data.frame(
-  id1 = df.orig$melinda_id[matching_rows],
+  id1 = df.orig$id[matching_rows],
   id2 = df.orig$other_system_id[matching_rows],
   language = df.orig[[field]][matching_rows],
   discarded = sapply(matching_rows, function(i) {
@@ -107,10 +107,10 @@ write.csv(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE
 file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 file_accepted_19 <- paste0(output.folder, field, "_accepted_19.csv")
 
-#Run melindas_19.R to get melindas for 1809-1917
-#source("melindas_19.R")
+#Run ids_19.R to get ids for 1809-1917
+#source("ids_19.R")
 
-df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
+df_19 <- df.tmp[df.tmp$id %in% ids_19,]
 field <- "language_original"
 
 # Generate data summaries for the subset data set 

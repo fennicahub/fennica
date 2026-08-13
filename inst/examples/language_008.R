@@ -8,7 +8,7 @@ df.tmp <- out
 row.names(df.tmp) <- NULL
 
 # Collect the results into a data.frame
-df.tmp$melinda_id <- df.orig$melinda_id
+df.tmp$id <- df.orig$id
 
 df.tmp <- df.tmp %>%
   dplyr::rename(language = full_language_name)
@@ -78,7 +78,7 @@ matching_rows <- which(
 )
 
 id <- data.frame(
-  id1 = df.orig$melinda_id[matching_rows],
+  id1 = df.orig$id[matching_rows],
   id2 = df.orig$other_system_id[matching_rows],
   language = df.orig[[field]][matching_rows],
   discarded = sapply(matching_rows, function(i) {
@@ -97,9 +97,9 @@ write.csv(id, file = file_discarded_id, row.names = FALSE, quote = FALSE)
 data.file <- paste0(field, ".Rds")
 saveRDS(df.tmp, file = data.file)
 #Load the RDS file
-df <- readRDS(data.file)
+df2 <- readRDS(data.file)
 # Convert to CSV and store in the output.tables folder
-write.csv(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE)
+write.csv(df2, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE)
 
 # ------------------------------------------------------------
 
@@ -107,10 +107,10 @@ write.csv(df, file = paste0(output.folder, paste0(field, ".csv")), quote = FALSE
 file_discarded_19 <- paste0(output.folder, field, "_discarded_19.csv")
 file_accepted_19 <- paste0(output.folder, field, "_accepted_19.csv")
 
-#Run melindas_19.R to get melindas for 1809-1917
-#source("melindas_19.R")
+#Run ids_19.R to get ids for 1809-1917
+#source("ids_19.R")
 
-df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
+df_19 <- df.tmp[df.tmp$id %in% ids_19,]
 field <- "language"
 
 # Generate data summaries for the subset data set 
@@ -129,10 +129,10 @@ data.file.19 <- paste0(field,"_19", ".Rds")
 saveRDS(df_19, file = data.file.19)
 
 # Load the RDS file
-df_19 <- readRDS(data.file.19) 
+df2_19 <- readRDS(data.file.19) 
 
 # Convert to CSV and store in the output.tables folder
-write.table(df_19, file = paste0(output.folder, paste0(field, "_19", ".csv")))
+write.table(df2_19, file = paste0(output.folder, paste0(field, "_19", ".csv")))
 
 
 #load to allas 

@@ -25,8 +25,8 @@ In total N = `r nrow(df)` records. After enrichment in total there are records `
 #| label = "summary_gender",
 #| echo = FALSE,
 #| warning = FALSE,
-# Join publication_decade from df_pubtime to df by melinda_id
-df$publication_decade <- df_pubtime$publication_decade[match(df$melinda_id, df_pubtime$melinda_id)]
+# Join publication_decade from df_pubtime to df by id
+df$publication_decade <- df_pubtime$publication_decade[match(df$id, df_pubtime$id)]
 
 # Filter your data to only include those genres
 df_selected <- df%>%
@@ -57,8 +57,8 @@ In total N = `r nrow(df_19)` records. After enrichment in total there are record
 #| label = "summary_gender19",
 #| echo = FALSE,
 #| warning = FALSE,
-# Join publication_decade from df_pubtime to df by melinda_id
-df_19$publication_decade <- df_pubtime19$publication_decade[match(df_19$melinda_id, df_pubtime19$melinda_id)]
+# Join publication_decade from df_pubtime to df by id
+df_19$publication_decade <- df_pubtime19$publication_decade[match(df_19$id, df_pubtime19$id)]
 
 # Filter your data to only include those genres
 df_selected <- df_19 %>%

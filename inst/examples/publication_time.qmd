@@ -22,6 +22,8 @@ The dataset includes information on missing values, represented as NA in the ref
 
 The summary also accounts for publication statuses (field [008/06](https://marc21.kansalliskirjasto.fi/bib/008.htm)). For accurate temporal distribution, these statuses and their implications must be carefully considered to ensure only valid dates are selected that represent the publication year and not something else.
 
+There are `r sum(is.na(df.orig[[field]]))` records with missing author name information in the original raw data.
+
 ## Complete Data Overview
 
 [Publication year conversions](dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/publication_time_conversion.csv)
@@ -56,13 +58,13 @@ df_pubtime$publication_year_num <- as.numeric(df_pubtime$publication_year)
 pre1488 <- df_pubtime |>
   filter(!is.na(publication_year_num)) |>
   filter(publication_year_num < 1488) |>
-  select(melinda_id, publication_year_num)
+  select(id, publication_year_num)
 
 pre1488 <- pre1488 |>
   left_join(
     df.orig |>
-      select(melinda_id, title, author_name),
-    by = "melinda_id"
+      select(id, title, author_name),
+    by = "id"
   )
 
 n_before_1488 <- nrow(pre1488)
@@ -80,7 +82,7 @@ Although Fennica is officially described as starting from 1488, the harmonized d
 
 pre1488 |>
   select(
-    `System ID` = melinda_id,
+    `System ID` = id,
     `Publication year` = publication_year_num,
     Title = title,
     Author = author_name

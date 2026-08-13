@@ -2,21 +2,28 @@ synonyme;name
 useina jaksoina;in parts
 jaksossa;parts
 karttaliitettä;sheets
+karttaliite;sheet
 =evangeliska sällskapets skrifter;
-evangeliska sällskapets skrifter; 
+evangeliska sällskapets skrifter;
 kartor;sheets
-& omsl\.;sheet
- omsl$;sheet
+& omsl.;sheet
+omsl$;sheet
 kartbl;sheets
 portr;sheets
 taitettuina;folded
 taitettuna;folded
 taitettua;folded
 vihkoa;vol
- osaa; parts
-nid\.;vol
-tab\.;tables
-taulukkol\.;tables
+osaa;parts
+nid.;vol
+nide;vol
+nid\\.;vol
+nidettä;vol
+nide;vol
+sävelmäkokoelmaa;vols
+sävelmäkokoelma;vol
+tab.;tables
+taulukkol.;tables
 nuotteja;sheets
 lösa kartor;sheets
 karttalehteä;sheets
@@ -28,42 +35,78 @@ arkkia;sheets
 arkki;sheet
 karttaa;sheets
 kuvalehdet;sheets
-kuvalehtiä;pla
+kuvalehtiä;plates
+kuvalehteä taitettuina;plates
+kuvalehteä;plates
+kuvalehti;plate
+kuvaliitettä;plates
+kuvaliite;plate
 musikbilaga;plate
 kuvas.;sheets
 kuval.;sheets
 kuval;sheets
+kuvasivua;pages
+kuvasivu;page
+numeroimatonta kuvasivua;pages
+numeroimaton kuvasivu;page
 lehti;plate
 lehdet;sheets
 useina numerointijaksoina;in various pagings
 med var. pag;in various pagings
 lehteä;sheets
-taitettuna;folded
+taitelehteä;sheets
+taitelehti;sheet
 poikittaip.;obl.
 pienempi;small
-\\.urempi;long
+\.urempi;long
 verso tyhjä;verso blanko
 tyhjä;blanko
-s\\.$;pages
-kuvalehteä;sheets
-kuvalehti;sheets
-kuvaliitettä;sheets
+numeroimatonta sivua;pages
+numeroimaton sivu;page
+numeroituja sivuja;pages
+numeroitua sivua;pages
+numeroitu sivu;page
+numeroidut sivut;pages
+sívua;pages
+numeroimatonta ilmoitussivua;pages
+numeroimaton ilmoitussivu;page
+ilmoitussivua;pages
+ilmoitussivu;page
 kuvasivua;sheets
+kuvasivu;sheet
+numeroimatonta sivua;pages
+numeroimaton sivu;page
+sivua;pages
+sivu;page
+sivut;pages
+s\\.$;pages
+sivua;pages
+sivut;pages
+sivu;page
+s\.$;pages
+kuvaliitettä;sheets
 malliliitettä;sheets
+malliliite;sheet
 kartblad;sheets
 kuvaa;sheets
 blad;plates
 muotokuvalehteä;sheets
+muotokuvalehti;sheet
+planschbl\.;plates
+planschblad;plates
 pl$;plates
 blad;sheets
 irtokuvalehteä;sheets
+irtokuvalehti;sheet
 spalter;plates
-pl\\.;plates
-bl\\.;plates
+pl\.;plates
+bl\.;plates
 irtokuval;sheets
 valokuvaa;sheets
 liitelehteä;sheets
+liitelehti;sheet
 numeroimatonta lehteä;sheets
+numeroimaton lehti;sheet
 silhuetter;sheets
 dubbelsidor;sheets
 taulua;sheets
@@ -71,7 +114,6 @@ yhteenliimattua lehteä;sheets
 mallilehteä;sheets
 mallil;sheets
 luetteloa;sheets
-kuvalehteä taitettuina;sheets
 hopvikta kartongskifvor;sheets
 lomaketta;sheets
 lehteä tekstiä;sheets
@@ -82,4 +124,4 @@ kuvapiirrosta;sheets
 och;+
 sammanfattning;
 inkl. ann.;
- ja ; ,
+ja ; ,

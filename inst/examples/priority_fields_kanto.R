@@ -47,3 +47,5 @@ columns_to_keep <- c(
 df.kanto <- df.kanto %>%
   dplyr::select(dplyr::all_of(columns_to_keep))
 
+
+

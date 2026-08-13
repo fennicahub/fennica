@@ -5,7 +5,7 @@ x <- polish_publisher(df.orig[[field]])
 
 
 # Collect the results into a data.frame
-df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
+df.tmp <- data.frame(id = df.orig$id,
                      id2 = df.orig$other_system_id,
                      original = df.orig$publisher,
                      publisher = x)
@@ -48,7 +48,7 @@ write.csv(
 
 #the 19th century slicing
 
-df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,]
+df_19 <- df.tmp[df.tmp$id %in% ids_19,]
 field <- "publisher"
 
 

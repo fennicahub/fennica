@@ -6,7 +6,7 @@ x <- polish_title_remainder(df.orig[[field]])
 
 
 # Collect the results into a data.frame
-df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
+df.tmp <- data.frame(id = df.orig$id,
                      title_remainder_original = x$title_original,
                      title_remainder = x$title_harmonized,
                      title_remainder_length = x$title_length,
@@ -39,11 +39,11 @@ tmp <- write_xtable(o[inds],
 
 message("Error list")
 ## IDs for rows whose harmonized title is NA (i.e., discarded)
-melinda_ids_discarded <- df.orig$melinda_id[inds]
+ids_discarded <- df.orig$id[inds]
 
 ## If you also want the (id, original title) pairs:
 error_list <- data.frame(
-  melinda_id = df.orig$melinda_id[inds],
+  id = df.orig$id[inds],
   original   = df.orig[[field]][inds],
   stringsAsFactors = FALSE
 )
@@ -70,9 +70,9 @@ write.table(df, file = paste0(output.folder, paste0(field, ".csv")))
 # ------------------------------------------------------------
 
 
-#Run melindas_19.R to get melindas for 1809-1917
+#Run ids_19.R to get melindas for 1809-1917
 
-df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,] # publication time has df.harmonized instead of df.tmp 
+df_19 <- df.tmp[df.tmp$id %in% ids_19,] # publication time has df.harmonized instead of df.tmp 
 field <- "title_remainder"
 
 # Define output files
@@ -92,7 +92,7 @@ s <- write_xtable(df_19[[field]], file_accepted_19, count = TRUE, add.percentage
 # inds <- which(is.na(df_19[[field]]))
 # 
 # # Original entries that were converted into NA
-# original.na <- df.orig[match(df_19$melinda_id[inds], df.orig$melinda_id), field]
+# original.na <- df.orig[match(df_19$id[inds], df.orig$id), field]
 # 
 # # .. ie. those are "discarded" cases; list them in a table
 # tmp <- write_xtable(original.na, file_discarded_19, count = TRUE, add.percentages = TRUE)

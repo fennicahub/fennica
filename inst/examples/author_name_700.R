@@ -4,6 +4,7 @@ url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-co
 
 df700 <- read.csv(url,stringsAsFactors = FALSE)
 
+df700$id <- df700$melinda_id 
 
 author_700e_unique <- df700$author_700e %>%
   as.character() %>%
@@ -50,10 +51,10 @@ df700 <- df700 %>%
   distinct()
 
 df700_authors <- df700 %>%
-  select(melinda_id, author_700a) %>%
+  select(id, author_700a) %>%
   filter(!is.na(author_700a), author_700a != "") %>%
   distinct() %>%
-  group_by(melinda_id) %>%
+  group_by(id) %>%
   summarise(
     author_700a = str_c(sort(unique(author_700a)), collapse = "; "),
     .groups = "drop"
@@ -63,7 +64,7 @@ field <- "author_name_700"
 
 
 df700_long <- df700_authors %>%
-  select(melinda_id, author_700a) %>%
+  select(id, author_700a) %>%
   separate_longer_delim(author_700a, delim = ";") %>%
   mutate(
     author_700a = str_trim(author_700a),
@@ -84,7 +85,7 @@ df700_long <- df700_authors %>%
 
 
   df700_harm <- df700_polished %>%
-    group_by(melinda_id) %>%
+    group_by(id) %>%
     summarise(
       author_orig_700 = str_c(unique(na.omit(author_700a)), collapse = "; "),
       author_name_700 = str_c(unique(na.omit(author_name_700)), collapse = "; "),
@@ -117,7 +118,7 @@ s <- write_xtable(df700_harm$author_name_700, file_accepted_700, count = TRUE)
 # inds <- which(is.na(df700_harm[[field]]))
 # 
 # original.na <- df700[[field]][
-#   match(df700_harm$melinda_id[inds], df700$melinda_id)
+#   match(df700_harm$id[inds], df700$id)
 # ]
 # 
 # tmp <- write_xtable(original.na, file_discarded, count = TRUE)
@@ -125,9 +126,9 @@ s <- write_xtable(df700_harm$author_name_700, file_accepted_700, count = TRUE)
 
 # ------------------------------------------------------------
 
-# Run publication_time.R file to get the melindas needed for the 19th century slicing
+# Run publication_time.R file to get the ids needed for the 19th century slicing
 
-df700_19 <- df700_harm[df700_harm$melinda_id %in% melindas_19,]
+df700_19 <- df700_harm[df700_harm$id %in% ids_19,]
 field <- "author_name_700"
 
 # Store the title field data

@@ -11,6 +11,8 @@ source("signum.R")
 ```
 
 A signum data, also known as a call number, is a unique combination of numbers and letters employed to indicate the specific location of a book within a library. This data was verified and provided to us by the National Library of Finland.
+There are `r sum(is.na(df.orig[[field]]))` records with missing author name information in the original raw data.
+
 
 ## Complete Dataset Overview
 

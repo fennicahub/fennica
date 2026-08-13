@@ -285,23 +285,17 @@ window.Quarto = {
    
   <ul>
   <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description"><span class="header-section-number">7.1</span> Description</a></li>
-  <li><a href="#field-041a" id="toc-field-041a" class="nav-link" data-scroll-target="#field-041a"><span class="header-section-number">7.2</span> Field 041,a</a>
+  <li><a href="#field-041a-and-008-combined" id="toc-field-041a-and-008-combined" class="nav-link" data-scroll-target="#field-041a-and-008-combined"><span class="header-section-number">7.2</span> Field <code>041$a</code> and 008 combined</a>
   <ul class="collapse">
   <li><a href="#complete-dataset-overview" id="toc-complete-dataset-overview" class="nav-link" data-scroll-target="#complete-dataset-overview"><span class="header-section-number">7.2.1</span> Complete Dataset Overview</a></li>
   <li><a href="#subset-analysis-1809-1917" id="toc-subset-analysis-1809-1917" class="nav-link" data-scroll-target="#subset-analysis-1809-1917"><span class="header-section-number">7.2.2</span> Subset Analysis: 1809-1917</a></li>
   <li><a href="#top-languages-for-1809-1917" id="toc-top-languages-for-1809-1917" class="nav-link" data-scroll-target="#top-languages-for-1809-1917"><span class="header-section-number">7.2.3</span> Top languages for 1809-1917</a></li>
   </ul></li>
-  <li><a href="#field-008" id="toc-field-008" class="nav-link" data-scroll-target="#field-008"><span class="header-section-number">7.3</span> Field 008</a>
+  <li><a href="#field-041h-original-language-of-translations" id="toc-field-041h-original-language-of-translations" class="nav-link" data-scroll-target="#field-041h-original-language-of-translations"><span class="header-section-number">7.3</span> Field 041,h: Original Language of Translations</a>
   <ul class="collapse">
   <li><a href="#complete-dataset-overview-1" id="toc-complete-dataset-overview-1" class="nav-link" data-scroll-target="#complete-dataset-overview-1"><span class="header-section-number">7.3.1</span> Complete Dataset Overview</a></li>
-  <li><a href="#subset-analysis-1809-1917-1" id="toc-subset-analysis-1809-1917-1" class="nav-link" data-scroll-target="#subset-analysis-1809-1917-1"><span class="header-section-number">7.3.2</span> Subset Analysis: 1809-1917</a></li>
-  <li><a href="#top-languages-for-1809-1917-1" id="toc-top-languages-for-1809-1917-1" class="nav-link" data-scroll-target="#top-languages-for-1809-1917-1"><span class="header-section-number">7.3.3</span> Top languages for 1809-1917</a></li>
-  </ul></li>
-  <li><a href="#field-041h-original-language-of-translations" id="toc-field-041h-original-language-of-translations" class="nav-link" data-scroll-target="#field-041h-original-language-of-translations"><span class="header-section-number">7.4</span> Field 041,h: Original Language of Translations</a>
-  <ul class="collapse">
-  <li><a href="#complete-dataset-overview-2" id="toc-complete-dataset-overview-2" class="nav-link" data-scroll-target="#complete-dataset-overview-2"><span class="header-section-number">7.4.1</span> Complete Dataset Overview</a></li>
-  <li><a href="#subset-analysis-18091917" id="toc-subset-analysis-18091917" class="nav-link" data-scroll-target="#subset-analysis-18091917"><span class="header-section-number">7.4.2</span> Subset Analysis: 1809–1917</a></li>
-  <li><a href="#top-original-languages-for-18091917" id="toc-top-original-languages-for-18091917" class="nav-link" data-scroll-target="#top-original-languages-for-18091917"><span class="header-section-number">7.4.3</span> Top Original Languages for 1809–1917</a></li>
+  <li><a href="#subset-analysis-18091917" id="toc-subset-analysis-18091917" class="nav-link" data-scroll-target="#subset-analysis-18091917"><span class="header-section-number">7.3.2</span> Subset Analysis: 1809–1917</a></li>
+  <li><a href="#top-original-languages-for-18091917" id="toc-top-original-languages-for-18091917" class="nav-link" data-scroll-target="#top-original-languages-for-18091917"><span class="header-section-number">7.3.3</span> Top Original Languages for 1809–1917</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/fennicahub/fennica/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -328,26 +322,27 @@ window.Quarto = {
 </header>
 
 
-<p>MARC: <a href="https://www.loc.gov/marc/bibliographic/bd041.html">041,a</a></p>
+<p>MARC: <a href="https://www.loc.gov/marc/bibliographic/bd041.html">041,a,h</a>, <a href="https://www.loc.gov/marc/bibliographic/bd008.html">008</a></p>
 <section id="description" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="description"><span class="header-section-number">7.1</span> Description</h2>
 <p>The <strong>polish_languages</strong> function is designed to standardize and harmonize language information in a dataset. The process starts by isolating unique language entries, ensuring that each distinct combination of languages is processed only once, which improves efficiency and avoids redundant computations. A <a href="https://www.loc.gov/marc/languages/language_code.html">MARC reference list</a> of recognized language abbreviations and names is then used to map language codes to their standardized forms. Each language entry is analyzed to identify multiple languages and to detect any unrecognized terms.</p>
 <p>The entries are standardized by converting them to their recognized forms while eliminating duplicates and filtering out unrecognized languages. Empty cells in the dataset are marked as <strong>NA</strong> to indicate missing information. Once standardized, all valid languages are aggregated to create a structured data frame. This data frame includes the total number of languages in each entry, a flag <strong>(TRUE/FALSE)</strong> indicating whether the entry contains multiple languages (including those that are originally coded as mul = Multiple language), the cleaned and harmonized list of languages, and the primary language, which is defined as the first listed language in each entry. The result is a cleaned and standardized dataset that facilitates accurate analysis of multilingual data.</p>
 <p>Additionally, an error list is generated, consisting of unrecognized language information and the corresponding IDs. This error list helps librarians identify mistakes in the original data and provides context to either correct the errors or explain why certain entries were discarded by the function.</p>
+<p>This page reports two related outputs. The first section combines publication-language information from MARC <code>041$a</code> and 008. Field <code>041$a</code> is used as the main source, and missing <code>041$a</code> values are filled from 008. The second section reports original-language information from MARC <code>041$h</code>, which is used as translation-related metadata. Error lists are produced separately for unrecognized values so that problematic records can be reviewed by librarians.</p>
 </section>
-<section id="field-041a" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="field-041a"><span class="header-section-number">7.2</span> Field 041,a</h2>
+<section id="field-041a-and-008-combined" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="field-041a-and-008-combined"><span class="header-section-number">7.2</span> Field <code>041$a</code> and 008 combined</h2>
+<p>This section reports harmonized publication-language information. The variable is based primarily on MARC <code>041$a</code>, while missing <code>041$a</code> values are filled from MARC 008. The resulting combined field is therefore intended as the main publication-language variable for record-level analysis. There are 0 records with missing author name information in the original raw data.</p>
 <section id="complete-dataset-overview" class="level3" data-number="7.2.1">
 <h3 data-number="7.2.1" class="anchored" data-anchor-id="complete-dataset-overview"><span class="header-section-number">7.2.1</span> Complete Dataset Overview</h3>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/languages_accepted.csv">Unique languages</a>: 190</p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_primary_accepted.csv">Unique primary languages</a>: 159</p>
-<p>1173745 single-language entries (93.41%)</p>
-<p>82803 multilingual entries , accounting for 6.59% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.</p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_full_accepted.csv">Unique languages</a>: 203</p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_full_primary_accepted.csv">Unique primary languages</a>: 160</p>
+<p>1234112 single-language entries (93.66%)</p>
+<p>83545 multilingual entries , accounting for 6.34% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.</p>
 <p>There are 297 single-language entries marked as only “Undetermined”, coded as “und”, accounting for (0.02%) of the total.</p>
-<p>There are 61515 missing values in the dataset,accounting for (4.67%) of the total.</p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_discarded.csv">Unrecognized languages</a> provides details of languages that were discarded, in total: 18. Additionally, the <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_discarded_id.csv">Error list</a> contains ID numbers of entries associated with these discarded languages, intended for librarian review.</p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_conversions.csv">Conversions from raw to preprocessed language entries</a></p>
-<p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language.csv">Download language harmonized dataset</a></p>
+<p>There are 406 missing values in the dataset,accounting for (0.03%) of the total.</p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_full_conversions.csv">Conversions from raw to preprocessed language entries</a></p>
+<p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_full.csv">Download language harmonized dataset</a></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -359,18 +354,18 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Finnish</td>
-<td style="text-align: left;">842715</td>
-<td style="text-align: left;">63.9</td>
+<td style="text-align: left;">883698</td>
+<td style="text-align: left;">67</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">English</td>
-<td style="text-align: left;">145346</td>
-<td style="text-align: left;">11</td>
+<td style="text-align: left;">149933</td>
+<td style="text-align: left;">11.4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Swedish</td>
-<td style="text-align: left;">134191</td>
-<td style="text-align: left;">10.2</td>
+<td style="text-align: left;">142010</td>
+<td style="text-align: left;">10.8</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Finnish;Swedish</td>
@@ -379,12 +374,12 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td style="text-align: left;">German</td>
-<td style="text-align: left;">14883</td>
-<td style="text-align: left;">1.1</td>
+<td style="text-align: left;">15255</td>
+<td style="text-align: left;">1.2</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Latin</td>
-<td style="text-align: left;">14155</td>
+<td style="text-align: left;">14426</td>
 <td style="text-align: left;">1.1</td>
 </tr>
 <tr class="odd">
@@ -399,25 +394,27 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Russian</td>
-<td style="text-align: left;">5699</td>
+<td style="text-align: left;">5842</td>
 <td style="text-align: left;">0.4</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Multiple languages</td>
-<td style="text-align: left;">5028</td>
+<td style="text-align: left;">Unrecognized</td>
+<td style="text-align: left;">5586</td>
 <td style="text-align: left;">0.4</td>
 </tr>
 </tbody>
 </table>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_041_discarded.csv">Unrecognized languages 041a</a> provides details of languages that were discarded, in total: 5. Additionally, the <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_041_discarded_id.csv">Error list 041a</a> contains ID numbers of entries associated with these discarded languages, intended for librarian review.</p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008_discarded.csv">Unrecognized languages 008</a> provides details of languages that were discarded, in total: 16. Additionally, the <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008_discarded_id.csv">Error list 008</a> contains ID numbers of entries associated with these discarded languages, intended for librarian review.</p>
 </section>
 <section id="subset-analysis-1809-1917" class="level3" data-number="7.2.2">
 <h3 data-number="7.2.2" class="anchored" data-anchor-id="subset-analysis-1809-1917"><span class="header-section-number">7.2.2</span> Subset Analysis: 1809-1917</h3>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_accepted_19.csv">Unique languages (1809-1917)</a>: 55</p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_primary_accepted_19.csv">Unique primary languages (1809-1917)</a>: 40</p>
-<p>67393 single-language entries (94.53%)</p>
-<p>3903 multilingual entries , accounting for 5.47% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.</p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_full_accepted_19.csv">Unique languages (1809-1917)</a>: 56</p>
+<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_full_primary_accepted_19.csv">Unique primary languages (1809-1917)</a>: 40</p>
+<p>68687 single-language entries (94.58%)</p>
+<p>3939 multilingual entries , accounting for 5.42% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.</p>
 <p>There are 15 entries marked as “Undetermined”.</p>
-<p>There are 1330 missing values in the dataset,accounting for (1.83%) of the total.</p>
+<p>There are 0 missing values in the dataset,accounting for (0%) of the total.</p>
 <p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_19.csv">Download language harmonized dataset (1809-1917)</a></p>
 </section>
 <section id="top-languages-for-1809-1917" class="level3" data-number="7.2.3">
@@ -434,23 +431,23 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Finnish</td>
-<td style="text-align: left;">37707</td>
-<td style="text-align: left;">51.9</td>
+<td style="text-align: left;">38025</td>
+<td style="text-align: left;">52.4</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Swedish</td>
-<td style="text-align: left;">22270</td>
-<td style="text-align: left;">30.7</td>
+<td style="text-align: left;">22596</td>
+<td style="text-align: left;">31.1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Latin</td>
-<td style="text-align: left;">2506</td>
+<td style="text-align: left;">2544</td>
 <td style="text-align: left;">3.5</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">German</td>
-<td style="text-align: left;">2283</td>
-<td style="text-align: left;">3.1</td>
+<td style="text-align: left;">2291</td>
+<td style="text-align: left;">3.2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Finnish;Swedish</td>
@@ -459,7 +456,7 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td style="text-align: left;">Russian</td>
-<td style="text-align: left;">848</td>
+<td style="text-align: left;">873</td>
 <td style="text-align: left;">1.2</td>
 </tr>
 <tr class="odd">
@@ -468,18 +465,18 @@ window.Quarto = {
 <td style="text-align: left;">1</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">Unrecognized</td>
+<td style="text-align: left;">568</td>
+<td style="text-align: left;">0.8</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">English</td>
 <td style="text-align: left;">452</td>
 <td style="text-align: left;">0.6</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Swedish;Finnish</td>
 <td style="text-align: left;">252</td>
-<td style="text-align: left;">0.3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Swedish;Latin</td>
-<td style="text-align: left;">203</td>
 <td style="text-align: left;">0.3</td>
 </tr>
 </tbody>
@@ -496,175 +493,12 @@ window.Quarto = {
 </div>
 </section>
 </section>
-<section id="field-008" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="field-008"><span class="header-section-number">7.3</span> Field 008</h2>
-<p>MARC field 008 contains a fixed-position language code for the language of the item. In this workflow, the language information extracted from field 008 is harmonized into the same language categories used for MARC 041,a. Both 008 and 041,a describe the language of the publication itself, not the original language of a translated work. Original-language information for translations is reported separately under 041,h.</p>
-<p>Field 008 usually provides one coded language value per record and can therefore be treated as a primary language indicator. In contrast, 041,a may contain more detailed or repeated language information, especially for multilingual publications. The 008-based language harmonization is therefore useful as a compact, record-level language summary.</p>
+<section id="field-041h-original-language-of-translations" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="field-041h-original-language-of-translations"><span class="header-section-number">7.3</span> Field 041,h: Original Language of Translations</h2>
+<p>MARC field 041 subfield h records the original language of a work when the bibliographic record describes a translation.</p>
+<p>This field should be interpreted as translation-related metadata: records with a value in <code>language_original</code> are records for which Fennica contains information about the original language of the work. However, the absence of 041,h does not necessarily prove that the record is not a translation; it only means that no original-language information was recorded or extracted from this field. There are 0 records with missing author name information in the original raw data.</p>
 <section id="complete-dataset-overview-1" class="level3" data-number="7.3.1">
 <h3 data-number="7.3.1" class="anchored" data-anchor-id="complete-dataset-overview-1"><span class="header-section-number">7.3.1</span> Complete Dataset Overview</h3>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008_accepted.csv">Unique languages</a>: 186</p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_primary_008_accepted.csv">Unique primary languages</a>: 162</p>
-<p>1307287 single-language entries (99.21%)</p>
-<p>10370 multilingual entries , accounting for 0.79% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.</p>
-<p>There are 401 single-language entries marked as only “Undetermined”, coded as “und”, accounting for (0.03%) of the total.</p>
-<p>There are 406 missing values in the dataset,accounting for (0.03%) of the total.</p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008_discarded.csv">Unrecognized languages</a> provides details of languages that were discarded, in total: 1223. Additionally, the <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008_discarded_id.csv">Error list</a> contains ID numbers of entries associated with these discarded languages, intended for librarian review.</p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008_conversions.csv">Conversions from raw to preprocessed language entries</a></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Language</th>
-<th style="text-align: left;">Entries (n)</th>
-<th style="text-align: left;">Fraction (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Finnish</td>
-<td style="text-align: left;">937654</td>
-<td style="text-align: left;">71.1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">English</td>
-<td style="text-align: left;">154704</td>
-<td style="text-align: left;">11.7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Swedish</td>
-<td style="text-align: left;">147576</td>
-<td style="text-align: left;">11.2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Latin</td>
-<td style="text-align: left;">17692</td>
-<td style="text-align: left;">1.3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">German</td>
-<td style="text-align: left;">16913</td>
-<td style="text-align: left;">1.3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Multiple languages</td>
-<td style="text-align: left;">8750</td>
-<td style="text-align: left;">0.7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Russian</td>
-<td style="text-align: left;">6580</td>
-<td style="text-align: left;">0.5</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Unrecognized</td>
-<td style="text-align: left;">5819</td>
-<td style="text-align: left;">0.4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">French</td>
-<td style="text-align: left;">4886</td>
-<td style="text-align: left;">0.4</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Danish</td>
-<td style="text-align: left;">1796</td>
-<td style="text-align: left;">0.1</td>
-</tr>
-</tbody>
-</table>
-<p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008.csv">Download language harmonized dataset</a></p>
-</section>
-<section id="subset-analysis-1809-1917-1" class="level3" data-number="7.3.2">
-<h3 data-number="7.3.2" class="anchored" data-anchor-id="subset-analysis-1809-1917-1"><span class="header-section-number">7.3.2</span> Subset Analysis: 1809-1917</h3>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008_accepted_19.csv">Unique languages (1809-1917)</a>: 42</p>
-<p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_primary_008_accepted_19.csv">Unique primary languages (1809-1917)</a>: 40</p>
-<p>72319 single-language entries (99.58%)</p>
-<p>307 multilingual entries , accounting for 0.42% of the total. This includes entries explicitly coded as “mul” (Multiple languages) as well as those with more than one language listed for a single book.</p>
-<p>There are 17 entries marked as “Undetermined”.</p>
-<p>There are 0 missing values in the dataset,accounting for (0%) of the total.</p>
-<p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008_19.csv">Download language harmonized dataset (1809-1917)</a></p>
-</section>
-<section id="top-languages-for-1809-1917-1" class="level3" data-number="7.3.3">
-<h3 data-number="7.3.3" class="anchored" data-anchor-id="top-languages-for-1809-1917-1"><span class="header-section-number">7.3.3</span> Top languages for 1809-1917</h3>
-<p>Number of titles assigned with each language (top-10). For a complete list, see <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_008_accepted_19.csv">accepted languages (1809-1917)</a>.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Language</th>
-<th style="text-align: left;">Entries (n)</th>
-<th style="text-align: left;">Fraction (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Finnish</td>
-<td style="text-align: left;">40378</td>
-<td style="text-align: left;">55.6</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Swedish</td>
-<td style="text-align: left;">23338</td>
-<td style="text-align: left;">32.1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Latin</td>
-<td style="text-align: left;">2844</td>
-<td style="text-align: left;">3.9</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">German</td>
-<td style="text-align: left;">2357</td>
-<td style="text-align: left;">3.2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Russian</td>
-<td style="text-align: left;">938</td>
-<td style="text-align: left;">1.3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">French</td>
-<td style="text-align: left;">730</td>
-<td style="text-align: left;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Unrecognized</td>
-<td style="text-align: left;">575</td>
-<td style="text-align: left;">0.8</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">English</td>
-<td style="text-align: left;">478</td>
-<td style="text-align: left;">0.7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Multiple languages</td>
-<td style="text-align: left;">271</td>
-<td style="text-align: left;">0.4</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Danish</td>
-<td style="text-align: left;">164</td>
-<td style="text-align: left;">0.2</td>
-</tr>
-</tbody>
-</table>
-<p>Title count per language (including multi-language documents; note the log10 scale):</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="language_files/figure-html/summarylang0083-1.png" class="img-fluid figure-img" width="864"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="field-041h-original-language-of-translations" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="field-041h-original-language-of-translations"><span class="header-section-number">7.4</span> Field 041,h: Original Language of Translations</h2>
-<p>MARC field 041 subfield h records the original language of a work when the bibliographic record describes a translation.</p>
-<p>This field should be interpreted as translation-related metadata: records with a value in <code>language_original</code> are records for which Fennica contains information about the original language of the work. However, the absence of 041,h does not necessarily prove that the record is not a translation; it only means that no original-language information was recorded or extracted from this field.</p>
-<section id="complete-dataset-overview-2" class="level3" data-number="7.4.1">
-<h3 data-number="7.4.1" class="anchored" data-anchor-id="complete-dataset-overview-2"><span class="header-section-number">7.4.1</span> Complete Dataset Overview</h3>
 <p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_original_accepted.csv">Unique original languages</a>: 148</p>
 <p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_primary_original_accepted.csv">Unique primary original languages</a>: 0</p>
 <p>There are 196600 records with original-language information in 041$h, accounting for 14.92% of the complete dataset. These records can be treated as translation records with recorded original-language metadata.</p>
@@ -738,8 +572,8 @@ window.Quarto = {
 </table>
 <p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_original.csv">Download original-language harmonized dataset</a></p>
 </section>
-<section id="subset-analysis-18091917" class="level3" data-number="7.4.2">
-<h3 data-number="7.4.2" class="anchored" data-anchor-id="subset-analysis-18091917"><span class="header-section-number">7.4.2</span> Subset Analysis: 1809–1917</h3>
+<section id="subset-analysis-18091917" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="subset-analysis-18091917"><span class="header-section-number">7.3.2</span> Subset Analysis: 1809–1917</h3>
 <p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_original_accepted_19.csv">Unique original languages, 1809–1917</a>: 43</p>
 <p><a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_primary_original_accepted_19.csv">Unique primary original languages, 1809–1917</a>: 0</p>
 <p>There are 12590 records with original-language information in 041$h in the 1809–1917 subset, accounting for 17.34% of the subset.</p>
@@ -749,8 +583,8 @@ window.Quarto = {
 <p>There are 0 records where the original language is marked as “Undetermined”.</p>
 <p><a href="https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_original_19.csv">Download original-language harmonized dataset, 1809–1917</a></p>
 </section>
-<section id="top-original-languages-for-18091917" class="level3" data-number="7.4.3">
-<h3 data-number="7.4.3" class="anchored" data-anchor-id="top-original-languages-for-18091917"><span class="header-section-number">7.4.3</span> Top Original Languages for 1809–1917</h3>
+<section id="top-original-languages-for-18091917" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="top-original-languages-for-18091917"><span class="header-section-number">7.3.3</span> Top Original Languages for 1809–1917</h3>
 <p>The following table shows the most common original languages recorded in 041$h for the 1809–1917 subset. Counts include records with multiple original languages. For a complete list, see <a href="dataTable/data_table.html?path=https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/language_original_accepted_19.csv">accepted original languages, 1809–1917</a>.</p>
 <table class="caption-top table">
 <thead>
