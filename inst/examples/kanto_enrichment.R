@@ -29,10 +29,15 @@ source("funcs.R")
 # Step 1. load author_id from df.orig 
 source("priority_fields.R")
 
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/authors_700_long.csv"
+
+df_700 <- read.csv(url,stringsAsFactors = FALSE)
+df_700 <- df_700 %>% mutate(asteri_id = clean_id(author_7000))
+
 # collect all Asteri IDs from both df.orig and df_700
 fennica_asteri <- bind_rows(
   df.orig %>% transmute(asteri_raw = as.character(asteri_id)),
-  df_700 %>% transmute(asteri_row = as.character(asteri_id))
+  df_700 %>% transmute(asteri_row = as.character(author_7000))
 ) %>%
   filter(!is.na(asteri_raw), asteri_raw != "") %>%
   separate_rows(asteri_raw, sep = "\\|") %>%
@@ -48,7 +53,7 @@ fennica_asteri <- bind_rows(
 author_ids_clean <- fennica_asteri %>%
   select(author_ID) %>%
   distinct()
-test <- finto::get_kanto(head(author_ids_clean, 50))
+test <- finto::get_kanto(head(author_ids_clean, 10))
 
 # 3. get Kanto metadata
 authors_df <- finto::get_kanto(author_ids_clean)
