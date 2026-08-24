@@ -1,136 +1,222 @@
 ---
-title: "Author's info: name, dates, gender, profession"
+title: "Author information: names, dates, gender, and profession"
 hide-description: false
-description: ""
+description: "Author-level information in Fennica, including names, authority identifiers, dates, gender, profession, language, and other biographical metadata for the complete dataset and the 1809–1917 subset."
 ---
 
-
 ```{r}
-#| include: false
-#| echo: false
-#| message: false
-#| warning: false
-
-knitr::opts_chunk$set(
-  echo = FALSE,
-  message = FALSE,
-  warning = FALSE
-)
+#| include = FALSE,
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE
 
 source("init.R")
 ```
 
 
-
 ```{r}
-# # Download the csv file
-url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/all_author_info.csv"
+#| include = FALSE,
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE
+#| 
+url <- "https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/all_author_info.feather"
 
-author_database <- read.delim(
-  url,
-  quote = "",
-  fill = TRUE,
-  stringsAsFactors = FALSE,
-  check.names = FALSE
-)
+author_database <- arrow::read_feather(url)
 
 author_database <- author_database %>%
   mutate(
-    across(
-      where(is.character),
-      ~ {
-        x <- trimws(.x)
-        x[x %in% c("", "NA", "N/A", "NULL", "-")] <- NA_character_
-        x
-      }
-    )
+    gender_primary = trimws(sub("\\|.*$", "", gender)),
+    gender_primary = na_if(gender_primary, "")
   )
 
-author_database <- author_database %>%
-  mutate(
-    gender = trimws(gender),
-    gender = na_if(gender, ""),
-    gender = na_if(gender, "Unknown"),
+author_database_19 <- author_database[
+  author_database$id %in% ids_19,
+]
 
-    # Take the first value from semicolon-separated gender values
-    gender_primary = trimws(sub("[|/].*$", "", gender)),
-    gender_primary = na_if(gender_primary, ""),
-    gender_primary = na_if(gender_primary, "Unknown")
-  )
+library(dplyr)
+library(ggplot2)
+library(knitr)
+
+theme_set(theme_bw(base_size = 12))
 ```
 
-
-# Author Database
+# Author database
 
 ## Description
 
-The author database was created by combining author information from MARC 100 (main authors) and MARC 700 (added authors) fields. Authors were identified primarily through Asteri authority identifiers when available. Records lacking authority identifiers were retained using harmonized author names.
+The author database provides an **author-level view of people associated with publications in Fennica**. It combines information recorded in the MARC 100 field for main authors and the MARC 700 field for added authors.
 
-The resulting database represents unique authors appearing in the Fennica dataset and serves as a foundation for author-level analyses and metadata enrichment. Author records were enriched using information obtained from Kanto authority data, including birth and death years, profession, language, country, field of activity, place associations, and related persons. Additional variables include inferred gender, publication activity measures, and the number of Fennica records associated with each author.
+Authors are identified primarily through **Asteri authority identifiers** when these are available. Asteri identifiers make it possible to connect different name forms referring to the same person and to link bibliographic records with information from the Kanto national authority database.
 
-Publication activity was calculated from publication years recorded in Fennica and includes the first observed publication year, last observed publication year, mean publication year, and activity span.
+Authors without an Asteri identifier are retained using harmonized author names. This makes it possible to include authors who occur in Fennica but do not have an authority identifier.
 
-## Complete Dataset Overview
+The database therefore combines information from two main sources:
 
-Unique authors: `r unique(author_database$all_names)` (`r round(mean(!is.na(author_database$all_names)) * 100, 1)`%)
+- **Fennica bibliographic records**, including author names and publication information; and
+- **Kanto authority data**, providing additional biographical and authority information.
 
-Authors with Asteri identifier: `r sum(!is.na(author_database$all_asteri))` (`r round(mean(!is.na(author_database$all_asteri)) * 100, 1)`%).
+::: {.callout-note title="Datasets presented on this page"}
+Two versions of the author database are presented below.
 
-Authors with birth year information: `r sum(!is.na(author_database$all_dates))` (`r round(mean(!is.na(author_database$all_dates)) * 100, 1)`%).
+**Complete Fennica author database** contains authors associated with records across the complete harmonized Fennica dataset.
 
-Authors with death year information: `r sum(!is.na(author_database$till))` (`r round(mean(!is.na(author_database$till)) * 100, 1)`%).
+**1809–1917 author database** contains authors associated with publications included in the historical 1809–1917 subset.
 
-Authors with calculated age: `r sum(!is.na(author_database$author_age))` (`r round(mean(!is.na(author_database$author_age)) * 100, 1)`%).
+The 1809–1917 database is therefore a subset of the complete author database.
+:::
 
-Authors with gender information: `r sum(!is.na(author_database$gender_primary))` (`r round(mean(!is.na(author_database$gender_primary)) * 100, 1)`%).
+## Author identification
 
-Authors with profession information: `r sum(!is.na(author_database$profession))` (`r round(mean(!is.na(author_database$profession)) * 100, 1)`%).
+Information used to identify authors includes:
 
-Authors with field of activity information: `r sum(!is.na(author_database$fieldOfActivityOfPerson))` (`r round(mean(!is.na(author_database$fieldOfActivityOfPerson)) * 100, 1)`%).
+- harmonized author names;
+- alternative and variant names;
+- Asteri authority identifiers;
+- names extracted from MARC 100 and MARC 700 fields; and
+- links between authors and Fennica bibliographic records.
 
-Authors with language information: `r sum(!is.na(author_database$language))` (`r round(mean(!is.na(author_database$language)) * 100, 1)`%).
+A single author may appear in multiple Fennica records and may be represented by several name forms in the original bibliographic metadata.
 
-Authors with country information: `r sum(!is.na(author_database$country))` (`r round(mean(!is.na(author_database$country)) * 100, 1)`%).
+## Biographical information
 
-Authors with place information: `r sum(!is.na(author_database$place))` (`r round(mean(!is.na(author_database$place)) * 100, 1)`%).
+Where corresponding authority information is available, author records are enriched with variables describing the person, including:
 
+- birth and death dates;
+- calculated age;
+- gender;
+- profession;
+- title;
+- field of activity;
+- language;
+- country; and
+- associated places.
 
+The availability of these variables differs because not every author has an Asteri authority identifier and not every Kanto authority record contains the same amount of biographical information.
 
+## Publication activity
 
-# Top Authors' names
+The database also contains variables describing an author's occurrence in Fennica. Publication activity is calculated from the publication years of records associated with each author and includes measures such as:
+
+- number of associated Fennica records;
+- first observed publication year;
+- last observed publication year;
+- mean publication year; and
+- observed publication activity span.
+
+::: {.callout-important title="Interpretation"}
+Publication activity refers to an author's representation in **Fennica**. It should not necessarily be interpreted as the author's complete publication history.
+
+Similarly, missing biographical information does not mean that the information is historically unknown. It means that the information could not be obtained from the bibliographic and authority metadata used in this workflow.
+:::
+
+# Complete Fennica dataset
+
+This section describes authors found across the **complete harmonized Fennica dataset**, without restricting records by publication year.
+
+## Coverage of author information
+
+The complete author database contains **`r nrow(author_database)` author records**.
+
+The statistics below show how many author records contain information for each variable. Percentages are calculated relative to all author records in the complete database.
+
+**Asteri identifier:**  
+`r sum(!is.na(author_database$all_asteri))` authors (`r round(mean(!is.na(author_database$all_asteri)) * 100, 1)`%).
+
+**Author dates:**  
+`r sum(!is.na(author_database$all_dates))` authors (`r round(mean(!is.na(author_database$all_dates)) * 100, 1)`%).
+
+**Death year:**  
+`r sum(!is.na(author_database$till))` authors (`r round(mean(!is.na(author_database$till)) * 100, 1)`%).
+
+**Calculated age:**  
+`r sum(!is.na(author_database$author_age))` authors (`r round(mean(!is.na(author_database$author_age)) * 100, 1)`%).
+
+**Gender:**  
+`r sum(!is.na(author_database$gender_primary))` authors (`r round(mean(!is.na(author_database$gender_primary)) * 100, 1)`%).
+
+**Profession:**  
+`r sum(!is.na(author_database$profession))` authors (`r round(mean(!is.na(author_database$profession)) * 100, 1)`%).
+
+**Field of activity:**  
+`r sum(!is.na(author_database$fieldOfActivityOfPerson))` authors (`r round(mean(!is.na(author_database$fieldOfActivityOfPerson)) * 100, 1)`%).
+
+**Language:**  
+`r sum(!is.na(author_database$language))` authors (`r round(mean(!is.na(author_database$language)) * 100, 1)`%).
+
+**Country:**  
+`r sum(!is.na(author_database$country))` authors (`r round(mean(!is.na(author_database$country)) * 100, 1)`%).
+
+**Place:**  
+`r sum(!is.na(author_database$place))` authors (`r round(mean(!is.na(author_database$place)) * 100, 1)`%).
+
+::: {.callout-note title="Reading the coverage statistics"}
+The percentages above describe **metadata availability**, not the proportion of authors possessing a particular characteristic.
+
+For example, the gender percentage indicates the proportion of author records for which gender information is available, rather than the distribution of genders in Fennica.
+:::
+
+## Most frequent author names
+
+The following figure shows the author names associated with the largest number of Fennica entries in the complete dataset.
+
+The y-axis is presented on a logarithmic scale because the number of associated records is highly uneven: a small number of authors occur very frequently, while most authors occur in relatively few records.
 
 ```{r}
 #| label = "top_author_name",
 #| echo = FALSE,
 #| message = FALSE,
 #| warning = FALSE,
-#| fig.width = 8,
+#| fig.width = 10,
 #| fig.height = 6
-library(ggplot2)
-#library(comhis)
 
-theme_set(theme_bw(base_size = 12))
-p <- top_plot(author_database, "all_names", ntop = ntop, log10 = TRUE)+
-  labs(y = "Entries (n)", title = "Top author names (Log values)")
+p <- top_plot(
+  author_database,
+  "all_names",
+  ntop = ntop,
+  log10 = TRUE
+) +
+  labs(
+    x = NULL,
+    y = "Fennica entries (n)",
+    title = "Most frequent author names in Fennica",
+    subtitle = "Complete dataset; logarithmic scale"
+  )
+
 print(p)
 ```
+
+## Profession
+
+The profession variable originates from authority information associated with the author. An author may have more than one profession recorded.
 
 ```{r}
 #| label = "adb_profession",
 #| echo = FALSE,
 #| message = FALSE,
 #| warning = FALSE,
-#| fig.width = 8,
+#| fig.width = 12,
 #| fig.height = 6
-library(ggplot2)
-#library(comhis)
 
-theme_set(theme_bw(base_size = 12))
-p <- top_plot(author_database, "profession", ntop = ntop, log10 = TRUE)+
-  labs(y = "Entries (n)", title = "Top author professions (Log values)")
+p <- top_plot(
+  author_database,
+  "profession",
+  ntop = ntop,
+  log10 = TRUE
+) +
+  labs(
+    x = NULL,
+    y = "Authors (n)",
+    title = "Most frequent author professions",
+    subtitle = "Complete Fennica dataset; logarithmic scale"
+  )
+
 print(p)
 ```
 
+## Titles
+
+Titles describe titles or designations associated with persons in the authority data.
 
 ```{r}
 #| label = "adb_title",
@@ -139,14 +225,26 @@ print(p)
 #| warning = FALSE,
 #| fig.width = 8,
 #| fig.height = 6
-library(ggplot2)
-#library(comhis)
 
-theme_set(theme_bw(base_size = 12))
-p <- top_plot(author_database, "title", ntop = ntop, log10 = TRUE)+
-  labs(y = "Entries (n)", title = "Top author title (Log values)")
+p <- top_plot(
+  author_database,
+  "title",
+  ntop = ntop,
+  log10 = TRUE
+) +
+  labs(
+    x = NULL,
+    y = "Authors (n)",
+    title = "Most frequent author titles",
+    subtitle = "Complete Fennica dataset; logarithmic scale"
+  )
+
 print(p)
 ```
+
+## Language
+
+Language information describes languages associated with persons in the authority data. It should therefore not be interpreted directly as the publication language of the corresponding Fennica records.
 
 ```{r}
 #| label = "adb_language",
@@ -155,14 +253,27 @@ print(p)
 #| warning = FALSE,
 #| fig.width = 12,
 #| fig.height = 6
-library(ggplot2)
-#library(comhis)
 
-theme_set(theme_bw(base_size = 12))
-p <- top_plot(author_database, "language", ntop = ntop, log10 = TRUE)+
-  labs(y = "Entries (n)", title = "Top  author language (Log values)")
+p <- top_plot(
+  author_database,
+  "language",
+  ntop = ntop,
+  log10 = TRUE
+) +
+  labs(
+    x = NULL,
+    y = "Authors (n)",
+    title = "Most frequent languages associated with authors",
+    subtitle = "Complete Fennica dataset; logarithmic scale"
+  )
+
 print(p)
 ```
+
+## Field of activity
+
+Field of activity provides a broader description of the professional, intellectual, artistic, or other fields associated with a person in the authority data.
+
 ```{r}
 #| label = "adb_field_activity",
 #| echo = FALSE,
@@ -170,14 +281,27 @@ print(p)
 #| warning = FALSE,
 #| fig.width = 12,
 #| fig.height = 6
-library(ggplot2)
-#library(comhis)
 
-theme_set(theme_bw(base_size = 12))
-p <- top_plot(author_database, "fieldOfActivityOfPerson", ntop = ntop, log10 = TRUE)+
-  labs(y = "Entries (n)", title = "Top  author field activity (Log values)")
+p <- top_plot(
+  author_database,
+  "fieldOfActivityOfPerson",
+  ntop = ntop,
+  log10 = TRUE
+) +
+  labs(
+    x = NULL,
+    y = "Authors (n)",
+    title = "Most frequent fields of activity",
+    subtitle = "Complete Fennica dataset; logarithmic scale"
+  )
+
 print(p)
 ```
+
+## Country
+
+Country information is derived from authority metadata and describes countries associated with individual authors.
+
 ```{r}
 #| label = "adb_country",
 #| echo = FALSE,
@@ -185,76 +309,136 @@ print(p)
 #| warning = FALSE,
 #| fig.width = 12,
 #| fig.height = 6
-library(ggplot2)
-#library(comhis)
 
-theme_set(theme_bw(base_size = 12))
-p <- top_plot(author_database, "country", ntop = ntop, log10 = TRUE)+
-  labs(y = "Entries (n)", title = "Top  author country (Log values)")
+p <- top_plot(
+  author_database,
+  "country",
+  ntop = ntop,
+  log10 = TRUE
+) +
+  labs(
+    x = NULL,
+    y = "Authors (n)",
+    title = "Most frequent countries associated with authors",
+    subtitle = "Complete Fennica dataset; logarithmic scale"
+  )
+
 print(p)
 ```
 
-[Download author database dataset for all authors in Fennica](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_database.csv)
+[Download the complete Fennica author database](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_database.csv)
+
+# Authors in publications from 1809–1917
+
+This section focuses on authors associated with Fennica publications included in the **1809–1917 historical subset**.
+
+Restricting the database to this period provides a more relevant description of authors represented in the nineteenth-century and early twentieth-century material used in the historical analyses.
+
+::: {.callout-note title="What does 1809–1917 refer to?"}
+The period refers to the **publication years of the Fennica records**, not to the birth years, death years, or active years of the authors.
+
+An author can therefore appear in this subset even if their lifetime extends considerably before or after 1809–1917.
+:::
+
+## Coverage of author information, 1809–1917
+
+The historical subset contains **`r nrow(author_database_19)` author records**.
+
+The statistics below describe metadata availability specifically among authors associated with publications from 1809–1917.
+
+**Asteri identifier:**  
+`r sum(!is.na(author_database_19$all_asteri))` authors (`r round(mean(!is.na(author_database_19$all_asteri)) * 100, 1)`%).
+
+**Author dates:**  
+`r sum(!is.na(author_database_19$all_dates))` authors (`r round(mean(!is.na(author_database_19$all_dates)) * 100, 1)`%).
+
+**Death year:**  
+`r sum(!is.na(author_database_19$till))` authors (`r round(mean(!is.na(author_database_19$till)) * 100, 1)`%).
+
+**Calculated age:**  
+`r sum(!is.na(author_database_19$author_age))` authors (`r round(mean(!is.na(author_database_19$author_age)) * 100, 1)`%).
+
+**Gender:**  
+`r sum(!is.na(author_database_19$gender_primary))` authors (`r round(mean(!is.na(author_database_19$gender_primary)) * 100, 1)`%).
+
+**Profession:**  
+`r sum(!is.na(author_database_19$profession))` authors (`r round(mean(!is.na(author_database_19$profession)) * 100, 1)`%).
+
+**Field of activity:**  
+`r sum(!is.na(author_database_19$fieldOfActivityOfPerson))` authors (`r round(mean(!is.na(author_database_19$fieldOfActivityOfPerson)) * 100, 1)`%).
+
+**Language:**  
+`r sum(!is.na(author_database_19$language))` authors (`r round(mean(!is.na(author_database_19$language)) * 100, 1)`%).
+
+**Country:**  
+`r sum(!is.na(author_database_19$country))` authors (`r round(mean(!is.na(author_database_19$country)) * 100, 1)`%).
+
+**Place:**  
+`r sum(!is.na(author_database_19$place))` authors (`r round(mean(!is.na(author_database_19$place)) * 100, 1)`%).
+
+## Most frequent author names, 1809–1917
+
+The following figure shows authors associated with the largest number of Fennica records published between 1809 and 1917.
 
 ```{r}
-author_database <- author_database[author_database$id %in% ids_19,]
-```
+#| label = "top_author_name19",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE,
+#| fig.width = 8,
+#| fig.height = 6
 
+p <- top_plot(
+  author_database_19,
+  "all_names",
+  ntop = ntop,
+  log10 = TRUE
+) +
+  labs(
+    x = NULL,
+    y = "Fennica entries (n)",
+    title = "Most frequent author names, 1809–1917",
+    subtitle = "Logarithmic scale"
+  )
 
-## Authors 1809-1917
-
-Unique authors: `r unique(author_database$all_names)` (`r round(mean(!is.na(author_database$all_names)) * 100, 1)`%)
-
-Authors with Asteri identifier: `r sum(!is.na(author_database$all_asteri))` (`r round(mean(!is.na(author_database$all_asteri)) * 100, 1)`%).
-
-Authors without Asteri identifier: `r sum(is.na(author_database$all_dates))` (`r round(mean(is.na(author_database$all_dates)) * 100, 1)`%).
-
-Authors with birth year information: `r sum(!is.na(author_database$from))` (`r round(mean(!is.na(author_database$from)) * 100, 1)`%).
-
-Authors with death year information: `r sum(!is.na(author_database$till))` (`r round(mean(!is.na(author_database$till)) * 100, 1)`%).
-
-Authors with calculated age: `r sum(!is.na(author_database$author_age))` (`r round(mean(!is.na(author_database$author_age)) * 100, 1)`%).
-
-Authors with gender information: `r sum(!is.na(author_database$gender_primary))` (`r round(mean(!is.na(author_database$gender_primary)) * 100, 1)`%).
-
-Authors with profession information: `r sum(!is.na(author_database$profession))` (`r round(mean(!is.na(author_database$profession)) * 100, 1)`%).
-
-Authors with field of activity information: `r sum(!is.na(author_database$field_activity))` (`r round(mean(!is.na(author_database$field_activity)) * 100, 1)`%).
-
-Authors with language information: `r sum(!is.na(author_database$language))` (`r round(mean(!is.na(author_database$language)) * 100, 1)`%).
-
-Authors with country information: `r sum(!is.na(author_database$country))` (`r round(mean(!is.na(author_database$country)) * 100, 1)`%).
-
-Authors with place information: `r sum(!is.na(author_database$place))` (`r round(mean(!is.na(author_database$place)) * 100, 1)`%).
-
-
-
-### Top-Authors' names 1809-1917
-
-```{r}
-#| label: top_authors_1809_1917
-#| echo: false
-#| results: asis
-
-theme_set(theme_bw(base_size = 12))
-p <- top_plot(author_database, "all_names", ntop = ntop, log10 = TRUE)+
-  labs(y = "Entries (n)", title = "Top  author names 1809-1917 (Log values)")
 print(p)
 ```
 
-# Authors by gender 1809-1917
+# Author characteristics, 1809–1917
+
+The following sections describe selected biographical and authority variables for authors represented in the historical subset.
+
+## Gender
+
+Gender information is based on the harmonized `gender_primary` variable. Authors for whom gender information is unavailable are excluded from the percentage calculation below.
 
 ```{r}
+#| label = "adb_gender19",
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE
 
-tab <- author_database %>%
+tab <- author_database_19 %>%
   filter(!is.na(gender_primary)) %>%
   count(gender_primary, sort = TRUE) %>%
   mutate(
     `Fraction (%)` = round(100 * n / sum(n), 1)
   )
 
-kable(tab)
+kable(
+  tab,
+  col.names = c("Gender", "Authors (n)", "Fraction (%)"),
+  caption = "Gender distribution among authors with available gender information, 1809–1917."
+)
 ```
+
+::: {.callout-note title="Gender percentages"}
+The percentages are calculated only among authors for whom `gender_primary` is available. Authors with missing gender information are not included in the denominator.
+:::
+
+## Profession
+
+The following figure shows the most frequently recorded professions among authors associated with publications from 1809–1917.
 
 ```{r}
 #| label = "adb_profession19",
@@ -263,14 +447,29 @@ kable(tab)
 #| warning = FALSE,
 #| fig.width = 8,
 #| fig.height = 6
-library(ggplot2)
-#library(comhis)
 
-theme_set(theme_bw(base_size = 12))
-p <- top_plot(author_database, "profession", ntop = ntop, log10 = TRUE)+
-  labs(y = "Entries (n)", title = "Top  author professions 1809-1917 (Log values)")
+p <- top_plot(
+  author_database_19,
+  "profession",
+  ntop = ntop,
+  log10 = TRUE
+) +
+  labs(
+    x = NULL,
+    y = "Authors (n)",
+    title = "Most frequent author professions, 1809–1917",
+    subtitle = "Logarithmic scale"
+  )
+
 print(p)
 ```
+
+## Language
+
+The following figure shows the most frequently recorded languages associated with authors in the historical subset.
+
+These values originate from person-level authority metadata and should not be interpreted as the language of the publications themselves.
+
 ```{r}
 #| label = "adb_language19",
 #| echo = FALSE,
@@ -278,15 +477,21 @@ print(p)
 #| warning = FALSE,
 #| fig.width = 12,
 #| fig.height = 6
-library(ggplot2)
-#library(comhis)
 
-theme_set(theme_bw(base_size = 12))
-p <- top_plot(author_database, "language", ntop = ntop, log10 = TRUE)+
-  labs(y = "Entries (n)", title = "Top  author language 1809-1917 (Log values)")
+p <- top_plot(
+  author_database_19,
+  "language",
+  ntop = ntop,
+  log10 = TRUE
+) +
+  labs(
+    x = NULL,
+    y = "Authors (n)",
+    title = "Most frequent languages associated with authors, 1809–1917",
+    subtitle = "Logarithmic scale"
+  )
+
 print(p)
 ```
 
-[Download author database dataset for authors in Fennica for years 1809-1917 ](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_database_19.csv)
-
-
+[Download the author database for publications from 1809–1917](https://a3s.fi/swift/v1/AUTH_3c0ccb602fa24298a6fe3ae224ca022f/fennica-container/output.tables/author_database_19.csv)

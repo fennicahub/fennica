@@ -19,6 +19,7 @@ slides_201606_Krakow
 *.csv
 *.xml
 *.parquet
+*.feather
 *publication_time.csv
 *publication_time_19.csv
 *language.csv

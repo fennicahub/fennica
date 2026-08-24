@@ -263,7 +263,7 @@ id	id2	field008_6	publication_status	original	publication_year
 4134772	964817|FCC005886694	d	Continuing resource ceased publication	1975 1900	NA
 4135401	965624|FCC005890279	s	Single known date/probable date	uuuu	NA
 4135410	965632|FCC005890282	s	Single known date/probable date	uuuu	NA
-4135411		s	Single known date/probable date	uuuu	NA
+4135411	NA	s	Single known date/probable date	uuuu	NA
 4136267	966772|FCC005895806	d	Continuing resource ceased publication	18uu 19uu	NA
 4136908	967874|FCC005899446	c	Continuing resource currently published	197u 9999	NA
 4137399	968448|FCC005901723	d	Continuing resource ceased publication	200u 2011	NA
@@ -597,15 +597,15 @@ id	id2	field008_6	publication_status	original	publication_year
 5421474	FCC016716395	s	Single known date/probable date	    	NA
 5422939	FCC016717872	s	Single known date/probable date	    	NA
 5423082	FCC016718015	s	Single known date/probable date	    	NA
-5423739		m	Multiple dates	    	NA
-5427351		m	Multiple dates	    	NA
-5427567		m	Multiple dates	    	NA
-5427799		m	Multiple dates	    	NA
-5427866		m	Multiple dates	    	NA
-5427999		m	Multiple dates	    	NA
-5428252		m	Multiple dates	    	NA
-5428403		m	Multiple dates	    	NA
-5428868		m	Multiple dates	    	NA
+5423739	NA	m	Multiple dates	    	NA
+5427351	NA	m	Multiple dates	    	NA
+5427567	NA	m	Multiple dates	    	NA
+5427799	NA	m	Multiple dates	    	NA
+5427866	NA	m	Multiple dates	    	NA
+5427999	NA	m	Multiple dates	    	NA
+5428252	NA	m	Multiple dates	    	NA
+5428403	NA	m	Multiple dates	    	NA
+5428868	NA	m	Multiple dates	    	NA
 5443626	FCC016788866	s	Single known date/probable date	||||	NA
 5445701	FCC016797281	s	Single known date/probable date	||||	NA
 5447678	FCC017145463	s	Single known date/probable date	||||	NA
@@ -616,339 +616,339 @@ id	id2	field008_6	publication_status	original	publication_year
 5451682	FCC017381130	d	Continuing resource ceased publication	20uu 2025	NA
 5451683	FCC017384835	d	Continuing resource ceased publication	20uu 2025	NA
 5452707	FCC017396221	c	Continuing resource currently published	20uu 9999	NA
-5461948		m	Multiple dates	    	NA
-5463160		m	Multiple dates	    	NA
-5464334		s	Single known date/probable date	    	NA
-5464368		s	Single known date/probable date	    	NA
-5464377		s	Single known date/probable date	    	NA
-5464395		s	Single known date/probable date	    	NA
-5467540		s	Single known date/probable date	    	NA
-5468256		m	Multiple dates	    	NA
-5468288		m	Multiple dates	    	NA
-5468297		m	Multiple dates	    	NA
-5468301		m	Multiple dates	    	NA
-5468304		m	Multiple dates	    	NA
-5468309		m	Multiple dates	    	NA
-5468311		m	Multiple dates	    	NA
-5468313		m	Multiple dates	    	NA
-5468315		m	Multiple dates	    	NA
-5468320		m	Multiple dates	    	NA
-5468322		m	Multiple dates	    	NA
-5468324		m	Multiple dates	    	NA
-5468325		m	Multiple dates	    	NA
-5468342		m	Multiple dates	    	NA
-5468345		m	Multiple dates	    	NA
-5468347		m	Multiple dates	    	NA
-5468349		m	Multiple dates	    	NA
-5468350		m	Multiple dates	    	NA
-5468352		m	Multiple dates	    	NA
-5468354		m	Multiple dates	    	NA
-5468358		m	Multiple dates	    	NA
-5468360		m	Multiple dates	    	NA
-5468361		m	Multiple dates	    	NA
-5468362		m	Multiple dates	    	NA
-5468369		m	Multiple dates	    	NA
-5468374		m	Multiple dates	    	NA
-5472631		m	Multiple dates	    	NA
-5472637		m	Multiple dates	    	NA
-5472638		m	Multiple dates	    	NA
-5472639		m	Multiple dates	    	NA
-5472640		m	Multiple dates	    	NA
-5472641		m	Multiple dates	    	NA
-5472642		m	Multiple dates	    	NA
-5472643		m	Multiple dates	    	NA
-5472644		m	Multiple dates	    	NA
-5472645		m	Multiple dates	    	NA
-5472646		m	Multiple dates	    	NA
-5472647		m	Multiple dates	    	NA
-5472648		m	Multiple dates	    	NA
-5472649		m	Multiple dates	    	NA
-5472650		m	Multiple dates	    	NA
-5472651		m	Multiple dates	    	NA
-5472652		m	Multiple dates	    	NA
-5472653		m	Multiple dates	    	NA
-5473018		m	Multiple dates	    	NA
-5473019		m	Multiple dates	    	NA
-5473020		m	Multiple dates	    	NA
-5473021		m	Multiple dates	    	NA
-5473024		m	Multiple dates	    	NA
-5473026		m	Multiple dates	    	NA
-5473027		m	Multiple dates	    	NA
-5473029		m	Multiple dates	    	NA
-5473031		m	Multiple dates	    	NA
-5473033		m	Multiple dates	    	NA
-5473034		m	Multiple dates	    	NA
-5473035		m	Multiple dates	    	NA
-5473036		m	Multiple dates	    	NA
-5473037		m	Multiple dates	    	NA
-5473038		m	Multiple dates	    	NA
-5473039		m	Multiple dates	    	NA
-5473040		m	Multiple dates	    	NA
-5473041		m	Multiple dates	    	NA
-5473042		m	Multiple dates	    	NA
-5473043		m	Multiple dates	    	NA
-5473044		m	Multiple dates	    	NA
-5473062		m	Multiple dates	    	NA
-5473064		m	Multiple dates	    	NA
-5473065		m	Multiple dates	    	NA
-5473066		m	Multiple dates	    	NA
-5473068		m	Multiple dates	    	NA
-5473069		m	Multiple dates	    	NA
-5473070		m	Multiple dates	    	NA
-5473087		m	Multiple dates	    	NA
-5473088		m	Multiple dates	    	NA
-5473089		m	Multiple dates	    	NA
-5473090		m	Multiple dates	    	NA
-5473091		m	Multiple dates	    	NA
-5473092		m	Multiple dates	    	NA
-5473093		m	Multiple dates	    	NA
-5473094		m	Multiple dates	    	NA
-5473095		m	Multiple dates	    	NA
-5473096		m	Multiple dates	    	NA
-5473097		m	Multiple dates	    	NA
-5473099		m	Multiple dates	    	NA
-5473100		m	Multiple dates	    	NA
-5473101		m	Multiple dates	    	NA
-5473102		m	Multiple dates	    	NA
-5473103		m	Multiple dates	    	NA
-5473104		m	Multiple dates	    	NA
-5473105		m	Multiple dates	    	NA
-5473107		m	Multiple dates	    	NA
-5473108		m	Multiple dates	    	NA
-5473109		m	Multiple dates	    	NA
-5473110		m	Multiple dates	    	NA
-5473112		m	Multiple dates	    	NA
-5473113		m	Multiple dates	    	NA
-5473114		m	Multiple dates	    	NA
-5473115		m	Multiple dates	    	NA
-5473116		m	Multiple dates	    	NA
-5473117		m	Multiple dates	    	NA
-5473118		m	Multiple dates	    	NA
-5473119		m	Multiple dates	    	NA
-5473120		m	Multiple dates	    	NA
-5473121		m	Multiple dates	    	NA
-5473122		m	Multiple dates	    	NA
-5473125		m	Multiple dates	    	NA
-5473128		m	Multiple dates	    	NA
-5473129		m	Multiple dates	    	NA
-5473130		m	Multiple dates	    	NA
-5473131		m	Multiple dates	    	NA
-5473133		m	Multiple dates	    	NA
-5473134		m	Multiple dates	    	NA
-5473135		m	Multiple dates	    	NA
-5473137		m	Multiple dates	    	NA
-5473138		m	Multiple dates	    	NA
-5473141		m	Multiple dates	    	NA
-5473142		m	Multiple dates	    	NA
-5473143		m	Multiple dates	    	NA
-5473146		m	Multiple dates	    	NA
-5473152		m	Multiple dates	    	NA
-5473153		m	Multiple dates	    	NA
-5473154		m	Multiple dates	    	NA
-5473155		m	Multiple dates	    	NA
-5473156		m	Multiple dates	    	NA
-5473157		m	Multiple dates	    	NA
-5473158		m	Multiple dates	    	NA
-5473159		m	Multiple dates	    	NA
-5473160		m	Multiple dates	    	NA
-5473163		m	Multiple dates	    	NA
-5473164		m	Multiple dates	    	NA
-5473165		m	Multiple dates	    	NA
-5473166		m	Multiple dates	    	NA
-5473177		m	Multiple dates	    	NA
-5473178		m	Multiple dates	    	NA
-5473181		m	Multiple dates	    	NA
-5473182		m	Multiple dates	    	NA
-5473197		m	Multiple dates	    	NA
-5473199		m	Multiple dates	    	NA
-5473200		m	Multiple dates	    	NA
-5473201		m	Multiple dates	    	NA
-5473204		m	Multiple dates	    	NA
-5473207		m	Multiple dates	    	NA
-5473208		m	Multiple dates	    	NA
-5473209		m	Multiple dates	    	NA
-5473210		m	Multiple dates	    	NA
-5473211		m	Multiple dates	    	NA
-5473212		m	Multiple dates	    	NA
-5473213		m	Multiple dates	    	NA
-5473214		m	Multiple dates	    	NA
-5473216		m	Multiple dates	    	NA
-5473217		m	Multiple dates	    	NA
-5473220		m	Multiple dates	    	NA
-5473221		m	Multiple dates	    	NA
-5473222		m	Multiple dates	    	NA
-5473223		m	Multiple dates	    	NA
-5473224		m	Multiple dates	    	NA
-5473225		m	Multiple dates	    	NA
-5473226		m	Multiple dates	    	NA
-5473227		m	Multiple dates	    	NA
-5473228		m	Multiple dates	    	NA
-5473229		m	Multiple dates	    	NA
-5473230		m	Multiple dates	    	NA
-5473231		m	Multiple dates	    	NA
-5473232		m	Multiple dates	    	NA
-5473233		m	Multiple dates	    	NA
-5473234		m	Multiple dates	    	NA
-5473235		m	Multiple dates	    	NA
-5473236		m	Multiple dates	    	NA
-5473237		m	Multiple dates	    	NA
-5473238		m	Multiple dates	    	NA
-5473239		m	Multiple dates	    	NA
-5473240		m	Multiple dates	    	NA
-5473241		m	Multiple dates	    	NA
-5473242		m	Multiple dates	    	NA
-5473244		m	Multiple dates	    	NA
-5473245		m	Multiple dates	    	NA
-5473246		m	Multiple dates	    	NA
-5473273		m	Multiple dates	    	NA
-5473275		m	Multiple dates	    	NA
-5473277		m	Multiple dates	    	NA
-5473278		m	Multiple dates	    	NA
-5473279		m	Multiple dates	    	NA
-5473282		m	Multiple dates	    	NA
-5473283		m	Multiple dates	    	NA
-5473285		m	Multiple dates	    	NA
-5473300		m	Multiple dates	    	NA
-5473304		m	Multiple dates	    	NA
-5473306		m	Multiple dates	    	NA
-5473307		m	Multiple dates	    	NA
-5473308		m	Multiple dates	    	NA
-5473309		m	Multiple dates	    	NA
-5473310		m	Multiple dates	    	NA
-5473311		m	Multiple dates	    	NA
-5473313		m	Multiple dates	    	NA
-5473364		m	Multiple dates	    	NA
-5473365		m	Multiple dates	    	NA
-5473368		m	Multiple dates	    	NA
-5473372		m	Multiple dates	    	NA
-5473373		m	Multiple dates	    	NA
-5473374		m	Multiple dates	    	NA
-5473375		m	Multiple dates	    	NA
-5473395		m	Multiple dates	    	NA
-5473396		m	Multiple dates	    	NA
-5473397		m	Multiple dates	    	NA
-5473399		m	Multiple dates	    	NA
-5473402		m	Multiple dates	    	NA
-5473403		m	Multiple dates	    	NA
-5473422		m	Multiple dates	    	NA
-5473423		m	Multiple dates	    	NA
-5473424		m	Multiple dates	    	NA
-5473425		m	Multiple dates	    	NA
-5473431		m	Multiple dates	    	NA
-5473458		m	Multiple dates	    	NA
-5473459		m	Multiple dates	    	NA
-5473461		m	Multiple dates	    	NA
-5473462		m	Multiple dates	    	NA
-5473463		m	Multiple dates	    	NA
-5473464		m	Multiple dates	    	NA
-5473466		m	Multiple dates	    	NA
-5473467		m	Multiple dates	    	NA
-5473468		m	Multiple dates	    	NA
-5473469		m	Multiple dates	    	NA
-5473470		m	Multiple dates	    	NA
-5473471		m	Multiple dates	    	NA
-5473472		m	Multiple dates	    	NA
-5473473		m	Multiple dates	    	NA
-5473474		m	Multiple dates	    	NA
-5473475		m	Multiple dates	    	NA
-5473476		m	Multiple dates	    	NA
-5473477		m	Multiple dates	    	NA
-5473478		m	Multiple dates	    	NA
-5473479		m	Multiple dates	    	NA
-5473481		m	Multiple dates	    	NA
-5473482		m	Multiple dates	    	NA
-5473483		m	Multiple dates	    	NA
-5473484		m	Multiple dates	    	NA
-5473485		m	Multiple dates	    	NA
-5473486		m	Multiple dates	    	NA
-5473487		m	Multiple dates	    	NA
-5473488		m	Multiple dates	    	NA
-5473489		m	Multiple dates	    	NA
-5473490		m	Multiple dates	    	NA
-5473491		m	Multiple dates	    	NA
-5473492		m	Multiple dates	    	NA
-5473493		m	Multiple dates	    	NA
-5473494		m	Multiple dates	    	NA
-5473495		m	Multiple dates	    	NA
-5473498		m	Multiple dates	    	NA
-5473499		m	Multiple dates	    	NA
-5473500		m	Multiple dates	    	NA
-5473501		m	Multiple dates	    	NA
-5473502		m	Multiple dates	    	NA
-5473503		m	Multiple dates	    	NA
-5473504		m	Multiple dates	    	NA
-5473505		m	Multiple dates	    	NA
-5473508		m	Multiple dates	    	NA
-5473509		m	Multiple dates	    	NA
-5473510		m	Multiple dates	    	NA
-5473516		m	Multiple dates	    	NA
-5473517		m	Multiple dates	    	NA
-5473518		m	Multiple dates	    	NA
-5473519		m	Multiple dates	    	NA
-5473520		m	Multiple dates	    	NA
-5473521		m	Multiple dates	    	NA
-5473522		m	Multiple dates	    	NA
-5473523		m	Multiple dates	    	NA
-5473524		m	Multiple dates	    	NA
-5473525		m	Multiple dates	    	NA
-5473526		m	Multiple dates	    	NA
-5473527		m	Multiple dates	    	NA
-5473528		m	Multiple dates	    	NA
-5473529		m	Multiple dates	    	NA
-5473530		m	Multiple dates	    	NA
-5473532		m	Multiple dates	    	NA
-5473533		m	Multiple dates	    	NA
-5473534		m	Multiple dates	    	NA
-5473535		m	Multiple dates	    	NA
-5473536		m	Multiple dates	    	NA
-5473537		m	Multiple dates	    	NA
-5473538		m	Multiple dates	    	NA
-5473539		m	Multiple dates	    	NA
-5473540		m	Multiple dates	    	NA
-5473541		m	Multiple dates	    	NA
-5473542		m	Multiple dates	    	NA
-5473543		m	Multiple dates	    	NA
-5473544		m	Multiple dates	    	NA
-5473548		m	Multiple dates	    	NA
-5473549		m	Multiple dates	    	NA
-5473550		m	Multiple dates	    	NA
-5473551		m	Multiple dates	    	NA
-5473552		m	Multiple dates	    	NA
-5473553		m	Multiple dates	    	NA
-5473554		m	Multiple dates	    	NA
-5473555		m	Multiple dates	    	NA
-5473556		m	Multiple dates	    	NA
-5473558		m	Multiple dates	    	NA
-5473559		m	Multiple dates	    	NA
-5473560		m	Multiple dates	    	NA
-5473562		m	Multiple dates	    	NA
-5473563		m	Multiple dates	    	NA
-5473564		m	Multiple dates	    	NA
-5473565		m	Multiple dates	    	NA
-5473566		m	Multiple dates	    	NA
-5473568		m	Multiple dates	    	NA
-5473569		m	Multiple dates	    	NA
-5473570		m	Multiple dates	    	NA
-5473571		m	Multiple dates	    	NA
-5473572		m	Multiple dates	    	NA
-5473573		m	Multiple dates	    	NA
-5473574		m	Multiple dates	    	NA
-5473575		m	Multiple dates	    	NA
-5473576		m	Multiple dates	    	NA
-5473577		m	Multiple dates	    	NA
-5473579		m	Multiple dates	    	NA
-5473580		m	Multiple dates	    	NA
-5473581		m	Multiple dates	    	NA
-5473582		m	Multiple dates	    	NA
-5473583		m	Multiple dates	    	NA
-5474520		m	Multiple dates	    	NA
-5474770		m	Multiple dates	    	NA
-5474785		m	Multiple dates	    	NA
-5474788		m	Multiple dates	    	NA
-5474791		m	Multiple dates	    	NA
-5474795		m	Multiple dates	    	NA
-5475242		m	Multiple dates	    	NA
-5475328		m	Multiple dates	    	NA
+5461948	NA	m	Multiple dates	    	NA
+5463160	NA	m	Multiple dates	    	NA
+5464334	NA	s	Single known date/probable date	    	NA
+5464368	NA	s	Single known date/probable date	    	NA
+5464377	NA	s	Single known date/probable date	    	NA
+5464395	NA	s	Single known date/probable date	    	NA
+5467540	NA	s	Single known date/probable date	    	NA
+5468256	NA	m	Multiple dates	    	NA
+5468288	NA	m	Multiple dates	    	NA
+5468297	NA	m	Multiple dates	    	NA
+5468301	NA	m	Multiple dates	    	NA
+5468304	NA	m	Multiple dates	    	NA
+5468309	NA	m	Multiple dates	    	NA
+5468311	NA	m	Multiple dates	    	NA
+5468313	NA	m	Multiple dates	    	NA
+5468315	NA	m	Multiple dates	    	NA
+5468320	NA	m	Multiple dates	    	NA
+5468322	NA	m	Multiple dates	    	NA
+5468324	NA	m	Multiple dates	    	NA
+5468325	NA	m	Multiple dates	    	NA
+5468342	NA	m	Multiple dates	    	NA
+5468345	NA	m	Multiple dates	    	NA
+5468347	NA	m	Multiple dates	    	NA
+5468349	NA	m	Multiple dates	    	NA
+5468350	NA	m	Multiple dates	    	NA
+5468352	NA	m	Multiple dates	    	NA
+5468354	NA	m	Multiple dates	    	NA
+5468358	NA	m	Multiple dates	    	NA
+5468360	NA	m	Multiple dates	    	NA
+5468361	NA	m	Multiple dates	    	NA
+5468362	NA	m	Multiple dates	    	NA
+5468369	NA	m	Multiple dates	    	NA
+5468374	NA	m	Multiple dates	    	NA
+5472631	NA	m	Multiple dates	    	NA
+5472637	NA	m	Multiple dates	    	NA
+5472638	NA	m	Multiple dates	    	NA
+5472639	NA	m	Multiple dates	    	NA
+5472640	NA	m	Multiple dates	    	NA
+5472641	NA	m	Multiple dates	    	NA
+5472642	NA	m	Multiple dates	    	NA
+5472643	NA	m	Multiple dates	    	NA
+5472644	NA	m	Multiple dates	    	NA
+5472645	NA	m	Multiple dates	    	NA
+5472646	NA	m	Multiple dates	    	NA
+5472647	NA	m	Multiple dates	    	NA
+5472648	NA	m	Multiple dates	    	NA
+5472649	NA	m	Multiple dates	    	NA
+5472650	NA	m	Multiple dates	    	NA
+5472651	NA	m	Multiple dates	    	NA
+5472652	NA	m	Multiple dates	    	NA
+5472653	NA	m	Multiple dates	    	NA
+5473018	NA	m	Multiple dates	    	NA
+5473019	NA	m	Multiple dates	    	NA
+5473020	NA	m	Multiple dates	    	NA
+5473021	NA	m	Multiple dates	    	NA
+5473024	NA	m	Multiple dates	    	NA
+5473026	NA	m	Multiple dates	    	NA
+5473027	NA	m	Multiple dates	    	NA
+5473029	NA	m	Multiple dates	    	NA
+5473031	NA	m	Multiple dates	    	NA
+5473033	NA	m	Multiple dates	    	NA
+5473034	NA	m	Multiple dates	    	NA
+5473035	NA	m	Multiple dates	    	NA
+5473036	NA	m	Multiple dates	    	NA
+5473037	NA	m	Multiple dates	    	NA
+5473038	NA	m	Multiple dates	    	NA
+5473039	NA	m	Multiple dates	    	NA
+5473040	NA	m	Multiple dates	    	NA
+5473041	NA	m	Multiple dates	    	NA
+5473042	NA	m	Multiple dates	    	NA
+5473043	NA	m	Multiple dates	    	NA
+5473044	NA	m	Multiple dates	    	NA
+5473062	NA	m	Multiple dates	    	NA
+5473064	NA	m	Multiple dates	    	NA
+5473065	NA	m	Multiple dates	    	NA
+5473066	NA	m	Multiple dates	    	NA
+5473068	NA	m	Multiple dates	    	NA
+5473069	NA	m	Multiple dates	    	NA
+5473070	NA	m	Multiple dates	    	NA
+5473087	NA	m	Multiple dates	    	NA
+5473088	NA	m	Multiple dates	    	NA
+5473089	NA	m	Multiple dates	    	NA
+5473090	NA	m	Multiple dates	    	NA
+5473091	NA	m	Multiple dates	    	NA
+5473092	NA	m	Multiple dates	    	NA
+5473093	NA	m	Multiple dates	    	NA
+5473094	NA	m	Multiple dates	    	NA
+5473095	NA	m	Multiple dates	    	NA
+5473096	NA	m	Multiple dates	    	NA
+5473097	NA	m	Multiple dates	    	NA
+5473099	NA	m	Multiple dates	    	NA
+5473100	NA	m	Multiple dates	    	NA
+5473101	NA	m	Multiple dates	    	NA
+5473102	NA	m	Multiple dates	    	NA
+5473103	NA	m	Multiple dates	    	NA
+5473104	NA	m	Multiple dates	    	NA
+5473105	NA	m	Multiple dates	    	NA
+5473107	NA	m	Multiple dates	    	NA
+5473108	NA	m	Multiple dates	    	NA
+5473109	NA	m	Multiple dates	    	NA
+5473110	NA	m	Multiple dates	    	NA
+5473112	NA	m	Multiple dates	    	NA
+5473113	NA	m	Multiple dates	    	NA
+5473114	NA	m	Multiple dates	    	NA
+5473115	NA	m	Multiple dates	    	NA
+5473116	NA	m	Multiple dates	    	NA
+5473117	NA	m	Multiple dates	    	NA
+5473118	NA	m	Multiple dates	    	NA
+5473119	NA	m	Multiple dates	    	NA
+5473120	NA	m	Multiple dates	    	NA
+5473121	NA	m	Multiple dates	    	NA
+5473122	NA	m	Multiple dates	    	NA
+5473125	NA	m	Multiple dates	    	NA
+5473128	NA	m	Multiple dates	    	NA
+5473129	NA	m	Multiple dates	    	NA
+5473130	NA	m	Multiple dates	    	NA
+5473131	NA	m	Multiple dates	    	NA
+5473133	NA	m	Multiple dates	    	NA
+5473134	NA	m	Multiple dates	    	NA
+5473135	NA	m	Multiple dates	    	NA
+5473137	NA	m	Multiple dates	    	NA
+5473138	NA	m	Multiple dates	    	NA
+5473141	NA	m	Multiple dates	    	NA
+5473142	NA	m	Multiple dates	    	NA
+5473143	NA	m	Multiple dates	    	NA
+5473146	NA	m	Multiple dates	    	NA
+5473152	NA	m	Multiple dates	    	NA
+5473153	NA	m	Multiple dates	    	NA
+5473154	NA	m	Multiple dates	    	NA
+5473155	NA	m	Multiple dates	    	NA
+5473156	NA	m	Multiple dates	    	NA
+5473157	NA	m	Multiple dates	    	NA
+5473158	NA	m	Multiple dates	    	NA
+5473159	NA	m	Multiple dates	    	NA
+5473160	NA	m	Multiple dates	    	NA
+5473163	NA	m	Multiple dates	    	NA
+5473164	NA	m	Multiple dates	    	NA
+5473165	NA	m	Multiple dates	    	NA
+5473166	NA	m	Multiple dates	    	NA
+5473177	NA	m	Multiple dates	    	NA
+5473178	NA	m	Multiple dates	    	NA
+5473181	NA	m	Multiple dates	    	NA
+5473182	NA	m	Multiple dates	    	NA
+5473197	NA	m	Multiple dates	    	NA
+5473199	NA	m	Multiple dates	    	NA
+5473200	NA	m	Multiple dates	    	NA
+5473201	NA	m	Multiple dates	    	NA
+5473204	NA	m	Multiple dates	    	NA
+5473207	NA	m	Multiple dates	    	NA
+5473208	NA	m	Multiple dates	    	NA
+5473209	NA	m	Multiple dates	    	NA
+5473210	NA	m	Multiple dates	    	NA
+5473211	NA	m	Multiple dates	    	NA
+5473212	NA	m	Multiple dates	    	NA
+5473213	NA	m	Multiple dates	    	NA
+5473214	NA	m	Multiple dates	    	NA
+5473216	NA	m	Multiple dates	    	NA
+5473217	NA	m	Multiple dates	    	NA
+5473220	NA	m	Multiple dates	    	NA
+5473221	NA	m	Multiple dates	    	NA
+5473222	NA	m	Multiple dates	    	NA
+5473223	NA	m	Multiple dates	    	NA
+5473224	NA	m	Multiple dates	    	NA
+5473225	NA	m	Multiple dates	    	NA
+5473226	NA	m	Multiple dates	    	NA
+5473227	NA	m	Multiple dates	    	NA
+5473228	NA	m	Multiple dates	    	NA
+5473229	NA	m	Multiple dates	    	NA
+5473230	NA	m	Multiple dates	    	NA
+5473231	NA	m	Multiple dates	    	NA
+5473232	NA	m	Multiple dates	    	NA
+5473233	NA	m	Multiple dates	    	NA
+5473234	NA	m	Multiple dates	    	NA
+5473235	NA	m	Multiple dates	    	NA
+5473236	NA	m	Multiple dates	    	NA
+5473237	NA	m	Multiple dates	    	NA
+5473238	NA	m	Multiple dates	    	NA
+5473239	NA	m	Multiple dates	    	NA
+5473240	NA	m	Multiple dates	    	NA
+5473241	NA	m	Multiple dates	    	NA
+5473242	NA	m	Multiple dates	    	NA
+5473244	NA	m	Multiple dates	    	NA
+5473245	NA	m	Multiple dates	    	NA
+5473246	NA	m	Multiple dates	    	NA
+5473273	NA	m	Multiple dates	    	NA
+5473275	NA	m	Multiple dates	    	NA
+5473277	NA	m	Multiple dates	    	NA
+5473278	NA	m	Multiple dates	    	NA
+5473279	NA	m	Multiple dates	    	NA
+5473282	NA	m	Multiple dates	    	NA
+5473283	NA	m	Multiple dates	    	NA
+5473285	NA	m	Multiple dates	    	NA
+5473300	NA	m	Multiple dates	    	NA
+5473304	NA	m	Multiple dates	    	NA
+5473306	NA	m	Multiple dates	    	NA
+5473307	NA	m	Multiple dates	    	NA
+5473308	NA	m	Multiple dates	    	NA
+5473309	NA	m	Multiple dates	    	NA
+5473310	NA	m	Multiple dates	    	NA
+5473311	NA	m	Multiple dates	    	NA
+5473313	NA	m	Multiple dates	    	NA
+5473364	NA	m	Multiple dates	    	NA
+5473365	NA	m	Multiple dates	    	NA
+5473368	NA	m	Multiple dates	    	NA
+5473372	NA	m	Multiple dates	    	NA
+5473373	NA	m	Multiple dates	    	NA
+5473374	NA	m	Multiple dates	    	NA
+5473375	NA	m	Multiple dates	    	NA
+5473395	NA	m	Multiple dates	    	NA
+5473396	NA	m	Multiple dates	    	NA
+5473397	NA	m	Multiple dates	    	NA
+5473399	NA	m	Multiple dates	    	NA
+5473402	NA	m	Multiple dates	    	NA
+5473403	NA	m	Multiple dates	    	NA
+5473422	NA	m	Multiple dates	    	NA
+5473423	NA	m	Multiple dates	    	NA
+5473424	NA	m	Multiple dates	    	NA
+5473425	NA	m	Multiple dates	    	NA
+5473431	NA	m	Multiple dates	    	NA
+5473458	NA	m	Multiple dates	    	NA
+5473459	NA	m	Multiple dates	    	NA
+5473461	NA	m	Multiple dates	    	NA
+5473462	NA	m	Multiple dates	    	NA
+5473463	NA	m	Multiple dates	    	NA
+5473464	NA	m	Multiple dates	    	NA
+5473466	NA	m	Multiple dates	    	NA
+5473467	NA	m	Multiple dates	    	NA
+5473468	NA	m	Multiple dates	    	NA
+5473469	NA	m	Multiple dates	    	NA
+5473470	NA	m	Multiple dates	    	NA
+5473471	NA	m	Multiple dates	    	NA
+5473472	NA	m	Multiple dates	    	NA
+5473473	NA	m	Multiple dates	    	NA
+5473474	NA	m	Multiple dates	    	NA
+5473475	NA	m	Multiple dates	    	NA
+5473476	NA	m	Multiple dates	    	NA
+5473477	NA	m	Multiple dates	    	NA
+5473478	NA	m	Multiple dates	    	NA
+5473479	NA	m	Multiple dates	    	NA
+5473481	NA	m	Multiple dates	    	NA
+5473482	NA	m	Multiple dates	    	NA
+5473483	NA	m	Multiple dates	    	NA
+5473484	NA	m	Multiple dates	    	NA
+5473485	NA	m	Multiple dates	    	NA
+5473486	NA	m	Multiple dates	    	NA
+5473487	NA	m	Multiple dates	    	NA
+5473488	NA	m	Multiple dates	    	NA
+5473489	NA	m	Multiple dates	    	NA
+5473490	NA	m	Multiple dates	    	NA
+5473491	NA	m	Multiple dates	    	NA
+5473492	NA	m	Multiple dates	    	NA
+5473493	NA	m	Multiple dates	    	NA
+5473494	NA	m	Multiple dates	    	NA
+5473495	NA	m	Multiple dates	    	NA
+5473498	NA	m	Multiple dates	    	NA
+5473499	NA	m	Multiple dates	    	NA
+5473500	NA	m	Multiple dates	    	NA
+5473501	NA	m	Multiple dates	    	NA
+5473502	NA	m	Multiple dates	    	NA
+5473503	NA	m	Multiple dates	    	NA
+5473504	NA	m	Multiple dates	    	NA
+5473505	NA	m	Multiple dates	    	NA
+5473508	NA	m	Multiple dates	    	NA
+5473509	NA	m	Multiple dates	    	NA
+5473510	NA	m	Multiple dates	    	NA
+5473516	NA	m	Multiple dates	    	NA
+5473517	NA	m	Multiple dates	    	NA
+5473518	NA	m	Multiple dates	    	NA
+5473519	NA	m	Multiple dates	    	NA
+5473520	NA	m	Multiple dates	    	NA
+5473521	NA	m	Multiple dates	    	NA
+5473522	NA	m	Multiple dates	    	NA
+5473523	NA	m	Multiple dates	    	NA
+5473524	NA	m	Multiple dates	    	NA
+5473525	NA	m	Multiple dates	    	NA
+5473526	NA	m	Multiple dates	    	NA
+5473527	NA	m	Multiple dates	    	NA
+5473528	NA	m	Multiple dates	    	NA
+5473529	NA	m	Multiple dates	    	NA
+5473530	NA	m	Multiple dates	    	NA
+5473532	NA	m	Multiple dates	    	NA
+5473533	NA	m	Multiple dates	    	NA
+5473534	NA	m	Multiple dates	    	NA
+5473535	NA	m	Multiple dates	    	NA
+5473536	NA	m	Multiple dates	    	NA
+5473537	NA	m	Multiple dates	    	NA
+5473538	NA	m	Multiple dates	    	NA
+5473539	NA	m	Multiple dates	    	NA
+5473540	NA	m	Multiple dates	    	NA
+5473541	NA	m	Multiple dates	    	NA
+5473542	NA	m	Multiple dates	    	NA
+5473543	NA	m	Multiple dates	    	NA
+5473544	NA	m	Multiple dates	    	NA
+5473548	NA	m	Multiple dates	    	NA
+5473549	NA	m	Multiple dates	    	NA
+5473550	NA	m	Multiple dates	    	NA
+5473551	NA	m	Multiple dates	    	NA
+5473552	NA	m	Multiple dates	    	NA
+5473553	NA	m	Multiple dates	    	NA
+5473554	NA	m	Multiple dates	    	NA
+5473555	NA	m	Multiple dates	    	NA
+5473556	NA	m	Multiple dates	    	NA
+5473558	NA	m	Multiple dates	    	NA
+5473559	NA	m	Multiple dates	    	NA
+5473560	NA	m	Multiple dates	    	NA
+5473562	NA	m	Multiple dates	    	NA
+5473563	NA	m	Multiple dates	    	NA
+5473564	NA	m	Multiple dates	    	NA
+5473565	NA	m	Multiple dates	    	NA
+5473566	NA	m	Multiple dates	    	NA
+5473568	NA	m	Multiple dates	    	NA
+5473569	NA	m	Multiple dates	    	NA
+5473570	NA	m	Multiple dates	    	NA
+5473571	NA	m	Multiple dates	    	NA
+5473572	NA	m	Multiple dates	    	NA
+5473573	NA	m	Multiple dates	    	NA
+5473574	NA	m	Multiple dates	    	NA
+5473575	NA	m	Multiple dates	    	NA
+5473576	NA	m	Multiple dates	    	NA
+5473577	NA	m	Multiple dates	    	NA
+5473579	NA	m	Multiple dates	    	NA
+5473580	NA	m	Multiple dates	    	NA
+5473581	NA	m	Multiple dates	    	NA
+5473582	NA	m	Multiple dates	    	NA
+5473583	NA	m	Multiple dates	    	NA
+5474520	NA	m	Multiple dates	    	NA
+5474770	NA	m	Multiple dates	    	NA
+5474785	NA	m	Multiple dates	    	NA
+5474788	NA	m	Multiple dates	    	NA
+5474791	NA	m	Multiple dates	    	NA
+5474795	NA	m	Multiple dates	    	NA
+5475242	NA	m	Multiple dates	    	NA
+5475328	NA	m	Multiple dates	    	NA
 5476971	FCC009596388	s	Single known date/probable date	uuuu	NA
 5476972	FCC009778488	s	Single known date/probable date	uuuu	NA
 5476973	FCC009778882	s	Single known date/probable date	uuuu	NA
