@@ -3,7 +3,7 @@ field <- "title_uniform"
 x <- polish_title(df.orig[[field]])
 
 # Collect the results into a data.frame
-df.tmp <- data.frame(melinda_id = df.orig$melinda_id,
+df.tmp <- data.frame(id = df.orig$id,
                      orig = x$title_original,
                      title_uniform = x$title_harmonized)
 
@@ -25,7 +25,7 @@ message("Discarded entries in the original data")
 inds <- which(is.na(df.tmp[[field]]))
 
 # Original entries that were converted into NA
-original.na <- df.orig[match(df.tmp$melinda_id[inds], df.orig$melinda_id), field]
+original.na <- df.orig[match(df.tmp$id[inds], df.orig$id), field]
 
 # .. ie. those are "discarded" cases; list them in a table
 tmp <- write_xtable(original.na, file_discarded, count = TRUE, add.percentages = TRUE)
@@ -46,7 +46,7 @@ write.table(df, file = paste0(output.folder, paste0(field, ".csv")))
 # Subset 1809-1917 
 # ------------------------------------------------------------
 
-df_19 <- df.tmp[df.tmp$melinda_id %in% melindas_19,] # publication time has df.harmonized instead of df.tmp 
+df_19 <- df.tmp[df.tmp$melinda_id %in% ids_19,] # publication time has df.harmonized instead of df.tmp 
 field <- "title_uniform"
 
 

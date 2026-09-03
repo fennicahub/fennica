@@ -19,7 +19,7 @@ df.orig <- arrow::read_parquet(url)
 
 names(df.orig) <- c(
   "fikka_id", "id", "leader", "field_008", "other_system_id",
-  "author_name", "author_date", "asteri_id",
+  "author_name", "author_date", "language_work", "asteri_id",
   "language_041", "language_original",
   "title_uniform", "title", "title_remainder", "title_part_number",
   "publication_place", "publisher", "publication_place_264",

@@ -104,6 +104,18 @@ df.harmonized$publisher <- df.tmp$publisher
 # 
 df.harmonized$signum <- df.orig$call_number
 
+source("genre_655.R")
+
+df.harmonized$genre_655 <- df.tmp$harmonized
+
+source("physical_dimensions.R")
+
+df.harmonized <- merge(df.harmonized,df.tmp,by = "id")
+
+source("physical_extent.R")
+
+df.harmonized <- merge(df.harmonized,df.tmp,by = "id")
+
 source("udk.R")
 
 df.harmonized$udk_orig <- df.orig$UDC 
@@ -113,25 +125,6 @@ df.harmonized$udk <- df.tmp$converted
 df.harmonized$udk_primary <- df.tmp$primary 
 df.harmonized$udk_multi <- df.tmp$multi_udk
 
-source("genre_655.R")
-
-df.harmonized$genre_655 <- df.tmp$harmonized
-
-source("physical_dimensions.R")
-
-df.harmonized <- merge(
-  df.harmonized,
-  df.tmp,
-  by = "id"
-)
-
-source("physical_extent.R")
-
-df.harmonized <- merge(
-  df.harmonized,
-  df.tmp,
-  by = "id"
-)
 
 
 df.harmonized <- unique(df.harmonized)
