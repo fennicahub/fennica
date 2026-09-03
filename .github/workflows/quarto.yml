@@ -68,6 +68,9 @@ jobs:
       - name: Install remotes package
         run: Rscript -e "install.packages('remotes')"
 
+      - name: Install remotes package
+        run: Rscript -e "install.packages('sf')"
+
       - name: Install parallel package
         run: Rscript -e "install.packages('parallel')"
 
