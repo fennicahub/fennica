@@ -57,7 +57,7 @@ source("ids_19.R")
 #create csv and save to output_tables
 #source("harmonized_fennica.R")
 #load all csvs to allas
-#source("allas.R")
+source("allas.R")
 #source("render_quarto.R")
 ntop <- 20
 book_author <- "Turku Data Science Group"
