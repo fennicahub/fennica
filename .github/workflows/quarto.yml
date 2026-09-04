@@ -31,6 +31,16 @@ jobs:
         with:
           use-public-rspm: true
 
+      - name: Install spatial system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libudunits2-dev \
+            libgdal-dev \
+            libgeos-dev \
+            libproj-dev \
+            libsqlite3-dev
+
 
       - name: Install aws.s3 package
         run: Rscript -e "install.packages('aws.s3')"
@@ -68,7 +78,7 @@ jobs:
       - name: Install remotes package
         run: Rscript -e "install.packages('remotes')"
 
-      - name: Install remotes package
+      - name: Install sf package
         run: Rscript -e "install.packages('sf')"
 
       - name: Install parallel package
