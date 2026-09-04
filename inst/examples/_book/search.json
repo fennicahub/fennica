@@ -18,5 +18,55 @@
     "crumbs": [
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>Uniform Titles and Variants</span>"
     ]
+  },
+  {
+    "objectID": "publication_place.html",
+    "href": "publication_place.html",
+    "title": "9  Publication place",
+    "section": "",
+    "text": "9.1 Complete Dataset Overview\nTerms that are clearly not place names can be added to stopwords;\nThe synonyme list contains candidate place names that were identified during processing but ultimately rejected, rather than valid variants of accepted names. These entries typically reflect ambiguous, malformed, or non-standardized strings that could not be reliably matched to a canonical location. Some may be recoverable with additional context or external authority matching, but are conservatively excluded in the current workflow.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+  },
+  {
+    "objectID": "publication_place.html#complete-dataset-overview",
+    "href": "publication_place.html#complete-dataset-overview",
+    "title": "9  Publication place",
+    "section": "",
+    "text": "5769 unique publication places; available for 1224290 documents (93%).\nAmbiguous publication places;\nUnknown place names\n\n\n\nDiscarded place names\nConversions from the original to the accepted place names",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+  },
+  {
+    "objectID": "publication_place.html#publication-countries",
+    "href": "publication_place.html#publication-countries",
+    "title": "9  Publication place",
+    "section": "9.2 Publication countries",
+    "text": "9.2 Publication countries\n\n46 unique publication countries; available for 1139851 documents (86%).\n5032 places with unknown publication country (87.2% of the unique places; can be added to country mappings)\npotentially ambiguous region-country mappings (these may occur in the data in various synonymes and the country is not always clear when multiple countries have a similar place name; the default country is listed first). NOTE: possible improvements should not be done in this output summary but instead in the country mapping file.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+  },
+  {
+    "objectID": "publication_place.html#geocoordinates",
+    "href": "publication_place.html#geocoordinates",
+    "title": "9  Publication place",
+    "section": "9.3 Geocoordinates",
+    "text": "9.3 Geocoordinates\n\n86.2% of the documents were matched to geographic coordinates (based on COMHIS geomapping process).\n5095 unique places (88.3% of all unique places and 13.84% of all documents) are missing geocoordinates. See list of places missing geocoordinate information.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publication place</span>"
+    ]
+  },
+  {
+    "objectID": "publication_place.html#subset-analysis-1809-1917",
+    "href": "publication_place.html#subset-analysis-1809-1917",
+    "title": "9  Publication place",
+    "section": "9.4 Subset Analysis: 1809-1917",
+    "text": "9.4 Subset Analysis: 1809-1917\n\n527 unique publication places; available for 70482 documents (97%).\nUnique publication country for a period 1809-1917: 32; available for 68732 documents (95%).\n\nTop-20 publication places are shown together with the number of documents.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCountry\nDocuments (n)\nFraction (%)\n\n\n\n\nFinland\n63094\n86.9\n\n\nSweden\n1768\n2.4\n\n\nRussia\n1220\n1.7\n\n\nUSA\n1110\n1.5\n\n\nGermany\n633\n0.9\n\n\nFrance\n181\n0.2",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Publication place</span>"
+    ]
   }
 ]
