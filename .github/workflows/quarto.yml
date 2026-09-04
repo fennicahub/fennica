@@ -60,7 +60,7 @@ jobs:
       - name: Install data.table package
         run: Rscript -e "install.packages('data.table')"
 
-      - name: Install data.table package
+      - name: Install rnaturalearth package
         run: Rscript -e "install.packages('rnaturalearth')"
 
       - name: Install httr package
