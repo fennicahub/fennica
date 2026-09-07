@@ -63,6 +63,9 @@ jobs:
       - name: Install rnaturalearth package
         run: Rscript -e "install.packages('rnaturalearth')"
 
+      - name: Install rnaturalearthdata package
+        run: Rscript -e "install.packages('rnaturalearthdata')"
+
       - name: Install httr package
         run: Rscript -e "install.packages('httr')"
 
